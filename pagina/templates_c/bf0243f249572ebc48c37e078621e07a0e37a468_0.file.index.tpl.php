@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-14 01:54:14
+/* Smarty version 4.1.0, created on 2022-10-19 19:57:18
   from '/Applications/XAMPP/xamppfiles/htdocs/proyecto-web/smarty/templates/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6348a526d844e3_26282361',
+  'unifunc' => 'content_63503a7ee3f495_82448114',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bf0243f249572ebc48c37e078621e07a0e37a468' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/proyecto-web/smarty/templates/index.tpl',
-      1 => 1665705129,
+      1 => 1666202236,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6348a526d844e3_26282361 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63503a7ee3f495_82448114 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,10 +28,11 @@ function content_6348a526d844e3_26282361 (Smarty_Internal_Template $_smarty_tpl)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de sesion</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">   
+    <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
+	<link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">  
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Inicio</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
