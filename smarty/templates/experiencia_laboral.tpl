@@ -40,18 +40,26 @@
   </div>
 </nav>
     <form action="experiencia_laboral.php" method="POST">
-        <h2>Datos de Experiencia Laboral</h2>
         
-        <input type="text" name="txtdescripcion" placeholder=" ">
-        <label for="name" class="form__label"> Descripcion de Puesto</label> <br><br>
+    <div class="card  mb-3" style="max-width: 20rem; margin:auto; margin-top:30px;">
+      <div class="card-body">
+        <h4 class="card-title" ">Datos de Experiencia Laboral</h4>
+        <label>Los campos marcados con asterisco son obligatorios</label> <br>
 
-        <input type="text" name="txtempresa" placeholder=" ">
-        <label for="name" class="form__label"> Empresa</label> <br><br>
+        <label class="col-form-label mt-4" for="name"> Descripcion de Puesto *</label> <br>
+        <input class="form-control" type="text" name="txtdescripcion" placeholder="Ingresa la Descripcion"> <br>
 
-        <input type="text" name="txtperiodo" placeholder=" ">
-        <label for="name" class="form__label"> Periodo</label> <br><br>
+        <label for="name" class="form__label"> Empresa *</label> <br>
+        <input class="form-control" type="text" name="txtempresa" placeholder="Ingresa la Empresa"> <br>
 
-        <input type="submit" value="Guardar">
+        <label for="name" class="form__label"> Periodo *</label> <br>
+        <input class="form-control" type="text" name="txtperiodo" placeholder="Ingresa el Periodo"> <br>
+
+        <input class="btn btn-primary" style="margin-left:90px;" type="submit" value="Guardar">
+      </div>
+</div>
+        
+        
     </form>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

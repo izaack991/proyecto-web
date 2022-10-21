@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.0, created on 2022-10-19 19:54:03
+/* Smarty version 4.1.0, created on 2022-10-21 16:26:47
   from 'C:\xampp\htdocs\proyecto-web\smarty\templates\experiencia_laboral.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '4.2.0',
-  'unifunc' => 'content_635039bb3de228_86924727',
+  'version' => '4.1.0',
+  'unifunc' => 'content_6352ac27e77890_18142924',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '343008cd6766f801e6bc2e2b60bc64dbda141c6b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyecto-web\\smarty\\templates\\experiencia_laboral.tpl',
-      1 => 1666201630,
+      1 => 1666362407,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,20 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_635039bb3de228_86924727 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6352ac27e77890_18142924 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
-
-<link id="theme-style" rel="stylesheet" href="../../pagina/assets/css/devresume.css">
-<link id="theme-style" rel="stylesheet" href="../../pagina/assets/css/theme-1.css">
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
 </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">   
-</head>
+    <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
+    <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">  
+    </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">Inicio</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,18 +65,26 @@ function content_635039bb3de228_86924727 (Smarty_Internal_Template $_smarty_tpl)
   </div>
 </nav>
     <form action="experiencia_laboral.php" method="POST">
-        <h2>Datos de Experiencia Laboral</h2>
         
-        <input type="text" name="txtdescripcion" placeholder=" ">
-        <label for="name" class="form__label"> Descripcion de Puesto</label> <br><br>
+    <div class="card  mb-3" style="max-width: 20rem; margin:auto; margin-top:30px;">
+      <div class="card-body">
+        <h4 class="card-title" ">Datos de Experiencia Laboral</h4>
+        <label>Los campos marcados con asterisco son obligatorios</label> <br>
 
-        <input type="text" name="txtempresa" placeholder=" ">
-        <label for="name" class="form__label"> Empresa</label> <br><br>
+        <label class="col-form-label mt-4" for="name"> Descripcion de Puesto *</label> <br>
+        <input class="form-control" type="text" name="txtdescripcion" placeholder="Ingresa la Descripcion"> <br>
 
-        <input type="text" name="txtperiodo" placeholder=" ">
-        <label for="name" class="form__label"> Periodo</label> <br><br>
+        <label for="name" class="form__label"> Empresa *</label> <br>
+        <input class="form-control" type="text" name="txtempresa" placeholder="Ingresa la Empresa"> <br>
 
-        <input type="submit" value="Guardar">
+        <label for="name" class="form__label"> Periodo *</label> <br>
+        <input class="form-control" type="text" name="txtperiodo" placeholder="Ingresa el Periodo"> <br>
+
+        <input class="btn btn-primary" style="margin-left:90px;" type="submit" value="Guardar">
+      </div>
+</div>
+        
+        
     </form>
     <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"><?php echo '</script'; ?>

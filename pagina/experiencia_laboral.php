@@ -16,6 +16,8 @@ if(isset($_POST['txtdescripcion']) && isset($_POST['txtempresa']) && isset($_POS
     $_periodo = $_POST['txtperiodo'];
     $f_idexperiencia = $_findExperiencia->consec_experiencia();
     $newExperiencia = $nuevoExperiencia->guardar_experiencia_laboral($f_idexperiencia,$_idusuario,$_descripcion,$_empresa,$_periodo);
+    
+
 }
 
 $smarty->assign("titulo",$titulo);
