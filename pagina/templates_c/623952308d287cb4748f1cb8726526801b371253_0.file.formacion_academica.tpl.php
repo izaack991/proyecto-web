@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-21 16:21:07
+/* Smarty version 4.1.0, created on 2022-10-26 05:23:20
   from 'C:\xampp\htdocs\proyecto-web\smarty\templates\formacion_academica.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6352aad3af52d8_08566003',
+  'unifunc' => 'content_6358a828d29b48_61873569',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '623952308d287cb4748f1cb8726526801b371253' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyecto-web\\smarty\\templates\\formacion_academica.tpl',
-      1 => 1666362067,
+      1 => 1666371754,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6352aad3af52d8_08566003 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6358a828d29b48_61873569 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
