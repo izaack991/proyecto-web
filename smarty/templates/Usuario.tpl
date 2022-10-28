@@ -5,39 +5,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro Usuario</title>
+     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
+    <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">  
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.php">Inicio</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor03">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="experiencia_laboral.php">Experiencia Laboral
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="formacion_academica.php">Formacion Academica
+          </a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link active" href="Aficiones.php">Aficiones
+          </a>
+        </li> 
+        <li class="nav-item">
+        <a class="nav-link active" href="interes.php">Interes
+        </a>
+      </li> 
+        <li class="nav-link active">{$smarty.session.nomusuario}</li>
+        <a class="nav-link active text-info" href="login.php">Cerrar Sesión</a>
+      </ul>
+    </div>
+  </div>
+</nav>
     <form action="Usuario.php" method="POST">
-        <div> 
-            <label>Registrar Usuario</label>
+         <div class="card  mb-3" style="max-width: 20rem; margin:auto; margin-top:30px;">
+      <div class="card-body">
+             <h4 class="card-title" ">Datos de Experiencia Laboral</h4>
+            <label></label>
             <br>
             <label>Los campos marcados con asterisco son obligatorios*</label>
             <br>
             <label>Nombre: *</label><br>
-            <input type="text" name="txt_NOMBRE" class="texto" placeholder="Escriba el Nombre" required="true"><br>
+            <input  class="form-control" type="text" name="txt_NOMBRE" class="texto" placeholder="Escriba el Nombre" required="true"><br>
             <label>Apellidos: *</label><br>
-            <input type="text" name="txt_APELLIDOS" class="texto" placeholder="Escriba sus Apellidos" required="true"><br>
+            <input class="form-control" type="text" name="txt_APELLIDOS" class="texto" placeholder="Escriba sus Apellidos" required="true"><br>
             <label>Correo Electronico: *</label><br>
-            <input type="text" name="txt_CORREO" class="texto" placeholder="Escriba su Correo" required="true"><br>
+            <input class="form-control" type="text" name="txt_CORREO" class="texto" placeholder="Escriba su Correo" required="true"><br>
             <label for="dateFECHA">Seleccione su Fecha de Nacimineto: *</label><br>
-            <input type="date" id="dateFECHA" name="dateFECHA"
+            <input class="form-control" type="date" id="dateFECHA" name="dateFECHA"
                    value="2022-01-01"
                    min="2022-01-01" max="2022-12-31">
             <br>
             <label>CURP: *</label><br>
-            <input type="text" name="txt_CURP" class="texto" placeholder="Escriba su CURP" required="true"><br>
+            <input class="form-control" type="text" name="txt_CURP" class="texto" placeholder="Escriba su CURP" required="true"><br>
             <label>Contrasena: *</label><br>
-            <input type="password" name="txt_PASSWORD" class="texto" minlength="8" maxLength="30" placeholder="Escriba la Contrasena" required="true"><br>
+            <input class="form-control" type="password" name="txt_PASSWORD" class="texto" minlength="8" maxLength="30" placeholder="Escriba la Contrasena" required="true"><br>
             <label>Confirme Contrasena: *</label><br>
-            <input type="password" name="txt_PASSWORD2" class="texto" minlength="8" maxLength="30" placeholder="Confirme la Contrasena" required="true"><br>
+            <input class="form-control" type="password" name="txt_PASSWORD2" class="texto" minlength="8" maxLength="30" placeholder="Confirme la Contrasena" required="true"><br>
             <label>Sexo: *</label><br>
-            <select name="cmb_SEXO">
+            
+            <select class="btn btn-light disabled" name="cmb_SEXO">
                 <option value = "1">Masculino</option>
                 <option value = "2">Femenino</option>
                 <option value = "3">Otro</option>
             <select><br>    
             <label>Region: *</label><br>
-            <select name="cmb_REGION">
+            <select class="btn btn-outline-primary" name="cmb_REGION">
                 <div>
                 <option value="93">Afganistán</option>
                 <option value="355">Albania</option>
@@ -273,14 +308,22 @@
                 <option value="260">Zambia</option>
                 <option value="263">Zimbabue</option>
             <select><br>
-            </div>
+          
             <label>Telefono: *</label><br>
-            <input type="text" name="txt_TELEFONO" class="texto" placeholder="Escriba su Número" required="true"><br>
+            <input class="form-control" type="text" name="txt_TELEFONO" class="texto" placeholder="Escriba su Número" required="true"><br>
             <label>Domicilio: *</label><br>
-            <input type="text" name="txt_DOMICILIO" class="texto" placeholder="Escriba su Domicilio" required="true"><br>
-            <button type="submit">GUARDAR</button>
+            <input class="form-control"  type="text" name="txt_DOMICILIO" class="texto" placeholder="Escriba su Domicilio" required="true"><br>
+            <center>
+            <button class="btn btn-primary" type="submit">GUARDAR</button>
+              </center>
         </div>
+
+    
     </form>
+ <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
