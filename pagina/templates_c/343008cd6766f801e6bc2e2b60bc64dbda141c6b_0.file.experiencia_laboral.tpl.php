@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-26 05:23:22
+/* Smarty version 4.2.0, created on 2022-10-28 15:18:48
   from 'C:\xampp\htdocs\proyecto-web\smarty\templates\experiencia_laboral.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '4.1.0',
-  'unifunc' => 'content_6358a82a9eafa3_34342623',
+  'version' => '4.2.0',
+  'unifunc' => 'content_635bd6b8353897_05059176',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '343008cd6766f801e6bc2e2b60bc64dbda141c6b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyecto-web\\smarty\\templates\\experiencia_laboral.tpl',
-      1 => 1666371754,
+      1 => 1666963080,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6358a82a9eafa3_34342623 (Smarty_Internal_Template $_smarty_tpl) {
+function content_635bd6b8353897_05059176 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
