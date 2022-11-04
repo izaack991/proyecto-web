@@ -12,6 +12,7 @@
 </head>
 
 <body>
+<script src="../smarty/js/ubicacion.js"></script>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.php">Inicio</a>
@@ -38,7 +39,7 @@
             </a>
           </li>
           <li class="nav-link active">{$smarty.session.nomusuario}</li>
-          <a class="nav-link active text-info" href="login.php">Cerrar Sesión</a>
+          <a class="nav-link active text-danger " href="login.php" style="font-weight:bold;">Cerrar Sesión</a>
         </ul>
       </div>
     </div>
@@ -59,7 +60,9 @@
         <label for="name" class="form__label"> Periodo *</label> <br>
         <input class="form-control" type="text" name="periodo" placeholder="Ingresa el periodo"> <br>
 
-
+        <input name ="txtlatitud" id="latitud"type="hidden">
+				<input name="txtlongitud" id="longitud" type="hidden">
+        
         <input class="btn btn-primary" style="margin-left:90px;" type="submit" value="Guardar">
       </div>
     </div>

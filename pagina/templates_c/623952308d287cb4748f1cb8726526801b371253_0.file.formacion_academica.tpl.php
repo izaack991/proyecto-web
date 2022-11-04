@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.0, created on 2022-10-28 15:18:47
+/* Smarty version 4.1.0, created on 2022-11-04 07:18:05
   from 'C:\xampp\htdocs\proyecto-web\smarty\templates\formacion_academica.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '4.2.0',
-  'unifunc' => 'content_635bd6b7526690_56406501',
+  'version' => '4.1.0',
+  'unifunc' => 'content_6364ae9d5921e2_42924988',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '623952308d287cb4748f1cb8726526801b371253' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyecto-web\\smarty\\templates\\formacion_academica.tpl',
-      1 => 1666963080,
+      1 => 1667542634,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_635bd6b7526690_56406501 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6364ae9d5921e2_42924988 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -35,6 +35,9 @@ function content_635bd6b7526690_56406501 (Smarty_Internal_Template $_smarty_tpl)
 </head>
 
 <body>
+<?php echo '<script'; ?>
+ src="../smarty/js/ubicacion.js"><?php echo '</script'; ?>
+>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.php">Inicio</a>
@@ -62,7 +65,7 @@ function content_635bd6b7526690_56406501 (Smarty_Internal_Template $_smarty_tpl)
           </li>
           <li class="nav-link active"><?php echo $_SESSION['nomusuario'];?>
 </li>
-          <a class="nav-link active text-info" href="login.php">Cerrar Sesión</a>
+          <a class="nav-link active text-danger " href="login.php" style="font-weight:bold;">Cerrar Sesión</a>
         </ul>
       </div>
     </div>
@@ -83,7 +86,9 @@ function content_635bd6b7526690_56406501 (Smarty_Internal_Template $_smarty_tpl)
         <label for="name" class="form__label"> Periodo *</label> <br>
         <input class="form-control" type="text" name="periodo" placeholder="Ingresa el periodo"> <br>
 
-
+        <input name ="txtlatitud" id="latitud"type="hidden">
+				<input name="txtlongitud" id="longitud" type="hidden">
+        
         <input class="btn btn-primary" style="margin-left:90px;" type="submit" value="Guardar">
       </div>
     </div>

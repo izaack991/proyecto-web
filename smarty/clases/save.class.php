@@ -43,7 +43,7 @@ require_once('conexion.class.php');
                 $query->bindParam(':empresa',$_empresa);
                 $query->bindParam(':periodo',$_periodo);
                 $query->execute();
-                $this->dbh = null;
+                //$this->dbh = null;
                     
               
             }
@@ -83,7 +83,7 @@ require_once('conexion.class.php');
             }        
             return TRUE;
         } 
-        public function guardar_formacion($id_usuario,$id_formacion,$descripcion,$ubicacion,$periodo)
+        public function guardar_formacion($_idusuario,$id_formacion,$descripcion,$ubicacion,$periodo)
         {        
             try {
                 
@@ -92,12 +92,11 @@ require_once('conexion.class.php');
                 
                 $query = $this->dbh->prepare($sql);
                 $query->bindParam(':id_formacion',$id_formacion);
-                $query->bindParam(':id_usuario',$id_usuario,);
+                $query->bindParam(':id_usuario',$_idusuario,);
                 $query->bindParam(':descripcion',$descripcion,);
                 $query->bindParam(':ubicacion',$ubicacion);
                 $query->bindParam(':periodo',$periodo);
                 $query->execute();
-                $this->dbh = null;
             }
             catch(PDOException $e){
                 
@@ -106,21 +105,20 @@ require_once('conexion.class.php');
             }        
             return TRUE;
         }
-        public function guardar_interes($id_di, $diusuario, $didesc )
+        public function guardar_interes($id_di, $_idusuario, $didesc )
             {        
                 try 
                 {
                     
-                    $sql="insert into tbl_dinteres(id_di, id_usuario, descripcion)
-                                        values(:id_di, :id_usuario, :descripcion)";
+                    $sql="INSERT INTO tbl_dinteres(id_di, id_usuario, descripcion)
+                                        VALUES(:id_di, :id_usuario, :descripcion)";
                     
                     $query = $this->dbh->prepare($sql);
                     
                     $query->bindParam(':id_di',$id_di);
-                    $query->bindParam(':id_usuario',$diusuario);
+                    $query->bindParam(':id_usuario',$_idusuario);
                     $query->bindParam(':descripcion',$didesc);
                     $query->execute();
-                   // $this->dbh = null;
                         
                    
                 }
@@ -132,24 +130,51 @@ require_once('conexion.class.php');
                 return TRUE;
             }
 
-            public function Guardar_id_pasatiempo($_id_Pasatiempo,$_id_usuario,$_Desripcion)
+            public function Guardar_id_pasatiempo($f_id_Pasatiempo,$_idusuario,$_Desripcion)
             {        
                 try {
                     
-                    $sql="INSERT into Aficiones(IdPasatiempo,IdUsusrio,Descripcion
-                                        values(:IdPasatiempo,:IdUsusrio,:Descripcion";
+                    $sql="INSERT into tbl_aop(id_aop,id_usuario,descripcion)
+                                        values(:id_aop,:id_usuario,:descripcion)";
                     
                     $query = $this->dbh->prepare($sql);
                     
-                    $query->bindParam(':IdPasatiempo',$_id_Pasatiempo);
-                    $query->bindParam(':IdUsusrio',$_id_usuario);
-                    $query->bindParam(':Descripcion',$_Desripcion);
+                    $query->bindParam(':id_aop',$f_id_Pasatiempo);
+                    $query->bindParam(':id_usuario',$_idusuario);
+                    $query->bindParam(':descripcion',$_Desripcion);
                     $query->execute();
-                    $this->dbh = null;
                 }
                 catch(PDOException $e){
                     
                     print "Error!: " . $e->getMessage(); 
+                    
+                }        
+                return TRUE;
+            }
+
+        public function guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora)
+            {        
+                try 
+                {
+                    
+                    $sql="INSERT INTO tbl_log_usuario(id_usuario,ubicacion,movimiento,fecha_mou,tiempo_sesion)
+                                        VALUES(:id_usuario,:ubicacion,:movimiento,:fecha_mou,:tiempo_sesion)";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    
+                    $query->bindParam(':id_usuario',$_idusuario);
+                    $query->bindParam(':ubicacion',$_ubicacion);
+                    $query->bindParam(':movimiento',$_movimiento);
+                    $query->bindParam(':fecha_mou',$_fecha);
+                    $query->bindParam(':tiempo_sesion',$_hora);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
                     
                 }        
                 return TRUE;

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.0, created on 2022-10-28 15:21:36
+/* Smarty version 4.1.0, created on 2022-11-04 18:17:51
   from 'C:\xampp\htdocs\proyecto-web\smarty\templates\Usuario.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '4.2.0',
-  'unifunc' => 'content_635bd76076ecb4_44017680',
+  'version' => '4.1.0',
+  'unifunc' => 'content_6365493f1b37d6_05871047',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '11c679ec452d0d14b15171e3cf985e2586f020a3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyecto-web\\smarty\\templates\\Usuario.tpl',
-      1 => 1665674378,
+      1 => 1667582271,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_635bd76076ecb4_44017680 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6365493f1b37d6_05871047 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,39 +28,76 @@ function content_635bd76076ecb4_44017680 (Smarty_Internal_Template $_smarty_tpl)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro Usuario</title>
+     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
+    <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">  
 </head>
 <body>
+<form>
+  </div>
+</nav>
     <form action="Usuario.php" method="POST">
-        <div> 
-            <label>Registrar Usuario</label>
+         <div class="card  mb-3" style="max-width: 50rem; margin:auto; margin-top:50px;">
+         <FONT COLOR="black"><div class="card-header bg-primary" align="center">REGISTRO DE NUEVO USUARIO</div></FONT>
+      <div class="card-body">
+             <h4 class="card-title" ></h4>
+            <label></label>
             <br>
             <label>Los campos marcados con asterisco son obligatorios*</label>
             <br>
+
+                   <div class="form-row">
+            <div class="form-group col-md-6">
             <label>Nombre: *</label><br>
-            <input type="text" name="txt_NOMBRE" class="texto" placeholder="Escriba el Nombre" required="true"><br>
+      
+            <input  class="form-control" type="text" name="txt_NOMBRE" class="texto" placeholder="Escriba el Nombre" required="true"><br>
+            </div>
+            <div class="form-group col-md-6">
             <label>Apellidos: *</label><br>
-            <input type="text" name="txt_APELLIDOS" class="texto" placeholder="Escriba sus Apellidos" required="true"><br>
+            <input class="form-control" type="text" name="txt_APELLIDOS" class="texto" placeholder="Escriba sus Apellidos" required="true"><br>
+              </div>
+              </div>
             <label>Correo Electronico: *</label><br>
-            <input type="text" name="txt_CORREO" class="texto" placeholder="Escriba su Correo" required="true"><br>
+            <input class="form-control" type="text" name="txt_CORREO" class="texto" placeholder="Escriba su Correo" required="true"><br>
+            
+                   <div class="form-row">
+            <div class="form-group col-md-6">
             <label for="dateFECHA">Seleccione su Fecha de Nacimineto: *</label><br>
-            <input type="date" id="dateFECHA" name="dateFECHA"
-                   value="2022-01-01"
-                   min="2022-01-01" max="2022-12-31">
+            <input class="form-control" type="date" id="dateFECHA" name="dateFECHA"
+                   value="2022-01-01">
+                   </div>
             <br>
+               <div class="form-group col-md-6">
             <label>CURP: *</label><br>
-            <input type="text" name="txt_CURP" class="texto" placeholder="Escriba su CURP" required="true"><br>
-            <label>Contrasena: *</label><br>
-            <input type="password" name="txt_PASSWORD" class="texto" minlength="8" maxLength="30" placeholder="Escriba la Contrasena" required="true"><br>
-            <label>Confirme Contrasena: *</label><br>
-            <input type="password" name="txt_PASSWORD2" class="texto" minlength="8" maxLength="30" placeholder="Confirme la Contrasena" required="true"><br>
+            <input class="form-control" type="text" name="txt_CURP" class="texto" minlength="18" maxLength="18" placeholder="Escriba su CURP" required="true"><br>
+            </div>
+            </div>
+
+                  <div class="form-row">
+            <div class="form-group col-md-6">
+            <label>Contraseña: *</label><br>
+            <input class="form-control" type="password" name="txt_PASSWORD" class="texto" minlength="8" maxLength="30" placeholder="Escriba la Contraseña" required="true"><br>
+           </div>
+               <div class="form-group col-md-6">
+            <label>Confirme Contraseña: *</label><br>
+            <input class="form-control" type="password" name="txt_PASSWORD2" class="texto" minlength="8" maxLength="30" placeholder="Confirme la Contraseña" required="true"><br>
+             </div>
+           </div>
+            
+
+<div class="form-row">
+    <div class="col-3">
             <label>Sexo: *</label><br>
-            <select name="cmb_SEXO">
+            
+            <select class="btn btn-light disabled" name="cmb_SEXO">
                 <option value = "1">Masculino</option>
                 <option value = "2">Femenino</option>
                 <option value = "3">Otro</option>
-            <select><br>    
+               
+            <select><br> 
+             </div>  
+             <div class="col">
             <label>Region: *</label><br>
-            <select name="cmb_REGION">
+            <select class="btn btn-light disabled" name="cmb_REGION">
                 <div>
                 <option value="93">Afganistán</option>
                 <option value="355">Albania</option>
@@ -297,13 +334,31 @@ function content_635bd76076ecb4_44017680 (Smarty_Internal_Template $_smarty_tpl)
                 <option value="263">Zimbabue</option>
             <select><br>
             </div>
+    <div class="col">
             <label>Telefono: *</label><br>
-            <input type="text" name="txt_TELEFONO" class="texto" placeholder="Escriba su Número" required="true"><br>
+            <input class="form-control" type="text" name="txt_TELEFONO" class="texto" minlength="10" maxLength="10" placeholder="Escriba su Número" required="true"><br>
+            </div>
+            </div>
             <label>Domicilio: *</label><br>
-            <input type="text" name="txt_DOMICILIO" class="texto" placeholder="Escriba su Domicilio" required="true"><br>
-            <button type="submit">GUARDAR</button>
+            <input class="form-control"  type="text" name="txt_DOMICILIO" class="texto" placeholder="Escriba su Domicilio" required="true"><br>
+            <center>
+            <button class="btn btn-primary" type="submit">GUARDAR</button>
+               <button type="button" class="btn btn-secondary" onclick="location.href='login.php'" >Regresar al Login</button>
+              </center>
         </div>
+
+    
     </form>
+ <?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"><?php echo '</script'; ?>
+>
+</form>
 </body>
 
 </html><?php }

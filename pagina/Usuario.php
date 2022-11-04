@@ -6,24 +6,35 @@ $smarty=new smarty;
 $titulo="Registro Usuario";
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
-if(isset($_POST['txt_PASSWORD']))
+if(isset($_POST['txt_PASSWORD'])&&($_POST['txt_PASSWORD2']))
 {
-	$_nombre = $_POST['txt_NOMBRE'];
-	$_apellido = $_POST['txt_APELLIDOS'];
-	$_correo = $_POST['txt_CORREO'];
-	$_fecha_nac = $_POST['dateFECHA'];
-	$_no_identificacion = $_POST['txt_CURP'];
-	$_password = $_POST['txt_PASSWORD'];
-	$_sexo = $_POST['cmb_SEXO'];
-	$_region = $_POST['cmb_REGION'];
-	$_telefono = $_POST['txt_TELEFONO'];
-	$_domicilio = $_POST['txt_DOMICILIO'];
-	$f_id_usuario = $_findUser -> consec_usuario();
-	$newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio);
-	if ($newuser== true)
+	if($_POST['txt_PASSWORD']!=$_POST['txt_PASSWORD2'])
+		{
+			echo '¡Las Contraseñas NO coinciden!';
+			header("location:Usuario.php");
+		}
+		
+	else
 	{
-		header("location:login.php");
+		$_nombre = $_POST['txt_NOMBRE'];
+		$_apellido = $_POST['txt_APELLIDOS'];
+		$_correo = $_POST['txt_CORREO'];
+		$_fecha_nac = $_POST['dateFECHA'];
+		$_no_identificacion = $_POST['txt_CURP'];
+		$_password = $_POST['txt_PASSWORD'];
+		$_sexo = $_POST['cmb_SEXO'];
+		$_region = $_POST['cmb_REGION'];
+		$_telefono = $_POST['txt_TELEFONO'];
+		$_domicilio = $_POST['txt_DOMICILIO'];
+		$f_id_usuario = $_findUser -> consec_usuario();
+		$newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio);
+		echo 'entre por aqui';
+		if ($newuser== true)
+		{
+			header("location:login.php");
+		}
 	}
+	
 }
 
 $smarty->assign("titulo",$titulo);

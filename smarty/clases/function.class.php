@@ -145,11 +145,11 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
-            function Guardar_id_pasatiempo()
+            function consec_pasatiempo()
             {
                 try
                 {
-                    $sql = "SELECT IFNULL(max(IdPasaTiempo),0) + 1 AS CONSECUTIVO FROM Aficiones";
+                    $sql = "SELECT IFNULL(max(id_aop),0) + 1 AS CONSECUTIVO FROM tbl_aop";
                     $query = $this->dbh->prepare($sql);
                     $query -> execute();
                     //this->dbh = null;

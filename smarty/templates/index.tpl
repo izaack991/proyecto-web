@@ -34,7 +34,7 @@
         </a>
       </li> 
         <li class="nav-link active">{$smarty.session.nomusuario}</li>
-        <a class="nav-link active text-info" href="login.php">Cerrar Sesión</a>
+        <a class="nav-link active text-danger " href="login.php" style="font-weight:bold;">Cerrar Sesión</a>
       </ul>
     </div>
   </div>
