@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 4.2.1, created on 2022-11-05 02:31:48
+  from '/Applications/XAMPP/xamppfiles/htdocs/proyecto-web/smarty/templates/formacion_academica.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '4.2.1',
+  'unifunc' => 'content_6365bd0490f165_52416097',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '83f4c60c249a10199a44ba8926769ef8816bc362' => 
+    array (
+      0 => '/Applications/XAMPP/xamppfiles/htdocs/proyecto-web/smarty/templates/formacion_academica.tpl',
+      1 => 1667611897,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_6365bd0490f165_52416097 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,7 +35,9 @@
 </head>
 
 <body>
-<script src="../smarty/js/ubicacion.js"></script>
+<?php echo '<script'; ?>
+ src="../smarty/js/ubicacion.js"><?php echo '</script'; ?>
+>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.php">Inicio</a>
@@ -38,7 +63,8 @@
             <a class="nav-link active" href="interes.php">Interes
             </a>
           </li>
-          <li style="margin-right: 600px;" class="nav-link active">{$smarty.session.nomusuario}</li>
+          <li style="margin-right: 600px;" class="nav-link active"><?php echo $_SESSION['nomusuario'];?>
+</li>
           <a class="nav-link active text-danger " href="login.php" style="font-weight:bold;">Cerrar Sesión</a>
         </ul>
       </div>
@@ -67,15 +93,22 @@
       </div>
     </div>
   </form>
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  <?php echo '<script'; ?>
+ src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  <?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+  <?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-  </script>
+  <?php echo '</script'; ?>
+>
 </body>
 
-</html>
+</html><?php }
+}
