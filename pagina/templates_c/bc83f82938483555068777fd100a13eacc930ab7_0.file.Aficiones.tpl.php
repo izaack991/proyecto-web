@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-11-04 07:18:06
+/* Smarty version 4.1.0, created on 2022-11-07 18:04:27
   from 'C:\xampp\htdocs\proyecto-web\smarty\templates\Aficiones.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6364ae9e61a248_88352792',
+  'unifunc' => 'content_63693a9b700af0_47908807',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc83f82938483555068777fd100a13eacc930ab7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyecto-web\\smarty\\templates\\Aficiones.tpl',
-      1 => 1667542615,
+      1 => 1667840641,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6364ae9e61a248_88352792 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63693a9b700af0_47908807 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
   
 <html lang="en">
@@ -63,7 +63,7 @@ function content_6364ae9e61a248_88352792 (Smarty_Internal_Template $_smarty_tpl)
             <a class="nav-link active" href="interes.php">Interes
             </a>
           </li>
-          <li class="nav-link active"><?php echo $_SESSION['nomusuario'];?>
+          <li style="margin-right: 600px;" class="nav-link active"><?php echo $_SESSION['nomusuario'];?>
 </li>
           <a class="nav-link active text-danger " href="login.php" style="font-weight:bold;">Cerrar Sesión</a>
         </ul>
