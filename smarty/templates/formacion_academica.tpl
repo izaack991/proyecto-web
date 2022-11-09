@@ -38,7 +38,7 @@
             <a class="nav-link active" href="interes.php">Interes
             </a>
           </li>
-          <li style="margin-right: 600px;" class="nav-link active">{$smarty.session.nomusuario}</li>
+          <li class="nav-link active">{$smarty.session.nomusuario}</li>
           <a class="nav-link active text-danger " href="login.php" style="font-weight:bold;">Cerrar Sesión</a>
         </ul>
       </div>

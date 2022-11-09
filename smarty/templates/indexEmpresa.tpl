@@ -18,21 +18,9 @@
     <div class="collapse navbar-collapse" id="navbarColor03">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="experiencia_laboral.php">Experiencia Laboral
+          <a class="nav-link active" href="vacantes.php">Vacantes
           </a>
         </li> 
-        <li class="nav-item">
-          <a class="nav-link active" href="formacion_academica.php">Formacion Academica
-          </a>
-        </li> 
-        <li class="nav-item">
-          <a class="nav-link active" href="Aficiones.php">Aficiones
-          </a>
-        </li> 
-        <li class="nav-item">
-        <a class="nav-link active" href="interes.php">Interes
-        </a>
-      </li> 
         <li class="nav-link active">{$smarty.session.nomusuario}</li>
         <a class="nav-link active text-danger" href="login.php" style="font-weight:bold;">Cerrar Sesión</a>
       </ul>

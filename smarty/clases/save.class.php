@@ -151,6 +151,29 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+            public function Guardar_id_vacantes($f_id_vacantes,$_idusuario,$_puesto,$_sueldo,$_datos)
+            {        
+                try {
+                    
+                    $sql="INSERT into tbl_vacantes(id_vacante,id_empresa,puesto,sueldo,datos_adicionales)
+                                        values(:id_vacante, :id_empresa, :puesto,:sueldo, :datos_adicionales)";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    
+                    $query->bindParam(':id_vacante',$f_id_vacantes);
+                    $query->bindParam(':id_empresa',$_idusuario);
+                    $query->bindParam(':puesto',$_puesto);
+                    $query->bindParam(':sueldo',$_sueldo);
+                    $query->bindParam(':datos_adicionales',$_datos);
+                    $query->execute();
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage(); 
+                    
+                }        
+                return TRUE;
+            }
 
         public function guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora)
             {        
