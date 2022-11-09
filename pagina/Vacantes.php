@@ -11,14 +11,17 @@ $smarty=new smarty;
 $titulo="Proyecto Web";
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
-if(isset($_POST['txtpuesto'])&& isset($_POST['txtsueldo'])&& isset($_POST['txtdatos'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud']))
+$_findPais = Functions::singleton_functions();
+$_pais = $_findPais->buscaPaises();
+if(isset($_POST['txtpuesto'])&& isset($_POST['txtsueldo'])&& isset($_POST['cmbpais'])&& isset($_POST['txtdatos'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud']))
 {
 	$_idusuario = $_SESSION['iusuario'];
     $_puesto = $_POST['txtpuesto'];
     $_sueldo = $_POST['txtsueldo'];
+    $_lugar = $_POST['cmbpais'];
     $_datos = $_POST['txtdatos'];
 	$f_id_vacantes = $_findUser->consec_vacantes();
-	$newuser = $nuevoUsuario->Guardar_id_vacantes($f_id_vacantes,$_idusuario,$_puesto,$_sueldo,$_datos);
+	$newuser = $nuevoUsuario->Guardar_id_vacantes($f_id_vacantes,$_idusuario,$_puesto,$_sueldo,$_lugar,$_datos);
     
 	date_default_timezone_set('America/Mexico_City');
     $_movimiento = 'Vacantes(Guardar)';
@@ -30,5 +33,7 @@ if(isset($_POST['txtpuesto'])&& isset($_POST['txtsueldo'])&& isset($_POST['txtda
     $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
 }
 $smarty->assign("titulo", $titulo);
+$smarty->assign("Paises",$_pais);
 $smarty->display("../smarty/templates/Vacantes.tpl");
 ?>
+

@@ -151,12 +151,12 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
-            public function Guardar_id_vacantes($f_id_vacantes,$_idusuario,$_puesto,$_sueldo,$_datos)
+            public function Guardar_id_vacantes($f_id_vacantes,$_idusuario,$_puesto,$_sueldo,$_lugar,$_datos)
             {        
                 try {
                     
-                    $sql="INSERT into tbl_vacantes(id_vacante,id_empresa,puesto,sueldo,datos_adicionales)
-                                        values(:id_vacante, :id_empresa, :puesto,:sueldo, :datos_adicionales)";
+                    $sql="INSERT into tbl_vacantes(id_vacante,id_empresa,puesto,sueldo,lugar,datos_adicionales)
+                                        values(:id_vacante, :id_empresa, :puesto, :sueldo, :lugar, :datos_adicionales)";
                     
                     $query = $this->dbh->prepare($sql);
                     
@@ -164,6 +164,7 @@ require_once('conexion.class.php');
                     $query->bindParam(':id_empresa',$_idusuario);
                     $query->bindParam(':puesto',$_puesto);
                     $query->bindParam(':sueldo',$_sueldo);
+                    $query->bindParam(':lugar',$_lugar);
                     $query->bindParam(':datos_adicionales',$_datos);
                     $query->execute();
                 }
