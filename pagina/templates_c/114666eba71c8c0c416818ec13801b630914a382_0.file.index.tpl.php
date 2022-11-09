@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-11-04 07:18:40
+/* Smarty version 4.1.0, created on 2022-11-09 17:36:19
   from 'C:\xampp\htdocs\proyecto-web\smarty\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6364aec03cf887_41864474',
+  'unifunc' => 'content_636bd7039ae333_65781870',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '114666eba71c8c0c416818ec13801b630914a382' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyecto-web\\smarty\\templates\\index.tpl',
-      1 => 1667542647,
+      1 => 1668011747,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6364aec03cf887_41864474 (Smarty_Internal_Template $_smarty_tpl) {
+function content_636bd7039ae333_65781870 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,37 +33,29 @@ function content_6364aec03cf887_41864474 (Smarty_Internal_Template $_smarty_tpl)
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Inicio</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarColor03">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="experiencia_laboral.php">Experiencia Laboral
-          </a>
-        </li> 
-        <li class="nav-item">
-          <a class="nav-link active" href="formacion_academica.php">Formacion Academica
-          </a>
-        </li> 
-        <li class="nav-item">
-          <a class="nav-link active" href="Aficiones.php">Aficiones
-          </a>
-        </li> 
-        <li class="nav-item">
-        <a class="nav-link active" href="interes.php">Interes
-        </a>
-      </li> 
-        <li class="nav-link active"><?php echo $_SESSION['nomusuario'];?>
-</li>
-        <a class="nav-link active text-danger " href="login.php" style="font-weight:bold;">Cerrar Sesión</a>
-      </ul>
-    </div>
-  </div>
+    <center>
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Soy Empresa</button>
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Soy Usuario</button>
+    </center>
 </nav>
-<?php echo '<script'; ?>
+    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['Noticias']->value, 'noticia');
+$_smarty_tpl->tpl_vars['noticia']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['noticia']->value) {
+$_smarty_tpl->tpl_vars['noticia']->do_else = false;
+?>
+      <div class="card border-primary shadow p-3 mb-5 bg-body rounded" style="max-width: 40rem; margin:auto; margin-top:30px;">
+          <div class="card-body">
+            <h4 class="card-title" style="display:inline;"><?php echo $_smarty_tpl->tpl_vars['noticia']->value['fecha'];?>
+</h4> <br><br>
+              <p class="card-text"><?php echo $_smarty_tpl->tpl_vars['noticia']->value['nota'];?>
+</p>
+          </div>
+      </div>
+    <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
+echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>

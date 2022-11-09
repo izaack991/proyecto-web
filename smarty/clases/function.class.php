@@ -190,6 +190,70 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+
+            
+            function buscaPaises()
+            {
+                try
+                {
+                    $sql = "Select id_paises, nombre from tbl_paises";
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                }
+                return $data;
+            }
+
+            function buscarVacante()
+            {
+                try
+                {
+                    $sql = "SELECT * FROM tbl_vacantes";
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;    
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error: !" . $e->getMessage();
+                }
+                return $data;
+            }
+
+            function buscarNota()
+            {
+                try
+                {
+                    $sql = "SELECT * FROM tbl_noticia";
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;    
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error: !" . $e->getMessage();
+                }
+                return $data;
+            }
           
     }
 
