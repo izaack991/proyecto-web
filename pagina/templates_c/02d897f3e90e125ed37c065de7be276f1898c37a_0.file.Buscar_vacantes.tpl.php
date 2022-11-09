@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-11-09 17:36:15
+/* Smarty version 4.1.0, created on 2022-11-09 19:54:41
   from 'C:\xampp\htdocs\proyecto-web\smarty\templates\Buscar_vacantes.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_636bd6ffe13674_68321047',
+  'unifunc' => 'content_636bf77129bc99_31777691',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '02d897f3e90e125ed37c065de7be276f1898c37a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyecto-web\\smarty\\templates\\Buscar_vacantes.tpl',
-      1 => 1668011665,
+      1 => 1668019965,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_636bd6ffe13674_68321047 (Smarty_Internal_Template $_smarty_tpl) {
+function content_636bf77129bc99_31777691 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,7 +92,7 @@ $_smarty_tpl->tpl_vars['pais']->do_else = false;
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
       </select>
 
-        <button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
+        <button class="btn btn-primary my-2 my-sm-0" onClick="" type="submit">Buscar</button>
 
         </center>
     </div>

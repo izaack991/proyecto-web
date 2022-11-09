@@ -54,7 +54,7 @@
             {/foreach}
       </select>
 
-        <button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
+        <button class="btn btn-primary my-2 my-sm-0" onClick="" type="submit">Buscar</button>
 
         </center>
     </div>
