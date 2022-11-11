@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2022-11-09 20:01:38
+/* Smarty version 4.2.1, created on 2022-11-11 15:55:49
   from '/Applications/XAMPP/xamppfiles/htdocs/proyecto-web/smarty/templates/Vacantes.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_636bf912b2c0b5_54524965',
+  'unifunc' => 'content_636e62755836c8_81993224',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '18c1340aa8bcf50551fb15aab57da4543e8d6353' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/proyecto-web/smarty/templates/Vacantes.tpl',
-      1 => 1668020473,
+      1 => 1668178547,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_636bf912b2c0b5_54524965 (Smarty_Internal_Template $_smarty_tpl) {
+function content_636e62755836c8_81993224 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,7 +72,10 @@ function content_636bf912b2c0b5_54524965 (Smarty_Internal_Template $_smarty_tpl)
         <input class="form-control " type="text" name="txtsueldo" placeholder="Ingresa el Sueldo"> <br>
         </div>
 
-        <select class="btn btn-light disabled" id="exampleSelect1" name="cmbpais">
+        <label for="name" class="form__label"> Lugar*</label> <br>
+        <div class="form-row" text-align: center;>
+        <div class="col">
+        <select class="form-select" id="exampleSelect1" name="cmbpais">
             <option value="">Elige una opción</option>
             <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['Paises']->value, 'pais');
@@ -86,7 +89,7 @@ $_smarty_tpl->tpl_vars['pais']->do_else = false;
             <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-      </select>
+         </select></div></div><br>
 
         <label for="name" class="form__label"> Datos Adicionales *</label> <br>
         <input class="form-control" type="text" name="txtdatos" placeholder="Ingresa los Datos"> <br>

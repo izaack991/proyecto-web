@@ -46,12 +46,15 @@
         <input class="form-control " type="text" name="txtsueldo" placeholder="Ingresa el Sueldo"> <br>
         </div>
 
-        <select class="btn btn-light disabled" id="exampleSelect1" name="cmbpais">
+        <label for="name" class="form__label"> Lugar*</label> <br>
+        <div class="form-row" text-align: center;>
+        <div class="col">
+        <select class="form-select" id="exampleSelect1" name="cmbpais">
             <option value="">Elige una opción</option>
             {foreach $Paises as $pais} 
               <option value={$pais.id_paises}>{$pais.nombre}</option>
             {/foreach}
-      </select>
+         </select></div></div><br>
 
         <label for="name" class="form__label"> Datos Adicionales *</label> <br>
         <input class="form-control" type="text" name="txtdatos" placeholder="Ingresa los Datos"> <br>
