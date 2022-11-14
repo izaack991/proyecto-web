@@ -20,7 +20,7 @@
         <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa contraseña">
         <br><br>
        <center> <button class="btn btn-light" type="submit">Iniciar sesion</button>
-       <A HREF="../../proyecto-web/pagina/Usuario.php"class="btn btn-light" type="submit">Registrarse</A></center>
+       <A HREF="../../proyecto-web/pagina/Usuario.php?xd={$smarty.session.irol}"class="btn btn-light" type="submit">Registrarse</A></center>
         </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

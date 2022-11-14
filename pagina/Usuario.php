@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../smarty/clases/save.class.php');
 include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
@@ -6,6 +7,8 @@ $smarty=new smarty;
 $titulo="Registro Usuario";
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
+$id_tipo=$_GET['xd'];
+
 if(isset($_POST['txt_PASSWORD'])&&($_POST['txt_PASSWORD2']))
 {
 	if($_POST['txt_PASSWORD']!=$_POST['txt_PASSWORD2'])
@@ -27,11 +30,11 @@ if(isset($_POST['txt_PASSWORD'])&&($_POST['txt_PASSWORD2']))
 		$_telefono = $_POST['txt_TELEFONO'];
 		$_domicilio = $_POST['txt_DOMICILIO'];
 		$f_id_usuario = $_findUser -> consec_usuario();
-		$newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio);
+		$newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $id_tipo);
 		echo 'entre por aqui';
 		if ($newuser== true)
 		{
-			header("location:login.php");
+			header("location:login.php?xd=$_SESSION['irol']");
 		}
 	}
 	

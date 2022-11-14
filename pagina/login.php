@@ -5,6 +5,8 @@ include('../../smarty-master/libs/smarty.class.php');
 $smarty=new smarty;
 $titulo="Login";
 $buscarUsuario = Functions::singleton_functions();
+$_SESSION['irol']=$_GET['xd'];
+
 
 if (isset($_POST['usuario'])&&isset($_POST['password']))
 {   
@@ -12,16 +14,34 @@ if (isset($_POST['usuario'])&&isset($_POST['password']))
     $_password = $_POST['password'];
 
     $usuario = $buscarUsuario->login($_usuario, $_password);
-    if ($usuario) {
+    if ($usuario) 
+    {
         foreach ($usuario as $usuario => $value) {
             $_SESSION['iusuario']=$value['id_usuario'];
             $_SESSION['nomusuario']=$value['nombre'];
         }
-        header("location:index.php");
-        header("location:index.php");
+        if ($id_tipo==1)
+        {
+            header("location:indexEmpresa.php");
+
+        }
+        else 
+        {
+            header("location:index.php");
+        }
+        
+        
     }
+    else 
+        {
+            header("location:indexPrincipal.php");
+        }
 }
 
-$smarty->assign("titulo", $titulo);
-$smarty->display("../smarty/templates/login.tpl");
+
+        $smarty->assign("titulo", $titulo);
+        $smarty->display("../smarty/templates/login.tpl");
+
+
+
 ?>

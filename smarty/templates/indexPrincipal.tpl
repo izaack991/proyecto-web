@@ -11,8 +11,12 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <center>
+        <a href="login.php?xd=1">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Soy Empresa</button>
+        </a>
+        <a href="login.php?xd=2">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Soy Usuario</button>
+        </a>
     </center>
 </nav>
     {foreach $Noticias as $noticia}

@@ -54,12 +54,12 @@ require_once('conexion.class.php');
             }        
             return TRUE;
         }
-        public function guardar_usuario($_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio)
+        public function guardar_usuario($_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $_rol)
         {        
             try {
                
-                $sql="insert into tbl_usuario(id_usuario, nombre, apellido, correo, fecha_nac, no_identificacion, password, sexo, region, telefono, domicilio)
-                                    values(:id_usuario, :nombre, :apellido, :correo, :fecha_nac, :no_identificacion, :password, :sexo, :region, :telefono, :domicilio)";
+                $sql="insert into tbl_usuario(id_usuario, rol, nombre, apellido, correo, fecha_nac, no_identificacion, password, sexo, region, telefono, domicilio, )
+                                    values(:id_usuario, :rol, :nombre, :apellido, :correo, :fecha_nac, :no_identificacion, :password, :sexo, :region, :telefono, :domicilio)";
                     
                 $query = $this->dbh->prepare($sql);
                     
@@ -74,6 +74,7 @@ require_once('conexion.class.php');
                 $query->bindParam(':region',$_region);
                 $query->bindParam(':telefono',$_telefono);
                 $query->bindParam(':domicilio',$_domicilio);
+                $query->bindParam(':rol',$_rol);
                 $query->execute();
                 $this->dbh = null;
             }
