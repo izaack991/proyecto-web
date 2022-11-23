@@ -14,28 +14,23 @@ if (isset($_POST['usuario'])&&isset($_POST['password']))
     $_password = $_POST['password'];
 
     $usuario = $buscarUsuario->login($_usuario, $_password);
-    if ($usuario) 
-    {
+ //
         foreach ($usuario as $usuario => $value) {
             $_SESSION['iusuario']=$value['id_usuario'];
             $_SESSION['nomusuario']=$value['nombre'];
+            $_ROL=$value['rol'];
         }
-        if ($id_tipo==1)
+        if ($_ROL==1)
         {
-            header("location:indexEmpresa.php");
+            header("location:index.php");
 
         }
         else 
         {
-            header("location:index.php");
+            header("location:indexEmpresa.php");
         }
         
-        
-    }
-    else 
-        {
-            header("location:indexPrincipal.php");
-        }
+    //
 }
 
 
