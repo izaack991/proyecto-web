@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-11-09 17:35:53
+/* Smarty version 4.1.0, created on 2022-11-29 17:27:45
   from 'C:\xampp\htdocs\proyecto-web\smarty\templates\Vacantes.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_636bd6e94779b9_12030516',
+  'unifunc' => 'content_63863301ddb007_51446334',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '66f77737f105b7b3b6d4aecaaba5674e7401ca8e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyecto-web\\smarty\\templates\\Vacantes.tpl',
-      1 => 1668011197,
+      1 => 1669739252,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_636bd6e94779b9_12030516 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63863301ddb007_51446334 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,10 +46,14 @@ function content_636bd6e94779b9_12030516 (Smarty_Internal_Template $_smarty_tpl)
         <li class="nav-item">
           <a class="nav-link active" href="Vacantes.php">Vacantes
           </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="postulacion.php">Postulaciones
+          </a>
         </li> 
         <li class="nav-link active"><?php echo $_SESSION['nomusuario'];?>
 </li>
-        <a class="nav-link active text-danger" href="login.php" style="font-weight:bold;">Cerrar Sesión</a>
+        <a class="nav-link active text-danger" href="indexPrincipal.php" style="font-weight:bold;">Cerrar Sesión</a>
       </ul>
     </div>
   </div>
@@ -71,6 +75,25 @@ function content_636bd6e94779b9_12030516 (Smarty_Internal_Template $_smarty_tpl)
         <span class="input-group-text">$</span>
         <input class="form-control " type="text" name="txtsueldo" placeholder="Ingresa el Sueldo"> <br>
         </div>
+
+        <label for="name" class="form__label"> Lugar*</label> <br>
+        <div class="form-row" text-align: center;>
+        <div class="col">
+        <select class="form-select" id="exampleSelect1" name="cmbpais">
+            <option value="">Elige una opción</option>
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['Paises']->value, 'pais');
+$_smarty_tpl->tpl_vars['pais']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['pais']->value) {
+$_smarty_tpl->tpl_vars['pais']->do_else = false;
+?> 
+              <option value=<?php echo $_smarty_tpl->tpl_vars['pais']->value['id_paises'];?>
+><?php echo $_smarty_tpl->tpl_vars['pais']->value['nombre'];?>
+</option>
+            <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+         </select></div></div><br>
 
         <label for="name" class="form__label"> Datos Adicionales *</label> <br>
         <input class="form-control" type="text" name="txtdatos" placeholder="Ingresa los Datos"> <br>

@@ -32,7 +32,11 @@
         <li class="nav-item">
         <a class="nav-link active" href="interes.php">Interes
         </a>
-      </li> 
+        </li> 
+        <li class="nav-item">
+        <a class="nav-link active" href="buscar_vacantes.php">Buscar Vacantes
+        </a>
+        </li> 
         <li class="nav-link active">{$smarty.session.nomusuario}</li>
         <a class="nav-link active text-danger" href="indexPrincipal.php" style="font-weight:bold;">Cerrar Sesión</a>
       </ul>

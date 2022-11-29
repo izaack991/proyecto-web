@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-11-04 07:15:57
+/* Smarty version 4.1.0, created on 2022-11-29 17:32:45
   from 'C:\xampp\htdocs\proyecto-web\smarty\templates\experiencia_laboral.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6364ae1de71ae4_83597962',
+  'unifunc' => 'content_6386342db3da72_69474007',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '343008cd6766f801e6bc2e2b60bc64dbda141c6b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyecto-web\\smarty\\templates\\experiencia_laboral.tpl',
-      1 => 1667542555,
+      1 => 1669739514,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6364ae1de71ae4_83597962 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6386342db3da72_69474007 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +41,7 @@ function content_6364ae1de71ae4_83597962 (Smarty_Internal_Template $_smarty_tpl)
 >
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.php">Inicio</a>
+    <a class="navbar-brand" href="#">Inicio</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -50,7 +50,7 @@ function content_6364ae1de71ae4_83597962 (Smarty_Internal_Template $_smarty_tpl)
         <li class="nav-item">
           <a class="nav-link active" href="experiencia_laboral.php">Experiencia Laboral
           </a>
-        </li>
+        </li> 
         <li class="nav-item">
           <a class="nav-link active" href="formacion_academica.php">Formacion Academica
           </a>
@@ -62,10 +62,14 @@ function content_6364ae1de71ae4_83597962 (Smarty_Internal_Template $_smarty_tpl)
         <li class="nav-item">
         <a class="nav-link active" href="interes.php">Interes
         </a>
-      </li> 
+        </li> 
+        <li class="nav-item">
+        <a class="nav-link active" href="buscar_vacantes.php">Buscar Vacantes
+        </a>
+        </li> 
         <li class="nav-link active"><?php echo $_SESSION['nomusuario'];?>
 </li>
-        <a class="nav-link active text-danger " href="login.php" style="font-weight:bold;">Cerrar Sesión</a>
+        <a class="nav-link active text-danger" href="indexPrincipal.php" style="font-weight:bold;">Cerrar Sesión</a>
       </ul>
     </div>
   </div>

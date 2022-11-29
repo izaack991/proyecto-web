@@ -233,6 +233,26 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
+            function buscarPostulacion()
+            {
+                try
+                {
+                    $sql = "SELECT tbl_postulacion.id_postulacion, CONCAT(tbl_usuario.nombre,' ',tbl_usuario.apellido) AS nombreUsuario, tbl_usuario.correo, tbl_vacantes.puesto FROM tbl_postulacion INNER JOIN tbl_usuario ON tbl_postulacion.id_usuario = tbl_usuario.id_usuario INNER JOIN tbl_vacantes ON tbl_postulacion.id_vacante = tbl_vacantes.id_vacante;";
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;    
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error: !" . $e->getMessage();
+                }
+                return $data;
+            }
 
             function buscarNota()
             {
@@ -254,6 +274,48 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
-          
+
+            public function seleccionar_vacantes($id_vacante)
+            {        
+                try {
+                    
+                    $sql = "SELECT * FROM `tbl_vacantes` WHERE id_vacante=:id_vacante";
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':id_vacante',$id_vacante);
+                    $query->execute();
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                }
+                return $data;
+            }
+            function consec_postulacion()
+            {
+                try
+                {
+                    $sql = "SELECT IFNULL(max(id_postulacion),0) + 1 AS CONSECUTIVO FROM tbl_postulacion";
+                    $query = $this->dbh->prepare($sql);
+                    $query -> execute();
+                    //this->dbh = null;
+                    //si existe el usuario
+                    if($query -> rowCount() == 1)
+                    {
+                        $fila = $query -> fetch();
+                        $f_Id_Pasatiempo = $fila['CONSECUTIVO'];
+                        return $f_Id_Pasatiempo;
+                    }
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                }        
+                return TRUE;
+            }
     }
 

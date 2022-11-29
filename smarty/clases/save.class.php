@@ -204,6 +204,30 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+            public function guardar_postulacion($id_usuario,$id_vacante,$id_postulacion)
+            {        
+                    try 
+                    {
+                        
+                        $sql="INSERT INTO tbl_postulacion VALUES(:id_postulacion,:id_usuario,:id_vacante)";
+                        
+                        $query = $this->dbh->prepare($sql);
+                        
+                        $query->bindParam(':id_postulacion',$id_postulacion);
+                        $query->bindParam(':id_usuario',$id_usuario);
+                        $query->bindParam(':id_vacante',$id_vacante);
+                        $query->execute();
+                        $this->dbh = null;
+                            
+                    
+                    }
+                    catch(PDOException $e){
+                        
+                        print "Error!: " . $e->getMessage();
+                        
+                    }        
+                    return TRUE;
+                }
     }
    
 ?>
