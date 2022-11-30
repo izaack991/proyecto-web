@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2022-11-11 15:46:16
+/* Smarty version 4.2.1, created on 2022-11-30 19:21:28
   from '/Applications/XAMPP/xamppfiles/htdocs/proyecto-web/smarty/templates/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_636e603847b581_64919683',
+  'unifunc' => 'content_63879f283ac661_90232426',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bf0243f249572ebc48c37e078621e07a0e37a468' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/proyecto-web/smarty/templates/index.tpl',
-      1 => 1668021304,
+      1 => 1669832401,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_636e603847b581_64919683 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63879f283ac661_90232426 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,10 +55,14 @@ function content_636e603847b581_64919683 (Smarty_Internal_Template $_smarty_tpl)
         <li class="nav-item">
         <a class="nav-link active" href="interes.php">Interes
         </a>
-      </li> 
+        </li> 
+        <li class="nav-item">
+        <a class="nav-link active" href="buscar_vacantes.php">Buscar Vacantes
+        </a>
+        </li> 
         <li class="nav-link active"><?php echo $_SESSION['nomusuario'];?>
 </li>
-        <a class="nav-link active text-danger" href="login.php" style="font-weight:bold;">Cerrar Sesión</a>
+        <a class="nav-link active text-danger" href="indexPrincipal.php" style="font-weight:bold;">Cerrar Sesión</a>
       </ul>
     </div>
   </div>

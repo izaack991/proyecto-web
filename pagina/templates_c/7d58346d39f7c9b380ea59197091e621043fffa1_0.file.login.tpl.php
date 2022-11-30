@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2022-11-04 18:34:18
+/* Smarty version 4.2.1, created on 2022-11-23 17:13:07
   from '/Applications/XAMPP/xamppfiles/htdocs/proyecto-web/smarty/templates/login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_63654d1ae88901_13143763',
+  'unifunc' => 'content_637e46933606e5_99835225',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7d58346d39f7c9b380ea59197091e621043fffa1' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/proyecto-web/smarty/templates/login.tpl',
-      1 => 1667583208,
+      1 => 1669219977,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63654d1ae88901_13143763 (Smarty_Internal_Template $_smarty_tpl) {
+function content_637e46933606e5_99835225 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +43,8 @@ function content_63654d1ae88901_13143763 (Smarty_Internal_Template $_smarty_tpl)
         <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa contraseña">
         <br><br>
        <center> <button class="btn btn-light" type="submit">Iniciar sesion</button>
-       <A HREF="../../proyecto-web/pagina/Usuario.php"class="btn btn-light" type="submit">Registrarse</A></center>
+       <A HREF="../../proyecto-web/pagina/Usuario.php?xd=<?php echo $_SESSION['irol'];?>
+"class="btn btn-light" type="submit">Registrarse</A></center>
         </div>
         </div>
         <?php echo '<script'; ?>

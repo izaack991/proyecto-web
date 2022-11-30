@@ -8,8 +8,8 @@ $titulo="Registro Usuario";
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
 $id_tipo=$_GET['xd'];
-
-if(isset($_POST['txt_PASSWORD'])&&($_POST['txt_PASSWORD2']))
+$irol=$_SESSION['irol'];
+if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 {
 	if($_POST['txt_PASSWORD']!=$_POST['txt_PASSWORD2'])
 		{
@@ -34,13 +34,14 @@ if(isset($_POST['txt_PASSWORD'])&&($_POST['txt_PASSWORD2']))
 		echo 'entre por aqui';
 		if ($newuser== true)
 		{
-			header("location:login.php?xd=$_SESSION['irol']");
+			header("location:login.php?xd=$id_tipo");
 		}
 	}
 	
 }
 
-$smarty->assign("titulo",$titulo);
-$smarty->display("../smarty/templates/Usuario.tpl");
+	$smarty->assign("titulo",$titulo);
+	$smarty->display("../smarty/templates/Usuario.tpl");
+		
 
 ?>

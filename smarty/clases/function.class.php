@@ -217,7 +217,7 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                    $sql = "SELECT * FROM tbl_vacantes";
+                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises ";
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
 
