@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-11-29 17:27:45
+/* Smarty version 4.2.0, created on 2022-12-02 18:46:34
   from 'C:\xampp\htdocs\proyecto-web\smarty\templates\Vacantes.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '4.1.0',
-  'unifunc' => 'content_63863301ddb007_51446334',
+  'version' => '4.2.0',
+  'unifunc' => 'content_638a39fa34a8e1_40058152',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '66f77737f105b7b3b6d4aecaaba5674e7401ca8e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyecto-web\\smarty\\templates\\Vacantes.tpl',
-      1 => 1669739252,
+      1 => 1670001974,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63863301ddb007_51446334 (Smarty_Internal_Template $_smarty_tpl) {
+function content_638a39fa34a8e1_40058152 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>

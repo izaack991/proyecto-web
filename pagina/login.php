@@ -25,7 +25,7 @@ if (isset($_POST['usuario'])&&isset($_POST['password']))
             header("location:index.php");
 
         }
-        else 
+        if ($_ROL==2)
         {
             header("location:indexEmpresa.php");
         }
