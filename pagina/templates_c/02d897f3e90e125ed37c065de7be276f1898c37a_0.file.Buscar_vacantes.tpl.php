@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-11-29 17:46:47
+/* Smarty version 4.1.0, created on 2022-12-02 06:54:57
   from 'C:\xampp\htdocs\proyecto-web\smarty\templates\Buscar_vacantes.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_63863777270022_36980652',
+  'unifunc' => 'content_6389933155ffa0_02633139',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '02d897f3e90e125ed37c065de7be276f1898c37a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyecto-web\\smarty\\templates\\Buscar_vacantes.tpl',
-      1 => 1669740404,
+      1 => 1669960497,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63863777270022_36980652 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6389933155ffa0_02633139 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,51 +82,69 @@ function content_63863777270022_36980652 (Smarty_Internal_Template $_smarty_tpl)
   <div>
     <center>
       <input type="text" class="btn btn-light disabled" placeholder="Busque una vacante" style="display:inline; width:510px;" id="bvac" name="bvac">
-
-      <select  class="btn btn-light disabled" id="exampleSelect1" name="cmbpais">
-            <option value="">Elige una opción</option>
-            <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['Paises']->value, 'pais');
-$_smarty_tpl->tpl_vars['pais']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['pais']->value) {
-$_smarty_tpl->tpl_vars['pais']->do_else = false;
-?> 
-              <option value=<?php echo $_smarty_tpl->tpl_vars['pais']->value['id_paises'];?>
-><?php echo $_smarty_tpl->tpl_vars['pais']->value['nombre'];?>
-</option>
-            <?php
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-      </select>
         </center>
     </div>
 </div>
-
-
-    <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['Vacantes']->value, 'vacantes');
+  <div class="row align-items-center">
+    <div class="col">
+      <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['Vacantes1']->value, 'vacantes');
 $_smarty_tpl->tpl_vars['vacantes']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['vacantes']->value) {
 $_smarty_tpl->tpl_vars['vacantes']->do_else = false;
 ?>
-      <div id="cardv" class="card border-primary shadow p-3 mb-5 bg-body rounded" style="max-width: 40rem; margin:auto; margin-top:30px;">
-          <div class="card-body">
-            <h4 class="card-title" style="display:inline;"><?php echo $_smarty_tpl->tpl_vars['vacantes']->value['puesto'];?>
+        <div id="cardv" class="card border-primary shadow p-3 mb-5 bg-body rounded" style="max-width: 40rem; margin:auto; margin-top:30px;">
+            <div class="card-body">
+              <h4 class="card-title" style="display:inline;"><?php echo $_smarty_tpl->tpl_vars['vacantes']->value['puesto'];?>
 </h4> <br><br>
-            <h4 class="card-title text-primary">$<?php echo $_smarty_tpl->tpl_vars['vacantes']->value['sueldo'];?>
+              <h5 class="card-text"><?php echo $_smarty_tpl->tpl_vars['vacantes']->value['nombrePais'];?>
+</h5><br>
+              <h4 class="card-title text-primary">$<?php echo $_smarty_tpl->tpl_vars['vacantes']->value['sueldo'];?>
 </h4>
-              <p class="card-text"><?php echo $_smarty_tpl->tpl_vars['vacantes']->value['datos_adicionales'];?>
+                <p class="card-text"><?php echo $_smarty_tpl->tpl_vars['vacantes']->value['datos_adicionales'];?>
 </p>
-              <form action="seleccionar_vacantes.php" method="POST">
-              <input value=<?php echo $_smarty_tpl->tpl_vars['vacantes']->value['id_vacante'];?>
+                <form action="seleccionar_vacantes.php" method="POST">
+                <input value=<?php echo $_smarty_tpl->tpl_vars['vacantes']->value['id_vacante'];?>
  type="hidden" name="txt_id_vacante">
-              <input type="submit" value="Leer más" class="btn btn-primary" >
-              </form>
-          </div>
-      </div>
-    <?php
+                <input type="submit" value="Leer más" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+      <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+    </div>
+    <div class="col">
+      <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['Vacantes2']->value, 'vacantes');
+$_smarty_tpl->tpl_vars['vacantes']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['vacantes']->value) {
+$_smarty_tpl->tpl_vars['vacantes']->do_else = false;
+?>
+        <div id="cardv" class="card border-primary shadow p-3 mb-5 bg-body rounded" style="max-width: 40rem; margin:auto; margin-top:30px;">
+            <div class="card-body">
+              <h4 class="card-title" style="display:inline;"><?php echo $_smarty_tpl->tpl_vars['vacantes']->value['puesto'];?>
+</h4> <br><br>
+              <h5 class="card-text"><?php echo $_smarty_tpl->tpl_vars['vacantes']->value['nombrePais'];?>
+</h5><br>
+              <h4 class="card-title text-primary">$<?php echo $_smarty_tpl->tpl_vars['vacantes']->value['sueldo'];?>
+</h4>
+                <p class="card-text"><?php echo $_smarty_tpl->tpl_vars['vacantes']->value['datos_adicionales'];?>
+</p>
+                <form action="seleccionar_vacantes.php" method="POST">
+                <input value=<?php echo $_smarty_tpl->tpl_vars['vacantes']->value['id_vacante'];?>
+ type="hidden" name="txt_id_vacante">
+                <input type="submit" value="Leer más" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+      <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+    </div>
+  </div>
+
+    
 
 </body>
 <?php echo '<script'; ?>

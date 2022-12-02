@@ -41,7 +41,7 @@
 <table class="table table-hover">
 <thead>
   <tr>
-    <th scope="col"  class="text-center">ID</th>
+    <th scope="col"  class="text-center">Acción</th>
     <th scope="col"  class="text-center">Usuario</th>
     <th scope="col"  class="text-center">Correo</th>
     <th scope="col"  class="text-center">Vacante</th>
@@ -51,7 +51,11 @@
   <center>
   {foreach $Postulacion as $postulacion}
     <tr class="table-light">
-    <td class="text-center">{$postulacion.id_postulacion}</td>
+    <form action="seleccionar_postulacion.php" method="POST">
+    <input value={$postulacion.id_postulacion} type="hidden" name="txt_id_postulacion">
+    <input value={$postulacion.id_usuario} type="hidden" name="txt_id_usuario">
+    <td class="text-center"><center><input type="submit" value="Ver" class="btn btn-info"></center></td>
+    </form>
     <td class="text-center">{$postulacion.nombreUsuario}</td>
     <td class="text-center">{$postulacion.correo}</td>
     <td class="text-center">{$postulacion.puesto}</td>

@@ -54,22 +54,42 @@
         </center>
     </div>
 </div>
+  <div class="row align-items-center">
+    <div class="col">
+      {foreach $Vacantes1 as $vacantes}
+        <div id="cardv" class="card border-primary shadow p-3 mb-5 bg-body rounded" style="max-width: 40rem; margin:auto; margin-top:30px;">
+            <div class="card-body">
+              <h4 class="card-title" style="display:inline;">{$vacantes.puesto}</h4> <br><br>
+              <h5 class="card-text">{$vacantes.nombrePais}</h5><br>
+              <h4 class="card-title text-primary">${$vacantes.sueldo}</h4>
+                <p class="card-text">{$vacantes.datos_adicionales}</p>
+                <form action="seleccionar_vacantes.php" method="POST">
+                <input value={$vacantes.id_vacante} type="hidden" name="txt_id_vacante">
+                <input type="submit" value="Leer más" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+      {/foreach}
+    </div>
+    <div class="col">
+      {foreach $Vacantes2 as $vacantes}
+        <div id="cardv" class="card border-primary shadow p-3 mb-5 bg-body rounded" style="max-width: 40rem; margin:auto; margin-top:30px;">
+            <div class="card-body">
+              <h4 class="card-title" style="display:inline;">{$vacantes.puesto}</h4> <br><br>
+              <h5 class="card-text">{$vacantes.nombrePais}</h5><br>
+              <h4 class="card-title text-primary">${$vacantes.sueldo}</h4>
+                <p class="card-text">{$vacantes.datos_adicionales}</p>
+                <form action="seleccionar_vacantes.php" method="POST">
+                <input value={$vacantes.id_vacante} type="hidden" name="txt_id_vacante">
+                <input type="submit" value="Leer más" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+      {/foreach}
+    </div>
+  </div>
 
-
-    {foreach $Vacantes as $vacantes}
-      <div id="cardv" class="card border-primary shadow p-3 mb-5 bg-body rounded" style="max-width: 40rem; margin:auto; margin-top:30px;">
-          <div class="card-body">
-            <h4 class="card-title" style="display:inline;">{$vacantes.puesto}</h4> <br><br>
-            <h5 class="card-text">{$vacantes.nombrePais}</h5>
-            <h4 class="card-title text-primary">${$vacantes.sueldo}</h4>
-              <p class="card-text">{$vacantes.datos_adicionales}</p>
-              <form action="seleccionar_vacantes.php" method="POST">
-              <input value={$vacantes.id_vacante} type="hidden" name="txt_id_vacante">
-              <input type="submit" value="Leer más" class="btn btn-primary" >
-              </form>
-          </div>
-      </div>
-    {/foreach}
+    
 
 </body>
 <script>

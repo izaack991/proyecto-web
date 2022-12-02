@@ -58,6 +58,7 @@
     <div class="card-body">
       <form action="seleccionar_vacantes.php" method="POST">
         <h4 class="card-title" style="display:inline;">{$va.puesto}</h4> <br><br>
+        <h5 class="card-text">{$va.nombrePais}</h5><br>
         <h4 class="card-title text-primary">${$va.sueldo}</h4>
         <p class="card-text">{$va.datos_adicionales}</p>
 
