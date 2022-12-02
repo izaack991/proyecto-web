@@ -19,39 +19,27 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
   </script>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Inicio</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarColor03">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="experiencia_laboral.php">Experiencia Laboral
-          </a>
-        </li> 
-        <li class="nav-item">
-          <a class="nav-link active" href="formacion_academica.php">Formacion Academica
-          </a>
-        </li> 
-        <li class="nav-item">
-          <a class="nav-link active" href="Aficiones.php">Aficiones
-          </a>
-        </li> 
-        <li class="nav-item">
-        <a class="nav-link active" href="interes.php">Interes
-        </a>
-        </li> 
-        <li class="nav-item">
-        <a class="nav-link active" href="buscar_vacantes.php">Buscar Vacantes
-        </a>
-        </li> 
-        <li class="nav-link active">{$smarty.session.nomusuario}</li>
-        <a class="nav-link active text-danger" href="indexPrincipal.php" style="font-weight:bold;">Cerrar Sesión</a>
-      </ul>
-    </div>
-  </div>
+ <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+ <div class="container-fluid">
+   <a class="navbar-brand" href="indexEmpresa.php">Inicio</a>
+   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarColor03">
+     <ul class="navbar-nav me-auto">
+       <li class="nav-item">
+         <a class="nav-link active" href="Vacantes.php">Vacantes
+         </a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link active" href="postulacion.php">Postulaciones
+         </a>
+       </li> 
+       <li class="nav-link active">{$smarty.session.nomusuario}</li>
+       <a class="nav-link active text-danger" href="indexPrincipal.php" style="font-weight:bold;">Cerrar Sesión</a>
+     </ul>
+   </div>
+ </div>
 </nav>
   <div class="card border-primary shadow p-3 mb-5 bg-body rounded"
     style="max-width: 60rem; margin:auto; margin-top:30px;">
