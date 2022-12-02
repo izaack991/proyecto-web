@@ -21,7 +21,7 @@
 </nav>
 
 <div>
-<div class="row align-items-center" style="margin-left:10px">
+<div class="row align-items-center" style="margin-left:10px; margin-left:10px">
   <div class="col">
     <figure class="text-center">
       <h2>Éstas y miles de empresas más tienen las mejores vacantes para ti<h1/>  
@@ -34,7 +34,7 @@
 <br><br>
 
 
-<div class="row align-items-center"  style="margin-left:25px">
+<div class="row align-items-center"  style="margin-left:25px; margin-left:25px">
     <div class="col">
       <input type="image" src="https://www.occ.com.mx/_next/image?url=https%3A%2F%2Fcdn-h4.occ.com.mx%2Fimages%2Fhomepage%2Fbuttons%2Fcolor%2Fcliente-Walmart-Mexico.jpg&w=1920&q=75" style="border: double;" height="200" width="200"/>
     </div>
@@ -57,13 +57,13 @@
   <br><br>
 
   
-  <div class="row align-items-center"  style="margin-left:35px">
+  <div class="row align-items-center"  style="margin-left:35px; margin-rigth:35px">
     <div class="col">
       <div class="card border-primary mb-3" style="max-width: 20rem;">
         <div class="card-header"><h3 class="card-title">Base de datos</h3></div>
         <div class="card-body">
           <h4 class="card-title">19,356</h4>
-          <p class="card-text">vacantes actualmente/p>
+          <p class="card-text">vacantes actualmente</p>
         </div>
       </div>
     </div>
