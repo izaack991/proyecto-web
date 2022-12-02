@@ -19,6 +19,84 @@
         </a>
     </center>
 </nav>
+
+<div>
+<div class="row align-items-center" style="margin-left:10px">
+  <div class="col">
+    <figure class="text-center">
+      <h2>Éstas y miles de empresas más tienen las mejores vacantes para ti<h1/>  
+    </figure>
+  </div>
+  <div class="col">
+    <input type="image" src="https://canopylab.com/wp-content/uploads/2021/06/Blog-post-Cinco-medidas-para-mantener-un-alto-compromiso-1.jpg" height="400" width="850"/>    
+  </div>
+</div>
+<br><br>
+
+
+<div class="row align-items-center"  style="margin-left:25px">
+    <div class="col">
+      <input type="image" src="https://www.occ.com.mx/_next/image?url=https%3A%2F%2Fcdn-h4.occ.com.mx%2Fimages%2Fhomepage%2Fbuttons%2Fcolor%2Fcliente-Walmart-Mexico.jpg&w=1920&q=75" style="border: double;" height="200" width="200"/>
+    </div>
+    <div class="col">
+      <input type="image" src="https://www.occ.com.mx/_next/image?url=https%3A%2F%2Fcdn-h4.occ.com.mx%2Fimages%2Fhomepage%2Fbuttons%2Fcolor%2Fcliente-BBVA-Bancomer.jpg&w=1920&q=75" style="border: double;" height="200" width="200"/>
+    </div>
+    <div class="col">
+      <input type="image" src="https://www.occ.com.mx/_next/image?url=https%3A%2F%2Fcdn-h4.occ.com.mx%2Fimages%2Fhomepage%2Fbuttons%2Fcolor%2Fcliente-Grupo-Lala--S-A-.jpg&w=1920&q=75" style="border: double;" height="200" width="200"/>
+    </div>
+    <div class="col">
+      <input type="image" src="https://www.occ.com.mx/_next/image?url=https%3A%2F%2Fcdn-h4.occ.com.mx%2Fimages%2Fhomepage%2Fbuttons%2Fcolor%2Fcliente-EXHIBIDORA-MEXICANA-CINEPOLIS-SA-DE-CV.jpg&w=1920&q=75" style="border: double;" height="200" width="200"/>
+    </div>
+    <div class="col">
+      <input type="image" src="https://www.occ.com.mx/_next/image?url=https%3A%2F%2Fcdn-h4.occ.com.mx%2Fimages%2Fhomepage%2Fbuttons%2Fcolor%2Fcliente-Banamex.jpg&w=1920&q=75" style="border: double;" height="200" width="200"/>
+    </div>
+    <div class="col">
+      <input type="image" src="https://smsarchives.com/wp-content/uploads/2020/04/Kylie-Cosmetics-1.png" style="border: double;" height="200" width="200"/>
+    </div>
+  </div>
+  <br><br>
+
+  
+  <div class="row align-items-center"  style="margin-left:35px">
+    <div class="col">
+      <div class="card border-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header"><h3 class="card-title">Base de datos</h3></div>
+        <div class="card-body">
+          <h4 class="card-title">19,356</h4>
+          <p class="card-text">vacantes actualmente/p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card border-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header"><h3 class="card-title">Administrador</h3></div>
+        <div class="card-body">
+          <h4 class="card-title">8,329</h4>
+          <p class="card-text">vacantes actualmente</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card border-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header"><h3 class="card-title">Teaster</h3></div>
+        <div class="card-body">
+          <h4 class="card-title">6,824</h4>
+          <p class="card-text">vacantes actualmente</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card border-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header"><h3 class="card-title">Programador</h3></div>
+        <div class="card-body">
+          <h4 class="card-title">10,546</h4>
+          <p class="card-text">vacantes actualmente</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+
     {foreach $Noticias as $noticia}
       <div class="card border-primary shadow p-3 mb-5 bg-body rounded" style="max-width: 40rem; margin:auto; margin-top:30px;">
           <div class="card-body">
