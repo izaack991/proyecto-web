@@ -13,6 +13,7 @@
   </div>
 </nav>
     <form action="Usuario.php" method="POST">
+    
          <div class="card  mb-3" style="max-width: 50rem; margin:auto; margin-top:50px;">
          <FONT COLOR="black"><div class="card-header bg-primary" align="center">REGISTRO DE NUEVO USUARIO</div></FONT>
       <div class="card-body">
