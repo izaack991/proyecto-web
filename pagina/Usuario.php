@@ -9,7 +9,6 @@ $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
 //$id_tipo=$_GET['xd'];
 $irol=$_SESSION['irol'];
-echo $irol;
 if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 {
 
