@@ -31,6 +31,9 @@ if(isset($_POST['txtpuesto'])&& isset($_POST['txtsueldo'])&& isset($_POST['cmbpa
     $_longitud = $_POST['txtlongitud']; 
     $_ubicacion = 'Latitud: '.$_latitud.' Longitud: '.$_longitud;
     $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
+
+    $alert = "<script> alert('Se ha guardado una vacante correctamente!');</script>";
+    echo $alert;
 }
 $smarty->assign("titulo", $titulo);
 $smarty->assign("Paises",$_pais);

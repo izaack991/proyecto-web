@@ -29,6 +29,9 @@ if(isset($_POST['txtdescripcion']) && isset($_POST['txtempresa']) && isset($_POS
     $_longitud = $_POST['txtlongitud']; 
     $_ubicacion = 'Latitud: '.$_latitud.' Longitud: '.$_longitud;
     $newlogusuario = $nuevoExperiencia->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
+
+    $alert = "<script> alert('Se ha guardado tu experiencia correctamente!');</script>";
+    echo $alert;
 }
 
 $smarty->assign("titulo",$titulo);
