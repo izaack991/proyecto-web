@@ -30,6 +30,9 @@ if(isset($_POST['descripcion'])&& isset($_POST['ubicacion'])&&isset($_POST['peri
     $_longitud = $_POST['txtlongitud']; 
     $_ubicacion = 'Latitud: '.$_latitud.' Longitud: '.$_longitud;
     $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
+     
+    $alert = "<script> alert('Se ha guardado correctamente formacion academica!');</script>";
+    echo $alert;
 }
 $smarty->assign("titulo",$titulo);
 $smarty->display("../smarty/templates/formacion_academica.tpl");	
