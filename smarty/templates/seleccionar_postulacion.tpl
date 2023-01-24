@@ -44,7 +44,7 @@
   <div class="card border-primary shadow p-3 mb-5 bg-body rounded"
     style="max-width: 60rem; margin:auto; margin-top:30px;">
     <div class="card-header text-center">
-        <h4 class="card-title">Datos del Usuario</h4>
+        <h4 class="card-title">Curriculum</h4>
     </div>
     <div class="card-body">
        
