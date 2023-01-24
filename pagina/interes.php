@@ -27,6 +27,9 @@ if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlon
     $_longitud = $_POST['txtlongitud']; 
     $_ubicacion = 'Latitud: '.$_latitud.' Longitud: '.$_longitud;
     $newlogusuario = $nuevoInteres->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
+
+	$alert = "<script> alert('Se ha guardado correctamente interes!');</script>";
+    echo $alert;
 }
 	$smarty->assign("titulo",$titulo);
 	$smarty->display("../smarty/templates/interes.tpl");
