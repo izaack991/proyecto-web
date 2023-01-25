@@ -8,11 +8,14 @@
     <title>Pagina principal</title>
     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
     <link rel="stylesheet" href="estilos.css" type="text/css">
 </head>
 
 <body>
 <script src="../smarty/js/ubicacion.js"></script>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 <div class="container-fluid">
   <a class="navbar-brand" href="#">Inicio</a>
@@ -48,12 +51,11 @@
 </div>
 </nav>
 <form action="interes.php" method="POST">
-
+{$alerta}
   <div class="card  mb-3" style="max-width: 20rem; margin:auto; margin-top:30px;">
     <div class="card-body">
       <h4 class="card-title" style="margin-left:45px;">Datos de Interes</h4>
       <label>Los campos marcados con asterisco son obligatorios</label> <br>
-
       <label class="col-form-label mt-4" for="name">Descripcion *</label><br>
       <input class="form-control" type="text" name="txtdesc" placeholder="Escriba una descripcion" required="true"><br><br>
       

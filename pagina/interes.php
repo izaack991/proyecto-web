@@ -11,7 +11,7 @@ $smarty=new smarty;
 $titulo="Datos de Interes";
 $nuevoInteres = Save::singleton_guardar();
 $CInteres = Functions::singleton_functions();
-
+$alerta = '';
 if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud']))
 {
 	$_idusuario = $_SESSION['iusuario'];
@@ -28,11 +28,23 @@ if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlon
     $_ubicacion = 'Latitud: '.$_latitud.' Longitud: '.$_longitud;
     $newlogusuario = $nuevoInteres->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
 
-	$alert = "<script> alert('Se ha guardado correctamente interes!');</script>";
-    echo $alert;
-}
+	$alerta = "<script>swal({
+		title: '',
+		text: 'Se guardo correctamente el interes',
+		type: 'success',
+	  });</script>";
+
 	$smarty->assign("titulo",$titulo);
+	$smarty->assign("alerta",$alerta);
 	$smarty->display("../smarty/templates/interes.tpl");
+}
+else{
+	$smarty->assign("titulo",$titulo);
+	$smarty->assign("alerta",$alerta);
+	$smarty->display("../smarty/templates/interes.tpl");
+}
+
+
 
 ?>
 
