@@ -1,5 +1,7 @@
 <?php
 session_start();
+$alerta = '';
+
 if(isset($_SESSION['tiempo']) ) {
     $vida_session = time() - $_SESSION['tiempo'];
 }
@@ -27,8 +29,15 @@ if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlon
     $_ubicacion = 'Latitud: '.$_latitud.' Longitud: '.$_longitud;
     $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
 
-    $alert = "<script> alert('Se ha guardado correctamente aficiones !');</script>";
-    echo $alert;
+    $alerta = "<script>swal({
+		title: '',
+		text: 'Guardo Correctamente',
+		type: 'success',
+	  });</script>";
+
+	$smarty->assign("titulo",$titulo);
+	$smarty->assign("alerta",$alerta);
+	$smarty->display("../smarty/templates/Aficiones.tpl"); 
 }
 $smarty ->assign("titulo",$titulo);
 $smarty->display("../smarty/templates/Aficiones.tpl"); 
