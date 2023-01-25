@@ -34,7 +34,7 @@ if(isset($_POST['descripcion'])&& isset($_POST['ubicacion'])&&isset($_POST['peri
      
     $alerta = "<script>swal({
 		title: '',
-		text: 'Guardo Correctamente',
+		text: 'Guardo correctamente el formacion academica',
 		type: 'success',
 	  });</script>";
 
