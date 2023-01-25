@@ -19,10 +19,16 @@ if (isset($_POST['usuario'])&&isset($_POST['password']))
             $_SESSION['iusuario']=$value['id_usuario'];
             $_SESSION['nomusuario']=$value['nombre'];
             $_ROL=$value['rol'];
+            $vac=$_GET['vacante'];
         }
         if ($_ROL==1)
         {
-            header("location:index.php");
+            if($vac=='')
+            {
+                header("location:index.php");
+            }else{
+                header("location:seleccionar_vacantes.php?vacante=$vac");
+            }
 
         }
         if ($_ROL==2)

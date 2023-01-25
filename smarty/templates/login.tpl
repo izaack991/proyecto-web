@@ -9,7 +9,7 @@
     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">  
     </head>
 <body>
-    <form action="../pagina/login.php" method="post">
+    <form action="" method="post">
     <br><div style="margin-top: 167px; margin-left: 35%; "> 
     <div class="card border-secondary mb-3" style="max-width: 25rem;">
     <FONT COLOR="black"><div class="card-header bg-primary" align="center">Inicio de sesion</div></FONT>

@@ -9,9 +9,14 @@ $_finduser = Functions::singleton_functions();
 $nuevoUsuario = Save::singleton_guardar();
 
 
-if(isset($_POST['txt_id_vacante']))
+if(isset($_POST['txt_id_vacante'])||$_GET['vacante'])
 {
-    $id_vacante = $_POST['txt_id_vacante']; 
+    if($_GET['vacante'])
+    {
+        $id_vacante = $_GET['vacante']; 
+    }else{
+        $id_vacante = $_POST['txt_id_vacante']; 
+    }
     $vacantes = $_finduser->seleccionar_vacantes($id_vacante);
     
 }
