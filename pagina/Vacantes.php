@@ -13,6 +13,7 @@ $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
 $_findPais = Functions::singleton_functions();
 $_pais = $_findPais->buscaPaises();
+$alerta = '';
 if(isset($_POST['txtpuesto'])&& isset($_POST['txtsueldo'])&& isset($_POST['cmbpais'])&& isset($_POST['txtdatos'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud']))
 {
 	$_idusuario = $_SESSION['iusuario'];
@@ -32,11 +33,22 @@ if(isset($_POST['txtpuesto'])&& isset($_POST['txtsueldo'])&& isset($_POST['cmbpa
     $_ubicacion = 'Latitud: '.$_latitud.' Longitud: '.$_longitud;
     $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
 
-    $alert = "<script> alert('Se ha guardado una vacante correctamente!');</script>";
-    echo $alert;
-}
-$smarty->assign("titulo", $titulo);
-$smarty->assign("Paises",$_pais);
-$smarty->display("../smarty/templates/Vacantes.tpl");
-?>
+    $alerta = "<script>swal({
+		title: '',
+		text: 'Se ha publicado la vacante correctamente!',
+		type: 'success',
+	  });</script>";
 
+	$smarty->assign("titulo",$titulo);
+	$smarty->assign("alerta",$alerta);
+    $smarty->assign("Paises",$_pais);
+	$smarty->display("../smarty/templates/Vacantes.tpl");
+
+} else
+{
+    $smarty->assign("titulo", $titulo);
+    $smarty->assign("alerta",$alerta);
+    $smarty->assign("Paises",$_pais);
+    $smarty->display("../smarty/templates/Vacantes.tpl");
+}
+?>

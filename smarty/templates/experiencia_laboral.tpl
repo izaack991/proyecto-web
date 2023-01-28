@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{$titulo}</title>
     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
-    <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">  
+    <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>  
     </head>
 <body>
 <script src="../smarty/js/ubicacion.js"></script>
@@ -46,7 +48,7 @@
   </div>
 </nav>
     <form action="experiencia_laboral.php" method="POST">
-        
+    {$alerta}
     <div class="card  mb-3" style="max-width: 20rem; margin:auto; margin-top:30px;">
       <div class="card-body">
         <h4 class="card-title">Datos de Experiencia Laboral</h4>

@@ -11,6 +11,7 @@ $smarty=new smarty;
 $titulo="Experiencia Laboral";
 $nuevoExperiencia = save::singleton_guardar();
 $_findExperiencia = Functions::singleton_functions();
+$alerta = '';
 
 if(isset($_POST['txtdescripcion']) && isset($_POST['txtempresa']) && isset($_POST['txtperiodo'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud']))
 {
@@ -30,10 +31,19 @@ if(isset($_POST['txtdescripcion']) && isset($_POST['txtempresa']) && isset($_POS
     $_ubicacion = 'Latitud: '.$_latitud.' Longitud: '.$_longitud;
     $newlogusuario = $nuevoExperiencia->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
 
-    $alert = "<script> alert('Se ha guardado tu experiencia correctamente!');</script>";
-    echo $alert;
-}
+    $alerta = "<script>swal({
+		title: '',
+		text: 'Se ha guardado tu experiencia laboral correctamente!',
+		type: 'success',
+	  });</script>";
 
+    $smarty->assign("titulo",$titulo);
+    $smarty->assign("alerta",$alerta);
+    $smarty->display("../smarty/templates/experiencia_laboral.tpl");
+
+} else {
 $smarty->assign("titulo",$titulo);
+$smarty->assign("alerta",$alerta);
 $smarty->display("../smarty/templates/experiencia_laboral.tpl");
+}
 ?>
