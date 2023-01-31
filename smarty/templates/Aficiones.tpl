@@ -8,6 +8,8 @@
     <title>Pagina principal</title>
     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
     <link rel="stylesheet" href="estilos.css" type="text/css">
 </head>
 
