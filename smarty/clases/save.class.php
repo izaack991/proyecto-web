@@ -58,7 +58,7 @@ require_once('conexion.class.php');
         {        
             try {
                
-                $sql="insert into tbl_usuario(id_usuario, rol, nombre, apellido, correo, fecha_nac, no_identificacion, password, sexo, region, telefono, domicilio, )
+                $sql="insert into tbl_usuario(id_usuario, rol, nombre, apellido, correo, fecha_nac, no_identificacion, password, sexo, region, telefono, domicilio )
                                     values(:id_usuario, :rol, :nombre, :apellido, :correo, :fecha_nac, :no_identificacion, :password, :sexo, :region, :telefono, :domicilio)";
                     
                 $query = $this->dbh->prepare($sql);

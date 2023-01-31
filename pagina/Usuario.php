@@ -9,7 +9,6 @@ $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
 //$id_tipo=$_GET['xd'];
 $irol=$_SESSION['irol'];
-//echo $irol;
 if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 {
 
@@ -18,7 +17,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 			echo '¡Las Contraseñas NO coinciden!';
 			header("location:Usuario.php");
 		}
-	
+		
 	else
 	{
 		$_nombre = $_POST['txt_NOMBRE'];

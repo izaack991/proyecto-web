@@ -217,7 +217,7 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais,  SUBSTRING(tbl_vacantes.datos_adicionales, 1, 100) AS datos_a  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 0";
+                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 0";
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
 
@@ -237,7 +237,7 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais,  SUBSTRING(tbl_vacantes.datos_adicionales, 1, 100) AS datos_a  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 1 ";
+                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 1 ";
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
 
@@ -438,4 +438,3 @@ require_once('conexion.class.php');
                 return TRUE;
             }
     }
-
