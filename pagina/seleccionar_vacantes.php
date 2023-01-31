@@ -28,9 +28,6 @@ if(isset($_POST['id_vacante']))
     $id_usuario = $_SESSION['iusuario'];
     $id_postulacion = $_finduser->consec_postulacion();
     $newlogusuario = $nuevoUsuario->guardar_postulacion($id_usuario,$id_vacante,$id_postulacion);
-    
-    $alert = "<script> alert('Se ha guardado correctamente postulación!');</script>";
-    echo $alert;
 }
 $smarty->assign("vacantes",$vacantes);
 $smarty->display("../smarty/templates/seleccionar_vacantes.tpl");

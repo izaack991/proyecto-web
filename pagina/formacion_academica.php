@@ -1,5 +1,6 @@
 <?php
 session_start();
+$alerta = '';
 if(isset($_SESSION['tiempo']) ) {
     $vida_session = time() - $_SESSION['tiempo'];
 }
@@ -31,9 +32,19 @@ if(isset($_POST['descripcion'])&& isset($_POST['ubicacion'])&&isset($_POST['peri
     $_ubicacion = 'Latitud: '.$_latitud.' Longitud: '.$_longitud;
     $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
      
-    $alert = "<script> alert('Se ha guardado correctamente formacion academica!');</script>";
-    echo $alert;
+    $alerta = "<script>swal({
+		title: '',
+		text: 'Guardo correctamente el formacion academica',
+		type: 'success',
+	  });</script>";
+
+	$smarty->assign("titulo",$titulo);
+	$smarty->assign("alerta",$alerta);
+    $smarty->display("../smarty/templates/formacion_academica.tpl");	
 }
+else{
 $smarty->assign("titulo",$titulo);
-$smarty->display("../smarty/templates/formacion_academica.tpl");	
+$smarty->assign("alerta",$alerta);
+$smarty->display("../smarty/templates/formacion_academica.tpl");
+}	
 ?>

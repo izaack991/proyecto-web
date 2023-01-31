@@ -11,6 +11,7 @@ $smarty=new smarty;
 $titulo="Proyecto Web";
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
+$alerta = '';
 if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud']))
 {
 	$_idusuario = $_SESSION['iusuario'];
@@ -27,9 +28,19 @@ if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlon
     $_ubicacion = 'Latitud: '.$_latitud.' Longitud: '.$_longitud;
     $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
 
-    $alert = "<script> alert('Se ha guardado correctamente aficiones !');</script>";
-    echo $alert;
+    $alerta = "<script>swal({
+		title: '',
+		text: 'Se guardo correctamente aficiones',
+		type: 'success',
+	  });</script>";
+
+	$smarty->assign("titulo",$titulo);
+	$smarty->assign("alerta",$alerta);
+	$smarty->display("../smarty/templates/Aficiones.tpl");
 }
-$smarty ->assign("titulo",$titulo);
-$smarty->display("../smarty/templates/Aficiones.tpl"); 
+else{
+	$smarty->assign("titulo",$titulo);
+    $smarty->assign("alerta",$alerta);
+    $smarty->display("../smarty/templates/Aficiones.tpl"); 
+}
 ?>

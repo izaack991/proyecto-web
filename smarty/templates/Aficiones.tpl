@@ -8,6 +8,8 @@
     <title>Pagina principal</title>
     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
     <link rel="stylesheet" href="estilos.css" type="text/css">
 </head>
 
@@ -48,7 +50,7 @@
 </div>
 </nav>
 <form action="Aficiones.php" method="POST">
-
+{$alerta}
   <div class="card  mb-3" style="max-width: 20rem; margin:auto; margin-top:30px;">
     <div class="card-body">
       <h4 class="card-title" style="margin-left:45px;">Aficiones</h4>
