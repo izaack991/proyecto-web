@@ -56,7 +56,7 @@
   <div {foreach $vacantes as $va} class="card border-primary shadow p-3 mb-5 bg-body rounded"
     style="max-width: 40rem; margin:auto; margin-top:30px;">
     <div class="card-body">
-      <form action="seleccionar_vacantes.php" method="POST">
+      <form action="seleccionar_vacantes.php?vacante=0" method="POST">
         <h4 class="card-title" style="display:inline;">{$va.puesto}</h4> <br><br>
         <h5 class="card-text">{$va.nombrePais}</h5><br>
         <h4 class="card-title text-primary">${$va.sueldo}</h4>
