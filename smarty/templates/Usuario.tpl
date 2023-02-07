@@ -336,10 +336,7 @@
                                 al Login</button>
                         </center>
                     </div>
-<form name="subida-imagenes" type="POST" enctype="multipart/formdata" >
-	<input type="file" name="imagen1" />
-	<input type="submit" name="subir-imagen" value="Enviar imagen" />
-</form>
+
 
         </form>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
