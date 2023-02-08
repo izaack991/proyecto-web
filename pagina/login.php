@@ -7,7 +7,7 @@ $titulo="Login";
 $buscarUsuario = Functions::singleton_functions();
 $_SESSION['irol']=$_GET['xd'];
 
-echo $_GET['xd'];
+
 if (isset($_POST['usuario'])&&isset($_POST['password']))
 {   
     $_usuario = $_POST['usuario'];
