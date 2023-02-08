@@ -46,54 +46,56 @@
     <div class="card-header text-center">
         <h4 class="card-title">Curriculum</h4>
     </div>
+    <center>
     <div class="card-body">
        
             <div class="row align-items-center">
                 <div {foreach $Postulacion as $pos} class="col">
-                    <h5>Usuario</h5>
-                    <label for="name" class="col-form-label mt-4">Nombre</label> <br>
-                    <input class="form-control" disabled value="{$pos.nombreUsuario}"><br>
+                    <h4>Usuario</h4>
+                    <label for="name" class="col-form-label mt-4"><b>Nombre</b></label> <br>
+                    <label for="name" class="col-form-label mt-1">{$pos.nombreUsuario}</label> <br>
                 </div {/foreach}>
                 <div {foreach $Postulacion as $pos} class="col">
-                    <h5>Vacante</h5>
-                    <label for="name" class="col-form-label mt-4">Puesto</label> <br>
-                    <input class="form-control" disabled value="{$pos.puesto}"><br>
+                    <h4>Vacante</h4>
+                    <label for="name" class="col-form-label mt-4"><b>Puesto</b></label> <br>
+                    <label for="name" class="col-form-label mt-1">{$pos.puesto}</label> <br>
                 </div {/foreach}>
-            </div>
+            </div><br>
             <div class="row align-items-center">
                 <div {foreach $Experiencia as $exp} class="col">
-                    <h5>Experiencia Laboral</h5>
-                    <label for="name" class="col-form-label mt-4">Descripción</label> <br>
-                    <textarea class="form-control" disabled id="exampleTextarea" rows="1">{$exp.descripcion_puesto}</textarea>
-                    <label for="name" class="col-form-label mt-4">Empresa</label> <br>
-                    <textarea class="form-control" disabled id="exampleTextarea" rows="1">{$exp.empresa}</textarea>
-                    <label for="name" class="col-form-label mt-4">Periodo</label> <br>
-                    <input class="form-control" disabled value="{$exp.periodo}"><br>
+                    <h4>Experiencia Laboral</h4>
+                    <label for="name" class="col-form-label mt-4"><b>Descripción</b></label> <br>
+                    <label for="name" class="col-form-label mt-1">{$exp.descripcion_puesto}</label> <br>
+                    <label for="name" class="col-form-label mt-4"><b>Empresa</b></label> <br>
+                    <label for="name" class="col-form-label mt-1">{$exp.empresa}</label> <br>
+                    <label for="name" class="col-form-label mt-4"><b>Periodo</b></label> <br>
+                    <label for="name" class="col-form-label mt-1">{$exp.periodo}</label> <br>
                 </div {/foreach}>
                 <div {foreach $Formacion as $for} class="col">
-                    <h5>Formación Academica</h5>
-                    <label for="name" class="col-form-label mt-4">Descripción</label> <br>
-                    <textarea class="form-control" disabled id="exampleTextarea" rows="1">{$for.descripcion}</textarea>
-                    <label for="name" class="col-form-label mt-4">Ubicación</label> <br>
-                    <textarea class="form-control" disabled id="exampleTextarea" rows="1">{$for.ubicacion}</textarea>
-                    <label for="name" class="col-form-label mt-4">Periodo</label> <br>
-                    <input class="form-control" disabled value="{$for.periodo}"><br>
+                    <h4>Formación Academica</h4>
+                    <label for="name" class="col-form-label mt-4"><b>Descripción</b></label> <br>
+                    <label for="name" class="col-form-label mt-1">{$for.descripcion}</label> <br>
+                    <label for="name" class="col-form-label mt-4"><b>Ubicación</b></label> <br>
+                    <label for="name" class="col-form-label mt-1">{$for.ubicacion}</label> <br>
+                    <label for="name" class="col-form-label mt-4"><b>Periodo</b></label> <br>
+                    <label for="name" class="col-form-label mt-1">{$for.periodo}</label> <br>
                 </div {/foreach}>
-            </div>
+            </div><br>
             <div class="row align-items-center">
                 <div {foreach $Aficiones as $afi} class="col">
-                    <h5>Aficiones</h5>
-                    <label for="name" class="col-form-label mt-4">Descripción</label> <br>
-                    <textarea class="form-control" disabled id="exampleTextarea" rows="2">{$afi.descripcion}</textarea>
+                    <h4>Aficiones</h4>
+                    <label for="name" class="col-form-label mt-4"><b>Descripción</b></label> <br>
+                    <label for="name" class="col-form-label mt-1">{$afi.descripcion}</label> <br>
                 </div {/foreach}>
                 <div {foreach $Interes as $int} class="col">
-                    <h5>Interes</h5>
-                    <label for="name" class="col-form-label mt-4">Descripción</label> <br>
-                    <textarea class="form-control" disabled id="exampleTextarea" rows="2">{$int.descripcion}</textarea>
+                    <h4>Interes</h4>
+                    <label for="name" class="col-form-label mt-4"><b>Descripción</b></label> <br>
+                    <label for="name" class="col-form-label mt-1">{$int.descripcion}</label> <br>
                 </div {/foreach}>
             </div>
        
     </div>
+    </center>
   </div> 
   </body> 
   </html>

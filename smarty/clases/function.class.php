@@ -437,4 +437,25 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+            public function verif_aficion($_idusuario,$_descripcion)
+            {        
+            try {
+            $sql = "SELECT * FROM tbl_aop where (id_usuario = '$_idusuario' and descripcion = '$_descripcion')";
+            $query = $this->dbh->prepare($sql);
+            $query->execute();
+
+            if($query -> rowCount() == 1)
+                    {
+                        return FALSE;
+            } else {
+                return TRUE;
+            }
+            }
+            catch(PDOException $e){
+                
+                print "Error!: " . $e->getMessage();
+                
+            }        
+            
+        }
     }
