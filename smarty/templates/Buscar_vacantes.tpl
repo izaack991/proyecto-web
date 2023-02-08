@@ -62,13 +62,8 @@
               <h4 class="card-title" style="display:inline;">{$vacantes.puesto}</h4> <br><br>
               <h5 class="card-text">{$vacantes.nombrePais}</h5><br>
               <h4 class="card-title text-primary">${$vacantes.sueldo}</h4>
-<<<<<<< HEAD
-                <p class="card-text">{$vacantes.datos_a}...</p>
-                <form action="seleccionar_vacantes.php?vacante=0" method="POST">
-=======
                 <p class="card-text">{$vacantes.datos_adicionales}</p>
                 <form action="seleccionar_vacantes.php" method="POST">
->>>>>>> 999fc269b1a4bf78bdfce467a6833e1507dedf3a
                 <input value={$vacantes.id_vacante} type="hidden" name="txt_id_vacante">
                 <input type="submit" value="Leer más" class="btn btn-primary">
                 </form>
@@ -83,13 +78,8 @@
               <h4 class="card-title" style="display:inline;">{$vacantes.puesto}</h4> <br><br>
               <h5 class="card-text">{$vacantes.nombrePais}</h5><br>
               <h4 class="card-title text-primary">${$vacantes.sueldo}</h4>
-<<<<<<< HEAD
-                <p class="card-text">{$vacantes.datos_a}...</p>
-                <form action="seleccionar_vacantes.php?vacante=0" method="POST">
-=======
                 <p class="card-text">{$vacantes.datos_adicionales}</p>
                 <form action="seleccionar_vacantes.php" method="POST">
->>>>>>> 999fc269b1a4bf78bdfce467a6833e1507dedf3a
                 <input value={$vacantes.id_vacante} type="hidden" name="txt_id_vacante">
                 <input type="submit" value="Leer más" class="btn btn-primary">
                 </form>
