@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2023-02-08 07:52:19
+/* Smarty version 4.1.0, created on 2023-02-08 17:58:58
   from 'C:\xampp\htdocs\proyecto-web\smarty\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_63e346a303ce79_36995830',
+  'unifunc' => 'content_63e3d4d2277357_54650961',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '32ef77a371c955d7e8d9b836be1514e58068ef83' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyecto-web\\smarty\\templates\\login.tpl',
-      1 => 1674686010,
+      1 => 1675875457,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63e346a303ce79_36995830 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63e3d4d2277357_54650961 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,6 +47,7 @@ function content_63e346a303ce79_36995830 (Smarty_Internal_Template $_smarty_tpl)
 "class="btn btn-light" type="submit">Registrarse</A></center>
         </div>
         </div>
+        <a href="indexPrincipal.php"><button class="btn btn-light" type="button">VOLVER</button></a>
         <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"><?php echo '</script'; ?>
 >
