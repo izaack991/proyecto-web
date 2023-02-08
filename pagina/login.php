@@ -21,17 +21,14 @@ if (isset($_POST['usuario'])&&isset($_POST['password']))
             $_ROL=$value['rol'];
             $vac=$_GET['vacante'];
         }
-        if ($_ROL==1)
-        {
-            if($vac=='')
-            {
-                header("location:index.php");
-            }else{
-                header("location:seleccionar_vacantes.php?vacante=$vac");
-            }
-
-        }
+        //condicional si es usuario (el 2 se usa para la secion del usuario)
+        //Si rol el un "2", manda al formulario de index que es el index de los usuarios
         if ($_ROL==2)
+        {
+            header("location:index.php");
+        }
+        //condicional si es empresa (el 1 se usa para las empresas)
+        if ($_ROL==1)
         {
             header("location:indexEmpresa.php");
         }
