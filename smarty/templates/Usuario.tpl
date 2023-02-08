@@ -31,17 +31,20 @@
                             <label>Nombre: *</label><br>
 
                             <input class="form-control" type="text" name="txt_NOMBRE" class="texto"
-                                placeholder="Escriba el Nombre" required="true"><br>
+                                placeholder="Escriba el Nombre" pattern="[A-Z a-z]+" required="true"><br>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Apellidos: *</label><br>
                             <input class="form-control" type="text" name="txt_APELLIDOS" class="texto"
-                                placeholder="Escriba sus Apellidos" required="true"><br>
+                                placeholder="Escriba sus Apellidos" pattern="[A-Z a-z]+" required="true"><br>
                         </div>
                     </div>
                     <label>Correo Electronico: *</label><br>
-                    <input class="form-control" type="text" name="txt_CORREO" class="texto"
-                        placeholder="Escriba su Correo" required="true"><br>
+                    <input class="form-control" type="email" name="txt_CORREO" class="texto"
+                        placeholder="Ejemplo@dominio.com" pattern=".+.com" required><br>
+
+                        
+                      
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -52,7 +55,9 @@
                         <div class="form-group col-md-6">
                             <label>CURP: *</label><br>
                             <input class="form-control" type="text" name="txt_CURP" class="texto" minlength="18"
-                                maxLength="18" placeholder="Escriba su CURP" required="true"><br>
+                                maxLength="18" placeholder="Escriba su CURP" pattern="[A-Z0-9]+" required="true"><br>
+
+                             
                         </div>
                     </div>
 
@@ -115,12 +120,12 @@
                                 <div class="col">
                                     <label>Telefono: *</label><br>
                                     <input class="form-control" type="text" name="txt_TELEFONO" class="texto"
-                                        minlength="10" maxLength="10" placeholder="Escriba su Número"
-                                        required="true"><br>
+                                        minlength="10" maxLength="10" pattern="[0-9]+" placeholder="Escriba su Número"
+                                       title="Ingresa solamente numeros" required="true"><br>
                                 </div>
                         </div>
                         <label>Domicilio: *</label><br>
-                        <input class="form-control" type="text" name="txt_DOMICILIO" class="texto"
+                        <input class="form-control" type="text" name="txt_DOMICILIO" pattern="[A-Z a-z0-9]+" class="texto"
                             placeholder="Escriba su Domicilio" required="true"><br>
                         <center>
                             <button class="btn btn-primary" type="submit">GUARDAR</button>
@@ -128,7 +133,6 @@
                                 al Login</button>
                         </center>
                     </div>
-
 
         </form>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
