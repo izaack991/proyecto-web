@@ -131,7 +131,7 @@ require_once('conexion.class.php');
                 return TRUE;
             }
 
-            public function Guardar_id_pasatiempo($f_id_Pasatiempo,$_idusuario,$_Desripcion)
+            public function Guardar_id_pasatiempo($f_id_Pasatiempo,$_idusuario,$_descripcion)
             {        
                 try {
                     
@@ -142,7 +142,7 @@ require_once('conexion.class.php');
                     
                     $query->bindParam(':id_aop',$f_id_Pasatiempo);
                     $query->bindParam(':id_usuario',$_idusuario);
-                    $query->bindParam(':descripcion',$_Desripcion);
+                    $query->bindParam(':descripcion',$_descripcion);
                     $query->execute();
                 }
                 catch(PDOException $e){

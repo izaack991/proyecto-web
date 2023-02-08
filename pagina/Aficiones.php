@@ -11,14 +11,20 @@ $smarty=new smarty;
 $titulo="Proyecto Web";
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
+$buscarAficion = Functions::singleton_functions();
 $alerta = '';
 if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud']))
 {
 	$_idusuario = $_SESSION['iusuario'];
     $_descripcion = $_POST['txtdesc'];
+
+    $aut_aficion = $buscarAficion->verif_aficion($_idusuario, $_descripcion);
+
+    if ($aut_aficion == TRUE)
+    {
 	$f_id_Pasatiempo = $_findUser->consec_pasatiempo();
 	$newuser = $nuevoUsuario->Guardar_id_pasatiempo($f_id_Pasatiempo,$_idusuario,$_descripcion);
- 
+    
 	date_default_timezone_set('America/Mexico_City');
     $_movimiento = 'Aficiones(Guardar)';
     $_fecha = date('Y-m-d H:m:s');
@@ -37,6 +43,18 @@ if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlon
 	$smarty->assign("titulo",$titulo);
 	$smarty->assign("alerta",$alerta);
 	$smarty->display("../smarty/templates/Aficiones.tpl");
+    }
+    else {
+        $alerta = "<script>swal({
+            title: '',
+            text: 'Esa aficion ya se encuentra registrada',
+            type: 'success',
+          });</script>";
+    
+        $smarty->assign("titulo",$titulo);
+        $smarty->assign("alerta",$alerta);
+        $smarty->display("../smarty/templates/Aficiones.tpl");
+    }
 }
 else{
 	$smarty->assign("titulo",$titulo);
