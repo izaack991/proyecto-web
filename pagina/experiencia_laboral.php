@@ -11,8 +11,47 @@ $smarty=new smarty;
 $titulo="Experiencia Laboral";
 $nuevoExperiencia = save::singleton_guardar();
 $_findExperiencia = Functions::singleton_functions();
+$nuevoSingleton = Functions::singleton_functions();
+$iusuario = $_SESSION['iusuario'];
+$notificacionexperiencia = $nuevoSingleton->notificacionexperiencia($iusuario);
+$notificacionformacion = $nuevoSingleton->notificacionformacion($iusuario);
+$notificacionaficiones = $nuevoSingleton->notificacionaficiones($iusuario);
+$notificacioninteres = $nuevoSingleton->notificacioninteres($iusuario);
 $alerta = '';
+if($notificacionexperiencia==0)
+{
+    $COUNTLAB=1;
 
+}
+else 
+{
+    $COUNTLAB=0;
+}
+if($notificacionformacion==0)
+{
+    $COUNFOR=1;
+}
+else 
+{
+    $COUNFOR=0;
+}
+if($notificacionaficiones==0)
+{
+    $COUNTAFI=1;
+}
+else 
+{
+    $COUNTAFI=0;
+}
+if($notificacioninteres==0)
+{
+    $COUNTINT=1;
+}
+else 
+{
+    $COUNTINT=0;
+}
+$COUNT = $COUNTLAB + $COUNFOR + $COUNTAFI + $COUNTINT;
 if(isset($_POST['txtdescripcion']) && isset($_POST['txtempresa']) && isset($_POST['txtperiodo'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud']))
 {
     $_idusuario = $_SESSION['iusuario'];
@@ -42,6 +81,12 @@ if(isset($_POST['txtdescripcion']) && isset($_POST['txtempresa']) && isset($_POS
     $smarty->display("../smarty/templates/experiencia_laboral.tpl");
 
 } else {
+  $smarty->assign("COUNTLAB",$COUNTLAB);
+$smarty->assign("COUNFOR",$COUNFOR);
+$smarty->assign("COUNTAFI",$COUNTAFI);
+$smarty->assign("COUNTINT",$COUNTINT);
+$smarty->assign("COUNT",$COUNT);
+$smarty->assign("iusuario",$iusuario);
 $smarty->assign("titulo",$titulo);
 $smarty->assign("alerta",$alerta);
 $smarty->display("../smarty/templates/experiencia_laboral.tpl");

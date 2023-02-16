@@ -437,6 +437,162 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+            function notificacionexperiencia($iusuario)
+            {
+                try
+                {
+                
+                    $sql = "SELECT id_usuario FROM tbl_experiencia_laboral WHERE id_usuario = :DU_ID LIMIT 1";
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(":DU_ID",$iusuario);
+                    $query->execute();
+                    //$this->dbh = null;
+                    $numeroDeFilas = $query->rowCount();
+                    //si existe el usuario
+                    $data;
+                    if($numeroDeFilas >= 1)
+                    {
+                        $data = 1;
+                    }
+                    else {
+                        $data = 0;
+                    } 
+                    
+                }
+                catch(PDOException $e)
+                {
+                
+                    print "Error!: " . $e->getMessage();
+                        
+                }  
+                return $data;
+                
+            }
+            function notificacionformacion($iusuario)
+            {
+                try
+                {
+                
+                    $sql = "SELECT id_usuario FROM tbl_formacion_academica WHERE id_usuario = :DU_ID LIMIT 1";
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(":DU_ID",$iusuario);
+                    $query->execute();
+                    //$this->dbh = null;
+                    $numeroDeFilas = $query->rowCount();
+                    //si existe el usuario
+                    $data;
+                    if($numeroDeFilas >= 1)
+                    {
+                        $data = 1;
+                    }
+                    else {
+                        $data = 0;
+                    } 
+                    
+                }
+                catch(PDOException $e)
+                {
+                
+                    print "Error!: " . $e->getMessage();
+                        
+                }  
+                return $data;
+                
+            }
+           
+            function notificacionaficiones($iusuario)
+            {
+                try
+                {
+                
+                    $sql = "SELECT id_usuario FROM tbl_aop WHERE id_usuario = :DU_ID LIMIT 1";
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(":DU_ID",$iusuario);
+                    $query->execute();
+                    //$this->dbh = null;
+                    $numeroDeFilas = $query->rowCount();
+                    //si existe el usuario
+                    $data;
+                    if($numeroDeFilas >= 1)
+                    {
+                        $data = 1;
+                    }
+                    else {
+                        $data = 0;
+                    } 
+                    
+                }
+                catch(PDOException $e)
+                {
+                
+                    print "Error!: " . $e->getMessage();
+                        
+                }  
+                return $data;
+                
+            }
+            function notificacioninteres($iusuario)
+            {
+                try
+                {
+                
+                    $sql = "SELECT id_usuario FROM tbl_dinteres WHERE id_usuario = :DU_ID LIMIT 1";
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(":DU_ID",$iusuario);
+                    $query->execute();
+                    //$this->dbh = null;
+                    $numeroDeFilas = $query->rowCount();
+                    //si existe el usuario
+                    $data;
+                    if($numeroDeFilas >= 1)
+                    {
+                        $data = 1;
+                    }
+                    else {
+                        $data = 0;
+                    } 
+                    
+                }
+                catch(PDOException $e)
+                {
+                
+                    print "Error!: " . $e->getMessage();
+                        
+                }  
+                return $data;
+                
+            }
+            // function notificacionvacantes($iusuario)
+            // {
+            //     try
+            //     {
+                
+            //         $sql = "SELECT id_usuario FROM tbl_vacantes WHERE id_usuario = :DU_ID LIMIT 1";
+            //         $query = $this->dbh->prepare($sql);
+            //         $query->bindParam(":DU_ID",$iusuario);
+            //         $query->execute();
+            //         //$this->dbh = null;
+            //         $numeroDeFilas = $query->rowCount();
+            //         //si existe el usuario
+            //         $data;
+            //         if($numeroDeFilas >= 1)
+            //         {
+            //             $data = 1;
+            //         }
+            //         else {
+            //             $data = 0;
+            //         } 
+                    
+            //     }
+            //     catch(PDOException $e)
+            //     {
+                
+            //         print "Error!: " . $e->getMessage();
+                        
+            //     }  
+            //     return $data;
+                
+            // }
             public function verif_aficion($_idusuario,$_descripcion)
             {        
             try {

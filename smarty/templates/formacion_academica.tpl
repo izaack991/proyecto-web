@@ -44,7 +44,49 @@
       <a class="nav-link active" href="buscar_vacantes.php">Buscar Vacantes
       </a>
       </li> 
-      <li class="nav-link active">{$smarty.session.nomusuario}</li>
+      <li class="nav-item">
+        {if $COUNT >= 1} 
+										<a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" data-toggle="modal" data-target="#exampleModal">
+										<span class="fa-layers fa-fw mr-2 fa-lg">
+											<i class="fas fa-bell"></i>
+											<span class="fa-layers-counter" style="background:Tomato">{$COUNT}</span>
+										</span>{$smarty.session.nomusuario}</a></li>
+                    {else}
+											<a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" ><i class="fas fa-bell fa-fw mr-2 fa-lg"></i>Notificaciones</a>
+										{/if}	
+                   {* MODAL *}
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-bell"></i> Notificaciones</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								{if $COUNTLAB >= 1}
+									<a class="nav-link" href="experiencia_laboral.php" style="color: blue;">Aun no ha registrado sus datos de Experiencia Laboral, click aqui para ir al registro</a>
+								{/if}
+								{if $COUNFOR >= 1}
+									<a class="nav-link" href="formacion_academica.php" style="color: blue;">Aun no ha registrado Formacion Academica, click aqui para ir al registro</a>
+								{/if}
+								{if $COUNTAFI >= 1}
+									<a class="nav-link" href="aficiones.php" style="color: blue;">Aun no ha registrado Experiencia Profesional, click aqui para ir al registro</a>
+								{/if}
+								{if $COUNTINT >= 1}
+									<a class="nav-link" href="interes.php" style="color: blue;">Aun no ha registrado sus datos de Interes, click aqui para ir al registro</a>
+								{/if}
+								{* {if $COUNTBUS >= 1}
+									<a class="nav-link" href="buscar _vacantes.php">Aun no ha registrado cursos o conferencias,click aqui para ir al registro</a>
+								{/if} *}
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+							</div>
+							</div>
+						</div>
+						</div>
       <a class="nav-link active text-danger" href="indexPrincipal.php" style="font-weight:bold;">Cerrar Sesión</a>
     </ul>
   </div>
