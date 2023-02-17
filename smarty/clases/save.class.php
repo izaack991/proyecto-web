@@ -228,6 +228,61 @@ require_once('conexion.class.php');
                     }        
                     return TRUE;
                 }
+            public function guardar_respuestasMOSS($_idusuario,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12,$preg13,$preg14,$preg15,$preg16,$preg17,$preg18,$preg19,$preg20,$preg21,$preg22,$preg23,$preg24,$preg25,$preg26,$preg27,$preg28,$preg29,$preg30)
+            {        
+                    try 
+                    {
+                        
+                        $sql="INSERT INTO tbl_respuestas_MOSS(preg1,preg2,preg3,preg4,preg5,preg6,preg7,preg8,preg9,preg10,preg11,preg12,preg13,preg14,preg15,preg16,preg17,preg18,preg19,preg20,preg21,preg22,preg23,preg24,preg25,preg26,preg27,preg28,preg29,preg30,id_usuario)
+                                                                VALUES(:preg1,:preg2,:preg3,:preg4,:preg5,:preg6,:preg7,:preg8,:preg9,:preg10,:preg11,:preg12,:preg13,:preg14,:preg15,:preg16,:preg17,:preg18,:preg19,:preg20,:preg21,:preg22,:preg23,:preg24,:preg25,:preg26,:preg27,:preg28,:preg29,:preg30,:id_usuario)";
+                        
+                        $query = $this->dbh->prepare($sql);
+                        
+                        
+                        $query->bindParam(':preg1',$preg1);
+                        $query->bindParam(':preg2',$preg2);
+                        $query->bindParam(':preg3',$preg3);
+                        $query->bindParam(':preg4',$preg4);
+                        $query->bindParam(':preg5',$preg5);
+                        $query->bindParam(':preg6',$preg6);
+                        $query->bindParam(':preg7',$preg7);
+                        $query->bindParam(':preg8',$preg8);
+                        $query->bindParam(':preg9',$preg9);
+                        $query->bindParam(':preg10',$preg10);
+                        $query->bindParam(':preg11',$preg11);
+                        $query->bindParam(':preg12',$preg12);
+                        $query->bindParam(':preg13',$preg13);
+                        $query->bindParam(':preg14',$preg14);
+                        $query->bindParam(':preg15',$preg15);
+                        $query->bindParam(':preg16',$preg16);
+                        $query->bindParam(':preg17',$preg17);
+                        $query->bindParam(':preg18',$preg18);
+                        $query->bindParam(':preg19',$preg19);
+                        $query->bindParam(':preg20',$preg20);
+                        $query->bindParam(':preg21',$preg21);
+                        $query->bindParam(':preg22',$preg22);
+                        $query->bindParam(':preg23',$preg23);
+                        $query->bindParam(':preg24',$preg24);
+                        $query->bindParam(':preg25',$preg25);
+                        $query->bindParam(':preg26',$preg26);
+                        $query->bindParam(':preg27',$preg27);
+                        $query->bindParam(':preg28',$preg28);
+                        $query->bindParam(':preg29',$preg29);
+                        $query->bindParam(':preg30',$preg30);
+                        $query->bindParam(':id_usuario',$_idusuario);
+                        $query->execute();
+                        $this->dbh = null;
+                            
+                    
+                    }
+                    catch(PDOException $e){
+                        
+                        print "Error!: " . $e->getMessage();
+                        
+                    }        
+                    return TRUE;
+            }
+            
     }
    
 ?>
