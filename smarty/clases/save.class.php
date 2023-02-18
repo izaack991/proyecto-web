@@ -282,6 +282,136 @@ require_once('conexion.class.php');
                     }        
                     return TRUE;
             }
+            public function guardar_respuestas($id_usuario,$p1_resp_pos,$p1_resp_neg,$p2_resp_pos,$p2_resp_neg,$p3_resp_pos,
+            $p3_resp_neg,$p4_resp_pos,$p4_resp_neg,$p5_resp_pos,$p5_resp_neg,$p6_resp_pos,$p6_resp_neg,$p7_resp_pos,$p7_resp_neg,$p8_resp_pos,
+            $p8_resp_neg,$p9_resp_pos,$p9_resp_neg,$p10_resp_pos,$p10_resp_neg,$p11_resp_pos,$p11_resp_neg,$p12_resp_pos,$p12_resp_neg,
+            $p13_resp_pos,$p13_resp_neg,$p14_resp_pos,$p14_resp_neg,$p15_resp_pos,$p15_resp_neg,$p16_resp_pos,$p16_resp_neg,$p17_resp_pos,
+            $p17_resp_neg,$p18_resp_pos,$p18_resp_neg,$p19_resp_pos,$p19_resp_neg,$p20_resp_pos,$p20_resp_neg,$p21_resp_pos,$p21_resp_neg,
+            $p22_resp_pos,$p22_resp_neg,$p23_resp_pos,$p23_resp_neg,$p24_resp_pos,$p24_resp_neg,$p25_resp_pos,$p25_resp_neg)
+            {        
+                try 
+                {
+                    
+                    $sql="INSERT into tbl_respuestas_cleaver(id_usuario,p1_resp_pos,p1_resp_neg,p2_resp_pos,p2_resp_neg,p3_resp_pos,p3_resp_neg,p4_resp_pos,p4_resp_neg,p5_resp_pos,p5_resp_neg,p6_resp_pos,p6_resp_neg,p7_resp_pos,p7_resp_neg,p8_resp_pos,p8_resp_neg,p9_resp_pos,p9_resp_neg,p10_resp_pos,p10_resp_neg,
+                    p11_resp_pos,p11_resp_neg,p12_resp_pos,p12_resp_neg,p13_resp_pos,p13_resp_neg,p14_resp_pos,p14_resp_neg,p15_resp_pos,p15_resp_neg,p16_resp_pos,p16_resp_neg,p17_resp_pos,p17_resp_neg,p18_resp_pos,p18_resp_neg,p19_resp_pos,p19_resp_neg,p20_resp_pos,p20_resp_neg,
+                    p21_resp_pos,p21_resp_neg,p22_resp_pos,p22_resp_neg,p23_resp_pos,p23_resp_neg,p24_resp_pos,p24_resp_neg,p25_resp_pos,p25_resp_neg)
+                                        values(:id_usuario,:p1_resp_pos,:p1_resp_neg,:p2_resp_pos,:p2_resp_neg,:p3_resp_pos,:p3_resp_neg,:p4_resp_pos,:p4_resp_neg,:p5_resp_pos,:p5_resp_neg,:p6_resp_pos,:p6_resp_neg,:p7_resp_pos,:p7_resp_neg,:p8_resp_pos,:p8_resp_neg,:p9_resp_pos,:p9_resp_neg,:p10_resp_pos,:p10_resp_neg,
+                                        :p11_resp_pos,:p11_resp_neg,:p12_resp_pos,:p12_resp_neg,:p13_resp_pos,:p13_resp_neg,:p14_resp_pos,:p14_resp_neg,:p15_resp_pos,:p15_resp_neg,:p16_resp_pos,:p16_resp_neg,:p17_resp_pos,:p17_resp_neg,:p18_resp_pos,:p18_resp_neg,:p19_resp_pos,:p19_resp_neg,:p20_resp_pos,:p20_resp_neg,
+                                        :p21_resp_pos,:p21_resp_neg,:p22_resp_pos,:p22_resp_neg,:p23_resp_pos,:p23_resp_neg,:p24_resp_pos,:p24_resp_neg,:p25_resp_pos,:p25_resp_neg)";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':id_usuario',$id_usuario);
+                    
+                    $query->bindParam(':p1_resp_pos',$p1_resp_pos);
+
+                    $query->bindParam(':p1_resp_neg',$p1_resp_neg);
+
+                    $query->bindParam(':p2_resp_pos',$p2_resp_pos);
+
+                    $query->bindParam(':p2_resp_neg',$p2_resp_neg);
+
+                    $query->bindParam(':p3_resp_pos',$p3_resp_pos);
+
+                    $query->bindParam(':p3_resp_neg',$p3_resp_neg);
+
+                    $query->bindParam(':p4_resp_pos',$p4_resp_pos);
+
+                    $query->bindParam(':p4_resp_neg',$p4_resp_neg);
+
+                    $query->bindParam(':p5_resp_pos',$p5_resp_pos);
+
+                    $query->bindParam(':p5_resp_neg',$p5_resp_neg);
+
+                    $query->bindParam(':p6_resp_pos',$p6_resp_pos);
+
+                    $query->bindParam(':p6_resp_neg',$p6_resp_neg);
+
+                    $query->bindParam(':p7_resp_pos',$p7_resp_pos);
+
+                    $query->bindParam(':p7_resp_neg',$p7_resp_neg);
+
+                    $query->bindParam(':p8_resp_pos',$p8_resp_pos);
+
+                    $query->bindParam(':p8_resp_neg',$p8_resp_neg);
+
+                    $query->bindParam(':p9_resp_pos',$p9_resp_pos);
+
+                    $query->bindParam(':p9_resp_neg',$p9_resp_neg);
+
+                    $query->bindParam(':p10_resp_pos',$p10_resp_pos);
+
+                    $query->bindParam(':p10_resp_neg',$p10_resp_neg);
+
+                    $query->bindParam(':p11_resp_pos',$p11_resp_pos);
+
+                    $query->bindParam(':p11_resp_neg',$p11_resp_neg);
+
+                    $query->bindParam(':p12_resp_pos',$p12_resp_pos);
+
+                    $query->bindParam(':p12_resp_neg',$p12_resp_neg);
+
+                    $query->bindParam(':p13_resp_pos',$p13_resp_pos);
+
+                    $query->bindParam(':p13_resp_neg',$p13_resp_neg);
+
+                    $query->bindParam(':p14_resp_pos',$p14_resp_pos);
+
+                    $query->bindParam(':p14_resp_neg',$p14_resp_neg);
+
+                    $query->bindParam(':p15_resp_pos',$p15_resp_pos);
+
+                    $query->bindParam(':p15_resp_neg',$p15_resp_neg);
+
+                    $query->bindParam(':p16_resp_pos',$p16_resp_pos);
+
+                    $query->bindParam(':p16_resp_neg',$p16_resp_neg);
+
+                    $query->bindParam(':p17_resp_pos',$p17_resp_pos);
+
+                    $query->bindParam(':p17_resp_neg',$p17_resp_neg);
+
+                    $query->bindParam(':p18_resp_pos',$p18_resp_pos);
+
+                    $query->bindParam(':p18_resp_neg',$p18_resp_neg);
+
+                    $query->bindParam(':p19_resp_pos',$p19_resp_pos);
+
+                    $query->bindParam(':p19_resp_neg',$p19_resp_neg);
+
+                    $query->bindParam(':p20_resp_pos',$p20_resp_pos);
+
+                    $query->bindParam(':p20_resp_neg',$p20_resp_neg);
+
+                    $query->bindParam(':p21_resp_pos',$p21_resp_pos);
+
+                    $query->bindParam(':p21_resp_neg',$p21_resp_neg);
+
+                    $query->bindParam(':p22_resp_pos',$p22_resp_pos);
+
+                    $query->bindParam(':p22_resp_neg',$p22_resp_neg);
+
+                    $query->bindParam(':p23_resp_pos',$p23_resp_pos);
+
+                    $query->bindParam(':p23_resp_neg',$p23_resp_neg);
+
+                    $query->bindParam(':p24_resp_pos',$p24_resp_pos);
+
+                    $query->bindParam(':p24_resp_neg',$p24_resp_neg);
+
+                    $query->bindParam(':p25_resp_pos',$p25_resp_pos);
+
+                    $query->bindParam(':p25_resp_neg',$p25_resp_neg);
+
+                    $query->execute();
+                }
+                catch(PDOException $e)
+                {
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
             
     }
    
