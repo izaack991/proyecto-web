@@ -57,10 +57,34 @@
         <div class="col">
         <select class="btn btn-light disabled" name="cmbpais">
             <option value="">Elige una opción</option>
-            {foreach $Paises as $pais} 
-              <option value={$pais.id_paises}>{$pais.nombre}</option>
-            {/foreach}
-         </select></div></div><br>
+            <div>
+            <<option value="54">Argentina</option>
+            <option value="591">Bolivia</option>
+            <option value="55">Brasil</option>
+            <option value="56">Chile</option>
+            <option value="57">Colombia</option>
+            <option value="506">Costa Rica</option>
+            <option value="53">Cuba</option>
+            <option value="593">Ecuador</option>
+            <option value="503">El Salvador</option>
+            <option value="1473">Granada</option>
+            <option value="502">Guatemala</option>
+            <option value="592">Guayana</option>
+            <option value="509">Haití</option>
+            <option value="504">Honduras</option>
+            <option value="1876">Jamaica</option>
+            <option value="52">México</option>
+            <option value="505">Nicaragua</option>
+            <option value="507">Panamá</option>
+            <option value="595">Paraguay</option>
+            <option value="51">Perú</option>
+            <option value="1">Puerto Rico</option>
+            <option value="1809">República Dominicana</option>
+            <option value="597">Surinam</option>
+            <option value="598">Uruguay</option>
+            <option value="58">Venezuela</option>
+            <select><br>
+         </div></div><br>
 
         <label for="name" class="form__label"> Datos Adicionales *</label> <br>
         <input class="form-control" type="text" name="txtdatos" placeholder="Ingresa los Datos"> <br>
@@ -81,7 +105,7 @@
         <input name ="txtlatitud" id="latitud"type="hidden">
 				<input name="txtlongitud" id="longitud" type="hidden">
 
-        <input class="btn btn-primary" style="margin-left:90px;" type="submit"  value="Guardar">
+      <input class="btn btn-primary" style="margin-left:224px;" type="submit"  value="Guardar">
       </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
