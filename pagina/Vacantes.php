@@ -14,15 +14,18 @@ $_findUser = Functions::singleton_functions();
 $_findPais = Functions::singleton_functions();
 $_pais = $_findPais->buscaPaises();
 $alerta = '';
-if(isset($_POST['txtpuesto'])&& isset($_POST['txtsueldo'])&& isset($_POST['cmbpais'])&& isset($_POST['txtdatos'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud']))
+if(isset($_POST['txtpuesto'])&& isset($_POST['txtsueldo'])&& isset($_POST['cmbpais'])&& isset($_POST['txtdatos'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud'])&& isset($_POST['dateInicio'])&& isset($_POST['dateFin']))
 {
+
 	$_idusuario = $_SESSION['iusuario'];
     $_puesto = $_POST['txtpuesto'];
     $_sueldo = $_POST['txtsueldo'];
     $_lugar = $_POST['cmbpais'];
     $_datos = $_POST['txtdatos'];
+    $_fechainicio = $_POST['dateInicio'];
+    $_fechafin = $_POST['dateFin'];
 	$f_id_vacantes = $_findUser->consec_vacantes();
-	$newuser = $nuevoUsuario->Guardar_id_vacantes($f_id_vacantes,$_idusuario,$_puesto,$_sueldo,$_lugar,$_datos);
+	$newuser = $nuevoUsuario->Guardar_id_vacantes($f_id_vacantes,$_idusuario,$_puesto,$_sueldo,$_lugar,$_datos,$_fechainicio,$_fechafin);
     
 	date_default_timezone_set('America/Mexico_City');
     $_movimiento = 'Vacantes(Guardar)';

@@ -36,7 +36,7 @@
 </nav>
 <form action="Vacantes.php" method="POST">
 {$alerta}
-    <div class="card  mb-3" style="max-width: 20rem; margin:auto; margin-top:30px;">
+    <div class="card  mb-3" style="max-width: 36rem; margin:auto; margin-top:30px;">
       <div class="card-body">
         <h4 class="card-title">Datos de Vacantes</h4>
         <label>Los campos marcados con asterisco son obligatorios</label> <br>
@@ -55,7 +55,7 @@
         <label for="name" class="form__label"> Lugar*</label> <br>
         <div class="form-row" text-align: center;>
         <div class="col">
-        <select class="form-select" id="exampleSelect1" name="cmbpais">
+        <select class="btn btn-light disabled" name="cmbpais">
             <option value="">Elige una opción</option>
             {foreach $Paises as $pais} 
               <option value={$pais.id_paises}>{$pais.nombre}</option>
@@ -64,6 +64,19 @@
 
         <label for="name" class="form__label"> Datos Adicionales *</label> <br>
         <input class="form-control" type="text" name="txtdatos" placeholder="Ingresa los Datos"> <br>
+
+
+        <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="dateFECHA">Seleccione Fecha de Inicio: *</label><br>
+            <input class="form-control" type="date" id="dateInicio" name="dateInicio" value="2022-01-01">
+        </div>
+        <br>
+        <div class="form-group col-md-6">
+            <label for="dateFECHA">Seleccione Fecha de Vencimiento *</label><br>
+            <input class="form-control" type="date" id="dateFin" name="dateFin" value="2022-01-01">
+        </div>
+        <br>
 
         <input name ="txtlatitud" id="latitud"type="hidden">
 				<input name="txtlongitud" id="longitud" type="hidden">

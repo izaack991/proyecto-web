@@ -152,12 +152,12 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
-            public function Guardar_id_vacantes($f_id_vacantes,$_idusuario,$_puesto,$_sueldo,$_lugar,$_datos)
+            public function Guardar_id_vacantes($f_id_vacantes,$_idusuario,$_puesto,$_sueldo,$_lugar,$_datos,$_fechainicio,$_fechafin)
             {        
                 try {
                     
-                    $sql="INSERT into tbl_vacantes(id_vacante,id_empresa,puesto,sueldo,lugar,datos_adicionales)
-                                        values(:id_vacante, :id_empresa, :puesto, :sueldo, :lugar, :datos_adicionales)";
+                    $sql="INSERT into tbl_vacantes(id_vacante,id_empresa,puesto,sueldo,lugar,datos_adicionales,dateInicio,dateFin)
+                                        values(:id_vacante, :id_empresa, :puesto, :sueldo, :lugar, :datos_adicionales, :dateInicio, :dateFin)";
                     
                     $query = $this->dbh->prepare($sql);
                     
@@ -167,6 +167,8 @@ require_once('conexion.class.php');
                     $query->bindParam(':sueldo',$_sueldo);
                     $query->bindParam(':lugar',$_lugar);
                     $query->bindParam(':datos_adicionales',$_datos);
+                    $query->bindParam(':dateInicio', $_fechainicio);
+                    $query->bindParam(':dateFin',$_fechafin);
                     $query->execute();
                 }
                 catch(PDOException $e){
