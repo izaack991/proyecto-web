@@ -11,7 +11,7 @@
     
 </head>
 
-<body>
+<body> <!--Prueba-->
     <script src="../smarty/js/curp.js"></script>
         </div>
         </nav>
