@@ -6,7 +6,8 @@ include('../../smarty-master/libs/smarty.class.php');
 $smarty=new smarty;
 $titulo="Lista de Postulaciones";
 $buscarpostulacion = Functions::singleton_functions();
-$b_postulacion = $buscarpostulacion->buscarPostulacion();
+$_idusuario = $_SESSION['iusuario'];
+$b_postulacion = $buscarpostulacion->buscarPostulacion($_idusuario);
 
 	$smarty->assign("titulo",$titulo);
 	$smarty->assign("Postulacion",$b_postulacion);
