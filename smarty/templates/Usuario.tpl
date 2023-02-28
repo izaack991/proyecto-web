@@ -33,17 +33,17 @@
                             <label>Nombre: *</label><br>
 
                             <input class="form-control" type="text" name="txt_NOMBRE" class="texto"
-                                placeholder="Escriba el Nombre" required="true"><br>
+                                     placeholder="Escriba el Nombre" pattern="[A-Z a-z]+" required="true"><br>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Apellidos: *</label><br>
                             <input class="form-control" type="text" name="txt_APELLIDOS" class="texto"
-                                placeholder="Escriba sus Apellidos" required="true"><br>
+                                placeholder="Escriba sus Apellidos" pattern="[A-Z a-z]+" required="true"><br>
                         </div>
                     </div>
                     <label>Correo Electronico: *</label><br>
-                    <input class="form-control" type="text" name="txt_CORREO" class="texto"
-                        placeholder="Escriba su Correo" required="true"><br>
+                    <input class="form-control" type="email" name="txt_CORREO" class="texto"
+                        placeholder="Ejemplo@dominio.com" pattern=".+.com" required><br>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">

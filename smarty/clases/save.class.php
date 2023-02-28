@@ -282,6 +282,42 @@ require_once('conexion.class.php');
                     }        
                     return TRUE;
             }
+            public function guardar_respuestasSJT($_idusuario,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12)
+            {        
+                    try 
+                    {
+                        
+                        $sql="INSERT INTO tbl_respuestas_sjt(preg1,preg2,preg3,preg4,preg5,preg6,preg7,preg8,preg9,preg10,preg11,preg12,id_usuario)
+                                                                VALUES(:preg1,:preg2,:preg3,:preg4,:preg5,:preg6,:preg7,:preg8,:preg9,:preg10,:preg11,:preg12,:id_usuario)";
+                        
+                        $query = $this->dbh->prepare($sql);
+                        
+                        
+                        $query->bindParam(':preg1',$preg1);
+                        $query->bindParam(':preg2',$preg2);
+                        $query->bindParam(':preg3',$preg3);
+                        $query->bindParam(':preg4',$preg4);
+                        $query->bindParam(':preg5',$preg5);
+                        $query->bindParam(':preg6',$preg6);
+                        $query->bindParam(':preg7',$preg7);
+                        $query->bindParam(':preg8',$preg8);
+                        $query->bindParam(':preg9',$preg9);
+                        $query->bindParam(':preg10',$preg10);
+                        $query->bindParam(':preg11',$preg11);
+                        $query->bindParam(':preg12',$preg12);
+                        $query->bindParam(':id_usuario',$_idusuario);
+                        $query->execute();
+                        $this->dbh = null;
+                            
+                    
+                    }
+                    catch(PDOException $e){
+                        
+                        print "Error!: " . $e->getMessage();
+                        
+                    }        
+                    return TRUE;
+            }
             public function guardar_respuestas($id_usuario,$p1_resp_pos,$p1_resp_neg,$p2_resp_pos,$p2_resp_neg,$p3_resp_pos,
             $p3_resp_neg,$p4_resp_pos,$p4_resp_neg,$p5_resp_pos,$p5_resp_neg,$p6_resp_pos,$p6_resp_neg,$p7_resp_pos,$p7_resp_neg,$p8_resp_pos,
             $p8_resp_neg,$p9_resp_pos,$p9_resp_neg,$p10_resp_pos,$p10_resp_neg,$p11_resp_pos,$p11_resp_neg,$p12_resp_pos,$p12_resp_neg,
