@@ -93,12 +93,12 @@
         <div class="form-row">
         <div class="form-group col-md-6">
             <label for="dateFECHA">Seleccione Fecha de Inicio: *</label><br>
-            <input class="form-control" type="date" id="dateInicio" name="dateInicio" value="2022-01-01">
+            <input class="form-control" type="date" id="dateInicio" name="dateInicio" value="2023-01-01">
         </div>
         <br>
         <div class="form-group col-md-6">
             <label for="dateFECHA">Seleccione Fecha de Vencimiento *</label><br>
-            <input class="form-control" type="date" id="dateFin" name="dateFin" value="2022-01-01">
+            <input class="form-control" type="date" id="dateFin" name="dateFin" value="2023-01-01">
         </div>
         <br>
 

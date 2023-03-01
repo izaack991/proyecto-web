@@ -114,6 +114,29 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+            function _vacantes()
+            {
+                try
+                {
+                    $sql = "SELECT IFNULL(MAX(id_vacante), 0) + 1 AS CONSECUTIVO FROM tbl_vacantes";
+                    $query = $this->dbh->prepare($sql);
+                    $query -> execute();
+                    //this->dbh = null;
+
+                    //si existe el usuario
+                    if($query -> rowCount() == 1)
+                    {
+                        $fila = $query -> fetch();
+                        $f_id_usuario = $fila['CONSECUTIVO'];
+                        return $f_id_usuario;
+                    }
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                }        
+                return TRUE;
+            }
             public function __clone()
             {
                 trigger_error('La clonación de este objeto no está permitida', E_USER_ERROR);
@@ -217,7 +240,7 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 0";
+                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 0 and datediff(datefin,dateInicio) <3 group by id_vacante";
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
 
@@ -237,7 +260,7 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 1 ";
+                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 1 and datediff(datefin,dateInicio) <3 group by id_vacante ";
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
 
