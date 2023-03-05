@@ -13,6 +13,9 @@ $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
 $_findPais = Functions::singleton_functions();
 $_pais = $_findPais->buscaPaises();
+$nuevoSingleton = Functions::singleton_functions();
+$iusuario = $_SESSION['iusuario'];
+$notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuario);
 $alerta = '';
 if(isset($_POST['txtpuesto'])&& isset($_POST['txtsueldo'])&& isset($_POST['cmbpais'])&& isset($_POST['txtdatos'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud'])&& isset($_POST['dateInicio'])&& isset($_POST['dateFin']))
 {
@@ -42,6 +45,17 @@ if(isset($_POST['txtpuesto'])&& isset($_POST['txtsueldo'])&& isset($_POST['cmbpa
 		type: 'success',
 	  });</script>";
 
+    if($notificacionpostulaciones==1)
+    {
+    $COUNTPOS=1;
+    }
+    else 
+    {
+    $COUNTPOS=0;
+    }
+    $ECOUNT = $COUNTPOS;
+    $smarty->assign("COUNTPOS",$COUNTPOS);
+    $smarty->assign("ECOUNT",$ECOUNT);
 	$smarty->assign("titulo",$titulo);
 	$smarty->assign("alerta",$alerta);
     $smarty->assign("Paises",$_pais);
@@ -49,6 +63,17 @@ if(isset($_POST['txtpuesto'])&& isset($_POST['txtsueldo'])&& isset($_POST['cmbpa
 
 } else
 {
+    if($notificacionpostulaciones==1)
+    {
+    $COUNTPOS=1;
+    }
+    else 
+    {
+    $COUNTPOS=0;
+    }
+    $ECOUNT = $COUNTPOS;
+    $smarty->assign("COUNTPOS",$COUNTPOS);
+    $smarty->assign("ECOUNT",$ECOUNT);
     $smarty->assign("titulo", $titulo);
     $smarty->assign("alerta",$alerta);
     $smarty->assign("Paises",$_pais);

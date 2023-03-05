@@ -585,6 +585,37 @@ require_once('conexion.class.php');
                 return $data;
                 
             }
+            function notificacionpostulaciones($iusuario)
+            {
+                try
+                {
+                
+                    $sql = "SELECT a.id_postulacion FROM tbl_postulacion AS a INNER JOIN tbl_vacantes AS b ON a.id_vacante = b.id_vacante WHERE b.id_empresa = :DU_ID;";
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(":DU_ID",$iusuario);
+                    $query->execute();
+                    //$this->dbh = null;
+                    $numeroDeFilas = $query->rowCount();
+                    //si existe el usuario
+                    $data;
+                    if($numeroDeFilas >= 1)
+                    {
+                        $data = 1;
+                    }
+                    else {
+                        $data = 0;
+                    } 
+                    
+                }
+                catch(PDOException $e)
+                {
+                
+                    print "Error!: " . $e->getMessage();
+                        
+                }  
+                return $data;
+                
+            }
             // function notificacionvacantes($iusuario)
             // {
             //     try
