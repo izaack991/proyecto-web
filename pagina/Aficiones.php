@@ -80,7 +80,14 @@ if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlon
 		text: 'Se guardo correctamente aficiones',
 		type: 'success',
 	  });</script>";
-
+      $smarty->assign("COUNTLAB",$COUNTLAB);
+      $smarty->assign("COUNFOR",$COUNFOR);
+      $smarty->assign("COUNTAFI",$COUNTAFI);
+      $smarty->assign("COUNTINT",$COUNTINT);
+      $smarty->assign("COUNT",$COUNT);
+      $smarty->assign("iusuario",$iusuario);
+      $smarty->assign("titulo",$titulo);
+      $smarty->assign("alerta",$alerta);
 	$smarty->assign("titulo",$titulo);
 	$smarty->assign("alerta",$alerta);
 	$smarty->display("../smarty/templates/Aficiones.tpl");
@@ -91,14 +98,15 @@ if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlon
             text: 'Esa aficion ya se encuentra registrada',
             type: 'success',
           });</script>";
+
           $smarty->assign("COUNTLAB",$COUNTLAB);
           $smarty->assign("COUNFOR",$COUNFOR);
           $smarty->assign("COUNTAFI",$COUNTAFI);
           $smarty->assign("COUNTINT",$COUNTINT);
           $smarty->assign("COUNT",$COUNT);
           $smarty->assign("iusuario",$iusuario);
-        $smarty->assign("titulo",$titulo);
-        $smarty->assign("alerta",$alerta);
+          $smarty->assign("titulo",$titulo);
+          $smarty->assign("alerta",$alerta);
         $smarty->display("../smarty/templates/Aficiones.tpl");
     }
 }
