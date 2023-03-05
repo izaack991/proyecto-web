@@ -74,7 +74,12 @@ if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlon
 		text: 'Se guardo correctamente el interes',
 		type: 'success',
 	  });</script>";
-
+	  $smarty->assign("COUNTLAB",$COUNTLAB);
+	  $smarty->assign("COUNFOR",$COUNFOR);
+	  $smarty->assign("COUNTAFI",$COUNTAFI);
+	  $smarty->assign("COUNTINT",$COUNTINT);
+	  $smarty->assign("COUNT",$COUNT);
+	  $smarty->assign("iusuario",$iusuario);
 	$smarty->assign("titulo",$titulo);
 	$smarty->assign("alerta",$alerta);
 	$smarty->display("../smarty/templates/interes.tpl");

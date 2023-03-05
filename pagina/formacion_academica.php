@@ -78,7 +78,13 @@ if(isset($_POST['descripcion'])&& isset($_POST['ubicacion'])&&isset($_POST['peri
 		text: 'Guardo correctamente el formacion academica',
 		type: 'success',
 	  });</script>";
-
+      
+      $smarty->assign("COUNTLAB",$COUNTLAB);
+      $smarty->assign("COUNFOR",$COUNFOR);
+      $smarty->assign("COUNTAFI",$COUNTAFI);
+      $smarty->assign("COUNTINT",$COUNTINT);
+      $smarty->assign("COUNT",$COUNT);
+      $smarty->assign("iusuario",$iusuario);
 	$smarty->assign("titulo",$titulo);
 	$smarty->assign("alerta",$alerta);
     $smarty->display("../smarty/templates/formacion_academica.tpl");	
