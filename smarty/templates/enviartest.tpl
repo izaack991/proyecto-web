@@ -86,7 +86,7 @@
            </div>
 </div>
           <div class="col align-self-center">
-          <input class="btn btn-primary" name="btnenviar" type="submit" value="ENVIAR TEST"  style="max-width: 30rem; margin:auto; margin-top:30px;">
+          <input class="btn btn-primary" name="btnenviar" type="submit" value="ENVIAR TEST"  style="max-width: 30rem; margin:auto; margin-top:-10px;">
 </div>
  </div>
   </form>

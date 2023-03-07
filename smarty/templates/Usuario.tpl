@@ -53,7 +53,7 @@
                         <br>
                         <div class="form-group col-md-6">
                             <label>CURP: *</label><br>
-                            <input class="form-control" type="text" id="curp"name="txt_CURP" oninput="validarInput(this)" style="width:100%;" placeholder="Ingrese su CURP">
+                            <input class="form-control" type="text" id="curp"name="txt_CURP" oninput="validarInput(this)" maxLength="18" minLength="18" pattern="[A-Z0-9]+" style="width:100%;" placeholder="Ingrese su CURP">
                             <pre id="resultado"></pre>
                         </div>
                     </div>
