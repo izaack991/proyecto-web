@@ -147,7 +147,7 @@
                     <input type="image" src="../pagina/img/SJTimg.jpeg" height="183" width="376"/>
                 </figure>
                 <center>
-                    <a href="indexPrincipal.php"><button class="btn btn-light" type="button">Iniciar test</button></a>
+                    <a href="test_sjt.php"><button class="btn btn-light" type="button">Iniciar test</button></a>
                 <center>
             </div>
         </div>
