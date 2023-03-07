@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio de sesion</title>
+  <title>Test de Raven</title>
   <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
   <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
@@ -105,7 +105,7 @@
   <div class="card border-primary shadow p-3 mb-5 bg-body rounded"
     style="max-width: 60rem; margin:auto; margin-top:30px;">
     <div class="card-header text-center">
-      <h4 class="card-title">TEST DE MOSS</h4>
+      <h4 class="card-title">TEST DE RAVEN</h4>
     </div>
     <center>
       <div class="card-body">
@@ -117,7 +117,7 @@
             </td>
           </tr>
         </table><br>
-        <p><b>INSTRUCCIONES:</b> Para cada uno de los problemas siguientes, se sugieren cuatro
+        <p><b>INSTRUCCIONES:</b> Para cada uno de los problemas siguientes, se sugieren algunas
           respuestas. Marque en la hoja de respuestas con una cruz el espacio que corresponda a
           la solución que usted considere más acertada. No marque más de una.</p>
       </div>
