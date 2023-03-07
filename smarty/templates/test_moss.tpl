@@ -31,7 +31,7 @@
   </style>
 </head>
 <script type="text/javascript">
-  var timeLimit = 0.1; //tiempo en minutos
+  var timeLimit = 20; //tiempo en minutos
   var conteo = new Date(timeLimit * 60000);
 
   function inicializar() {

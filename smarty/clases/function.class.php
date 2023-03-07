@@ -240,7 +240,7 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 0 and datediff(datefin,dateInicio) <3 group by id_vacante";
+                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 0 and datediff(datefin,dateInicio) <3 group by id_vacante and WHERE tbl_vacantes.id_empresa=$_idusuario;";
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
 
