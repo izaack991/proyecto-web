@@ -114,29 +114,6 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
-            function _vacantes()
-            {
-                try
-                {
-                    $sql = "SELECT IFNULL(MAX(id_vacante), 0) + 1 AS CONSECUTIVO FROM tbl_vacantes";
-                    $query = $this->dbh->prepare($sql);
-                    $query -> execute();
-                    //this->dbh = null;
-
-                    //si existe el usuario
-                    if($query -> rowCount() == 1)
-                    {
-                        $fila = $query -> fetch();
-                        $f_id_usuario = $fila['CONSECUTIVO'];
-                        return $f_id_usuario;
-                    }
-                }
-                catch(PDOException $e){
-                    
-                    print "Error!: " . $e->getMessage();
-                }        
-                return TRUE;
-            }
             public function __clone()
             {
                 trigger_error('La clonación de este objeto no está permitida', E_USER_ERROR);
@@ -240,8 +217,12 @@ require_once('conexion.class.php');
             {
                 try
                 {
+<<<<<<< HEAD
                     $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 0 and datediff(datefin,dateInicio) <>3  AND status = 1
                     group by id_vacante";
+=======
+                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 0";
+>>>>>>> 5d0cfda9e12e0837177b9dceaf68eb1d6b7bb9a7
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
 
@@ -261,8 +242,12 @@ require_once('conexion.class.php');
             {
                 try
                 {
+<<<<<<< HEAD
                     $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 0 and datediff(datefin,dateInicio) <>3  AND status = 1
                     group by id_vacante ";
+=======
+                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 1 ";
+>>>>>>> 5d0cfda9e12e0837177b9dceaf68eb1d6b7bb9a7
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
 
@@ -282,7 +267,7 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                    $sql = "SELECT tbl_postulacion.*, CONCAT(tbl_usuario.nombre,' ',tbl_usuario.apellido) AS nombreUsuario, tbl_usuario.correo, tbl_vacantes.puesto FROM tbl_postulacion INNER JOIN tbl_usuario ON tbl_postulacion.id_usuario = tbl_usuario.id_usuario INNER JOIN tbl_vacantes ON tbl_postulacion.id_vacante = tbl_vacantes.id_vacante WHERE tbl_vacantes.id_empresa=$_idusuario;;";
+                    $sql = "SELECT tbl_postulacion.*, CONCAT(tbl_usuario.nombre,' ',tbl_usuario.apellido) AS nombreUsuario, tbl_usuario.correo, tbl_vacantes.puesto FROM tbl_postulacion INNER JOIN tbl_usuario ON tbl_postulacion.id_usuario = tbl_usuario.id_usuario INNER JOIN tbl_vacantes ON tbl_postulacion.id_vacante = tbl_vacantes.id_vacante WHERE tbl_postulacion.id_vacante=$_idusuario;";
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
 
@@ -587,37 +572,6 @@ require_once('conexion.class.php');
                 return $data;
                 
             }
-            function notificacionpostulaciones($iusuario)
-            {
-                try
-                {
-                
-                    $sql = "SELECT a.id_postulacion FROM tbl_postulacion AS a INNER JOIN tbl_vacantes AS b ON a.id_vacante = b.id_vacante WHERE b.id_empresa = :DU_ID;";
-                    $query = $this->dbh->prepare($sql);
-                    $query->bindParam(":DU_ID",$iusuario);
-                    $query->execute();
-                    //$this->dbh = null;
-                    $numeroDeFilas = $query->rowCount();
-                    //si existe el usuario
-                    $data;
-                    if($numeroDeFilas >= 1)
-                    {
-                        $data = $numeroDeFilas;
-                    }
-                    else {
-                        $data = 0;
-                    } 
-                    
-                }
-                catch(PDOException $e)
-                {
-                
-                    print "Error!: " . $e->getMessage();
-                        
-                }  
-                return $data;
-                
-            }
             // function notificacionvacantes($iusuario)
             // {
             //     try
@@ -755,6 +709,54 @@ require_once('conexion.class.php');
                     
                 }        
                 return TRUE;
+        }
+        public function consec_merril()
+        {
+            try
+            {
+                $sql = "SELECT IFNULL(MAX(id),0) + 1 AS CONSECUTIVO FROM tbl_terman_merril";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+    
+                if($query->rowCount() == 1)
+                {
+                    $fila = $query->fetch();
+                    $id_merril = $fila['CONSECUTIVO'];
+                    return $id_merril;
+                }
+            }
+                
+            catch(PDOExeption $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
+        }
+        public function val_merril($_idusuario)
+        {
+            try
+            {
+                $sql = "SELECT * FROM tbl_terman_merril where id_usuario ='$_idusuario' ";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+    
+                if($query->rowCount() >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+                
+            catch(PDOExeption $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
         }
                         
 }
