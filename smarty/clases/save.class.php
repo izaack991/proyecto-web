@@ -450,6 +450,34 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+            public function guardar_merril($id,$_idusuario, $serie_1,  $serie_2, $serie_3, $serie_4, $serie_5, $serie_6, $serie_7, $serie_8)
+            {        
+                try {
+                    
+                    $sql="insert into tbl_terman_merril values(:id,:id_u,:serie_1,:serie_2,:serie_3,:serie_4,:serie_5,:serie_6,:serie_7,:serie_8)";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':id',$id);
+                    $query->bindParam(':id_u',$_idusuario);
+                    $query->bindParam(':serie_1',$serie_1);
+                    $query->bindParam(':serie_2',$serie_2);
+                    $query->bindParam(':serie_3',$serie_3);
+                    $query->bindParam(':serie_4',$serie_4);
+                    $query->bindParam(':serie_5',$serie_5);
+                    $query->bindParam(':serie_6',$serie_6);
+                    $query->bindParam(':serie_7',$serie_7);
+                    $query->bindParam(':serie_8',$serie_8);
+                    $query->execute();
+                    $this->dbh = null;
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+                
+            }
             
     }
    
