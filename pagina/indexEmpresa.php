@@ -9,9 +9,9 @@ $iusuario = $_SESSION['iusuario'];
 $notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuario);
 
 
-if($notificacionpostulaciones==1)
+if($notificacionpostulaciones>=1)
 {
-    $COUNTPOS=1;
+    $COUNTPOS=$notificacionpostulaciones;
 }
 else 
 {

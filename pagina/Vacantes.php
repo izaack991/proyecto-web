@@ -45,9 +45,9 @@ if(isset($_POST['txtpuesto'])&& isset($_POST['txtsueldo'])&& isset($_POST['cmbpa
 		type: 'success',
 	  });</script>";
 
-    if($notificacionpostulaciones==1)
+    if($notificacionpostulaciones>=1)
     {
-    $COUNTPOS=1;
+    $COUNTPOS=$notificacionpostulaciones;
     }
     else 
     {
@@ -63,9 +63,9 @@ if(isset($_POST['txtpuesto'])&& isset($_POST['txtsueldo'])&& isset($_POST['cmbpa
 
 } else
 {
-    if($notificacionpostulaciones==1)
+    if($notificacionpostulaciones>=1)
     {
-    $COUNTPOS=1;
+    $COUNTPOS=$notificacionpostulaciones;
     }
     else 
     {

@@ -600,7 +600,7 @@ require_once('conexion.class.php');
                     $data;
                     if($numeroDeFilas >= 1)
                     {
-                        $data = 1;
+                        $data = $numeroDeFilas;
                     }
                     else {
                         $data = 0;

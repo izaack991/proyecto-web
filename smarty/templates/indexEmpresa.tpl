@@ -31,7 +31,7 @@
 										<a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" data-toggle="modal" data-target="#exampleModal">
 										<span class="fa-layers fa-fw mr-2 fa-lg">
 											<i class="fas fa-bell"></i>
-											<span class="fa-layers-counter" style="background:Tomato">{$ECOUNT}</span>
+											<span class="fa-layers-counter" style="background:Tomato">{$COUNTPOS}</span>
 										</span>{$smarty.session.nomusuario}</a></li>
                     {else}
                       <li class="nav-link active">{$smarty.session.nomusuario}</li>
@@ -48,7 +48,7 @@
 							</div>
 							<div class="modal-body">
 								{if $COUNTPOS >= 1}
-									<a class="nav-link" href="postulacion.php" style="color: blue;">Tienes postulaciones nuevas</a>
+									<a class="nav-link" href="postulacion.php" style="color: blue;">Tienes {$COUNTPOS} postulaciones pendientes</a>
 								{/if}
 							</div>
 							<div class="modal-footer">
