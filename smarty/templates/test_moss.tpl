@@ -30,7 +30,6 @@
     }
   </style>
 </head>
-
 <body onload="cuenta()">
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
@@ -74,14 +73,10 @@
     </div>
     <center>
       <div class="card-body">
-        <h5 style="color: #20c997;">Tiempo limite: </h5>
-        <table border=0 cellspacing=0 cellpadding=0>
-          <tr>
-            <td>
-              <div class="tiempo" style="font-size: x-large;font-weight:bold;" id="cuenta">20:00</div>
-            </td>
-          </tr>
-        </table><br>
+      <h5 style="color: #20c997;">Tiempo limite: <p class="tiempo" id="minuto" style="display: inline;"></p>
+      <p style="display: inline;" class="tiempo"> : </p>
+      <p class="tiempo" style="display: inline;" id="contador"></p>
+    </h5><br>
         <p><b>INSTRUCCIONES:</b> Para cada uno de los problemas siguientes, se sugieren cuatro
           respuestas. Marque en la hoja de respuestas con una cruz el espacio que corresponda a
           la solución que usted considere más acertada. No marque más de una.</p>
@@ -94,11 +89,12 @@
             relaciones amistosas y cordiales con sus nuevos compañeros será:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg1" id="preg1" value="A" /> Evitando tomar nota de los errores en que
+            <input type="radio" name="preg1" id="preg1" value="A" /> Evitando tomar nota de los errores en que
             incurran<br />
-            <input  type="radio" name="preg1" id="preg1" value="B" /> Hablando bien de ellos al jefe<br />
-            <input  type="radio" name="preg1" id="preg1" value="C" /> Mostrando interés en el trabajo de ellos<br />
-            <input  type="radio" name="preg1" id="preg1" value="D" /> Pidiendoles les permitan hacer los trabajos que usted
+            <input type="radio" name="preg1" id="preg1" value="B" /> Hablando bien de ellos al jefe<br />
+            <input type="radio" name="preg1" id="preg1" value="C" /> Mostrando interés en el trabajo de ellos<br />
+            <input type="radio" name="preg1" id="preg1" value="D" /> Pidiendoles les permitan hacer los trabajos que
+            usted
             puede hacer mejor<br />
           </div>
         </div>
@@ -107,12 +103,13 @@
             trabajo, sus quejas producen mal efecto en los demás empleados, lo mejor sería:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg2" id="preg2" value="A" /> Pedir a los demás empleados que no hagan caso<br />
-            <input  type="radio" name="preg2" id="preg2" value="B" /> Averiguar la causa de esa actitud y procurar su
+            <input type="radio" name="preg2" id="preg2" value="A" /> Pedir a los demás empleados que no hagan caso<br />
+            <input type="radio" name="preg2" id="preg2" value="B" /> Averiguar la causa de esa actitud y procurar su
             modificación<br />
-            <input  type="radio" name="preg2" id="preg2" value="C" /> Cambiarlo de departamento donde quede a cargo de otro
+            <input type="radio" name="preg2" id="preg2" value="C" /> Cambiarlo de departamento donde quede a cargo de
+            otro
             jefe<br />
-            <input  type="radio" name="preg2" id="preg2" value="D" /> Permitirle planear lo más posible acerca de su
+            <input type="radio" name="preg2" id="preg2" value="D" /> Permitirle planear lo más posible acerca de su
             trabajo<br />
           </div>
         </div>
@@ -121,13 +118,13 @@
             queja del exceso de trabajo. Lo mejor sería:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg3" value="A" /> Decirle que vuelva a su trabajo porque si no será
+            <input type="radio" name="preg3" value="A" /> Decirle que vuelva a su trabajo porque si no será
             despedido<br />
-            <input  type="radio" name="preg3" value="B" /> Despedirlo, substituyendolo por alguien más
+            <input type="radio" name="preg3" value="B" /> Despedirlo, substituyendolo por alguien más
             joven<br />
-            <input  type="radio" name="preg3" value="C" /> Darle un aumento de sueldo que evite que continúe
+            <input type="radio" name="preg3" value="C" /> Darle un aumento de sueldo que evite que continúe
             quejandose<br />
-            <input  type="radio" name="preg3" value="D" /> Aminorar su trabajo<br />
+            <input type="radio" name="preg3" value="D" /> Aminorar su trabajo<br />
           </div>
         </div>
         <div class="pregresp">
@@ -135,13 +132,13 @@
             distinta de lo que planeaba. ¿Qué haría usted?<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg4" value="A" /> Acatar la orden y no armar mayor revuelo<br />
-            <input  type="radio" name="preg4" value="B" /> Ignorar las indicaciones y hacerlo según había
+            <input type="radio" name="preg4" value="A" /> Acatar la orden y no armar mayor revuelo<br />
+            <input type="radio" name="preg4" value="B" /> Ignorar las indicaciones y hacerlo según había
             planeado<br />
-            <input  type="radio" name="preg4" value="C" /> Decirle que esto no es asunto que a usted le interesa
+            <input type="radio" name="preg4" value="C" /> Decirle que esto no es asunto que a usted le interesa
             y que usted hará las cosas a
             su modo<br />
-            <input  type="radio" name="preg4" value="D" /> Decirle que lo haga él mismo<br />
+            <input type="radio" name="preg4" value="D" /> Decirle que lo haga él mismo<br />
           </div>
         </div>
         <div class="pregresp">
@@ -149,11 +146,11 @@
             sería:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg5" value="A" /> Platicarle sus diversiones recientes<br />
-            <input  type="radio" name="preg5" value="B" /> Platicarle nuevas cosas referentes a sus amigos
+            <input type="radio" name="preg5" value="A" /> Platicarle sus diversiones recientes<br />
+            <input type="radio" name="preg5" value="B" /> Platicarle nuevas cosas referentes a sus amigos
             mutuos<br />
-            <input  type="radio" name="preg5" value="C" /> Comentar su enfermedad<br />
-            <input  type="radio" name="preg5" value="D" /> Enfatizar lo mucho que le apena verle enfermo<br />
+            <input type="radio" name="preg5" value="C" /> Comentar su enfermedad<br />
+            <input type="radio" name="preg5" value="D" /> Enfatizar lo mucho que le apena verle enfermo<br />
           </div>
         </div>
         <div class="pregresp">
@@ -161,14 +158,14 @@
             carrera pero que sea compatible con el horario de su trabajo. Lo mejor sería:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg6" value="A" /> Continuar normalmente su carrera e informar al jefe
+            <input type="radio" name="preg6" value="A" /> Continuar normalmente su carrera e informar al jefe
             sí pregunta<br />
-            <input  type="radio" name="preg6" value="B" /> Explicar la situación u obtener su opinión en cuanto
+            <input type="radio" name="preg6" value="B" /> Explicar la situación u obtener su opinión en cuanto
             a la importancia relativa de
             ambas situaciones<br />
-            <input  type="radio" name="preg6" value="C" /> Dejar la escuela en relación a los intereses del
+            <input type="radio" name="preg6" value="C" /> Dejar la escuela en relación a los intereses del
             trabajo<br />
-            <input  type="radio" name="preg6" value="D" /> Asistir en forma alterna y no hacer comentarios<br />
+            <input type="radio" name="preg6" value="D" /> Asistir en forma alterna y no hacer comentarios<br />
           </div>
         </div>
         <div class="pregresp">
@@ -176,10 +173,10 @@
             sentar raíces. Se le cambia a las oficinas generales. Es de esperar que:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg7" value="A" /> Guste de los descansos del trabajo de oficina<br />
-            <input  type="radio" name="preg7" value="B" /> Se sienta inquieto por la rutina de la oficina<br />
-            <input  type="radio" name="preg7" value="C" /> Busque otro trabajo<br />
-            <input  type="radio" name="preg7" value="D" /> Resulte muy ineficiente en el trabajo de
+            <input type="radio" name="preg7" value="A" /> Guste de los descansos del trabajo de oficina<br />
+            <input type="radio" name="preg7" value="B" /> Se sienta inquieto por la rutina de la oficina<br />
+            <input type="radio" name="preg7" value="C" /> Busque otro trabajo<br />
+            <input type="radio" name="preg7" value="D" /> Resulte muy ineficiente en el trabajo de
             oficina<br />
           </div>
         </div>
@@ -188,12 +185,12 @@
             acalorada discusión respecto a la política. Lo mejor sería:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg8" value="A" /> Tomar partido<br />
-            <input  type="radio" name="preg8" value="B" /> Intentar cambiar de tema<br />
-            <input  type="radio" name="preg8" value="C" /> Intervenir dando los propios puntos de vista y
+            <input type="radio" name="preg8" value="A" /> Tomar partido<br />
+            <input type="radio" name="preg8" value="B" /> Intentar cambiar de tema<br />
+            <input type="radio" name="preg8" value="C" /> Intervenir dando los propios puntos de vista y
             mostrar donde ambos pecan de
             extremosos<br />
-            <input  type="radio" name="preg8" value="D" /> Pedir cambien de tema para evitar mayor
+            <input type="radio" name="preg8" value="D" /> Pedir cambien de tema para evitar mayor
             discusión<br />
           </div>
         </div>
@@ -202,11 +199,11 @@
             cartera. Sería mejor:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg9" value="A" /> Tratar de obtener boletos dejando el reloj en
+            <input type="radio" name="preg9" value="A" /> Tratar de obtener boletos dejando el reloj en
             prenda<br />
-            <input  type="radio" name="preg9" value="B" /> Buscar a algún amigo a quien pedir prestado<br />
-            <input  type="radio" name="preg9" value="C" /> Decidir de acuerdo con ella lo procedente<br />
-            <input  type="radio" name="preg9" value="D" /> Dar una excusa plausible para ir a casa por
+            <input type="radio" name="preg9" value="B" /> Buscar a algún amigo a quien pedir prestado<br />
+            <input type="radio" name="preg9" value="C" /> Decidir de acuerdo con ella lo procedente<br />
+            <input type="radio" name="preg9" value="D" /> Dar una excusa plausible para ir a casa por
             dinero<br />
           </div>
         </div>
@@ -215,14 +212,14 @@
             empleo. La mejor forma de relacionarse con los empleados del departamento seria.<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg10" value="A" /> Permitirle hacer la mayoría de las ventas por unos
+            <input type="radio" name="preg10" value="A" /> Permitirle hacer la mayoría de las ventas por unos
             días en tanto observa sus
             métodos<br />
-            <input  type="radio" name="preg10" value="B" /> Tratar de instituir los métodos que anteriormente le
+            <input type="radio" name="preg10" value="B" /> Tratar de instituir los métodos que anteriormente le
             fueron útiles<br />
-            <input  type="radio" name="preg10" value="C" /> Adaptarse mejor a las condiciones y aceptar consejos
+            <input type="radio" name="preg10" value="C" /> Adaptarse mejor a las condiciones y aceptar consejos
             de sus compañeros<br />
-            <input  type="radio" name="preg10" value="D" /> Pedir al jefe todo el consejo necesario<br />
+            <input type="radio" name="preg10" value="D" /> Pedir al jefe todo el consejo necesario<br />
           </div>
         </div>
         <div class="pregresp">
@@ -230,10 +227,10 @@
             superficialmente. Lo mejor sería iniciar la conversación acerca de:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg11" value="A" /> Algún tópico de actualidad<br />
-            <input  type="radio" name="preg11" value="B" /> Algún aspecto interesante de su propio trabajo<br />
-            <input  type="radio" name="preg11" value="C" /> Las tendencias actuales en el terreno docente<br />
-            <input  type="radio" name="preg11" value="D" /> Las sociedades de padres de familia<br />
+            <input type="radio" name="preg11" value="A" /> Algún tópico de actualidad<br />
+            <input type="radio" name="preg11" value="B" /> Algún aspecto interesante de su propio trabajo<br />
+            <input type="radio" name="preg11" value="C" /> Las tendencias actuales en el terreno docente<br />
+            <input type="radio" name="preg11" value="D" /> Las sociedades de padres de familia<br />
           </div>
         </div>
         <div class="pregresp">
@@ -242,11 +239,11 @@
             población. Es de esperarse que ella:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg12" value="A" /> Se sienta insatisfecha de su nuevo hogar<br />
-            <input  type="radio" name="preg12" value="B" /> Se interese más por los trabajos domésticos<br />
-            <input  type="radio" name="preg12" value="C" /> Intervenga poco a poco en la vida de la comunidad,
+            <input type="radio" name="preg12" value="A" /> Se sienta insatisfecha de su nuevo hogar<br />
+            <input type="radio" name="preg12" value="B" /> Se interese más por los trabajos domésticos<br />
+            <input type="radio" name="preg12" value="C" /> Intervenga poco a poco en la vida de la comunidad,
             continuando así sus intereses<br />
-            <input  type="radio" name="preg12" value="D" /> Adopte nuevos intereses en la nueva comunidad<br />
+            <input type="radio" name="preg12" value="D" /> Adopte nuevos intereses en la nueva comunidad<br />
           </div>
         </div>
         <div class="pregresp">
@@ -254,12 +251,12 @@
             forma de lograrlo sería:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg13" value="A" /> Haciendole creer que será él quien se beneficie
+            <input type="radio" name="preg13" value="A" /> Haciendole creer que será él quien se beneficie
             más<br />
-            <input  type="radio" name="preg13" value="B" /> Enfatice la importancia que para usted tiene que se
+            <input type="radio" name="preg13" value="B" /> Enfatice la importancia que para usted tiene que se
             le conceda<br />
-            <input  type="radio" name="preg13" value="C" /> Ofrecer algo de retribución<br />
-            <input  type="radio" name="preg13" value="D" /> Decir que lo que desea en forma breve indicando los
+            <input type="radio" name="preg13" value="C" /> Ofrecer algo de retribución<br />
+            <input type="radio" name="preg13" value="D" /> Decir que lo que desea en forma breve indicando los
             motivos<br />
           </div>
         </div>
@@ -268,11 +265,11 @@
             ver que así no logrará al éxito en el trabajo. Probablemente cambie sus costumbres. Si:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg14" value="A" /> Sus hábitos nocturnos lesionan su salud<br />
-            <input  type="radio" name="preg14" value="B" /> Sus amigos enfatizan el daño que se hace a sí
+            <input type="radio" name="preg14" value="A" /> Sus hábitos nocturnos lesionan su salud<br />
+            <input type="radio" name="preg14" value="B" /> Sus amigos enfatizan el daño que se hace a sí
             mismo<br />
-            <input  type="radio" name="preg14" value="C" /> Su jefe se da cuenta y lo previene<br />
-            <input  type="radio" name="preg14" value="D" /> Se interesa en el desarrollo de alguna fase de su
+            <input type="radio" name="preg14" value="C" /> Su jefe se da cuenta y lo previene<br />
+            <input type="radio" name="preg14" value="D" /> Se interesa en el desarrollo de alguna fase de su
             trabajo<br />
           </div>
         </div>
@@ -282,13 +279,13 @@
             forma de readaptar la situación sin ofenderle sería:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg15" value="A" /> Explicar el daño que se está causando<br />
-            <input  type="radio" name="preg15" value="B" /> Pedir a un amigo mutuo que trate de arreglar las
+            <input type="radio" name="preg15" value="A" /> Explicar el daño que se está causando<br />
+            <input type="radio" name="preg15" value="B" /> Pedir a un amigo mutuo que trate de arreglar las
             cosas<br />
-            <input  type="radio" name="preg15" value="C" /> Ayudarle una vez más pero de tal manera que sienta
+            <input type="radio" name="preg15" value="C" /> Ayudarle una vez más pero de tal manera que sienta
             que mejor hubiera sido no
             haberlo solicitado<br />
-            <input  type="radio" name="preg15" value="D" /> Darle una excusa para no seguir ayudandole<br />
+            <input type="radio" name="preg15" value="D" /> Darle una excusa para no seguir ayudandole<br />
           </div>
         </div>
         <div class="pregresp">
@@ -296,14 +293,14 @@
             metas y la buena voluntad de los empleados:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg16" value="A" /> Tratando de que cada empleado entienda qué es la
+            <input type="radio" name="preg16" value="A" /> Tratando de que cada empleado entienda qué es la
             verdadera eficiencia<br />
-            <input  type="radio" name="preg16" value="B" /> Ascendiendo cuanto antes a quienes considere lo
+            <input type="radio" name="preg16" value="B" /> Ascendiendo cuanto antes a quienes considere lo
             merezcan<br />
-            <input  type="radio" name="preg16" value="C" /> Preguntando confidencialmente a cada empleado en
+            <input type="radio" name="preg16" value="C" /> Preguntando confidencialmente a cada empleado en
             cuanto a los cambios que
             estiman necesarios<br />
-            <input  type="radio" name="preg16" value="D" /> Seguir los sistemas del anterior jefe y gradualmente
+            <input type="radio" name="preg16" value="D" /> Seguir los sistemas del anterior jefe y gradualmente
             hacer los cambios necesarios<br />
           </div>
         </div>
@@ -313,10 +310,10 @@
             antes de las 17:30, sería mejor:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg17" value="A" /> Pedirle un taxi<br />
-            <input  type="radio" name="preg17" value="B" /> Explicarle y dejar que él decida<br />
-            <input  type="radio" name="preg17" value="C" /> Pedirle que espere hasta las 17:30 horas<br />
-            <input  type="radio" name="preg17" value="D" /> Proponerle que se lleve su auto<br />
+            <input type="radio" name="preg17" value="A" /> Pedirle un taxi<br />
+            <input type="radio" name="preg17" value="B" /> Explicarle y dejar que él decida<br />
+            <input type="radio" name="preg17" value="C" /> Pedirle que espere hasta las 17:30 horas<br />
+            <input type="radio" name="preg17" value="D" /> Proponerle que se lleve su auto<br />
           </div>
         </div>
         <div class="pregresp">
@@ -324,10 +321,10 @@
             Lo mejor sería:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg18" value="A" /> Despedir al menos eficiente<br />
-            <input  type="radio" name="preg18" value="B" /> Dar trabajo en común que a ambos interese<br />
-            <input  type="radio" name="preg18" value="C" /> Hacerles ver el daño que se hacen<br />
-            <input  type="radio" name="preg18" value="D" /> Darles trabajos distintos<br />
+            <input type="radio" name="preg18" value="A" /> Despedir al menos eficiente<br />
+            <input type="radio" name="preg18" value="B" /> Dar trabajo en común que a ambos interese<br />
+            <input type="radio" name="preg18" value="C" /> Hacerles ver el daño que se hacen<br />
+            <input type="radio" name="preg18" value="D" /> Darles trabajos distintos<br />
           </div>
         </div>
         <div class="pregresp">
@@ -336,12 +333,12 @@
             vaya. De obtener el trabajo en otra empresa, muy probablemente:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg19" value="A" /> Asuma fácilmente responsabilidad como
+            <input type="radio" name="preg19" value="A" /> Asuma fácilmente responsabilidad como
             supervisor<br />
-            <input  type="radio" name="preg19" value="B" /> Haga ver de inmediato su valor<br />
-            <input  type="radio" name="preg19" value="C" /> Sea lento para abrirse las necesarias
+            <input type="radio" name="preg19" value="B" /> Haga ver de inmediato su valor<br />
+            <input type="radio" name="preg19" value="C" /> Sea lento para abrirse las necesarias
             oportunidades<br />
-            <input  type="radio" name="preg19" value="D" /> Renuncie ante la más ligera crítica de su
+            <input type="radio" name="preg19" value="D" /> Renuncie ante la más ligera crítica de su
             trabajo<br />
           </div>
         </div>
@@ -351,10 +348,10 @@
             mejor sería:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg20" value="A" /> Cancelar la cena<br />
-            <input  type="radio" name="preg20" value="B" /> Encontrar quien lo sustituya<br />
-            <input  type="radio" name="preg20" value="C" /> Detallar los planes que tenía y evitarlos<br />
-            <input  type="radio" name="preg20" value="D" /> Enviar una nota explicando la causa de su
+            <input type="radio" name="preg20" value="A" /> Cancelar la cena<br />
+            <input type="radio" name="preg20" value="B" /> Encontrar quien lo sustituya<br />
+            <input type="radio" name="preg20" value="C" /> Detallar los planes que tenía y evitarlos<br />
+            <input type="radio" name="preg20" value="D" /> Enviar una nota explicando la causa de su
             ausencia<br />
           </div>
         </div>
@@ -363,11 +360,11 @@
             es aquel que:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg21" value="A" /> Ha sido bueno en puestos anteriores<br />
-            <input  type="radio" name="preg21" value="B" /> Ha tenido éxito durante 10 años en su puesto<br />
-            <input  type="radio" name="preg21" value="C" /> Tiene sus propias ideas e invariablemente se rige
+            <input type="radio" name="preg21" value="A" /> Ha sido bueno en puestos anteriores<br />
+            <input type="radio" name="preg21" value="B" /> Ha tenido éxito durante 10 años en su puesto<br />
+            <input type="radio" name="preg21" value="C" /> Tiene sus propias ideas e invariablemente se rige
             por ellas<br />
-            <input  type="radio" name="preg21" value="D" /> Cuenta con una buena recomendación de su jefe
+            <input type="radio" name="preg21" value="D" /> Cuenta con una buena recomendación de su jefe
             anterior<br />
           </div>
         </div>
@@ -377,10 +374,10 @@
             Lo mejor sería:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg22" value="A" /> Escuchar de manera cortés, pero aburrida<br />
-            <input  type="radio" name="preg22" value="B" /> Escuchar con fingido interés<br />
-            <input  type="radio" name="preg22" value="C" /> Decirle francamente que el tema no le interesa<br />
-            <input  type="radio" name="preg22" value="D" /> Mirar el reloj con impaciencia<br />
+            <input type="radio" name="preg22" value="A" /> Escuchar de manera cortés, pero aburrida<br />
+            <input type="radio" name="preg22" value="B" /> Escuchar con fingido interés<br />
+            <input type="radio" name="preg22" value="C" /> Decirle francamente que el tema no le interesa<br />
+            <input type="radio" name="preg22" value="D" /> Mirar el reloj con impaciencia<br />
           </div>
         </div>
         <div class="pregresp">
@@ -388,12 +385,12 @@
             lee en vez de trabajar. Lo mejor sería:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg23" value="A" /> Doblar el periódico y volver a trabajo<br />
-            <input  type="radio" name="preg23" value="B" /> Pretender que obtiene recortes necesarios al
+            <input type="radio" name="preg23" value="A" /> Doblar el periódico y volver a trabajo<br />
+            <input type="radio" name="preg23" value="B" /> Pretender que obtiene recortes necesarios al
             trabajo<br />
-            <input  type="radio" name="preg23" value="C" /> Tratar de interesar al jefe leyèndole un encabezado
+            <input type="radio" name="preg23" value="C" /> Tratar de interesar al jefe leyèndole un encabezado
             importante<br />
-            <input  type="radio" name="preg23" value="D" /> Seguir leyendo sin mostrar embarazo<br />
+            <input type="radio" name="preg23" value="D" /> Seguir leyendo sin mostrar embarazo<br />
           </div>
         </div>
         <div class="pregresp">
@@ -402,10 +399,10 @@
             administración de la escolar, usted debería:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg24" value="A" /> Castigarle ahí mismo por su indisciplina<br />
-            <input  type="radio" name="preg24" value="B" /> Decirles que de volverlo a hacer los castigará<br />
-            <input  type="radio" name="preg24" value="C" /> Pasar la queja a sus padres<br />
-            <input  type="radio" name="preg24" value="D" /> Tomarlo como broma y no hacer caso al respecto<br />
+            <input type="radio" name="preg24" value="A" /> Castigarle ahí mismo por su indisciplina<br />
+            <input type="radio" name="preg24" value="B" /> Decirles que de volverlo a hacer los castigará<br />
+            <input type="radio" name="preg24" value="C" /> Pasar la queja a sus padres<br />
+            <input type="radio" name="preg24" value="D" /> Tomarlo como broma y no hacer caso al respecto<br />
           </div>
         </div>
         <div class="pregresp">
@@ -413,12 +410,12 @@
             sido de escasa asistencia. Se mejoraría la asistencia:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg25" value="A" /> Visitando vecinos prominentes explicandoles los
+            <input type="radio" name="preg25" value="A" /> Visitando vecinos prominentes explicandoles los
             problemas<br />
-            <input  type="radio" name="preg25" value="B" /> Avisar de un programa interesante para la
+            <input type="radio" name="preg25" value="B" /> Avisar de un programa interesante para la
             reunión<br />
-            <input  type="radio" name="preg25" value="C" /> Poner avisos en los lugares públicos<br />
-            <input  type="radio" name="preg25" value="D" /> Enviar avisos personales<br />
+            <input type="radio" name="preg25" value="C" /> Poner avisos en los lugares públicos<br />
+            <input type="radio" name="preg25" value="D" /> Enviar avisos personales<br />
           </div>
         </div>
         <div class="pregresp">
@@ -426,10 +423,10 @@
             opina que la idea de Montoya ahorra tiempo. Probablemente Zaldìvar:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg26" value="A" /> Pida otro trabajo al jefe<br />
-            <input  type="radio" name="preg26" value="B" /> Lo haga a su modo sin comentarios<br />
-            <input  type="radio" name="preg26" value="C" /> Lo haga con Montoya, pero siga criticandolo<br />
-            <input  type="radio" name="preg26" value="D" /> Lo haga con Montoya, pero mal a propósito<br />
+            <input type="radio" name="preg26" value="A" /> Pida otro trabajo al jefe<br />
+            <input type="radio" name="preg26" value="B" /> Lo haga a su modo sin comentarios<br />
+            <input type="radio" name="preg26" value="C" /> Lo haga con Montoya, pero siga criticandolo<br />
+            <input type="radio" name="preg26" value="D" /> Lo haga con Montoya, pero mal a propósito<br />
           </div>
         </div>
         <div class="pregresp">
@@ -437,10 +434,10 @@
             directos le han impedido descollar los últimos 20 años, lo más probable es que:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg27" value="A" /> Persista en su manera de ser<br />
-            <input  type="radio" name="preg27" value="B" /> Cambie para lograr éxito<br />
-            <input  type="radio" name="preg27" value="C" /> Forme un nuevo partido político<br />
-            <input  type="radio" name="preg27" value="D" /> Abandone la política por inmoral<br />
+            <input type="radio" name="preg27" value="A" /> Persista en su manera de ser<br />
+            <input type="radio" name="preg27" value="B" /> Cambie para lograr éxito<br />
+            <input type="radio" name="preg27" value="C" /> Forme un nuevo partido político<br />
+            <input type="radio" name="preg27" value="D" /> Abandone la política por inmoral<br />
           </div>
         </div>
         <div class="pregresp">
@@ -448,10 +445,10 @@
             conoce y que parece haber estado llorando. Lo mejor sería:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg28" value="A" /> Preguntarle por qué está triste<br />
-            <input  type="radio" name="preg28" value="B" /> Pasarle el brazo consolandolamente<br />
-            <input  type="radio" name="preg28" value="C" /> Simular no advertir su pena<br />
-            <input  type="radio" name="preg28" value="D" /> Simular no haberla visto<br />
+            <input type="radio" name="preg28" value="A" /> Preguntarle por qué está triste<br />
+            <input type="radio" name="preg28" value="B" /> Pasarle el brazo consolandolamente<br />
+            <input type="radio" name="preg28" value="C" /> Simular no advertir su pena<br />
+            <input type="radio" name="preg28" value="D" /> Simular no haberla visto<br />
           </div>
         </div>
         <div class="pregresp">
@@ -459,13 +456,13 @@
             La mejor forma de conservar las relaciones sería:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg29" value="A" /> Explicar el caso al jefe cortésmente<br />
-            <input  type="radio" name="preg29" value="B" /> Cortésmente indicarle que debe hacer lo que le
+            <input type="radio" name="preg29" value="A" /> Explicar el caso al jefe cortésmente<br />
+            <input type="radio" name="preg29" value="B" /> Cortésmente indicarle que debe hacer lo que le
             corresponde o que usted se quejara
             con el jefe<br />
-            <input  type="radio" name="preg29" value="C" /> Hacer tanto como pueda eficientemente y no decir
+            <input type="radio" name="preg29" value="C" /> Hacer tanto como pueda eficientemente y no decir
             nada del caso al jefe<br />
-            <input  type="radio" name="preg29" value="D" /> Hacer lo suyo y dejar pendiente lo que el compañero
+            <input type="radio" name="preg29" value="D" /> Hacer lo suyo y dejar pendiente lo que el compañero
             no haga<br />
           </div>
         </div>
@@ -474,11 +471,11 @@
             la admiración de sus subordinados, sin perjuicio de sus planes, habría que:<br><br>
           </div>
           <div>
-            <input  type="radio" name="preg30" value="A" /> Ceder en todos los pequeños puntos posibles<br />
-            <input  type="radio" name="preg30" value="B" /> Tratar de convencerlos de todas sus ideas<br />
-            <input  type="radio" name="preg30" value="C" /> Ceder parcialmente en todas las cuestiones
+            <input type="radio" name="preg30" value="A" /> Ceder en todos los pequeños puntos posibles<br />
+            <input type="radio" name="preg30" value="B" /> Tratar de convencerlos de todas sus ideas<br />
+            <input type="radio" name="preg30" value="C" /> Ceder parcialmente en todas las cuestiones
             importantes<br />
-            <input  type="radio" name="preg30" value="D" /> Abogar por muchas reformas<br />
+            <input type="radio" name="preg30" value="D" /> Abogar por muchas reformas<br />
           </div>
         </div>
       </div>
@@ -497,7 +494,7 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
-
+  <script src="../smarty/js/contador-moss.js"></script>
 </body>
 
 </html>

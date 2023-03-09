@@ -217,13 +217,11 @@ require_once('conexion.class.php');
             {
                 try
                 {
-<<<<<<< HEAD
+
                     $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 0 and datediff(datefin,dateInicio) <>3  AND status = 1
                     group by id_vacante";
-=======
                     $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 0";
->>>>>>> 5d0cfda9e12e0837177b9dceaf68eb1d6b7bb9a7
-                    $query = $this->dbh->prepare($sql);
+                $query = $this->dbh->prepare($sql);
                     $query->execute();
 
                     $data = array();
@@ -242,12 +240,10 @@ require_once('conexion.class.php');
             {
                 try
                 {
-<<<<<<< HEAD
+
                     $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 0 and datediff(datefin,dateInicio) <>3  AND status = 1
                     group by id_vacante ";
-=======
                     $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 1 ";
->>>>>>> 5d0cfda9e12e0837177b9dceaf68eb1d6b7bb9a7
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
 
