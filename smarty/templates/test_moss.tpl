@@ -30,43 +30,6 @@
     }
   </style>
 </head>
-<script type="text/javascript">
-  var timeLimit = 20; //tiempo en minutos
-  var conteo = new Date(timeLimit * 60000);
-
-  function inicializar() {
-    document.getElementById('cuenta').childNodes[0].nodeValue =
-      conteo.getMinutes() + ":" + conteo.getSeconds();
-  }
-
-  function cuenta() {
-    intervaloRegresivo = setInterval("regresiva()", 1000);
-  }
-
-  function regresiva() {
-    if (conteo.getTime() > 0) {
-      conteo.setTime(conteo.getTime() - 1000);
-    } else {
-      clearInterval(intervaloRegresivo);
-      Swal.fire({
-        title: 'El tiempo limite ha expirado',
-        confirmButtonText: 'Finalizar',
-      }).then((result) => {
-
-      
-
-        if (result.isConfirmed) {
-          $("#btnfinalizar").click();
-        }
-      })
-    }
-
-    document.getElementById('cuenta').childNodes[0].nodeValue =
-      conteo.getMinutes() + ":" + conteo.getSeconds();
-  }
-
-  onload = inicializar;
-</script>
 
 <body onload="cuenta()">
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
