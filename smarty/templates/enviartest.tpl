@@ -55,7 +55,7 @@
     </div>
   
       </div>
-    </center>
+    {* </center> *}
     <form action="enviartest.php" method="POST">
   <div class="card border-primary shadow p-3 mb-5 bg-body rounded"
     style="max-width: 30rem; margin:auto; margin-top:30px;">
