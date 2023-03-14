@@ -5,6 +5,12 @@ include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $titulo = "Index";
 $smarty=new smarty;
+if($_SESSION['iusuario'] == "")
+{  
+        header("location:login.php");
+}
+else
+{
 $nuevasRespuestas = Save::singleton_guardar();
 
 if (isset($_POST['btnfinalizar']))
@@ -76,5 +82,5 @@ if (isset($_POST['btnfinalizar']))
 
 
 $smarty->assign("titulo", $titulo);
-$smarty->display("../smarty/templates/testRaven.tpl");
+$smarty->display("../smarty/templates/testRaven.tpl");}
 ?>

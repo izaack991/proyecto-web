@@ -9,6 +9,12 @@ include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $smarty=new smarty;
 $titulo="Datos de Interes";
+if($_SESSION['iusuario'] == "")
+{  
+        header("location:login.php");
+}
+else
+{
 $nuevoInteres = Save::singleton_guardar();
 $CInteres = Functions::singleton_functions();
 $alerta = '';
@@ -95,8 +101,6 @@ else{
 	$smarty->assign("alerta",$alerta);
 	$smarty->display("../smarty/templates/interes.tpl");
 }
-
-
-
+}
 ?>
 

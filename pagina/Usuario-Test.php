@@ -4,6 +4,12 @@ include('../../smarty-master/libs/smarty.class.php');
 include('../smarty/clases/function.class.php');
 $titulo = "Index";
 $smarty=new smarty;
+if($_SESSION['iusuario'] == "")
+{  
+        header("location:login.php");
+}
+else
+{
 $nuevoSingleton = Functions::singleton_functions();
 $iusuario = $_SESSION['iusuario'];
 $notificacionexperiencia = $nuevoSingleton->notificacionexperiencia($iusuario);
@@ -66,5 +72,5 @@ $smarty->assign("COUNTAFI",$COUNTAFI);
 $smarty->assign("COUNTINT",$COUNTINT);
 $smarty->assign("COUNT",$COUNT);
 $smarty->assign("iusuario",$iusuario);
-    $smarty->display("../smarty/templates/Usuario-Test.tpl");
+    $smarty->display("../smarty/templates/Usuario-Test.tpl");}
 ?>

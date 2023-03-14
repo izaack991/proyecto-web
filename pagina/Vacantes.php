@@ -9,6 +9,12 @@ include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $smarty=new smarty;
 $titulo="Proyecto Web";
+if($_SESSION['iusuario'] == "")
+{  
+        header("location:login.php");
+}
+else
+{
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
 $_findPais = Functions::singleton_functions();
@@ -78,5 +84,5 @@ if(isset($_POST['txtpuesto'])&& isset($_POST['txtsueldo'])&& isset($_POST['cmbpa
     $smarty->assign("alerta",$alerta);
     $smarty->assign("Paises",$_pais);
     $smarty->display("../smarty/templates/Vacantes.tpl");
-}
+}}
 ?>

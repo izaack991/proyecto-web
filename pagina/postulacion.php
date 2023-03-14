@@ -5,6 +5,12 @@ include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $smarty=new smarty;
 $titulo="Lista de Postulaciones";
+if($_SESSION['iusuario'] == "")
+{  
+        header("location:login.php");
+}
+else
+{
 $buscarpostulacion = Functions::singleton_functions();
 $_idusuario = $_SESSION['iusuario'];
 $b_postulacion = $buscarpostulacion->buscarPostulacion($_idusuario);
@@ -27,5 +33,5 @@ $smarty->assign("ECOUNT",$ECOUNT);
 $smarty->assign("titulo",$titulo);
 $smarty->assign("Postulacion",$b_postulacion);
 $smarty->display("../smarty/templates/postulacion.tpl");
-
+}
 ?>

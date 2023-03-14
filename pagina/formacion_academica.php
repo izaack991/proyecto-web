@@ -10,6 +10,12 @@ include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $smarty=new smarty;
 $titulo="PROGWEB";
+if($_SESSION['iusuario'] == "")
+{  
+        header("location:login.php");
+}
+else
+{
 $_findUser = Functions::singleton_functions();
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
@@ -99,5 +105,5 @@ $smarty->assign("iusuario",$iusuario);
 $smarty->assign("titulo",$titulo);
 $smarty->assign("alerta",$alerta);
 $smarty->display("../smarty/templates/formacion_academica.tpl");
-}	
+}}
 ?>

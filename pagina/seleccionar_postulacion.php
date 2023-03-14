@@ -5,6 +5,12 @@ include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $smarty=new smarty;
 $titulo="Curriculum";
+if($_SESSION['iusuario'] == "")
+{  
+        header("location:login.php");
+}
+else
+{
 $_finduser = Functions::singleton_functions();
 $nuevoUsuario = Save::singleton_guardar();
 
@@ -25,5 +31,5 @@ $smarty->assign("Experiencia",$experiencia);
 $smarty->assign("Formacion",$formacion);
 $smarty->assign("Aficiones",$aficiones);
 $smarty->assign("Interes",$interes);
-$smarty->display("../smarty/templates/seleccionar_postulacion.tpl");
+$smarty->display("../smarty/templates/seleccionar_postulacion.tpl");}
 ?>

@@ -5,6 +5,12 @@ include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $smarty=new smarty;
 $titulo="seleccion de vacante";
+if($_SESSION['iusuario'] == "")
+{  
+        header("location:login.php");
+}
+else
+{
 $_finduser = Functions::singleton_functions();
 $nuevoUsuario = Save::singleton_guardar();
 $alerta = '';
@@ -45,5 +51,5 @@ $smarty->assign("vacantes",$vacantes);
 $smarty->assign("alerta",$alerta);
 $smarty->display("../smarty/templates/seleccionar_vacantes.tpl");
 }
-
+}
 ?>

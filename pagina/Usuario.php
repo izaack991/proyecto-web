@@ -5,6 +5,12 @@ include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $smarty=new smarty;
 $titulo="Registro Usuario";
+if($_SESSION['iusuario'] == "")
+{  
+        header("location:login.php");
+}
+else
+{
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
 //$id_tipo=$_GET['xd'];
@@ -44,5 +50,5 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 	$smarty->assign("titulo",$titulo);
 	$smarty->display("../smarty/templates/Usuario.tpl");
 		
-
+}
 ?>

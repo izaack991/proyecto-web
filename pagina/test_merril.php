@@ -4,6 +4,12 @@ include('../smarty/clases/save.class.php');
 include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $titulo = "Test de merril";
+if($_SESSION['iusuario'] == "")
+{  
+        header("location:login.php");
+}
+else
+{
 $smarty=new smarty;
 $_finduser = Functions::singleton_functions();
 $nuevasRespuestas = Save::singleton_guardar();
@@ -34,5 +40,5 @@ if (isset($_POST['btn-finalizar']))
 
 
 $smarty->assign("titulo", $titulo);
-$smarty->display("../smarty/templates/test_merril.tpl");
+$smarty->display("../smarty/templates/test_merril.tpl");}
 ?>

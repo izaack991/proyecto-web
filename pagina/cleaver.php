@@ -5,6 +5,12 @@ include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $smarty=new smarty;
 $titulo="Test Cleaver";
+if($_SESSION['iusuario'] == "")
+{  
+        header("location:login.php");
+}
+else
+{
 $guardarrespuestas = save::singleton_guardar();
 
 if(isset($_POST['resp1']) && isset($_POST['resp2']))
@@ -69,5 +75,5 @@ if(isset($_POST['resp1']) && isset($_POST['resp2']))
 }
 
 $smarty->assign("titulo",$titulo);
-$smarty->display("../smarty/templates/cleaver.tpl");
+$smarty->display("../smarty/templates/cleaver.tpl");}
 ?>
