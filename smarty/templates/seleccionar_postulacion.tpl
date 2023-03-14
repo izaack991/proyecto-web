@@ -42,7 +42,7 @@
  </div>
 </nav>
   <div class="card border-primary shadow p-3 mb-5 bg-body rounded"
-    style="max-width: 60rem; margin:auto; margin-top:30px;">
+    style="max-width: 80%; margin:auto; margin-top:30px;">
     <div class="card-header text-center">
         <h4 class="card-title">Curriculum</h4>
     </div>

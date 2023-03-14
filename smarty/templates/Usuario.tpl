@@ -126,7 +126,7 @@
                             placeholder="Escriba su Domicilio" required="true"><br>
                         <center>
                             <button class="btn btn-primary" type="submit">GUARDAR</button>
-                            <button type="button" class="btn btn-secondary" onclick="location.href='login.php'">Regresar
+                            <button type="button" class="btn btn-secondary" onclick="location.href='login.php?xd=1'">Regresar
                                 al Login</button>
                         </center>
                     </div>

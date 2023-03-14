@@ -75,19 +75,19 @@
 
 
         <label for="name" class="form__label"> Puesto *</label> <br>
-        <input class="form-control" type="text" name="txtpuesto" placeholder="Ingresa el Puesto"> <br>
+        <input class="form-control" type="text" required name="txtpuesto" placeholder="Ingresa el Puesto"> <br>
 
        
         <label for="name" class="form__label"> Sueldo *</label><br>
         <div class="input-group mb-3">
         <span class="input-group-text">$</span>
-        <input class="form-control " type="text" name="txtsueldo" placeholder="Ingresa el Sueldo"> <br>
+        <input class="form-control " type="text" required name="txtsueldo" placeholder="Ingresa el Sueldo"> <br>
         </div>
 
         <label for="name" class="form__label"> Lugar*</label> <br>
         <div class="form-row" text-align: center;>
         <div class="col">
-        <select class="btn btn-light disabled" name="cmbpais">
+        <select class="btn btn-light disabled" name="cmbpais" required>
             <option value="">Elige una opción</option>
             <div>
             <<option value="54">Argentina</option>
@@ -119,18 +119,18 @@
          </div></div><br>
 
         <label for="name" class="form__label"> Datos Adicionales *</label> <br>
-        <input class="form-control" type="text" name="txtdatos" placeholder="Ingresa los Datos"> <br>
+        <input class="form-control" type="text" name="txtdatos" required placeholder="Ingresa los Datos"> <br>
 
 
         <div class="form-row">
         <div class="form-group col-md-6">
             <label for="dateFECHA">Seleccione Fecha de Inicio: *</label><br>
-            <input class="form-control" type="date" id="dateInicio" name="dateInicio" value="2023-01-01">
+            <input class="form-control" type="date" id="dateInicio" required name="dateInicio" value="2023-01-01">
         </div>
         <br>
         <div class="form-group col-md-6">
             <label for="dateFECHA">Seleccione Fecha de Vencimiento *</label><br>
-            <input class="form-control" type="date" id="dateFin" name="dateFin" value="2023-01-01">
+            <input class="form-control" type="date" id="dateFin" required name="dateFin" value="2023-01-01">
         </div>
         <br>
 
