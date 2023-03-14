@@ -11,12 +11,11 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'PHPMailer/Exception.php';
-require 'PHPMailer/PHPMailer.php';
-require 'PHPMailer/SMTP.php';
+require '../PHPMailer/Exception.php';
+require '../PHPMailer/PHPMailer.php';
+require '../PHPMailer/SMTP.php';
 
 $mail = new PHPMailer(true);
-echo '';
 
 if(isset($_POST['btnenviar']))
     {
@@ -48,10 +47,7 @@ if(isset($_POST['btnenviar']))
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     }
-
-    else{
-        echo 'correo no enviado';
-    }
+    
 $smarty->assign("titulo", $titulo);
 $smarty->display("../smarty/templates/enviartest.tpl");
 ?>
