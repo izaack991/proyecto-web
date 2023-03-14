@@ -16,7 +16,7 @@ require 'PHPMailer/PHPMailer.php';
 require 'PHPMailer/SMTP.php';
 
 $mail = new PHPMailer(true);
-echo 'bienvenido';
+echo '';
 
 if(isset($_POST['btnenviar']))
     {
@@ -33,8 +33,8 @@ if(isset($_POST['btnenviar']))
 
             //Recipients
             $mail->setFrom('prueba_web01@hotmail.com', 'Mailer');
-            $mail->addAddress('luis@gmail.com', 'Joe User');     
-            $mail->addReplyTo('luis@gmail.com', 'Information');
+            $mail->addAddress('kevin.vall328@gmail.com', 'Joe User');     
+            $mail->addReplyTo('kevin.vall328@gmail.com', 'Information');
 
             //Content
             $mail->isHTML(true);
