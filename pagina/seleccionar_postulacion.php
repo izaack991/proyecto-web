@@ -4,7 +4,7 @@ include('../smarty/clases/save.class.php');
 include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $smarty=new smarty;
-$titulo="Postulacion";
+$titulo="Curriculum";
 $_finduser = Functions::singleton_functions();
 $nuevoUsuario = Save::singleton_guardar();
 
