@@ -35,6 +35,8 @@
          <a class="nav-link active" href="postulacion.php">Postulaciones
          </a>
        </li> 
+       </ul>
+       <ul class="navbar-nav ml-auto">
        <li class="nav-link active">{$smarty.session.nomusuario}</li>
        <a class="nav-link active text-danger" href="indexPrincipal.php" style="font-weight:bold;">Cerrar Sesión</a>
      </ul>
