@@ -25,6 +25,10 @@ if(isset($_POST['txt_id_postulacion']) && isset($_POST['txt_id_usuario']))
     $aficiones = $_finduser->seleccionar_aficiones($id_usuario);
     $interes = $_finduser->seleccionar_interes($id_usuario);
 }
+if(isset($_POST['btntest']))
+{
+    $smarty->display("../smarty/templates/enviartest.tpl");
+}
 
 $smarty->assign("Postulacion",$postulaciones);
 $smarty->assign("Experiencia",$experiencia);

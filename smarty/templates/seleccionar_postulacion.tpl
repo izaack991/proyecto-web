@@ -43,11 +43,15 @@
    </div>
  </div>
 </nav>
+  <form action="enviartest.php" method="POST">
   <div class="card border-primary shadow p-3 mb-5 bg-body rounded"
-    style="max-width: 80%; margin:auto; margin-top:30px;">
+  
+    style="max-width: 60rem; margin:auto; margin-top:30px;">
     <div class="card-header text-center">
         <h4 class="card-title">Curriculum</h4>
+         <input class="btn btn-primary" name="btntest" type="submit" value="ENVIAR TEST" style="float: right;">
     </div>
+</form>
     <center>
     <div class="card-body">
        
