@@ -15,7 +15,7 @@ $guardarrespuestas = save::singleton_guardar();
 
 if(isset($_POST['resp1']) && isset($_POST['resp2']))
 {
-    $id_usuario = ('1');
+    $id_usuario = $_SESSION['iusuario'];
     $p1_resp_pos = $_POST['resp1']; 
     $p1_resp_neg = $_POST['resp2'];
     $p2_resp_pos = $_POST['resp3']; 
