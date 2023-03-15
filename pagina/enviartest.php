@@ -6,6 +6,20 @@ include('../../smarty-master/libs/smarty.class.php');
 $titulo = "Index";
 $smarty=new smarty;
 $nuevasRespuestas = Save::singleton_guardar();
+$nuevoSingleton = Functions::singleton_functions();
+$iusuario = $_SESSION['iusuario'];
+$notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuario);
+
+
+
+if($notificacionpostulaciones>=1)
+{
+    $COUNTPOS=$notificacionpostulaciones;
+}
+else 
+{
+    $COUNTPOS=0;
+}
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -48,6 +62,10 @@ if(isset($_POST['btnenviar']))
         }
     }
     
-$smarty->assign("titulo", $titulo);
+    $ECOUNT = $COUNTPOS;
+    $smarty->assign("COUNTPOS",$COUNTPOS);
+    $smarty->assign("ECOUNT",$ECOUNT);
+    $smarty->assign("titulo", $titulo);
 $smarty->display("../smarty/templates/enviartest.tpl");
+
 ?>
