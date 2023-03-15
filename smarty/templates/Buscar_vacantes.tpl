@@ -81,7 +81,7 @@
         </div>
       {/foreach}
     </div>
-    <div class="col">
+    {* <div class="col">
       {foreach $Vacantes2 as $vacantes}
         <div id="cardv" class="card border-primary shadow p-3 mb-5 bg-body rounded"
           style="max-width: 40rem; margin:auto; margin-top:30px;">
@@ -97,7 +97,7 @@
           </div>
         </div>
       {/foreach}
-    </div>
+    </div> *}
   </div>
 
 
