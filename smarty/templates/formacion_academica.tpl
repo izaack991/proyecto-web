@@ -102,24 +102,24 @@
   </nav>
   <form action="formacion_academica.php" method="POST">
     {$alerta}
-    <div class="card  mb-3" style="max-width: 20rem; margin:auto; margin-top:30px;">
+    <div class="card  mb-3" style="max-width: 30rem; margin:auto; margin-top:30px;">
       <div class="card-body">
-        <h4 class="card-title" style="margin-left:45px;">Datos personales</h4>
+        <h4 class="card-title" style="margin-left:90px;">Formación académica</h4>
         <label>Los campos marcados con asterisco son obligatorios</label> <br>
 
-        <label class="col-form-label mt-4" for="name"> Descripcion *</label> <br>
-        <input class="form-control" type="text" name="descripcion" placeholder="Ingresa una descripcion"> <br>
+        <label class="col-form-label mt-4" for="name"> Nombre de la Institución Educativa *</label> <br>
+        <input class="form-control" type="text" name="descripcion" placeholder="Ingrese el nombre de la institución educativa"> <br>
 
-        <label for="name" class="form__label"> Ubicacion *</label> <br>
-        <input class="form-control" type="text" name="ubicacion" placeholder="Ingresa la ubicacion"> <br>
+        <label for="name" class="form__label"> Ubicación *</label> <br>
+        <input class="form-control" type="text" name="ubicacion" placeholder="Ingrese la ubicación de la Institucion educativa"> <br>
 
         <label for="name" class="form__label"> Periodo *</label> <br>
-        <input class="form-control" type="text" name="periodo" placeholder="Ingresa el periodo"> <br>
+        <input class="form-control" type="text" name="periodo" placeholder="Ingrese el tiempo que estudio en años"> <br>
 
         <input name="txtlatitud" id="latitud" type="hidden">
         <input name="txtlongitud" id="longitud" type="hidden">
 
-        <input class="btn btn-primary" style="margin-left:90px;" type="submit" value="Guardar">
+        <input class="btn btn-primary" style="margin-left:180px;" type="submit" value="Guardar">
       </div>
     </div>
   </form>

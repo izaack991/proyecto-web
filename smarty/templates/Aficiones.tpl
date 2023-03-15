@@ -104,11 +104,11 @@
     {$alerta}
     <div class="card  mb-3" style="max-width: 20rem; margin:auto; margin-top:30px;">
       <div class="card-body">
-        <h4 class="card-title" style="margin-left:45px;">Aficiones</h4>
+        <h4 class="card-title" style="margin-left:85px;">Aficiones</h4>
         <label>Los campos marcados con asterisco son obligatorios</label> <br>
 
         <label class="col-form-label mt-4" for="name">Descripcion *</label><br>
-        <input class="form-control" type="text" name="txtdesc" placeholder="Escriba una descripcion"
+        <input class="form-control" type="text" name="txtdesc" placeholder="Ingrese sus aficiones"
           required="true"><br><br>
 
         <input name="txtlatitud" id="latitud" type="hidden">

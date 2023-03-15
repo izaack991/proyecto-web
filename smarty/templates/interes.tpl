@@ -108,7 +108,7 @@
         <h4 class="card-title" style="margin-left:45px;">Datos de Interes</h4>
         <label>Los campos marcados con asterisco son obligatorios</label> <br>
         <label class="col-form-label mt-4" for="name">Descripcion *</label><br>
-        <input class="form-control" type="text" name="txtdesc" placeholder="Escriba una descripcion"
+        <input class="form-control" type="text" name="txtdesc" placeholder="Ingrese sus datos de interes"
           required="true"><br><br>
 
         <input name="txtlatitud" id="latitud" type="hidden">
