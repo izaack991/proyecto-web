@@ -13,41 +13,62 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Inicio</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
-        aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarColor03">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="experiencia_laboral.php">Experiencia Laboral
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="formacion_academica.php">Formacion Academica
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="Aficiones.php">Aficiones
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="interes.php">Interes
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="buscar_vacantes.php">Buscar Vacantes
-            </a>
-          </li>
-          <li class="nav-link active">{$smarty.session.nomusuario}</li>
-          <a class="nav-link active text-danger" href="indexPrincipal.php" style="font-weight:bold;">Cerrar Sesión</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Inicio</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor03">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="vacantes.php">Vacantes
+          </a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link active" href="postulacion.php">Postulaciones
+          </a>
+        </li> 
         </ul>
-      </div>
+        <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item">
+        {if $ECOUNT >= 1} 
+										<a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" data-toggle="modal" data-target="#exampleModal">
+										<span class="fa-layers fa-fw mr-2 fa-lg">
+											<i class="fas fa-bell"></i>
+											<span class="fa-layers-counter" style="background:Tomato">{$COUNTPOS}</span>
+										</span>{$smarty.session.nomusuario}</a></li>
+                    {else}
+                      <li class="nav-link active">{$smarty.session.nomusuario}</li>
+										{/if}	
+                   {* MODAL *}
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-bell"></i> Notificaciones</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								{if $COUNTPOS >= 1}
+									<a class="nav-link" href="postulacion.php" style="color: blue;">Tienes {$COUNTPOS} postulaciones pendientes</a>
+								{/if}
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+							</div>
+							</div>
+						</div>
+						</div>
+
+        <a class="nav-link active text-danger" href="indexPrincipal.php" style="font-weight:bold;">Cerrar Sesión</a>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
   <div class="card border-primary shadow p-3 mb-5 bg-body rounded"
     style="max-width: 60rem; margin:auto; margin-top:30px;">
     <div class="card-header text-center">
