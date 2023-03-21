@@ -10,9 +10,43 @@
   <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
 </head>
 
-<body>
-
-  <form method="POST">
+<body onload="cuenta()">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Inicio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+        aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor03">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="experiencia_laboral.php">Experiencia Laboral
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="formacion_academica.php">Formacion Academica
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="Aficiones.php">Aficiones
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="interes.php">Interes
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="buscar_vacantes.php">Buscar Vacantes
+            </a>
+          </li>
+          <li class="nav-link active">{$smarty.session.nomusuario}</li>
+          <a class="nav-link active text-danger" href="indexPrincipal.php" style="font-weight:bold;">Cerrar Sesión</a>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <form action="cleaver.php" method="POST">
     <align>
       <form action="../pagina/cleaver.php" target="_blank">
         <div class="card border-primary shadow p-3 mb-5 bg-body rounded"
