@@ -3,7 +3,7 @@ session_start();
 include('../smarty/clases/save.class.php');
 include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
-$titulo = "Index";
+$titulo = "Test SJT";
 $smarty=new smarty;
 if($_SESSION['iusuario'] == "")
 {  

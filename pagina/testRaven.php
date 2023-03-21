@@ -3,7 +3,7 @@ session_start();
 include('../smarty/clases/save.class.php');
 include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
-$titulo = "Index";
+$titulo = "Test Raven";
 $smarty=new smarty;
 if($_SESSION['iusuario'] == "")
 {  
@@ -77,10 +77,10 @@ if (isset($_POST['btnfinalizar']))
     $preg59 = $_POST["preg59"];
     $preg60 = $_POST["preg60"];
     $nuevasrespuestas = $nuevasRespuestas->guardar_respuestasRAVEN($_idusuario,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12,$preg13,$preg14,$preg15,$preg16,$preg17,$preg18,$preg19,$preg20,$preg21,$preg22,$preg23,$preg24,$preg25,$preg26,$preg27,$preg28,$preg29,$preg30,$preg31,$preg32,$preg33,$preg34,$preg35,$preg36,$preg37,$preg38,$preg39,$preg40,$preg41,$preg42,$preg43,$preg44,$preg45,$preg46,$preg47,$preg48,$preg49,$preg50,$preg51,$preg52,$preg53,$preg54,$preg55,$preg56,$preg57,$preg58,$preg59,$preg60);
-    header("location:index.php");
 }
 
 
 $smarty->assign("titulo", $titulo);
-$smarty->display("../smarty/templates/testRaven.tpl");}
+$smarty->display("../smarty/templates/testRaven.tpl");
+}
 ?>

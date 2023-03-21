@@ -1,10 +1,10 @@
 <?php 
-$_SESSION['tiempo'] = time();
+session_start();
 include('../smarty/clases/save.class.php');
 include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
-$smarty=new smarty;
 $titulo="Test Cleaver";
+$smarty=new smarty;
 if($_SESSION['iusuario'] == "")
 {  
         header("location:login.php");
