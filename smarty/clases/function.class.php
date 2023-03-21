@@ -212,14 +212,13 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
-
-            function buscarVacante2()
+            function buscarVacante1()
             {
                 try
                 {
 
-                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 1 and datediff(datefin,dateInicio) <>3  AND status = 1
-                    group by id_vacante";
+                   $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 0 and datediff(datefin,dateInicio) <=3  AND status = 1
+                   group by id_vacante";
                 $query = $this->dbh->prepare($sql);
                     $query->execute();
 
@@ -235,13 +234,35 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
-            function buscarVacante1()
+             function buscarVacante2()
+             {
+                 try
+                 {
+
+                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 1 and datediff(datefin,dateInicio) <=3  AND status = 1
+                    group by id_vacante";
+                 $query = $this->dbh->prepare($sql);
+                     $query->execute();
+
+                     $data = array();
+                     while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                     {
+                         $data[] = $row;    
+                     }
+                 }
+                 catch(PDOException $e)
+                 {
+                     print "Error: !" . $e->getMessage();
+                 }
+                 return $data;
+             }
+            function buscarVacante3()
             {
                 try
                 {
 
-                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 0 and datediff(datefin,dateInicio) <>3  AND status = 1
-                    group by id_vacante ";
+                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,2) = 2 and datediff(datefin,dateInicio) <=3  AND status = 1
+                    group by id_vacante";
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
 

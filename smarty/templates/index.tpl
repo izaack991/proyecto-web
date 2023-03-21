@@ -9,6 +9,7 @@
   <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
   <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
 
+  
 <body>
   {* {$tmp} *}
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -95,6 +96,17 @@
       </div>
     </div>
   </nav>
+  {* <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" style="max-width: 20rem; margin:auto; margin-top:30px;">
+  <div class="toast-header">
+    <strong class="me-auto">Pagina Principal</strong>
+    <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="toast-body">
+    Bienvenido!
+  </div>
+</div> *}
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
   </script>
