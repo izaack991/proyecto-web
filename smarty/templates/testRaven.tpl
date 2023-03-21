@@ -118,7 +118,7 @@
           la solución que usted considere más acertada. No marque más de una.</p>
       </div>
     </center>
-    <form action="test_RAVEN.php" method="POST">
+    <form action="testRaven.php" method="POST">
       <div align="left">
         <div class="pregresp">
           <div class="pregunta">1.- <br>
@@ -323,14 +323,14 @@
             <div class="container text-left">
               <div class="row align-items-left">
                 <div class="col">
-                  <input type="radio" name="preg69" value="A" /> 1<br />
-                  <input type="radio" name="preg69" value="B" /> 2<br />
-                  <input type="radio" name="preg69" value="C" /> 3<br />
+                  <input type="radio" name="preg9" value="A" /> 1<br />
+                  <input type="radio" name="preg9" value="B" /> 2<br />
+                  <input type="radio" name="preg9" value="C" /> 3<br />
                 </div>
                 <div class="col">
-                  <input type="radio" name="preg69" value="E" /> 4<br />
-                  <input type="radio" name="preg69" value="F" /> 5<br />
-                  <input type="radio" name="preg69" value="G" /> 6<br />
+                  <input type="radio" name="preg9" value="E" /> 4<br />
+                  <input type="radio" name="preg9" value="F" /> 5<br />
+                  <input type="radio" name="preg9" value="G" /> 6<br />
                 </div>
               </div>
             </div>
