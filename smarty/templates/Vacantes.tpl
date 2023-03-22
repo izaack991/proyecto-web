@@ -79,6 +79,8 @@
         <label for="name" class="form__label"> Puesto *</label> <br>
         <input class="form-control" type="text" required name="txtpuesto" placeholder="Ingresa el Puesto"> <br>
 
+        <label for="name" class="form__label"> Empresa *</label> <br>
+        <input class="form-control" type="text" required name="txtempresa" placeholder="Ingresa la empresa"> <br>
        
         <label for="name" class="form__label"> Sueldo *</label><br>
         <div class="input-group mb-3">
@@ -97,9 +99,17 @@
           </select></div></div><br>
 
         <label for="name" class="form__label"> Datos Adicionales *</label> <br>
-        <input class="form-control" type="text" name="txtdatos" required placeholder="Ingresa los Datos"> <br>
+        <input class="form-control" type="text" name="txtdatos" required placeholder="Ingresa los Datos" maxlength=""> <br>
 
+        {* <label for="name" class="form__label"> Ruta de Imagen *</label> <br>
+        <input class="form-control" type="text" required name="txtruta" placeholder="Ingresa la empresa"> <br> *}
 
+        <div class="form-group">
+        <label for="formFile" class="form-label mt-4">Seleccionar archivo *</label>
+        <input class="form-control" type="file" name="txtruta" id="formFile">
+      </div>
+  
+        
         <div class="form-row">
         <div class="form-group col-md-6">
             <label for="dateFECHA">Seleccione Fecha de Inicio: *</label><br>

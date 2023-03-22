@@ -152,21 +152,23 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
-            public function Guardar_id_vacantes($f_id_vacantes,$_idusuario,$_puesto,$_sueldo,$_lugar,$_datos,$_fechainicio,$_fechafin)
+            public function Guardar_id_vacantes($f_id_vacantes,$_idusuario,$_puesto,$_empresa,$_sueldo,$_lugar,$_datos, $_ruta,$_fechainicio,$_fechafin)
             {        
                 try {
                     
-                    $sql="INSERT into tbl_vacantes(id_vacante,id_empresa,puesto,sueldo,lugar,datos_adicionales,dateInicio,dateFin)
-                                        values(:id_vacante, :id_empresa, :puesto, :sueldo, :lugar, :datos_adicionales, :dateInicio, :dateFin)";
+                    $sql="INSERT into tbl_vacantes(id_vacante,id_empresa,puesto,empresa,sueldo,lugar,datos_adicionales,ruta_imagen,dateInicio,dateFin)
+                                        values(:id_vacante, :id_empresa, :puesto, :empresa, :sueldo, :lugar, :datos_adicionales, :ruta_imagen, :dateInicio, :dateFin)";
                     
                     $query = $this->dbh->prepare($sql);
                     
                     $query->bindParam(':id_vacante',$f_id_vacantes);
                     $query->bindParam(':id_empresa',$_idusuario);
                     $query->bindParam(':puesto',$_puesto);
+                    $query->bindParam(':empresa',$_empresa);
                     $query->bindParam(':sueldo',$_sueldo);
                     $query->bindParam(':lugar',$_lugar);
                     $query->bindParam(':datos_adicionales',$_datos);
+                    $query->bindParam(':ruta_imagen',$_ruta);
                     $query->bindParam(':dateInicio', $_fechainicio);
                     $query->bindParam(':dateFin',$_fechafin);
                     $query->execute();
