@@ -106,7 +106,7 @@
 
         <div class="form-group">
         <label for="formFile" class="form-label mt-4">Seleccionar archivo *</label>
-        <input class="form-control" type="file" name="txtruta" id="formFile">
+        <input class="form-control" type="file" name="txtruta" id="txtruta">
       </div>
   
         
@@ -125,7 +125,7 @@
         <input name ="txtlatitud" id="latitud"type="hidden">
 				<input name="txtlongitud" id="longitud" type="hidden">
 
-      <input class="btn btn-primary" style="margin-left:224px;" type="submit"  value="Guardar">
+      <input class="btn btn-primary" style="margin-left:224px;" type="submit"  id="enviar" value="Guardar">
       </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
