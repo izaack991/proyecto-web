@@ -77,7 +77,7 @@
   
       </div>
     {* </center> *}
-    <form action="enviartest.php" method="POST">
+    <form action="" method="POST">
   <div class="card border-primary shadow p-3 mb-5 bg-body rounded"
     style="max-width: 30rem; margin:auto; margin-top:30px;">
     <h6>Seleccione los test que desee enviar al postulante seleccionado:</h6>  <br><br>

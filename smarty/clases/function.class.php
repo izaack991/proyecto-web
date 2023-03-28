@@ -719,5 +719,30 @@ require_once('conexion.class.php');
             return TRUE;
             
         }
+        public function envio_test()
+        {
+            try
+            {
+                $sql = "SELECT * FROM tbl_envio_test";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+    
+                if($query->rowCount() >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+                
+            catch(PDOExeption $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
+        }
                         
 }
