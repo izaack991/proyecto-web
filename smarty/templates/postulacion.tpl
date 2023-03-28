@@ -57,6 +57,7 @@
     <input value={$postulacion.id_postulacion} type="hidden" name="txt_id_postulacion">
     <input value={$postulacion.id_usuario} type="hidden" name="txt_id_usuario">
     <td class="text-center"><center><input type="submit" value="Ver" class="btn btn-info"></center></td>
+    <td class="text-right"><right><input type="submit" value="cerrar" class="btn btn-danger"></right></td>
     </form>
     <td class="text-center">{$postulacion.nombreUsuario}</td>
     <td class="text-center">{$postulacion.correo}</td>
