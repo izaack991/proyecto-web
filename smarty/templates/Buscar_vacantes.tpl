@@ -133,5 +133,5 @@
     });
   });
 </script>
-
+<script src="../smarty/js/contador-buscar-vacantes.js"></script>
 </html>
