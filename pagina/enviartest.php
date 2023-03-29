@@ -22,14 +22,11 @@ $nuevoSingleton = Functions::singleton_functions();
 $iusuario = $_SESSION['iusuario'];
 $notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuario);
 
-// if($notificacionpostulaciones>=1)
-// {
-//     $COUNTPOS=$notificacionpostulaciones;
-// }
-// else 
-// {
-//     $COUNTPOS=0;
-// }
+
+if($notificacionpostulaciones>=1)
+{
+    $COUNTPOS=$notificacionpostulaciones;
+}
 
 $mail = new PHPMailer(true);
 
@@ -97,3 +94,12 @@ $mail = new PHPMailer(true);
                  {
                   echo "Problemas enviando correo electrónico a ".$valor;
                   echo "<br/>".$mail->ErrorInfo;  
+                 }
+    }
+    $ECOUNT = $COUNTPOS;
+    $smarty->assign("COUNTPOS",$COUNTPOS);
+    $smarty->assign("ECOUNT",$ECOUNT);
+$smarty->assign("titulo",$titulo);
+// $smarty->assign("alerta",$alerta);
+$smarty->display("../smarty/templates/enviartest.tpl");
+?>

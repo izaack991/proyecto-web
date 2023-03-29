@@ -33,7 +33,7 @@
         <ul class="navbar-nav ml-auto">
 
         <li class="nav-item">
-        {if $ECOUNT >= 1} 
+        {if $COUNTPOS >= 1} 
 										<a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" data-toggle="modal" data-target="#exampleModal">
 										<span class="fa-layers fa-fw mr-2 fa-lg">
 											<i class="fas fa-bell"></i>
