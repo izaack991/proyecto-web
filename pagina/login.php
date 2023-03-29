@@ -35,11 +35,14 @@ if (isset($_POST['usuario'])&&isset($_POST['password']))
             {
                 header("location:index.php");
             }
-            //condicional si es empresa (el 1 se usa para las empresas)
-            if ($_ROL==1)
-            {
+            else{
                 header("location:indexEmpresa.php");
             }
+            //condicional si es empresa (el 1 se usa para las empresas)
+            // if ($_ROL==1)
+            // {
+                
+            // }
         }
         else
 	    {	
