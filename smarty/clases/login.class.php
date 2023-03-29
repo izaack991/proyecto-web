@@ -45,8 +45,8 @@
                 if($query->rowCount() == 1)
                 {
                      $fila  = $query->fetch();
-                     $_SESSION['iusuario'] = $fila['nombre'];
-                     $_SESSION['nomusuario'] = $fila['id_usuario'];
+                     $_SESSION['iusuario'] = $fila['id_usuario'];
+                     $_SESSION['nomusuario'] = $fila['nombre'];
                      $_SESSION['irol']= $fila['rol'];                                      
                      return TRUE;
                 }

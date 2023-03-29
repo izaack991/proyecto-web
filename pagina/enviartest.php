@@ -99,7 +99,7 @@ $mail = new PHPMailer(true);
     $ECOUNT = $COUNTPOS;
     $smarty->assign("COUNTPOS",$COUNTPOS);
     $smarty->assign("ECOUNT",$ECOUNT);
-$smarty->assign("titulo",$titulo);
-// $smarty->assign("alerta",$alerta);
-$smarty->display("../smarty/templates/enviartest.tpl");
+    $smarty->assign("titulo",$titulo);
+    // $smarty->assign("alerta",$alerta);
+    $smarty->display("../smarty/templates/enviartest.tpl");
 ?>
