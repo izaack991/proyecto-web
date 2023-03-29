@@ -86,23 +86,23 @@
     <div class="col align-self-start">
     <div style= "text-align: left">
             <div>
-                <input type="radio" name="test_moss" value="A" />Test de Moss      <br>
+                <input type="checkbox" name="test_moss" value="A" />Test de Moss      <br>
             </div>
 
             <div>
-                <input type="radio" name="test_raven" value="A" />Test de Raven    <br>
+                <input type="checkbox" name="test_raven" value="A" />Test de Raven    <br>
             </div>
 
             <div>
-                <input type="radio" name="test_sjt" value="A" />Test SJT           <br>
+                <input type="checkbox" name="test_sjt" value="A" />Test SJT           <br>
            </div>
 
             <div>
-                <input type="radio" name="test_merril" value="A" />Test de Merril   <br>
+                <input type="checkbox" name="test_merril" value="A" />Test de Merril   <br>
             </div>
 
             <div>
-                <input type="radio" name="test_cleaver" value="A" />Test Cleaver    <br>
+                <input type="checkbox" name="test_cleaver" value="A" />Test Cleaver    <br>
            </div>
            </div>
 </div>
