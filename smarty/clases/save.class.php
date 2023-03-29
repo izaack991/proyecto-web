@@ -589,6 +589,27 @@ require_once('conexion.class.php');
                 return TRUE;
                 
             }
+            public function actualizar_status($_Status,$_Idp)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_postulacion SET status=$_Status WHERE id_postulacion =$_Idp";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+
             
     }
    

@@ -18,6 +18,16 @@ $nuevoSingleton = Functions::singleton_functions();
 $iusuario = $_SESSION['iusuario'];
 $notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuario);
 
+$NuevoC = Save::singleton_guardar();
+
+if(isset($_POST['btn_cerrar'])&&isset($_POST['txt_id_postulacion']))
+{
+    $_Status=$_POST['btn_cerrar'];
+    $_Idp=$_POST['txt_id_postulacion'];
+    $UCerrar=$NuevoC->actualizar_status($_Status,$_Idp);
+    $b_postulacion = $buscarpostulacion->buscarPostulacion($_idusuario);
+
+}
 
 if($notificacionpostulaciones==1)
 {
