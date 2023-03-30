@@ -719,6 +719,106 @@ require_once('conexion.class.php');
             return TRUE;
             
         }
+        public function val_moss($_idusuario)
+        {
+            try
+            {
+                $sql = "SELECT * FROM tbl_respuestas_moss where id_usuario ='$_idusuario' ";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+    
+                if($query->rowCount() >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+                
+            catch(PDOExeption $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
+        }
+        public function val_sjt($_idusuario)
+        {
+            try
+            {
+                $sql = "SELECT * FROM tbl_respuestas_sjt where id_usuario ='$_idusuario' ";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+    
+                if($query->rowCount() >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+                
+            catch(PDOExeption $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
+        }
+        public function val_raven($_idusuario)
+        {
+            try
+            {
+                $sql = "SELECT * FROM tbl_respuestas_raven where id_usuario = '$_idusuario' ";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+    
+                if($query->rowCount() >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+                
+            catch(PDOExeption $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
+        }
+        public function val_cleaver($_idusuario)
+        {
+            try
+            {
+                $sql = "SELECT * FROM tbl_respuestas_cleaver where id_usuario ='$_idusuario' ";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+    
+                if($query->rowCount() >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+                
+            catch(PDOExeption $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
+        }
         public function envio_test()
         {
             try

@@ -93,17 +93,19 @@
       </div>
     </div>
   </nav>
-  {* <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" style="max-width: 20rem; margin:auto; margin-top:30px;">
-  <div class="toast-header">
-    <strong class="me-auto">Pagina Principal</strong>
-    <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close">
-      <span aria-hidden="true"></span>
-    </button>
-  </div>
-  <div class="toast-body">
-    Bienvenido!
-  </div>
-</div> *}
+  <form action="index.php" method="POST">
+    <div class="card  mb-4" style="max-width: 30rem; margin:auto; margin-top:30px;">
+      <div class="card-body">
+      <br>
+        <h6 class="card-title" style="text-align: center; margin-top:5%; font-size:30px;">Reenvio a pagina principal.</h6><br><br>
+        <h6 class="card-title" style="text-align: center; margin-top:5%;color:#4B4B4B;">el test ya ha sido realizado </h6>
+        <input name="txtlatitud" id="latitud" type="hidden" value="25.56801775">
+        <input name="txtlongitud" id="longitud" type="hidden" value="-108.44480150000001">
+        <input class="btn btn-primary" style="margin-left:180px;" type="submit" value="ACEPTAR">
+      </div>
+    </div>
+  </form>
+
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
   </script>

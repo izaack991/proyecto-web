@@ -5,12 +5,20 @@ include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $titulo="Test Cleaver";
 $smarty=new smarty;
+$_finduser = Functions::singleton_functions();
+$_idusuario = $_SESSION['iusuario'];
+$validacion = $_finduser->val_cleaver($_idusuario);
 if($_SESSION['iusuario'] == "")
 {  
         header("location:login.php");
 }
 else
 {
+    if($validacion == TRUE)
+    {
+        header("location:reenvio.php");
+    }
+    else{
 $guardarrespuestas = save::singleton_guardar();
 
 if(isset($_POST['resp1']) && isset($_POST['resp2']))
@@ -75,5 +83,5 @@ if(isset($_POST['resp1']) && isset($_POST['resp2']))
 }
 
 $smarty->assign("titulo",$titulo);
-$smarty->display("../smarty/templates/cleaver.tpl");}
+$smarty->display("../smarty/templates/cleaver.tpl");}}
 ?>

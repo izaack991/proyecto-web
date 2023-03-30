@@ -4,6 +4,9 @@ include('../smarty/clases/save.class.php');
 include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $titulo = "Text MOSS";
+$_finduser = Functions::singleton_functions();
+$_idusuario = $_SESSION['iusuario'];
+$validacion = $_finduser->val_moss($_idusuario);
 $smarty=new smarty;
 if($_SESSION['iusuario'] == "")
 {  
@@ -11,6 +14,11 @@ if($_SESSION['iusuario'] == "")
 }
 else
 {
+    if($validacion == TRUE)
+    {
+        header("location:reenvio.php");
+    }
+    else{
 $nuevasRespuestas = Save::singleton_guardar();
 
 if (isset($_POST['btnfinalizar']))
@@ -52,5 +60,5 @@ if (isset($_POST['btnfinalizar']))
 
 
 $smarty->assign("titulo", $titulo);
-$smarty->display("../smarty/templates/test_moss.tpl");}
+$smarty->display("../smarty/templates/test_moss.tpl");}}
 ?>
