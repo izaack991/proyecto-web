@@ -1676,7 +1676,7 @@
     <input type="hidden" id="resultado6" name="resultado6">
     <input type="hidden" id="resultado7" name="resultado7">
     <input type="hidden" id="resultado8" name="resultado8">
-    <br><input onclick="finish()" style="margin-left: 50%;" name="btn-finalizar" type="submit" value="finalizar">
+    <br><input onclick="finish()" style="margin-left: 50%;" name="btn-finalizar" id="btn-finalizar"type="submit" value="finalizar">
     <br>
   </form>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
