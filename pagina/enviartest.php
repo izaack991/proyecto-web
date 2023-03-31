@@ -21,7 +21,7 @@ $nuevasRespuestas = Save::singleton_guardar();
 $nuevoSingleton = Functions::singleton_functions();
 $iusuario = $_SESSION['iusuario'];
 $notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuario);
-$vacante = $_GET['vacante'];
+$vacante = $_GET['vac'];
 
 if($notificacionpostulaciones>=1)
 {
