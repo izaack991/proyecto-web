@@ -9,6 +9,7 @@
   <link id="theme-style" rel="stylesheet" href="../assets/css/devresume.css">
   <link id="theme-style" rel="stylesheet" href="../assets/css/theme-1.css">
   {* <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> *}
+  
   <style>
     .pregresp {
       border: 1px solid #20c997;
@@ -27,6 +28,25 @@
   </style>
 </head>
 <body>
+<div id="modal"class="modal" tabindex="-1" role="dialog">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Modal title</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Modal body text goes here.</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary">Save changes</button>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Inicio</a>
@@ -1656,7 +1676,7 @@
     <input type="hidden" id="resultado6" name="resultado6">
     <input type="hidden" id="resultado7" name="resultado7">
     <input type="hidden" id="resultado8" name="resultado8">
-    <br><input onclick="finish()" style="margin-left: 50%;" name="btn-finalizar" type="submit" value="finalizar">
+    <br><input onclick="finish()" style="margin-left: 50%;" name="btn-finalizar" id="btn-finalizar"type="submit" value="finalizar">
     <br>
   </form>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

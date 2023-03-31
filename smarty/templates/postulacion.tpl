@@ -57,8 +57,13 @@
     <input value={$postulacion.id_postulacion} type="hidden" name="txt_id_postulacion">
     <input value={$postulacion.id_usuario} type="hidden" name="txt_id_usuario">
     <td class="text-center"><center><input type="submit" value="Ver" class="btn btn-info"></center></td>
+    </form>
+    <form action="postulacion.php" method="POST">
+    <input value="0" type="hidden" name="btn_cerrar">
+    <input value={$postulacion.id_postulacion} type="hidden" name="txt_id_postulacion">
     <td class="text-right"><right><input type="submit" value="cerrar" class="btn btn-danger"></right></td>
     </form>
+
     <td class="text-center">{$postulacion.nombreUsuario}</td>
     <td class="text-center">{$postulacion.correo}</td>
     <td class="text-center">{$postulacion.puesto}</td>

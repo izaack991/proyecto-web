@@ -22,7 +22,7 @@ window.onload=  function contador(){
 
         // Si han pasado 1 hora, reiniciamos el contador y lo guardamos en el almacenamiento local
         if (contador <= 0) {
-          contador = 10;
+          contador = 3600;
           localStorage.setItem('contador', contador);
           $('#btn-finalizar').click();
 l        }

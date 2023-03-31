@@ -21,7 +21,7 @@ $nuevasRespuestas = Save::singleton_guardar();
 $nuevoSingleton = Functions::singleton_functions();
 $iusuario = $_SESSION['iusuario'];
 $notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuario);
-
+$vacante = $_GET['vacante'];
 
 if($notificacionpostulaciones>=1)
 {
@@ -34,6 +34,7 @@ $mail = new PHPMailer(true);
     {
          try
               {
+           
                     $mail = new PHPMailer(true); 
                     $mail->SMTPOptions = array(
                         'ssl' => array(
@@ -62,7 +63,7 @@ $mail = new PHPMailer(true);
                     $body .= "<div style='width:90%; padding:6px;'>";
                     $body .= "<h1>Felicidades ..!!!</h1>";
                     $body .= "</div>";
-                    $body .= "Aplicaste a la vacante sobre VC_TITULO ahora la emmpresa NOMBRE_EMPRESA te a enviado una serie de pruebas para la contuacion del proceso";
+                    $body .= "te hemos seleccionado para la siguiente vacante $vacante, tendras que realizar una serie de pruebas que elegimos para ti";
                     $body .= "";
                     $mail->isHTML(true); // Set email format to HTML
                     $mail->Subject = "Vacante disponible!";
@@ -84,7 +85,7 @@ $mail = new PHPMailer(true);
                         //$formacion = $nuevoDato->postulaciones($idusuario,$vc_id);
                         // if($formacion == TRUE)
                         // {    
-                        
+                        $respuestas = $nuevasRespuestas->guardar_correo($_POST['test_moss'],$_POST['test_raven'],$_POST['test_sjt'],$_POST['test_merril'],$_POST['test_cleaver']);
                             
                            
                         // }

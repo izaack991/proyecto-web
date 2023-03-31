@@ -282,7 +282,7 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                    $sql = "SELECT tbl_postulacion.*, CONCAT(tbl_usuario.nombre,' ',tbl_usuario.apellido) AS nombreUsuario, tbl_usuario.correo, tbl_vacantes.puesto FROM tbl_postulacion INNER JOIN tbl_usuario ON tbl_postulacion.id_usuario = tbl_usuario.id_usuario INNER JOIN tbl_vacantes ON tbl_postulacion.id_vacante = tbl_vacantes.id_vacante WHERE tbl_vacantes.id_empresa=$_idusuario and  tbl_vacantes.status=1;";
+                    $sql = "SELECT tbl_postulacion.*, CONCAT(tbl_usuario.nombre,' ',tbl_usuario.apellido) AS nombreUsuario, tbl_usuario.correo, tbl_vacantes.puesto FROM tbl_postulacion INNER JOIN tbl_usuario ON tbl_postulacion.id_usuario = tbl_usuario.id_usuario INNER JOIN tbl_vacantes ON tbl_postulacion.id_vacante = tbl_vacantes.id_vacante WHERE tbl_vacantes.id_empresa=$_idusuario and  tbl_postulacion.status=1;";
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
 
@@ -699,6 +699,106 @@ require_once('conexion.class.php');
             try
             {
                 $sql = "SELECT * FROM tbl_terman_merril where id_usuario ='$_idusuario' ";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+    
+                if($query->rowCount() >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+                
+            catch(PDOExeption $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
+        }
+        public function val_moss($_idusuario)
+        {
+            try
+            {
+                $sql = "SELECT * FROM tbl_respuestas_moss where id_usuario ='$_idusuario' ";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+    
+                if($query->rowCount() >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+                
+            catch(PDOExeption $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
+        }
+        public function val_sjt($_idusuario)
+        {
+            try
+            {
+                $sql = "SELECT * FROM tbl_respuestas_sjt where id_usuario ='$_idusuario' ";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+    
+                if($query->rowCount() >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+                
+            catch(PDOExeption $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
+        }
+        public function val_raven($_idusuario)
+        {
+            try
+            {
+                $sql = "SELECT * FROM tbl_respuestas_raven where id_usuario = '$_idusuario' ";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+    
+                if($query->rowCount() >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+                
+            catch(PDOExeption $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
+        }
+        public function val_cleaver($_idusuario)
+        {
+            try
+            {
+                $sql = "SELECT * FROM tbl_respuestas_cleaver where id_usuario ='$_idusuario' ";
                 $query = $this->dbh->prepare($sql);
                 $query->execute();
     
