@@ -43,7 +43,8 @@
 <table class="table table-hover">
 <thead>
   <tr>
-    <th scope="col"  class="text-center">Acción</th>
+    <th scope="col"  class="text-center"><center>Acción</center></th>
+    <th scope="col"  class="text-center"></th>
     <th scope="col"  class="text-center">Usuario</th>
     <th scope="col"  class="text-center">Correo</th>
     <th scope="col"  class="text-center">Vacante</th>
