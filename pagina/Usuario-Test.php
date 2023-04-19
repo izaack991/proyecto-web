@@ -6,7 +6,7 @@ $titulo = "Index";
 $smarty=new smarty;
 if($_SESSION['iusuario'] == "")
 {  
-        header("location:login.php");
+        header("location:login.php?xd=2");
 }
 else
 {
