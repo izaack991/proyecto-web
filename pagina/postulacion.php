@@ -7,7 +7,7 @@ $smarty=new smarty;
 $titulo="Lista de Postulaciones";
 if($_SESSION['iusuario'] == "")
 {  
-        header("location:login.php");
+        header("location:login.php?xd=1");
 }
 else
 {

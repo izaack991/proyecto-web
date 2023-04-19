@@ -16,7 +16,7 @@ else
 {
     if($validacion == TRUE)
     {
-        header("location:reenvio.php");
+        header("location:reenvio.php?xd=2");
     }
     else{
 $nuevasRespuestas = Save::singleton_guardar();

@@ -10,13 +10,13 @@ $_idusuario = $_SESSION['iusuario'];
 $validacion = $_finduser->val_sjt($_idusuario);
 if($_SESSION['iusuario'] == "")
 {  
-        header("location:login.php");
+        header("location:login.php?xd=2");
 }
 else
 {
     if($validacion == TRUE)
     {
-        header("location:reenvio.php");
+        header("location:reenvio.php?xd=2");
     }
     else{
 $nuevasRespuestas = Save::singleton_guardar();

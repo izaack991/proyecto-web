@@ -11,7 +11,7 @@ $smarty=new smarty;
 $titulo="Experiencia Laboral";
 if($_SESSION['iusuario'] == "")
 {  
-        header("location:login.php");
+        header("location:login.php?xd=2");
 }
 else
 {

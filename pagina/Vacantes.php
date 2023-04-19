@@ -11,7 +11,7 @@ $smarty=new smarty;
 $titulo="Proyecto Web";
 if($_SESSION['iusuario'] == "")
 {  
-        header("location:login.php");
+        header("location:login.php?xd=1");
 }
 else
 {

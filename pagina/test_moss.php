@@ -10,7 +10,7 @@ $validacion = $_finduser->val_moss($_idusuario);
 $smarty=new smarty;
 if($_SESSION['iusuario'] == "")
 {  
-        header("location:login.php");
+        header("location:login.php?xd=2");
 }
 else
 {
