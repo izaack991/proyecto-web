@@ -40,8 +40,10 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 	}
 	
 }
+	$trol = $_GET['xd'];
 
 	$smarty->assign("titulo",$titulo);
+	$smarty->assign("trol",$trol);
 	$smarty->display("../smarty/templates/Usuario.tpl");
 		
 ?>

@@ -19,7 +19,11 @@
 
             <div class="card  mb-3" style="max-width: 50rem; margin:auto; margin-top:50px;">
                 <FONT COLOR="black">
-                    <div class="card-header bg-primary" align="center">REGISTRO DE NUEVO USUARIO</div>
+                    {if $trol == 1}
+                        <div class="card-header bg-primary" align="center">REGISTRO DE NUEVA EMPRESA</div>
+                    {else}
+                        <div class="card-header bg-primary" align="center">REGISTRO DE NUEVO USUARIO</div>
+                    {/if}
                 </FONT>
                 <div class="card-body">
                     <h4 class="card-title"></h4>

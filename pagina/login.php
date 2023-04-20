@@ -9,6 +9,7 @@ $titulo="Login";
 //$_SESSION['irol']=$_GET['xd'];
 $nuevoSingleton = Login::singleton_login();
 $alerta = "";
+
 if($_GET['xd'] == 1)
 {
 	$_SESSION['t_user'] = 1 ;
@@ -62,6 +63,10 @@ if (isset($_POST['usuario'])&&isset($_POST['password']))
 				html: 'Error al ingresar, verifique sus datos,si aun no esta registrado, vaya a la opcion registrarme, <strong>Si es empresa vaya a la pagina principal y seleccione soy empresa</strong>',
 			type: 'warning',
 			});</script>";
+
+            $loginrol = $_GET['xd'];
+
+            $smarty->assign("loginrol",$loginrol);
 			$smarty->assign("alerta",$alerta);			
 			$smarty->assign("titulo",$titulo);
 			$smarty->display("../smarty/templates/login.tpl");
@@ -72,6 +77,9 @@ if (isset($_POST['usuario'])&&isset($_POST['password']))
 }
 else
 {
+        $loginrol = $_GET['xd'];
+
+        $smarty->assign("loginrol",$loginrol);
         $smarty->assign("alerta",$alerta);	
         $smarty->assign("titulo", $titulo);
         $smarty->display("../smarty/templates/login.tpl");
