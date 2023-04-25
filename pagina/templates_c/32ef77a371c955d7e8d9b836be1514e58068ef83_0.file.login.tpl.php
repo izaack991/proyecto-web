@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2023-03-14 18:27:47
+/* Smarty version 4.1.0, created on 2023-04-25 20:03:34
   from 'C:\xampp\htdocs\proyecto-web\smarty\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6410ae93557f76_83480067',
+  'unifunc' => 'content_644815f62955c4_20553468',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '32ef77a371c955d7e8d9b836be1514e58068ef83' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyecto-web\\smarty\\templates\\login.tpl',
-      1 => 1678296281,
+      1 => 1682445724,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6410ae93557f76_83480067 (Smarty_Internal_Template $_smarty_tpl) {
+function content_644815f62955c4_20553468 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,9 +30,15 @@ function content_6410ae93557f76_83480067 (Smarty_Internal_Template $_smarty_tpl)
     <title>Login</title>
     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
+    <?php echo '<script'; ?>
+ src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"><?php echo '</script'; ?>
+>
     </head>
 <body>
     <form action="" method="post">
+    <?php echo $_smarty_tpl->tpl_vars['alerta']->value;?>
+
     <br><div style="margin-top: 167px; margin-left: 35%; "> 
     <div class="card border-secondary mb-3" style="max-width: 25rem;">
     <FONT COLOR="black"><div class="card-header bg-primary" align="center">Inicio de sesion</div></FONT>
@@ -43,7 +49,7 @@ function content_6410ae93557f76_83480067 (Smarty_Internal_Template $_smarty_tpl)
         <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa contraseña">
         <br><br>
        <center> <button class="btn btn-light" type="submit">Iniciar sesion</button>
-       <A HREF="../../proyecto-web/pagina/Usuario.php?xd=<?php echo $_SESSION['irol'];?>
+       <A HREF="../../proyecto-web/pagina/Usuario.php?xd=<?php echo $_smarty_tpl->tpl_vars['loginrol']->value;?>
 "class="btn btn-light" type="submit">Registrarse</A></center>
         </div>
         </div>
