@@ -56,7 +56,7 @@ $mail = new PHPMailer(true);
                     $mail->Password = 'Javi3r2606!';
                     //Agregar destinatario
                     $mail->setFrom('noreply@workele.com', 'contacto');
-                    $mail->AddAddress("noreply@workele.com");//A quien mandar email
+                    $mail->AddAddress("luis2@gmail.com");//A quien mandar email
                     //$mail->SMTPKeepAlive = true;  
                     $mail->Mailer = "smtp"; 
                     $body = "<img src='http://artics.servehttp.com:8080/assets/images/logolargegreen.png' class='img-fluid' width='230' height='70' alt='image'/>"; // OJO con la imagen. Hablaremos de esto en el próximo apartado.
