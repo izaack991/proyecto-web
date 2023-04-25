@@ -70,7 +70,7 @@
         <div id="cardv" class="card border-primary shadow p-3 mb-5 bg-body rounded"
           style="width: 25rem; margin:auto;">
           <div class="card-body">
-          <center><img src="../pagina/img/{$vacantes.ruta_imagen}" alt="Imagen" style="width: 15rem;"></center><br>
+          <!--<center><img src="../pagina/img/{$vacantes.ruta_imagen}" alt="Imagen" style="width: 15rem;"></center><br>-->
             <h4 class="card-title, text-danger" style="display:inline;">{$vacantes.puesto}</h4> <br><br>
             <h4 class="card-title" style="display:inline;">{$vacantes.empresa}</h4> <br><br>
             <p align="justify" class="card-text">{$vacantes.datos_adicionales}</p>
@@ -88,7 +88,7 @@
         <div id="cardv" class="card border-primary shadow p-3 mb-5 bg-body rounded"
         style="width: 25rem; margin:auto;">
           <div class="card-body">
-          <center><img src="../pagina/img/{$vacantes.ruta_imagen}" alt="Imagen" style="width: 15rem;"></center><br>
+          <!--<center><img src="../pagina/img/{$vacantes.ruta_imagen}" alt="Imagen" style="width: 15rem;"></center><br>-->
             <h4 class="card-title, text-danger" style="display:inline;">{$vacantes.puesto}</h4> <br><br>
             <h4 class="card-title" style="display:inline;">{$vacantes.empresa}</h4> <br><br>
             <p align="justify" class="card-text">{$vacantes.datos_adicionales}</p>
@@ -106,7 +106,7 @@
     <div id="cardv" class="card border-primary shadow p-3 mb-5 bg-body rounded"
     style="width: 25rem; margin:auto;">
       <div class="card-body">
-      <center><img src="../pagina/img/{$vacantes.ruta_imagen}" alt="Imagen" style="width: 15rem;"></center><br>
+      <!--<center><img src="../pagina/img/{$vacantes.ruta_imagen}" alt="Imagen" style="width: 15rem;"></center><br>-->
         <h4 class="card-title, text-danger" style="display:inline;">{$vacantes.puesto}</h4> <br><br>
         <h4 class="card-text" style="display:inline;">{$vacantes.empresa}</h4> <br><br>
         <p align="justify" class="card-text">{$vacantes.datos_adicionales}</p>
