@@ -68,7 +68,7 @@
     <div class="card-header text-center">
       <h4 class="card-title titulo">CURRICULUM</h4>
       {foreach $Postulacion as $postu}
-      <a href="enviartest.php?vac={$postu.puesto}"><input class="btn btn-primary" name="btntest" type="submit" value="ENVIAR TEST" style="float: right;"></a>
+      <a href="enviartest.php?vac={$postu.puesto}&ie={$postu.id_usuario}"><input class="btn btn-primary" name="btntest" type="submit" value="ENVIAR TEST" style="float: right;"></a>
       {/foreach}
       </div>
    

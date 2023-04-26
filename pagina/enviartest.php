@@ -22,7 +22,7 @@ $nuevoSingleton = Functions::singleton_functions();
 $iusuario = $_SESSION['iusuario'];
 $notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuario);
 $vacante = $_GET['vac'];
-
+$ie = $_GET['ie'];
 if($notificacionpostulaciones>=1)
 {
     $COUNTPOS=$notificacionpostulaciones;
@@ -85,7 +85,7 @@ $mail = new PHPMailer(true);
                         //$formacion = $nuevoDato->postulaciones($idusuario,$vc_id);
                         // if($formacion == TRUE)
                         // {    
-                        $respuestas = $nuevasRespuestas->guardar_correo($_POST['test_moss'],$_POST['test_raven'],$_POST['test_sjt'],$_POST['test_merril'],$_POST['test_cleaver']);
+                            $respuestas = $nuevasRespuestas->guardar_correo($ie,$idusuario,$_POST['test_moss'],$_POST['test_raven'],$_POST['test_sjt'],$_POST['test_merril'],$_POST['test_cleaver']);
                             
                            
                         // }

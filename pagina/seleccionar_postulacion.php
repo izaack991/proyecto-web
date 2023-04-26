@@ -11,8 +11,10 @@ if($_SESSION['iusuario'] == "")
 }
 else
 {
-$_finduser = Functions::singleton_functions();
-$nuevoUsuario = Save::singleton_guardar();
+    $id_empresa=$_SESSION['iusuario'];
+    $_finduser = Functions::singleton_functions();
+    $nuevoUsuario = Save::singleton_guardar();
+    $id_usuario = 0;
 
 
 if(isset($_POST['txt_id_postulacion']) && isset($_POST['txt_id_usuario']))
