@@ -109,13 +109,13 @@
         <label>Los campos marcados con asterisco (*) son obligatorios</label> <br>
 
         <label class="col-form-label mt-4" for="name"> Descripcion de Puesto *</label> <br>
-        <input class="form-control" type="text" name="txtdescripcion" placeholder="Ingrese el puesto en el que trabajó en la empresa"> <br>
+        <input class="form-control" type="text" name="txtdescripcion" placeholder="Ingrese el puesto en el que trabajó en la empresa" maxLength="100">  <br>
 
         <label for="name" class="form__label"> Empresa *</label> <br>
-        <input class="form-control" type="text" name="txtempresa" placeholder="Ingrese el nombre de la empresa en que trabajó"> <br>
+        <input class="form-control" type="text" name="txtempresa" placeholder="Ingrese el nombre de la empresa en que trabajó" maxLength="100"> <br>
 
         <label for="name" class="form__label"> Periodo *</label> <br>
-        <input class="form-control" type="text" name="txtperiodo" placeholder="Ingresa el tiempo que trabajó en la empresa"> <br>
+        <input class="form-control" type="text" name="txtperiodo" placeholder="Ingresa el tiempo que trabajó en la empresa" maxLength="20"> <br>
 
         <input name="txtlatitud" id="latitud" type="hidden">
         <input name="txtlongitud" id="longitud" type="hidden">

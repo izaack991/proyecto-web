@@ -108,13 +108,13 @@
         <label>Los campos marcados con asterisco son obligatorios</label> <br>
 
         <label class="col-form-label mt-4" for="name"> Nombre de la Institución Educativa *</label> <br>
-        <input class="form-control" type="text" name="descripcion" placeholder="Ingrese el nombre de la institución educativa"> <br>
+        <input class="form-control" type="text" name="descripcion" placeholder="Ingrese el nombre de la institución educativa" maxLength="50"> <br>
 
         <label for="name" class="form__label"> Ubicación *</label> <br>
-        <input class="form-control" type="text" name="ubicacion" placeholder="Ingrese la ubicación de la Institucion educativa"> <br>
+        <input class="form-control" type="text" name="ubicacion" placeholder="Ingrese la ubicación de la Institucion educativa" maxLength="100"> <br>
 
         <label for="name" class="form__label"> Periodo *</label> <br>
-        <input class="form-control" type="text" name="periodo" placeholder="Ingrese el tiempo que estudio en años"> <br>
+        <input class="form-control" type="text" name="periodo" placeholder="Ingrese el tiempo que estudio en años" maxLength="20"> <br>
 
         <input name="txtlatitud" id="latitud" type="hidden">
         <input name="txtlongitud" id="longitud" type="hidden">

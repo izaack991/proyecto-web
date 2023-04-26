@@ -9,8 +9,7 @@ class Conexion{
     {
         try 
         {
- 
-            $this->dbh = new PDO('mysql:host=localhost;dbname=db_web', 'root', '');
+            $this->dbh = new PDO('mysql:host=localhost; dbname=db_web', 'root', '');
             $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->dbh->exec("SET CHARACTER SET utf8");
             

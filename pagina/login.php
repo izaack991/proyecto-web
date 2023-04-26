@@ -26,6 +26,7 @@ if (isset($_POST['usuario'])&&isset($_POST['password']))
 
     //$usuario = $buscarUsuario->login($_usuario, $_password);
     $usuario = $nuevoSingleton->login_users($_usuario,$_password,$_SESSION['t_user']);
+    $status = $nuevoSingleton->login_status($_usuario,$_password,$_SESSION['t_user']);
 
  //
         // foreach ($usuario as $usuario => $value) {
@@ -44,8 +45,25 @@ if (isset($_POST['usuario'])&&isset($_POST['password']))
             {
                 header("location:index.php");
             }
-            else{
+            if ($_ROL==1 && $status==TRUE)
+            {
                 header("location:indexEmpresa.php");
+            }
+            else
+            {
+                $alerta="<script> 
+                swal({
+                    title: '',
+                    html: 'Error al ingresar, esta cuenta esta en proceso de verificacion, por favor espere hasta que se complete la verificacion<strong></strong>',
+                type: 'warning',
+                });</script>";
+    
+                $loginrol = $_GET['xd'];
+    
+                $smarty->assign("loginrol",$loginrol);
+                $smarty->assign("alerta",$alerta);			
+                $smarty->assign("titulo",$titulo);
+                $smarty->display("../smarty/templates/login.tpl");
             }
             //condicional si es empresa (el 1 se usa para las empresas)
             // if ($_ROL==1)
