@@ -108,7 +108,7 @@
         <label>Los campos marcados con asterisco son obligatorios</label> <br>
 
         <label class="col-form-label mt-4" for="name">Descripcion *</label><br>
-        <input class="form-control" type="text" name="txtdesc" maxlength="100" placeholder="Ingrese sus aficiones"
+        <input class="form-control" type="text" name="txtdesc" maxlength="100" pattern="[A-Z a-z]+" placeholder="Ingrese sus aficiones"
           required="true"><br><br>
 
         <input name="txtlatitud" id="latitud" type="hidden">
