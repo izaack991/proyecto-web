@@ -567,18 +567,21 @@ require_once('conexion.class.php');
                 
             }
 
-            public function guardar_correo($test_cleaver, $test_reaven, $test_moss, $test_sjt, $test_merril)
+            public function guardar_correo($id_usuario,$id_empresa,$test_cleaver,$test_moss,$test_sjt,$test_merril,$test_reaven)
             {        
                 try {
                     
-                    $sql="insert into tbl_envio_test values(:test_cleaver,:test_reaven,:test_moss,:test_sjt,:test_merril)";
+                    $sql="insert into tbl_envio_test values(:id_usuario,:id_empresa,:test_cleaver,:test_moss,:test_sjt,:test_merril,:test_reaven,:1)";
                     
                     $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':id_usuario',$id_usuario);
+                    $query->bindParam(':id_empresa',$id_empresa);
                     $query->bindParam(':test_cleaver',$test_cleaver);
-                    $query->bindParam(':test_reaven',$test_reaven);
                     $query->bindParam(':test_moss',$test_moss);
                     $query->bindParam(':test_sjt',$test_sjt);
                     $query->bindParam(':test_merril',$test_merril);
+                    $query->bindParam(':test_reaven',$test_reaven);
+                    //$query->bindParam(':estatus',$estatus);
                     $query->execute();
                     $this->dbh = null;
                 }
