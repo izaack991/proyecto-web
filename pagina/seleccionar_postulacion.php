@@ -31,7 +31,7 @@ if(isset($_POST['btntest']))
 {
     $smarty->display("../smarty/templates/enviartest.tpl");
 }
-
+$smarty->assign("vac",$id_postulacion);
 $smarty->assign("Postulacion",$postulaciones);
 $smarty->assign("Experiencia",$experiencia);
 $smarty->assign("Formacion",$formacion);
