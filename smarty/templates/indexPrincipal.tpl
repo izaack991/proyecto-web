@@ -52,47 +52,12 @@
     </div>
   </div>
   <br><br>
-
   
-  <div class="row align-items-center"  style="margin-left:0px;">
-    <div class="col">
-      <div class="card border-primary mb-3" style="max-width: 20rem;">
-        <div class="card-header"><h3 class="card-title">Base de datos</h3></div>
-        <div class="card-body">
-          <h4 class="card-title">19,356</h4>
-          <p class="card-text">vacantes actualmente</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card border-primary mb-3" style="max-width: 20rem;">
-        <div class="card-header"><h3 class="card-title">Administrador</h3></div>
-        <div class="card-body">
-          <h4 class="card-title">8,329</h4>
-          <p class="card-text">vacantes actualmente</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card border-primary mb-3" style="max-width: 20rem;">
-        <div class="card-header"><h3 class="card-title">Teaster</h3></div>
-        <div class="card-body">
-          <h4 class="card-title">6,824</h4>
-          <p class="card-text">vacantes actualmente</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card border-primary mb-3" style="max-width: 20rem;">
-        <div class="card-header"><h3 class="card-title">Programador</h3></div>
-        <div class="card-body">
-          <h4 class="card-title">10,546</h4>
-          <p class="card-text">vacantes actualmente</p>
-        </div>
-      </div>
-    </div>
+  <div class="container" style="margine:auto;width: 100%;height:250px;">
+  <div class="row" id="card-container">
   </div>
-  <br><br>
+  </div>
+
 
     {foreach $Noticias as $noticia}
       <div class="card border-primary shadow p-3 mb-5 bg-body rounded" style="max-width: 40rem; margin:auto; margin-top:30px;">
@@ -102,8 +67,9 @@
           </div>
       </div>
     {/foreach}
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="ajax.js"></script>
 </body>
 </html>

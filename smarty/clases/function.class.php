@@ -212,6 +212,27 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
+            function ajax_vacante()
+            {
+                try
+                {
+
+                $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE status = 1 group by id_vacante ORDER BY id_vacante DESC LIMIT 5";
+                $query = $this->dbh->prepare($sql);
+                    $query->execute();
+
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;    
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error: !" . $e->getMessage();
+                }
+                return $data;
+            }
             function buscarVacante1()
             {
                 try
