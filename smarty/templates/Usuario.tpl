@@ -19,7 +19,7 @@
 
             <div class="card  mb-3" style="max-width: 50rem; margin:auto; margin-top:50px;">
                 <FONT COLOR="black">
-                    {if $trol == 1}
+                    {if $irol == 1}
                         <div class="card-header bg-primary" align="center">REGISTRO DE NUEVA EMPRESA</div>
                     {else}
                         <div class="card-header bg-primary" align="center">REGISTRO DE NUEVO USUARIO</div>
@@ -33,9 +33,14 @@
                     <br>
                     <label>Seleccione el formulario a realizar*</label>
                     <br>
-                    <input type="radio" name="preg1" value="A" onclick="activarUsuario()" id="miFormulario"> <label>USUARIO</label><br>
+                    {if $irol == 1}
+                        <input type="radio" name="preg1" value="A" onload="activarUsuario()" visible="false" id="miFormulario" checked="true" hidden="true"> <label hidden="true">USUARIO</label><br>
 
-                    <input type="radio" name="preg1" value="B" onclick="activarEmpresa()" id="miFormulario"> <label>EMPRESA</label><br><br>
+                    {else} 
+                        <input type="radio" name="preg1" value="B" onload="activarEmpresa()" visible="false" id="miFormulario" checked="true" hidden="true"> <label hidden="true">EMPRESA</label><br><br>
+                   
+                    {/if}
+
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Nombre: *</label><br>
@@ -162,15 +167,9 @@
         <script type="text/javascript"> 
         function activarUsuario(){
         document.getElementById('razon').disabled=true 
-        document.getElementById('nombre').disabled=false 
-        document.getElementById('apellido').disabled=false 
-        document.getElementById('dateFECHA').disabled=false 
-        document.getElementById('curp').disabled=false 
-        document.getElementById('sexo').disabled=false 
         
         }
         function activarEmpresa(){
-        document.getElementById('razon').disabled=false 
         document.getElementById('nombre').disabled=true 
         document.getElementById('apellido').disabled=true 
         document.getElementById('dateFECHA').disabled=true 

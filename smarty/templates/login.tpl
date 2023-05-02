@@ -23,7 +23,7 @@
         <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa contraseña">
         <br><br>
        <center> <button class="btn btn-light" type="submit">Iniciar sesion</button>
-       <A HREF="../../proyecto-web/pagina/Usuario.php?xd={$loginrol}"class="btn btn-light" type="submit">Registrarse</A></center>
+       <A HREF="../../proyecto-web/pagina/Usuario.php"class="btn btn-light" type="submit">Registrarse</A></center>
         </div>
         </div>
         <a href="indexPrincipal.php"><button class="btn btn-light" type="button">VOLVER</button></a>

@@ -8,7 +8,8 @@ $titulo="Registro Usuario";
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
 //$id_tipo=$_GET['xd'];
-$irol=$_SESSION['irol'];
+$irol=$_SESSION['t_user'];
+
 if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 {
 	$_ruta = $_POST['txtruta'];
@@ -25,6 +26,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 		
 	else
 	{
+
 		$_nombre = $_POST['txt_NOMBRE'];
 		$_apellido = $_POST['txt_APELLIDOS'];
 		$_correo = $_POST['txt_CORREO'];
@@ -39,7 +41,6 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 		$f_id_usuario = $_findUser -> consec_usuario();
 		$newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol,$_status,$_ruta);
 		
-		
 		$tipo = $_FILES['txtruta']['name'];
 		//Obtenemos algunos datos necesarios sobre el archivo
 		$tipo = $_FILES['txtruta']['type'];
@@ -53,7 +54,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 		else {
 			//Si la imagen es correcta en tamaño y tipo
 			//Se intenta subir al servidor
-			if (move_uploaded_file($temp, 'img/'.$_ruta)) {
+			if (move_uploaded_file($temp, 'pagina/img/'.$_ruta)) {
 				//Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
 				chmod('pagina/img/'.$_ruta, 0777);
 				//Mostramos el mensaje de que se ha subido co éxito
@@ -74,10 +75,10 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 	}
 	
 }
-	$trol = $_GET['xd'];
+$irol=$_SESSION['t_user'];
 
 	$smarty->assign("titulo",$titulo);
-	$smarty->assign("trol",$trol);
+	$smarty->assign("irol",$irol);
 	$smarty->display("../smarty/templates/Usuario.tpl");
 		
 ?>
