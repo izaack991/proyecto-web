@@ -35,22 +35,12 @@
 
 
 <div class="row align-items-center"  style="margin-left:15px;">
-    <div class="col">
-      <input type="image" onclick="location.href='login.php?xd=2&vacante=3'" src="https://www.occ.com.mx/_next/image?url=https%3A%2F%2Fcdn-h4.occ.com.mx%2Fimages%2Fhomepage%2Fbuttons%2Fcolor%2Fcliente-Walmart-Mexico.jpg&w=1920&q=75" href="https://www.walmart.com.mx" style="border: double;" height="200" width="200"/>
-    </div>
-    <div class="col">
-      <input type="image" onclick="location.href='login.php?xd=2&vacante=4'" src="https://www.occ.com.mx/_next/image?url=https%3A%2F%2Fcdn-h4.occ.com.mx%2Fimages%2Fhomepage%2Fbuttons%2Fcolor%2Fcliente-BBVA-Bancomer.jpg&w=1920&q=75" style="border: double;" height="200" width="200"/>
-    </div>
-    <div class="col">
-      <input type="image" onclick="location.href='login.php?xd=2&vacante=5'" src="https://www.occ.com.mx/_next/image?url=https%3A%2F%2Fcdn-h4.occ.com.mx%2Fimages%2Fhomepage%2Fbuttons%2Fcolor%2Fcliente-EXHIBIDORA-MEXICANA-CINEPOLIS-SA-DE-CV.jpg&w=1920&q=75" style="border: double;" height="200" width="200"/>
-    </div>
-    <div class="col">
-      <input type="image" onclick="location.href='login.php?xd=2&vacante=6'" src="https://www.occ.com.mx/_next/image?url=https%3A%2F%2Fcdn-h4.occ.com.mx%2Fimages%2Fhomepage%2Fbuttons%2Fcolor%2Fcliente-Banamex.jpg&w=1920&q=75" style="border: double;" height="200" width="200"/>
-    </div>
-    <div class="col">
-      <input type="image" onclick="location.href='login.php?xd=2&vacante=7'" src="https://smsarchives.com/wp-content/uploads/2020/04/Kylie-Cosmetics-1.png" style="border: double;" height="200" width="200"/>
-    </div>
-  </div>
+    {foreach $Vacantes as $vacantes}
+      <div class="col">
+        <input type="image" onclick="location.href='login.php?xd=2&vacante={$vacantes.id_vacante}'" src="../../proyecto-web/pagina/img/{$vacantes.ruta_imagen}" style="border: double;" height="200" width="200"/>
+      </div>
+    {/foreach}
+</div>
   <br><br>
   
   <div class="container" style="margine:auto;width: 100%;height:250px;">
