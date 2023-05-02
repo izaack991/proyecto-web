@@ -100,15 +100,6 @@
 
         <label for="name" class="form__label"> Datos Adicionales *</label> <br>
         <input class="form-control" type="text" name="txtdatos" required placeholder="Ingresa los Datos" maxlength=""> <br>
-
-        {* <label for="name" class="form__label"> Ruta de Imagen *</label> <br>
-        <input class="form-control" type="text" required name="txtruta" placeholder="Ingresa la empresa"> <br> *}
-
-        <div class="form-group">
-        <label for="formFile" class="form-label mt-4">Seleccionar archivo *</label>
-        <input class="form-control" type="file" name="txtruta" id="txtruta">
-      </div>
-  
         
         <div class="form-row">
         <div class="form-group col-md-6">

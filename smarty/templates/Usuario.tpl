@@ -28,25 +28,35 @@
                 <div class="card-body">
                     <h4 class="card-title"></h4>
                     <label></label>
+                    <label>Los campos marcados con asterisco (*) son obligatorios</label>
                     <br>
-                    <label>Los campos marcados con asterisco son obligatorios*</label>
                     <br>
+                    <label>Seleccione el formulario a realizar*</label>
+                    <br>
+                    <input type="radio" name="preg1" value="A" onclick="activarUsuario()" id="miFormulario"> <label>USUARIO</label><br>
 
+                    <input type="radio" name="preg1" value="B" onclick="activarEmpresa()" id="miFormulario"> <label>EMPRESA</label><br><br>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Nombre: *</label><br>
-
-                            <input class="form-control" type="text" name="txt_NOMBRE" class="texto"
+                            <input class="form-control" type="text" name="txt_NOMBRE" class="texto" id="nombre"
                                      placeholder="Escriba el Nombre" pattern="[A-Z a-z]+" required="true"><br>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Apellidos: *</label><br>
-                            <input class="form-control" type="text" name="txt_APELLIDOS" class="texto"
+                            <input class="form-control" type="text" name="txt_APELLIDOS" class="texto" id="apellido"
                                 placeholder="Escriba sus Apellidos" pattern="[A-Z a-z]+" required="true"><br>
                         </div>
                     </div>
+                    <label>Razón Social: *</label><br>
+                    <input class="form-control" type="text" name="txt_razon" class="texto" id="razon"
+                        placeholder="Ingresa el Nombre de la Empresa" pattern="[A-Z a-z]+" required="true">
+                       
+                        <label for="formFile" class="form-label mt-4">Seleccionar Imagen de Perfil: *</label>
+                        <input class="form-control" type="file"  name="txtruta" id="txtruta"><br>
+
                     <label>Correo Electronico: *</label><br>
-                    <input class="form-control" type="email" name="txt_CORREO" class="texto"
+                    <input class="form-control" type="email" name="txt_CORREO" class="texto" id="correo"
                         placeholder="Ejemplo@dominio.com" pattern=".+.com" required><br>
 
                     <div class="form-row">
@@ -57,7 +67,7 @@
                         <br>
                         <div class="form-group col-md-6">
                             <label>CURP: *</label><br>
-                            <input class="form-control" type="text" id="curp"name="txt_CURP" oninput="validarInput(this)" maxLength="18" minLength="18" pattern="[A-Z0-9]+" style="width:100%;" placeholder="Ingrese su CURP">
+                            <input class="form-control" type="text" id="curp" name="txt_CURP" oninput="validarInput(this)" maxLength="18" minLength="18" pattern="[A-Z0-9]+" style="width:100%;" placeholder="Ingrese su CURP">
                             <pre id="resultado"></pre>
                         </div>
                     </div>
@@ -65,12 +75,12 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Contraseña: *</label><br>
-                            <input class="form-control" type="password" name="txt_PASSWORD" class="texto" minlength="8"
+                            <input class="form-control" type="password" name="txt_PASSWORD" class="texto" minlength="8" id="contrasena"
                                 maxLength="30" placeholder="Escriba la Contraseña" required="true"><br>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Confirme Contraseña: *</label><br>
-                            <input class="form-control" type="password" name="txt_PASSWORD2" class="texto" minlength="8"
+                            <input class="form-control" type="password" name="txt_PASSWORD2" class="texto" minlength="8" id="contrasena1"
                                 maxLength="30" placeholder="Confirme la Contraseña" required="true"><br>
                         </div>
                     </div>
@@ -80,7 +90,7 @@
                         <div class="col-3">
                             <label>Sexo: *</label><br>
 
-                            <select class="btn btn-light disabled" name="cmb_SEXO">
+                            <select class="btn btn-light disabled" name="cmb_SEXO" id="sexo">
                                 <option value="1">Masculino</option>
                                 <option value="2">Femenino</option>
                                 <option value="3">Otro</option>
@@ -89,7 +99,7 @@
                         </div>
                         <div class="col">
                             <label>Region: *</label><br>
-                            <select class="btn btn-light disabled" name="cmb_REGION">
+                            <select class="btn btn-light disabled" name="cmb_REGION" id="region">
                                 <div>
                                     <<option value="54">Argentina</option>
                                     <option value="591">Bolivia</option>
@@ -120,15 +130,16 @@
                                 </div>
                                 <div class="col">
                                     <label>Telefono: *</label><br>
-                                    <input class="form-control" type="text" name="txt_TELEFONO" class="texto"
+                                    <input class="form-control" type="text" name="txt_TELEFONO" class="texto" id="telefono"
                                         minlength="10" maxLength="10" placeholder="Escriba su Número"
                                         required="true"><br>
                                 </div>
                         </div>
                         <label>Domicilio: *</label><br>
-                        <input class="form-control" type="text" name="txt_DOMICILIO" class="texto"
+                        <input class="form-control" type="text" name="txt_DOMICILIO" class="texto" id="domicilio"
                             placeholder="Escriba su Domicilio" required="true"><br>
-                        <center>
+
+                         <center>
                             <button class="btn btn-primary" type="submit">GUARDAR</button>
                             <button type="button" class="btn btn-secondary" onclick="location.href='login.php?xd=1'">Regresar
                                 al Login</button>
@@ -137,6 +148,7 @@
 
 
         </form>
+        
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
         </script>
@@ -145,6 +157,26 @@
         </script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
+
+        <script type="text/javascript"> 
+        function activarUsuario(){
+        document.getElementById('razon').disabled=true 
+        document.getElementById('nombre').disabled=false 
+        document.getElementById('apellido').disabled=false 
+        document.getElementById('dateFECHA').disabled=false 
+        document.getElementById('curp').disabled=false 
+        document.getElementById('sexo').disabled=false 
+        
+        }
+        function activarEmpresa(){
+        document.getElementById('razon').disabled=false 
+        document.getElementById('nombre').disabled=true 
+        document.getElementById('apellido').disabled=true 
+        document.getElementById('dateFECHA').disabled=true 
+        document.getElementById('curp').disabled=true 
+        document.getElementById('sexo').disabled=true 
+        }
         </script>
 
 </body>

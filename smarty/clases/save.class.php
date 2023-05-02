@@ -54,12 +54,12 @@ require_once('conexion.class.php');
             }        
             return TRUE;
         }
-        public function guardar_usuario($_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $_rol,$_status)
+        public function guardar_usuario($_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $_rol,$_status,$_ruta)
         {        
             try {
                
-                $sql="insert into tbl_usuario(id_usuario, rol, status, nombre, apellido, correo, fecha_nac, no_identificacion, password, sexo, region, telefono, domicilio )
-                                    values(:id_usuario, :rol, :status, :nombre, :apellido, :correo, :fecha_nac, :no_identificacion, :password, :sexo, :region, :telefono, :domicilio)";
+                $sql="insert into tbl_usuario(id_usuario, rol, status, nombre, apellido, correo, fecha_nac, no_identificacion, password, sexo, region, telefono, domicilio, ruta_imagen)
+                                    values(:id_usuario, :rol, :status, :nombre, :apellido, :correo, :fecha_nac, :no_identificacion, :password, :sexo, :region, :telefono, :domicilio, :ruta_imagen)";
                     
                 $query = $this->dbh->prepare($sql);
                     
@@ -76,6 +76,7 @@ require_once('conexion.class.php');
                 $query->bindParam(':domicilio',$_domicilio);
                 $query->bindParam(':rol',$_rol);
                 $query->bindParam(':status',$_status);
+                $query->bindParam(':ruta_imagen',$_ruta);
                 $query->execute();
                 $this->dbh = null;
             }
@@ -157,8 +158,8 @@ require_once('conexion.class.php');
             {        
                 try {
                     
-                    $sql="INSERT into tbl_vacantes(id_vacante,id_empresa,puesto,empresa,sueldo,lugar,datos_adicionales,ruta_imagen,dateInicio,dateFin)
-                                        values(:id_vacante, :id_empresa, :puesto, :empresa, :sueldo, :lugar, :datos_adicionales, :ruta_imagen, :dateInicio, :dateFin)";
+                    $sql="INSERT into tbl_vacantes(id_vacante,id_empresa,puesto,empresa,sueldo,lugar,datos_adicionales,dateInicio,dateFin)
+                                        values(:id_vacante, :id_empresa, :puesto, :empresa, :sueldo, :lugar, :datos_adicionales, :dateInicio, :dateFin)";
                     
                     $query = $this->dbh->prepare($sql);
                     
@@ -169,7 +170,6 @@ require_once('conexion.class.php');
                     $query->bindParam(':sueldo',$_sueldo);
                     $query->bindParam(':lugar',$_lugar);
                     $query->bindParam(':datos_adicionales',$_datos);
-                    $query->bindParam(':ruta_imagen',$_ruta);
                     $query->bindParam(':dateInicio', $_fechainicio);
                     $query->bindParam(':dateFin',$_fechafin);
                     $query->execute();
