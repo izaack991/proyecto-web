@@ -60,9 +60,28 @@
     <td class="text-center"><center><input type="submit" value="Ver" class="btn btn-info"></center></td>
     </form>
     <form action="postulacion.php" method="POST">
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ALERTA</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ¿Desea cerrar esta postulacion?
+              </div>
+              <div class="modal-body">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <input type="submit" value="Aceptar" class="btn btn-primary">
+              </div>
+            </div>
+          </div>
+        </div>
     <input value="0" type="hidden" name="btn_cerrar">
     <input value={$postulacion.id_postulacion} type="hidden" name="txt_id_postulacion">
-    <td class="text-right"><right><input type="submit" value="cerrar" class="btn btn-danger"></right></td>
+    <td class="text-center"><right><input type="button" value="Cerrar" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"></right></td>
     </form>
 
     <td class="text-center">{$postulacion.nombreUsuario}</td>
