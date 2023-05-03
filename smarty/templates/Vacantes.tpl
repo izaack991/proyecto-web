@@ -77,22 +77,21 @@
 
 
         <label for="name" class="form__label"> Puesto *</label> <br>
-        <input class="form-control" type="text" required name="txtpuesto" placeholder="Ingresa el Puesto"> <br>
+        <input class="form-control" type="text" required name="txtpuesto" placeholder="Ingresa el Puesto" maxlength="50"> <br>
 
         <label for="name" class="form__label"> Empresa *</label> <br>
-        <input class="form-control" type="text" required name="txtempresa" placeholder="Ingresa la empresa"> <br>
+        <input class="form-control" type="text" required name="txtempresa" placeholder="Ingresa la empresa" maxlength="50"> <br>
        
         <label for="name" class="form__label"> Sueldo *</label><br>
         <div class="input-group mb-3">
         <span class="input-group-text">$</span>
-        <input class="form-control " type="text" required name="txtsueldo" placeholder="Ingresa el Sueldo"> <br>
+        <input class="form-control " type="text" required name="txtsueldo" placeholder="Ingresa el Sueldo" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(this.value < 0) this.value = '';" maxlength="10"> <br>
         </div>
 
         <label for="name" class="form__label"> Lugar*</label> <br>
         <div class="form-row" text-align: center;>
         <div class="col">
         <select class="btn btn-light disabled" name="cmbpais">
-             <option value="">Elige una opción</option>
              {foreach $Paises as $pais} 
                <option value={$pais.id_paises}>{$pais.nombre}</option>
              {/foreach}
