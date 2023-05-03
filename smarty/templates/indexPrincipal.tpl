@@ -34,13 +34,7 @@
 <br><br>
 
 
-<div class="row align-items-center"  style="margin-left:15px;">
-    {foreach $Vacantes as $vacantes}
-      <div class="col">
-        <input type="image" onclick="location.href='login.php?xd=2&vacante={$vacantes.id_vacante}'" src="../../proyecto-web/pagina/img/{$vacantes.ruta_imagen}" style="border: double;" height="200" width="200"/>
-      </div>
-    {/foreach}
-</div>
+
   <br><br>
   
   <div class="container" style="margine:auto;width: 100%;height:250px;">
