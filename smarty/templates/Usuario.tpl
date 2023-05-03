@@ -110,7 +110,7 @@
                                     <option value="56">Chile</option>
                                     <option value="57">Colombia</option>
                                     <option value="506">Costa Rica</option>
-                                    <option value="53">Cuba</option>
+                                    <option value="53">Cuba</option>                                    
                                     <option value="593">Ecuador</option>
                                     <option value="503">El Salvador</option>
                                     <option value="1473">Granada</option>
@@ -131,13 +131,14 @@
                                     <option value="58">Venezuela</option>
                                 </div>
                             </select><br>
+                        </div>
                             <div class="col">
                                 <label>Telefono: *</label><br>
                                 <input class="form-control" type="text" name="txt_TELEFONO" class="texto" id="telefono"minlength="10" maxLength="10" placeholder="Escriba su Número" required="true"><br>
                             </div>
-                        </div>
-                        <label>Domicilio: *</label><br>
-                        <input class="form-control" type="text" name="txt_DOMICILIO" class="texto" id="domicilio" placeholder="Escriba su Domicilio" required="true"><br>
+                    </div>
+                            <label>Domicilio: *</label><br>
+                            <input class="form-control" type="text" name="txt_DOMICILIO" class="texto" id="domicilio" placeholder="Escriba su Domicilio" required="true"><br>
 
                         <center>
                             <button class="btn btn-primary" type="submit">GUARDAR</button>
