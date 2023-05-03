@@ -57,6 +57,7 @@
             }        
             
         }
+
         public function login_status($_correo,$_password,$_tipo)
         {
             
@@ -87,6 +88,7 @@
             }        
             
         }
+        
         public function rst_pass($_correo,$_tipo)
         {
             

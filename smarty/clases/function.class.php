@@ -24,27 +24,31 @@ require_once('conexion.class.php');
             return self::$instancia;
      
         }
-        
+      
+        public function __clone()
+        {
+            trigger_error('La clonación de este objeto no está permitida', E_USER_ERROR);
+        }
+
+ // Funcion para el login de usuario
         public function login($usuario, $password)
         {        
             try {
             $sql = "SELECT * FROM tbl_usuario where (password='$password' and correo='$usuario')";
             $query = $this->dbh->prepare($sql);
             $query->execute();
-
             $data = array();
-            while ($row = $query->fetch(PDO::FETCH_ASSOC))
-            {
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)){
                 $data[] = $row;
-            }
-            }
-            catch(PDOException $e){
+            }}catch(PDOException $e){
                 
                 print "Error!: " . $e->getMessage();
-                
+               
             }        
             return $data;
         }
+
+// Funciones para los consecutivos
         public function consec_experiencia()
         {
             try
@@ -68,6 +72,7 @@ require_once('conexion.class.php');
             return TRUE;
             
         }
+
         function consec_usuario()
             {
                 try
@@ -91,6 +96,7 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+
             function consec_vacantes()
             {
                 try
@@ -114,10 +120,7 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
-            public function __clone()
-            {
-                trigger_error('La clonación de este objeto no está permitida', E_USER_ERROR);
-            }
+
             function consec_formacion()
             {
                 try
@@ -140,6 +143,7 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+
             public function consecutivo_interes()
             {        
                 try {
@@ -168,6 +172,7 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+
             function consec_pasatiempo()
             {
                 try
@@ -191,7 +196,56 @@ require_once('conexion.class.php');
                 return TRUE;
             }
 
+            function consec_postulacion()
+            {
+                try
+                {
+                    $sql = "SELECT IFNULL(max(id_postulacion),0) + 1 AS CONSECUTIVO FROM tbl_postulacion";
+                    $query = $this->dbh->prepare($sql);
+                    $query -> execute();
+                    //this->dbh = null;
+                    //si existe el usuario
+                    if($query -> rowCount() == 1)
+                    {
+                        $fila = $query -> fetch();
+                        $f_Id_Pasatiempo = $fila['CONSECUTIVO'];
+                        return $f_Id_Pasatiempo;
+                    }
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                }        
+                return TRUE;
+            }
+
+            public function consec_merril()
+            {
+                try
+                {
+                    $sql = "SELECT IFNULL(MAX(id),0) + 1 AS CONSECUTIVO FROM tbl_terman_merril";
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+        
+                    if($query->rowCount() == 1)
+                    {
+                        $fila = $query->fetch();
+                        $id_merril = $fila['CONSECUTIVO'];
+                        return $id_merril;
+                    }
+                }
+                    
+                catch(PDOExeption $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                }
+                return TRUE;
+                
+            }
             
+            
+
+// Funcion para busquedas de campos
             function buscaPaises()
             {
                 try
@@ -212,27 +266,7 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
-            function ajax_vacante()
-            {
-                try
-                {
 
-                $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE status = 1 group by id_vacante ORDER BY id_vacante DESC LIMIT 5";
-                $query = $this->dbh->prepare($sql);
-                    $query->execute();
-
-                    $data = array();
-                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
-                    {
-                        $data[] = $row;    
-                    }
-                }
-                catch(PDOException $e)
-                {
-                    print "Error: !" . $e->getMessage();
-                }
-                return $data;
-            }
             function buscarVacanteImg()
             {
                 try
@@ -254,6 +288,7 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
+
             function buscarVacante1()
             {
                 try
@@ -276,50 +311,51 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
-             function buscarVacante2()
-             {
-                 try
-                 {
 
+            function buscarVacante2()
+            {
+                try
+                {
                     $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,3) = 1 and datediff(datefin,dateInicio) <=3  AND status = 1
                     group by id_vacante";
-                 $query = $this->dbh->prepare($sql);
-                     $query->execute();
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
 
-                     $data = array();
-                     while ($row = $query->fetch(PDO::FETCH_ASSOC))
-                     {
-                         $data[] = $row;    
-                     }
-                 }
-                 catch(PDOException $e)
-                 {
-                     print "Error: !" . $e->getMessage();
-                 }
-                 return $data;
-             } 
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;    
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error: !" . $e->getMessage();
+                }
+                return $data;
+            }
+
              function buscarVacante3()
              {
-                 try
-                 {
-
+                try
+                {
                     $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,3) = 2 and datediff(datefin,dateInicio) <=3  AND status = 1
                     group by id_vacante";
-                 $query = $this->dbh->prepare($sql);
-                     $query->execute();
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
 
-                     $data = array();
-                     while ($row = $query->fetch(PDO::FETCH_ASSOC))
-                     {
-                         $data[] = $row;    
-                     }
-                 }
-                 catch(PDOException $e)
-                 {
-                     print "Error: !" . $e->getMessage();
-                 }
-                 return $data;
-             }
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;    
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error: !" . $e->getMessage();
+                }
+            return $data;
+            }
+
             function buscarPostulacion($_idusuario)
             {
                 try
@@ -362,6 +398,30 @@ require_once('conexion.class.php');
                 return $data;
             }
 
+//Ajax
+            function ajax_vacante()
+            {
+                try
+                {
+
+                $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE status = 1 group by id_vacante ORDER BY id_vacante DESC LIMIT 5";
+                $query = $this->dbh->prepare($sql);
+                    $query->execute();
+
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;    
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error: !" . $e->getMessage();
+                }
+                return $data;
+            }
+
+//Funciones que sirve para seleccion de campos
             public function seleccionar_vacantes($id_vacante)
             {        
                 try {
@@ -382,6 +442,7 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
+
             public function seleccionar_experiencia($id_usuario)
             {        
                 try {
@@ -402,6 +463,7 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
+
             public function seleccionar_formacion($id_usuario)
             {        
                 try {
@@ -422,6 +484,7 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
+
             public function seleccionar_aficiones($id_usuario)
             {        
                 try {
@@ -442,6 +505,7 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
+
             public function seleccionar_interes($id_usuario)
             {        
                 try {
@@ -462,6 +526,7 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
+
             public function seleccionar_postulacion($id_postulacion)
             {        
                 try {
@@ -482,28 +547,8 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
-            function consec_postulacion()
-            {
-                try
-                {
-                    $sql = "SELECT IFNULL(max(id_postulacion),0) + 1 AS CONSECUTIVO FROM tbl_postulacion";
-                    $query = $this->dbh->prepare($sql);
-                    $query -> execute();
-                    //this->dbh = null;
-                    //si existe el usuario
-                    if($query -> rowCount() == 1)
-                    {
-                        $fila = $query -> fetch();
-                        $f_Id_Pasatiempo = $fila['CONSECUTIVO'];
-                        return $f_Id_Pasatiempo;
-                    }
-                }
-                catch(PDOException $e){
-                    
-                    print "Error!: " . $e->getMessage();
-                }        
-                return TRUE;
-            }
+
+//Notificaciones
             function notificacionexperiencia($iusuario)
             {
                 try
@@ -535,6 +580,7 @@ require_once('conexion.class.php');
                 return $data;
                 
             }
+
             function notificacionformacion($iusuario)
             {
                 try
@@ -598,6 +644,7 @@ require_once('conexion.class.php');
                 return $data;
                 
             }
+
             function notificacioninteres($iusuario)
             {
                 try
@@ -690,9 +737,12 @@ require_once('conexion.class.php');
             //     return $data;
                 
             // }
-            public function verif_aficion($_idusuario,$_descripcion)
-            {        
-            try {
+
+// verificaciones
+        public function verif_aficion($_idusuario,$_descripcion)
+        {        
+            try 
+            {
             $sql = "SELECT * FROM tbl_aop where (id_usuario = '$_idusuario' and descripcion = '$_descripcion')";
             $query = $this->dbh->prepare($sql);
             $query->execute();
@@ -712,30 +762,7 @@ require_once('conexion.class.php');
             
         }
 
-        
-        public function consec_merril()
-        {
-            try
-            {
-                $sql = "SELECT IFNULL(MAX(id),0) + 1 AS CONSECUTIVO FROM tbl_terman_merril";
-                $query = $this->dbh->prepare($sql);
-                $query->execute();
-    
-                if($query->rowCount() == 1)
-                {
-                    $fila = $query->fetch();
-                    $id_merril = $fila['CONSECUTIVO'];
-                    return $id_merril;
-                }
-            }
-                
-            catch(PDOExeption $e)
-            {
-                print "Error!: " . $e->getMessage();
-            }
-            return TRUE;
-            
-        }
+//Validaciones de los test
         public function val_merril($_idusuario)
         {
             try
@@ -761,6 +788,7 @@ require_once('conexion.class.php');
             return TRUE;
             
         }
+
         public function val_moss($_idusuario)
         {
             try
@@ -786,6 +814,7 @@ require_once('conexion.class.php');
             return TRUE;
             
         }
+
         public function val_sjt($_idusuario)
         {
             try
@@ -811,6 +840,7 @@ require_once('conexion.class.php');
             return TRUE;
             
         }
+
         public function val_raven($_idusuario)
         {
             try
@@ -836,6 +866,7 @@ require_once('conexion.class.php');
             return TRUE;
             
         }
+
         public function val_cleaver($_idusuario)
         {
             try
@@ -861,6 +892,8 @@ require_once('conexion.class.php');
             return TRUE;
             
         }
+
+//Envio del test
         public function envio_test()
         {
             try
@@ -883,8 +916,6 @@ require_once('conexion.class.php');
             {
                 print "Error!: " . $e->getMessage();
             }
-            return TRUE;
-            
-        }
-                        
+            return TRUE;   
+        }                
 }

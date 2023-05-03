@@ -11,8 +11,7 @@ class Conexion{
         {
             $this->dbh = new PDO('mysql:host=localhost; dbname=db_web', 'root', '');
             $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->dbh->exec("SET CHARACTER SET utf8");
-            
+            $this->dbh->exec("SET CHARACTER SET utf8");       
  
         } catch (PDOException $e) {
  
@@ -41,7 +40,6 @@ class Conexion{
         return self::$instancia;
         
     }
- 
  
      // Evita que el objeto se pueda clonar
     public function __clone()
