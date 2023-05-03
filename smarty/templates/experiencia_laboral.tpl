@@ -117,7 +117,7 @@
           
           {*Campos para los datos de aficiones*}
           <label class="col-form-label mt-4" for="name"> Descripcion de Puesto *</label> <br>
-          <input class="form-control" type="text" name="txtdescripcion" placeholder="Ingrese el puesto en el que trabajó en la empresa" maxLength="100"  required="true"> <br>
+          <input class="form-control" type="text" name="txtdescripcion" placeholder="Ingrese el puesto en el que trabajó en la empresa" maxLength="100"  required="true" pattern="[A-Z a-z]+" title= "Favor de ingresar solamente palabras al momento de describir su puesto de trabajo, NO se aceptan numeros ni caracteres especiales." <br>
           <label for="name" class="form__label"> Empresa *</label> <br>
           <input class="form-control" type="text" name="txtempresa" placeholder="Ingrese el nombre de la empresa en que trabajó" maxLength="100"  required="true"> <br>
           <label for="name" class="form__label"> Periodo *</label> <br>
