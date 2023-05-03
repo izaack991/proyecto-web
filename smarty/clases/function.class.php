@@ -267,27 +267,7 @@ require_once('conexion.class.php');
                 return $data;
             }
 
-            function buscarVacanteImg()
-            {
-                try
-                {
-
-                   $sql = "SELECT id_vacante,ruta_imagen FROM `tbl_vacantes` LIMIT 5";
-                $query = $this->dbh->prepare($sql);
-                    $query->execute();
-
-                    $data = array();
-                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
-                    {
-                        $data[] = $row;    
-                    }
-                }
-                catch(PDOException $e)
-                {
-                    print "Error: !" . $e->getMessage();
-                }
-                return $data;
-            }
+            
 
             function buscarVacante1()
             {
