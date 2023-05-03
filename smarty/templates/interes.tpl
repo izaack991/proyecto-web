@@ -112,7 +112,7 @@
 
           {*Campos para los datos de interes*}
           <label class="col-form-label mt-4" for="name">Descripcion *</label><br>
-          <input class="form-control" type="text" name="txtdesc" maxlength="100" pattern="[A-Z a-z]+" placeholder="Ingrese sus datos de interes" required="true"><br><br>
+          <input class="form-control" type="text" name="txtdesc" maxlength="100" pattern="[A-Z a-z]+" title="ESTE CAMPO NO ADMITE NÚMEROS NI CARACTERES ESPECIALES" placeholder="Ingrese sus datos de interes" required="true"><br><br>
 
           {*Campos internos para la ubicacion*}
           <input name="txtlatitud" id="latitud" type="hidden">
