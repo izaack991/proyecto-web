@@ -61,4 +61,4 @@ function myFunction() {
     
   }
 
-  setInterval(myFunction, 60000);
+  setInterval(myFunction, 20000);
