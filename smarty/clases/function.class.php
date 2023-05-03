@@ -661,7 +661,7 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                    $sql = "SELECT a.id_postulacion FROM tbl_postulacion AS a INNER JOIN tbl_vacantes AS b ON a.id_vacante = b.id_vacante WHERE b.id_empresa = :DU_ID;";
+                    $sql = "SELECT a.id_postulacion FROM tbl_postulacion AS a INNER JOIN tbl_vacantes AS b ON a.id_vacante = b.id_vacante WHERE b.id_empresa = :DU_ID AND a.status = 1;";
                     $query = $this->dbh->prepare($sql);
                     $query->bindParam(":DU_ID",$iusuario);
                     $query->execute();

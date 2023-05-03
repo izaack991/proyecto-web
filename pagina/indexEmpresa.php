@@ -17,6 +17,7 @@ else
 {
     $COUNTPOS=0;
 }
+
 $ECOUNT = $COUNTPOS;
 $smarty->assign("COUNTPOS",$COUNTPOS);
 $smarty->assign("ECOUNT",$ECOUNT);

@@ -5,6 +5,8 @@ include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $smarty=new smarty;
 $titulo="Curriculum";
+
+
 if($_SESSION['iusuario'] == "")
 {  
         header("location:login.php?xd=1");
@@ -14,6 +16,8 @@ else
     $id_empresa=$_SESSION['iusuario'];
     $_finduser = Functions::singleton_functions();
     $nuevoUsuario = Save::singleton_guardar();
+    $iusuario = $_SESSION['iusuario'];
+    $notificacionpostulaciones = $_finduser->notificacionpostulaciones($iusuario);
     $id_usuario = 0;
 
 
@@ -31,6 +35,19 @@ if(isset($_POST['btntest']))
 {
     $smarty->display("../smarty/templates/enviartest.tpl");
 }
+
+if($notificacionpostulaciones>=1)
+{
+    $COUNTPOS=$notificacionpostulaciones;
+}
+else 
+{
+    $COUNTPOS=0;
+}
+
+$ECOUNT = $COUNTPOS;
+$smarty->assign("COUNTPOS",$COUNTPOS);
+$smarty->assign("ECOUNT",$ECOUNT);
 $smarty->assign("vac",$id_postulacion);
 $smarty->assign("Postulacion",$postulaciones);
 $smarty->assign("Experiencia",$experiencia);
