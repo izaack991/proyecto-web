@@ -897,5 +897,132 @@ require_once('conexion.class.php');
                 print "Error!: " . $e->getMessage();
             }
             return TRUE;   
-        }                
+        }
+        
+// Comprobar tests
+        public function comprobarRaven($_idusuario)
+        {
+            try
+            {
+                $sql = "SELECT test_raven FROM tbl_envio_test where id_usuario ='$_idusuario' and test_raven = 1";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+
+                if($query->rowCount() >= 1)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch(PDOExeption $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
+        }
+
+        public function comprobarMoss($_idusuario)
+        {
+            try
+            {
+                $sql = "SELECT test_moss FROM tbl_envio_test where id_usuario ='$_idusuario' and test_moss = 1";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+
+                if($query->rowCount() >= 1)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch(PDOExeption $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
+        }
+
+        public function comprobarMerril($_idusuario)
+        {
+            try
+            {
+                $sql = "SELECT test_merril FROM tbl_envio_test where id_usuario ='$_idusuario' and test_merril = 1";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+
+                if($query->rowCount() >= 1)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch(PDOExeption $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
+        }
+
+        public function comprobarSjt($_idusuario)
+        {
+            try
+            {
+                $sql = "SELECT test_sjt FROM tbl_envio_test where id_usuario ='$_idusuario' and test_sjt = 1";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+
+                if($query->rowCount() >= 1)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch(PDOExeption $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
+        }
+
+        public function comprobarCleaver($_idusuario)
+        {
+            try
+            {
+                $sql = "SELECT test_cleaver FROM tbl_envio_test where id_usuario ='$_idusuario' and test_cleaver = 1";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+
+                if($query->rowCount() >= 1)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch(PDOExeption $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
+        }
+
 }

@@ -12,6 +12,12 @@ else
 {
 $nuevoSingleton = Functions::singleton_functions();
 $iusuario = $_SESSION['iusuario'];
+
+$comprobarRaven = $nuevoSingleton->comprobarRaven($iusuario);
+$comprobarMoss = $nuevoSingleton->comprobarMoss($iusuario);
+$comprobarCleaver = $nuevoSingleton->comprobarCleaver($iusuario);
+$comprobarMerril = $nuevoSingleton->comprobarMerril($iusuario);
+$comprobarSjt = $nuevoSingleton->comprobarSjt($iusuario);
 $notificacionexperiencia = $nuevoSingleton->notificacionexperiencia($iusuario);
 $notificacionformacion = $nuevoSingleton->notificacionformacion($iusuario);
 $notificacionaficiones = $nuevoSingleton->notificacionaficiones($iusuario);
@@ -65,6 +71,11 @@ else
 //     $COUNTBUS=0;
 // }
 $COUNT = $COUNTLAB + $COUNFOR + $COUNTAFI + $COUNTINT;
+$smarty->assign("comprobarRaven", $comprobarRaven);
+$smarty->assign("comprobarMoss", $comprobarMoss);
+$smarty->assign("comprobarSjt", $comprobarSjt);
+$smarty->assign("comprobarCleaver", $comprobarCleaver);
+$smarty->assign("comprobarMerril", $comprobarMerril);
 $smarty->assign("titulo", $titulo);
 $smarty->assign("COUNTLAB",$COUNTLAB);
 $smarty->assign("COUNFOR",$COUNFOR);
