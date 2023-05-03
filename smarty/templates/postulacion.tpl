@@ -107,7 +107,7 @@
 
                 <form action="postulacion.php" method="POST">
                   {*Modal para la confirmacion de cerrar postulacion*}
-                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -117,7 +117,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          ¿Desea cerrar esta postulacion?
+                          ¿Desea cerrar esta postulacion? 
                         </div>
                         <div class="modal-body">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -131,9 +131,10 @@
                   <input value={$postulacion.id_postulacion} type="hidden" name="txt_id_postulacion">
                   {*Boton para cerrar postulacion*}
                   <td class="text-center">
-                    <right><input type="button" value="Cerrar" class="btn btn-danger" data-toggle="modal"data-target="#exampleModal"></right>
+                    <right><input type="button" value="Cerrar" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal2"></right>
                   </td>
                 </form>
+
 
                 <td class="text-center">{$postulacion.nombreUsuario}</td>
                 <td class="text-center">{$postulacion.correo}</td>

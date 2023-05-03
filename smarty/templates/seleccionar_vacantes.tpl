@@ -49,7 +49,7 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
             {if $COUNT >= 1}
-              <a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" data-toggle="modal" data-target="#exampleModal">
+              <a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" data-toggle="modal" data-target="#exampleModal2">
                 <span class="fa-layers fa-fw mr-2 fa-lg">
                   <i class="fas fa-bell"></i>
                   <span class="fa-layers-counter" style="background:Tomato">{$COUNT}</span>
@@ -59,7 +59,7 @@
               <li class="nav-link active">{$smarty.session.nomusuario}</li>
             {/if}
             {* Creacion de la modal de notificaciones *}
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
