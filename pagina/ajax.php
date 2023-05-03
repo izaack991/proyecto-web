@@ -4,7 +4,7 @@ $_findExperiencia = Functions::singleton_functions();
 $_vacantes1 = $_findExperiencia->ajax_vacante();
 
 foreach($_vacantes1 as $index => $value){
-    $nombrePais  = $value['nombrePais'];
+    $nombrePais  = $value['pais'];
 }
 $json = json_encode($_vacantes1);
 

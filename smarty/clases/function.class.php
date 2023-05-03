@@ -384,7 +384,7 @@ require_once('conexion.class.php');
                 try
                 {
 
-                $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE status = 1 group by id_vacante ORDER BY id_vacante DESC LIMIT 5";
+                $sql = "SELECT tbl_paises.nombre as pais, COUNT(tbl_vacantes.lugar) as vacantes  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE status = 1 group by tbl_paises.id_paises ORDER BY id_vacante DESC LIMIT 5";
                 $query = $this->dbh->prepare($sql);
                     $query->execute();
 

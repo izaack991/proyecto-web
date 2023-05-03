@@ -20,9 +20,6 @@ $experiencia = $_finduser->seleccionar_experiencia($id_usuario);
 $formacion = $_finduser->seleccionar_formacion($id_usuario);
 $aficiones = $_finduser->seleccionar_aficiones($id_usuario);
 $interes = $_finduser->seleccionar_interes($id_usuario);
-
-
-
 foreach($postulaciones as $index => $value){
     $nombre  = $value['nombreUsuario'];
     $puesto  = $value['puesto'];
