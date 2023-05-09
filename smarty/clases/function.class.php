@@ -267,7 +267,28 @@ require_once('conexion.class.php');
                 return $data;
             }
 
-            
+            function buscarimagenvacante()
+            {
+                try
+                {
+
+                   $sql = "SELECT v.puesto as puesto,v.id_vacante as idvacante, u.ruta_imagen as rutaimg FROM tbl_usuario as u INNER JOIN tbl_vacantes as v ON v.id_empresa=u.id_usuario ORDER BY v.id_vacante DESC LIMIT 5";
+                $query = $this->dbh->prepare($sql);
+                    $query->execute();
+
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;    
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error: !" . $e->getMessage();
+                }
+                return $data;
+            }
+
 
             function buscarVacante1()
             {
