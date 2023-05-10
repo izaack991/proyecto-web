@@ -46,6 +46,9 @@
               <a class="nav-link active" href="buscar_vacantes.php">Buscar Vacantes
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="Usuario-test.php">Tests</a>
+            </li>
           </ul>
           {*Boton para cerrar la sesion*}
           <ul class="navbar-nav ml-auto">

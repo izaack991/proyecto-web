@@ -40,6 +40,9 @@
             <li class="nav-item">
               <a class="nav-link active" href="buscar_vacantes.php">Buscar Vacantes</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="Usuario-test.php">Tests</a>
+            </li>
           </ul>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
