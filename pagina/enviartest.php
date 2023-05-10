@@ -81,14 +81,7 @@ $mail = new PHPMailer(true);
                     }
                     else 
                     {
-                       // echo "<script>window.location.href='postulacion.php';</script>";
-                        //$formacion = $nuevoDato->postulaciones($idusuario,$vc_id);
-                        // if($formacion == TRUE)
-                        // {    
                             $respuestas = $nuevasRespuestas->guardar_correo($ie,$idusuario,$_POST['test_moss'],$_POST['test_raven'],$_POST['test_sjt'],$_POST['test_merril'],$_POST['test_cleaver']);
-                            
-                           
-                        // }
                     }
              }
                  catch(PDOException $e)
@@ -101,6 +94,5 @@ $mail = new PHPMailer(true);
     $smarty->assign("COUNTPOS",$COUNTPOS);
     $smarty->assign("ECOUNT",$ECOUNT);
     $smarty->assign("titulo",$titulo);
-    // $smarty->assign("alerta",$alerta);
     $smarty->display("../smarty/templates/enviartest.tpl");
 ?>

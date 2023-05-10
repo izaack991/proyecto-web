@@ -17,7 +17,6 @@ $notificacionexperiencia = $nuevoSingleton->notificacionexperiencia($iusuario);
 $notificacionformacion = $nuevoSingleton->notificacionformacion($iusuario);
 $notificacionaficiones = $nuevoSingleton->notificacionaficiones($iusuario);
 $notificacioninteres = $nuevoSingleton->notificacioninteres($iusuario);
-// $notificacionvacantes = $nuevoSingleton->notificacionvacantes($iusuario);
 
 if(isset($_GET['vacante']))
 {
@@ -57,14 +56,7 @@ else
 {
     $COUNTINT=0;
 }
-// if($notificacionvacantes==0)
-// {
-//     $COUNTBUS=1;
-// }
-// else 
-// {
-//     $COUNTBUS=0;
-// }
+
 $COUNT = $COUNTLAB + $COUNFOR + $COUNTAFI + $COUNTINT;
 $smarty->assign("titulo", $titulo);
 $smarty->assign("COUNTLAB",$COUNTLAB);

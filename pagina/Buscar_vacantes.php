@@ -7,7 +7,7 @@ $smarty=new smarty;
 $titulo="Lista de vacantes";
 if($_SESSION['iusuario'] == "")
 {  
-        header("location:login.php?xd=2");
+  header("location:login.php?xd=2");
 }
 else
 {

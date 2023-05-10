@@ -82,7 +82,6 @@ if(isset($_POST['id_vacante']))
 
       $smarty->assign("vacantes",$vacantes);
       $smarty->assign("alerta",$alerta);
-      //$smarty->display("../smarty/templates/Buscar_vacantes.tpl");
       header("location:buscar_vacantes.php");
       
 }

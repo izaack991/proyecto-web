@@ -10,7 +10,7 @@ $_idusuario = $_SESSION['iusuario'];
 $validacion = $_finduser->val_cleaver($_idusuario);
 if($_SESSION['iusuario'] == "")
 {  
-        header("location:login.php?xd=2");
+    header("location:login.php?xd=2");
 }
 else
 {

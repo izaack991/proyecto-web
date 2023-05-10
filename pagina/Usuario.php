@@ -7,7 +7,6 @@ $smarty=new smarty;
 $titulo="Registro Usuario";
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
-//$id_tipo=$_GET['xd'];
 $irol=$_SESSION['t_user'];
 
 if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
