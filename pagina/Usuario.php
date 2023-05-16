@@ -36,9 +36,10 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 		$_region = $_POST['cmb_REGION'];
 		$_telefono = $_POST['txt_TELEFONO'];
 		$_domicilio = $_POST['txt_DOMICILIO'];
+		$_razon = $_POST['txt_razon'];
 		$_status = 0;
 		$f_id_usuario = $_findUser -> consec_usuario();
-		$newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol,$_status,$_ruta);
+		$newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol, $_status, $_ruta, $_razon);
 		
 		$tipo = $_FILES['txtruta']['name'];
 		//Obtenemos algunos datos necesarios sobre el archivo
