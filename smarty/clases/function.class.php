@@ -448,7 +448,7 @@ require_once('conexion.class.php');
             {        
                 try {
                     
-                    $sql = "SELECT * FROM tbl_experiencia_laboral WHERE id_usuario=:id_usuario";
+                    $sql = "SELECT * FROM tbl_experiencia_laboral WHERE id_usuario=:id_usuario LIMIT 5";
                     $query = $this->dbh->prepare($sql);
                     $query->bindParam(':id_usuario',$id_usuario);
                     $query->execute();
@@ -532,7 +532,7 @@ require_once('conexion.class.php');
             {        
                 try {
                     
-                    $sql = "SELECT tbl_postulacion.*, CONCAT(tbl_usuario.nombre,' ',tbl_usuario.apellido) AS nombreUsuario,tbl_vacantes.puesto FROM tbl_postulacion INNER JOIN tbl_usuario ON tbl_postulacion.id_usuario = tbl_usuario.id_usuario INNER JOIN tbl_vacantes ON tbl_postulacion.id_vacante = tbl_vacantes.id_vacante WHERE id_postulacion=:id_postulacion";
+                    $sql = "SELECT tbl_postulacion.*, CONCAT(tbl_usuario.nombre,' ',tbl_usuario.apellido) AS nombreUsuario,tbl_vacantes.puesto FROM tbl_postulacion INNER JOIN tbl_usuario ON tbl_postulacion.id_usuario = tbl_usuario.id_usuario INNER JOIN tbl_vacantes ON tbl_postulacion.id_vacante = tbl_vacantes.id_vacante WHERE id_postulacion=:id_postulacion LIMIT 5";
                     $query = $this->dbh->prepare($sql);
                     $query->bindParam(':id_postulacion',$id_postulacion);
                     $query->execute();
