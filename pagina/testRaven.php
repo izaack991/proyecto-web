@@ -8,6 +8,45 @@ $smarty=new smarty;
 $_finduser = Functions::singleton_functions();
 $_idusuario = $_SESSION['iusuario'];
 $validacion = $_finduser->val_raven($_idusuario);
+$iusuario = $_SESSION['iusuario'];
+$notificacionexperiencia = $_finduser->notificacionexperiencia($iusuario);
+$notificacionformacion = $_finduser->notificacionformacion($iusuario);
+$notificacionaficiones = $_finduser->notificacionaficiones($iusuario);
+$notificacioninteres = $_finduser->notificacioninteres($iusuario);
+if($notificacionexperiencia==0)
+{
+    $COUNTLAB=1;
+
+}
+else 
+{
+    $COUNTLAB=0;
+}
+if($notificacionformacion==0)
+{
+    $COUNFOR=1;
+}
+else 
+{
+    $COUNFOR=0;
+}
+if($notificacionaficiones==0)
+{
+    $COUNTAFI=1;
+}
+else 
+{
+    $COUNTAFI=0;
+}
+if($notificacioninteres==0)
+{
+    $COUNTINT=1;
+}
+else 
+{
+    $COUNTINT=0;
+}
+$COUNT = $COUNTLAB + $COUNFOR + $COUNTAFI + $COUNTINT;
 if($_SESSION['iusuario'] == "")
 {  
         header("location:login.php");
@@ -86,7 +125,11 @@ if (isset($_POST['btnfinalizar']))
     $preg60 = $_POST["preg60"];
     $nuevasrespuestas = $nuevasRespuestas->guardar_respuestasRAVEN($_idusuario,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12,$preg13,$preg14,$preg15,$preg16,$preg17,$preg18,$preg19,$preg20,$preg21,$preg22,$preg23,$preg24,$preg25,$preg26,$preg27,$preg28,$preg29,$preg30,$preg31,$preg32,$preg33,$preg34,$preg35,$preg36,$preg37,$preg38,$preg39,$preg40,$preg41,$preg42,$preg43,$preg44,$preg45,$preg46,$preg47,$preg48,$preg49,$preg50,$preg51,$preg52,$preg53,$preg54,$preg55,$preg56,$preg57,$preg58,$preg59,$preg60);
 }
-
+$smarty->assign("COUNTLAB",$COUNTLAB);
+$smarty->assign("COUNFOR",$COUNFOR);
+$smarty->assign("COUNTAFI",$COUNTAFI);
+$smarty->assign("COUNTINT",$COUNTINT);
+$smarty->assign("COUNT",$COUNT);
 
 $smarty->assign("titulo", $titulo);
 $smarty->display("../smarty/templates/testRaven.tpl");

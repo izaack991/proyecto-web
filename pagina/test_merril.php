@@ -9,6 +9,45 @@ $nuevasRespuestas = Save::singleton_guardar();
 $_finduser = Functions::singleton_functions();
 $_idusuario = $_SESSION['iusuario'];
 $validacion = $_finduser->val_merril($_idusuario);
+$iusuario = $_SESSION['iusuario'];
+$notificacionexperiencia = $_finduser->notificacionexperiencia($iusuario);
+$notificacionformacion = $_finduser->notificacionformacion($iusuario);
+$notificacionaficiones = $_finduser->notificacionaficiones($iusuario);
+$notificacioninteres = $_finduser->notificacioninteres($iusuario);
+if($notificacionexperiencia==0)
+{
+    $COUNTLAB=1;
+
+}
+else 
+{
+    $COUNTLAB=0;
+}
+if($notificacionformacion==0)
+{
+    $COUNFOR=1;
+}
+else 
+{
+    $COUNFOR=0;
+}
+if($notificacionaficiones==0)
+{
+    $COUNTAFI=1;
+}
+else 
+{
+    $COUNTAFI=0;
+}
+if($notificacioninteres==0)
+{
+    $COUNTINT=1;
+}
+else 
+{
+    $COUNTINT=0;
+}
+$COUNT = $COUNTLAB + $COUNFOR + $COUNTAFI + $COUNTINT;
 if($_SESSION['iusuario'] == "")
 {  
         header("location:login.php?xd=2");
@@ -39,7 +78,11 @@ if (isset($_POST['btn-finalizar']))
     
 }
 }
-
+$smarty->assign("COUNTLAB",$COUNTLAB);
+$smarty->assign("COUNFOR",$COUNFOR);
+$smarty->assign("COUNTAFI",$COUNTAFI);
+$smarty->assign("COUNTINT",$COUNTINT);
+$smarty->assign("COUNT",$COUNT);
 $smarty->assign("titulo", $titulo);
 $smarty->display("../smarty/templates/test_merril.tpl");}
 ?>
