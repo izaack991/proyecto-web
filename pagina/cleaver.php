@@ -8,6 +8,45 @@ $smarty=new smarty;
 $_finduser = Functions::singleton_functions();
 $_idusuario = $_SESSION['iusuario'];
 $validacion = $_finduser->val_cleaver($_idusuario);
+$iusuario = $_SESSION['iusuario'];
+$notificacionexperiencia = $_finduser->notificacionexperiencia($iusuario);
+$notificacionformacion = $_finduser->notificacionformacion($iusuario);
+$notificacionaficiones = $_finduser->notificacionaficiones($iusuario);
+$notificacioninteres = $_finduser->notificacioninteres($iusuario);
+if($notificacionexperiencia==0)
+{
+    $COUNTLAB=1;
+
+}
+else 
+{
+    $COUNTLAB=0;
+}
+if($notificacionformacion==0)
+{
+    $COUNFOR=1;
+}
+else 
+{
+    $COUNFOR=0;
+}
+if($notificacionaficiones==0)
+{
+    $COUNTAFI=1;
+}
+else 
+{
+    $COUNTAFI=0;
+}
+if($notificacioninteres==0)
+{
+    $COUNTINT=1;
+}
+else 
+{
+    $COUNTINT=0;
+}
+$COUNT = $COUNTLAB + $COUNFOR + $COUNTAFI + $COUNTINT;
 if($_SESSION['iusuario'] == "")
 {  
     header("location:login.php?xd=2");
@@ -81,7 +120,11 @@ if(isset($_POST['resp1']) && isset($_POST['resp2']))
     $p17_resp_neg,$p18_resp_pos,$p18_resp_neg,$p19_resp_pos,$p19_resp_neg,$p20_resp_pos,$p20_resp_neg,$p21_resp_pos,$p21_resp_neg,
     $p22_resp_pos,$p22_resp_neg,$p23_resp_pos,$p23_resp_neg,$p24_resp_pos,$p24_resp_neg,$p25_resp_pos,$p25_resp_neg);
 }
-
+$smarty->assign("COUNTLAB",$COUNTLAB);
+$smarty->assign("COUNFOR",$COUNFOR);
+$smarty->assign("COUNTAFI",$COUNTAFI);
+$smarty->assign("COUNTINT",$COUNTINT);
+$smarty->assign("COUNT",$COUNT);
 $smarty->assign("titulo",$titulo);
 $smarty->display("../smarty/templates/cleaver.tpl");}}
 ?>
