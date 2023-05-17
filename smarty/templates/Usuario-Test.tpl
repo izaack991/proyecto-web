@@ -113,8 +113,8 @@
                         <input type="image" src="../pagina/img/Cleaverimg.jpeg" height="183" width="376" />
                     </figure>
                     <center>
-                    {if $comprobarMoss >= 1}
-                        <a href="test_moss.php"><button class="btn btn-light" type="button">Iniciar test</button></a>
+                    {if $comprobarCleaver >= 1}
+                        <a href="cleaver.php"><button class="btn btn-light" type="button">Iniciar test</button></a>
                     {else}
                         <a href="#"><button class="btn btn-light disabled" type="button">No puedes iniciar este test</button></a>
                     {/if}  
@@ -128,8 +128,8 @@
                         <input type="image" src="../pagina/img/Mossimg.jpeg" height="183" width="376" />
                     </figure>
                     <center>
-                    {if $comprobarMerril >= 1}
-                        <a href="testMerril.php"><button class="btn btn-light" type="button">Iniciar test</button></a>
+                    {if $comprobarMoss >= 1}
+                        <a href="test_moss.php"><button class="btn btn-light" type="button">Iniciar test</button></a>
                     {else}
                         <a href="#"><button class="btn btn-light disabled" type="button">No puedes iniciar este test</button></a>
                     {/if}  
@@ -140,8 +140,8 @@
                         <input type="image" src="../pagina/img/Merrilimg.jpeg" height="183" width="376" />
                     </figure>
                     <center>
-                    {if $comprobarSjt >= 1}
-                        <a href="testSjt.php"><button class="btn btn-light" type="button">Iniciar test</button></a>
+                    {if $comprobarMerril >= 1}
+                        <a href="test_merril.php"><button class="btn btn-light" type="button">Iniciar test</button></a>
                     {else}
                         <a href="#"><button class="btn btn-light disabled" type="button">No puedes iniciar este test</button></a>
                     {/if}  
@@ -155,8 +155,8 @@
                         <input type="image" src="../pagina/img/SJTimg.jpeg" height="183" width="376" />
                     </figure>
                     <center>
-                    {if $comprobarCleaver >= 1}
-                        <a href="testCleaver.php"><button class="btn btn-light" type="button">Iniciar test</button></a>
+                    {if $comprobarSjt >= 1}
+                        <a href="test_sjt.php"><button class="btn btn-light" type="button">Iniciar test</button></a>
                     {else}
                         <a href="#"><button class="btn btn-light disabled" type="button">No puedes iniciar este test</button></a>
                     {/if}  
