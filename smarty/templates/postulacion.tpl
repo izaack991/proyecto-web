@@ -69,7 +69,7 @@
               </div>
             </div>
             {*Boton para cerrar la sesion*}            
-            <a class="nav-link active text-danger" href="indexPrincipal.php" style="font-weight:bold;">Cerrar Sesión</a>
+            <a class="nav-link active text-danger" href="index.php" style="font-weight:bold;">Cerrar Sesión</a>
           </ul>
         </div>
       </div>

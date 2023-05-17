@@ -55,7 +55,7 @@ if (isset($_POST['btnfinalizar']))
     $preg29 = $_POST["preg29"];
     $preg30 = $_POST["preg30"];
     $nuevasrespuestas = $nuevasRespuestas->guardar_respuestasMOSS($_idusuario,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12,$preg13,$preg14,$preg15,$preg16,$preg17,$preg18,$preg19,$preg20,$preg21,$preg22,$preg23,$preg24,$preg25,$preg26,$preg27,$preg28,$preg29,$preg30);
-    header("location:index.php");
+    header("location:indexPrincipal.php");
 }
 
 

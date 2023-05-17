@@ -1,146 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio</title>
-  <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
-  <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio Usuario</title>
+    <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
+    <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
+  </head>
 
-<body>
+  <body>
 
-  {*Barra de navegacion del index principal*}
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <center>
-      <a href="login.php?xd=1">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Soy Empresa</button>
-      </a>
-      <a href="login.php?xd=2">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Soy Usuario</button>
-      </a>
-    </center>
-  </nav>
-
-  {*Imagen principal del index*}
-  <div class="row align-items-center" style="margin-left:10px; margin-left:10px">
-    <div class="col">
-      <figure class="text-center">
-        <h2>Éstas y miles de empresas más tienen las mejores vacantes para ti</h2>
-      </figure>
-    </div>
-    <div class="col">
-      <input type="image"
-        src="https://img.freepik.com/vector-gratis/generacion-ideas-negocio-personaje-dibujos-animados-nina-simbolo-bombilla-emprendimiento-proyecto-puesta-marcha-rentable-ganando-dinero_335657-2377.jpg?w=2000"
-        height="70%" width="70%" style="margin-left:10%" />
-    </div>
-  </div>
-  <br><br>
-
-  {*Imagenes dinamicas de las vacantes*}
-  <div class="row align-items-center bg-primary" style="padding-left:7%;padding-top:50px;padding-bottom:50px;">
-    {foreach $Bvacante as $vacantes}
-      <div class="col">
-        <input type="image" onclick="location.href='login.php?xd=2&vacante={$vacantes.idvacante}'"
-          src="../../proyecto-web/pagina/img/{$vacantes.rutaimg}" style="border: double;" height="200" width="200" />
-        <h5>{$vacantes.puesto}</h5>
-      </div>
-    {/foreach}
-  </div>
-  <br><br>
-
-  {*Cards de las noticias*}
-  <div class="container" style="margine:auto;width: 100%;height:250px;">
-    <div class="row" id="card-container">
-      {foreach $Noticias as $noticia}
-        <div class="card border-primary shadow p-3 mb-5 bg-body rounded"
-          style="max-width: 40rem; margin:auto; margin-top:30px;">
-          <div class="card-body">
-            <h4 class="card-title" style="display:inline;">{$noticia.fecha}</h4> <br><br>
-            <p class="card-text">{$noticia.nota}</p>
-          </div>
-        </div>
-      {/foreach}
-    </div>
-  </div>
-  <!-- Footer -->
-  <footer class="page-footer font-small pt-4 border-top border-primary">
-    <!-- Footer Links -->
-    <div class="container-fluid text-center text-md-left">
-      <!-- Grid row -->
-      <div class="row">
-        <!-- Grid column -->
-        <div class="col-md-6 mt-md-0 mt-3">
-          <h5 class="text-uppercase">Estamos a su disposición</h5>
-          <p>Visite nuestras redes para ver las respuestas a las preguntas más frecuentes o póngase en contacto con
-            nosotros.</p>
-        </div>
-        <!-- Grid column -->
-        <hr class="clearfix w-100 d-md-none pb-3">
-        <!-- Grid column -->
-        <div class="col-md-3 mb-md-0 mb-3">
-          <!-- Links -->
-          <h5 class="text-uppercase">Nosotros</h5>
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!" style="color:black">Acerca de</a>
+    {*Barra de navegacion para Usuarios*}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="indexPrincipal.php">Inicio</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor03">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="experiencia_laboral.php">Experiencia Laboral
+              </a>
             </li>
-            <li>
-              <a href="#!" style="color:black">Seguridad</a>
+            <li class="nav-item">
+              <a class="nav-link active" href="formacion_academica.php">Formacion Academica
+              </a>
             </li>
-            <li>
-              <a href="#!" style="color:black">Cookies</a>
+            <li class="nav-item">
+              <a class="nav-link active" href="Aficiones.php">Aficiones
+              </a>
             </li>
-            <li>
-              <a href="#!" style="color:black">Política de privacidad</a>
+            <li class="nav-item">
+              <a class="nav-link active" href="interes.php">Interes
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="buscar_vacantes.php">Buscar Vacantes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="Usuario-test.php">Tests</a>
             </li>
           </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+            {if $COUNT >= 1}
+              <a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" data-toggle="modal" data-target="#exampleModal">
+                <span class="fa-layers fa-fw mr-2 fa-lg">
+                  <i class="fas fa-bell"></i>
+                  <span class="fa-layers-counter" style="background:Tomato">{$COUNT}</span>
+                </span>{$smarty.session.nomusuario}
+              </a>
+            </li>
+            {else}
+            <li class="nav-link active">{$smarty.session.nomusuario}</li>
+            {/if}
 
-        </div>
-        <!-- Grid column -->
-        <!-- Grid column -->
-        <div class="col-md-3 mb-md-0 mb-3">
-          <!-- Links -->
-          <h5 class="text-uppercase">Redes Sociales</h5>
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!" style="color:black">Facebook</a>
-            </li>
-            <li>
-              <a href="#!" style="color:black">Twitter</a>
-            </li>
-            <li>
-              <a href="#!" style="color:black">Linkedin</a>
-            </li>
-            <li>
-              <a href="#!" style="color:black">Youtube</a>
-            </li>
+            {* Creacion de la modal de notificaciones *}
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-bell"></i> Notificaciones</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    {if $COUNTLAB >= 1}
+                    <a class="nav-link" href="experiencia_laboral.php" style="color: blue;">Aun no ha registrado sus datos
+                      de Experiencia Laboral, click aqui para ir al registro</a>
+                    {/if}
+                    {if $COUNFOR >= 1}
+                    <a class="nav-link" href="formacion_academica.php" style="color: blue;">Aun no ha registrado Formacion
+                      Academica, click aqui para ir al registro</a>
+                    {/if}
+                    {if $COUNTAFI >= 1}
+                    <a class="nav-link" href="aficiones.php" style="color: blue;">Aun no ha registrado Experiencia
+                      Profesional, click aqui para ir al registro</a>
+                    {/if}
+                    {if $COUNTINT >= 1}
+                    <a class="nav-link" href="interes.php" style="color: blue;">Aun no ha registrado sus datos de Interes,
+                      click aqui para ir al registro</a>
+                    {/if}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {*Boton para cerrar la sesion*}
+            <a class="nav-link active text-danger" href="index.php" style="font-weight:bold;">Cerrar Sesión</a>
           </ul>
         </div>
-        <!-- Grid column -->
       </div>
-      <!-- Grid row -->
-    </div>
-    <!-- Footer Links -->
-    <!-- Copyright -->
-    </footer>
-    <div class="footer-copyright text-center py-3 bg-primary">© 2023 Copyright:
-      <a href="#!" style="color:black"> ISOF 6to Semestre</a>
-    </div>
-  <!-- Copyright -->
+    </nav>
 
-  <!-- Footer -->
-  {*Conexion de librerias de JavaScript y bootstrap*}
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-  </script>
-  <script src="ajax.js"></script>
-</body>
+    {* <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true"
+      style="max-width: 20rem; margin:auto; margin-top:30px;">
+      <div class="toast-header">
+        <strong class="me-auto">Pagina Principal</strong>
+        <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="toast-body">
+        Bienvenido!
+      </div>
+    </div> *}
+
+    {*Conexion de librerias de JavaScript y bootstrap*}                
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    
+    {* <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.5/push.js" integrity="sha512-dzuBh7UxT5g4MmnbR3ybHMK2g2zxGXILXHuLsUwo8XJmoW2JTTqcg4bFFu0RnBO+kPTvKafgVYh8hnCN/l8ijQ=="crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.5/push.min.js" integrity="sha512-1zotA6QprPWXVvgx8KFnvanxTZhm7P/uadmELhEUs3fHYvGDqkYa0ZUc3Q0m+3w7AUcgG5k4rUiFDdSkRJhqaA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> *}
+
+  </body>
 
 </html>

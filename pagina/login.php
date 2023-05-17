@@ -29,7 +29,7 @@ if (isset($_POST['usuario'])&&isset($_POST['password']))
         {
             if ($_ROL==2)
             {
-                header("location:index.php");
+                header("location:indexPrincipal.php");
             }
             if ($_ROL==1 && $status==TRUE)
             {

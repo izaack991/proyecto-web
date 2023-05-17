@@ -38,7 +38,7 @@ if (isset($_POST['btnfinalizar']))
     $preg12 = $_POST["preg12"];
 
     $nuevasrespuestas = $nuevasRespuestas->guardar_respuestasSJT($_idusuario,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12);
-    header("location:index.php");
+    header("location:indexPrincipal.php");
 }
 
 

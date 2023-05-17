@@ -43,7 +43,7 @@
                 </div>
 
                 {*Boton para volver al indexPrincipal*}
-                <a href="indexPrincipal.php"><button class="btn btn-light" type="button">VOLVER</button></a>
+                <a href="index.php"><button class="btn btn-light" type="button">VOLVER</button></a>
 
             </div>
 
