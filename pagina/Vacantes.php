@@ -24,7 +24,7 @@ $iusuario = $_SESSION['iusuario'];
 $notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuario);
 $alerta = '';
 
-if(isset($_POST['enviar']))
+if(isset($_POST['dateFin']))
 {
     
     $_idusuario = $_SESSION['iusuario'];

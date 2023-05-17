@@ -131,7 +131,7 @@
             <input name="txtlongitud" id="longitud" type="hidden">
             
             {*Boton de guardar vacante*}
-            <input class="btn btn-primary" style="margin-left:224px;" type="submit" id="enviar" value="Guardar">
+            <input class="btn btn-primary" style="margin-left:224px;" type="submit" value="Guardar">
           </div>
         </div>
       </div>
