@@ -55,8 +55,8 @@
 
   {*Cards de las noticias*}
   <center>
-  <div class="row align-items-center"
-  style="padding-left:30%;padding-top:50px;padding-bottom:50px;padding-right:30%">
+  <div class="row align-items-center justify-content-md-center"
+  style="padding-top:50px;padding-bottom:50px;">
     <div class="row" id="card-container">
       {foreach $Noticias as $noticia}
         <div class="card border-primary shadow p-3 mb-5 bg-body rounded"
