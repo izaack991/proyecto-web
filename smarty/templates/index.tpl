@@ -28,7 +28,8 @@
   <div class="row align-items-center" style="margin-left:10px; margin-left:10px">
     <div class="col">
       <figure class="text-center">
-        <h2>Éstas y miles de empresas más tienen las mejores vacantes para ti</h2>
+        <h2>Encuentra el empleo que encaja contigo.</h2>
+        <h2>Miles de empresas más tienen las mejores vacantes para ti</h2>
       </figure>
     </div>
     <div class="col">
@@ -40,7 +41,8 @@
   <br><br>
 
   {*Imagenes dinamicas de las vacantes*}
-  <div class="row align-items-center bg-primary" style="padding-left:7%;padding-top:50px;padding-bottom:50px;">
+  <div class="row align-items-center"
+    style="padding-left:7%;padding-top:50px;padding-bottom:50px;background-color:#eeeeeed9">
     {foreach $Bvacante as $vacantes}
       <div class="col">
         <input type="image" onclick="location.href='login.php?xd=2&vacante={$vacantes.idvacante}'"
@@ -52,7 +54,9 @@
   <br><br>
 
   {*Cards de las noticias*}
-  <div class="container" style="margine:auto;width: 100%;height:250px;">
+  <center>
+  <div class="row align-items-center"
+  style="padding-left:30%;padding-top:50px;padding-bottom:50px;padding-right:30%">
     <div class="row" id="card-container">
       {foreach $Noticias as $noticia}
         <div class="card border-primary shadow p-3 mb-5 bg-body rounded"
@@ -65,6 +69,7 @@
       {/foreach}
     </div>
   </div>
+  </center>
   <!-- Footer -->
   <footer class="page-footer font-small pt-4 border-top border-primary">
     <!-- Footer Links -->
@@ -125,10 +130,10 @@
     </div>
     <!-- Footer Links -->
     <!-- Copyright -->
-    </footer>
-    <div class="footer-copyright text-center py-3 bg-primary">© 2023 Copyright:
-      <a href="#!" style="color:black"> ISOF 6to Semestre</a>
-    </div>
+  </footer>
+  <div class="footer-copyright text-center py-3 bg-primary">© 2023 Copyright:
+    <a href="#!" style="color:black"> ISOF 6to Semestre</a>
+  </div>
   <!-- Copyright -->
 
   <!-- Footer -->
