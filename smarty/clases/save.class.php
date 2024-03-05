@@ -57,7 +57,7 @@ require_once('conexion.class.php');
             return TRUE;
         }
 
-        public function guardar_usuario($_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $_rol, $_status, $_ruta, $_razon)
+        public function guardar_usuario($_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $_irol, $_status, $_ruta, $_razon)
         {        
             try {
                
@@ -77,7 +77,7 @@ require_once('conexion.class.php');
                 $query->bindParam(':region',$_region);
                 $query->bindParam(':telefono',$_telefono);
                 $query->bindParam(':domicilio',$_domicilio);
-                $query->bindParam(':rol',$_rol);
+                $query->bindParam(':rol',$_irol);
                 $query->bindParam(':status',$_status);
                 $query->bindParam(':ruta_imagen',$_ruta);
                 $query->bindParam(':razon_social',$_razon);
