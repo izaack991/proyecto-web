@@ -63,8 +63,88 @@
                 </div>
               </div>
             </div>
+
+            {* Creacion de la modal de cerrar sesion *}
+            <div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-bell"></i> cerrar sesion</h5>
+                  </div>
+                  <div class="modal-body">
+                    <h6 class="modal-body" id="exampleModalLabel"><i class="fas fa-bell"></i>seguro que desea cerrar la sesion?</h6>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            
             {*Boton para cerrar la sesion*}            
-            <a class="nav-link active text-danger" href="index.php" style="font-weight:bold;">Cerrar Sesión</a>
+            <a class="nav-link active text-danger" onclick="openModal()" style="font-weight:bold;">Cerrar Sesión</a>
+           
+            <title>Modal</title>
+        <style>
+            /* Estilos para la modal */
+            .modal {
+                display: none; /* Por defecto, la modal está oculta */
+                position: fixed; /* Posición fija para que esté sobre el contenido */
+                z-index: 1; /* Valor alto para asegurarnos de que esté encima de todo */
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto; /* Añadir un desplazamiento si la modal es demasiado grande */
+                background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente */
+            }
+
+            .modal-content {
+                background-color: #fefefe;
+                margin: 15% auto; /* Centrar la modal verticalmente */
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%; /* Anchura de la modal */
+            }
+        </style>
+        </head>
+        <body>
+
+        <!-- La modal -->
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <p>Seguro que quieres Cerrar Sesion?</p>
+            <div class="modal-footer">
+             <a ><button type="button" class="btn btn-primary" onclick="redireccionindex()" data-dismiss="modal">Aceptar</button></a>
+              <button type="button" class="btn btn-primary" onclick="closeModal()" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+
+        <script>
+        // Función para abrir la modal
+        function openModal() {
+            document.getElementById('myModal').style.display = 'block';
+        }
+
+        // Función para cerrar la modal
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+        
+        function redireccionindex(){
+            window.location.href='../pagina/index.php';
+        }
+        // Cerrar la modal si el usuario hace clic fuera de ella
+        window.onclick = function(event) {
+            var modal = document.getElementById('myModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        </script>
           </ul>
         </div>
       </div>
