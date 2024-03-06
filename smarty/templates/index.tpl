@@ -34,7 +34,7 @@
     </div>
     <div class="col">
       <input type="image"
-        src="https://img.freepik.com/vector-gratis/generacion-ideas-negocio-personaje-dibujos-animados-nina-simbolo-bombilla-emprendimiento-proyecto-puesta-marcha-rentable-ganando-dinero_335657-2377.jpg?w=2000"
+        src="https://tmt.group/wp-content/uploads/2021/08/20943777-1-1-scaled.jpg"
         height="70%" width="70%" style="margin-left:10%" />
     </div>
   </div>

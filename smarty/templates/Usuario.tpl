@@ -93,7 +93,7 @@
                         </div>
                             <div class="col">
                                 <label>Telefono: *</label><br>
-                                <input class="form-control" type="text" name="txt_TELEFONO" class="texto" id="telefono"minlength="10" maxLength="10" placeholder="Escriba su Número" required="true"><br>
+                                <input class="form-control" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="txt_TELEFONO" class="texto" id="telefono"minlength="10" maxLength="10" placeholder="Escriba su Número" required="true"><br>
                             </div>
                     </div>
                             <label>Domicilio: *</label><br>
@@ -117,7 +117,7 @@
                         </div>
                     </div>
 
-                    <label for="formFile" class="form-label mt-4">Seleccionar Imagen de Perfil: *</label>
+                    <label for="formFile" class="form-label mt-4">Seleccionar Imagen de Perfil: </label>
                     <input class="form-control" type="file" name="txtruta" id="txtruta"><br>
 
                     <label>Correo Electronico: *</label><br>
@@ -191,7 +191,7 @@
                         </div>
                             <div class="col">
                                 <label>Telefono: *</label><br>
-                                <input class="form-control" type="text" name="txt_TELEFONO" class="texto" id="telefono"minlength="10" maxLength="10" placeholder="Escriba su Número" required="true"><br>
+                                <input class="form-control" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="txt_TELEFONO" class="texto" id="telefono"minlength="10" maxLength="10" placeholder="Escriba su Número" required="true"><br>
                             </div>
                     </div>
                             <label>Domicilio: *</label><br>
