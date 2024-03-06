@@ -49,11 +49,13 @@ if(isset($_POST['dateFin']))
     $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
 
     $alerta = "<script>swal({
-		title: '',
-		text: 'Se ha publicado la vacante correctamente!',
-		type: 'success',
-	  });</script>";
-
+        title: '',
+        text: 'Se ha publicado la vacante correctamente!',
+        type: 'success',
+      }).then(function() {
+        window.location.href = 'indexEmpresa.php';
+      });</script>";
+            
     if($notificacionpostulaciones>=1)
     {
     $COUNTPOS=$notificacionpostulaciones;

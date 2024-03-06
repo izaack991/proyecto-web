@@ -44,7 +44,7 @@
     {*Barra de navegacion para Empresa*}
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Inicio</a>
+        <a class="navbar-brand" href="indexEmpresa.php">Inicio</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -109,7 +109,7 @@
         <a href="enviartest.php?vac={$postu.puesto}&ie={$postu.id_usuario}"><input class="btn btn-primary" name="btntest" type="submit" value="ENVIAR TEST" style="float: right;"></a>
         
         {*Boton para imprimir el curriculum*}
-        <a href="pdf.php?vac={$vac}&ie={$postu.id_usuario}"><input class="btn btn-primary" name="btnpdf" type="submit" value="imprimir" style="float: right;margin-right:4%;"></a>
+        <a href="pdf.php?vac={$vac}&ie={$postu.id_usuario}" target="_blank"><input class="btn btn-primary" name="btnpdf" type="submit" value="imprimir" style="float: right;margin-right:4%;"></a>
         {/foreach}
       </div>
 

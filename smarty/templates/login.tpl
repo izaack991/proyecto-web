@@ -20,24 +20,26 @@
             {*Mensaje para los errores al ingresar*}
             {$alerta}
 
-            <div style="margin-top: 167px; margin-left: 35%; ">
+            <div style="margin-top: 150px; margin-left: 35%; ">
                 {*Card del login*}
                 <div class="card border-secondary mb-3" style="max-width: 25rem;">
-                    <FONT COLOR="black"><div class="card-header bg-primary" align="center">Inicio de sesion</div></FONT>
+                    <FONT COLOR="black"><div class="card-header bg-primary" style="font-weight: bold;" align="center">Inicio de sesion</div></FONT>
                     <div class="card-body">
 
                         {*Campos para los datos del login*}
-                        <br><br>
+                        <br>
+                        <label for="name" class="form__label" style="font-weight: bold;">Correo electronico</label> <br>
                         <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Ingresa tu correo electronico">
-                        <br><br>
+                        <br>
+                        <label for="name" class="form__label fw-bold" style="font-weight: bold;">Contraseña</label> <br>
                         <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa contraseña">
                         <br><br>
 
                         <center>
                             {*Boton para iniciar sesion*} 
-                            <button class="btn btn-light" type="submit">Iniciar sesion</button>
+                            <button class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Iniciar sesion</button>
                             {*Boton para registrarse*}
-                            <A HREF="../../proyecto-web/pagina/Usuario.php" class="btn btn-light" type="submit">Registrarse</A>
+                            <A HREF="../../proyecto-web/pagina/Usuario.php" class="btn btn-light" type="submit"  style="padding-bottom: 10mm;">Registrarse</A>
                         </center>
                     </div>
                 </div>

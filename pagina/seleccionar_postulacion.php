@@ -4,7 +4,7 @@ include('../smarty/clases/save.class.php');
 include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $smarty=new smarty;
-$titulo="Curriculum";
+$titulo="Curriculó";
 
 
 if($_SESSION['iusuario'] == "")
