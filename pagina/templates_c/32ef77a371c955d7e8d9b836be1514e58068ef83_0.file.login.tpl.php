@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2023-05-17 19:48:54
+/* Smarty version 4.3.2, created on 2024-03-06 00:47:37
   from 'C:\xampp\htdocs\proyecto-web\smarty\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '4.1.0',
-  'unifunc' => 'content_64651386148722_06280680',
+  'version' => '4.3.2',
+  'unifunc' => 'content_65e7af198ac210_83861063',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '32ef77a371c955d7e8d9b836be1514e58068ef83' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyecto-web\\smarty\\templates\\login.tpl',
-      1 => 1684344772,
+      1 => 1709682454,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64651386148722_06280680 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65e7af198ac210_83861063 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -44,21 +44,23 @@ function content_64651386148722_06280680 (Smarty_Internal_Template $_smarty_tpl)
                         <?php echo $_smarty_tpl->tpl_vars['alerta']->value;?>
 
 
-            <div style="margin-top: 167px; margin-left: 35%; ">
+            <div style="margin-top: 150px; margin-left: 35%; ">
                                 <div class="card border-secondary mb-3" style="max-width: 25rem;">
-                    <FONT COLOR="black"><div class="card-header bg-primary" align="center">Inicio de sesion</div></FONT>
+                    <FONT COLOR="black"><div class="card-header bg-primary" style="font-weight: bold;" align="center">Inicio de sesion</div></FONT>
                     <div class="card-body">
 
-                                                <br><br>
+                                                <br>
+                        <label for="name" class="form__label" style="font-weight: bold;">Correo electronico</label> <br>
                         <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Ingresa tu correo electronico">
-                        <br><br>
+                        <br>
+                        <label for="name" class="form__label fw-bold" style="font-weight: bold;">Contraseña</label> <br>
                         <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa contraseña">
                         <br><br>
 
                         <center>
                              
-                            <button class="btn btn-light" type="submit">Iniciar sesion</button>
-                                                        <A HREF="../../proyecto-web/pagina/Usuario.php" class="btn btn-light" type="submit">Registrarse</A>
+                            <button class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Iniciar sesion</button>
+                                                        <A HREF="../../proyecto-web/pagina/Usuario.php" class="btn btn-light" type="submit"  style="padding-bottom: 10mm;">Registrarse</A>
                         </center>
                     </div>
                 </div>
