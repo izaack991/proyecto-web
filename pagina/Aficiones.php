@@ -82,10 +82,13 @@ if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlon
     $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
 
     $alerta = "<script>swal({
-		title: '',
-		text: 'Se guardo correctamente aficiones',
-		type: 'success',
-	  });</script>";
+        title: '',
+        text: 'Se ha guardado tu experiencia laboral correctamente!',
+        type: 'success',
+      }).then(function() {
+        window.location.href = 'indexPrincipal.php';
+      });</script>";
+      
       $smarty->assign("COUNTLAB",$COUNTLAB);
       $smarty->assign("COUNFOR",$COUNFOR);
       $smarty->assign("COUNTAFI",$COUNTAFI);

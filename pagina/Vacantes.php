@@ -60,6 +60,29 @@ if (isset($_POST['dateFin'])) {
     // Guardar log de usuario
     date_default_timezone_set('America/Mexico_City');
     $_movimiento = 'Vacantes(Guardar)';
+    $_fecha = date('Y-m-d H:m:s');
+    $_hora = $vida_session;
+    $_latitud = $_POST['txtlatitud']; 
+    $_longitud = $_POST['txtlongitud']; 
+    $_ubicacion = 'Latitud: '.$_latitud.' Longitud: '.$_longitud;
+    $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
+
+    $alerta = "<script>swal({
+        title: '',
+        text: 'Se ha publicado la vacante correctamente!',
+        type: 'success',
+      }).then(function() {
+        window.location.href = 'indexEmpresa.php';
+      });</script>";
+            
+    if($notificacionpostulaciones>=1)
+    {
+    $COUNTPOS=$notificacionpostulaciones;
+    }
+    else 
+    {
+    $COUNTPOS=0;
+    }
     $_fecha = date('Y-m-d H:i:s');
     $_hora = $vida_session; // Considera si este es el valor correcto para $_hora
     $_latitud = $_POST['txtlatitud'];

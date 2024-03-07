@@ -80,10 +80,12 @@ if(isset($_POST['descripcion'])&& isset($_POST['ubicacion'])&&isset($_POST['peri
     $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
      
     $alerta = "<script>swal({
-		title: '',
-		text: 'Guardo correctamente el formacion academica',
-		type: 'success',
-	  });</script>";
+        title: '',
+        text: 'Se ha guardado tu experiencia laboral correctamente!',
+        type: 'success',
+      }).then(function() {
+        window.location.href = 'indexPrincipal.php';
+      });</script>";
       
       $smarty->assign("COUNTLAB",$COUNTLAB);
       $smarty->assign("COUNFOR",$COUNFOR);
