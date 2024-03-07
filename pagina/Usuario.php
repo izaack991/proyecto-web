@@ -8,6 +8,17 @@ $titulo="Registro Usuario";
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
 $irol=$_SESSION['t_user'];
+$iestatus = 0;
+
+if($irol == 1)
+{
+	$iestatus = 0;
+}
+else
+{
+	$iestatus = 1;
+}
+
 
 if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 {
@@ -19,12 +30,12 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 	}
 	else
 	{
-		if($irol==1 && $_ruta == ""){
+		 if($irol==1 && $_ruta == ""){
 			echo 'No subio imagen';
-			header("location:Usuario.php");
-		}
-		else
-		{
+		 	header("location:Usuario.php");
+		 }
+		 else
+		 {
 			$_nombre = $_POST['txt_NOMBRE'];
 			$_apellido = $_POST['txt_APELLIDOS'];
 			$_correo = $_POST['txt_CORREO'];
@@ -36,7 +47,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 			$_telefono = $_POST['txt_TELEFONO'];
 			$_domicilio = $_POST['txt_DOMICILIO'];
 			$_razon = $_POST['txt_razon'];
-			$_status = 0;
+			$_status = $iestatus;
 			
 			$tipo = $_FILES['txtruta']['name'];
 			//Obtenemos algunos datos necesarios sobre el archivo
@@ -78,7 +89,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 			}
 		}
 }
-$irol=$_SESSION['t_user'];
+//$irol=$_SESSION['t_user'];
 
 	$smarty->assign("titulo",$titulo);
 	$smarty->assign("irol",$irol);

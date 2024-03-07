@@ -10,8 +10,7 @@
     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
-  </head>
-
+    </head> 
   <body>
     
     {*Conexion a librerias de JavasScript para la ubicacion y bootstrap*}

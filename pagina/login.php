@@ -24,7 +24,7 @@ if (isset($_POST['usuario'])&&isset($_POST['password']))
 
         $_ROL= $_SESSION['t_user'];
         //condicional si es usuario (el 2 se usa para la secion del usuario)
-        //Si rol el un "2", manda al formulario de index que es el index de los usuarios
+        //Si rol es un "2", manda al formulario de index que es el index de los usuarios
         if($usuario == TRUE)
         {
             if ($_ROL==2)
