@@ -1,45 +1,64 @@
 <?php
 session_start();
-if(isset($_SESSION['tiempo']) ) {
+
+// Verificar si la sesión está iniciada y establecer el tiempo de vida de la sesión
+if (isset($_SESSION['tiempo'])) {
     $vida_session = time() - $_SESSION['tiempo'];
 }
 $_SESSION['tiempo'] = time();
+
+// Incluir clases y bibliotecas necesarias
 include('../smarty/clases/save.class.php');
 include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
-$smarty=new smarty;
-$titulo="Proyecto Web";
-if($_SESSION['iusuario'] == "")
-{  
-        header("location:login.php?xd=1");
+
+$smarty = new Smarty;
+$titulo = "Proyecto Web";
+$alerta = '';
+
+// Verificar si el usuario está autenticado
+if (empty($_SESSION['iusuario'])) {
+    header("location:login.php?xd=1");
+    exit; // Detener la ejecución del script después de la redirección
 }
-else
-{
+
+// Instanciar clases y obtener datos necesarios
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
 $_findPais = Functions::singleton_functions();
 $_pais = $_findPais->buscaPaises();
 $nuevoSingleton = Functions::singleton_functions();
+
+// Obtener notificaciones de postulaciones
 $iusuario = $_SESSION['iusuario'];
 $notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuario);
-$alerta = '';
 
-if(isset($_POST['dateFin']))
-{
-    
+// Asignar valores a las variables Smarty
+$COUNTPOS = ($notificacionpostulaciones >= 1) ? $notificacionpostulaciones : 0;
+$ECOUNT = $COUNTPOS;
+$smarty->assign("COUNTPOS", $COUNTPOS);
+$smarty->assign("ECOUNT", $ECOUNT);
+$smarty->assign("titulo", $titulo);
+$smarty->assign("Paises", $_pais);
+$smarty->assign("alerta", $alerta);
+
+// Procesar formulario si se envió
+if (isset($_POST['dateFin'])) {
     $_idusuario = $_SESSION['iusuario'];
     $_puesto = $_POST['txtpuesto'];
     $_empresa = $_POST['txtempresa'];
     $_sueldo = $_POST['txtsueldo'];
     $_lugar = $_POST['cmbpais'];
     $_datos = $_POST['txtdatos'];
-    
     $_fechainicio = $_POST['dateInicio'];
-    
     $_fechafin = $_POST['dateFin'];
-	$f_id_vacantes = $_findUser->consec_vacantes();
-	$newuser = $nuevoUsuario->Guardar_id_vacantes($f_id_vacantes,$_idusuario,$_puesto,$_empresa,$_sueldo,$_lugar,$_datos,$_fechainicio,$_fechafin);
-	date_default_timezone_set('America/Mexico_City');
+
+    // Guardar datos de la vacante
+    $f_id_vacantes = $_findUser->consec_vacantes();
+    $newuser = $nuevoUsuario->Guardar_id_vacantes($f_id_vacantes, $_idusuario, $_puesto, $_empresa, $_sueldo, $_lugar, $_datos, $_fechainicio, $_fechafin);
+
+    // Guardar log de usuario
+    date_default_timezone_set('America/Mexico_City');
     $_movimiento = 'Vacantes(Guardar)';
     $_fecha = date('Y-m-d H:m:s');
     $_hora = $vida_session;
@@ -64,30 +83,50 @@ if(isset($_POST['dateFin']))
     {
     $COUNTPOS=0;
     }
-    $ECOUNT = $COUNTPOS;
-    $smarty->assign("COUNTPOS",$COUNTPOS);
-    $smarty->assign("ECOUNT",$ECOUNT);
-	$smarty->assign("titulo",$titulo);
-	$smarty->assign("alerta",$alerta);
-    $smarty->assign("Paises",$_pais);
-	$smarty->display("../smarty/templates/Vacantes.tpl");
+    $_fecha = date('Y-m-d H:i:s');
+    $_hora = $vida_session; // Considera si este es el valor correcto para $_hora
+    $_latitud = $_POST['txtlatitud'];
+    $_longitud = $_POST['txtlongitud'];
+    $_ubicacion = 'Latitud: ' . $_latitud . ' Longitud: ' . $_longitud;
+    $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario, $_ubicacion, $_movimiento, $_fecha, $_hora);
 
-} else
-{
-    if($notificacionpostulaciones>=1)
-    {
-    $COUNTPOS=$notificacionpostulaciones;
-    }
-    else 
-    {
-    $COUNTPOS=0;
-    }
+    // Actualizar notificaciones de postulaciones
+    $notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuario);
+    $COUNTPOS = ($notificacionpostulaciones >= 1) ? $notificacionpostulaciones : 0;
     $ECOUNT = $COUNTPOS;
-    $smarty->assign("COUNTPOS",$COUNTPOS);
-    $smarty->assign("ECOUNT",$ECOUNT);
+    
+    if ($newuser == true) {
+        // Actualizar notificaciones de postulaciones si es necesario
+        $alerta = "<script> 
+        Swal.fire({
+            title: 'Vacante Guardada Correctamente!',
+            icon: 'success'
+        }).then(() => {
+            window.location.href = 'indexEmpresa.php';
+        });            
+    </script>";
+    }
+    else
+    {
+            $alerta = "<script> Swal.fire({
+                title: 'Error!',
+                text: 'No se pudo guardar la vacante correctamente',
+                icon: 'error'
+            }).then(() =>{
+                window.location.href = 'Vacantes.php';
+            });
+            </script>";
+    
+    }
+
+    $smarty->assign("COUNTPOS", $COUNTPOS);
+    $smarty->assign("ECOUNT", $ECOUNT);
     $smarty->assign("titulo", $titulo);
-    $smarty->assign("alerta",$alerta);
-    $smarty->assign("Paises",$_pais);
-    $smarty->display("../smarty/templates/Vacantes.tpl");
-}}
+    $smarty->assign("Paises", $_pais);
+    $smarty->assign("alerta", $alerta);
+}
+
+// Mostrar el template Vacantes.tpl
+$smarty->display("../smarty/templates/Vacantes.tpl");
 ?>
+

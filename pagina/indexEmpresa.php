@@ -3,10 +3,12 @@ session_start();
 include('../../smarty-master/libs/smarty.class.php');
 include('../smarty/clases/function.class.php');
 $titulo = "Index";
+
 $smarty=new smarty;
 $nuevoSingleton = Functions::singleton_functions();
 $iusuario = $_SESSION['iusuario'];
 $notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuario);
+
 
 
 if($notificacionpostulaciones>=1)
@@ -17,6 +19,8 @@ else
 {
     $COUNTPOS=0;
 }
+
+
 
 $ECOUNT = $COUNTPOS;
 $smarty->assign("COUNTPOS",$COUNTPOS);

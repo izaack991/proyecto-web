@@ -8,6 +8,7 @@
     <title>Inicio Usuario</title>
     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
   </head>
 
   <body>
@@ -93,8 +94,29 @@
                 </div>
               </div>
             </div>
+
             {*Boton para cerrar la sesion*}
-            <a class="nav-link active text-danger" href="index.php" style="font-weight:bold;">Cerrar Sesión</a>
+            <a class="nav-link active text-danger" onclick="openAlert()" style="font-weight:bold;">Cerrar Sesión </a>
+
+                    <script>        
+                    function redireccionindex() {
+                      window.location.href='../pagina/index.php';
+                        }      
+                      function openAlert() {
+                        Swal.fire({
+                        title: "¿Seguro que quieres Cerrar Sesion?",
+                        icon: "question",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Aceptar"
+                          }).then((result) => {
+                              if (result.isConfirmed) {
+                                onClose: redireccionindex();
+                              }
+                            });
+                       }
+                     </script>
           </ul>
         </div>
       </div>

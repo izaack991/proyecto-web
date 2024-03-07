@@ -9,7 +9,7 @@
     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
 
   <body>
@@ -80,7 +80,7 @@
     <form action="Vacantes.php" method="POST">
 
       {*Mensaje de guardado correctamente*}
-      {$alerta}
+      {$alerta}  
 
       {*Card de vacantes*}
       <div class="card  mb-3" style="max-width: 36rem; margin:auto; margin-top:30px;">
@@ -132,6 +132,25 @@
             
             {*Boton de guardar vacante*}
             <input class="btn btn-primary" style="margin-left:224px;" type="submit" value="Guardar">
+
+            {* <script>        
+                    function redireccionindex() {
+                      window.location.href='../pagina/indexEmpresa.php';
+                        }      
+                      function openAlert() {
+                        Swal.fire({
+                          title: 'Vacante Guardada Correctamente!',
+                          icon: 'success',
+                        confirmButtonColor: "#3085d6",
+                        confirmButtonText: "Ok"
+                          }).then((result) => {
+                              if (result.isConfirmed) {
+                                onClose: redireccionindex();
+                              }
+                            });
+                       }
+                     </script> *}
+
           </div>
         </div>
       </div>
