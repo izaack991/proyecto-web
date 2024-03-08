@@ -9,12 +9,11 @@ include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $smarty=new smarty;
 $titulo="Proyecto Web";
-if($_SESSION['iusuario'] == "")
-{  
-        header("location:login.php?xd=2");
+
+if (isset($_SESSION['iusuario'])) {
+    header("location:login.php?xd=2");
+    exit; // Detener la ejecución del script después de la redirección
 }
-else
-{
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
 $buscarAficion = Functions::singleton_functions();
@@ -129,5 +128,5 @@ else{
 	$smarty->assign("titulo",$titulo);
     $smarty->assign("alerta",$alerta);
     $smarty->display("../smarty/templates/Aficiones.tpl"); 
-}}
+}
 ?>

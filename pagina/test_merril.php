@@ -5,6 +5,12 @@ include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $titulo = "Test de merril";
 $smarty=new smarty;
+
+// Verificar si el usuario está autenticado
+if (isset($_SESSION['iusuario'])) {
+    header("location:login.php?xd=2");
+    exit; // Detener la ejecución del script después de la redirección
+}
 $nuevasRespuestas = Save::singleton_guardar();
 $_finduser = Functions::singleton_functions();
 $_idusuario = $_SESSION['iusuario'];

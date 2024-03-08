@@ -9,7 +9,7 @@
         <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
         <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
 
     <body>
@@ -39,13 +39,13 @@
                             {*Boton para iniciar sesion*} 
                             <button class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Iniciar sesion</button>
                             {*Boton para registrarse*}
-                            <A HREF="../../proyecto-web/pagina/Usuario.php" class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Registrarse</A>
+                            <A HREF="../../proyecto-web/pagina/Usuario.php" class="btn btn-light" type="submit"  style="padding-bottom: 10mm;">Registrarse</A>
                         </center>
                     </div>
                 </div>
 
                 {*Boton para volver al indexPrincipal*}
-                <a href="index.php"><button class="btn btn-light" type="button">VOLVER</button></a>
+                <a href="index.php"><button class="btn btn-light" type="button">Inicio</button></a>
 
             </div>
 

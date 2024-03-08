@@ -4,6 +4,13 @@ include('../smarty/clases/save.class.php');
 include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $titulo = "Text MOSS";
+
+// Verificar si el usuario está autenticado
+if (isset($_SESSION['iusuario'])) {
+    header("location:login.php?xd=2");
+    exit; // Detener la ejecución del script después de la redirección
+}
+
 $_finduser = Functions::singleton_functions();
 $_idusuario = $_SESSION['iusuario'];
 $validacion = $_finduser->val_moss($_idusuario);

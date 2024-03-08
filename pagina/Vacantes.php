@@ -17,7 +17,7 @@ $titulo = "Proyecto Web";
 $alerta = '';
 
 // Verificar si el usuario está autenticado
-if (empty($_SESSION['iusuario'])) {
+if (isset($_SESSION['iusuario'])) {
     header("location:login.php?xd=1");
     exit; // Detener la ejecución del script después de la redirección
 }
@@ -67,11 +67,11 @@ if (isset($_POST['dateFin'])) {
     $_ubicacion = 'Latitud: '.$_latitud.' Longitud: '.$_longitud;
     $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
 
-    $alerta = "<script>swal({
-        title: '',
-        text: 'Se ha publicado la vacante correctamente!',
-        type: 'success',
-      }).then(function() {
+    $alerta = "<script>
+    Swal.fire({
+        title: '¡Se ha publicado la vacante Correctamente!',
+        icon: 'success'
+    }).then(() => {
         window.location.href = 'indexEmpresa.php';
       });</script>";
             
@@ -99,7 +99,7 @@ if (isset($_POST['dateFin'])) {
         // Actualizar notificaciones de postulaciones si es necesario
         $alerta = "<script> 
         Swal.fire({
-            title: 'Vacante Guardada Correctamente!',
+            title: '¡Vacante Guardada Correctamente!',
             icon: 'success'
         }).then(() => {
             window.location.href = 'indexEmpresa.php';
@@ -108,10 +108,10 @@ if (isset($_POST['dateFin'])) {
     }
     else
     {
-            $alerta = "<script> Swal.fire({
-                title: 'Error!',
-                text: 'No se pudo guardar la vacante correctamente',
-                icon: 'error'
+        $alerta = "<script> Swal.fire({
+            title: 'Error!',
+            text: 'No se pudo guardar la vacante correctamente',
+            icon: 'error'
             }).then(() =>{
                 window.location.href = 'Vacantes.php';
             });
