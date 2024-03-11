@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.2, created on 2024-03-07 00:20:55
+/* Smarty version 4.3.2, created on 2024-03-10 02:15:17
   from 'C:\xampp\htdocs\proyecto-web\smarty\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.2',
-  'unifunc' => 'content_65e8fa57f3b370_24909262',
+  'unifunc' => 'content_65ed09a5359b06_76713927',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '32ef77a371c955d7e8d9b836be1514e58068ef83' => 
     array (
       0 => 'C:\\xampp\\htdocs\\proyecto-web\\smarty\\templates\\login.tpl',
-      1 => 1709767218,
+      1 => 1709855641,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_65e8fa57f3b370_24909262 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65ed09a5359b06_76713927 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -35,15 +35,14 @@ function content_65e8fa57f3b370_24909262 (Smarty_Internal_Template $_smarty_tpl)
         <?php echo '<script'; ?>
  src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"><?php echo '</script'; ?>
 >
+
     </head>
 
     <body>
 
-                <form action="" method="post">
+                <form id="LogIn" action="" method="post">
 
-                        <?php echo $_smarty_tpl->tpl_vars['alerta']->value;?>
-
-
+            
             <div style="margin-top: 150px; margin-left: 35%; ">
                                 <div class="card border-secondary mb-3" style="max-width: 25rem;">
                     <FONT COLOR="black"><div class="card-header bg-primary" style="font-weight: bold;" align="center">Inicio de sesion</div></FONT>
@@ -69,6 +68,44 @@ function content_65e8fa57f3b370_24909262 (Smarty_Internal_Template $_smarty_tpl)
 
             </div>
 
+
+        <?php echo '<script'; ?>
+>
+            document.getElementById('LogIn').addEventListener('submit', function(event)
+            {
+                // Evitar el envío automático del formulario
+                event.preventDefault();
+                
+                // Obtener los datos del formulario
+                var formData = new FormData(this);
+
+                // Enviar los datos mediante AJAX
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'login.php', true);
+                xhr.onload = function()
+                {
+                    if (xhr.status >= 200 && xhr.status < 400) 
+                    {
+                        // Éxito en la solicitud
+                        // Aquí puedes manejar la respuesta del servidor, si es necesario
+                        console.log(xhr.responseText);
+                    } 
+                    else 
+                    {
+                        // Error en la solicitud
+                        console.error('Error en la solicitud');
+                    }
+                };
+                
+                xhr.onerror = function() 
+                {
+                    // Error en la conexión
+                    console.error('Error en la conexión');
+                };
+                xhr.send(formData);
+            });
+        <?php echo '</script'; ?>
+>
                 <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"><?php echo '</script'; ?>
 >

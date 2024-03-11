@@ -10,15 +10,15 @@
         <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
+
     </head>
 
     <body>
 
         {*Formuario de Login*}
-        <form action="" method="post">
+        <form id="LogIn" action="" method="post">
 
             {*Mensaje para los errores al ingresar*}
-            {$alerta}
 
             <div style="margin-top: 150px; margin-left: 35%; ">
                 {*Card del login*}
@@ -49,6 +49,42 @@
 
             </div>
 
+
+        <script>
+            document.getElementById('LogIn').addEventListener('submit', function(event)
+            {
+                // Evitar el envío automático del formulario
+                event.preventDefault();
+                
+                // Obtener los datos del formulario
+                var formData = new FormData(this);
+
+                // Enviar los datos mediante AJAX
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'login.php', true);
+                xhr.onload = function()
+                {
+                    if (xhr.status >= 200 && xhr.status < 400) 
+                    {
+                        // Éxito en la solicitud
+                        // Aquí puedes manejar la respuesta del servidor, si es necesario
+                        console.log(xhr.responseText);
+                    } 
+                    else 
+                    {
+                        // Error en la solicitud
+                        console.error('Error en la solicitud');
+                    }
+                };
+                
+                xhr.onerror = function() 
+                {
+                    // Error en la conexión
+                    console.error('Error en la conexión');
+                };
+                xhr.send(formData);
+            });
+        </script>
         {*Conexion de librerias de JavaScript y bootstrap*}
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
