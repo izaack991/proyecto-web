@@ -5,37 +5,26 @@ include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $smarty=new smarty;
 $titulo="Registro Usuario";
+$alerta = '';
+
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
 $irol=$_SESSION['t_user'];
-$iestatus = 0;
-
-if($irol == 1)
-{
-	$iestatus = 0;
-}
-else
-{
-	$iestatus = 1;
-}
-
 
 if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 {
 	$_ruta = $_POST['txtruta'];
 	if($_POST['txt_PASSWORD']!=$_POST['txt_PASSWORD2'])
 	{
-		echo '¡Las Contraseñas NO coinciden!';
-		header("location:Usuario.php");
+		$alerta = "<script> Swal.fire('¡Las Contraseñas NO coinciden!');</script>";
 	}
 	else
 	{
-		 if($irol==1 && $_ruta == ""){
-			echo 'No subio imagen';
-		 	header("location:Usuario.php");
-		 }
-		 else
-		 {
+		if($irol==1 && $_ruta == ""){
+			$alerta = "<script> Swal.fire('¡No subió la Imagen de la Empresa!');</script>";
+		}
+		else
+		{
 			$_nombre = $_POST['txt_NOMBRE'];
 			$_apellido = $_POST['txt_APELLIDOS'];
 			$_correo = $_POST['txt_CORREO'];
@@ -47,7 +36,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 			$_telefono = $_POST['txt_TELEFONO'];
 			$_domicilio = $_POST['txt_DOMICILIO'];
 			$_razon = $_POST['txt_razon'];
-			$_status = $iestatus;
+			$_status = 0;
 			
 			$tipo = $_FILES['txtruta']['name'];
 			//Obtenemos algunos datos necesarios sobre el archivo
@@ -58,8 +47,11 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 			{
 				//Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
 				if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")) && ($tamano < 2000000))) {
-					echo '<div><b>Error. La extensión o el tamaño de los archivos no es correcta.<br/>
-					- Se permiten archivos .gif, .jpg, .png. y de 200 kb como máximo.</b></div>';
+					
+					$alerta = "<script> Swal.fire({
+						title: 'Error!',
+						text: 'La extensión o el tamaño de los archivos no es correcta. Solo se permite: .gif, .jpg, .png. y de 200 kb como máximo.',
+						icon: 'error');</script>";
 				}
 				else {
 					//Si la imagen es correcta en tamaño y tipo
@@ -74,7 +66,10 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 						}
 						else {
 						//Si no se ha podido subir la imagen, mostramos un mensaje de error
-						//echo '<div><b>Ocurrió algún error al subir el fichero. No pudo guardarse.</b></div>';
+						$alerta = "<script> Swal.fire({
+							title: 'Error!',
+							text: 'No se pudo subir la imagen al sevidor.',
+							icon: 'error');</script>";
 						}
 					}
 				}
@@ -83,16 +78,17 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 				$newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol, $_status, $_ruta, $_razon);
 
 			}
-			if ($newuser== true)
+			if ($newuser == true)
 			{
 				header("location:login.php?xd=$irol");
 			}
 		}
 }
-//$irol=$_SESSION['t_user'];
+$irol=$_SESSION['t_user'];
 
 	$smarty->assign("titulo",$titulo);
 	$smarty->assign("irol",$irol);
+	$smarty->assign("alerta",$alerta);
 	$smarty->display("../smarty/templates/Usuario.tpl");
 		
 ?>

@@ -12,7 +12,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
     <link rel="stylesheet" href="estilos.css" type="text/css">
-  </head>
+    <script>
+    // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
+  var tiempoInactividad = 5 * 60 * 1000; 
+
+  // Página a la que se redireccionará después de la inactividad
+  var paginaRedireccion = "index.php";
+
+  var tiempoInactivo;
+
+  // Función para redireccionar
+  function redireccionar() {
+    window.location.href = paginaRedireccion;
+  }
+
+  // Reiniciar el temporizador de inactividad
+  function reiniciarTemporizador() {
+    clearTimeout(tiempoInactivo);
+    tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
+  }
+
+  // Cuando se cargue la página, iniciar el temporizador
+  reiniciarTemporizador();
+
+  // Reiniciar el temporizador si se detecta actividad
+  document.addEventListener("mousemove", reiniciarTemporizador);
+  document.addEventListener("keypress", reiniciarTemporizador);
+    </script>
+ 
+    </head>
 
   <body>
 

@@ -8,7 +8,34 @@
         <title>Registro Usuario</title>
         <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
         <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+    // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
+  var tiempoInactividad = 5 * 60 * 1000; 
 
+  // Página a la que se redireccionará después de la inactividad
+  var paginaRedireccion = "index.php";
+
+  var tiempoInactivo;
+
+  // Función para redireccionar
+  function redireccionar() {
+    window.location.href = paginaRedireccion;
+  }
+
+  // Reiniciar el temporizador de inactividad
+  function reiniciarTemporizador() {
+    clearTimeout(tiempoInactivo);
+    tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
+  }
+
+  // Cuando se cargue la página, iniciar el temporizador
+  reiniciarTemporizador();
+
+  // Reiniciar el temporizador si se detecta actividad
+  document.addEventListener("mousemove", reiniciarTemporizador);
+  document.addEventListener("keypress", reiniciarTemporizador);
+    </script>
     </head>
 
     <body>
@@ -18,6 +45,9 @@
         
         {*Form para el registrod de usuarios*}
         <form method="POST">
+
+        {*Mensaje de guardado correctamente*}
+        {$alerta} 
 
             {*Card del registro de usuarios*}
             <div class="card  mb-3" style="max-width: 50rem; margin:auto; margin-top:50px;">
@@ -100,8 +130,8 @@
                             <input class="form-control" type="text" name="txt_DOMICILIO" class="texto" id="domicilio" placeholder="Escriba su Domicilio" required="true"><br>
 
                         <center>
-                            <button class="btn btn-primary" type="submit">GUARDAR</button>
-                            <button type="button" class="btn btn-secondary" onclick="location.href='login.php?xd=1'">Regresaral Login</button>
+                            <button class="btn btn-primary" type="submit">Guardar</button>
+                            <button type="button" class="btn btn-secondary" onclick="location.href='login.php?xd=1'">Volver</button>
                         </center>
                     </div>
                     {else}
@@ -198,13 +228,51 @@
                             <input class="form-control" type="text" name="txt_DOMICILIO" class="texto" id="domicilio" placeholder="Escriba su Domicilio" required="true"><br>
 
                         <center>
-                            <button class="btn btn-primary" type="submit">GUARDAR</button>
-                            <button type="button" class="btn btn-secondary" onclick="location.href='login.php?xd=1'">Regresaral Login</button>
+                            <button class="btn btn-primary" type="submit">Guardar</button>
+                            <button type="button" class="btn btn-secondary" onclick="location.href='login.php?xd=2'">Volver</button>
                         </center>
                     </div>
                     {/if}
                     
         </form>
+
+        <script>
+        function enviarFormulario() {
+            var formData = new FormData(document.getElementById('formulario'));
+
+            $.ajax({
+                url: 'ruta_a_tu_script_php.php',
+                type: 'POST',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    if (response.success) {
+                        Swal.fire({
+                            title: 'Éxito!',
+                            text: response.message,
+                            icon: 'success'
+                        });
+                        window.location.href = "nueva_pagina.php";
+                    } else {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: response.message,
+                            icon: 'error'
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Ha ocurrido un error en el servidor. Por favor, inténtelo de nuevo más tarde.',
+                        icon: 'error'
+                    });
+                }
+            });
+        }
+        </script>
 
         {*Conexion de librerias de JavaScript y bootstrap*}
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

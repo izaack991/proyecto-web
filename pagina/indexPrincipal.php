@@ -2,15 +2,15 @@
 session_start();
 include('../../smarty-master/libs/smarty.class.php');
 include('../smarty/clases/function.class.php');
-$titulo = "Index";
+$titulo = "Pagina Principal Usuario";
 
 $smarty=new smarty;
-if($_SESSION['iusuario'] == "")
-{  
-        header("location:login.php");
+
+// Verificar si el usuario está autenticado
+if (isset($_SESSION['iusuario'])) {
+    header("location:login.php?xd=2");
+    exit; // Detener la ejecución del script después de la redirección
 }
-else
-{
 $nuevoSingleton = Functions::singleton_functions();
 $iusuario = $_SESSION['iusuario'];
 $notificacionexperiencia = $nuevoSingleton->notificacionexperiencia($iusuario);
@@ -65,7 +65,6 @@ $smarty->assign("COUNTAFI",$COUNTAFI);
 $smarty->assign("COUNTINT",$COUNTINT);
 $smarty->assign("COUNT",$COUNT);
 $smarty->assign("iusuario",$iusuario);
-    $smarty->display("../smarty/templates/indexPrincipal.tpl");
+$smarty->display("../smarty/templates/indexPrincipal.tpl");
 
-}
 ?>

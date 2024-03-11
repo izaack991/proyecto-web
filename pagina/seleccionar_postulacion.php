@@ -6,13 +6,11 @@ include('../../smarty-master/libs/smarty.class.php');
 $smarty=new smarty;
 $titulo="Curriculó";
 
-
-if($_SESSION['iusuario'] == "")
-{  
-        header("location:login.php?xd=1");
+// Verificar si el usuario está autenticado
+if (isset($_SESSION['iusuario'])) {
+    header("location:login.php?xd=1");
+    exit; // Detener la ejecución del script después de la redirección
 }
-else
-{
     $id_empresa=$_SESSION['iusuario'];
     $_finduser = Functions::singleton_functions();
     $nuevoUsuario = Save::singleton_guardar();
@@ -54,5 +52,5 @@ $smarty->assign("Experiencia",$experiencia);
 $smarty->assign("Formacion",$formacion);
 $smarty->assign("Aficiones",$aficiones);
 $smarty->assign("Interes",$interes);
-$smarty->display("../smarty/templates/seleccionar_postulacion.tpl");}
+$smarty->display("../smarty/templates/seleccionar_postulacion.tpl");
 ?>
