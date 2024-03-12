@@ -1,10 +1,8 @@
 <?php 
 session_start();
-include('../smarty/clases/save.class.php');
-include('../smarty/clases/function.class.php');
-include('../../smarty-master/libs/smarty.class.php');
-$titulo="Test Cleaver";
-$smarty=new smarty;
+include('../clases/save.class.php');
+include('../clases/function.class.php');
+// include('../../smarty-master/libs/smarty.class.php');
 
 // Verificar si el usuario está autenticado
 if (isset($_SESSION['iusuario'])) {
@@ -127,11 +125,7 @@ if(isset($_POST['resp1']) && isset($_POST['resp2']))
     $p17_resp_neg,$p18_resp_pos,$p18_resp_neg,$p19_resp_pos,$p19_resp_neg,$p20_resp_pos,$p20_resp_neg,$p21_resp_pos,$p21_resp_neg,
     $p22_resp_pos,$p22_resp_neg,$p23_resp_pos,$p23_resp_neg,$p24_resp_pos,$p24_resp_neg,$p25_resp_pos,$p25_resp_neg);
 }
-$smarty->assign("COUNTLAB",$COUNTLAB);
-$smarty->assign("COUNFOR",$COUNFOR);
-$smarty->assign("COUNTAFI",$COUNTAFI);
-$smarty->assign("COUNTINT",$COUNTINT);
-$smarty->assign("COUNT",$COUNT);
-$smarty->assign("titulo",$titulo);
-$smarty->display("../smarty/templates/cleaver.tpl");}}
+
+// $smarty->display("../smarty/templates/cleaver.tpl");
+}}
 ?>

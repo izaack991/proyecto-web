@@ -15,7 +15,7 @@
   <body>
 
     {*Conexion al archivo javascript para la ubicacion*}
-    <script src="../smarty/js/ubicacion.js"></script>
+    <!-- <script src="../smarty/js/ubicacion.js"></script> -->
 
     
     {*Barra de navegacion para Empresa*}
@@ -38,7 +38,7 @@
           </ul>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-            {if $ECOUNT >= 1}
+            <!-- {if $ECOUNT >= 1}
               <a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" data-toggle="modal"data-target="#exampleModal">
                 <span class="fa-layers fa-fw mr-2 fa-lg">
                   <i class="fas fa-bell"></i>
@@ -46,7 +46,7 @@
                 </span>{$smarty.session.nomusuario}</a></li>
             {else}
             <li class="nav-link active">{$smarty.session.nomusuario}</li>
-            {/if}
+            {/if} -->
 
             {* Creacion de la modal de notificaciones *}
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
@@ -59,9 +59,9 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    {if $COUNTPOS >= 1}
+                    <!-- {if $COUNTPOS >= 1}
                     <a class="nav-link" href="postulacion.php" style="color: blue;">Tienes {$COUNTPOS} postulaciones pendientes</a>
-                    {/if}
+                    {/if} -->
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -80,7 +80,7 @@
     <form action="Vacantes.php" method="POST">
 
       {*Mensaje de guardado correctamente*}
-      {$alerta}  
+      <!-- {$alerta}   -->
 
       {*Card de vacantes*}
       <div class="card  mb-3" style="max-width: 36rem; margin:auto; margin-top:30px;">
@@ -106,9 +106,9 @@
         <div class="col">
         <select class="btn btn-light disabled" name="cmbpais" required>
              <option value="">Elige una opción</option>
-             {foreach $Paises as $pais} 
+             <!-- {foreach $Paises as $pais} 
                <option value={$pais.id_paises}>{$pais.nombre}</option>
-             {/foreach}
+             {/foreach} -->
           </select></div></div><br>
 
         <label for="name" class="form__label"> Datos Adicionales *</label> <br>
