@@ -12,7 +12,7 @@
 
 <body>
 
-  {*Barra de navegacion del index principal*}
+  <!-- Barra de navegacion del index principal -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <center>
       <a href="login.php?xd=1">
@@ -24,7 +24,7 @@
     </center>
   </nav>
 
-  {*Imagen principal del index*}
+  <!-- Imagen principal del index -->
   <div class="row align-items-center" style="margin-left:10px; margin-left:10px">
     <div class="col">
       <figure class="text-center">
@@ -40,7 +40,7 @@
   </div>
   <br><br>
 
-  {*Imagenes dinamicas de las vacantes*}
+  <!-- Imagenes dinamicas de las vacantes -->
   <div class="row align-items-center"
     style="padding-left:7%;padding-top:50px;padding-bottom:50px;background-color:#eeeeeed9">
     {foreach $Bvacante as $vacantes}
@@ -53,7 +53,7 @@
   </div>
   <br><br>
 
-  {*Cards de las noticias*}
+  <!-- Cards de las noticias -->
   <center>
   <div class="row align-items-center justify-content-md-center"
   style="padding-top:50px;padding-bottom:50px;">
@@ -137,7 +137,7 @@
   <!-- Copyright -->
 
   <!-- Footer -->
-  {*Conexion de librerias de JavaScript y bootstrap*}
+  <!-- Conexion de librerias de JavaScript y bootstrap -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
