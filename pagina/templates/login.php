@@ -14,19 +14,19 @@
 
 <body>
 
-{*Formuario de Login*}
+<!-- Formuario de Login -->
 <form action="" method="post">
 
-    {*Mensaje para los errores al ingresar*}
-    {$alerta}
+    <!-- Mensaje para los errores al ingresar -->
+    <!-- {$alerta} -->
 
     <div style="margin-top: 150px; margin-left: 35%; ">
-        {*Card del login*}
+        <!-- Card del login -->
         <div class="card border-secondary mb-3" style="max-width: 25rem;">
             <FONT COLOR="black"><div class="card-header bg-primary" style="font-weight: bold;" align="center">Inicio de sesion</div></FONT>
             <div class="card-body">
 
-                {*Campos para los datos del login*}
+                <!-- Campos para los datos del login -->
                 <br>
                 <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Ingresa tu correo electronico">
                 <br>
@@ -34,20 +34,25 @@
                 <br><br>
 
                 <center>
-                    {*Boton para iniciar sesion*} 
+                    <!-- Boton para iniciar sesion --> 
                     <button class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Iniciar sesion</button>
+<<<<<<< HEAD
+                    <!-- Boton para registrarse -->
+                    <A HREF="../../proyecto-web/pagina/Usuario.php" class="btn btn-light" type="submit"  style="padding-bottom: 10mm;">Registrarse</A>
+=======
                     {*Boton para registrarse*}
                     <A HREF="Usuario.php" class="btn btn-light" type="submit"  style="padding-bottom: 10mm;">Registrarse</A>
+>>>>>>> 5d8ec65f1db0d0e8b04fbcd4e6f2e487cccd1add
                 </center>
             </div>
         </div>
 
-        {*Boton para volver al indexPrincipal*}
+        <!-- Boton para volver al indexPrincipal -->
         <a href="index.php"><button class="btn btn-light" type="button">Inicio</button></a>
 
     </div>
 
-{*Conexion de librerias de JavaScript y bootstrap*}
+<!-- Conexion de librerias de JavaScript y bootstrap -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
