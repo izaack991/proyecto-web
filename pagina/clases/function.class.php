@@ -689,7 +689,7 @@ require_once('conexion.class.php');
                     //$this->dbh = null;
                     $numeroDeFilas = $query->rowCount();
                     //si existe el usuario
-                    $data;
+                    $data = array();
                     if($numeroDeFilas >= 1)
                     {
                         $data = $numeroDeFilas;
