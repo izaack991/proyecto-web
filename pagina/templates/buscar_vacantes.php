@@ -5,47 +5,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{$titulo}</title>
+    <title> "Lista de vacantes"</title>
     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script>
             // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
-            var tiempoInactividad = 5 * 60 * 1000; 
+            // var tiempoInactividad = 5 * 60 * 1000; 
 
             // Página a la que se redireccionará después de la inactividad
-            var paginaRedireccion = "index.php";
+            // var paginaRedireccion = "index.php";
 
-            var tiempoInactivo;
+            // var tiempoInactivo;
 
             // Función para redireccionar
-            function redireccionar() {
-              window.location.href = paginaRedireccion;
-            }
+            // function redireccionar() {
+            //   window.location.href = paginaRedireccion;
+            // }
 
             // Reiniciar el temporizador de inactividad
-            function reiniciarTemporizador() {
-              clearTimeout(tiempoInactivo);
-              tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
-            }
+            // function reiniciarTemporizador() {
+            //   clearTimeout(tiempoInactivo);
+            //   tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
+            // }
 
             // Cuando se cargue la página, iniciar el temporizador
-            reiniciarTemporizador();
+            // reiniciarTemporizador();
 
             // Reiniciar el temporizador si se detecta actividad
-            document.addEventListener("mousemove", reiniciarTemporizador);
-            document.addEventListener("keypress", reiniciarTemporizador);
-              </script>
+            // document.addEventListener("mousemove", reiniciarTemporizador);
+            // document.addEventListener("keypress", reiniciarTemporizador);
+    </script>
           
-    </head>
+  </head>
 
   <body>
-
-    {*Conexion al archivo de JavasScript para la ubicacion y bootstrap*}
-    <script src="../smarty/js/ubicacion.js"></script>
+    <!-- Conexion al archivo de JavasScript para la ubicacion y bootstrap
+    <script src="../smarty/js/ubicacion.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     
-    {*Barra de navegacion para Usuarios*}
+    <!-- Barra de navegacion para Usuarios -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
         <a class="navbar-brand" href="indexPrincipal.php">Inicio</a>
@@ -55,39 +54,42 @@
         <div class="collapse navbar-collapse" id="navbarColor03">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="experiencia_laboral.php">Experiencia Laboral
+              <a class="nav-link active" href="experiencia_laboral.php"> <span> Experiencia Laboral </span> 
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="formacion_academica.php">Formacion Academica
+              <a class="nav-link active" href="formacion_academica.php"> <span> Formacion Academica </span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="Aficiones.php">Aficiones
+              <a class="nav-link active" href="Aficiones.php"> <span> Aficiones </span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="interes.php">Interes
+              <a class="nav-link active" href="interes.php"> <span> Interes </span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="buscar_vacantes.php">Buscar Vacantes
+              <a class="nav-link active" href="buscar_vacantes.php"> <span> Buscar Vacantes </span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="Usuario-test.php">Tests</a>
+              <a class="nav-link active" href="Usuario-test.php"> <span> Tests </span>
+              </a>
             </li>
           </ul>
-          {*Boton para cerrar la sesion*}
+          
+          <!-- Boton para cerrar la sesion -->
           <ul class="navbar-nav ml-auto">
-            <li class="nav-link active">{$smarty.session.nomusuario}</li>
-            <a class="nav-link active text-danger" href="index.php" style="font-weight:bold;">Cerrar Sesión</a>
+            <!-- <li class="nav-link active">{$smarty.session.nomusuario}</li> -->
+            <a class="nav-link active text-danger" href="index.php" style="font-weight:bold;"> <span> Cerrar Sesión </span>
+          </a>
           </ul>
         </div>
       </div>
     </nav>
 
-    {*Buscador de vacantes con ajax*}
+    <!-- Buscador de vacantes con ajax -->
     <div class="alert alert-dismissible">
       <div>
         <center>
@@ -96,91 +98,80 @@
       </div>
     </div>
     
+    <!-- Cards de Vacantes -->
     <div class="row align-items-center">
-
-      {*Cards de vacantes dinamicas (Primera Columna)*}
+      <!-- Cards de vacantes dinamicas (Primera Columna) -->
       <div class="col">
-        {foreach $Vacantes1 as $vacantes}
+        <!-- {foreach $Vacantes1 as $vacantes} -->
           <div id="cardv" class="card border-primary shadow p-3 mb-5 bg-body rounded" style="width: 25rem; margin:auto;">
             <div class="card-body">
-              <!-- Codigo de imagen en las cards -->
-              <!--<center><img src="../pagina/img/{$vacantes.ruta_imagen}" alt="Imagen" style="width: 15rem;"></center><br>-->
+              <!-- Codigo de imagen en las cards
               <h4 class="card-title, text-danger" style="display:inline;">{$vacantes.puesto}</h4> <br><br>
               <h4 class="card-title" style="display:inline;">{$vacantes.empresa}</h4> <br><br>
-              <p align="justify" class="card-text">{$vacantes.datos_adicionales}</p>
+              <p align="justify" class="card-text">{$vacantes.datos_adicionales}</p> -->
               
               <form action="seleccionar_vacantes.php?vacante=0" method="POST">
+                <!-- Campo interno para ver la vacante seleccionada -->
+                <!-- <input value={$vacantes.id_vacante} type="hidden" name="txt_id_vacante"> -->
 
-                {*Campo interno para ver la vacante seleccionada*}
-                <input value={$vacantes.id_vacante} type="hidden" name="txt_id_vacante">
-
-                {*Boton para ver la vacante completa*}
+                <!-- Boton para ver la vacante completa -->
                 <input type="submit" value="Leer más" class="btn btn-primary">
               </form>
-
             </div>
           </div>
-        {/foreach}
+        <!-- {/foreach} -->
       </div>
       
-      {*Cards de vacantes dinamicas (Segunda Columna)*}
+      <!-- Cards de vacantes dinamicas (Segunda Columna) -->
       <div class="col">
-        {foreach $Vacantes2 as $vacantes}
+        <!-- {foreach $Vacantes2 as $vacantes} -->
           <div id="cardv" class="card border-primary shadow p-3 mb-5 bg-body rounded" style="width: 25rem; margin:auto;">
             <div class="card-body">
-              <!-- Codigo de imagen en las cards -->
-              <!--<center><img src="../pagina/img/{$vacantes.ruta_imagen}" alt="Imagen" style="width: 15rem;"></center><br>-->
+              <!-- Codigo de imagen en las cards 
               <h4 class="card-title, text-danger" style="display:inline;">{$vacantes.puesto}</h4> <br><br>
               <h4 class="card-title" style="display:inline;">{$vacantes.empresa}</h4> <br><br>
-              <p align="justify" class="card-text">{$vacantes.datos_adicionales}</p>
+              <p align="justify" class="card-text">{$vacantes.datos_adicionales}</p> -->
 
               <form action="seleccionar_vacantes.php?vacante=0" method="POST">
+                <!-- Campo interno para ver la vacante seleccionada -->
+                <!-- <input value={$vacantes.id_vacante} type="hidden" name="txt_id_vacante"> -->
 
-                {*Campo interno para ver la vacante seleccionada*}
-                <input value={$vacantes.id_vacante} type="hidden" name="txt_id_vacante">
-
-                {*Boton para ver la vacante completa*}
+                <!-- Boton para ver la vacante completa -->
                 <input type="submit" value="Leer más" class="btn btn-primary">
-
               </form>
-
             </div>
           </div>
-        {/foreach}
+        <!-- {/foreach} -->
       </div>
       
-      {*Cards de vacantes dinamicas (Tercera Columna)*}
+      <!-- Cards de vacantes dinamicas (Tercera Columna) -->
       <div class="col">
-        {foreach $Vacantes3 as $vacantes}
+        <!-- {foreach $Vacantes3 as $vacantes} -->
           <div id="cardv" class="card border-primary shadow p-3 mb-5 bg-body rounded" style="width: 25rem; margin:auto;">
             <div class="card-body">
               <!-- Codigo de imagen en las cards -->
-              <!--<center><img src="../pagina/img/{$vacantes.ruta_imagen}" alt="Imagen" style="width: 15rem;"></center><br>-->
-              <h4 class="card-title, text-danger" style="display:inline;">{$vacantes.puesto}</h4> <br><br>
+              <!-- <h4 class="card-title, text-danger" style="display:inline;">{$vacantes.puesto}</h4> <br><br>
               <h4 class="card-text" style="display:inline;">{$vacantes.empresa}</h4> <br><br>
-              <p align="justify" class="card-text">{$vacantes.datos_adicionales}</p>
+              <p align="justify" class="card-text">{$vacantes.datos_adicionales}</p> -->
 
               <form action="seleccionar_vacantes.php?vacante=0" method="POST">
+                <!-- Campo interno para ver la vacante seleccionada -->
+                <!-- <input value={$vacantes.id_vacante} type="hidden" name="txt_id_vacante"> -->
 
-                {*Campo interno para ver la vacante seleccionada*}
-                <input value={$vacantes.id_vacante} type="hidden" name="txt_id_vacante">
-
-                {*Boton para ver la vacante completa*}
+                <!-- Boton para ver la vacante completa -->
                 <input type="submit" value="Leer más" class="btn btn-primary">
-
               </form>
-
             </div>
           </div>
-        {/foreach}
+        <!-- {/foreach} -->
       </div>
 
     </div>
 
   </body>
 
-  {*Codigo JavaScript para el buscador con ajax*}
-  <script>
+  <!-- Codigo JavaScript para el buscador con ajax -->
+  <!-- <script>
     $(document).ready(function () {
       $("#bvac").keyup(function () {
         _this = this;
@@ -192,9 +183,8 @@
         });
       });
     });
-  </script>
+  </script> -->
 
-  {*Conexion a archivo JavaScript para el funcionamiento del contador*}
-  <script src="../smarty/js/contador-buscar-vacantes.js"></script>
-
+  <!-- Conexion a archivo JavaScript para el funcionamiento del contador -->
+  <!-- <script src="../smarty/js/contador-buscar-vacantes.js"></script> -->
 </html>

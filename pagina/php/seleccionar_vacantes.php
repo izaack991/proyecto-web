@@ -1,10 +1,10 @@
 <?php 
 session_start();
-include('../smarty/clases/save.class.php');
-include('../smarty/clases/function.class.php');
-include('../../smarty-master/libs/smarty.class.php');
-$smarty=new smarty;
-$titulo="seleccion de vacante";
+include('../clases/save.class.php');
+include('../clases/function.class.php');
+
+// include('../../smarty-master/libs/smarty.class.php');
+// $smarty=new smarty;
 
 // Verificar si el usuario está autenticado
 if (isset($_SESSION['iusuario'])) {
@@ -20,10 +20,10 @@ $notificacionexperiencia = $nuevoSingleton->notificacionexperiencia($iusuario);
 $notificacionformacion = $nuevoSingleton->notificacionformacion($iusuario);
 $notificacionaficiones = $nuevoSingleton->notificacionaficiones($iusuario);
 $notificacioninteres = $nuevoSingleton->notificacioninteres($iusuario);
+
 if($notificacionexperiencia==0)
 {
     $COUNTLAB=1;
-
 }
 else 
 {
@@ -60,11 +60,12 @@ if(isset($_POST['txt_id_vacante'])||$_GET['vacante'])
     if($_GET['vacante'])
     {
         $id_vacante = $_GET['vacante']; 
-    }else{
+    }
+    else
+    {
         $id_vacante = $_POST['txt_id_vacante']; 
     }
     $vacantes = $_finduser->seleccionar_vacantes($id_vacante);
-    
 }
 
 if(isset($_POST['id_vacante']))
@@ -80,19 +81,13 @@ if(isset($_POST['id_vacante']))
 		type: 'success',
 	  });</script>";
 
-      $smarty->assign("vacantes",$vacantes);
-      $smarty->assign("alerta",$alerta);
+    //   $smarty->assign("vacantes",$vacantes);
+    //   $smarty->assign("alerta",$alerta);
       header("location:buscar_vacantes.php");
       
 }
 else{
-$smarty->assign("COUNTLAB",$COUNTLAB);
-$smarty->assign("COUNFOR",$COUNFOR);
-$smarty->assign("COUNTAFI",$COUNTAFI);
-$smarty->assign("COUNTINT",$COUNTINT);
-$smarty->assign("COUNT",$COUNT);    
-$smarty->assign("vacantes",$vacantes);
-$smarty->assign("alerta",$alerta);
-$smarty->display("../smarty/templates/seleccionar_vacantes.tpl");
+
+// $smarty->display("../smarty/templates/seleccionar_vacantes.tpl");
 }
 ?>
