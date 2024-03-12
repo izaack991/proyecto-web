@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
   {*Barra de navegacion de Usuarios*}
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
@@ -43,7 +42,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-          {if $COUNT >= 1}
+          <!-- {if $COUNT >= 1}
             <a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" data-toggle="modal" data-target="#exampleModal">
               <span class="fa-layers fa-fw mr-2 fa-lg">
                 <i class="fas fa-bell"></i>
@@ -52,7 +51,7 @@
           </li>
           {else}
             <li class="nav-link active">{$smarty.session.nomusuario}</li>
-          {/if}
+          {/if} -->
           {* Creacion de la modal de notificaciones *}
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -64,7 +63,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  {if $COUNTLAB >= 1}
+                  <!-- {if $COUNTLAB >= 1}
                   <a class="nav-link" href="experiencia_laboral.php" style="color: blue;">Aun no ha registrado sus datos de Experiencia Laboral, click aqui para ir al registro</a>
                   {/if}
                   {if $COUNFOR >= 1}
@@ -75,7 +74,7 @@
                   {/if}
                   {if $COUNTINT >= 1}
                   <a class="nav-link" href="interes.php" style="color: blue;">Aun no ha registrado sus datos de Interes, click aqui para ir al registro</a>
-                  {/if}
+                  {/if} -->
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -114,13 +113,12 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
-  {* <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.5/push.js"
-    integrity="sha512-dzuBh7UxT5g4MmnbR3ybHMK2g2zxGXILXHuLsUwo8XJmoW2JTTqcg4bFFu0RnBO+kPTvKafgVYh8hnCN/l8ijQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.5/push.js"
+  integrity="sha512-dzuBh7UxT5g4MmnbR3ybHMK2g2zxGXILXHuLsUwo8XJmoW2JTTqcg4bFFu0RnBO+kPTvKafgVYh8hnCN/l8ijQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.5/push.min.js"
-    integrity="sha512-1zotA6QprPWXVvgx8KFnvanxTZhm7P/uadmELhEUs3fHYvGDqkYa0ZUc3Q0m+3w7AUcgG5k4rUiFDdSkRJhqaA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script> *}
-
+  integrity="sha512-1zotA6QprPWXVvgx8KFnvanxTZhm7P/uadmELhEUs3fHYvGDqkYa0ZUc3Q0m+3w7AUcgG5k4rUiFDdSkRJhqaA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
 </body>
 
 </html>
