@@ -1,10 +1,10 @@
 <?php
 session_start();
-include('../../smarty-master/libs/smarty.class.php');
-include('../smarty/clases/function.class.php');
+// include('../../smarty-master/libs/smarty.class.php');
+include('../clases/function.class.php');
 $titulo = "Index";
 
-$smarty=new smarty;
+// $smarty=new smarty;
 
 // Verificar si el usuario está autenticado
 if (isset($_SESSION['iusuario'])) {
@@ -58,12 +58,4 @@ else
 }
 
 $COUNT = $COUNTLAB + $COUNFOR + $COUNTAFI + $COUNTINT;
-$smarty->assign("titulo", $titulo);
-$smarty->assign("COUNTLAB",$COUNTLAB);
-$smarty->assign("COUNFOR",$COUNFOR);
-$smarty->assign("COUNTAFI",$COUNTAFI);
-$smarty->assign("COUNTINT",$COUNTINT);
-$smarty->assign("COUNT",$COUNT);
-$smarty->assign("iusuario",$iusuario);
-$smarty->display("../smarty/templates/reenvio.tpl");
 ?>

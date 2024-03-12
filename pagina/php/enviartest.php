@@ -11,12 +11,12 @@ require '../PHPMailer/Exception.php';
 require '../PHPMailer/PHPMailer.php';
 require '../PHPMailer/SMTP.php';
 
-include('../smarty/clases/save.class.php');
-include('../smarty/clases/function.class.php');
-include('../../smarty-master/libs/smarty.class.php');
+include('../clases/save.class.php');
+include('../clases/function.class.php');
+// include('../../smarty-master/libs/smarty.class.php');
 
 $titulo = "Index";
-$smarty=new smarty;
+// $smarty=new smarty;
 
 // Verificar si el usuario está autenticado
 if (isset($_SESSION['iusuario'])) {
@@ -98,8 +98,4 @@ $mail = new PHPMailer(true);
                  }
     }
     $ECOUNT = $COUNTPOS;
-    $smarty->assign("COUNTPOS",$COUNTPOS);
-    $smarty->assign("ECOUNT",$ECOUNT);
-    $smarty->assign("titulo",$titulo);
-    $smarty->display("../smarty/templates/enviartest.tpl");
 ?>

@@ -36,8 +36,13 @@
                 <center>
                     <!-- Boton para iniciar sesion --> 
                     <button class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Iniciar sesion</button>
+<<<<<<< HEAD
                     <!-- Boton para registrarse -->
                     <A HREF="../../proyecto-web/pagina/Usuario.php" class="btn btn-light" type="submit"  style="padding-bottom: 10mm;">Registrarse</A>
+=======
+                    {*Boton para registrarse*}
+                    <A HREF="Usuario.php" class="btn btn-light" type="submit"  style="padding-bottom: 10mm;">Registrarse</A>
+>>>>>>> 5d8ec65f1db0d0e8b04fbcd4e6f2e487cccd1add
                 </center>
             </div>
         </div>

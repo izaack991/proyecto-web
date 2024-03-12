@@ -11,36 +11,35 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
  
     <script>
-    // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
-  var tiempoInactividad = 5 * 60 * 1000; 
+          // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
+        var tiempoInactividad = 5 * 60 * 1000; 
 
-  // Página a la que se redireccionará después de la inactividad
-  var paginaRedireccion = "index.php";
+        // Página a la que se redireccionará después de la inactividad
+        var paginaRedireccion = "index.php";
 
-  var tiempoInactivo;
+        var tiempoInactivo;
 
-  // Función para redireccionar
-  function redireccionar() {
-    window.location.href = paginaRedireccion;
-  }
+        // Función para redireccionar
+        function redireccionar() {
+          window.location.href = paginaRedireccion;
+        }
 
-  // Reiniciar el temporizador de inactividad
-  function reiniciarTemporizador() {
-    clearTimeout(tiempoInactivo);
-    tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
-  }
+        // Reiniciar el temporizador de inactividad
+        function reiniciarTemporizador() {
+          clearTimeout(tiempoInactivo);
+          tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
+        }
 
-  // Cuando se cargue la página, iniciar el temporizador
-  reiniciarTemporizador();
+        // Cuando se cargue la página, iniciar el temporizador
+        reiniciarTemporizador();
 
-  // Reiniciar el temporizador si se detecta actividad
-  document.addEventListener("mousemove", reiniciarTemporizador);
-  document.addEventListener("keypress", reiniciarTemporizador);
+        // Reiniciar el temporizador si se detecta actividad
+        document.addEventListener("mousemove", reiniciarTemporizador);
+        document.addEventListener("keypress", reiniciarTemporizador);
     </script>
-    </head>
+  </head>
 
   <body>
-
     {*Barra de navegacion para Usuarios*}
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
@@ -75,7 +74,7 @@
           </ul>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-            {if $COUNT >= 1}
+            <!-- {if $COUNT >= 1}
               <a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" data-toggle="modal" data-target="#exampleModal">
                 <span class="fa-layers fa-fw mr-2 fa-lg">
                   <i class="fas fa-bell"></i>
@@ -85,7 +84,7 @@
             </li>
             {else}
             <li class="nav-link active">{$smarty.session.nomusuario}</li>
-            {/if}
+            {/if} -->
 
             {* Creacion de la modal de notificaciones *}
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -99,7 +98,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    {if $COUNTLAB >= 1}
+                    <!-- {if $COUNTLAB >= 1}
                     <a class="nav-link" href="experiencia_laboral.php" style="color: blue;">Aun no ha registrado sus datos
                       de Experiencia Laboral, click aqui para ir al registro</a>
                     {/if}
@@ -114,7 +113,7 @@
                     {if $COUNTINT >= 1}
                     <a class="nav-link" href="interes.php" style="color: blue;">Aun no ha registrado sus datos de Interes,
                       click aqui para ir al registro</a>
-                    {/if}
+                    {/if} -->
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -126,31 +125,31 @@
             {*Boton para cerrar la sesion*}
             <a class="nav-link active text-danger" onclick="openAlert()" style="font-weight:bold;">Cerrar Sesión </a>
 
-                    <script>        
-                    function redireccionindex() {
-                      window.location.href='../pagina/index.php';
-                        }      
-                      function openAlert() {
-                        Swal.fire({
-                        title: "¿Seguro que quieres Cerrar Sesion?",
-                        icon: "question",
-                        showCancelButton: true,
-                        confirmButtonColor: "#3085d6",
-                        cancelButtonColor: "#d33",
-                        confirmButtonText: "Aceptar"
-                          }).then((result) => {
-                              if (result.isConfirmed) {
-                                onClose: redireccionindex();
-                              }
-                            });
-                       }
-                     </script>
+                  <script>        
+                        function redireccionindex() {
+                          window.location.href='../pagina/index.php';
+                            }      
+                          function openAlert() {
+                            Swal.fire({
+                            title: "¿Seguro que quieres Cerrar Sesion?",
+                            icon: "question",
+                            showCancelButton: true,
+                            confirmButtonColor: "#3085d6",
+                            cancelButtonColor: "#d33",
+                            confirmButtonText: "Aceptar"
+                              }).then((result) => {
+                                  if (result.isConfirmed) {
+                                    onClose: redireccionindex();
+                                  }
+                                });
+                          }
+                 </script>
           </ul>
         </div>
       </div>
     </nav>
 
-    {* <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true"
+     <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true"
       style="max-width: 20rem; margin:auto; margin-top:30px;">
       <div class="toast-header">
         <strong class="me-auto">Pagina Principal</strong>
@@ -161,7 +160,7 @@
       <div class="toast-body">
         Bienvenido!
       </div>
-    </div> *}
+    </div> 
 
     {*Conexion de librerias de JavaScript y bootstrap*}                
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

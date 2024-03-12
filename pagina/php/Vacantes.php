@@ -8,11 +8,11 @@ if (isset($_SESSION['tiempo'])) {
 $_SESSION['tiempo'] = time();
 
 // Incluir clases y bibliotecas necesarias
-include('../smarty/clases/save.class.php');
-include('../smarty/clases/function.class.php');
-include('../../smarty-master/libs/smarty.class.php');
+include('../clases/save.class.php');
+include('../clases/function.class.php');
+// include('../../smarty-master/libs/smarty.class.php');
 
-$smarty = new Smarty;
+// $smarty = new Smarty;
 $titulo = "Proyecto Web";
 $alerta = '';
 
@@ -36,11 +36,6 @@ $notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuari
 // Asignar valores a las variables Smarty
 $COUNTPOS = ($notificacionpostulaciones >= 1) ? $notificacionpostulaciones : 0;
 $ECOUNT = $COUNTPOS;
-$smarty->assign("COUNTPOS", $COUNTPOS);
-$smarty->assign("ECOUNT", $ECOUNT);
-$smarty->assign("titulo", $titulo);
-$smarty->assign("Paises", $_pais);
-$smarty->assign("alerta", $alerta);
 
 // Procesar formulario si se envió
 if (isset($_POST['dateFin'])) {
@@ -118,15 +113,9 @@ if (isset($_POST['dateFin'])) {
             </script>";
     
     }
-
-    $smarty->assign("COUNTPOS", $COUNTPOS);
-    $smarty->assign("ECOUNT", $ECOUNT);
-    $smarty->assign("titulo", $titulo);
-    $smarty->assign("Paises", $_pais);
-    $smarty->assign("alerta", $alerta);
 }
 
 // Mostrar el template Vacantes.tpl
-$smarty->display("../smarty/templates/Vacantes.tpl");
+// $smarty->display("../smarty/templates/Vacantes.tpl");
 ?>
 
