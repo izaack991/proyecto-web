@@ -1,6 +1,5 @@
 <?php
 session_start();
-include('../../smarty-master/libs/smarty.class.php');
 include('../smarty/clases/function.class.php');
 $titulo = "Index";
 
@@ -10,7 +9,6 @@ if (isset($_SESSION['iusuario'])) {
     exit; // Detener la ejecución del script después de la redirección
 }
 
-$smarty=new smarty;
 $nuevoSingleton = Functions::singleton_functions();
 $iusuario = $_SESSION['iusuario'];
 $notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuario);
@@ -28,9 +26,6 @@ else
 
 
 
-$ECOUNT = $COUNTPOS;
-$smarty->assign("COUNTPOS",$COUNTPOS);
-$smarty->assign("ECOUNT",$ECOUNT);
-$smarty->assign("titulo", $titulo);
-$smarty->display("../smarty/templates/indexEmpresa.tpl");
-?>
+$ECOUNT = '2';
+
+echo json_encode(array('ECOUNT' => $ECOUNT));
