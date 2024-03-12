@@ -6,9 +6,9 @@ $pdf->SetMargins(17,17,17);
 $pdf->AddPage();
 
 session_start();
-include('../smarty/clases/save.class.php');
-include('../smarty/clases/function.class.php');
-include('../../smarty-master/libs/smarty.class.php');
+include('../clases/save.class.php');
+include('../clases/function.class.php');
+// include('../../smarty-master/libs/smarty.class.php');
 $id_empresa=$_SESSION['iusuario'];
 $_finduser = Functions::singleton_functions();
 $nuevoUsuario = Save::singleton_guardar();

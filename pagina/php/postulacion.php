@@ -1,10 +1,8 @@
 <?php
 session_start();
-include('../smarty/clases/save.class.php');
-include('../smarty/clases/function.class.php');
-include('../../smarty-master/libs/smarty.class.php');
-$smarty=new smarty;
-$titulo="Lista de Postulaciones";
+include('../clases/save.class.php');
+include('../clases/function.class.php');
+// include('../../smarty-master/libs/smarty.class.php');
 
 // Verificar si el usuario está autenticado
 if (isset($_SESSION['iusuario'])) {
@@ -39,9 +37,6 @@ else
     $COUNTPOS=0;
 }
 $ECOUNT = $COUNTPOS;
-$smarty->assign("COUNTPOS",$COUNTPOS);
-$smarty->assign("ECOUNT",$ECOUNT);
-$smarty->assign("titulo",$titulo);
-$smarty->assign("Postulacion",$b_postulacion);
-$smarty->display("../smarty/templates/postulacion.tpl");
+
+// $smarty->display("../smarty/templates/postulacion.tpl");
 ?>
