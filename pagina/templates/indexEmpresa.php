@@ -8,8 +8,8 @@
     <title>Inicio Empresa</title>
     <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  </head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <script src="../js/notificacion.js"></script>
   <script>
       // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
     var tiempoInactividad = 5 * 60 * 1000; 
@@ -60,7 +60,7 @@
               <a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" data-toggle="modal"data-target="#exampleModal">
                 <span class="fa-layers fa-fw mr-2 fa-lg">
                   <i class="fas fa-bell"></i>
-                  <span class="fa-layers-counter" style="background:Tomato"></span>
+                  <span class="fa-layers-counter" id="notifi" style="background:Tomato"></span>
                 </span></a></li>
             <li class="nav-link active"></li>
 
@@ -75,7 +75,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <a class="nav-link" id="postulaciones" href="postulacion.php" style="color: blue;">Tienes {variable} postulaciones pendientes</a>
+                    <a class="nav-link" id="notpos" href="postulacion.php" style="color: blue;">Tienes 0 postulaciones pendientes</a>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -112,25 +112,10 @@
       </div>
     </nav>
 <script>
-  $(document).ready(function(){
-      $.ajax({
-          url: '../php/indexEmpresa.php', // URL del archivo PHP que contiene la variable
-          type: 'GET',
-          dataType: 'json',
-          success: function(response) {
-              var ecount = response.ECOUNT;
-              $('#postulaciones').html('Tienes ' + ecount + ' postulaciones pendientes');
-              // Puedes ajustar el texto según tus necesidades
-          },
-          error: function(xhr, status, error) {
-              console.error('Error al obtener el valor de ECOUNT:', error);
-          }
-      });
-  });
+ 
 </script>
     
-    <!--Conexion de librerias de JavaScript y bootstrap-->       
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <!--Conexion de librerias de JavaScript y bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
