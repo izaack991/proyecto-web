@@ -4,10 +4,10 @@ if(isset($_SESSION['tiempo']) ) {
     $vida_session = time() - $_SESSION['tiempo'];
 }
 $_SESSION['tiempo'] = time();
-include('../smarty/clases/save.class.php');
-include('../smarty/clases/function.class.php');
-include('../../smarty-master/libs/smarty.class.php');
-$smarty=new smarty;
+include('../clases/save.class.php');
+include('../clases/function.class.php');
+// include('../../smarty-master/libs/smarty.class.php');
+// $smarty=new smarty;
 $titulo="Proyecto Web";
 
 if (isset($_SESSION['iusuario'])) {

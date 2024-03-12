@@ -1,9 +1,8 @@
 <?php
-require_once '../smarty/clases/login.class.php';
-include('../../smarty-master/libs/smarty.class.php');
+require_once '../clases/login.class.php';
+// include('../../smarty-master/libs/smarty.class.php');
 
-// Inicialización de Smarty y definición de variables
-$smarty = new Smarty;
+// Definición de variables
 $titulo = "Login";
 $nuevoSingleton = Login::singleton_login();
 $alerta = "";
@@ -42,10 +41,8 @@ if (isset($_POST['usuario']) && isset($_POST['password'])) {
 
             $loginrol = $_GET['xd'];
 
-            $smarty->assign("loginrol", $loginrol);
-            $smarty->assign("alerta", $alerta);
-            $smarty->assign("titulo", $titulo);
-            $smarty->display("../smarty/templates/login.tpl");
+
+            include("../templates/login.php");
         }
     } else {
         $alerta = "<script> 
@@ -58,17 +55,11 @@ if (isset($_POST['usuario']) && isset($_POST['password'])) {
 
         $loginrol = $_GET['xd'];
 
-        $smarty->assign("loginrol", $loginrol);
-        $smarty->assign("alerta", $alerta);
-        $smarty->assign("titulo", $titulo);
-        $smarty->display("../smarty/templates/login.tpl");
+        include("../templates/login.php");
     }
 } else {
     $loginrol = $_GET['xd'];
 
-    $smarty->assign("loginrol", $loginrol);
-    $smarty->assign("alerta", $alerta);
-    $smarty->assign("titulo", $titulo);
-    $smarty->display("../smarty/templates/login.tpl");
+    include("../templates/login.php");
 }
 ?>
