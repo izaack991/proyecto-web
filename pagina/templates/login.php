@@ -1,3 +1,13 @@
+<?php 
+session_start();
+    if ($_GET['xd'] == 1) {
+        $_SESSION['rol'] = 1;
+    }
+    if ($_GET['xd'] == 2) {
+        $_SESSION['rol'] = 2;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +48,7 @@
                     <button class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Iniciar sesion</button>
                     
                     <!-- Boton para registrarse -->
-                    <A HREF="../../proyecto-web/pagina/Usuario.php" class="btn btn-light" type="submit"  style="padding-bottom: 10mm;">Registrarse</A>
+                    <A HREF="usuario.php" class="btn btn-light" type="submit"  style="padding-bottom: 10mm;">Registrarse</A>
                 </center>
             </div>
         </div>

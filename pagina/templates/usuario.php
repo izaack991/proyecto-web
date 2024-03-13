@@ -1,3 +1,13 @@
+<?php 
+session_start();
+    if ($_GET['xd'] == 1) {
+        $_SESSION['rol'] = 1;
+    }
+    if ($_GET['xd'] == 2) {
+        $_SESSION['rol'] = 2;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,8 +16,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Registro Usuario</title>
-        <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
-        <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
+        <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
+        <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
     // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
@@ -39,34 +49,31 @@
     </head>
 
     <body>
-        
-        {*Conexion a un archivo javascript para la curp*}
+        <p> <?php $_SESSION['rol'] ?>
+        <!-- Conexion a un archivo javascript para la curp -->
         <script src="../smarty/js/curp.js"></script>
         
-        {*Form para el registrod de usuarios*}
-        <form method="POST">
+        <!-- Form para el registrod de usuarios -->
+        <form method="POST" action="../php/usuario.php">
 
-        {*Mensaje de guardado correctamente*}
-        {$alerta} 
-
-            {*Card del registro de usuarios*}
+        <!-- Mensaje de guardado correctamente -->
+            <!-- Card del registro de usuarios -->
             <div class="card  mb-3" style="max-width: 50rem; margin:auto; margin-top:50px;">
                 <FONT COLOR="black">
-                    {if $irol == 1}
-                    <div class="card-header bg-primary" align="center">REGISTRO DE NUEVA EMPRESA</div>
-                    {else}
-                    <div class="card-header bg-primary" align="center">REGISTRO DE NUEVO USUARIO</div>
-                    {/if}
+                    <!-- Header para empresa -->
+                    <div class="card-header bg-primary" align="center" id="headerEmpresa">REGISTRO DE NUEVA EMPRESA</div>
+                    <!-- Header para usuario -->
+                    <div class="card-header bg-primary" align="center" id="headerUsuario">REGISTRO DE NUEVO USUARIO</div>
                 </FONT>
                 <div class="card-body">
                     <h4 class="card-title"></h4>
                     <label></label>
                     <label>Los campos marcados con asterisco (*) son obligatorios</label>
                     <br>
-                    <br>
-                
-                    {if $irol ==1}
+                    <br>   
 
+                    <!-- Campos para empresa -->
+                    <div id="DivEmpresa">
                     <label>Razón Social: *</label><br>
                     <input class="form-control" type="text" name="txt_razon" class="texto" id="razon" placeholder="Ingresa el Nombre de la Empresa" pattern="[A-Z a-z]+" required="true">
 
@@ -79,11 +86,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Contraseña: *</label><br>
-                            <input class="form-control" type="password" name="txt_PASSWORD" class="texto" minlength="8" id="contrasena" maxLength="30" placeholder="Escriba la Contraseña" required="true"><br>
+                            <input oninput="validarPassword()" class="form-control" type="password" name="txt_PASSWORD" class="texto" minlength="8" id="contrasena" maxLength="30" placeholder="Escriba la Contraseña" required="true"><br>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Confirme Contraseña: *</label><br>
-                            <input class="form-control" type="password" name="txt_PASSWORD2" class="texto" minlength="8" id="contrasena1" maxLength="30" placeholder="Confirme la Contraseña" required="true"><br>
+                            <input oninput="validarPassword()" class="form-control" type="password" name="txt_PASSWORD2" class="texto" minlength="8" id="contrasena1" maxLength="30" placeholder="Confirme la Contraseña" required="true"><br>
                         </div>
                     </div>
 
@@ -134,7 +141,8 @@
                             <button type="button" class="btn btn-secondary" onclick="location.href='login.php?xd=1'">Volver</button>
                         </center>
                     </div>
-                    {else}
+                    <!-- Campos para usuario -->
+                    <div id="DivUsuario">
                         <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Nombre: *</label><br>
@@ -161,7 +169,7 @@
                         <br>
                         <div class="form-group col-md-6">
                             <label>CURP: *</label><br>
-                            <input class="form-control" type="text" id="curp" name="txt_CURP" oninput="validarInput(this)"maxLength="18" minLength="18" pattern="[A-Z0-9]+" style="width:100%;"placeholder="Ingrese su CURP">
+                            <input class="form-control" type="text" id="curp" name="txt_CURP" oninput="validarInput(this)" maxLength="18" minLength="18" pattern="[A-Z0-9]+" style="width:100%;"placeholder="Ingrese su CURP">
                             <pre id="resultado"></pre>
                         </div>
                     </div>
@@ -169,11 +177,12 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Contraseña: *</label><br>
-                            <input class="form-control" type="password" name="txt_PASSWORD" class="texto" minlength="8" id="contrasena" maxLength="30" placeholder="Escriba la Contraseña" required="true"><br>
+                            <input oninput="validarPassword()" class="form-control" type="password" name="txt_PASSWORD" class="texto" minlength="8" id="contrasena" maxLength="30" placeholder="Escriba la Contraseña" required="true"><br>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Confirme Contraseña: *</label><br>
-                            <input class="form-control" type="password" name="txt_PASSWORD2" class="texto" minlength="8" id="contrasena1" maxLength="30" placeholder="Confirme la Contraseña" required="true"><br>
+                            <input oninput="validarPassword()" class="form-control" type="password" name="txt_PASSWORD2" class="texto" minlength="8" id="contrasena1" maxLength="30" placeholder="Confirme la Contraseña" required="true"><br>
+                            <pre id="errorMensaje"></pre>
                         </div>
                     </div>
 
@@ -232,8 +241,7 @@
                             <button type="button" class="btn btn-secondary" onclick="location.href='login.php?xd=2'">Volver</button>
                         </center>
                     </div>
-                    {/if}
-                    
+                </div>
         </form>
 
         <script>
@@ -272,9 +280,36 @@
                 }
             });
         }
+
+        function validarPassword() {
+            var password = document.getElementById('contrasena').value;
+            var confirmarPassword = document.getElementById('contrasena1').value;
+            var errorMensaje = document.getElementById("errorMensaje");
+
+            if (password != confirmarPassword) {
+                $('#errorMensaje').html('Las contraseñas coinciden.').css('color', 'green');
+                return false;
+            } else {
+                mensajeError.innerHTML = '';
+                return true;
+            }
+        }
+
+            // Funcion para ocultar los campos dependiendo si es usuario o empresa
+            // Obtener el valor de la variable de sesión en JavaScript
+            var rol = <?php echo json_encode($_SESSION['rol']); ?>;
+
+            // Lógica condicional con JavaScript
+            if (rol == '1') {
+                document.getElementById('DivEmpresa').style.display = 'none';
+                document.getElementById('headerEmpresa').style.display = 'none';
+            } else if (rol == '2') {
+                document.getElementById('DivUsuario').style.display = 'none';
+                document.getElementById('headerUsuario').style.display = 'none';
+            }
         </script>
 
-        {*Conexion de librerias de JavaScript y bootstrap*}
+        <!-- Conexion de librerias de JavaScript y bootstrap -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
