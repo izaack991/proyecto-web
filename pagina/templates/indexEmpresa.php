@@ -8,6 +8,7 @@
     <title>Inicio Empresa</title>
     <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
+    <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
     <script src="../js/notificacion.js"></script>
   <script>
@@ -60,7 +61,7 @@
               <a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" data-toggle="modal"data-target="#exampleModal">
                 <span class="fa-layers fa-fw mr-2 fa-lg">
                   <i class="fas fa-bell"></i>
-                  <span class="fa-layers-counter" id="notifi" style="background:Tomato"></span>
+                  <span class="fa-layers-counter" id="notifi" style="background:Tomato;border-radius:0.3rem;padding-left:0.2rem;padding-right:0.2rem"></span>
                 </span></a></li>
             <li class="nav-link active"></li>
 

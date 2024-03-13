@@ -1,42 +1,35 @@
 <?php
-session_start();
-include('../clases/save.class.php');
-include('../clases/function.class.php');
-// include('../../smarty-master/libs/smarty.class.php');
+// Configurar la conexión a la base de datos
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "db_web";
 
-// Verificar si el usuario está autenticado
-if (isset($_SESSION['iusuario'])) {
-    header("location:login.php?xd=1");
-    exit; // Detener la ejecución del script después de la redirección
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("Error de conexión: " . $conn->connect_error);
+}
+$_idusuario = 2;    
+// Consulta SQL para obtener los datos de la tabla
+$sql = "SELECT tbl_postulacion.*, CONCAT(tbl_usuario.nombre,' ',tbl_usuario.apellido) AS nombreUsuario, tbl_usuario.correo, tbl_vacantes.puesto FROM tbl_postulacion INNER JOIN tbl_usuario ON tbl_postulacion.id_usuario = tbl_usuario.id_usuario INNER JOIN tbl_vacantes ON tbl_postulacion.id_vacante = tbl_vacantes.id_vacante WHERE tbl_vacantes.id_empresa=$_idusuario AND  tbl_postulacion.status=1;";
+$result = $conn->query($sql);
+   
+// Array para almacenar los datos
+$data = array();
+
+if ($result->num_rows > 0) {
+    // Obtener cada fila de resultados y guardarla en el array
+    while($row = $result->fetch_assoc()) {
+        $data[] = $row;
+    }
 }
 
-$buscarpostulacion = Functions::singleton_functions();
-$_idusuario = $_SESSION['iusuario'];
-$b_postulacion = $buscarpostulacion->buscarPostulacion($_idusuario);
-$nuevoSingleton = Functions::singleton_functions();
-$iusuario = $_SESSION['iusuario'];
-$notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuario);
+// Enviar los datos en formato JSON
+header('Content-Type: application/json');
+echo json_encode($data);
 
-$NuevoC = Save::singleton_guardar();
-
-if(isset($_POST['btn_cerrar'])&&isset($_POST['txt_id_postulacion']))
-{
-    $_Status=$_POST['btn_cerrar'];
-    $_Idp=$_POST['txt_id_postulacion'];
-    $UCerrar=$NuevoC->actualizar_status($_Status,$_Idp);
-    $b_postulacion = $buscarpostulacion->buscarPostulacion($_idusuario);
-
-}
-
-if($notificacionpostulaciones==1)
-{
-    $COUNTPOS=1;
-}
-else 
-{
-    $COUNTPOS=0;
-}
-$ECOUNT = $COUNTPOS;
-
-// $smarty->display("../smarty/templates/postulacion.tpl");
+// Cerrar la conexión
+$conn->close();
 ?>
