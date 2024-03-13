@@ -5,9 +5,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio</title>
-  <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
-  <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
+  <title><?php echo $titulo; ?></title>
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+  <script src="../js/noticias.js"></script>
 </head>
 
 <body>
@@ -43,13 +45,13 @@
   <!-- Imagenes dinamicas de las vacantes -->
   <div class="row align-items-center"
     style="padding-left:7%;padding-top:50px;padding-bottom:50px;background-color:#eeeeeed9">
-    {foreach $Bvacante as $vacantes}
+    <?php foreach ($Bvacante as $vacantes): ?>
       <div class="col">
-        <input type="image" onclick="location.href='login.php?xd=2&vacante={$vacantes.idvacante}'"
-          src="../../proyecto-web/pagina/img/{$vacantes.rutaimg}" style="border: double;" height="200" width="200" />
-        <h5>{$vacantes.puesto}</h5>
+        <input type="image" onclick="location.href='login.php?xd=2&vacante=<?php echo $vacantes['idvacante']; ?>'"
+          src="../../proyecto-web/pagina/img/<?php echo $vacantes['rutaimg']; ?>" style="border: double;" height="200" width="200" />
+        <h5><?php echo $vacantes['puesto']; ?></h5>
       </div>
-    {/foreach}
+      <?php endforeach; ?>
   </div>
   <br><br>
 
@@ -58,15 +60,15 @@
   <div class="row align-items-center justify-content-md-center"
   style="padding-top:50px;padding-bottom:50px;">
     <div class="row" id="card-container">
-      {foreach $Noticias as $noticia}
+      <?php foreach ($Noticias as $noticia): ?>
         <div class="card border-primary shadow p-3 mb-5 bg-body rounded"
           style="max-width: 40rem; margin:auto; margin-top:30px;">
           <div class="card-body">
-            <h4 class="card-title" style="display:inline;">{$noticia.fecha}</h4> <br><br>
-            <p class="card-text">{$noticia.nota}</p>
+            <h4 id="notifecha" class="card-title" style="display:inline;"></h4> <br><br> 
+            <p id="notinota" class="card-text"></p>
           </div>
         </div>
-      {/foreach}
+        <?php endforeach; ?>
     </div>
   </div>
   </center>
@@ -145,7 +147,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script>
-  <script src="ajax.js"></script>
+  <script src="ajax.js"></script> 
 </body>
 
 </html>
