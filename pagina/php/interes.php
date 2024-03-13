@@ -4,17 +4,16 @@ if(isset($_SESSION['tiempo']) ) {
     $vida_session = time() - $_SESSION['tiempo'];
 }
 $_SESSION['tiempo'] = time();
-include('../smarty/clases/save.class.php');
-include('../smarty/clases/function.class.php');
-include('../../smarty-master/libs/smarty.class.php');
-$smarty=new smarty;
-$titulo="Datos de Interes";
+
+include('../clases/save.class.php');
+include('../clases/function.class.php');
+include("../templates/interes.php");
 
 // Verificar si el usuario está autenticado
-if (isset($_SESSION['iusuario'])) {
-    header("location:login.php?xd=2");
-    exit; // Detener la ejecución del script después de la redirección
-}
+// if (isset($_SESSION['iusuario'])) {
+//     header("location:login.php?xd=2");
+//     exit; // Detener la ejecución del script después de la redirección
+// }
 
 $nuevoInteres = Save::singleton_guardar();
 $CInteres = Functions::singleton_functions();
@@ -25,11 +24,10 @@ $notificacionexperiencia = $nuevoSingleton->notificacionexperiencia($iusuario);
 $notificacionformacion = $nuevoSingleton->notificacionformacion($iusuario);
 $notificacionaficiones = $nuevoSingleton->notificacionaficiones($iusuario);
 $notificacioninteres = $nuevoSingleton->notificacioninteres($iusuario);
-$alerta = '';
+
 if($notificacionexperiencia==0)
 {
     $COUNTLAB=1;
-
 }
 else 
 {
@@ -60,6 +58,7 @@ else
     $COUNTINT=0;
 }
 $COUNT = $COUNTLAB + $COUNFOR + $COUNTAFI + $COUNTINT;
+
 if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud']))
 {
 	$_idusuario = $_SESSION['iusuario'];
@@ -84,26 +83,5 @@ if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlon
         window.location.href = 'indexPrincipal.php';
       });</script>";
 	  
-	  $smarty->assign("COUNTLAB",$COUNTLAB);
-	  $smarty->assign("COUNFOR",$COUNFOR);
-	  $smarty->assign("COUNTAFI",$COUNTAFI);
-	  $smarty->assign("COUNTINT",$COUNTINT);
-	  $smarty->assign("COUNT",$COUNT);
-	  $smarty->assign("iusuario",$iusuario);
-	$smarty->assign("titulo",$titulo);
-	$smarty->assign("alerta",$alerta);
-	$smarty->display("../smarty/templates/interes.tpl");
-}
-else{
-	$smarty->assign("COUNTLAB",$COUNTLAB);
-	$smarty->assign("COUNFOR",$COUNFOR);
-	$smarty->assign("COUNTAFI",$COUNTAFI);
-	$smarty->assign("COUNTINT",$COUNTINT);
-	$smarty->assign("COUNT",$COUNT);
-	$smarty->assign("iusuario",$iusuario);
-	$smarty->assign("titulo",$titulo);
-	$smarty->assign("alerta",$alerta);
-	$smarty->display("../smarty/templates/interes.tpl");
 }
 ?>
-

@@ -1,12 +1,8 @@
 <?php
 session_start();
-include('../smarty/clases/save.class.php');
-include('../smarty/clases/function.class.php');
-include('../../smarty-master/libs/smarty.class.php');
-$smarty=new smarty;
+include('../clases/save.class.php');
 $titulo="Registro Usuario";
-$alerta = '';
-
+$alerta="";
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
 $irol=$_SESSION['t_user'];

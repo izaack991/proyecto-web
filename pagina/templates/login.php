@@ -1,6 +1,19 @@
+<<<<<<< HEAD
 <?php
 include '../php/login.php';
 ?>
+=======
+<?php 
+session_start();
+    if ($_GET['xd'] == 1) {
+        $_SESSION['rol'] = 1;
+    }
+    if ($_GET['xd'] == 2) {
+        $_SESSION['rol'] = 2;
+    }
+?>
+
+>>>>>>> 15c641d2e7d652c0a240925c3f76928f72f7aba7
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +54,7 @@ include '../php/login.php';
                     <button class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Iniciar sesion</button>
                     
                     <!-- Boton para registrarse -->
-                    <A HREF="../../proyecto-web/pagina/Usuario.php" class="btn btn-light" type="submit"  style="padding-bottom: 10mm;">Registrarse</A>
+                    <A HREF="usuario.php" class="btn btn-light" type="submit"  style="padding-bottom: 10mm;">Registrarse</A>
                 </center>
             </div>
         </div>

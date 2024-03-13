@@ -6,35 +6,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> "Lista de vacantes"</title>
-    <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
-    <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
+    <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
+    <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="../php/buscar_vacantes.php'"></script>
     <script>
             // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
-            // var tiempoInactividad = 5 * 60 * 1000; 
+            var tiempoInactividad = 5 * 60 * 1000; 
 
             // Página a la que se redireccionará después de la inactividad
-            // var paginaRedireccion = "index.php";
+            var paginaRedireccion = "index.php";
 
-            // var tiempoInactivo;
+            var tiempoInactivo;
 
             // Función para redireccionar
-            // function redireccionar() {
-            //   window.location.href = paginaRedireccion;
-            // }
+            function redireccionar() {
+              window.location.href = paginaRedireccion;
+            }
 
             // Reiniciar el temporizador de inactividad
-            // function reiniciarTemporizador() {
-            //   clearTimeout(tiempoInactivo);
-            //   tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
-            // }
+            function reiniciarTemporizador() {
+              clearTimeout(tiempoInactivo);
+              tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
+            }
 
             // Cuando se cargue la página, iniciar el temporizador
-            // reiniciarTemporizador();
+            reiniciarTemporizador();
 
             // Reiniciar el temporizador si se detecta actividad
-            // document.addEventListener("mousemove", reiniciarTemporizador);
-            // document.addEventListener("keypress", reiniciarTemporizador);
+            document.addEventListener("mousemove", reiniciarTemporizador);
+            document.addEventListener("keypress", reiniciarTemporizador);
     </script>
           
   </head>

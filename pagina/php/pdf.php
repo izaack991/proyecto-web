@@ -8,7 +8,7 @@ $pdf->AddPage();
 session_start();
 include('../clases/save.class.php');
 include('../clases/function.class.php');
-// include('../../smarty-master/libs/smarty.class.php');
+
 $id_empresa=$_SESSION['iusuario'];
 $_finduser = Functions::singleton_functions();
 $nuevoUsuario = Save::singleton_guardar();

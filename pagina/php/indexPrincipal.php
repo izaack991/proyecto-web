@@ -1,16 +1,17 @@
 <?php
 session_start();
-// include('../../smarty-master/libs/smarty.class.php');
+
+include('../templates/indexPrincipal.php');
 include('../clases/function.class.php');
 $titulo = "Pagina Principal Usuario";
 
-// $smarty=new smarty;
+
 
 // Verificar si el usuario está autenticado
-if (isset($_SESSION['iusuario'])) {
-    header("location:login.php?xd=2");
-    exit; // Detener la ejecución del script después de la redirección
-}
+// if (isset($_SESSION['iusuario'])) {
+//     header("location:login.php?xd=2");
+//     exit; // Detener la ejecución del script después de la redirección
+// }
 $nuevoSingleton = Functions::singleton_functions();
 $iusuario = $_SESSION['iusuario'];
 $notificacionexperiencia = $nuevoSingleton->notificacionexperiencia($iusuario);
