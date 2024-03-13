@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{$titulo}</title>
-    <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
-    <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
+    <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
+    <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
   </head>
 
   {*Codigo de CSS para el diseño personalisado del curriculum*}
