@@ -21,7 +21,17 @@ function cerrar(index) {
         data: { index: index },
         success: function(response) {
             // Manejar la respuesta si es necesario
-            alert("Registro cerrado correctamente.");
+            Swal.fire({
+                title: 'Éxito!',
+                text: 'La postulación se cerró correctamente.',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 3000, // Tiempo en milisegundos (3 segundos)
+                timerProgressBar: true,
+                onClose: () => {
+                    clearInterval(timerInterval);
+                }
+            });
             // Volver a cargar los datos para reflejar los cambios
             mostrarDatos();
         },
