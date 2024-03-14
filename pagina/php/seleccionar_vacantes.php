@@ -2,15 +2,14 @@
 session_start();
 include('../clases/save.class.php');
 include('../clases/function.class.php');
-
-// include('../../smarty-master/libs/smarty.class.php');
-// $smarty=new smarty;
+include("../templates/seleccionar_vacantes.php");
 
 // Verificar si el usuario está autenticado
-if (isset($_SESSION['iusuario'])) {
-    header("location:login.php?xd=2");
-    exit; // Detener la ejecución del script después de la redirección
-}
+// if (isset($_SESSION['iusuario'])) {
+//     header("location:login.php?xd=2");
+//     exit; // Detener la ejecución del script después de la redirección
+// }
+
 $_finduser = Functions::singleton_functions();
 $nuevoUsuario = Save::singleton_guardar();
 $alerta = '';
@@ -81,13 +80,6 @@ if(isset($_POST['id_vacante']))
 		type: 'success',
 	  });</script>";
 
-    //   $smarty->assign("vacantes",$vacantes);
-    //   $smarty->assign("alerta",$alerta);
-      header("location:buscar_vacantes.php");
-      
-}
-else{
-
-// $smarty->display("../smarty/templates/seleccionar_vacantes.tpl");
+      header("location:buscar_vacantes.php");   
 }
 ?>

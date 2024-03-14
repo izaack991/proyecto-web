@@ -290,13 +290,13 @@ require_once('conexion.class.php');
             }
 
 
-            function buscarVacante1()
+            function buscarVacante()
             {
                 try
                 {
 
-                   $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE mod(id_vacante,3) = 0 and datediff(datefin,dateInicio) <=3  AND status = 1
-                   group by id_vacante";
+                $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar = tbl_paises.id_paises WHERE DATEDIFF(datefin, dateInicio) >= 3 AND status = 1 
+                GROUP BY id_vacante";
                 $query = $this->dbh->prepare($sql);
                     $query->execute();
 
@@ -313,7 +313,7 @@ require_once('conexion.class.php');
                 return $data;
             }
 
-            function buscarVacante2()
+          /* function buscarVacante2()
             {
                 try
                 {
@@ -333,9 +333,9 @@ require_once('conexion.class.php');
                     print "Error: !" . $e->getMessage();
                 }
                 return $data;
-            }
+            } */
 
-             function buscarVacante3()
+          /*   function buscarVacante3()
              {
                 try
                 {
@@ -355,7 +355,7 @@ require_once('conexion.class.php');
                     print "Error: !" . $e->getMessage();
                 }
             return $data;
-            }
+            } */
 
             function buscarPostulacion($_idusuario)
             {
