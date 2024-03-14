@@ -1,12 +1,11 @@
 <?php 
-    session_start();
-    
-    if ($_GET['xd'] == 1) {
-        $_SESSION['rol'] = 1;
-    }
-    if ($_GET['xd'] == 2) {
-        $_SESSION['rol'] = 2;
-    }
+session_start();
+if ($_GET['xd'] == 1) {
+    $_SESSION['rol'] = 1;
+}
+if ($_GET['xd'] == 2) {
+    $_SESSION['rol'] = 2;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
