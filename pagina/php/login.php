@@ -1,60 +1,39 @@
 <?php
-//session_start();
+session_start(); // Iniciar sesión si aún no está iniciada
+
 require_once '../clases/login.class.php';
-// include('../../smarty-master/libs/smarty.class.php');
 
 // Definición de variables
 $nuevoSingleton = Login::singleton_login();
 $alerta = "";
 
-if (isset($_POST['usuario']) && isset($_POST['password'])) {
+if (isset($_POST['usuario'], $_POST['password'])) {
     $_usuario = $_POST['usuario'];
     $_password = $_POST['password'];
     
-    // if ($_GET['xd'] == 1) {
-    //     $sesionLabel .= "Empresa";
-    // } elseif ($_GET['xd'] == 2) {
-    //     $sesionLabel. = "Usuario";
-    // }
+    $rol = isset($_SESSION['rol']) ? $_SESSION['rol'] : null;
 
-    $_ROL = $_SESSION['rol'];
-
-    $usuario = $nuevoSingleton->login_users($_usuario, $_password, $_SESSION['rol']);
-    $status = $nuevoSingleton->login_status($_usuario, $_password, $_SESSION['rol']);
+    $usuario = $nuevoSingleton->login_users($_usuario, $_password, $rol);
+    $status = $nuevoSingleton->login_status($_usuario, $_password, $rol);
     
-    if ($usuario == TRUE) {
-        if ($_ROL == 2) {
+    if ($usuario) {
+        if ($rol == 2) {
             header("Location: ../templates/indexPrincipal.php");
-        } if ($_ROL == 1 && $status == TRUE) {
-            echo $usuario;
+            exit();
+        } elseif ($rol == 1 && $status) {
             header("Location: ../templates/indexEmpresa.php");
-        } else {
-            
-            $loginrol = $_SESSION['rol'];
+            exit();
         }
     } else {
-        if ($_ROL == 2) {
-            unset($_SESSION['rol']);
-            header("Location: ../templates/login.php?xd=2");
-        } else {
-            unset($_SESSION['rol']);
-            header("Location: ../templates/login.php?xd=1");
-        }
-        // $alerta = "<script> 
-        // Swal.fire({
-        //     title: 'Error al ingresar',
-        //     text: 'Verifique sus datos. Correo y/o Contraseña.',
-        //     icon: 'error'
-        // });
-        // </script>";
-        
-        $loginrol = $_SESSION['rol'];
-        
+        $redirect_xd = ($rol == 2) ? 2 : 1;
+        unset($_SESSION['rol']);
+        header("Location: ../templates/login.php?xd=$redirect_xd");
+        exit();
     }
 } else {
-    $loginrol = $_SESSION['rol'];
-    
+    $loginrol = isset($_SESSION['rol']) ? $_SESSION['rol'] : null;
 }
-    $Loginrol = $loginrol;
-    $Alerta = $alerta;
+
+$Loginrol = isset($loginrol) ? $loginrol : '';
+$Alerta = $alerta;
 ?>
