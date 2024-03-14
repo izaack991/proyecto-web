@@ -1,19 +1,9 @@
-<<<<<<< HEAD
-<?php
-include '../php/login.php';
-?>
-=======
 <?php 
 session_start();
-    if ($_GET['xd'] == 1) {
-        $_SESSION['rol'] = 1;
-    }
-    if ($_GET['xd'] == 2) {
-        $_SESSION['rol'] = 2;
-    }
+if ($_GET['xd']) {
+    $_SESSION['rol'] = 1;
+}
 ?>
-
->>>>>>> 15c641d2e7d652c0a240925c3f76928f72f7aba7
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,17 +11,21 @@ session_start();
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><?php echo $titulo; ?></title>
+<title>Log in</title>
 <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
 <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../js/login.js"></script>
 </head>
 
 <body>
 
 <!-- Formuario de Login -->
-<form action="" method="post">
+<!-- <form id="login-form" method="post"> -->
+<form action="../php/login.php" method="post">
 
     <!-- Mensaje para los errores al ingresar -->
     <!-- {$alerta} -->
@@ -51,10 +45,12 @@ session_start();
 
                 <center>
                     <!-- Boton para iniciar sesion --> 
-                    <button class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Iniciar sesion</button>
+                    <button id="login" class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Iniciar sesion</button>
+
                     
                     <!-- Boton para registrarse -->
-                    <A HREF="usuario.php" class="btn btn-light" type="submit"  style="padding-bottom: 10mm;">Registrarse</A>
+                    <A HREF="usuario.php" class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Registrarse</A>
+
                 </center>
             </div>
         </div>
@@ -65,9 +61,10 @@ session_start();
 
 
     </div>
+    <div id="mensaje"></div>
 
 <!-- Conexion de librerias de JavaScript y bootstrap -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
