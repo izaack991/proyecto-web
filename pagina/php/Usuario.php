@@ -1,11 +1,11 @@
 <?php
 session_start();
 include('../clases/save.class.php');
-$titulo="Registro Usuario";
-$alerta="";
+include('../clases/function.class.php');
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
-$irol=$_SESSION['t_user'];
+$irol=$_SESSION['rol'];
+print_r($_SESSION);
 
 if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 {
@@ -13,11 +13,13 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 	if($_POST['txt_PASSWORD']!=$_POST['txt_PASSWORD2'])
 	{
 		$alerta = "<script> Swal.fire('¡Las Contraseñas NO coinciden!');</script>";
+		echo $alerta;
 	}
 	else
 	{
 		if($irol==1 && $_ruta == ""){
 			$alerta = "<script> Swal.fire('¡No subió la Imagen de la Empresa!');</script>";
+			echo $alerta;
 		}
 		else
 		{
@@ -48,6 +50,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 						title: 'Error!',
 						text: 'La extensión o el tamaño de los archivos no es correcta. Solo se permite: .gif, .jpg, .png. y de 200 kb como máximo.',
 						icon: 'error');</script>";
+					echo $alerta;
 				}
 				else {
 					//Si la imagen es correcta en tamaño y tipo
@@ -66,25 +69,21 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 							title: 'Error!',
 							text: 'No se pudo subir la imagen al sevidor.',
 							icon: 'error');</script>";
+						echo $alerta;
 						}
 					}
 				}
 				
 				$f_id_usuario = $_findUser -> consec_usuario();
 				$newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol, $_status, $_ruta, $_razon);
-
 			}
 			if ($newuser == true)
 			{
 				header("location:login.php?xd=$irol");
+				echo '"<script language="javascript">alert("que");"</script>"';
 			}
 		}
 }
-$irol=$_SESSION['t_user'];
-
-	$smarty->assign("titulo",$titulo);
-	$smarty->assign("irol",$irol);
-	$smarty->assign("alerta",$alerta);
-	$smarty->display("../smarty/templates/Usuario.tpl");
-		
+$irol=$_SESSION['rol'];
+unset($_SESSION['rol']);
 ?>

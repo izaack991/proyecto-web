@@ -65,7 +65,7 @@ require_once('conexion.class.php');
                 }
             }
                 
-            catch(PDOExeption $e)
+            catch(PDOException $e)
             {
                 print "Error!: " . $e->getMessage();
             }
@@ -235,7 +235,7 @@ require_once('conexion.class.php');
                     }
                 }
                     
-                catch(PDOExeption $e)
+                catch(PDOException $e)
                 {
                     print "Error!: " . $e->getMessage();
                 }
@@ -782,7 +782,7 @@ require_once('conexion.class.php');
                 }
             }
                 
-            catch(PDOExeption $e)
+            catch(PDOException $e)
             {
                 print "Error!: " . $e->getMessage();
             }
@@ -808,7 +808,7 @@ require_once('conexion.class.php');
                 }
             }
                 
-            catch(PDOExeption $e)
+            catch(PDOException $e)
             {
                 print "Error!: " . $e->getMessage();
             }
@@ -834,7 +834,7 @@ require_once('conexion.class.php');
                 }
             }
                 
-            catch(PDOExeption $e)
+            catch(PDOException $e)
             {
                 print "Error!: " . $e->getMessage();
             }
@@ -860,7 +860,7 @@ require_once('conexion.class.php');
                 }
             }
                 
-            catch(PDOExeption $e)
+            catch(PDOException $e)
             {
                 print "Error!: " . $e->getMessage();
             }
@@ -886,7 +886,7 @@ require_once('conexion.class.php');
                 }
             }
                 
-            catch(PDOExeption $e)
+            catch(PDOException $e)
             {
                 print "Error!: " . $e->getMessage();
             }
@@ -913,7 +913,7 @@ require_once('conexion.class.php');
                 }
             }
                 
-            catch(PDOExeption $e)
+            catch(PDOException $e)
             {
                 print "Error!: " . $e->getMessage();
             }
@@ -938,7 +938,7 @@ require_once('conexion.class.php');
                     return 0;
                 }
             }
-            catch(PDOExeption $e)
+            catch(PDOException $e)
             {
                 print "Error!: " . $e->getMessage();
             }
@@ -963,7 +963,7 @@ require_once('conexion.class.php');
                     return 0;
                 }
             }
-            catch(PDOExeption $e)
+            catch(PDOException $e)
             {
                 print "Error!: " . $e->getMessage();
             }
@@ -988,7 +988,7 @@ require_once('conexion.class.php');
                     return 0;
                 }
             }
-            catch(PDOExeption $e)
+            catch(PDOException $e)
             {
                 print "Error!: " . $e->getMessage();
             }
@@ -1013,7 +1013,7 @@ require_once('conexion.class.php');
                     return 0;
                 }
             }
-            catch(PDOExeption $e)
+            catch(PDOException $e)
             {
                 print "Error!: " . $e->getMessage();
             }
@@ -1038,7 +1038,7 @@ require_once('conexion.class.php');
                     return 0;
                 }
             }
-            catch(PDOExeption $e)
+            catch(PDOException $e)
             {
                 print "Error!: " . $e->getMessage();
             }

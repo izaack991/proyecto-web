@@ -1,10 +1,24 @@
 <?php 
+error_reporting(0);
 session_start();
+include '../google-api/redirect.php';
+    if ($_GET['xd'] == 2) {
+        $_SESSION['rol'] = 2;
+    }
     if ($_GET['xd'] == 1) {
         $_SESSION['rol'] = 1;
     }
-    if ($_GET['xd'] == 2) {
-        $_SESSION['rol'] = 2;
+
+    if ($_SESSION['nombre']) {
+        $nombre = $_SESSION['nombre'];
+    }
+
+    if($_SESSION['cuenta']) {
+        $correo = $_SESSION['cuenta'];
+    }
+
+    if($_SESSION['apellido']) {
+        $apellido = $_SESSION['apellido'];
     }
 ?>
 
@@ -19,6 +33,7 @@ session_start();
         <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
         <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
     // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
   var tiempoInactividad = 5 * 60 * 1000; 
@@ -50,11 +65,12 @@ session_start();
 
     <body>
         <p> <?php $_SESSION['rol'] ?>
-        <!-- Conexion a un archivo javascript para la curp -->
-        <script src="../smarty/js/curp.js"></script>
+        <!-- Conexion a un archivo javascript -->
+        <script src="../smarty/js/curp.js"></script>    
+           
         
         <!-- Form para el registrod de usuarios -->
-        <form method="POST" action="../php/usuario.php">
+        <form method="POST" action="../php/Usuario.php">
 
         <!-- Mensaje de guardado correctamente -->
             <!-- Card del registro de usuarios -->
@@ -81,16 +97,17 @@ session_start();
                     <input class="form-control" type="file" name="txtruta" id="txtruta"><br>
 
                     <label>Correo Electronico: *</label><br>
-                    <input class="form-control" type="email" name="txt_CORREO" class="texto" id="correo"placeholder="Ejemplo@dominio.com" pattern=".+.com" required><br>
+                    <input class="form-control" type="email" name="txt_CORREO" class="texto" id="correo"placeholder="Ejemplo@dominio.com" pattern=".+.com" required value="<?php if ($correo != "") { $correo; } ?>'"><br>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Contraseña: *</label><br>
-                            <input oninput="validarPassword()" class="form-control" type="password" name="txt_PASSWORD" class="texto" minlength="8" id="contrasena" maxLength="30" placeholder="Escriba la Contraseña" required="true"><br>
+                            <input oninput="verificarContrasenas()" class="form-control" type="password" name="txt_PASSWORD" class="texto" minlength="8" id="txt_PASSWORD" maxLength="30" placeholder="Escriba la Contraseña" required="true"><br>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Confirme Contraseña: *</label><br>
-                            <input oninput="validarPassword()" class="form-control" type="password" name="txt_PASSWORD2" class="texto" minlength="8" id="contrasena1" maxLength="30" placeholder="Confirme la Contraseña" required="true"><br>
+                            <input oninput="verificarContrasenas()" class="form-control" type="password" name="txt_PASSWORD2" class="texto" minlength="8" id="txt_PASSWORD2" maxLength="30" placeholder="Confirme la Contraseña" required="true"><br>
+                            <p id="passwordMatchMessage"></p>
                         </div>
                     </div>
 
@@ -141,17 +158,19 @@ session_start();
                             <button type="button" class="btn btn-secondary" onclick="location.href='login.php?xd=1'">Volver</button>
                         </center>
                     </div>
+        </form>
+        <form method="POST" action="../php/Usuario.php">
                     <!-- Campos para usuario -->
                     <div id="DivUsuario">
                         <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Nombre: *</label><br>
-                            <input class="form-control" type="text" name="txt_NOMBRE" class="texto" id="nombre"placeholder="Escriba el Nombre" pattern="[A-Z a-z]+" required="true">
+                            <input class="form-control" type="text" name="txt_NOMBRE" class="texto" id="nombre"placeholder="Escriba el Nombre" pattern="[A-Z a-z]+" required="true" value="<?php if ($nombre != "") { echo $nombre; } ?>">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label>Apellidos: *</label><br>
-                            <input class="form-control" type="text" name="txt_APELLIDOS" class="texto" id="apellido"placeholder="Escriba sus Apellidos" pattern="[A-Z a-z]+" required="true">
+                            <input class="form-control" type="text" name="txt_APELLIDOS" class="texto" id="apellido"placeholder="Escriba sus Apellidos" pattern="[A-Z a-z]+" required="true" value="<?php if ($apellido == true) { echo $apellido; } ?>">
                         </div>
                     </div>
 
@@ -159,7 +178,7 @@ session_start();
                     <input class="form-control" type="file" name="txtruta" id="txtruta"><br>
 
                     <label>Correo Electronico: *</label><br>
-                    <input class="form-control" type="email" name="txt_CORREO" class="texto" id="correo"placeholder="Ejemplo@dominio.com" pattern=".+.com" required><br>
+                    <input class="form-control" type="email" name="txt_CORREO" class="texto" id="correo"placeholder="Ejemplo@dominio.com" pattern=".+.com" required value="<?php if ($correo != "") { echo $correo; } ?>"><br>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -177,12 +196,12 @@ session_start();
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Contraseña: *</label><br>
-                            <input oninput="validarPassword()" class="form-control" type="password" name="txt_PASSWORD" class="texto" minlength="8" id="contrasena" maxLength="30" placeholder="Escriba la Contraseña" required="true"><br>
+                            <input oninput="verificarContrasenas()" class="form-control" type="password" name="txt_PASSWORD" class="texto" minlength="8" id="txt_PASSWORD" maxLength="30" placeholder="Escriba la Contraseña" required="true"><br>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Confirme Contraseña: *</label><br>
-                            <input oninput="validarPassword()" class="form-control" type="password" name="txt_PASSWORD2" class="texto" minlength="8" id="contrasena1" maxLength="30" placeholder="Confirme la Contraseña" required="true"><br>
-                            <pre id="errorMensaje"></pre>
+                            <input oninput="verificarContrasenas()" class="form-control" type="password" name="txt_PASSWORD2" class="texto" minlength="8" id="txt_PASSWORD2" maxLength="30" placeholder="Confirme la Contraseña" required="true"><br>
+                            <p id="passwordMatchMessage"></p>
                         </div>
                     </div>
 
@@ -238,7 +257,7 @@ session_start();
 
                         <center>
                             <button class="btn btn-primary" type="submit">Guardar</button>
-                            <button type="button" class="btn btn-secondary" onclick="location.href='login.php?xd=2'">Volver</button>
+                            <button type="button" class="btn btn-secondary" onclick="location.href='workele.com'">Volver</button>
                         </center>
                     </div>
                 </div>
@@ -280,31 +299,22 @@ session_start();
                 }
             });
         }
-
-        function validarPassword() {
-            var password = document.getElementById('contrasena').value;
-            var confirmarPassword = document.getElementById('contrasena1').value;
-            var errorMensaje = document.getElementById("errorMensaje");
-
-            if (password != confirmarPassword) {
-                $('#errorMensaje').html('Las contraseñas coinciden.').css('color', 'green');
-                return false;
-            } else {
-                mensajeError.innerHTML = '';
-                return true;
-            }
-        }
-
             // Funcion para ocultar los campos dependiendo si es usuario o empresa
             // Obtener el valor de la variable de sesión en JavaScript
             var rol = <?php echo json_encode($_SESSION['rol']); ?>;
 
             // Lógica condicional con JavaScript
-            if (rol == '1') {
-                document.getElementById('DivEmpresa').style.display = 'none';
+            if (rol == '2') {
+                var registroEmpresa = document.getElementById("DivEmpresa");
+                registroEmpresa.style.display = 'none';
+                registroEmpresa.disabled = true;
                 document.getElementById('headerEmpresa').style.display = 'none';
-            } else if (rol == '2') {
-                document.getElementById('DivUsuario').style.display = 'none';
+
+                
+            } else if (rol == '1') {
+                var registroUsuario = document.getElementById("DivUsuario");
+                registroUsuario.style.display = 'none';
+                registroUsuario.disabled = true;
                 document.getElementById('headerUsuario').style.display = 'none';
             }
         </script>
@@ -313,7 +323,9 @@ session_start();
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        
 
+        <script src="../js/password.js"></script> 
     </body>
 
 </html>
