@@ -5,12 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Curriculum</title>
     <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/notificacion.js"></script>
+=======
+    <title>{$titulo}</title>
+    <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
+    <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
+>>>>>>> d365ff2d93300d6f61e18e59ec05cab5024bafd7
   </head>
 
   <!-- {*Codigo de CSS para el diseño personalisado del curriculum*} -->

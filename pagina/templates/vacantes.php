@@ -6,19 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vacantes</title>
-    <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
-    <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
+    <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
+    <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
 
   <body>
-
-    {*Conexion al archivo javascript para la ubicacion*}
-    <!-- <script src="../smarty/js/ubicacion.js"></script> -->
-
-    
-    {*Barra de navegacion para Empresa*}
+    <!-- {*Barra de navegacion para Empresa*} -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
         <a class="navbar-brand" href="indexEmpresa.php">Inicio</a>
@@ -48,7 +44,7 @@
             <li class="nav-link active">{$smarty.session.nomusuario}</li>
             {/if} -->
 
-            {* Creacion de la modal de notificaciones *}
+            <!-- {* Creacion de la modal de notificaciones *} -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -59,9 +55,11 @@
                     </button>
                   </div>
                   <div class="modal-body">
+
                     <!-- {if $COUNTPOS >= 1}
-                    <a class="nav-link" href="postulacion.php" style="color: blue;">Tienes {$COUNTPOS} postulaciones pendientes</a>
+                      <a class="nav-link" href="postulacion.php" style="color: blue;">Tienes {$COUNTPOS} postulaciones pendientes</a>
                     {/if} -->
+                    
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -69,20 +67,20 @@
                 </div>
               </div>
             </div>
-            {*Boton para cerrar la sesion*}            
+            <!-- {*Boton para cerrar la sesion*}             -->
             <a class="nav-link active text-danger" href="index.php" style="font-weight:bold;">Cerrar Sesión</a>
           </ul>
         </div>
       </div>
     </nav>
 
-    {*Formulario de vacantes*}
+    <!-- {*Formulario de vacantes*} -->
     <form action="Vacantes.php" method="POST">
 
-      {*Mensaje de guardado correctamente*}
+      <!-- {*Mensaje de guardado correctamente*} -->
       <!-- {$alerta}   -->
 
-      {*Card de vacantes*}
+      <!-- {*Card de vacantes*} -->
       <div class="card  mb-3" style="max-width: 36rem; margin:auto; margin-top:30px;">
         <div class="card-body">
           <h4 class="card-title">Datos de Vacantes</h4>
@@ -90,10 +88,10 @@
 
 
         <label for="name" class="form__label"> Puesto *</label> <br>
-        <input class="form-control" type="text" required name="txtpuesto" placeholder="Ingresa el Puesto" maxlength="50"><br>
+        <input class="form-control" onkeypress="return validarLetras(event)" type="text" required name="txtpuesto" placeholder="Ingresa el Puesto" maxlength="50"><br>
 
         <label for="name" class="form__label"> Empresa *</label> <br>
-        <input class="form-control" type="text" required name="txtempresa" placeholder="Ingresa la empresa" maxlength="50"> <br>
+        <input class="form-control" onkeypress="return validarLetras(event)" type="text" required name="txtempresa" placeholder="Ingresa la empresa" maxlength="50"> <br>
        
         <label for="name" class="form__label"> Sueldo *</label><br>
         <div class="input-group mb-3">
@@ -104,15 +102,25 @@
         <label for="name" class="form__label"> Lugar*</label> <br>
         <div class="form-row" text-align: center;>
         <div class="col">
-        <select class="btn btn-light disabled" name="cmbpais" required>
+        <!-- <select class="btn btn-light disabled" name="cmbpais" required>
              <option value="">Elige una opción</option>
-             <!-- {foreach $Paises as $pais} 
-               <option value={$pais.id_paises}>{$pais.nombre}</option>
-             {/foreach} -->
-          </select></div></div><br>
+            <script>
+              {foreach $Paises as $pais} 
+                <option value={$pais.id_paises}>{$pais.nombre}</option>
+                {/foreach}
+             </script>
+             
+          </select> -->
+            <select id="select_paises" class="btn btn-light disabled" name="cmbpais" required>
+              <option value="">Elige una opción</option>
+              
+          </select>
+        </div>
+      </div>
+      <br>
 
-        <label for="name" class="form__label"> Datos Adicionales *</label> <br>
-        <input class="form-control" type="text" name="txtdatos" required placeholder="Ingresa los Datos" maxlength=""> <br>
+        <label for="name" class="form__label"> Datos Adicionales </label> <br>
+        <textarea name="txtdatos" type="text" class="form-control" cols="1" rows="10" placeholder="Ingresa los Datos"></textarea><br>
         
         <div class="form-row">
         <div class="form-group col-md-6">
@@ -126,14 +134,33 @@
         </div>
         <br>
 
-            {*Campos internos para la ubicacion*}
+            <!-- {*Campos internos para la ubicacion*} -->
             <input name="txtlatitud" id="latitud" type="hidden">
             <input name="txtlongitud" id="longitud" type="hidden">
             
-            {*Boton de guardar vacante*}
+            <!-- {*Boton de guardar vacante*} -->
             <input class="btn btn-primary" style="margin-left:224px;" type="submit" value="Guardar">
-
-            {* <script>        
+            <script>
+                $(document).ready(function() {
+                    $.ajax({
+                        url: '../php/Vacantes.php',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            var select = ''; // Inicializa la variable select
+                            // Iterar sobre los datos recibidos y generar opciones para cada país
+                            $.each(data, function(index, pais) {
+                                select += '<option value="' + pais.id_paises + '">' + pais.nombre + '</option>';  
+                            });
+                            $("#select_paises").html(select); // Establece las opciones en el elemento select con id "select_paises"
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error al obtener la lista de países:', error);
+                        }
+                    });
+                });
+            </script> 
+             <script>        
                     function redireccionindex() {
                       window.location.href='../pagina/indexEmpresa.php';
                         }      
@@ -149,14 +176,15 @@
                               }
                             });
                        }
-                     </script> *}
+                </script>
+               
 
           </div>
         </div>
       </div>
 
-      {*Conexion de librerias de JavaScript y bootstrap*}
-      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <!-- {*Conexion de librerias de JavaScript y bootstrap*} -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
       

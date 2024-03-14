@@ -13,7 +13,7 @@ require '../../PHPMailer/SMTP.php';
 
 include('../clases/save.class.php');
 include('../clases/function.class.php');
-// include('../../smarty-master/libs/smarty.class.php');
+include('../templates/enviar_test');
 
 $titulo = "Index";
 // $smarty=new smarty;

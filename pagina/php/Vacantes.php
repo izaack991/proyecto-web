@@ -10,17 +10,16 @@ $_SESSION['tiempo'] = time();
 // Incluir clases y bibliotecas necesarias
 include('../clases/save.class.php');
 include('../clases/function.class.php');
-// include('../../smarty-master/libs/smarty.class.php');
 
 // $smarty = new Smarty;
 $titulo = "Proyecto Web";
 $alerta = '';
 
 // Verificar si el usuario está autenticado
-if (isset($_SESSION['iusuario'])) {
-    header("location:login.php?xd=1");
-    exit; // Detener la ejecución del script después de la redirección
-}
+// if (isset($_SESSION['iusuario'])) {
+//     header("location:login.php?xd=1");
+//     exit; // Detener la ejecución del script después de la redirección
+// }
 
 // Instanciar clases y obtener datos necesarios
 $nuevoUsuario = Save::singleton_guardar();
@@ -28,6 +27,7 @@ $_findUser = Functions::singleton_functions();
 $_findPais = Functions::singleton_functions();
 $_pais = $_findPais->buscaPaises();
 $nuevoSingleton = Functions::singleton_functions();
+
 
 // Obtener notificaciones de postulaciones
 $iusuario = $_SESSION['iusuario'];
@@ -114,7 +114,7 @@ if (isset($_POST['dateFin'])) {
     
     }
 }
-
+echo json_encode($_pais);
 // Mostrar el template Vacantes.tpl
 // $smarty->display("../smarty/templates/Vacantes.tpl");
 ?>

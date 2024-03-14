@@ -1,65 +1,39 @@
 <?php
+session_start(); // Iniciar sesión si aún no está iniciada
+
 require_once '../clases/login.class.php';
-// include('../../smarty-master/libs/smarty.class.php');
 
 // Definición de variables
-$titulo = "Login";
 $nuevoSingleton = Login::singleton_login();
 $alerta = "";
 
-// Manejo de sesiones y redirección según el tipo de usuario
-if ($_GET['xd'] == 1) {
-    $_SESSION['t_user'] = 1;
-}
-if ($_GET['xd'] == 2) {
-    $_SESSION['t_user'] = 2;
-}
-
-if (isset($_POST['usuario']) && isset($_POST['password'])) {
+if (isset($_POST['usuario'], $_POST['password'])) {
     $_usuario = $_POST['usuario'];
     $_password = $_POST['password'];
+    
+    $rol = isset($_SESSION['rol']) ? $_SESSION['rol'] : null;
 
-    $usuario = $nuevoSingleton->login_users($_usuario, $_password, $_SESSION['t_user']);
-    $status = $nuevoSingleton->login_status($_usuario, $_password, $_SESSION['t_user']);
-
-    $_ROL = $_SESSION['t_user'];
-        //condicional si es usuario (el 2 se usa para la secion del usuario)
-        //Si rol el un "2", manda al formulario de index que es el index de los usuarios
-    if ($usuario == TRUE) {
-        if ($_ROL == 2) {
-            header("location:indexPrincipal.php");
-        } elseif ($_ROL == 1 && $status == TRUE) {
-            header("location:indexEmpresa.php");
-        } else {
-            $alerta = "<script> 
-                Swal.fire({
-                    title: 'Usuario NO verificado',
-                    text: 'Esta cuenta está en proceso de verificación, por favor espere hasta que sea aprobada',
-                    icon: 'error'
-                  });
-            </script>";
-
-            $loginrol = $_GET['xd'];
-
-
-            include("../templates/login.php");
+    $usuario = $nuevoSingleton->login_users($_usuario, $_password, $rol);
+    $status = $nuevoSingleton->login_status($_usuario, $_password, $rol);
+    
+    if ($usuario) {
+        if ($rol == 2) {
+            header("Location: ../templates/indexPrincipal.php");
+            exit();
+        } elseif ($rol == 1 && $status) {
+            header("Location: ../templates/indexEmpresa.php");
+            exit();
         }
     } else {
-        $alerta = "<script> 
-            Swal.fire({
-                title: 'Error al ingresar',
-                text: 'Verifique sus datos. Correo y/o Contraseña.',
-                icon: 'error'
-              });
-        </script>";
-
-        $loginrol = $_GET['xd'];
-
-        include("../templates/login.php");
+        $redirect_xd = ($rol == 2) ? 2 : 1;
+        unset($_SESSION['rol']);
+        header("Location: ../templates/login.php?xd=$redirect_xd");
+        exit();
     }
 } else {
-    $loginrol = $_GET['xd'];
-
-    include("../templates/login.php");
+    $loginrol = isset($_SESSION['rol']) ? $_SESSION['rol'] : null;
 }
+
+$Loginrol = isset($loginrol) ? $loginrol : '';
+$Alerta = $alerta;
 ?>

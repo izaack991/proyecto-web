@@ -1,6 +1,6 @@
 <?php
 session_start();
-// include('../../smarty-master/libs/smarty.class.php');
+include("../templates/reenvio.php");
 include('../clases/function.class.php');
 $titulo = "Index";
 

@@ -6,37 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{$titulo}</title>
-    <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/devresume.css">
-    <link id="theme-style" rel="stylesheet" href="../../proyecto-web/assets/css/theme-1.css">
+    <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
+    <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
     <script>
-    // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
-  var tiempoInactividad = 5 * 60 * 1000; 
+        // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
+        var tiempoInactividad = 5 * 60 * 1000; 
 
-  // Página a la que se redireccionará después de la inactividad
-  var paginaRedireccion = "index.php";
+        // Página a la que se redireccionará después de la inactividad
+        var paginaRedireccion = "index.php";
 
-  var tiempoInactivo;
+        var tiempoInactivo;
 
-  // Función para redireccionar
-  function redireccionar() {
-    window.location.href = paginaRedireccion;
-  }
+        // Función para redireccionar
+        function redireccionar() {
+          window.location.href = paginaRedireccion;
+        }
 
-  // Reiniciar el temporizador de inactividad
-  function reiniciarTemporizador() {
-    clearTimeout(tiempoInactivo);
-    tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
-  }
+        // Reiniciar el temporizador de inactividad
+        function reiniciarTemporizador() {
+          clearTimeout(tiempoInactivo);
+          tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
+        }
 
-  // Cuando se cargue la página, iniciar el temporizador
-  reiniciarTemporizador();
+        // Cuando se cargue la página, iniciar el temporizador
+        reiniciarTemporizador();
 
-  // Reiniciar el temporizador si se detecta actividad
-  document.addEventListener("mousemove", reiniciarTemporizador);
-  document.addEventListener("keypress", reiniciarTemporizador);
-    </script>
+        // Reiniciar el temporizador si se detecta actividad
+        document.addEventListener("mousemove", reiniciarTemporizador);
+        document.addEventListener("keypress", reiniciarTemporizador);
+      </script>
    
     </head> 
   <body>
