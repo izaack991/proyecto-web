@@ -5,18 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
     <title>Curriculum</title>
     <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/notificacion.js"></script>
-=======
-    <title>{$titulo}</title>
-    <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
-    <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
->>>>>>> d365ff2d93300d6f61e18e59ec05cab5024bafd7
   </head>
 
   <!-- {*Codigo de CSS para el diseño personalisado del curriculum*} -->
@@ -52,7 +46,7 @@
     <!-- {*Barra de navegacion para Empresa*} -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="indexEmpresa.php">Inicio</a>
+        <a class="navbar-brand" href="#">Inicio</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -95,7 +89,7 @@
             </div>
 
             <!--Boton para cerrar la sesion-->        
-            <a class="nav-link active text-danger" onclick="openAlert()" style="font-weight:bold;">Cerrar Sesión </a>
+            <a class="nav-link active text-danger" href="index.php" onclick="openAlert()" style="font-weight:bold;">Cerrar Sesión </a>
 
 
               <script>        
