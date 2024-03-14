@@ -81,6 +81,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 			{
 				header("location:login.php?xd=$irol");
 				echo '"<script language="javascript">alert("que");"</script>"';
+				return true;
 			}
 		}
 }
