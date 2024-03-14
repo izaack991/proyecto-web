@@ -2,7 +2,8 @@
 session_start();
 include('../clases/save.class.php');
 include('../clases/function.class.php');
-include("../templates/buscar_vacantes.php");
+
+
 
 // Verificar si el usuario está autenticado
 // if (isset($_SESSION['iusuario'])) {
@@ -13,8 +14,10 @@ include("../templates/buscar_vacantes.php");
 $nuevaPostulacion = save::singleton_guardar();
 $_findExperiencia = Functions::singleton_functions();
 $_findPais = Functions::singleton_functions();
-$_vacantes1 = $_findExperiencia->buscarVacante1();
-$_vacantes2 = $_findExperiencia->buscarVacante2();
-$_vacantes3 = $_findExperiencia->buscarVacante3();
+$_vacantes1 = $_findExperiencia->buscarVacante();
 
+
+
+//print_r($_vacantes1);
+echo json_encode($_vacantes1);
 ?>

@@ -8,8 +8,9 @@
     <title> "Lista de vacantes"</title>
     <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="../php/buscar_vacantes.php'"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <!-- <script src="../php/Buscar_vacantes.php'"></script> -->
+    <script src="../js/Buscar_vacantes.js"></script>
     <script>
             // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
             var tiempoInactividad = 5 * 60 * 1000; 
@@ -90,7 +91,9 @@
       </div>
     </nav>
 
-    <!-- Buscador de vacantes con ajax -->
+    
+
+    <!-- Buscador de vacantes con ajax  -->
     <div class="alert alert-dismissible">
       <div>
         <center>
@@ -99,92 +102,28 @@
       </div>
     </div>
     
-    <!-- Cards de Vacantes -->
-    <div class="row align-items-center">
-      <!-- Cards de vacantes dinamicas (Primera Columna) -->
-      <div class="col">
-        <!-- {foreach $Vacantes1 as $vacantes} -->
-          <div id="cardv" class="card border-primary shadow p-3 mb-5 bg-body rounded" style="width: 25rem; margin:auto;">
-            <div class="card-body">
-              <!-- Codigo de imagen en las cards
-              <h4 class="card-title, text-danger" style="display:inline;">{$vacantes.puesto}</h4> <br><br>
-              <h4 class="card-title" style="display:inline;">{$vacantes.empresa}</h4> <br><br>
-              <p align="justify" class="card-text">{$vacantes.datos_adicionales}</p> -->
-              
-              <form action="seleccionar_vacantes.php?vacante=0" method="POST">
-                <!-- Campo interno para ver la vacante seleccionada -->
-                <!-- <input value={$vacantes.id_vacante} type="hidden" name="txt_id_vacante"> -->
-
-                <!-- Boton para ver la vacante completa -->
-                <input type="submit" value="Leer más" class="btn btn-primary">
-              </form>
-            </div>
-          </div>
-        <!-- {/foreach} -->
-      </div>
-      
-      <!-- Cards de vacantes dinamicas (Segunda Columna) -->
-      <div class="col">
-        <!-- {foreach $Vacantes2 as $vacantes} -->
-          <div id="cardv" class="card border-primary shadow p-3 mb-5 bg-body rounded" style="width: 25rem; margin:auto;">
-            <div class="card-body">
-              <!-- Codigo de imagen en las cards 
-              <h4 class="card-title, text-danger" style="display:inline;">{$vacantes.puesto}</h4> <br><br>
-              <h4 class="card-title" style="display:inline;">{$vacantes.empresa}</h4> <br><br>
-              <p align="justify" class="card-text">{$vacantes.datos_adicionales}</p> -->
-
-              <form action="seleccionar_vacantes.php?vacante=0" method="POST">
-                <!-- Campo interno para ver la vacante seleccionada -->
-                <!-- <input value={$vacantes.id_vacante} type="hidden" name="txt_id_vacante"> -->
-
-                <!-- Boton para ver la vacante completa -->
-                <input type="submit" value="Leer más" class="btn btn-primary">
-              </form>
-            </div>
-          </div>
-        <!-- {/foreach} -->
-      </div>
-      
-      <!-- Cards de vacantes dinamicas (Tercera Columna) -->
-      <div class="col">
-        <!-- {foreach $Vacantes3 as $vacantes} -->
-          <div id="cardv" class="card border-primary shadow p-3 mb-5 bg-body rounded" style="width: 25rem; margin:auto;">
-            <div class="card-body">
-              <!-- Codigo de imagen en las cards -->
-              <!-- <h4 class="card-title, text-danger" style="display:inline;">{$vacantes.puesto}</h4> <br><br>
-              <h4 class="card-text" style="display:inline;">{$vacantes.empresa}</h4> <br><br>
-              <p align="justify" class="card-text">{$vacantes.datos_adicionales}</p> -->
-
-              <form action="seleccionar_vacantes.php?vacante=0" method="POST">
-                <!-- Campo interno para ver la vacante seleccionada -->
-                <!-- <input value={$vacantes.id_vacante} type="hidden" name="txt_id_vacante"> -->
-
-                <!-- Boton para ver la vacante completa -->
-                <input type="submit" value="Leer más" class="btn btn-primary">
-              </form>
-            </div>
-          </div>
-        <!-- {/foreach} -->
-      </div>
-
+    <!-- Contenedor de las vacantes -->
+    <div id="vacantesContainer" class="row"></div>
+   
     </div>
-
+    
   </body>
 
   <!-- Codigo JavaScript para el buscador con ajax -->
-  <!-- <script>
-    $(document).ready(function () {
-      $("#bvac").keyup(function () {
-        _this = this;
-        $.each($("#cardv "), function () {
-          if ($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
-            $(this).hide();
-          else
-            $(this).show();
-        });
-      });
+  <script>
+$(document).ready(function () {
+  $("#bvac").keyup(function () {
+    var query = $(this).val().toLowerCase();
+    $("#vacantesContainer").children().each(function () {
+      if ($(this).text().toLowerCase().indexOf(query) === -1)
+        $(this).hide();
+      else
+        $(this).show();
     });
-  </script> -->
+  });
+});
+</script>
+
 
   <!-- Conexion a archivo JavaScript para el funcionamiento del contador -->
   <!-- <script src="../smarty/js/contador-buscar-vacantes.js"></script> -->
