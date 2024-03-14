@@ -1,12 +1,13 @@
-<<<<<<< HEAD
-=======
 <?php 
-session_start();
-if ($_GET['xd']) {
-    $_SESSION['rol'] = 1;
-}
+    session_start();
+    
+    if ($_GET['xd'] == 1) {
+        $_SESSION['rol'] = 1;
+    }
+    if ($_GET['xd'] == 2) {
+        $_SESSION['rol'] = 2;
+    }
 ?>
->>>>>>> f5e40663dbc8ae33195bb6c6d73b1ce0486d3c94
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +37,7 @@ if ($_GET['xd']) {
     <div style="margin-top: 150px; margin-left: 35%; ">
         <!-- Card del login -->
         <div class="card border-secondary mb-3" style="max-width: 25rem;">
-            <FONT COLOR="black"><div class="card-header bg-primary" style="font-weight: bold;" align="center">Inicio de sesion</div></FONT>
+            <FONT COLOR="black"><div class="card-header bg-primary" style="font-weight: bold;" align="center">Inicio de sesion de <?php echo $_SESSION['rol']; ?></div></FONT>
             <div class="card-body">
 
                 <!-- Campos para los datos del login -->
@@ -52,7 +53,7 @@ if ($_GET['xd']) {
 
                     
                     <!-- Boton para registrarse -->
-                    <A HREF="usuario.php" class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Registrarse</A>
+                    <A HREF="usuario.php" id="login" class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Registrarse</A>
 
                 </center>
             </div>
