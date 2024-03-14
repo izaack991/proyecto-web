@@ -8,8 +8,10 @@
     <title>Lista de Postulaciones</title>
     <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
+    <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <script src="../js/notificacion.js"></script>
     <script src="../js/postulacion.js"></script>
   </head>
   
@@ -17,57 +19,71 @@
     <!-- Barra de navegacion para Empresa -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="indexEmpresa.php"> <span> Inicio </span>
-        </a>
+        <a class="navbar-brand" href="indexEmpresa.php">Inicio</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarColor03">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="vacantes.php"> <span> Vacantes </span>
-              </a>
+              <a class="nav-link active" href="vacantes.php">Vacantes</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="postulacion.php"> <span> Postulaciones </span>
-              </a>
+              <a class="nav-link active" href="postulacion.php">Postulaciones</a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-            <!-- {if $ECOUNT >= 1}
               <a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" data-toggle="modal"data-target="#exampleModal">
                 <span class="fa-layers fa-fw mr-2 fa-lg">
                   <i class="fas fa-bell"></i>
-                  <span class="fa-layers-counter" style="background:Tomato">{$COUNTPOS}</span>
-                  </span>{$smarty.session.nomusuario}</a></li>
-            {else}
-             <li class="nav-link active">{$smarty.session.nomusuario}</li>
-            {/if} -->
+                  <span class="fa-layers-counter" id="notifi" style="background:Tomato;border-radius:0.3rem;padding-left:0.2rem;padding-right:0.2rem"></span>
+                </span></a></li>
+            <li class="nav-link active"></li>
 
-            <!-- Creacion de la modal de notificaciones -->
+            <!--Creacion de la modal de notificaciones-->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-bell"></i> <span> Notificaciones </span> </h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-bell"></i> Notificaciones</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <!-- <span aria-hidden="true">&times; </span> -->
+                      <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <!-- {if $COUNTPOS >= 1}
-                    <a class="nav-link" href="postulacion.php" style="color: blue;">Tienes {$COUNTPOS} postulaciones pendientes</a>
-                    {/if} -->
+                    <a class="nav-link" id="notpos" href="postulacion.php" style="color: blue;">Tienes 0 postulaciones pendientes</a>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal"> <span> Cerrar </span> </button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- Boton para cerrar la sesion -->
-            <a class="nav-link active text-danger" href="index.php" style="font-weight:bold;"> <span> Cerrar Sesión </span> </a>
+
+            <!--Boton para cerrar la sesion-->        
+            <a class="nav-link active text-danger" onclick="openAlert()" style="font-weight:bold;">Cerrar Sesión </a>
+
+
+              <script>        
+                  function redireccionindex() {
+                    window.location.href='../pagina/index.php';
+                  }      
+                  function openAlert() {
+                    Swal.fire({
+                    title: "¿Seguro que quieres Cerrar Sesion?",
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Aceptar"
+                      }).then((result) => {
+                          if (result.isConfirmed) {
+                            onClose: redireccionindex();
+                    }
+                  });
+              }
+              </script>
           </ul>
         </div>
       </div>
@@ -75,22 +91,10 @@
 
     <!-- Card de potulaciones -->
     <div class="card border-dark mb-3 shadow-lg  mb-5 bg-body rounded" style="max-width: 80rem; margin:auto; margin-top:30px;">
-      <div class="card-header text-center"><h4 class="card-title"> <span> Postulaciones </span> </h4></div>
+      <div class="card-header text-center bg-primary"><h2 class="card-title text-white mb-0"> <span> POSTULACIONES </span> </h4></div>
       <div class="card-body">
         <!-- Tabla de postulaciones -->
-        <table id="tabla_datos" class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col" class="text-center">Curriculum</th>
-              <th scope="col" class="text-center">Acción</th>
-              <th scope="col" class="text-center">Usuario</th>
-              <th scope="col" class="text-center">Correo</th>
-              <th scope="col" class="text-center">Vacante</th>
-            </tr>
-          </thead>
-          <tbody id="tabla-body">
-          </tbody>
-        </table>
+        <div id="tablaUsuarios"></div>
             
 
     <!-- Conexion de librerias de JavaScript y bootstrap -->

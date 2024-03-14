@@ -7,9 +7,9 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 
-require '../PHPMailer/Exception.php';
-require '../PHPMailer/PHPMailer.php';
-require '../PHPMailer/SMTP.php';
+require '../../PHPMailer/Exception.php';
+require '../../PHPMailer/PHPMailer.php';
+require '../../PHPMailer/SMTP.php';
 
 include('../clases/save.class.php');
 include('../clases/function.class.php');
