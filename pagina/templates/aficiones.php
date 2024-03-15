@@ -11,8 +11,10 @@
     <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
-    <link rel="stylesheet" href="estilos.css" type="text/css">
-    <script src="../js/insert.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <script src="../js/notificacion_usuario.js"></script>
+    
     <script>
         // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
         var tiempoInactividad = 5 * 60 * 1000; 
@@ -44,8 +46,9 @@
 
   <body>
 
-    <!--Conexion a archivo de JavaScript para el funcionamiento de la ubicacion-->
-    <script src="../smarty/js/ubicacion.js"></script>
+    <!-- {*Conexion a librerias de JavasScript para la ubicacion y bootstrap*} -->
+    <script src="../js/ubicacion.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
     <!-- {*Barra de navegacion para Usuarios*} -->
     <?php include("navbar_usuario.php") ?>
@@ -61,7 +64,7 @@
           
           <!-- Campos para los datos de aficiones -->
           <label class="col-form-label mt-4" for="name">Descripcion *</label><br>
-          <textarea name="txtdesc" type="text" title="ESTE CAMPO NO ADMITE NÚMEROS NI CARACTERES ESPECIALES" class="form-control" maxlength="100"  cols="1" rows="10" onkeypress="return validarLetras(event)" required="true" placeholder="Ingrese sus datos de interes"></textarea><br><br>
+          <textarea name="txtdesc" type="text" title="ESTE CAMPO NO ADMITE NÚMEROS NI CARACTERES ESPECIALES" class="form-control" maxlength="100"  cols="1" rows="10" required="true" placeholder="Ingrese sus datos de interes"></textarea><br><br>
           
           <!-- Campos internos para la ubicacion -->
           <input name="txtlatitud" id="latitud" type="hidden">
@@ -78,6 +81,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="../js/insert.js"></script>
 
   </body>
   
