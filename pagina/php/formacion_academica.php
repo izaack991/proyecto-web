@@ -38,10 +38,12 @@ if(isset($_POST['descripcion'])&& isset($_POST['ubicacion'])&&isset($_POST['peri
     $_ubicacion = 'Latitud: '.$_latitud.' Longitud: '.$_longitud;
     $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
      
+    // Envio de la alerta de guardado
     if($newuser == true) {
         echo "true";
     }
 } else {
+    // Envio de la alerta de que no se guardo
     echo "errorSave";
 }
 ?>

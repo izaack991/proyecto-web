@@ -1,3 +1,4 @@
+// Metodo AJAX para el guardado de Experiencia Laboral
 {
     $(document).ready(function () {
         $('#formExperienciaLaboral').submit(function (event) {
@@ -40,6 +41,7 @@
     })
 };
 
+// Metodo AJAX para el guardado de Formacion Academica
 {
     $(document).ready(function () {
         $('#formFormacionAcademica').submit(function (event) {
@@ -82,6 +84,7 @@
     })
 };
 
+// Metodo AJAX para el guardado de Aficiones
 {
     $(document).ready(function () {
         $('#formAficiones').submit(function (event) {
