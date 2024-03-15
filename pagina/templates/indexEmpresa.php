@@ -10,8 +10,8 @@
     <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
-  <script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>  
       // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
     var tiempoInactividad = 5 * 60 * 1000; 
 

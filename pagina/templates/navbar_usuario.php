@@ -42,7 +42,7 @@
                 </span>
               </a>
             </li>
-            <li class="nav-link active"></li>
+            <li class="nav-link active font-weight-bold" id="nombreUsuario"></li>
 
             <!-- {* Creacion de la modal de notificaciones *} -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

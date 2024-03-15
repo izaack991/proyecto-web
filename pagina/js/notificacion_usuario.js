@@ -23,6 +23,7 @@ $(document).ready(function(){
                 if (data.contador == 0) {
                     $('#contador_not').html('No tiene notificaciones en este momento');
                 }
+                $('#nombreUsuario').text(data.nombreUsuario);
             }
         });
     }
