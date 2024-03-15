@@ -73,3 +73,37 @@
         })
     })
 };
+
+{
+    $(document).ready(function () {
+        $('#formAficiones').submit(function (event) {
+            event.preventDefault();
+            var formData = new FormData($('#formAficiones')[0]);
+            //var formData = $(this).serialize();
+            $.ajax({
+                url: '../php/Aficiones.php',
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    // Maneja la respuesta del archivo PHP aquí
+                    console.log(response);
+                    if (response == "true") {
+                        Swal.fire({
+                            title: 'Listo!',
+                            text: 'Elemento Guardado',
+                            icon: 'success'
+                        }).then(function () {
+                            window.location.href = "../templates/aficiones.php";
+                        });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // Maneja cualquier error que ocurra durante la solicitud AJAX
+                    console.error(error);
+                }
+            });
+        })
+    })
+};

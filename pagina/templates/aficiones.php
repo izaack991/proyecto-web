@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
     <link rel="stylesheet" href="estilos.css" type="text/css">
-    <script src="../php/Aficiones.php"></script>
+    <script src="../js/insert.js"></script>
     <script>
         // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
         var tiempoInactividad = 5 * 60 * 1000; 
@@ -51,7 +51,7 @@
     <?php include("navbar_usuario.php") ?>
 
     <!-- Formulario de aficiones -->
-    <form action="Aficiones.php" method="POST">
+    <form id="formAficiones" method="POST">
       
       <!-- Card de aficiones -->
       <div class="card  mb-3" style="max-width: 20rem; margin:auto; margin-top:30px;">
