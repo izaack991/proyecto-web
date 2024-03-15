@@ -1,4 +1,5 @@
 <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 <script src="../js/notificacion_usuario.js"></script>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
