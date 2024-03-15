@@ -31,6 +31,20 @@
                             }).then(function() {
                                 window.location.href = "../templates/login.php?xd=2";
                             });
+                        } else if (response == "errorPassword") {
+                            Swal.fire('¡Las Contraseñas NO coinciden!');
+                        } else if (response == "errorImagenEmpresa") {
+                            Swal.fire('¡No subió la Imagen de la Empresa!');
+                        } else if (response == "ErrorImagen") {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'La extensión o el tamaño de los archivos no es correcta. Solo se permite: .gif, .jpg, .png. y de 200 kb como máximo.',
+                                icon: 'error'});
+                        } else if (response == "errorImagenServer") {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'No se pudo subir la imagen al sevidor.',
+                                icon: 'error'});
                         } else {
                             Swal.fire({
                                 title: 'Error!',
