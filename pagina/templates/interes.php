@@ -156,7 +156,7 @@
 
           <!-- Campos para los datos de interes -->
           <label class="col-form-label mt-4" for="name">Descripción: *</label><br>
-          <input class="form-control" type="text" name="txtdesc" maxlength="100"  onkeypress="return validarLetras(event)" title="ESTE CAMPO NO ADMITE NÚMEROS NI CARACTERES ESPECIALES" placeholder="Ingrese sus datos de interes" required="true"><br><br>
+          <textarea name="txtdesc" type="text" title="ESTE CAMPO NO ADMITE NÚMEROS NI CARACTERES ESPECIALES" class="form-control" maxlength="100"  cols="1" rows="10" onkeypress="return validarLetras(event)" required="true" placeholder="Ingrese sus datos de interes"></textarea><br><br>
 
           <!-- Campos internos para la ubicacion -->
           <input name="txtlatitud" id="latitud" type="hidden">
