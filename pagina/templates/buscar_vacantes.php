@@ -8,6 +8,7 @@
     <title> "Lista de vacantes"</title>
     <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
+    <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
     <!-- <script src="../php/Buscar_vacantes.php'"></script> -->
     <script src="../js/Buscar_vacantes.js"></script>
@@ -46,50 +47,8 @@
     <script src="../smarty/js/ubicacion.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     
-    <!-- Barra de navegacion para Usuarios -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="indexPrincipal.php">Inicio</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarColor03">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href="experiencia_laboral.php"> <span> Experiencia Laboral </span> 
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="formacion_academica.php"> <span> Formacion Academica </span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="Aficiones.php"> <span> Aficiones </span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="interes.php"> <span> Interes </span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="buscar_vacantes.php"> <span> Buscar Vacantes </span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="Usuario-test.php"> <span> Tests </span>
-              </a>
-            </li>
-          </ul>
-          
-          <!-- Boton para cerrar la sesion -->
-          <ul class="navbar-nav ml-auto">
-            <!-- <li class="nav-link active">{$smarty.session.nomusuario}</li> -->
-            <a class="nav-link active text-danger" href="https://www.workele.com" style="font-weight:bold;"> <span> Cerrar Sesión </span>
-          </a>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <!-- {*Barra de navegacion para Usuarios*} -->
+    <?php include("navbar_usuario.php") ?>
 
     
 

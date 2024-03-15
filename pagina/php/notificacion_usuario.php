@@ -1,9 +1,7 @@
 <?php
 session_start();
 
-include('../templates/indexPrincipal.php');
 include('../clases/function.class.php');
-$titulo = "Pagina Principal Usuario";
 
 
 
@@ -66,4 +64,11 @@ $contador_for = $COUNTFOR;
 $contador_afi = $COUNTAFI;
 $contador_int = $COUNTINT;
 
+echo json_encode(array(
+    'contador' => $contador,
+    'contador_exp' => $contador_exp,
+    'contador_for' => $contador_for,
+    'contador_afi' => $contador_afi,
+    'contador_int' => $contador_int
+));
 ?>

@@ -1,8 +1,9 @@
 <?php
+session_start();
 include('../clases/function.class.php');
 
 $nuevoSingleton = Functions::singleton_functions();
-$iusuario = 2;
+$iusuario = $_SESSION['iusuario'];
 $notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuario);
 
 if($notificacionpostulaciones>=1)
@@ -15,5 +16,4 @@ else
 }
 
 $ECOUNT = $COUNTPOS;
-
 echo $ECOUNT;
