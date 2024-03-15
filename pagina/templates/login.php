@@ -1,10 +1,10 @@
 <?php 
 session_start();
 if ($_GET['xd'] == 1) {
-    $_SESSION['rol'] = 1;
+    $regRol='regEmpresa.php';
 }
 if ($_GET['xd'] == 2) {
-    $_SESSION['rol'] = 2;
+    $regRol='regUsuario.php';
 }
 ?>
 <!DOCTYPE html>
@@ -50,9 +50,8 @@ if ($_GET['xd'] == 2) {
                     <!-- Boton para iniciar sesion --> 
                     <button id="login" class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Iniciar sesion</button>
 
-                    
                     <!-- Boton para registrarse -->
-                    <A HREF="usuario.php" class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Registrarse</A>
+                    <A HREF="<?php echo $regRol ?>" class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Registrarse</A>
 
                 </center>
             </div>

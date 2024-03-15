@@ -14,8 +14,10 @@ function verificarContrasenas() {
         // Manejar la respuesta del servidor
         if (response === "coinciden") {
           $('#passwordMatchMessage').html('Las contraseñas coinciden.').css('color', 'green');
+          $('#passwordMatchMessage2').html('Las contraseñas coinciden.').css('color', 'green');
         } else {
           $('#passwordMatchMessage').html('Las contraseñas no coinciden.').css('color', 'red');
+          $('#passwordMatchMessage2').html('Las contraseñas no coinciden.').css('color', 'red');
         }
       }
     });
