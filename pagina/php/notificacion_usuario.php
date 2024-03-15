@@ -12,6 +12,7 @@ include('../clases/function.class.php');
 // }
 $nuevoSingleton = Functions::singleton_functions();
 $iusuario = $_SESSION['iusuario'];
+$nombreUsuario = $_SESSION['nomusuario'];
 $notificacionexperiencia = $nuevoSingleton->notificacionexperiencia($iusuario);
 $notificacionformacion = $nuevoSingleton->notificacionformacion($iusuario);
 $notificacionaficiones = $nuevoSingleton->notificacionaficiones($iusuario);
@@ -69,6 +70,7 @@ echo json_encode(array(
     'contador_exp' => $contador_exp,
     'contador_for' => $contador_for,
     'contador_afi' => $contador_afi,
-    'contador_int' => $contador_int
+    'contador_int' => $contador_int,
+    'nombreUsuario' => $nombreUsuario
 ));
 ?>

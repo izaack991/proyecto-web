@@ -1,6 +1,7 @@
 <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
-<script src="../js/notificacion.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+<script src="../js/notificacion_empresa.js"></script>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
         <a class="navbar-brand" href="indexEmpresa.php">Inicio</a>
@@ -18,13 +19,13 @@
           </ul>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" data-toggle="modal"data-target="#exampleModal">
-                <span class="fa-layers fa-fw mr-2 fa-lg">
+              <a class="btn demo-btn-on-bg text-white font-weight-bold mt-2 mt-lg-0" data-toggle="modal"data-target="#exampleModal">
+                <span class="fa-layers fa-fw fa-lg">
                   <i class="fas fa-bell"></i>
                   <span id="contador">
                   </span>
                 </span></a></li>
-            <li class="nav-link active"></li>
+            <li class="nav-link active font-weight-bold" id="nombreUsuario"></li>
 
             <!--Creacion de la modal de notificaciones-->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">

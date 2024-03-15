@@ -4,6 +4,7 @@ include('../clases/function.class.php');
 
 $nuevoSingleton = Functions::singleton_functions();
 $iusuario = $_SESSION['iusuario'];
+$nombreUsuario = $_SESSION['nomusuario'];
 $notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuario);
 
 if($notificacionpostulaciones>=1)
@@ -16,4 +17,10 @@ else
 }
 
 $ECOUNT = $COUNTPOS;
-echo $ECOUNT;
+$contador = $ECOUNT;
+
+echo json_encode(array(
+    'contador' => $contador,
+    'nombreUsuario' => $nombreUsuario
+));
+?>
