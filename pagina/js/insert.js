@@ -63,6 +63,14 @@
                         }).then(function () {
                             window.location.href = "../templates/formacion_academica.php";
                         });
+                    } else if (response == "errorSave") {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'No se ha guardado el elemento',
+                            icon: 'error'
+                        }).then(function () {
+                            window.location.href = "../templates/formacion_academica.php";
+                        });
                     }
                 },
                 error: function (xhr, status, error) {
