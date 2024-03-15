@@ -1,10 +1,19 @@
 <?php 
 session_start();
+
+// Comentar la linea de abajo para poder ver los errores en la pagina
+error_reporting(0);
+
 if ($_GET['xd'] == 1) {
     $regRol='regEmpresa.php';
 }
 if ($_GET['xd'] == 2) {
     $regRol='regUsuario.php';
+}
+if ($_GET['xd'] == false) {
+    echo (
+        '<script src="../js/login.js"></script>'
+    );
 }
 if ($_GET['xd'] == 1) {
     $_SESSION['rol'] = 1;
@@ -16,6 +25,8 @@ if ($_GET['xd'] == 1) {
     $sesionLabel = "Empresa";
 } elseif ($_GET['xd'] == 2) {
     $sesionLabel = "Usuario";
+} else {
+    $sesionLabel = "Nadie";
 }
 ?>
 <!DOCTYPE html>
