@@ -1,5 +1,5 @@
 <?php
-session_start(); // Iniciar sesión si aún no está iniciada
+// session_start(); // Iniciar sesión si aún no está iniciada
 
 require_once '../clases/login.class.php';
 
@@ -23,11 +23,64 @@ if (isset($_POST['usuario'], $_POST['password'])) {
         } elseif ($rol == 1 && $status) {
             header("Location: ../templates/indexEmpresa.php");
             exit();
-        }
+        } else {
+            // Usuario no verificado, mostrar SweetAlert
+            ?>
+            <!DOCTYPE html>
+            <html lang="es">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Usuario no verificado</title>
+                <!-- Agrega la librería SweetAlert -->
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+            </head>
+            <body>
+                <script>
+                    // Mostrar SweetAlert cuando el usuario no esté verificado
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Usuario no verificado',
+                        text: 'Esta cuenta está en proceso de verificación, por favor espere hasta que sea aprobada'
+                    }).then((result) => {
+                        window.location.href = '../templates/login.php?xd=1'; 
+                    });
+                </script>
+            </body>
+            </html>
+            <?php
+            }
     } else {
         $redirect_xd = ($rol == 2) ? 2 : 1;
         unset($_SESSION['rol']);
-        header("Location: ../templates/login.php?xd=$redirect_xd");
+        ?>
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Usuario no existe</title>
+            <!-- Agrega la librería SweetAlert -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        </head>
+        <body>
+            <script>
+
+                // Variable que determina el valor de xd
+                var xd_value = <?php echo ($rol == 2) ? 2 : 1; ?>;
+
+                // Mostrar SweetAlert cuando el usuario no esté verificado
+                Swal.fire({
+                    icon: 'error',
+                    title: 'El usuario no existe',
+                    text: 'Correo y/o contraseña incorrectos'
+                }).then((result) => {
+                    window.location.href = '../templates/login.php?xd=' + xd_value;
+                });
+            </script>
+        </body>
+        </html>
+        <?php
         exit();
     }
 } else {
