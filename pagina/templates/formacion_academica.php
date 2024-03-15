@@ -16,7 +16,7 @@
       var tiempoInactividad = 5 * 60 * 1000; 
 
       // Página a la que se redireccionará después de la inactividad
-      var paginaRedireccion = "index.php";
+      var paginaRedireccion = "https://www.workele.com";
 
       var tiempoInactivo;
 
@@ -128,7 +128,7 @@
               </div>
             </div>
             {*Boton para cerrar la sesion*}
-            <a class="nav-link active text-danger" href="index.php" style="font-weight:bold;">Cerrar Sesión</a>
+            <a class="nav-link active text-danger" href="https://www.workele.com" style="font-weight:bold;">Cerrar Sesión</a>
           </ul>
         </div>
       </div>

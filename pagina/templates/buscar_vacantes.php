@@ -16,7 +16,7 @@
             var tiempoInactividad = 5 * 60 * 1000; 
 
             // Página a la que se redireccionará después de la inactividad
-            var paginaRedireccion = "index.php";
+            var paginaRedireccion = "https://www.workele.com";
 
             var tiempoInactivo;
 
@@ -84,7 +84,7 @@
           <!-- Boton para cerrar la sesion -->
           <ul class="navbar-nav ml-auto">
             <!-- <li class="nav-link active">{$smarty.session.nomusuario}</li> -->
-            <a class="nav-link active text-danger" href="index.php" style="font-weight:bold;"> <span> Cerrar Sesión </span>
+            <a class="nav-link active text-danger" href="https://www.workele.com" style="font-weight:bold;"> <span> Cerrar Sesión </span>
           </a>
           </ul>
         </div>
