@@ -6,6 +6,12 @@ if ($_GET['xd'] == 1) {
 if ($_GET['xd'] == 2) {
     $regRol='regUsuario.php';
 }
+
+if ($_GET['xd'] == 1) {
+    $sesionLabel = "Empresa";
+} elseif ($_GET['xd'] == 2) {
+    $sesionLabel = "Usuario";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +27,6 @@ if ($_GET['xd'] == 2) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="../js/login.js"></script>
 </head>
 
 <body>
@@ -31,12 +36,12 @@ if ($_GET['xd'] == 2) {
 <form action="../php/login.php" method="post">
 
     <!-- Mensaje para los errores al ingresar -->
-    <!-- {$alerta} -->
+    <script> <?php echo $Alerta ?> </script> 
 
     <div style="margin-top: 150px; margin-left: 35%; ">
         <!-- Card del login -->
         <div class="card border-secondary mb-3" style="max-width: 25rem;">
-            <FONT COLOR="black"><div class="card-header bg-primary" style="font-weight: bold;" align="center">Inicio de sesion</div></FONT>
+            <FONT COLOR="black"><div class="card-header bg-primary" style="font-weight: bold;" align="center">Inicio de sesion de <?php echo $sesionLabel; ?></div></FONT>
             <div class="card-body">
 
                 <!-- Campos para los datos del login -->
@@ -51,7 +56,11 @@ if ($_GET['xd'] == 2) {
                     <button id="login" class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Iniciar sesion</button>
 
                     <!-- Boton para registrarse -->
+<<<<<<< HEAD
                     <A HREF="<?php echo $regRol ?>" class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Registrarse</A>
+=======
+                    <A HREF="usuario.php" id="login" class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Registrarse</A>
+>>>>>>> 99a71014bde3d09b5d69935c9db0bff72274ad72
 
                 </center>
             </div>

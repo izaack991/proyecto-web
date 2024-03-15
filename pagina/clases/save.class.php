@@ -604,12 +604,12 @@ require_once('conexion.class.php');
                 
             }
 
-            public function actualizar_status($_Status,$_Idp)
+            public function actualizar_status($index)
             {        
                 try 
                 {
                     
-                    $sql="UPDATE tbl_postulacion SET status=$_Status WHERE id_postulacion =$_Idp";
+                    $sql="UPDATE tbl_postulacion SET status=0 WHERE id_postulacion =$index";
                     
                     $query = $this->dbh->prepare($sql);
                     $query->execute();

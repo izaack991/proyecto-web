@@ -1,6 +1,6 @@
 <?php
 
-require "./pdf/code128.php";
+require "../pdf/code128.php";
 $pdf = new PDF_Code128('P','mm','Letter');
 $pdf->SetMargins(17,17,17);
 $pdf->AddPage();
@@ -25,7 +25,7 @@ foreach($postulaciones as $index => $value){
     $puesto  = $value['puesto'];
 }
 # Logo de la empresa formato png #
-$pdf->Image('./pdf/logo.png',165,12,35,35,'PNG');
+$pdf->Image('../pdf/logo.png',165,12,35,35,'PNG');
 // Encabezado y datos de la empresa
 $pdf->SetFont('Arial', 'B', 20);
 $pdf->SetTextColor(32, 100, 210);

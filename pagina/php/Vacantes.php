@@ -10,7 +10,6 @@ $_SESSION['tiempo'] = time();
 // Incluir clases y bibliotecas necesarias
 include('../clases/save.class.php');
 include('../clases/function.class.php');
-include("../templates/vacantes.php");
 
 // $smarty = new Smarty;
 $titulo = "Proyecto Web";
@@ -28,6 +27,7 @@ $_findUser = Functions::singleton_functions();
 $_findPais = Functions::singleton_functions();
 $_pais = $_findPais->buscaPaises();
 $nuevoSingleton = Functions::singleton_functions();
+
 
 // Obtener notificaciones de postulaciones
 $iusuario = $_SESSION['iusuario'];
@@ -114,7 +114,7 @@ if (isset($_POST['dateFin'])) {
     
     }
 }
-
+echo json_encode($_pais);
 // Mostrar el template Vacantes.tpl
 // $smarty->display("../smarty/templates/Vacantes.tpl");
 ?>

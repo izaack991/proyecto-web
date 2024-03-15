@@ -92,7 +92,7 @@
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
-          <script>
+          <!-- <script>
             <li class="nav-item">
             {if $COUNT >= 1}
               <a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" data-toggle="modal" data-target="#exampleModal">
@@ -105,7 +105,7 @@
             {else}
               <li class="nav-link active">{$session.nomusuario}</li>
             {/if}
-          </script>  
+          </script>   -->
           
             <!-- Creacion de la modal de notificaciones -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -117,7 +117,7 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                   <div class="modal-body">
+                   <!-- <div class="modal-body">
                     {if $COUNTLAB >= 1}
                     <a class="nav-link" href="experiencia_laboral.php" style="color: blue;">Aun no ha registrado sus datos de Experiencia Laboral, click aqui para ir al registro</a>
                     {/if}
@@ -130,7 +130,7 @@
                     {if $COUNTINT >= 1}
                     <a class="nav-link" href="interes.php" style="color: blue;">Aun no ha registrado sus datos de Interes, click aqui para ir al registro</a>
                     {/if}
-                  </div>
+                  </div> -->
 
                   <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -156,7 +156,7 @@
 
           <!-- Campos para los datos de interes -->
           <label class="col-form-label mt-4" for="name">Descripción: *</label><br>
-          <input class="form-control" type="text" name="txtdesc" maxlength="100"  onkeypress="return validarLetras(event)" title="ESTE CAMPO NO ADMITE NÚMEROS NI CARACTERES ESPECIALES" placeholder="Ingrese sus datos de interes" required="true"><br><br>
+          <textarea name="txtdesc" type="text" title="ESTE CAMPO NO ADMITE NÚMEROS NI CARACTERES ESPECIALES" class="form-control" maxlength="100"  cols="1" rows="10" onkeypress="return validarLetras(event)" required="true" placeholder="Ingrese sus datos de interes"></textarea><br><br>
 
           <!-- Campos internos para la ubicacion -->
           <input name="txtlatitud" id="latitud" type="hidden">
