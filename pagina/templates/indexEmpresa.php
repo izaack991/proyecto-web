@@ -86,7 +86,7 @@
             </div>
 
             <!--Boton para cerrar la sesion-->        
-            <a class="nav-link active text-danger" href="index.php" onclick="openAlert()" style="font-weight:bold;">Cerrar Sesión </a>
+            <a class="nav-link active text-danger" href="https://www.workele.com" onclick="openAlert()" style="font-weight:bold;">Cerrar Sesión </a>
 
 
               <script>        
