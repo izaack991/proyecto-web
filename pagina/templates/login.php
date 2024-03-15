@@ -79,8 +79,7 @@ if ($_GET['xd'] == 1) {
         </div>
 
         <!-- Boton para volver al indexPrincipal -->
-        <a href="index.php"><button class="btn btn-light" type="button">Inicio</button></a>
-    <!--<a href="https://workele.com/"><button class="btn btn-light" type="button">Inicio</button></a>-->
+        <a href="https://workele.com/"><button class="btn btn-light" type="button">Inicio</button></a>
 
 
     </div>
