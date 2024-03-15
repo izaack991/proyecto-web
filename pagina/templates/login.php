@@ -56,11 +56,7 @@ if ($_GET['xd'] == 1) {
                     <button id="login" class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Iniciar sesion</button>
 
                     <!-- Boton para registrarse -->
-<<<<<<< HEAD
                     <A HREF="<?php echo $regRol ?>" class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Registrarse</A>
-=======
-                    <A HREF="usuario.php" id="login" class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Registrarse</A>
->>>>>>> 99a71014bde3d09b5d69935c9db0bff72274ad72
 
                 </center>
             </div>
