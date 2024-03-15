@@ -10,7 +10,20 @@ $irol=$_SESSION['rol'];
 
 if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 {
-
+	$_ruta = $_POST['txtruta'];
+	if($_POST['txt_PASSWORD']!=$_POST['txt_PASSWORD2'])
+	{
+		$alerta = "<script> Swal.fire('¡Las Contraseñas NO coinciden!');</script>";
+		echo "errorPassword";
+	}
+	else
+	{
+		if($irol==1 && $_ruta == ""){
+			$alerta = "<script> Swal.fire('¡No subió la Imagen de la Empresa!');</script>";
+			echo "errorImagenEmpresa";
+		}
+		else
+		{
 			$_nombre = $_POST['txt_NOMBRE'];
 			$_apellido = $_POST['txt_APELLIDOS'];
 			$_correo = $_POST['txt_CORREO'];
@@ -30,34 +43,6 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 			$tamano = $_FILES['txtruta']['size'];
 			$temp = $_FILES['txtruta']['tmp_name'];
 
-			$f_id_usuario = $_findUser -> consec_usuario();
-			$newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol, $_status, $_ruta, $_razon);
-			
-			if ($newuser == true) {
-				if($irol == 1) {
-					echo "true1";
-				} else if ($irol == 2) {
-					echo "true2";
-				}
-			} else 
-			echo "false";
-			return false;
-
-	$_ruta = $_POST['txtruta'];
-	if($_POST['txt_PASSWORD']!=$_POST['txt_PASSWORD2'])
-	{
-		$alerta = "<script> Swal.fire('¡Las Contraseñas NO coinciden!');</script>";
-		echo $alerta;
-	}
-	else
-	{
-		if($irol==1 && $_ruta == ""){
-			$alerta = "<script> Swal.fire('¡No subió la Imagen de la Empresa!');</script>";
-			echo $alerta;
-		}
-		else
-		{
-			
 			if($_POST['txtruta']  != null)
 			{
 				//Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
@@ -67,7 +52,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 						title: 'Error!',
 						text: 'La extensión o el tamaño de los archivos no es correcta. Solo se permite: .gif, .jpg, .png. y de 200 kb como máximo.',
 						icon: 'error');</script>";
-					echo $alerta;
+					echo "ErrorImagen";
 				}
 				else {
 					//Si la imagen es correcta en tamaño y tipo
@@ -86,21 +71,23 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 							title: 'Error!',
 							text: 'No se pudo subir la imagen al sevidor.',
 							icon: 'error');</script>";
-						echo $alerta;
+						echo "errorImagenServer";
 						}
 					}
 				}
 				
+				$f_id_usuario = $_findUser -> consec_usuario();
+				$newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol, $_status, $_ruta, $_razon);
 				
 			}
-			if ($newuser == true)
-			{
-				header("location:login.php?xd=$irol");
-				echo '"<script language="javascript">alert("que");"</script>"';
-				return true;
+			if ($newuser == true) {
+				if($irol == 1) {
+					echo "true1";
+				} else if ($irol == 2) {
+					echo "true2";
+				}
 			}
 		}
 }
 $irol=$_SESSION['rol'];
-unset($_SESSION['rol']);
 ?>
