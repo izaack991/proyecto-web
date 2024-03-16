@@ -4,65 +4,29 @@ if(isset($_SESSION['tiempo']) ) {
     $vida_session = time() - $_SESSION['tiempo'];
 }
 $_SESSION['tiempo'] = time();
-
 include('../clases/save.class.php');
 include('../clases/function.class.php');
-include("../templates/interes.php");
 
 // Verificar si el usuario está autenticado
 // if (isset($_SESSION['iusuario'])) {
 //     header("location:login.php?xd=2");
 //     exit; // Detener la ejecución del script después de la redirección
 // }
-
 $nuevoInteres = Save::singleton_guardar();
 $CInteres = Functions::singleton_functions();
-$alerta = '';
 $nuevoSingleton = Functions::singleton_functions();
+
 $iusuario = $_SESSION['iusuario'];
 $notificacionexperiencia = $nuevoSingleton->notificacionexperiencia($iusuario);
 $notificacionformacion = $nuevoSingleton->notificacionformacion($iusuario);
 $notificacionaficiones = $nuevoSingleton->notificacionaficiones($iusuario);
 $notificacioninteres = $nuevoSingleton->notificacioninteres($iusuario);
 
-if($notificacionexperiencia==0)
-{
-    $COUNTLAB=1;
-}
-else 
-{
-    $COUNTLAB=0;
-}
-if($notificacionformacion==0)
-{
-    $COUNFOR=1;
-}
-else 
-{
-    $COUNFOR=0;
-}
-if($notificacionaficiones==0)
-{
-    $COUNTAFI=1;
-}
-else 
-{
-    $COUNTAFI=0;
-}
-if($notificacioninteres==0)
-{
-    $COUNTINT=1;
-}
-else 
-{
-    $COUNTINT=0;
-}
-$COUNT = $COUNTLAB + $COUNFOR + $COUNTAFI + $COUNTINT;
-
 if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud']))
 {
 	$_idusuario = $_SESSION['iusuario'];
 	$didesc = $_POST['txtdesc'];
+
 	$id_di = $CInteres->consecutivo_interes();
 	$newInteres = $nuevoInteres->guardar_interes($id_di,$_idusuario,$didesc);
 
@@ -74,14 +38,12 @@ if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlon
     $_longitud = $_POST['txtlongitud']; 
     $_ubicacion = 'Latitud: '.$_latitud.' Longitud: '.$_longitud;
     $newlogusuario = $nuevoInteres->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
-
-    $alerta = "<script>swal({
-        title: '',
-        text: 'Se ha guardado tu experiencia laboral correctamente!',
-        type: 'success',
-      }).then(function() {
-        window.location.href = 'indexPrincipal.php';
-      });</script>";
-	  
+	
+    if($newInteres) {
+        echo "true";
+    }
+}
+else{
+    echo "errorSave";
 }
 ?>
