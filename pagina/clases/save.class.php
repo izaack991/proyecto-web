@@ -221,7 +221,7 @@ require_once('conexion.class.php');
                     try 
                     {
                         
-                        $sql="INSERT INTO tbl_postulacion VALUES(:id_postulacion,:id_usuario,:id_vacante)";
+                        $sql="INSERT INTO tbl_postulacion VALUES(:id_postulacion,:id_usuario,:id_vacante,1)";
                         
                         $query = $this->dbh->prepare($sql);
                         
