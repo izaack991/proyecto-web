@@ -17,11 +17,6 @@ $_findUser = Functions::singleton_functions();
 $buscarAficion = Functions::singleton_functions();
 $nuevoSingleton = Functions::singleton_functions();
 $iusuario = $_SESSION['iusuario'];
-$notificacionexperiencia = $nuevoSingleton->notificacionexperiencia($iusuario);
-$notificacionformacion = $nuevoSingleton->notificacionformacion($iusuario);
-$notificacionaficiones = $nuevoSingleton->notificacionaficiones($iusuario);
-$notificacioninteres = $nuevoSingleton->notificacioninteres($iusuario);
-$alerta = '';
 if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud']))
 {
 	$_idusuario = $_SESSION['iusuario'];

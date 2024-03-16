@@ -30,7 +30,7 @@ include('../php/Usuario-Test.php');
                         <?php
                         if ($comprobarRaven >= 1) {
                             // Usuario puede iniciar el test
-                            echo '<a href="../templates/testRaven.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
+                            echo '<a href="test_raven.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
                         } else {
                             // Usuario no puede iniciar el test
                             echo '<a href="#"><button class="btn btn-light disabled" type="button">No puedes iniciar este test</button></a>';
@@ -45,7 +45,7 @@ include('../php/Usuario-Test.php');
                     <center>
                         <?php
                         if ($comprobarCleaver >= 1) {
-                            echo '<a href="../templates/cleaver.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
+                            echo '<a href="test_cleaver.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
                         } else {
                             echo '<a href="#"><button class="btn btn-light disabled" type="button">No puedes iniciar este test</button></a>';
                         }
@@ -62,7 +62,7 @@ include('../php/Usuario-Test.php');
                     <center>
                         <?php
                         if ($comprobarMoss >= 1) {
-                            echo '<a href="../templates/test_moss.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
+                            echo '<a href="test_moss.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
                         } else {
                             echo '<a href="#"><button class="btn btn-light disabled" type="button">No puedes iniciar este test</button></a>';
                         }
@@ -76,7 +76,7 @@ include('../php/Usuario-Test.php');
                     <center>
                         <?php
                         if ($comprobarMerril >= 1) {
-                            echo '<a href="../templates/test_merril.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
+                            echo '<a href="test_merril.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
                         } else {
                             echo '<a href="#"><button class="btn btn-light disabled" type="button">No puedes iniciar este test</button></a>';
                         }
@@ -93,7 +93,7 @@ include('../php/Usuario-Test.php');
                     <center>
                         <?php
                         if ($comprobarSjt >= 1) {
-                            echo '<a href="../templates/test_sjt.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
+                            echo '<a href="test_sjt.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
                         } else {
                             echo '<a href="#"><button class="btn btn-light disabled" type="button">No puedes iniciar este test</button></a>';
                         }
