@@ -1,3 +1,9 @@
+<?php 
+$id_vacante = $_POST['id_vacante'];
+echo'<input type="hidden" name="id_vacante" id="id_vacante" value="'.$id_vacante.'">';
+session_start();
+$_SESSION['id_vacante'] = $id_vacante;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +16,8 @@
     <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
-    <script src="../php/seleccionar_vacantes.php'"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <script src="../js/seleccionar_vacantes.js"></script>
     <script>
       // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
       var tiempoInactividad = 5 * 60 * 1000; 
@@ -136,51 +143,33 @@
       </div>
     </nav>
 
-    <!-- Card de seleccionar vacantes -->
-    <div {foreach $vacantes as $va} class="card border-primary shadow p-3 mb-5 bg-body rounded" style="max-width: 40rem; margin:auto; margin-top:9rem;">
-      
-      <!-- Formulario de seleccionar vacantes -->
-      <form action="seleccionar_vacantes.php?vacante=0" method="POST">
-        <!-- <h4 class="card-title, text-danger" style="display:inline;">{$va.puesto}</h4> <br><br>
-        <h4 class="card-title" style="display:inline;">{$va.empresa}</h4> <br><br>
-        <h5 class="card-text">{$va.nombrePais}</h5><br>
-        <h4 class="card-title text-primary">${$va.sueldo}</h4>
-        <p class="card-text">{$va.datos_adicionales}</p> -->
 
-        <!-- Boton para llamar la modal de confirmacion -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Postularse</button>
-        
-        <!-- Modal para la confirmacion de la postulacion -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">ALERTA</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <!-- <span aria-hidden="true">&times;</span> -->
-                </button>
-              </div>
-              <div class="modal-body">
-                ¿Desea postularse?
-              </div>
-              <div class="modal-body">
-                <!-- Boton para cerrar la modal -->
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                
-                <!-- Campo interno para el funcionaiento del boton de aceptar -->
-                <input value={$va.id_vacante} type="hidden" name="id_vacante">
-
-                <!-- Boton para aceptar la postulacion -->
-                <input type="submit" value="Aceptar" class="btn btn-primary">
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
+    <div id="vacantesContainer"></div>
+    <!-- Modal -->
+<div class="modal" id="postularseModal" tabindex="-1" role="dialog">
+<form action="../php/guardar_postulacion.php" method="POST">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmación de postulación</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de que deseas postularte a esta vacante?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <input type="submit" value="Aceptar" class="btn btn-primary">
+      </div>
     </div>
-    
+  </div>
+    </form>
+</div>
+
+
     <!-- Conexion de librerias de JavaScript y bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
