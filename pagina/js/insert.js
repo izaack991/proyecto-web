@@ -118,6 +118,8 @@
         })
     })
 };
+
+// Metodo AJAX para el guardado de Vacantes
 {
     $(document).ready(function () {
         $('#formVacantes').submit(function (event) {
@@ -142,15 +144,6 @@
                             window.location.href = "../templates/vacantes.php";
                         });
                     }
-                    else if (response == "errorSave") {
-                        Swal.fire({
-                            title: 'Error!',
-                            text: 'No se ha guardado el elemento',
-                            icon: 'error'
-                        }).then(function () {
-                            window.location.href = "../templates/vacantes.php";
-                        });
-                    }
                 },
                 error: function (xhr, status, error) {
                     // Maneja cualquier error que ocurra durante la solicitud AJAX
@@ -160,6 +153,8 @@
         })
     })
 };
+
+// Metodo AJAX para el guardado de Interes
 {
     $(document).ready(function () {
         $('#formInteres').submit(function (event) {
@@ -182,14 +177,6 @@
                         }).then(function () {
                             window.location.href = "../templates/interes.php";
                         });
-                    } else if (response == "errorSave") {
-                        Swal.fire({
-                            title: '¡Error!',
-                            text: '¡No se ha guardado el elemento!',
-                            icon: 'error'
-                        }).then(function () {
-                            window.location.href = "../templates/interes.php";
-                        });
                     }
                 },
                 error: function (xhr, status, error) {
@@ -200,43 +187,45 @@
         })
     })
 };
-{
-    $(document).ready(function () {
-        $('#formCleaver').submit(function (event) {
-            event.preventDefault();
-            var formData = new FormData($('#formCleaver')[0]);
-            $.ajax({
-                url: '../php/test_cleaver.php',
-                method: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    // Maneja la respuesta del archivo PHP aquí
-                    console.log(response);
-                    if (response == "true") {
-                        Swal.fire({
-                            title: '¡Completado!',
-                            text: 'Respuestas Guardadas',
-                            icon: 'success'
-                        }).then(function () {
-                            window.location.href = "../templates/test_cleaver.php";
-                        });
-                    } else if (response == "errorSave") {
-                        Swal.fire({
-                            title: '¡Error!',
-                            text: '¡No se pudieron guardar sus respuestas!',
-                            icon: 'error'
-                        }).then(function () {
-                            window.location.href = "../templates/test_cleaver.php";
-                        });
-                    }
-                },
-                error: function (xhr, status, error) {
-                    // Maneja cualquier error que ocurra durante la solicitud AJAX
-                    console.error(error);
-                }
-            });
-        })
-    })
-};
+
+// Metodo AJAX para el guardado de Test Cleaver
+// {
+//     $(document).ready(function () {
+//         $('#formCleaver').submit(function (event) {
+//             event.preventDefault();
+//             var formData = new FormData($('#formCleaver')[0]);
+//             $.ajax({
+//                 url: '../php/test_cleaver.php',
+//                 method: 'POST',
+//                 data: formData,
+//                 processData: false,
+//                 contentType: false,
+//                 success: function (response) {
+//                     // Maneja la respuesta del archivo PHP aquí
+//                     console.log(response);
+//                     if (response == "true") {
+//                         Swal.fire({
+//                             title: '¡Completado!',
+//                             text: 'Respuestas Guardadas',
+//                             icon: 'success'
+//                         }).then(function () {
+//                             window.location.href = "../templates/test_cleaver.php";
+//                         });
+//                     } else if (response == "errorSave") {
+//                         Swal.fire({
+//                             title: '¡Error!',
+//                             text: '¡No se pudieron guardar sus respuestas!',
+//                             icon: 'error'
+//                         }).then(function () {
+//                             window.location.href = "../templates/test_cleaver.php";
+//                         });
+//                     }
+//                 },
+//                 error: function (xhr, status, error) {
+//                     // Maneja cualquier error que ocurra durante la solicitud AJAX
+//                     console.error(error);
+//                 }
+//             });
+//         })
+//     })
+// };
