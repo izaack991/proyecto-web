@@ -64,7 +64,7 @@
     <form id="formVacantes" method="POST" >
 
       <!-- {*Card de vacantes*} -->
-      <div class="card  mb-3" style="max-width: 36rem; margin:auto; margin-top:30px;">
+      <div class="card  mb-3" style="max-width: 50rem; margin:auto; margin-top:30px;">
         <div class="card-body">
           <h4 class="card-title">Datos de Vacantes</h4>
           <label>Los campos marcados con asterisco son obligatorios</label> <br>
@@ -81,16 +81,25 @@
         <span class="input-group-text">$</span>
         <input class="form-control " type="text" required name="txtsueldo" placeholder="Ingresa el Sueldo" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(this.value < 0) this.value = '';" maxlength="10"> <br>
         </div>
-
-        <label for="name" class="form__label"> Lugar*</label> <br>
-        <div class="form-row" text-align: center;>
-        <div class="col">
-          
-            <select id="select_paises" class="btn btn-light disabled" name="cmbpais">
+        <div class="form row">
+        <div class="form-group col-md-4">
+          <label for="select_paises">Lugar*</label>
+          <select id="select_paises" class="btn btn-light disabled" name="cmbpais">
               <option value="">Elige una opción</option>
-              
-          </select>
+            </select>
         </div>
+          <div class="col-md-4">
+            <label for="txtregion" class="form__label"> Estado/region *</label><br>
+            <div class="input-group mb-3">
+              <input class="form-control" id="txtregion" type="text" required name="txtregion" placeholder="Ingresa el estado/region"> <br>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="txtciudad" class="form__label"> Ciudad/Poblacion *</label><br>
+            <div class="input-group mb-3">
+              <input class="form-control" id="txtciudad" type="text" required name="txtregion" placeholder="Ingresa la ciudad/poblacion"> <br>
+            </div>
+          </div>
       </div>
       <br>
 
