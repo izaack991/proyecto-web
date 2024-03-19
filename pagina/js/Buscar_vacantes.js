@@ -16,7 +16,7 @@ $(document).ready(function(){
                     card += '<h4 class="card-title" style="display:inline;">' + vacante.empresa + '</h4><br><br>';
                     card += '<p align="justify" class="card-text">' + vacante.datos_adicionales + '</p>';
                     card += '<form action="seleccionar_vacantes.php" method="POST">';
-                    card += '<input type="text" value="'+vacante.id_vacante+'" name="id_vacante" id="id_vacante">';
+                    card += '<input type="text" value="'+vacante.id_vacante+'" name="id_vacante" id="id_vacante" hidden>';
                     card += '<input type="submit" value="Leer más" class="btn btn-primary">';
                     card += '</form></div></div></div>';
 
