@@ -89,7 +89,7 @@ if ($_SESSION['cuenta']) {
                     <label>Correo Electronico: *</label><br>
                     <input class="form-control" type="email" name="txt_CORREO" class="texto" id="correo"
                         placeholder="Ejemplo@dominio.com" pattern=".+.com" required value="<?php if ($correo != "") {
-                            $correo;
+                            echo $correo;
                         } ?>"><br>
 
                     <div class="form-row">
