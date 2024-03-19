@@ -97,7 +97,7 @@
           <div class="col-md-4">
             <label for="name" class="form__label"> Ciudad/Poblacion *</label><br>
             <div class="input-group mb-3">
-              <input class="form-control" type="text" required name="txtciudad" placeholder="Ingresa la ciudad/poblacion"> <br>
+              <input class="form-control" id="txtciudad" type="text" required name="txtciudad" placeholder="Ingresa la ciudad/poblacion"> <br>
             </div>
           </div>
       </div>
@@ -139,7 +139,8 @@
                                 select += '<option value="' + pais.id_paises + '">' + pais.nombre + '</option>';  
                             });
                             $("#select_paises").html(select); // Establece las opciones en el elemento select con id "select_paises"
-                        },
+                            $("#select_paises").val("126");
+                          },
                         error: function(xhr, status, error) {
                             console.error('Error al obtener la lista de países:', error);
                         }
