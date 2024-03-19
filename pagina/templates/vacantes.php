@@ -89,15 +89,15 @@
             </select>
         </div>
           <div class="col-md-4">
-            <label for="txtregion" class="form__label"> Estado/region *</label><br>
+            <label for="name" class="form__label"> Estado/region *</label><br>
             <div class="input-group mb-3">
-              <input class="form-control" id="txtregion" type="text" required name="txtregion" placeholder="Ingresa el estado/region"> <br>
+              <input class="form-control" type="text" required name="txtregion" placeholder="Ingresa el estado/region"> <br>
             </div>
           </div>
           <div class="col-md-4">
-            <label for="txtciudad" class="form__label"> Ciudad/Poblacion *</label><br>
+            <label for="name" class="form__label"> Ciudad/Poblacion *</label><br>
             <div class="input-group mb-3">
-              <input class="form-control" id="txtciudad" type="text" required name="txtregion" placeholder="Ingresa la ciudad/poblacion"> <br>
+              <input class="form-control" type="text" required name="txtciudad" placeholder="Ingresa la ciudad/poblacion"> <br>
             </div>
           </div>
       </div>

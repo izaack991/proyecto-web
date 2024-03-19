@@ -26,10 +26,13 @@ if (isset($_POST['dateFin'])) {
     $_datos = $_POST['txtdatos'];
     $_fechainicio = $_POST['dateInicio'];
     $_fechafin = $_POST['dateFin'];
+    $_region = $_POST['txtregion'];
+    $_ciudad = $_POST['txtciudad'];
+
 
     // Guardar datos de la vacante
     $f_id_vacantes = $_findUser->consec_vacantes();
-    $newVacante = $nuevoUsuario->Guardar_id_vacantes($f_id_vacantes, $_idusuario, $_puesto, $_empresa, $_sueldo, $_lugar, $_datos, $_fechainicio, $_fechafin);
+    $newVacante = $nuevoUsuario->Guardar_id_vacantes($f_id_vacantes, $_idusuario, $_puesto, $_empresa, $_sueldo, $_lugar, $_datos, $_fechainicio, $_fechafin,$_region,$_ciudad);
 
     // Guardar log de usuario
     date_default_timezone_set('America/Mexico_City');
