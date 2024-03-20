@@ -43,8 +43,10 @@
   </head>
 
   <body>
-    <!-- {*Barra de navegacion para Usuarios*} -->
-    <?php include("navbar_usuario.php") ?>
+
+  <?php include("navbar_usuario.php") ?>
+    <!-- {*Barra de navegacion para Usuarios*} 
+  
 
      <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true"
       style="max-width: 20rem; margin:auto; margin-top:30px;">
@@ -57,9 +59,45 @@
       <div class="toast-body">
         Bienvenido!
       </div>
-    </div> 
+    </div> -->
 
-    <!-- {*Conexion de librerias de JavaScript y bootstrap*}                 -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner text-center">
+    <div class="carousel-item active">
+      <img src="../../assets/images/index_usuario/DECORACION-CHIC.png" class="img-fluid" alt="Slide 1">
+      </div>
+    </div>
+    <div class="carousel-item">
+    <img src="../../assets/images/index_usuario/ARTICS-SOLUCIONES.png" class="d-block w-100" alt="Slide 1">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+    <img src="../../assets/images/index_usuario/ENSIGNA.png" class="d-block w-100" alt="Slide 1">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+    <!-- {*Conexion de librerias de JavaScript y bootstrap*}      -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
