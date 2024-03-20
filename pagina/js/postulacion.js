@@ -1,18 +1,23 @@
-function mostrarDatos() {
-    $.ajax({
-        url: "../php/postulacion.php",
-        type: "GET",
-        dataType: "json",
-        success: function(data) {
-            var table = "<table class='table table-hover'><thead class='bg-dark text-white'><tr><th class='text-center'>USUARIO</th><th class='text-center'>CORREO</th><th class='text-center'>VACANTE</th><th class='text-center'>ACCIONES</th></thead></tr>";
-            for (var i = 0; i < data.length; i++) {
-                table += "<tbody class='text-center'><tr><td>" + data[i].nombreUsuario + "</td><td>" + data[i].correo + "</td><td>" + data[i].puesto + "</td><td><button type='button' class='btn btn-danger' style='margin-right:15px;' onclick='cerrar("+data[i].id_postulacion+")'>Cerrar</button><button type='button' class='btn btn-info' onclick='ver("+data[i].id_postulacion+","+data[i].id_usuario+")'>Ver Curriculum</button></td></tr></tbody>";
+$(document).ready(function(){
+    function mostrarDatos() {
+        $.ajax({
+            url: "../php/postulacion.php",
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                var table = "<table class='table table-hover'><thead class='bg-dark text-white'><tr><th class='text-center'>Usuario</th><th class='text-center'>Correo</th><th class='text-center'>Vacante</th><th class='text-center'>Acciones</th></thead></tr>";
+                for (var i = 0; i < data.length; i++) {
+                    table += "<tbody class='text-center'><tr><td>" + data[i].nombreUsuario + "</td><td>" + data[i].correo + "</td><td>" + data[i].puesto + "</td><td><button type='button' class='btn btn-danger' style='margin-right:15px;' onclick='cerrar("+data[i].id_postulacion+")'>Cerrar</button><button type='button' class='btn btn-info' onclick='ver("+data[i].id_postulacion+","+data[i].id_usuario+")'>Ver Curriculum</button></td></tr></tbody>";
+                }
+                table += "</table>";
+                $("#tablaUsuarios").html(table);
             }
-            table += "</table>";
-            $("#tablaUsuarios").html(table);
-        }
-    });
-}
+        });
+    }
+    mostrarDatos();
+    setInterval(mostrarDatos, 1000);
+});
+
 // Función para cerrar
 function cerrar(index) {
     $.ajax({
@@ -62,7 +67,4 @@ function ver(id_postulacion, id_usuario) {
         }
     });
 }
-$(document).ready(function(){
-    // Llamada a la función para cargar los datos al cargar la página
-    mostrarDatos();
-});
+
