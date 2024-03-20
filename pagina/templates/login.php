@@ -25,6 +25,8 @@ if ($_GET['xd'] == 1) {
     $sesionLabel = "Empresa";
 } elseif ($_GET['xd'] == 2) {
     $sesionLabel = "Usuario";
+} elseif ($_GET['xd'] == 3) {
+    $sesionLabel = "Administrador";
 } else {
     $sesionLabel = "Nadie";
 }
