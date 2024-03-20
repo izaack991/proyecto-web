@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suscripciones</title>
+    <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
+    <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
+    <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/notificacion.js"></script>
+    <script>
+      // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
+      var tiempoInactividad = 5 * 60 * 1000; 
+
+      // Página a la que se redireccionará después de la inactividad
+      var paginaRedireccion = "https://www.workele.com";
+
+      var tiempoInactivo;
+
+      // Función para redireccionar
+      function redireccionar() {
+        window.location.href = paginaRedireccion;
+      }
+
+      // Reiniciar el temporizador de inactividad
+      function reiniciarTemporizador() {
+        clearTimeout(tiempoInactivo);
+        tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
+      }
+
+      // Cuando se cargue la página, iniciar el temporizador
+      reiniciarTemporizador();
+
+      // Reiniciar el temporizador si se detecta actividad
+      document.addEventListener("mousemove", reiniciarTemporizador);
+      document.addEventListener("keypress", reiniciarTemporizador);
+
+      // funcion para solo letras mayúsculas, minúsculas y espacios
+      function validarLetras(event) {
+          var charCode = event.charCode;
+          // Permitir letras (mayúsculas y minúsculas) y espacios
+          return (charCode >= 65 && charCode <= 90) || // Letras mayúsculas
+                (charCode >= 97 && charCode <= 122) || // Letras minúsculas
+                charCode === 32; // Espacio
+      }
+    </script>
+ 
+  </head>
+
+  <!-- {*Codigo de CSS para el diseño personalisado del curriculum*} -->
+  <style>
+    .pregresp {
+      border: 1px solid #20c997;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 0.4rem;
+    }
+
+    .bcol {
+      border: 1px solid #cacaca;
+      padding: 5px;
+      margin: 20px;
+      border-radius: 0.4rem;
+    }
+
+    .titulo {
+      color: #20c997;
+    }
+  </style>
+
+  <body>
+
+    <!-- {*Conexion de librerias de JavaScript y bootstrap*} -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!--Barra de navegacion para Empresa-->
+    <?php include("navbar_empresa.php") ?>
+
+    <div class="container text-center">
+        <div class="row align-items-start">
+            <div class="col">
+                <div class="card border-primary shadow mb-5 bg-body rounded" style="max-width: 80%; margin:auto; margin-top:30px;">
+                    <div class="card-header text-center bg-primary">
+                        
+                    </div>    
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border-primary shadow mb-5 bg-body rounded" style="max-width: 80%; margin:auto; margin-top:30px;">
+                    <div class="card-header text-center bg-primary">
+
+                    </div>    
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border-primary shadow mb-5 bg-body rounded" style="max-width: 80%; margin:auto; margin-top:30px;">
+                    <div class="card-header text-center bg-primary">
+                        
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </div>
+            
+        </body>
+</html>

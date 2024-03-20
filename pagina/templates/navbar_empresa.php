@@ -16,6 +16,9 @@
             <li class="nav-item">
               <a class="nav-link active" href="postulacion.php">Postulaciones</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="Suscripciones.php">Suscripciones</a>
+            </li>
           </ul>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
