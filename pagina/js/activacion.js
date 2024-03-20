@@ -5,9 +5,9 @@ $(document).ready(function(){
             type: "GET",
             dataType: "json",
             success: function(data) {
-                var table = "<table class='table table-hover'><thead class='bg-dark text-white'><tr><th class='text-center'>Nombre</th><th class='text-center'>Correo</th><th class='text-center'>Telefono</th><th class='text-center'>Razón Social</th><th class='text-center'>Acciones</th></thead></tr>";
+                var table = "<table class='table table-hover'><thead class='bg-dark text-white'><tr><th class='text-center'>Razón Social</th><th class='text-center'>Correo</th><th class='text-center'>Telefono</th><th class='text-center'>Acciones</th></thead></tr>";
                 for (var i = 0; i < data.length; i++) {
-                    table += "<tbody class='text-center'><tr><td>" + data[i].nombreEmpresa + "</td><td>" + data[i].correo + "</td><td>" + data[i].telefono + "</td><td>" + data[i].razon_social + "</td><td><button type='button' class='btn btn-info px-0 w-100' onclick='activar("+data[i].id_usuario+")'>Activar</button></td></tr></tbody>";
+                    table += "<tbody class='text-center'><tr><td>" + data[i].razon_social + "</td><td>" + data[i].correo + "</td><td>" + data[i].telefono + "</td><td><button type='button' class='btn btn-info px-0 w-100' onclick='activar("+data[i].id_usuario+")'>Activar</button></td></tr></tbody>";
                 }
                 table += "</table>";
                 $("#tablaEmpresa").html(table);

@@ -17,7 +17,7 @@
     var tiempoInactividad = 5 * 60 * 1000; 
 
     // Página a la que se redireccionará después de la inactividad
-    var paginaRedireccion = "index.php";
+    var paginaRedireccion = "https://www.workele.com";
 
     var tiempoInactivo;
 
@@ -46,7 +46,7 @@
     <div class="d-flex justify-content-center align-items-center" style="margin-top: 5rem;">
   <div class="card shadow w-75">
     <div class="card-header bg-primary text-center">
-        <h1 class="text-white"><b>CONTADORES</b></h1>
+        <h1 class="text-white"><b>USUARIOS</b></h1>
     </div>
     <div class="card-body">
       <div class="row mt-3 mb-4 justify-content-center">
@@ -60,7 +60,7 @@
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title">USUARIOS REGISTRADOS</h5>
+                  <h5 class="card-title">PERFILES REGISTRADOS</h5>
                   <h1 id="cont_usuario" style="font-size:4rem;">0</h1>
                 </div>
               </div>
