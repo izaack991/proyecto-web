@@ -10,8 +10,8 @@ $irol=$_SESSION['rol'];
 
 if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 {
-	$_ruta = $_POST['txtruta'];
-	$_cons = $_POST['txtcons'];
+	$_ruta = $_FILES['txtruta'];
+	$_cons = $_FILES['txtruta'];
 	if($_POST['txt_PASSWORD']!=$_POST['txt_PASSWORD2'])
 	{
 		$alerta = "<script> Swal.fire('¡Las Contraseñas NO coinciden!');</script>";
@@ -19,11 +19,11 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 	}
 	else
 	{
-		if($irol==1 && $_ruta == ""){
-			$alerta = "<script> Swal.fire('¡No subió la Imagen de la Empresa!');</script>";
+		if($irol==1 && $_ruta == null){
+			//$alerta = "<script> Swal.fire('¡No subió la Imagen de la Empresa!');</script>";
 			echo "errorImagenEmpresa";
 		}
-		else if ($irol==1 && $_cons == "")
+		else if ($irol==1 && $_cons == null)
 		{
 			echo "errorConstancia";
 		} else {
@@ -41,21 +41,21 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 			$_status = 0;
 			
 			//Obtenemos algunos datos necesarios sobre el archivo de la imagen
-			$tipo = $_FILES['txtruta']['name'];
-			$tipo = $_FILES['txtruta']['type'];
+			$imgName = $_FILES['txtruta']['name'];
+			$imgTipo = $_FILES['txtruta']['type'];
 			$tamano = $_FILES['txtruta']['size'];
 			$temp = $_FILES['txtruta']['tmp_name'];
 
 			//Obtenemos algunos datos necesarios sobre el archivo de la constancia
-			$tipoCons = $_FILES['txtcons']['name'];
-			$tipoCons = $_FILES['txtcons']['type'];
+			$conName = $_FILES['txtcons']['name'];
+			$conTipo = $_FILES['txtcons']['type'];
 			$tamanoCons = $_FILES['txtcons']['size'];
 			$tempCons = $_FILES['txtcons']['tmp_name'];
 
-			if($_POST['txtruta']  != null)
+			if($_ruta != null)
 			{
 				//Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
-				if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")) && ($tamano < 2000000))) {
+				if (!((strpos($imgTipo, "gif") || strpos($imgTipo, "jpeg") || strpos($imgTipo, "jpg") || strpos($imgTipo, "png")) && ($tamano < 2000000))) {
 					
 					$alerta = "<script> Swal.fire({
 						title: 'Error!',
@@ -66,9 +66,9 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 				else {
 					//Si la imagen es correcta en tamaño y tipo
 					//Se intenta subir al servidor
-					if (move_uploaded_file($temp, 'pagina/userfiles/img/'.$_ruta)) {
+					if (move_uploaded_file($temp, '../userfiles/img/'.$_ruta)) {
 						//Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
-						chmod('pagina/userfiles/img/'.$_ruta, 0777);
+						chmod('../userfiles/img/'.$_ruta, 0777);
 						//Mostramos el mensaje de que se ha subido con éxito
 						//echo '<div><b>Se ha subido correctamente la imagen.</b></div>';
 						//Mostramos la imagen subida
@@ -85,10 +85,10 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 					}
 				}
 
-				if($_POST['txtcons']  != null)
+				if($_cons != null)
 				{
 					//Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
-					if (!((strpos($tipoCons, "jpeg") || strpos($tipoCons, "jpg") || strpos($tipoCons, "png")) && ($tamanoCons < 20000000))) {
+					if (!((strpos($conTipo, "jpeg") || strpos($conTipo, "jpg") || strpos($conTipo, "png") || strpos($conTipo, "pdf")) && ($tamanoCons < 20000000))) {
 						
 						$alerta = "<script> Swal.fire({
 							title: 'Error!',
@@ -99,9 +99,9 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 					else {
 						//Si la imagen es correcta en tamaño y tipo
 						//Se intenta subir al servidor
-						if (move_uploaded_file($tempCons, 'pagina/userfiles/pdf/'.$_cons)) {
+						if (move_uploaded_file($tempCons, '../userfiles/pdf/'.$_cons)) {
 							//Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
-							chmod('pagina/userfiles/pdf/'.$_cons, 0777);
+							chmod('../userfiles/pdf/'.$_cons, 0777);
 							//Mostramos el mensaje de que se ha subido con éxito
 							//echo '<div><b>Se ha subido correctamente la imagen.</b></div>';
 							//Mostramos la imagen subida
