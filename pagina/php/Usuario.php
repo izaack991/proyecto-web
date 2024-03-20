@@ -27,6 +27,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 		{
 			echo "errorConstancia";
 		} else {
+			$f_id_usuario = $_findUser -> consec_usuario();
 			$_nombre = $_POST['txt_NOMBRE'];
 			$_apellido = $_POST['txt_APELLIDOS'];
 			$_correo = $_POST['txt_CORREO'];
@@ -41,14 +42,18 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 			$_status = 0;
 			
 			//Obtenemos algunos datos necesarios sobre el archivo de la imagen
-			$imgName = $_FILES['txtruta']['name'];
 			$imgTipo = $_FILES['txtruta']['type'];
+			$arrayImgExt = explode('/', $imgTipo);
+			$imgExt = $arrayImgExt[1];
+			$imgName = 'pfp_'.$f_id_usuario.'.'.$imgExt;
 			$tamano = $_FILES['txtruta']['size'];
 			$temp = $_FILES['txtruta']['tmp_name'];
 
 			//Obtenemos algunos datos necesarios sobre el archivo de la constancia
-			$conName = $_FILES['txtcons']['name'];
 			$conTipo = $_FILES['txtcons']['type'];
+			$arrayConExt = explode('/', $conTipo);
+			$conExt = $arrayConExt[1];
+			$conName = 'csf_'.$f_id_usuario.'.'.$conExt;
 			$tamanoCons = $_FILES['txtcons']['size'];
 			$tempCons = $_FILES['txtcons']['tmp_name'];
 
@@ -66,9 +71,9 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 				else {
 					//Si la imagen es correcta en tamaño y tipo
 					//Se intenta subir al servidor
-					if (move_uploaded_file($temp, '../userfiles/img/'.$_ruta)) {
+					if (move_uploaded_file($temp, '../userfiles/img/'.$imgName)) {
 						//Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
-						chmod('../userfiles/img/'.$_ruta, 0777);
+						chmod('../userfiles/img/'.$imgName, 0777);
 						//Mostramos el mensaje de que se ha subido con éxito
 						//echo '<div><b>Se ha subido correctamente la imagen.</b></div>';
 						//Mostramos la imagen subida
@@ -99,9 +104,9 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 					else {
 						//Si la imagen es correcta en tamaño y tipo
 						//Se intenta subir al servidor
-						if (move_uploaded_file($tempCons, '../userfiles/pdf/'.$_cons)) {
+						if (move_uploaded_file($tempCons, '../userfiles/pdf/'.$conName)) {
 							//Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
-							chmod('../userfiles/pdf/'.$_cons, 0777);
+							chmod('../userfiles/pdf/'.$conName, 0777);
 							//Mostramos el mensaje de que se ha subido con éxito
 							//echo '<div><b>Se ha subido correctamente la imagen.</b></div>';
 							//Mostramos la imagen subida
@@ -118,7 +123,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 						}
 					}
 				
-				$f_id_usuario = $_findUser -> consec_usuario();
+				//$f_id_usuario = $_findUser -> consec_usuario();
 				$newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol, $_status, $_ruta, $_cons, $_razon);
 				
 			}
