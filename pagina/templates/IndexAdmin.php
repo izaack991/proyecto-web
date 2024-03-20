@@ -11,6 +11,7 @@
     <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/indexAdmin.js"></script>
   <script>  
       // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
     var tiempoInactividad = 5 * 60 * 1000; 
@@ -41,8 +42,55 @@
   <body>
 
     <!--Barra de navegacion para Empresa-->
-    <?php include("navbar_empresa.php") ?>
-    
+    <?php include("navbar_admin.php") ?>
+    <div class="d-flex justify-content-center align-items-center" style="margin-top: 5rem;">
+  <div class="card shadow w-75">
+    <div class="card-header bg-primary text-center">
+        <h1 class="text-white"><b>CONTADORES</b></h1>
+    </div>
+    <div class="card-body">
+      <div class="row mt-3 mb-4 justify-content-center">
+        <div class="col" style="margin-left:0.8rem;">
+          <div class="card rounded shadow">
+            <div class="row g-0">
+              <div class="col-md-4 bg-primary rounded d-flex justify-content-center align-items-center">
+                <span class="fa-lg text-white">
+                  <i class="fas fa-users" style="font-size:8rem;"></i>
+                </span>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">USUARIOS REGISTRADOS</h5>
+                  <h1 id="cont_usuario" style="font-size:4rem;">0</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card rounded shadow">
+            <div class="row g-0">
+              <div class="col-md-4 bg-primary rounded d-flex justify-content-center align-items-center">
+                <span class="fa-lg text-white">
+                  <i class="fas fa-city" style="font-size:7rem;"></i>
+                </span>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">EMPRESAS REGISTRADAS</h5>
+                  <h1 id="cont_empresa" style="font-size:4rem;">0</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
     <!--Conexion de librerias de JavaScript y bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

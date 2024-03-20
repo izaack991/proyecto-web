@@ -1,23 +1,17 @@
 <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
-<script src="../js/notificacion_empresa.js"></script>
+<script src="../js/notificacion_admin.js"></script>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="indexEmpresa.php">Inicio</a>
+        <a class="navbar-brand" href="indexAdmin.php">Inicio</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarColor03">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="vacantes.php">Vacantes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="postulacion.php">Postulaciones</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="Suscripciones.php">Suscripciones</a>
+              <a class="nav-link active" href="activacion.php">Activación</a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
@@ -42,7 +36,7 @@
                   </div>
                   <div class="modal-body">
                     <div id="sinnot"></div>
-                    <a class="link-primary" id="notpos" href="postulacion.php">No tiene postulaciones pendientes</a>
+                    <a class="link-primary" id="notpos" href="activacion.php">No tiene activaciones pendientes</a>
                   </div>
                 </div>
               </div>

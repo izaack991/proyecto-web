@@ -627,5 +627,25 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+            public function actualizar_status_empresa($index)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_usuario SET status=1 WHERE id_usuario =$index";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
     }
 ?>

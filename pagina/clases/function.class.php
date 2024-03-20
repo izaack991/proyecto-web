@@ -377,6 +377,26 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
+            function buscarEmpresa()
+            {
+                try
+                {
+                    $sql = "SELECT id_usuario,CONCAT(nombre,' ',apellido) AS nombreEmpresa, correo, telefono, razon_social FROM tbl_usuario WHERE status = 0 AND rol = 1;";
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;    
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error: !" . $e->getMessage();
+                }
+                return $data;
+            }
 
             function buscarNota()
             {
@@ -685,6 +705,87 @@ require_once('conexion.class.php');
                     $sql = "SELECT a.id_postulacion FROM tbl_postulacion AS a INNER JOIN tbl_vacantes AS b ON a.id_vacante = b.id_vacante WHERE b.id_empresa = :DU_ID AND a.status = 1;";
                     $query = $this->dbh->prepare($sql);
                     $query->bindParam(":DU_ID",$iusuario);
+                    $query->execute();
+                    //$this->dbh = null;
+                    $numeroDeFilas = $query->rowCount();
+                    //si existe el usuario
+                    $data = array();
+                    if($numeroDeFilas >= 1)
+                    {
+                        $data = $numeroDeFilas;
+                    }
+                    else {
+                        $data = 0;
+                    } 
+                }
+                catch(PDOException $e)
+                {
+
+                    print "Error!: " . $e->getMessage();
+
+                }  
+                return $data;
+            }
+            function notificacionempresa()
+            {
+                try
+                {
+                    $sql = "SELECT id_usuario FROM tbl_usuario WHERE status = 0 AND rol = 1;";
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    //$this->dbh = null;
+                    $numeroDeFilas = $query->rowCount();
+                    //si existe el usuario
+                    $data = array();
+                    if($numeroDeFilas >= 1)
+                    {
+                        $data = $numeroDeFilas;
+                    }
+                    else {
+                        $data = 0;
+                    } 
+                }
+                catch(PDOException $e)
+                {
+
+                    print "Error!: " . $e->getMessage();
+
+                }  
+                return $data;
+            }
+            function total_usuarios()
+            {
+                try
+                {
+                    $sql = "SELECT id_usuario FROM `tbl_usuario` WHERE rol = 2;";
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    //$this->dbh = null;
+                    $numeroDeFilas = $query->rowCount();
+                    //si existe el usuario
+                    $data = array();
+                    if($numeroDeFilas >= 1)
+                    {
+                        $data = $numeroDeFilas;
+                    }
+                    else {
+                        $data = 0;
+                    } 
+                }
+                catch(PDOException $e)
+                {
+
+                    print "Error!: " . $e->getMessage();
+
+                }  
+                return $data;
+            }
+            function total_empresas()
+            {
+                try
+                {
+                    $sql = "SELECT id_usuario FROM `tbl_usuario` WHERE rol = 1;";
+                    $query = $this->dbh->prepare($sql);
                     $query->execute();
                     //$this->dbh = null;
                     $numeroDeFilas = $query->rowCount();
