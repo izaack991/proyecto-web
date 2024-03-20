@@ -23,6 +23,9 @@
       <a href="login.php?xd=2">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Soy Usuario</button>
       </a>
+      <a href="login.php?xd=3">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Soy Administrador</button>
+      </a>
     </center>
   </nav>
 
