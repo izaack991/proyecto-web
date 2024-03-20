@@ -18,7 +18,7 @@
                         if (response == "true1") {
                             Swal.fire({
                                 title: 'Listo!',
-                                text: 'Usuario Guardado',
+                                text: 'Empresa Guardada',
                                 icon: 'success'
                             }).then(function() {
                                 window.location.href = "../templates/login.php?xd=1";
