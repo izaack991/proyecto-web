@@ -42,13 +42,13 @@
     </script>
   </head>
 
-  <body>
+  <body style="background-color: #F8F6F3;">
 
-  <?php include("navbar_usuario.php") ?>
-    <!-- {*Barra de navegacion para Usuarios*} 
-  
+ 
+    <!-- {*Barra de navegacion para Usuarios*} -->
+   <?php include("navbar_usuario.php") ?>
 
-     <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true"
+     <!-- <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true"
       style="max-width: 20rem; margin:auto; margin-top:30px;">
       <div class="toast-header">
         <strong class="me-auto">Pagina Principal</strong>
@@ -59,42 +59,60 @@
       <div class="toast-body">
         Bienvenido!
       </div>
-    </div> -->
+    </div>  -->
+<br>
+<div style="display: flex; align-items: center; padding: 20px;">
+    <img src="../../assets/images/index_usuario/TRABAJANDO.png" alt="Imagen" style="width: 300px; height: auto; margin-right: 20px;">
+    <div>
+        <h2 style="margin-bottom: 10px;">Descubre oportunidades profesionales excepcionales al asociarte con algunas de las empresas más destacadas</h2>
+        <p style="text-align: justify;">Explora una amplia gama de oportunidades laborales adaptadas a tus habilidades y preferencias con Workele. Nuestro proceso de búsqueda de trabajo es eficiente y personalizado, diseñado para maximizar tus posibilidades de éxito. ¡Descubre un mundo de emocionantes oportunidades laborales con nosotros!</p>
+    </div>
+</div>
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner text-center">
-    <div class="carousel-item active">
-      <img src="../../assets/images/index_usuario/DECORACION-CHIC.png" class="img-fluid" alt="Slide 1">
-      </div>
+<br>
+
+<!-- <h3 style="text-align: center;">Trabajamos con las empresas más destacadas, ofreciéndote la oportunidad de encontrar las mejores vacantes disponibles</h3> -->
+
+
+<div class="card border-0 rounded-0" style="background-color: #000000;">
+    <div id="carouselExample" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="../../assets/images/index_usuario/DECORACION-CHIC.jpeg" class="d-block w-100" alt="Slide 1" style="max-width: 300px; margin-left: 20px;">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="../../assets/images/index_usuario/ARTICS-SOLUCIONES.jpeg" class="d-block w-100" alt="Slide 2" style="max-width: 300px; margin-left: 100px;">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="../../assets/images/index_usuario/ENSIGNA.jpeg" class="d-block w-100" alt="Slide 3" style="max-width: 300px; margin-left: 137px;">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="../../assets/images/index_usuario/SEBASTIAN BENNETT.jpeg" class="d-block w-100" alt="Slide 4" style="max-width: 300px; margin-left: 20px;">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="../../assets/images/index_usuario/BRAIS-PERNAS.jpeg" class="d-block w-100" alt="Slide 5" style="max-width: 300px; margin-left: 100px;">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="../../assets/images/index_usuario/ARCHIS.jpeg" class="d-block w-100" alt="Slide 6" style="max-width: 300px; margin-left: 137px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a> -->
     </div>
-    <div class="carousel-item">
-    <img src="../../assets/images/index_usuario/ARTICS-SOLUCIONES.png" class="d-block w-100" alt="Slide 1">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-    <img src="../../assets/images/index_usuario/ENSIGNA.png" class="d-block w-100" alt="Slide 1">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
-      </div>
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
 </div>
 
     <!-- {*Conexion de librerias de JavaScript y bootstrap*}      -->
@@ -107,4 +125,6 @@
 
   </body>
 
+<!-- {*Footer*} -->
+<?php include("footer.php") ?>
 </html>
