@@ -86,6 +86,10 @@ if ($_SESSION['cuenta']) {
                     <label for="formFile" class="form-label mt-4">Seleccionar Imagen de Perfil: *</label>
                     <input class="form-control" type="file" name="txtruta" id="txtruta"><br>
 
+                    <label for="formFile" class="form-label">Seleccionar archivo de constancia de situacion fiscal: *</label><br>
+                    <label for="formFile" class="form-label">JPG y PDF</label>
+                    <input class="form-control" type="file" name="txtcons" id="txtcons"><br>
+
                     <label>Correo Electronico: *</label><br>
                     <input class="form-control" type="email" name="txt_CORREO" class="texto" id="correo"
                         placeholder="Ejemplo@dominio.com" pattern=".+.com" required value="<?php if ($correo != "") {

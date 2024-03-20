@@ -35,7 +35,7 @@
                             Swal.fire('¡Las Contraseñas NO coinciden!');
                         } else if (response == "errorImagenEmpresa") {
                             Swal.fire('¡No subió la Imagen de la Empresa!');
-                        } else if (response == "ErrorImagen") {
+                        } else if (response == "errorImagen") {
                             Swal.fire({
                                 title: 'Error!',
                                 text: 'La extensión o el tamaño de los archivos no es correcta. Solo se permite: .gif, .jpg, .png. y de 200 kb como máximo.',
@@ -44,6 +44,21 @@
                             Swal.fire({
                                 title: 'Error!',
                                 text: 'No se pudo subir la imagen al sevidor.',
+                                icon: 'error'});
+                        } else if (response == "errorConstancia") {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: '¡No subió la Constancia de la Empresa!',
+                                icon: 'error'});
+                        } else if (response == "errorConstanciaTipoTamaño") {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'La extensión o el tamaño de los archivos no es correcta. Solo se permite: .jpg, .png, .pdf y de 200 MB como máximo.',
+                                icon: 'error'});
+                        } else if (response == "errorConsServer") {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'No se pudo subir la constancia al sevidor.',
                                 icon: 'error'});
                         } else {
                             Swal.fire({
