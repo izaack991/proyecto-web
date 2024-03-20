@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarColor03">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="activacion.php">Activación</a>
+              <a class="nav-link active" href="activacion.php">Verificación de Empresa</a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">

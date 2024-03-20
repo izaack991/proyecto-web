@@ -95,14 +95,14 @@
             <!-- {*Datos del usuario*} -->
             
               <div class="col">
-                <h4 class="titulo"><b>USUARIO</b></h4>
+                <h4 class="text-white bg-dark py-2"><b>USUARIO</b></h4>
                 <div id="tabla_usuario">
                 </div>
               </div>
 
             <!-- {*Datos de la vacante*} -->
               <div class="col">
-                  <h4 class="titulo"><b>VACANTE</b></h4>
+                  <h4 class="text-white bg-dark py-2"><b>VACANTE</b></h4>
                   <div id="tabla_vacante">
                   </div>
               </div>
@@ -111,14 +111,14 @@
 
           <!-- {*Datos de la experiencia laboral del usuario*} -->
           <div class="pregresp shadow mt-4">
-            <h4 class="titulo"><b>EXPERIENCIA LABORAL</b></h4>
+            <h4 class="text-white bg-dark py-2"><b>EXPERIENCIA LABORAL</b></h4>
             <div id="tabla_exp">
               
             </div><br>
           </div>
           
           <div class="pregresp shadow mt-4">
-            <h4 class="titulo"><b>FORMACIÓN ACADÉMICA</b></h4>
+            <h4 class="text-white bg-dark py-2"><b>FORMACIÓN ACADÉMICA</b></h4>
             <div id='tabla_formacion'>
               
             </div><br>
@@ -126,7 +126,7 @@
           
           <!-- {*Datos de las aficiones del usuario*} -->
           <div class="pregresp shadow mt-4">
-            <h4 class="titulo"><b>AFICIONES</b></h4>
+            <h4 class="text-white bg-dark py-2"><b>AFICIONES</b></h4>
             <div class="row align-items-center">
               <div class="col">
                 <div id="tabla_aficion">
@@ -137,7 +137,7 @@
           
           <!-- {*Datos de los intereses del usuario*} -->
           <div class="pregresp shadow mt-4">
-            <h4 class="titulo"><b>INTERESES</b></h4>
+            <h4 class="text-white bg-dark py-2"><b>INTERESES</b></h4>
             <div class="row align-items-center">
               <div class="col">
                 <div id="tabla_interes">
@@ -165,8 +165,8 @@
                 dataType: "json",
                 success: function(data) {
                   //Mostrar datos del Usuario y la Vacante
-                  tabla_usuario = "<table class='table table-hover mt-4'><thead class='bg-dark text-white'><tr><th class='text-center'>Nombre</th></thead></tr>"
-                  tabla_vacante = "<table class='table table-hover mt-4'><thead class='bg-dark text-white'><tr><th class='text-center'>Puesto</th></thead></tr>"
+                  tabla_usuario = "<table class='table table-hover mt-1'><thead class='text-primary'><tr><th class='text-center border-0' style='font-size:1.2rem;'>Nombre</th></thead></tr>"
+                  tabla_vacante = "<table class='table table-hover mt-1'><thead class='text-primary'><tr><th class='text-center border-0' style='font-size:1.2rem;'>Puesto</th></thead></tr>"
                   $.each(data.postulaciones, function(index, postulaciones) {
                     tabla_usuario += `<tbody class='text-center'>
                                         <tr>
@@ -188,7 +188,7 @@
                   $("#btn_enviartest").html(btn_enviartest);
 
                   //Mostrar datos de la Experiencia Laboral
-                  tabla_exp = "<table class='table table-hover mt-4'><thead class='bg-dark text-white'><tr><th class='text-center'>Descripción</th><th class='text-center'>Empresa</th><th class='text-center'>Periodo</th></thead></tr>"
+                  tabla_exp = "<table class='table table-hover mt-1'><thead class='text-primary'><tr><th class='text-center border-0'style='font-size:1.2rem;'>Descripción</th><th class='text-center border-0' style='font-size:1.2rem;'>Empresa</th><th class='text-center border-0' style='font-size:1.2rem;'>Periodo</th></thead></tr>"
                   $.each(data.experiencia, function(index, experiencia) {
                     tabla_exp += `<tbody class='text-center'>
                                       <tr>
@@ -202,7 +202,7 @@
                   $("#tabla_exp").html(tabla_exp);
 
                   //Mostrar datos de la Formacion Academica
-                  tabla_formacion = "<table class='table table-hover mt-4'><thead class='bg-dark text-white'><tr><th class='text-center'>Descripción</th><th class='text-center'>Ubicación</th><th class='text-center'>Periodo</th></thead></tr>"
+                  tabla_formacion = "<table class='table table-hover mt-1'><thead class='text-primary'><tr><th class='text-center border-0' style='font-size:1.2rem;'>Descripción</th><th class='text-center border-0' style='font-size:1.2rem;'>Ubicación</th><th class='text-center border-0' style='font-size:1.2rem;'>Periodo</th></thead></tr>"
                   $.each(data.formacion, function(index, formacion) {
                     tabla_formacion += `<tbody class='text-center'>
                                             <tr>
@@ -216,7 +216,7 @@
                   $("#tabla_formacion").html(tabla_formacion);
 
                   //Mostrar datos de las Aficiones
-                  tabla_aficion = "<table class='table table-hover mt-4'><thead class='bg-dark text-white'><tr><th class='text-center'>Descripción</th></thead></tr>"
+                  tabla_aficion = "<table class='table table-hover mt-1'><thead class='text-primary'><tr><th class='text-center border-0' style='font-size:1.2rem;'>Descripción</th></thead></tr>"
                   $.each(data.aficion, function(index, aficion) {
                     tabla_aficion += `<tbody class='text-center'>
                                             <tr>
@@ -228,7 +228,7 @@
                   $("#tabla_aficion").html(tabla_aficion);
 
                   //Mostrar datos de los Intereses
-                  tabla_interes = "<table class='table table-hover mt-4'><thead class='bg-dark text-white'><tr><th class='text-center'>Descripción</th></thead></tr>"
+                  tabla_interes = "<table class='table table-hover mt-1'><thead class='text-primary'><tr><th class='text-center border-0' style='font-size:1.2rem;'>Descripción</th></thead></tr>"
                   $.each(data.interes, function(index, interes) {
                     tabla_interes += `<tbody class='text-center'>
                                             <tr>

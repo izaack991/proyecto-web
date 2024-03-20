@@ -58,7 +58,7 @@
 
     <!-- Card de potulaciones -->
     <div class="card border-light mb-3 shadow-lg  mb-5 bg-body rounded" style="max-width: 80rem; margin:auto; margin-top:30px;">
-      <div class="card-header text-center bg-primary"><h2 class="card-title text-white mb-0"> <span> ACTIVACIONES </span> </h4></div>
+      <div class="card-header text-center bg-primary"><h2 class="card-title text-white mb-0"> <span> VERIFICACIÓN DE EMPRESA </span> </h4></div>
       <div class="card-body">
         <!-- Tabla de postulaciones -->
         <div id="tablaEmpresa"></div>
