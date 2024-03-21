@@ -8,6 +8,7 @@
     <title>Experiencia Laboral</title>
     <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
+    <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
@@ -15,7 +16,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
     <script src="../js/notificacion_usuario.js"></script>
 
-    <script>
+    <script>  
         // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
         var tiempoInactividad = 5 * 60 * 1000; 
 
@@ -42,9 +43,8 @@
         document.addEventListener("mousemove", reiniciarTemporizador);
         document.addEventListener("keypress", reiniciarTemporizador);
       </script>
-   
     </head> 
-  <body>
+  <body style="background-color: #F8F6F3;">
     
     <!-- {*Conexion a librerias de JavasScript para la ubicacion y bootstrap*} -->
     <script src="../js/ubicacion.js"></script>
@@ -56,25 +56,35 @@
     <!-- {*Formulario de experiencia laboral*} -->
     <form id="formExperienciaLaboral" method="POST">
       <!-- {*Card de experiencia laboral*} -->
-      <div class="card  mb-3" style="max-width: 30rem; margin:auto; margin-top:30px;">
+      <div class="card mb-3 shadow" style="max-width: 30rem; margin:auto; margin-top:30px; border-radius:25px;">
+        <div class="card-header text-center bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
+          <h4 class="text-white">DATOS DE EXPERIENCIA LABORAL</h4>
+        </div>
         <div class="card-body">
-          <h4 class="card-title" style="margin-left:60px;">Datos de Experiencia Laboral</h4>
-          <label>Los campos marcados con asterisco (*) son obligatorios</label> <br>
-          
+          <label class="text-primary">Los campos marcados con asterisco (*) son obligatorios</label><br>
           <!-- {*Campos para los datos de aficiones*} -->
-          <label class="col-form-label mt-4" for="name"> Descripcion de Puesto *</label> <br>
-          <input class="form-control" type="text" name="txtdescripcion" placeholder="Ingrese el puesto en el que trabajó en la empresa" maxLength="100" required="true" pattern="[A-Z a-z]+" title= "Favor de ingresar solamente palabras al momento de describir su puesto de trabajo, NO se aceptan numeros ni caracteres especiales."> <br>
-          <label for="name" class="form__label"> Empresa *</label> <br>
-          <input class="form-control" type="text" name="txtempresa" placeholder="Ingrese el nombre de la empresa en que trabajó" maxLength="100"  required="true"> <br>
-          <label for="name" class="form__label"> Periodo *</label> <br>
-          <input class="form-control" type="text" name="txtperiodo" placeholder="Ingresa el tiempo que trabajó en la empresa" maxLength="20"  required="true"> <br>
+            
+          <div class="form-floating mb-3 mt-4">
+            <input class="form-control" id="txtdescripcion" type="text" name="txtdescripcion" placeholder="Descripcion de Puesto" maxLength="100" required="true" pattern="[A-Z a-z]+" title= "Favor de ingresar solamente palabras al momento de describir su puesto de trabajo, NO se aceptan numeros ni caracteres especiales.">
+            <label for="floatingInput">Descripcion de Puesto *</label>
+          </div>
+          <div class="form-floating mb-3 mt-4">
+            <input class="form-control" type="text" name="txtempresa" placeholder="Empresa" maxLength="100"  required="true">
+            <label for="floatingInput">Empresa *</label>
+          </div>
+          <div class="form-floating mb-3 mt-4">
+            <input class="form-control" type="text" name="txtperiodo" placeholder="Periodo" maxLength="20"  required="true">
+            <label for="floatingInput">Periodo *</label>
+          </div>
           
           <!-- {*Campos internos para la ubicacion*} -->
           <input name="txtlatitud" id="latitud" type="hidden">
           <input name="txtlongitud" id="longitud" type="hidden">
           
           <!-- {*Boton para guardar experiencia laboral*} -->
-          <input class="btn btn-primary" style="margin-left:180px;" type="submit" value="Guardar">
+          <div class="container text-center mt-4">
+            <input class="btn btn-primary w-50" type="submit" value="Guardar">
+          </div>
         </div>
       </div>
 

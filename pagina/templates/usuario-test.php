@@ -13,7 +13,7 @@ include('../php/Usuario-Test.php');
         <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
         <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
 
-    <body>
+    <body style="background-color: #F8F6F3;">
 
         <!-- {*Barra de navegacion para Usuarios*} -->
         <?php include("navbar_usuario.php") ?>
