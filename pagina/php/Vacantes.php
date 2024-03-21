@@ -1,4 +1,6 @@
 <?php
+// Comentar la linea de abajo si desea mostrar los errores
+error_reporting(0);
 session_start();
 // Verificar si la sesión está iniciada y establecer el tiempo de vida de la sesión
 if (isset($_SESSION['tiempo'])) {
@@ -33,7 +35,7 @@ if (isset($_POST['dateFin'])) {
     // Guardar datos de la vacante
     $f_id_vacantes = $_findUser->consec_vacantes();
     $newVacante = $nuevoUsuario->Guardar_id_vacantes($f_id_vacantes, $_idusuario, $_puesto, $_empresa, $_sueldo, $_lugar, $_datos, $_fechainicio, $_fechafin,$_region,$_ciudad);
-
+    
     // Guardar log de usuario
     date_default_timezone_set('America/Mexico_City');
     $_movimiento = 'Vacantes(Guardar)';
@@ -43,17 +45,20 @@ if (isset($_POST['dateFin'])) {
     $_longitud = $_POST['txtlongitud']; 
     $_ubicacion = 'Latitud: '.$_latitud.' Longitud: '.$_longitud;
     $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
-
-    $_fecha = date('Y-m-d H:i:s');
-    $_hora = $vida_session; // Considera si este es el valor correcto para $_hora
-    $_latitud = $_POST['txtlatitud'];
-    $_longitud = $_POST['txtlongitud'];
-    $_ubicacion = 'Latitud: ' . $_latitud . ' Longitud: ' . $_longitud;
-    $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario, $_ubicacion, $_movimiento, $_fecha, $_hora);
+    
+    // Envio de la alerta de guardado
     if ($newVacante == true) {
         echo "true";
+        return "1";
     }
+    // $_fecha = date('Y-m-d H:m:s');
+    // $_hora = $vida_session;
+    // $_latitud = $_POST['txtlatitud'];
+    // $_longitud = $_POST['txtlongitud'];
+    // $_ubicacion = 'Latitud: ' . $_latitud . ' Longitud: ' . $_longitud;
+    // $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario, $_ubicacion, $_movimiento, $_fecha, $_hora);
 }
 echo json_encode($_pais);
 ?>
 
+	

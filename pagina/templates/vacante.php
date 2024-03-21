@@ -145,8 +145,8 @@
           <input name="txtlongitud" id="longitud" type="hidden">
 
           <!-- {*Boton de guardar vacante*} -->
-          <input class="btn btn-primary" style="margin-left:224px;" type="submit" onclick="openAlertGuardar()" value="Guardar">
-          <script>     
+          <input class="btn btn-primary" style="margin-left:224px;" type="submit" value="Guardar">
+          <!-- <script>     
                         function openAlertGuardar() {
                           Swal.fire({
                             title: 'Listo!',
@@ -156,7 +156,7 @@
                             window.location.href = "../templates/vacante.php";
                         });
                           }
-          </script>
+          </script> -->
         </div>
       </div>
   </form>

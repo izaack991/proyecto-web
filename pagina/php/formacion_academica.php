@@ -1,4 +1,6 @@
 <?php
+// Comentar la linea de abajo si desea mostrar los errores
+error_reporting(0);
 session_start();
 $alerta = '';
 if(isset($_SESSION['tiempo']) ) {
