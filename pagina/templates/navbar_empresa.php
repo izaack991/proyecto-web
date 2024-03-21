@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarColor03">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="vacantes.php">Vacantes</a>
+              <a class="nav-link active" href="vacante.php">Vacantes</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="postulacion.php">Postulaciones</a>

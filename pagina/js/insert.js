@@ -122,9 +122,9 @@
 // Metodo AJAX para el guardado de Vacantes
 {
     $(document).ready(function () {
-        $('#formVacantes').submit(function (event) {
+        $('#formVacante').submit(function (event) {
             event.preventDefault();
-            var formData = new FormData($('#formVacantes')[0]);
+            var formData = new FormData($('#formVacante')[0]);
             //var formData = $(this).serialize();
             $.ajax({
                 url: '../php/Vacantes.php',
@@ -141,7 +141,7 @@
                             text: 'Elemento Guardado',
                             icon: 'success'
                         }).then(function () {
-                            window.location.href = "../templates/vacantes.php";
+                            window.location.href = "../templates/vacante.php";
                         });
                     }
                 },
