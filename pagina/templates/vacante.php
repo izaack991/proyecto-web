@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="../js/notificacion_usuario.js"></script>
+  <script src="../js/notificacion_empresa.js"></script>
   <script>
     // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
     var tiempoInactividad = 5 * 60 * 1000;
