@@ -22,13 +22,13 @@ if ($_GET['xd'] == 2) {
     $_SESSION['rol'] = 2;
 }
 if ($_GET['xd'] == 1) {
-    $sesionLabel = "Empresa";
+    $sesionLabel = "EMPRESA";
 } elseif ($_GET['xd'] == 2) {
-    $sesionLabel = "Usuario";
+    $sesionLabel = "USUARIO";
 } elseif ($_GET['xd'] == 3) {
-    $sesionLabel = "Administrador";
+    $sesionLabel = "ADMINISTRADOR";
 } else {
-    $sesionLabel = "Nadie";
+    $sesionLabel = "NADIE";
 }
 ?>
 <!DOCTYPE html>
@@ -41,13 +41,14 @@ if ($_GET['xd'] == 1) {
 <title>Log in</title>
 <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
 <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
+<link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body>
+<body >
 
 <!-- Formuario de Login -->
 <!-- <form id="login-form" method="post"> -->
@@ -55,39 +56,42 @@ if ($_GET['xd'] == 1) {
 
     <!-- Mensaje para los errores al ingresar -->
     <script> <?php echo $Alerta ?> </script> 
-    <div style="margin-top: 1em; height: 100%; display: flex; justify-content: center; align-items: center;">
+    <div class="row justify-content-center mt-4" >
         <img src="../../assets/images/Workele1.jpg" class="d-block user-select-none" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem; max-width: 100%; height: auto;" />
     </div>
 
 
-    <div style="margin-top: 2em; margin-left: 35%; ">
+    <div class="d-flex justify-content-center mt-5">
         <!-- Card del login -->
-        <div class="card border-secondary mb-3" style="max-width: 25rem;">
-            <FONT COLOR="black"><div class="card-header bg-primary" style="font-weight: bold;" align="center">Inicio de sesion de <?php echo $sesionLabel; ?></div></FONT>
+        <div class="card border-gray shadow mb-3" style="width: 25rem;border-radius:15px;">
+            <FONT COLOR="black"><div class="card-header bg-primary text-white border-gray" style="font-weight: bold;font-size:1.5rem;border-top-left-radius:15px;border-top-right-radius:15px;" align="center">INICIO DE SESIÓN DE <?php echo $sesionLabel; ?></div></FONT>
             <div class="card-body">
 
                 <!-- Campos para los datos del login -->
-                <br>
-                <label for="Correo" class="form__label"><strong>Correo</strong></label> <br>
-                <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Ingresa tu correo electronico">
-                <br>
-                <label for="Contraseña" class="form__label"><strong>Contraseña</strong></label> <br>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa contraseña">
-                <br><br>
+                <div class="form-floating mb-3 mt-4">
+                    <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Ingresa tu correo electronico">
+                    <label for="floatingInput">Ingresa tu correo electrónico</label>
+                </div>
+                <div class="form-floating mb-3 mt-4">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa tu contraseña">
+                    <label for="floatingInput">Ingresa tu contraseña</label>
+                </div>
 
-                <center>
-                    <!-- Boton para iniciar sesion --> 
-                    <button id="login" class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Iniciar sesion</button>
+                <div class="row text-center mt-5">
+                    <div class="col">
+                        <!-- Boton para iniciar sesion --> 
+                        <button id="login" class="btn btn-primary w-100" type="submit">Iniciar sesion</button>
+                    </div>
 
-                    <!-- Boton para registrarse -->
-                    <A HREF="<?php echo $regRol ?>" class="btn btn-light" type="submit" style="padding-bottom: 10mm;">Registrarse</A>
+                    <div class="col">
+                        <!-- Boton para registrarse -->
+                        <a href="<?php echo $regRol ?>" class="btn btn-info w-100" style="padding-top:9px;" type="submit">Registrarse</a>
+                    </div>
+                </div>    
 
-                </center>
+
             </div>
         </div>
-
-        <!-- Boton para volver al indexPrincipal -->
-        <a href="https://workele.com/"><button class="btn btn-light" type="button">Inicio</button></a>
 
 
     </div>
