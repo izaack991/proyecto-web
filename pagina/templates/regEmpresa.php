@@ -8,7 +8,7 @@ if ($_SESSION['cuenta']) {
     $correo = $_SESSION['cuenta'];
 }
 
-//print_r($_SESSION);
+print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>

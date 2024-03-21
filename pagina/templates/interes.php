@@ -9,6 +9,7 @@
   <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
 
@@ -54,7 +55,7 @@
 
 </head>
 
-<body>
+<body style="background-color: #F8F6F3;">
 
   <!-- {*Conexion a librerias de JavasScript para la ubicacion y bootstrap*} -->
   <script src="../js/ubicacion.js"></script>
@@ -69,23 +70,29 @@
   <form id="formInteres" method="POST">
 
     <!-- Card de interes -->
-    <div class="card  mb-3" style="max-width: 20rem; margin:auto; margin-top:30px;">
-      <div class="card-body">
-        <h4 class="card-title" style="margin-left:45px;">Datos de Interés</h4>
-        <label>Los campos marcados con asterisco son obligatorios</label> <br>
+    <div class="card shadow mb-3" style="max-width: 30rem; margin:auto; margin-top:30px;border-radius:25px;">
+      <div class="card-header text-center bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
+          <h4 class="text-white">DATOS DE INTERÉS</h4>
+        </div>
+        <div class="card-body">
+          <label class="text-primary">Los campos marcados con asterisco (*) son obligatorios</label><br>
 
         <!-- Campos para los datos de interes -->
-        <label class="col-form-label mt-4" for="name">Descripción: *</label><br>
-        <textarea name="txtdesc" type="text" title="ESTE CAMPO NO ADMITE NÚMEROS NI CARACTERES ESPECIALES"
+        <div class="form-floating mb-3 mt-4">
+          <textarea name="txtdesc" type="text" title="ESTE CAMPO NO ADMITE NÚMEROS NI CARACTERES ESPECIALES"
           class="form-control" maxlength="100" cols="1" rows="10" onkeypress="return validarLetras(event)"
-          required="true" placeholder="Ingrese sus datos de interes"></textarea><br><br>
+          required="true" placeholder="Ingrese sus datos de interes"></textarea>
+          <label for="floatingInput">Descripcion *</label>
+        </div>
 
         <!-- Campos internos para la ubicacion -->
         <input name="txtlatitud" id="latitud" type="hidden">
         <input name="txtlongitud" id="longitud" type="hidden">
 
         <!-- Boton para guardar interes -->
-        <input class="btn btn-primary" style="margin-left:90px;" type="submit" value="Guardar">
+        <div class="container text-center mt-4">
+          <input class="btn btn-primary w-50" type="submit" value="Guardar">
+        </div>
 
       </div>
     </div>

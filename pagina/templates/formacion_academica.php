@@ -9,6 +9,7 @@
     <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
+    <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
 
@@ -45,7 +46,7 @@
   
     </head>
 
-  <body>
+  <body style="background-color: #F8F6F3;">
 
     <!-- {*Conexion al archivo de JavasScript para la ubicacion y bootstrap*} -->
     <script src="../js/ubicacion.js"></script>
@@ -58,26 +59,35 @@
     <!-- {*Formulario de Formacion Academica*} -->
     <form id="formFormacionAcademica" method="POST">
       <!-- {*Card de formacion academica*}                -->
-      <div class="card  mb-3" style="max-width: 30rem; margin:auto; margin-top:30px;">
+      <div class="card shadow mb-3" style="max-width: 30rem; margin:auto; margin-top:30px; border-radius:25px;">
+      <div class="card-header text-center bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
+          <h4 class="text-white">FORMACIÓN ACADÉMICA</h4>
+        </div>
         <div class="card-body">
-          <h4 class="card-title" style="margin-left:90px;">Formación académica</h4>
-          <label>Los campos marcados con asterisco son obligatorios</label> <br>
-
+          <label class="text-primary">Los campos marcados con asterisco (*) son obligatorios</label><br>
+          
           <!-- {*Campos para los datos de formacion academica*} -->
-          <label class="col-form-label mt-4" for="name"> Nombre de la Institución Educativa *</label> <br>
-          <input class="form-control" type="text" name="descripcion" placeholder="Ingrese el nombre de la institución educativa" maxLength="50"  required="true"> <br>
-          <label for="name" class="form__label"> Ubicación *</label> <br>
-          <input class="form-control" type="text" name="ubicacion" placeholder="Ingrese la ubicación de la Institucion educativa" maxLength="100"  required="true"> <br>
-          <label for="name" class="form__label"> Periodo *</label> <br>
-          <input class="form-control" type="text" name="periodo" placeholder="Ingrese el tiempo que estudio en años" maxLength="20"  required="true"> <br>
+          <div class="form-floating mb-3 mt-4">
+          <input class="form-control" type="text" name="descripcion" placeholder="Nombre de la Institución Educativa" maxLength="50"  required="true">
+            <label for="floatingInput">Nombre de la Institución Educativa *</label>
+          </div>
+          <div class="form-floating mb-3 mt-4">
+            <input class="form-control" type="text" name="ubicacion" placeholder="Ubicación" maxLength="100"  required="true">
+            <label for="floatingInput">Ubicación *</label>
+          </div>
+          <div class="form-floating mb-3 mt-4">
+            <input class="form-control" type="text" name="periodo" placeholder="Periodo" maxLength="20"  required="true">
+            <label for="floatingInput">Periodo *</label>
+          </div>
           
           <!-- {*Campos internos para la ubicacion*} -->
           <input name="txtlatitud" id="latitud" type="hidden">
           <input name="txtlongitud" id="longitud" type="hidden">
 
           <!-- {*Boton para guardar la formacion academica*} -->
-          <input class="btn btn-primary" style="margin-left:180px;" type="submit" value="Guardar">
-
+          <div class="container text-center mt-4">
+            <input class="btn btn-primary w-50" type="submit" value="Guardar">
+          </div>
         </div>
       </div>
 
