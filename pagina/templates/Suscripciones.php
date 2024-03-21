@@ -69,6 +69,12 @@
     .titulo {
       color: #20c997;
     }
+
+    .card.selected {
+      border-color: #e50914; /* Cambia el color del borde cuando se selecciona */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Agrega una sombra cuando se selecciona */
+    }
+
   </style>
 
   <body>
@@ -81,31 +87,40 @@
     <!--Barra de navegacion para Empresa-->
     <?php include("navbar_empresa.php") ?>
 
+    <!-- Suscripciones por Postulaciones -->
     <div class="container text-center">
-        <div class="row align-items-start">
+        <div class="row align-items-start" style="Margin-top: 2em;">
             <div class="col">
-                <div class="card border-primary shadow mb-5 bg-body rounded" style="max-width: 80%; margin:auto; margin-top:30px;">
-                    <div class="card-header text-center bg-primary">
-                        
-                    </div>    
-                </div>
+              <div class="card shadow border-primary mb-3" style="max-width: 20rem;"  onclick="toggleSelection(this)">
+                <div class="card-header bg-primary text-white"><strong>BASICA</strong></div>
+                <div class="card-body">
+                  <h4 class="card-title">$1</h4>
+                  <p class="card-text">- Opcion de Realizar 1 postulaciones mensuales</p>
+              </div>
+              </div>
             </div>
             <div class="col">
-                <div class="card border-primary shadow mb-5 bg-body rounded" style="max-width: 80%; margin:auto; margin-top:30px;">
-                    <div class="card-header text-center bg-primary">
-
-                    </div>    
+              <div class="card shadow border-primary mb-3" style="max-width: 20rem;"  onclick="toggleSelection(this)">
+                <div class="card-header bg-primary text-white"><strong>ESTANDAR</strong></div>
+                <div class="card-body">
+                  <h4 class="card-title">$2</h4>
+                  <p class="card-text">- Opcion de Realizar 3 postulaciones mensuales</p>
                 </div>
+              </div>
             </div>
             <div class="col">
-                <div class="card border-primary shadow mb-5 bg-body rounded" style="max-width: 80%; margin:auto; margin-top:30px;">
-                    <div class="card-header text-center bg-primary">
-                        
-                    </div>    
+              <div class="card shadow border-primary mb-3" style="max-width: 20rem;"  onclick="toggleSelection(this)">
+                <div class="card-header bg-primary text-white"><strong>PRO</strong></div>
+                <div class="card-body">
+                  <h4 class="card-title">$3</h4>
+                  <p class="card-text">- Opcion de Realizar postulaciones ilimitadas mensuales</p>
                 </div>
+              </div>
             </div>
         </div>
     </div>
-            
-        </body>
+    <script src="../js/suscripcion.js"></script>
+        
+
+  </body>
 </html>

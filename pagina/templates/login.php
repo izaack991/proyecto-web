@@ -55,8 +55,12 @@ if ($_GET['xd'] == 1) {
 
     <!-- Mensaje para los errores al ingresar -->
     <script> <?php echo $Alerta ?> </script> 
+    <div style="margin-top: 1em; height: 100%; display: flex; justify-content: center; align-items: center;">
+        <img src="../../assets/images/Workele1.jpg" class="d-block user-select-none" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem; max-width: 100%; height: auto;" />
+    </div>
 
-    <div style="margin-top: 150px; margin-left: 35%; ">
+
+    <div style="margin-top: 2em; margin-left: 35%; ">
         <!-- Card del login -->
         <div class="card border-secondary mb-3" style="max-width: 25rem;">
             <FONT COLOR="black"><div class="card-header bg-primary" style="font-weight: bold;" align="center">Inicio de sesion de <?php echo $sesionLabel; ?></div></FONT>
@@ -64,8 +68,10 @@ if ($_GET['xd'] == 1) {
 
                 <!-- Campos para los datos del login -->
                 <br>
+                <label for="Correo" class="form__label"><strong>Correo</strong></label> <br>
                 <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Ingresa tu correo electronico">
                 <br>
+                <label for="Contraseña" class="form__label"><strong>Contraseña</strong></label> <br>
                 <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa contraseña">
                 <br><br>
 
