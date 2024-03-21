@@ -4,35 +4,32 @@
 <script src="../js/notificacion_empresa.js"></script>
 <script src="../js/sesion.js"></script>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="indexEmpresa.php">Inicio</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
-      aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarColor03">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="vacantes.php">Vacantes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="postulacion.php">Postulaciones</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="Suscripciones.php">Suscripciones</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="btn demo-btn-on-bg text-white font-weight-bold mt-2 mt-lg-0" data-toggle="modal"
-            data-target="#exampleModal">
-            <span class="fa-layers fa-fw fa-lg">
-              <i class="fas fa-bell"></i>
-              <span id="contador">
-              </span>
-            </span></a>
-        </li>
-        <li class="nav-link active font-weight-bold" id="nombreUsuario"></li>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="indexEmpresa.php">Inicio</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor03">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="vacante.php">Vacantes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="postulacion.php">Postulaciones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="Suscripciones.php">Suscripciones</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="btn demo-btn-on-bg text-white font-weight-bold mt-2 mt-lg-0" data-toggle="modal"data-target="#exampleModal">
+                <span class="fa-layers fa-fw fa-lg">
+                  <i class="fas fa-bell"></i>
+                  <span id="contador">
+                  </span>
+                </span></a></li>
+            <li class="nav-link active font-weight-bold" id="nombreUsuario"></li>
 
         <!--Creacion de la modal de notificaciones-->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
