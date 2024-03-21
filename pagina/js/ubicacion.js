@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Obtener las coordenadas guardadas en las cookies, si existen
     const latitudGuardada = getCookie("latitud");
     const longitudGuardada = getCookie("longitud");
-	alert(longitudGuardada);
-	alert(latitudGuardada);
+	//alert(longitudGuardada);
+	//alert(latitudGuardada);
     if (latitudGuardada && longitudGuardada) {
         // Si las coordenadas están guardadas en las cookies, usarlas
         $latitud.value = latitudGuardada;
