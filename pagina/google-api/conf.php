@@ -19,10 +19,10 @@ $clientID = '256112751198-j3belorgq0a04q5qeukcblp3n371r7q5.apps.googleuserconten
 $clientSecret = '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';
 
 if ($_GET['xd'] == 1) {
-    $redirectUri = 'http://localhost/proyecto-web/pagina/templates/regEmpresa.php?xd=1';
+    $redirectUri = 'http://workele.com/site/pagina/templates/regEmpresa.php?xd=1';
 }
 if ($_GET['xd'] == 2) {
-    $redirectUri = 'http://localhost/proyecto-web/pagina/templates/regUsuario.php?xd=2';
+    $redirectUri = 'http://workele.com/site/pagina/templates/regUsuario.php?xd=2';
 }
 
 // creacion de la solicitud Client para acceder a Google API 

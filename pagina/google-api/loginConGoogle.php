@@ -42,3 +42,5 @@ require_once 'redirect.php';
 
 $link = $client->createAuthUrl();
 header("Location: $link");
+
+//echo "$link";
