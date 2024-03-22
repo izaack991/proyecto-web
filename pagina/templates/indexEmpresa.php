@@ -44,23 +44,23 @@
     <?php include("navbar_empresa.php") ?>
 
     <br>
-    <div style="display: flex; justify-content: space-around; padding: 20px;">
-    <div style="text-align: center;">
-        <img src="../../assets/images/index_usuario/PUBLICAR.png" alt="Imagen 1" style="width: 200px; height: auto;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-around; padding: 2vw;">
+    <div style="text-align: center; flex: 1 0 25%;">
+        <img src="../../assets/images/index_usuario/PUBLICAR.png" alt="Imagen 1" style="width: 25vw; height: auto;">
         <div>
             <h3>Publica tus vacantes</h3>
             <p>Maximiza la visibilidad de tus oportunidades laborales al publicarlas con nosotros</p>
         </div>
     </div>
-    <div style="text-align: center;">
-        <img src="../../assets/images/index_usuario/REVISAR.png" alt="Imagen 2" style="width: 200px; height: auto;">
+    <div style="text-align: center; flex: 1 0 25%;">
+        <img src="../../assets/images/index_usuario/REVISAR.png" alt="Imagen 2" style="width: 25vw; height: auto;">
         <div>
             <h3>Revisa las postulaciones</h3>
             <p>Explora las postulaciones recibidas y selecciona a los candidatos ideales para tus vacantes</p>
         </div>
     </div>
-    <div style="text-align: center;">
-        <img src="../../assets/images/index_usuario/CONTRATAR.png" alt="Imagen 3" style="width: 200px; height: auto;">
+    <div style="text-align: center; flex: 1 0 25%;">
+        <img src="../../assets/images/index_usuario/CONTRATAR.png" alt="Imagen 3" style="width: 25vw; height: auto;">
         <div>
             <h3>Contrata</h3>
             <p>Descubre talento excepcional para tu empresa. ¡Contrata a los mejores profesionales hoy mismo!</p>
@@ -69,37 +69,39 @@
 </div>
 
 
+
 <br>
 
 <!-- <h3 style="text-align: center;">Trabajamos con las empresas más destacadas, ofreciéndote la oportunidad de encontrar las mejores vacantes disponibles</h3> -->
 
 
+<!-- <h3 style="text-align: center;">Trabajamos con las empresas más destacadas, ofreciéndote la oportunidad de encontrar las mejores vacantes disponibles</h3> -->
 <div class="card border-0 rounded-0" style="background-color: #000000;">
     <div id="carouselExample" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="row">
-                    <div class="col-md-4">
-                        <img src="../../assets/images/index_usuario/DECORACION-CHIC.jpeg" class="d-block w-100" alt="Slide 1" style="max-width: 300px; margin-left: 20px;">
+                    <div class="col-md-4 text-center">
+                        <img src="../../assets/images/index_usuario/DECORACION-CHIC.jpeg" class="d-block w-100 mx-auto" alt="Slide 1" style="max-width: 100%;">
                     </div>
-                    <div class="col-md-4">
-                        <img src="../../assets/images/index_usuario/ARTICS-SOLUCIONES.jpeg" class="d-block w-100" alt="Slide 2" style="max-width: 300px; margin-left: 100px;">
+                    <div class="col-md-4 text-center">
+                        <img src="../../assets/images/index_usuario/ARTICS-SOLUCIONES.jpeg" class="d-block w-100 mx-auto" alt="Slide 2" style="max-width: 100%;">
                     </div>
-                    <div class="col-md-4">
-                        <img src="../../assets/images/index_usuario/ENSIGNA.jpeg" class="d-block w-100" alt="Slide 3" style="max-width: 300px; margin-left: 137px;">
+                    <div class="col-md-4 text-center">
+                        <img src="../../assets/images/index_usuario/ENSIGNA.jpeg" class="d-block w-100 mx-auto" alt="Slide 3" style="max-width: 100%;">
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="row">
-                    <div class="col-md-4">
-                        <img src="../../assets/images/index_usuario/SEBASTIAN BENNETT.jpeg" class="d-block w-100" alt="Slide 4" style="max-width: 300px; margin-left: 20px;">
+                    <div class="col-md-4 text-center">
+                        <img src="../../assets/images/index_usuario/SEBASTIAN BENNETT.jpeg" class="d-block w-100 mx-auto" alt="Slide 4" style="max-width: 100%;">
                     </div>
-                    <div class="col-md-4">
-                        <img src="../../assets/images/index_usuario/BRAIS-PERNAS.jpeg" class="d-block w-100" alt="Slide 5" style="max-width: 300px; margin-left: 100px;">
+                    <div class="col-md-4 text-center">
+                        <img src="../../assets/images/index_usuario/BRAIS-PERNAS.jpeg" class="d-block w-100 mx-auto" alt="Slide 5" style="max-width: 100%;">
                     </div>
-                    <div class="col-md-4">
-                        <img src="../../assets/images/index_usuario/ARCHIS.jpeg" class="d-block w-100" alt="Slide 6" style="max-width: 300px; margin-left: 137px;">
+                    <div class="col-md-4 text-center">
+                        <img src="../../assets/images/index_usuario/ARCHIS.jpeg" class="d-block w-100 mx-auto" alt="Slide 6" style="max-width: 100%;">
                     </div>
                 </div>
             </div>
@@ -114,7 +116,6 @@
         </a> -->
     </div>
 </div>
-
     
     <!--Conexion de librerias de JavaScript y bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
