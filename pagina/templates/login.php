@@ -1,6 +1,5 @@
 <?php 
 session_start();
-
 // Comentar la linea de abajo para poder ver los errores en la pagina
 error_reporting(0);
 
