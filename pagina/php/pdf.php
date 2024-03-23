@@ -1,8 +1,9 @@
 <?php
 
 require "../pdf/code128.php";
+
 $pdf = new PDF_Code128('P','mm','Letter');
-$pdf->SetMargins(17,17,17);
+$pdf->SetMargins(16,16,16);
 $pdf->AddPage();
 
 session_start();
@@ -24,106 +25,143 @@ foreach($postulaciones as $index => $value){
     $nombre  = $value['nombreUsuario'];
     $puesto  = $value['puesto'];
 }
+//$pdf->SetMargins(10, 10, 10, 10);
+$margen_izquierdo = 22;
+//$margen_derecho = ;
+$ancho_disponible = $pdf->GetPageWidth() - $margen_izquierdo;
+$ancho_celda = ($ancho_disponible - 10) / 3;
+$ancho_2 = $ancho_celda * 2;
+
+
+
 # Logo de la empresa formato png #
-$pdf->Image('../pdf/logo.png',165,12,35,35,'PNG');
-// Encabezado y datos de la empresa
+$pdf->Image('../pdf/logo.png',155,20,35,35,'PNG');
+$pdf->SetDrawColor(255, 255, 255);
 $pdf->SetFont('Arial', 'B', 20);
-$pdf->SetTextColor(32, 100, 210);
-$pdf->Cell(150, 10, utf8_decode(strtoupper('CURRICULUM')), 0, 0, 'L');
+$pdf->SetTextColor(255, 255, 255); // Cambiar el color del texto a blanco
+$pdf->SetFillColor(84, 182, 137); // Establecer el color de fondo del recuadro
+$pdf->Cell($ancho_2, 10, utf8_decode(strtoupper('CURRICULUM')), 1, 0, 'C', true); // Añadir recuadro con color y texto blanco
+$pdf->Ln(10);
+$pdf->Ln(10);
+// Creación de tabla simulada para nombre y puesto
+$pdf->SetDrawColor(255, 255, 255);
+$pdf->SetFillColor(84, 182, 137); // Color de fondo de las celdas
+$pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell($ancho_celda, 10, 'Nombre', 1, 0, 'C', true); // Celda para el nombre
+$pdf->Cell($ancho_celda, 10, 'Puesto', 1, 1, 'C', true); // Celda para el puesto
 
-$pdf->Ln(9);
+// tabla 
+$pdf->SetFont('Arial', '', 12);
+$pdf->SetTextColor(0, 0, 0);
+$pdf->Cell($ancho_celda, 10, utf8_decode($nombre), 1, 0, 'C'); // Contenido del nombre
+$pdf->Cell($ancho_celda, 10, utf8_decode($puesto), 1, 1, 'C'); // Contenido del puesto
+$pdf->Ln(10);
+
+// Título de experiencia laboral
+$pdf->SetFillColor(47, 47, 47); // Color de fondo del recuadro
+$pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
+$pdf->SetFont('Arial', 'B', 16);
+$pdf->Cell(0, 10, utf8_decode('EXPERIENCIA LABORAL'), 1, 1, 'C', true); // Recuadro de color con texto blanco
+$pdf->Ln(2);
+// Creación de tabla simulada para experiencia laboral
+$pdf->SetDrawColor(255, 255, 255);
+$pdf->SetFillColor(84, 182, 137); // Color de fondo de las celdas
+$pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell($ancho_celda, 10, utf8_decode('Descripcion'), 1, 0, 'C', true); // Celda para la descripción
+$pdf->Cell($ancho_celda, 10, utf8_decode('Empresa'), 1, 0, 'C', true); // Celda para la empresa
+$pdf->Cell($ancho_celda, 10, utf8_decode('Periodo'), 1, 1, 'C', true); // Celda para el periodo
 
 $pdf->SetFont('Arial', '', 12);
-$pdf->SetTextColor(39, 39, 51);
-$pdf->Cell(150, 9, utf8_decode(''), 0, 0, 'L');
-$pdf->Ln(5);
-$pdf->Cell(150, 9, utf8_decode("Nombre: $nombre"), 0, 0, 'L');
-$pdf->Ln(5);
-$pdf->Cell(150, 9, utf8_decode("puesto: $puesto"), 0, 0, 'L');
-$pdf->Ln(10);
-$pdf->SetFont('Arial', '', 12);
-$pdf->Cell(30, 7, utf8_decode("Fecha de emisión:"), 0, 0);
-$pdf->Ln(5);
-$pdf->SetTextColor(97, 97, 97);
-$pdf->Cell(116, 7, utf8_decode($hoy = date("Y-m-d H:i:s")), 0, 0, 'L');
 
-$pdf->Ln(10);
-$pdf->SetLineWidth(0.5);
-$pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
-
-$pdf->SetFont('Arial', '', 13);
-$pdf->SetTextColor(32, 100, 210);
-$pdf->Cell(13, 7, utf8_decode("Experiencia Laboral"), 0, 0, 'L');
-$pdf->Ln(5);
-
+// Llenar la tabla con la información de la experiencia laboral
 foreach($experiencia as $index => $value){
     $descripcion_puesto = $value['descripcion_puesto'];
     $empresa = $value['empresa'];
     $periodo_exp = $value['periodo'];
-    $pdf->SetFont('Arial','',12);
-	$pdf->SetTextColor(39,39,51);
-	$pdf->Cell(13,7,utf8_decode("Descripcion:"),0,0);$pdf->Ln(5);
-	$pdf->SetTextColor(97,97,97);
-	$pdf->Cell(30,7,utf8_decode($descripcion_puesto),0,0,'L');$pdf->Ln(5);
-	$pdf->SetTextColor(39,39,51);
-	$pdf->Cell(8,7,utf8_decode("Empresa: "),0,0,'L');$pdf->Ln(5);
-	$pdf->SetTextColor(97,97,97);
-	$pdf->Cell(15,7,utf8_decode($empresa),0,0,'L');$pdf->Ln(5);
-	$pdf->SetTextColor(39,39,51);
-	$pdf->Cell(7,7,utf8_decode("Periodo:"),0,0,'L');$pdf->Ln(5);
-	$pdf->SetTextColor(97,97,97);
-	$pdf->Cell(35,7,utf8_decode($periodo_exp),0,0);$pdf->Ln(10);
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->Cell($ancho_celda, 10, utf8_decode($descripcion_puesto), 1, 0, 'C'); // Contenido de la descripción
+    $pdf->Cell($ancho_celda, 10, utf8_decode($empresa), 1, 0, 'C'); // Contenido de la empresa
+    $pdf->Cell($ancho_celda, 10, utf8_decode($periodo_exp), 1, 1, 'C'); // Contenido del periodo
 }
-$pdf->SetLineWidth(0.5);
-$pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
-$pdf->SetFont('Arial','',13);
-$pdf->SetTextColor(32,100,210);
-$pdf->Cell(13,7,utf8_decode("Formacion academica"),0,0);
-$pdf->Ln(5);
+
+$pdf->Ln(10);
+
+// Título de formación académica
+$pdf->SetFillColor(47, 47, 47); // Color de fondo del recuadro
+$pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
+$pdf->SetFont('Arial', 'B', 16);
+$pdf->Cell(0, 10, utf8_decode('FORMACIÓN ACADÉMICA'), 1, 1, 'C', true); // Recuadro de color con texto blanco
+$pdf->Ln(2);
+
+//$pdf->L210);
+
+// Creación de tabla simulada para formación académica
+$pdf->SetDrawColor(255, 255, 255);
+$pdf->SetFillColor(84, 182, 137); // Color de fondo de las celdas
+$pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell($ancho_celda, 10, utf8_decode('Descripcion'), 1, 0, 'C', true); // Celda para la descripción
+$pdf->Cell($ancho_celda, 10, utf8_decode('Ubicacion'), 1, 0, 'C', true); // Celda para la ubicación
+$pdf->Cell($ancho_celda, 10, utf8_decode('Periodo'), 1, 1, 'C', true); // Celda para el periodo
+
+$pdf->SetFont('Arial', '', 12);
+
+// Llenar la tabla con la información de la formación académica
 foreach($formacion as $index => $value){
-    $descripcion_formacion  = $value['descripcion'];
-    $ubicacion  = $value['ubicacion'];
-    $periodo_for  = $value['periodo'];
-    $pdf->SetFont('Arial','',12);
-	$pdf->SetTextColor(39,39,51);
-	$pdf->Cell(13,7,utf8_decode("Descripcion:"),0,0);$pdf->Ln(5);
-	$pdf->SetTextColor(97,97,97);
-	$pdf->Cell(30,7,utf8_decode($descripcion_formacion),0,0,'L');$pdf->Ln(5);
-	$pdf->SetTextColor(39,39,51);
-	$pdf->Cell(8,7,utf8_decode("Empresa: "),0,0,'L');$pdf->Ln(5);
-	$pdf->SetTextColor(97,97,97);
-	$pdf->Cell(15,7,utf8_decode($ubicacion),0,0,'L');$pdf->Ln(5);
-	$pdf->SetTextColor(39,39,51);
-	$pdf->Cell(7,7,utf8_decode("Periodo:"),0,0,'L');$pdf->Ln(5);
-	$pdf->SetTextColor(97,97,97);
-	$pdf->Cell(35,7,utf8_decode($periodo_for),0,0);$pdf->Ln(10);
+    $descripcion_formacion = $value['descripcion'];
+    $ubicacion = $value['ubicacion'];
+    $periodo_for = $value['periodo'];
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->Cell($ancho_celda, 10, utf8_decode($descripcion_formacion), 1, 0, 'C'); // Contenido de la descripción
+    $pdf->Cell($ancho_celda, 10, utf8_decode($ubicacion), 1, 0, 'C'); // Contenido de la ubicación
+    $pdf->Cell($ancho_celda, 10, utf8_decode($periodo_for), 1, 1, 'C'); // Contenido del periodo
 }
-$pdf->SetLineWidth(0.5);
-$pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
-$pdf->SetFont('Arial','',13);
-$pdf->SetTextColor(32,100,210);
-$pdf->Cell(13,7,utf8_decode("Aficiones"),0,0);$pdf->Ln(5);
+$pdf->Ln(10);
+// Título de aficiones
+$pdf->SetFillColor(47, 47, 47); // Color de fondo del recuadro
+$pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
+$pdf->SetFont('Arial', 'B', 16);
+$pdf->Cell(0, 10, utf8_decode('AFICIONES'), 1, 1, 'C', true); // Recuadro de color con texto blanco
+$pdf->Ln(2);
+// Creación de tabla para aficiones
+$pdf->SetDrawColor(255, 255, 255);
+$pdf->SetFillColor(84, 182, 137); // Color de fondo de las celdas
+$pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(0, 10, utf8_decode('Descripcion'), 1, 1, 'C', true); // Celda para la descripción
+
+$pdf->SetFont('Arial', '', 12);
+
+// Llenar la tabla con la información de las aficiones
 foreach($aficiones as $index => $value){
-    $descripcion_aficion  = $value['descripcion'];
-    $pdf->SetFont('Arial','',12);
-	$pdf->SetTextColor(39,39,51);
-	$pdf->Cell(13,7,utf8_decode("Descripcion:"),0,0);$pdf->Ln(5);
-	$pdf->SetTextColor(97,97,97);
-    $pdf->Cell(30,7,utf8_decode($descripcion_aficion),0,0,'L');
-    $pdf->Ln(10);
+    $descripcion_aficion = $value['descripcion'];
+	$pdf->SetTextColor(0, 0, 0);
+    $pdf->Cell(0, 10, utf8_decode($descripcion_aficion), 1, 1, 'C'); // Contenido de la descripción
 }
-$pdf->SetLineWidth(0.5);
-$pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
-$pdf->SetFont('Arial','',13);
-$pdf->SetTextColor(32,100,210);
-$pdf->Cell(13,7,utf8_decode("Interes"),0,0);$pdf->Ln(5);
+$pdf->Ln(10);
+// Título de intereses
+$pdf->SetFillColor(47, 47, 47); // Color de fondo del recuadro
+$pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
+$pdf->SetFont('Arial', 'B', 16);
+$pdf->Cell(0, 10, utf8_decode('INTERESES'), 1, 1, 'C', true); // Recuadro de color con texto blanco
+$pdf->Ln(2);
+// Creación de tabla para intereses
+$pdf->SetDrawColor(255, 255, 255);
+$pdf->SetFillColor(84, 182, 137); // Color de fondo de las celdas
+$pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(0, 10, utf8_decode('Descripcion'), 1, 1, 'C', true); // Celda para la descripción
+
+$pdf->SetFont('Arial', '', 12);
+
+// Llenar la tabla con la información de los intereses
 foreach($interes as $index => $value){
-    $descripcion_interes  = $value['descripcion'];
-    $pdf->SetFont('Arial','',12);
-	$pdf->SetTextColor(39,39,51);
-	$pdf->Cell(13,7,utf8_decode("Descripcion:"),0,0);$pdf->Ln(5);
-	$pdf->SetTextColor(97,97,97);
-    $pdf->Cell(30,7,utf8_decode($descripcion_interes),0,0,'L');$pdf->Ln(5);
+    $descripcion_interes = $value['descripcion'];
+	$pdf->SetTextColor(0, 0, 0);
+    $pdf->Cell(0, 10, utf8_decode($descripcion_interes), 1, 1, 'C'); // Contenido de la descripción
 }
+
 	# Nombre del archivo PDF #
 	$pdf->Output("i","Curriculum",true);
