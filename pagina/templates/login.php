@@ -1,9 +1,10 @@
-<?php 
+<?php
 session_start();
 
 // Comentar la linea de abajo para poder ver los errores en la pagina
 error_reporting(0);
 
+<<<<<<< HEAD
 // Define el rol y el script correspondiente basado en el valor de $_GET['xd']
 switch ($_GET['xd']) {
     case '1':
@@ -27,6 +28,20 @@ switch ($_GET['xd']) {
         echo '<script src="../js/login.js"></script>';
         $sesionLabel = "NADIE";
         break;
+=======
+if ($_GET['xd'] == 1) {
+    $_SESSION['rol'] = 1;
+    $regRol = 'regEmpresa.php';
+    $sesionLabel = "EMPRESA";
+} elseif ($_GET['xd'] == 2) {
+    $_SESSION['rol'] = 2;
+    $regRol = 'regUsuario.php';
+    $sesionLabel = "USUARIO";
+} elseif ($_GET['xd'] == 3) {
+    $sesionLabel = "ADMINISTRADOR";
+} else {
+    $sesionLabel = "NADIE";
+>>>>>>> 7657dec682335a52dcb05d907affc773410c52aa
 }
 
 // if ($_GET['xd'] == 1) {
@@ -67,13 +82,28 @@ switch ($_GET['xd']) {
 <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
 <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
 <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
+<?php
+    if ($_GET['xd'] == false) {
+        echo ('<script src="../js/login.js" data-error="1"></script>');
+    }
+    if ($_SESSION['iusuario']) {
+        if ($_SESSION['irol'] == 1) {
+            echo (
+                '<script src="../js/login.js" data-error="2"></script>'
+            );
+        } else if ($_SESSION['irol'] == 2) {
+            echo (
+                '<script src="../js/login.js" data-error="3"></script>'
+            );
+        }
+    }
+?>
     <div class="row justify-content-center mt-4">
         <div class="col-md-8"> <!-- Utiliza col-md-8 para que la imagen ocupe el 100% del ancho en dispositivos medianos y grandes -->
             <img src="../../assets/images/Workele1.jpg" class="img-fluid" alt="Placeholder: Image cap">
@@ -117,8 +147,8 @@ switch ($_GET['xd']) {
     <!-- Conexion de librerias de JavaScript y bootstrap -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="../js/login.js"></script>
 </body>
 
 </html>
