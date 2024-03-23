@@ -87,51 +87,58 @@ switch ($_GET['xd']) {
         }
     }
 ?>
-    <div class="row justify-content-center mt-4">
-        <div class="col-md-8"> <!-- Utiliza col-md-8 para que la imagen ocupe el 100% del ancho en dispositivos medianos y grandes -->
-            <img src="../../assets/images/Workele1.jpg" class="img-fluid" alt="Placeholder: Image cap">
-        </div>
-    </div>
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-8 text-center"> 
+                    <img src="../../assets/images/WorkeleWB.png" class="img-fluid" alt="Placeholder: Image cap">
+                </div>
+            </div>
+            <div class="card border-gray shadow mb-3" style="border-radius:15px;">
+                <div class="card-header bg-primary text-white border-gray" style="font-weight: bold;font-size:1.5rem;border-top-left-radius:15px;border-top-right-radius:15px;" align="center">INICIO DE SESIÓN DE <?php echo $sesionLabel; ?></div>
+                <div class="card-body">
 
-    <div class="container-fluid">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-gray shadow mb-3" style="border-radius:15px;">
-                    <div class="card-header bg-primary text-white border-gray" style="font-weight: bold;font-size:1.5rem;border-top-left-radius:15px;border-top-right-radius:15px;" align="center">INICIO DE SESIÓN DE <?php echo $sesionLabel; ?></div>
-                    <div class="card-body">
+                    <form action="../php/login.php" method="post">
+                        <div class="form-floating mb-3 mt-4">
+                            <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Ingresa tu correo electronico">
+                            <label for="floatingInput">Ingresa tu correo electrónico</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-4">
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa tu contraseña">
+                            <label for="floatingInput">Ingresa tu contraseña</label>
+                        </div>
 
-                        <form action="../php/login.php" method="post">
-                            <div class="form-floating mb-3 mt-4">
-                                <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Ingresa tu correo electronico">
-                                <label for="floatingInput">Ingresa tu correo electrónico</label>
+                        <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) : ?>
+                        <div class="row text-center mt-5">
+                            <div class="col">
+                                <button id="login" class="btn btn-primary w-100" type="submit">Iniciar sesión</button>
                             </div>
-                            <div class="form-floating mb-3 mt-4">
-                                <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa tu contraseña">
-                                <label for="floatingInput">Ingresa tu contraseña</label>
+                            <div class="col">
+                                <a href="<?php echo $regRol ?>" class="btn btn-info w-100" type="submit">Registrarse</a>
                             </div>
-
-                            <div class="row text-center mt-5">
-                                <div class="col">
-                                    <button id="login" class="btn btn-primary w-100" type="submit">Iniciar sesión</button>
-                                </div>
-
-                                <div class="col">
-                                    <a href="<?php echo $regRol ?>" class="btn btn-info w-100" type="submit">Registrarse</a>
-                                </div>
+                        </div>
+                    <?php elseif ($_SESSION['rol'] == 3) : ?>
+                        <div class="row text-center mt-5">
+                            <div class="col">
+                                <button id="login" class="btn btn-primary w-100" type="submit">Iniciar sesión</button>
                             </div>
-                        </form>
+                        </div>
+                    <?php endif; ?>
+                        </div>
+                    </form>
 
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Conexion de librerias de JavaScript y bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="../js/login.js"></script>
+<!-- Conexion de librerias de JavaScript y bootstrap -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 
 </html>
