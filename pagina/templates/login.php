@@ -4,7 +4,6 @@ session_start();
 // Comentar la linea de abajo para poder ver los errores en la pagina
 error_reporting(0);
 
-<<<<<<< HEAD
 // Define el rol y el script correspondiente basado en el valor de $_GET['xd']
 switch ($_GET['xd']) {
     case '1':
@@ -28,22 +27,7 @@ switch ($_GET['xd']) {
         echo '<script src="../js/login.js"></script>';
         $sesionLabel = "NADIE";
         break;
-=======
-if ($_GET['xd'] == 1) {
-    $_SESSION['rol'] = 1;
-    $regRol = 'regEmpresa.php';
-    $sesionLabel = "EMPRESA";
-} elseif ($_GET['xd'] == 2) {
-    $_SESSION['rol'] = 2;
-    $regRol = 'regUsuario.php';
-    $sesionLabel = "USUARIO";
-} elseif ($_GET['xd'] == 3) {
-    $sesionLabel = "ADMINISTRADOR";
-} else {
-    $sesionLabel = "NADIE";
->>>>>>> 7657dec682335a52dcb05d907affc773410c52aa
-}
-
+    }
 // if ($_GET['xd'] == 1) {
 //     $regRol='regEmpresa.php';
 // }
