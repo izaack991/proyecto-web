@@ -4,32 +4,57 @@ session_start();
 // Comentar la linea de abajo para poder ver los errores en la pagina
 error_reporting(0);
 
-if ($_GET['xd'] == 1) {
-    $regRol='regEmpresa.php';
+// Define el rol y el script correspondiente basado en el valor de $_GET['xd']
+switch ($_GET['xd']) {
+    case '1':
+        $regRol = 'regEmpresa.php';
+        $_SESSION['rol'] = 1;
+        $sesionLabel = "EMPRESA";
+        break;
+    case '2':
+        $regRol = 'regUsuario.php';
+        $_SESSION['rol'] = 2;
+        $sesionLabel = "USUARIO";
+        break;
+    case '3':
+        $sesionLabel = "ADMINISTRADOR";
+        // No hay un caso específico en el código original para $_GET['xd'] == 3
+        // en términos de $regRol y $_SESSION['rol'], 
+        // pero se podría agregar lógica aquí si es necesario.
+        break;
+    default:
+        // Este bloque se ejecuta si $_GET['xd'] no es 1, 2, o 3, o si $_GET['xd'] es false
+        echo '<script src="../js/login.js"></script>';
+        $sesionLabel = "NADIE";
+        break;
 }
-if ($_GET['xd'] == 2) {
-    $regRol='regUsuario.php';
-}
-if ($_GET['xd'] == false) {
-    echo (
-        '<script src="../js/login.js"></script>'
-    );
-}
-if ($_GET['xd'] == 1) {
-    $_SESSION['rol'] = 1;
-}
-if ($_GET['xd'] == 2) {
-    $_SESSION['rol'] = 2;
-}
-if ($_GET['xd'] == 1) {
-    $sesionLabel = "EMPRESA";
-} elseif ($_GET['xd'] == 2) {
-    $sesionLabel = "USUARIO";
-} elseif ($_GET['xd'] == 3) {
-    $sesionLabel = "ADMINISTRADOR";
-} else {
-    $sesionLabel = "NADIE";
-}
+
+// if ($_GET['xd'] == 1) {
+//     $regRol='regEmpresa.php';
+// }
+// if ($_GET['xd'] == 2) {
+//     $regRol='regUsuario.php';
+// }
+// if ($_GET['xd'] == false) {
+//     echo (
+//         '<script src="../js/login.js"></script>'
+//     );
+// }
+// if ($_GET['xd'] == 1) {
+//     $_SESSION['rol'] = 1;
+// }
+// if ($_GET['xd'] == 2) {
+//     $_SESSION['rol'] = 2;
+// }
+// if ($_GET['xd'] == 1) {
+//     $sesionLabel = "EMPRESA";
+// } elseif ($_GET['xd'] == 2) {
+//     $sesionLabel = "USUARIO";
+// } elseif ($_GET['xd'] == 3) {
+//     $sesionLabel = "ADMINISTRADOR";
+// } else {
+//     $sesionLabel = "NADIE";
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
