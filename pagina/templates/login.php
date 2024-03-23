@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Comentar la linea de abajo para poder ver los errores en la pagina
 error_reporting(0);
 
 // Define el rol y el script correspondiente basado en el valor de $_GET['xd']
