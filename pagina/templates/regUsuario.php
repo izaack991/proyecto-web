@@ -119,7 +119,7 @@ if ($_SESSION['apellido']) {
             </div>
             <div class="form-group col-md-6 mb-3">
               <div class="form-floating">
-                <input class="form-control" type="text" id="curp" name="txt_CURP" oninput="validarInput(this)" maxLength="18" minLength="18" pattern="[A-Z0-9]+" style="width:100%;" placeholder="Ingrese su CURP">
+                <input class="form-control" type="text" id="curp" onkeyup="mayus(this);" name="txt_CURP" oninput="validarInput(this)" maxLength="18" minLength="18" pattern="[A-Z0-9]+" style="width:100%;" placeholder="Ingrese su CURP">
                 <label>CURP *</label><br>
                 <pre id="resultado"></pre>
               </div>
@@ -204,6 +204,11 @@ if ($_SESSION['apellido']) {
   </div>
 
   <script>
+
+    function mayus(e) {
+        e.value = e.value.toUpperCase();
+    }
+
     // function enviarFormulario() {
     //     var formData = new FormData(document.getElementById('formulario'));
 
