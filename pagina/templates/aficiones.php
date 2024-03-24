@@ -67,9 +67,9 @@
 
           <!-- Campos para los datos de aficiones -->
           <div class="form-floating mb-3 mt-4">
-            <textarea name="txtdesc" type="text" title="ESTE CAMPO NO ADMITE NÚMEROS NI CARACTERES ESPECIALES"
+            <textarea name="txtdesc" type="text"
               class="form-control" maxlength="100" cols="1" rows="10" required="true" placeholder="Descripcion"
-              style="resize:none;"></textarea>
+              style="height: 90px; resize:none;"></textarea>
             <label for="floatingInput">Descripcion *</label>
           </div>
 
