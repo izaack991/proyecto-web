@@ -80,21 +80,17 @@
             <input class="form-control" onkeypress="return validarLetras(event)" type="text" required id="txtempresa" name="txtempresa" placeholder="Ingresa la empresa" maxlength="50"> <br>
             <label for="floatingInput">Nombre de la empresa *</label>
           </div>
-          <div class="row">
-            <div class="col-sm-1">
-              <span class="input-group-text py-3" style="margin-right: 0px;">$</span>
-            </div>
-            <div class="col px-0">
-              <div class="form-floating">
-                <input class="form-control" type="text" required id="txtsueldo" name="txtsueldo" placeholder="Ingresa el Sueldo" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(this.value < 0) this.value = '';" maxlength="10"> <br>
-                <label for="floatingInput">Ingresa el Sueldo *</label>
-              </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text" style="height: 3.625rem;">$</label>
+            <div class="form-floating form-floating-group flex-grow-1">
+              <input class="form-control" type="text" required id="txtsueldo" name="txtsueldo" placeholder="Ingresa el Sueldo" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(this.value < 0) this.value = '';" maxlength="10"> <br>
+              <label for="floatingInput">Ingresa el Sueldo *</label>
             </div>
           </div>
           <div class="form row mt-4">
-            <div class="form-group col-md">
+            <div class="form-group col-md-6">
               <div class="form-floating">
-                <select id="cmbpais" class="form-select" name="cmbpais">
+                <select id="cmbpais" class="form-select" name="cmbpais" style="width: 100%;">
                   <option value="52">México</option>
                   <option value="591">Bolivia</option>
                   <option value="54">Argentina</option>

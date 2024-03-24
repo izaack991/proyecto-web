@@ -111,13 +111,13 @@ if ($_SESSION['apellido']) {
             <label class="text-primary">Correo Electronico: *</label><br>
           </div>
           <div class="form-row">
-            <div class="form-group col">
+            <div class="form-group col-md-6 mb-3">
               <div class="form-floating">
                 <input class="form-control" type="date" id="dateFECHA" name="dateFECHA" value="2022-01-01">
                 <label for="dateFECHA">Seleccione su Fecha de Nacimineto: *</label><br>
               </div>
             </div>
-            <div class="form-group col">
+            <div class="form-group col-md-6 mb-3">
               <div class="form-floating">
                 <input class="form-control" type="text" id="curp" name="txt_CURP" oninput="validarInput(this)" maxLength="18" minLength="18" pattern="[A-Z0-9]+" style="width:100%;" placeholder="Ingrese su CURP">
                 <label>CURP *</label><br>
@@ -126,13 +126,13 @@ if ($_SESSION['apellido']) {
             </div>
           </div>
           <div class="form-row">
-            <div class="form-group col">
+            <div class="form-group col-md-6 mb-3">
               <div class="form-floating" style="height: 4rem;">
                 <input oninput="verificarContrasenas()" class="form-control" type="password" name="txt_PASSWORD" class="texto" minlength="8" id="txt_PASSWORD" maxLength="30" placeholder="Escriba la Contraseña" required="true"><br>
                 <label>Contraseña: *</label><br>
               </div>
             </div>
-            <div class="form-group col">
+            <div class="form-group col-md-6 mb-3">
               <div class="form-floating" style="height: 4rem;">
                 <input oninput="verificarContrasenas()" class="form-control" type="password" name="txt_PASSWORD2" class="texto" minlength="8" id="txt_PASSWORD2" maxLength="30" placeholder="Confirme la Contraseña" required="true"><br>
                 <label>Confirme Contraseña: *</label><br>
@@ -141,7 +141,7 @@ if ($_SESSION['apellido']) {
             </div>
           </div>
           <div class="form-row">
-            <div class="form-group col">
+            <div class="form-group col-md-6 mb-3">
               <div class="form-floating" style="height: 4rem;">
                 <select class="form-select" name="cmb_SEXO" id="sexo" style="width: 100%;">
                   <option value="1">Masculino</option>
@@ -151,7 +151,7 @@ if ($_SESSION['apellido']) {
                 <label class="form_label">Genero *</label>
               </div>
             </div>
-            <div class="form-group col">
+            <div class="form-group col-md-6 mb-3">
               <div class="form-floating" style="height: 4rem;">
                 <select class="form-select" name="cmb_REGION" id="region" style="width: 100%;">
                   <option value="52">México</option>
@@ -183,7 +183,7 @@ if ($_SESSION['apellido']) {
                 <label class="form_label">Region *</label>
               </div>
             </div>
-            <div class="col">
+            <div class="col-md-6 mb-3">
               <div class="form-floating">
                 <input class="form-control" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="txt_TELEFONO" class="texto" id="telefono" minlength="10" maxLength="10" placeholder="Escriba su Número" required="true"><br>
                 <label>Telefono: *</label><br>
