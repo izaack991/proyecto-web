@@ -1,6 +1,4 @@
-<?php
-include('../php/Usuario-Test.php');
-?>
+<?php include('../php/Usuario-Test.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +17,7 @@ include('../php/Usuario-Test.php');
     <?php include("navbar_usuario.php") ?>
 
     <!-- Lista de tests -->
-        <div class="row align-items-center" style="margint: 0 20%;">
+        <div class="row align-items-center" style="margin: 0 20%;">
             <!-- Test Raven -->
             <div class="col text-center" style="margin-top:5%">
                 <figure>
