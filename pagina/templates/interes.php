@@ -9,14 +9,8 @@
   <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
-<<<<<<< HEAD
-  <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
-=======
   <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css"> 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
->>>>>>> 7657dec682335a52dcb05d907affc773410c52aa
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../js/notificacion_usuario.js"></script>
@@ -83,7 +77,7 @@
 
           <!-- Campos para los datos de interes -->
           <div class="form-floating mb-3 mt-4">
-            <textarea name="txtdesc" type="text" title="ESTE CAMPO NO ADMITE NÚMEROS NI CARACTERES ESPECIALES"
+            <textarea name="txtdesc" type="text" style="height: 90px; resize:none;"
               class="form-control" maxlength="100" cols="1" rows="10" onkeypress="return validarLetras(event)"
               required="true" placeholder="Ingrese sus datos de interes"></textarea>
             <label for="floatingInput">Descripcion *</label>

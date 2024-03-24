@@ -11,7 +11,7 @@ $irol=$_SESSION['rol'];
 if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 {
 	$_ruta = $_FILES['txtruta'];
-	$_cons = $_FILES['txtruta'];
+	$_cons = $_FILES['txtcons'];
 	if($_POST['txt_PASSWORD']!=$_POST['txt_PASSWORD2'])
 	{
 		$alerta = "<script> Swal.fire('¡Las Contraseñas NO coinciden!');</script>";
@@ -60,7 +60,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 			$tamanoCons = $_FILES['txtcons']['size'];
 			$tempCons = $_FILES['txtcons']['tmp_name'];
 
-			if($_ruta != null)
+			if($_ruta == "")
 			{
 				//Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
 				if (!((strpos($imgTipo, "gif") || strpos($imgTipo, "jpeg") || strpos($imgTipo, "jpg") || strpos($imgTipo, "png")) && ($tamano < 2000000))) {

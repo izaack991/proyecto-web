@@ -1,8 +1,7 @@
 <?php 
-$id_vacante = $_POST['id_vacante'];
-echo'<input type="hidden" name="id_vacante" id="id_vacante" value="'.$id_vacante.'">';
-session_start();
-$_SESSION['id_vacante'] = $id_vacante;
+  $id_vacante = $_POST['id_vacante'];
+  echo'<input type="hidden" name="id_vacante" id="id_vacante" value="'.$id_vacante.'">';
+  $_SESSION['id_vacante'] = $id_vacante;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,8 +16,9 @@ $_SESSION['id_vacante'] = $id_vacante;
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="../js/notificacion_usuario.js"></script>
+  <script src="../js/seleccionar_vacantes.js"></script>
 
 
   <script>
@@ -53,38 +53,35 @@ $_SESSION['id_vacante'] = $id_vacante;
 
 <body style="background-color: #F8F6F3;">
 
-  <!-- {*Barra de navegacion para Usuarios*} -->
-  <?php include("navbar_usuario.php") ?>
+  <!-- Barra de navegación para Usuarios -->
+  <?php include("navbar_usuario.php"); ?>
 
-  <div id="vacantesContainer"></div>
+  <div style="margin-top:4%" id="vacantesContainer"></div>
 
-    <!-- Modal -->
-    <div class="modal" id="postularseModal" tabindex="-1" role="dialog">
-      <form action="../php/guardar_postulacion.php" method="POST">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Confirmación de postulación</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ¿Estás seguro de que deseas postularte a esta vacante?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-              <input type="submit" value="Aceptar" class="btn btn-primary">
-            </div>
+  <!-- Modal -->
+  <div class="modal" id="postularseModal" tabindex="-1" role="dialog">
+    <form action="../php/guardar_postulacion.php" method="POST">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirmación de postulación</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ¿Estás seguro de que deseas postularte a esta vacante?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <input type="submit" value="Aceptar" class="btn btn-primary">
           </div>
         </div>
-      </form>
-    </div>
-  
+      </div>
+    </form>
+  </div>
+
   <!-- Conexion de librerias de JavaScript y bootstrap -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
   </script>
@@ -98,5 +95,6 @@ $_SESSION['id_vacante'] = $id_vacante;
   <script src="../js/insert.js"></script>
 
 </body>
+
 
 </html>
