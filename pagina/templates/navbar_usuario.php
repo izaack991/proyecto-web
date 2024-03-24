@@ -42,9 +42,7 @@ if ($_SESSION['irol'] == 1) {
           <a class="nav-link active" href="Usuario-test.php">Tests</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-warning shadow" href="video_curriculum.php">
-            <i class="bi bi-camera-video-fill"></i> Novedad: Video Curriculum
-          </a>
+        <a class="nav-link active" href="video_curriculum.php">Video Curriculum</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
