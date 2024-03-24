@@ -16,99 +16,100 @@
     <!-- {*Barra de navegacion para Usuarios*} -->
     <?php include("navbar_usuario.php") ?>
 
-    <!-- Lista de tests -->
-        <div class="row align-items-center" style="margin: 0 20%;">
+    <div class="container-fluid">
+        <!-- Lista de tests -->
+        <div class="row align-items-center">
             <!-- Test Raven -->
-            <div class="col text-center" style="margin-top:5%">
-                <figure>
-                    <img src="../../assets/images/LogoTest/Ravenimg.jpeg" alt="Logo Test Raven" height="183"
-                        width="376" />
+            <div class="col-xs-12 col-sm-6 col-md-4 text-center" style="padding-top:5%">
+                <figure class="mb-4">
+                    <img src="../../assets/images/LogoTest/Ravenimg.jpeg" class="img-fluid" alt="Test Raven" />
                 </figure>
-                <?php
-                    if ($comprobarRaven >= 1) {
-                        // Usuario puede iniciar el test
-                        echo '<a href="test_raven.php" class="btn btn-light">Iniciar test</a>';
-                    } else {
-                        // Usuario no puede iniciar el test
-                        echo '<button class="btn btn-light" type="button" disabled>No puedes iniciar este test</button>';
-                    }
-                    ?>
+                <?php if ($comprobarRaven >= 1) {
+                    // Usuario puede iniciar el test
+                    echo '<a href="test_raven.php" class="btn btn-light">Iniciar test</a>';
+                } else { 
+                    // Usuario no puede iniciar el test
+                    echo '<button class="btn btn-light" type="button" disabled>No puedes iniciar este test</button>';
+                } 
+                ?>
             </div>
+
             <!-- Test Cleaver -->
-            <div class="col text-center" style="margin-top:5%">
-                <figure>
-                    <input type="image" src="../../assets/images/LogoTest/Cleaverimg.png" height="183" width="376" />
+            <div class="col-xs-12 col-sm-6 col-md-4 text-center" style="padding-top:5%">
+                <figure class="mb-4">
+                    <img src="../../assets/images/LogoTest/Cleaverimg.png" class="img-fluid" alt="Test Cleaver" />
                 </figure>
-                <?php
-                        if ($comprobarCleaver >= 1) {
-                             // Usuario puede iniciar el test
-                            echo '<a href="test_cleaver.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
-                        } else {
-                             // Usuario no puede iniciar el test
-                            echo '<a href="#"><button class="btn btn-light disabled" type="button">No puedes iniciar este test</button></a>';
-                        }
-                        ?>
+                <?php if ($comprobarCleaver >= 1) {
+                    // Usuario puede iniciar el test
+                    echo '<a href="test_cleaver.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
+                } else { 
+                    // Usuario no puede iniciar el test
+                    echo '<button class="btn btn-light" type="button" disabled>No puedes iniciar este test</button>';
+                } 
+                ?>
             </div>
+
             <!-- Test Moss -->
-            <div class="col text-center" style="margin-top:5%">
-                <figure>
-                    <input type="image" src="../../assets/images/LogoTest/Mossimg.jpeg" height="183" width="376" />
+            <div class="col-xs-12 col-sm-6 col-md-4 text-center" style="padding-top:5%">
+                <figure class="mb-4">
+                    <img src="../../assets/images/LogoTest/Mossimg.jpeg" class="img-fluid" alt="Test Moss" />
                 </figure>
-                <?php
-                    if ($comprobarMoss >= 1) {
-                        // Usuario puede iniciar el test
-                        echo '<a href="test_moss.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
-                    } else {
-                        // Usuario no puede iniciar el test
-                        echo '<a href="#"><button class="btn btn-light disabled" type="button">No puedes iniciar este test</button></a>';
-                    }
-                    ?>
+                <?php if ($comprobarMoss >= 1) {
+                    // Usuario puede iniciar el test
+                    echo '<a href="test_moss.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
+                } else { 
+                    // Usuario no puede iniciar el test
+                    echo '<button class="btn btn-light" type="button" disabled>No puedes iniciar este test</button>';
+                } 
+                ?>
             </div>
+
             <!-- Test Merril -->
-            <div class="col text-center" style="margin-top:5%">
-                <figure>
-                    <input type="image" src="../../assets/images/LogoTest/Merrilimg.jpeg" height="183" width="376" />
+            <div class="col-xs-12 col-sm-6 col-md-4 text-center" style="padding-top:5%">
+                <figure class="mb-4">
+                    <img src="../../assets/images/LogoTest/Merrilimg.jpeg" class="img-fluid" alt="Test Merril" />
                 </figure>
-                <?php
-                    if ($comprobarMerril >= 1) {
-                        // Usuario puede iniciar el test
-                        echo '<a href="test_merril.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
-                    } else {
-                        // Usuario no puede iniciar el test
-                        echo '<a href="#"><button class="btn btn-light disabled" type="button">No puedes iniciar este test</button></a>';
-                    }
-                    ?>
+                <?php if ($comprobarMerril >= 1) {
+                    // Usuario puede iniciar el test
+                    echo '<a href="test_merril.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
+                } else { 
+                    // Usuario no puede iniciar el test
+                    echo '<button class="btn btn-light" type="button" disabled>No puedes iniciar este test</button>';
+                } 
+                ?>
             </div>
+
             <!-- Test SJT -->
-            <div class="col text-center" style="margin-top:5%" >
-                <figure>
-                    <input type="image" src="../../assets/images/LogoTest/SJTimg.jpeg" height="183" width="376" />
+            <div class="col-xs-12 col-sm-6 col-md-4 text-center" style="padding-top:5%">
+                <figure class="mb-4">
+                    <img src="../../assets/images/LogoTest/SJTimg.jpeg" class="img-fluid" alt="Test SJT" />
                 </figure>
-                <?php
-                    if ($comprobarSjt >= 1) {
-                        // Usuario puede iniciar el test
-                        echo '<a href="test_sjt.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
-                    } else {
-                        // Usuario no puede iniciar el test
-                        echo '<a href="#"><button class="btn btn-light disabled" type="button">No puedes iniciar este test</button></a>';
-                    }
-                    ?>
+                <?php if ($comprobarSjt >= 1) {
+                    // Usuario puede iniciar el test
+                    echo '<a href="test_sjt.php"><button class="btn btn-light" type="button">Iniciar test</button></a>';
+                } else { 
+                    // Usuario no puede iniciar el test
+                    echo '<button class="btn btn-light" type="button" disabled>No puedes iniciar este test</button>';
+                } 
+                ?>
             </div>
         </div>
+    </div>
 
-        <!-- Conexion de librerias de JavaScript y bootstrap -->
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
-        </script>
+
+    <!-- Conexion de librerias de JavaScript y bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
 
 </body>
 
