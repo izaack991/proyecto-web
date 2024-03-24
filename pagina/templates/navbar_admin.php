@@ -3,6 +3,18 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/notificacion_admin.js"></script>
 <script src="../js/sesion.js"></script>
+<?php 
+session_start();
+if ($_SESSION['irol'] == 1) {
+  echo (
+      '<script src="../js/login.js" data-error="6"></script>'
+  );
+} else if ($_SESSION['irol'] == 2) {
+  echo (
+      '<script src="../js/login.js" data-error="7"></script>'
+  );
+}
+?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="indexAdmin.php">Inicio</a>

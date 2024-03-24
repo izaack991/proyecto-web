@@ -2,6 +2,14 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../js/notificacion_usuario.js"></script>
 <script src="../js/sesion.js"></script>
+<?php 
+session_start();
+if ($_SESSION['irol'] == 1) {
+  echo (
+      '<script src="../js/login.js" data-error="5"></script>'
+  );
+}
+?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="indexPrincipal.php">Inicio</a>
