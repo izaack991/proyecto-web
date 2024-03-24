@@ -17,9 +17,7 @@ switch ($_GET['xd']) {
         break;
     case '3':
         $sesionLabel = "ADMINISTRADOR";
-        // No hay un caso específico en el código original para $_GET['xd'] == 3
-        // en términos de $regRol y $_SESSION['rol'], 
-        // pero se podría agregar lógica aquí si es necesario.
+        $_SESSION['rol'] = 3;
         break;
     default:
         // Este bloque se ejecuta si $_GET['xd'] no es 1, 2, o 3, o si $_GET['xd'] es false
@@ -86,7 +84,8 @@ switch ($_GET['xd']) {
             );
         }
     }
-?>
+    ?>
+
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center">
         <div class="col-md-6 col-lg-4">
@@ -98,7 +97,7 @@ switch ($_GET['xd']) {
             <div class="card border-gray shadow mb-3" style="border-radius:15px;">
                 <div class="card-header bg-primary text-white border-gray" style="font-weight: bold;font-size:1.5rem;border-top-left-radius:15px;border-top-right-radius:15px;" align="center">INICIO DE SESIÓN DE <?php echo $sesionLabel; ?></div>
                 <div class="card-body">
-
+                    
                     <form action="../php/login.php" method="post">
                         <div class="form-floating mb-3 mt-4">
                             <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Ingresa tu correo electronico">
@@ -108,17 +107,17 @@ switch ($_GET['xd']) {
                             <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa tu contraseña">
                             <label for="floatingInput">Ingresa tu contraseña</label>
                         </div>
-
-                        <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) : ?>
+                        
+                        <?php if ($_GET['xd'] == 1 || $_GET['xd'] == 2) : ?>
                         <div class="row text-center mt-5">
-                            <div class="col">
-                                <button id="login" class="btn btn-primary w-100" type="submit">Iniciar sesión</button>
-                            </div>
                             <div class="col">
                                 <a href="<?php echo $regRol ?>" class="btn btn-info w-100" type="submit">Registrarse</a>
                             </div>
+                            <div class="col">
+                                <button id="login" class="btn btn-primary w-100" type="submit">Iniciar sesión</button>
+                            </div>
                         </div>
-                    <?php elseif ($_SESSION['rol'] == 3) : ?>
+                    <?php elseif ($_GET['xd'] == 3) : ?>
                         <div class="row text-center mt-5">
                             <div class="col">
                                 <button id="login" class="btn btn-primary w-100" type="submit">Iniciar sesión</button>
