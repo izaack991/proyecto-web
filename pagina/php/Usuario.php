@@ -16,16 +16,19 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 	{
 		$alerta = "<script> Swal.fire('¡Las Contraseñas NO coinciden!');</script>";
 		echo "errorPassword";
+    return;
 	}
 	else
 	{
 		if($irol==1 && $_ruta == null){
 			//$alerta = "<script> Swal.fire('¡No subió la Imagen de la Empresa!');</script>";
 			echo "errorImagenEmpresa";
+      return;
 		}
 		else if ($irol==1 && $_cons == null)
 		{
 			echo "errorConstancia";
+      return;
 		} else {
 			$f_id_usuario = $_findUser -> consec_usuario();
 			$_nombre = $_POST['txt_NOMBRE'];
@@ -67,6 +70,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 						text: 'La extensión o el tamaño de los archivos no es correcta. Solo se permite: .gif, .jpg, .png. y de 200 kb como máximo.',
 						icon: 'error');</script>";
 					echo "errorImagen";
+          return;
 				}
 				else {
 					//Si la imagen es correcta en tamaño y tipo
@@ -86,11 +90,12 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 							text: 'No se pudo subir la imagen al sevidor.',
 							icon: 'error');</script>";
 						echo "errorImagenServer";
+            return;
 						}
 					}
 				}
 
-				if($_cons != null)
+				if($_cons != null && $irol == 1)
 				{
 					//Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
 					if (!((strpos($conTipo, "jpeg") || strpos($conTipo, "jpg") || strpos($conTipo, "png") || strpos($conTipo, "pdf")) && ($tamanoCons < 20000000))) {
@@ -100,6 +105,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 							text: 'La extensión o el tamaño de los archivos no es correcta. Solo se permite: .jpg, .png. y de 200 kb como máximo.',
 							icon: 'error');</script>";
 						echo "errorConstanciaTipoTamaño";
+            return;
 					}
 					else {
 						//Si la imagen es correcta en tamaño y tipo
@@ -119,6 +125,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 								text: 'No se pudo subir la imagen al sevidor.',
 								icon: 'error');</script>";
 							echo "errorConsServer";
+              return;
 							}
 						}
 					}
@@ -130,8 +137,10 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 			if ($newuser == true) {
 				if($irol == 1) {
 					echo "true1";
+          return;
 				} else if ($irol == 2) {
 					echo "true2";
+          return;
 				}
 			}
 		}
