@@ -1,26 +1,31 @@
+// Función para enviar el video a través de AJAX
 function guardarVideo() {
-    // Obtener el elemento de video guardado
-    var videoElement = document.getElementById('videoGuardado');
-
-    // Crear un objeto FormData para enviar el video al servidor
+    // Crear un FormData para enviar el video como archivo
     var formData = new FormData();
-    formData.append('video', videoElement.src);
+    formData.append('video', blobVideo);
 
-    // Enviar el video al servidor mediante una petición AJAX con jQuery
+    // Enviar el video a través de AJAX
     $.ajax({
-        url: '../php/video_curriculum.php',
         type: 'POST',
+        url: '../php/video_curriculum.php',
         data: formData,
         processData: false,
         contentType: false,
-        success: function (response) {
-            // El video se guardó exitosamente
-            alert('El video se ha guardado correctamente.');
-            location.reload();
+        success: function(response) {
+            // Muestra un SweetAlert indicando que el Video Curriculum se ha guardado con éxito
+            Swal.fire({
+                title: '¡Éxito!',
+                text: 'Video Curriculum guardado con éxito',
+                icon: 'success',
+                timer: 2000, // Tiempo en milisegundos para cerrar automáticamente la alerta
+                timerProgressBar: true, // Muestra una barra de progreso del tiempo restante
+                showConfirmButton: false // No muestra el botón de confirmación
+            }).then((result) => {
+                window.location.href = "indexPrincipal.php";
+            });
         },
-        error: function () {
-            // Ocurrió un error al guardar el video
-            alert('Error al guardar el video.');
+        error: function(xhr, status, error) {
+            console.error("Error al guardar el video en la base de datos:", error);
         }
     });
 }

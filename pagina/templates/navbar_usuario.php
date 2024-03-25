@@ -41,8 +41,8 @@ if ($_SESSION['irol'] == 1) {
         <li class="nav-item">
           <a class="nav-link active" href="Usuario-test.php">Tests</a>
         </li>
-        <li class="nav-item">
-        <a class="nav-link active" href="video_curriculum.php">Video Curriculum</a>
+        <li class="nav-item" id="nav_video">
+        
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
@@ -90,6 +90,19 @@ if ($_SESSION['irol'] == 1) {
           // function redireccionindex() {
           //   window.location.href='https://www.workele.com';
           //     }
+          $(document).ready(function(){
+              // Verificar si el elemento está registrado en la base de datos
+              $.ajax({
+                  url: '../php/verificar_video.php',
+                  type: 'GET',
+                  success: function(response){
+                      // Si el elemento está registrado, lo eliminamos del navbar
+                      if(response === 'no_registrado'){
+                          $('#nav_video').html('<a class="nav-link active" href="video_curriculum.php">Video Curriculum</a>');
+                      }
+                  }
+              });
+          });
           function openAlert() {
             Swal.fire({
               title: '¿Estás seguro?',

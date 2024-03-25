@@ -59,105 +59,111 @@
         <?php include("navbar_usuario.php") ?>
 
         <!-- Card de aficiones -->
-        <div class="card shadow mb-3" style="max-width: 50rem; margin:auto; margin-top:30px; border-radius:25px;">
-            <div class="card-header text-center bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
-                <h2 class="text-white">VIDEO CURRICULUM</h2>
-            </div>
-            <div class="card-body">
-                <div id="recomendaciones" class="pregresp">
-                    <label class="text-primary" style="font-size:1.1rem;"><b>Recomendaciones:</b></label><br>
-                    <label style='margin-left:2rem;'>
-                        <p><b>-</b>  Asegurate de que la imagen y el audio sean lo más claros posibles.<br></p>
-                        <p class="text-primary"><b>-</b>  Una vez presiones el boton de "Iniciar Cámara" tendrás la posibilidad de ver la cámara antes de iniciar la grabación por si necesitas preparate.<br></p>
-                        <p><b>-</b>  Tambien al presionar al lado de la cámara podrás observar información de los temas que deberás abarcar en el video.<br></p>
-                        <p class="text-primary"><b>-</b>  Ten en cuenta que deberás abarcar todos los puntos de la información requeridos para que tengas más oportunidad de conseguir empleo.<br></p>
-                        <p><b>-</b>  En la ventana encontrarás un boton para iniciar la grabación y otro para cancelar por si quieres volver a iniciar.<br></p>
-                        <p class="text-primary"><b>-</b>  Una vez hayas finalizado el video deberás presionar "Enviar Curriculum" para guardar el video.<br></p>
-                    </label><br>
+        <div class="container-fluid">
+            <div class="card shadow mb-3" style="max-width: 50rem; margin:auto; margin-top:30px; border-radius:25px;">
+                <div class="card-header text-center bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
+                    <h2 class="text-white">VIDEO CURRICULUM</h2>
                 </div>
-                <!-- Campos internos para la ubicacion -->
-                <input name="txtlatitud" id="latitud" type="hidden">
-                <input name="txtlongitud" id="longitud" type="hidden">
-                
-                <!-- Contenedor donde se muestra el video guardado para previsualizarlo -->
-                <div id="cuadrovideo" class="container" style="display:none">
-                    <div class="row justify-content-center">
-                        <h4 class="text-primary">Puedes verificar el video antes de enviarlo</h4>
+                <div class="card-body">
+                    <div id="recomendaciones" class="pregresp">
+                        <label class="text-primary" style="font-size:1.1rem;"><b>Recomendaciones:</b></label><br>
+                        <label style='margin-left:2rem;'>
+                            <p><b>-</b>  Asegurate de que la imagen y el audio sean lo más claros posibles.<br></p>
+                            <p class="text-primary"><b>-</b>  Una vez presiones el boton de "Iniciar Cámara" tendrás la posibilidad de ver la cámara antes de iniciar la grabación por si necesitas prepararte.<br></p>
+                            <p><b>-</b>  Tambien al debajo de la cámara podrás observar información de los temas que deberás abarcar en el video.<br></p>
+                            <p class="text-primary"><b>-</b>  Ten en cuenta que deberás abarcar todos los puntos de la información solicitada para que tengas más oportunidad de conseguir empleo.<br></p>
+                            <p><b>-</b>  En la ventana encontrarás un boton para iniciar la grabación y otro para cancelar por si quieres volver a iniciar.<br></p>
+                            <p class="text-primary"><b>-</b>  Una vez hayas finalizado el video deberás presionar "Enviar Curriculum" para guardar el video y te mandará a una vista previa del mismo.<br></p>
+                        </label><br>
                     </div>
-                    <div class="row">
-                            <video id="videoGuardado" class="w-100" controls></video> 
-                        </div>
-                    </div>
+                    <!-- Campos internos para la ubicacion -->
+                    <input name="txtlatitud" id="latitud" type="hidden">
+                    <input name="txtlongitud" id="longitud" type="hidden">
                     
-                    <!-- Botones para cancelar y enviar video -->
-                        <div id="btn-enviar" class="container text-center mt-4" style="display:none">
-                            <input type="file" id="fileInput" hidden name="video">
-                            <div class="row">
-                                <div class="col">
-                                    <button class="btn btn-danger w-100" onclick="recargarPagina()">Borrar Grabación</button>
-                                </div>
-                                <div class="col">
-                                    <button class="btn btn-primary w-100" onclick="guardarVideo()" >Enviar Video</button>
-                                </div>
+                    <!-- Contenedor donde se muestra el video guardado para previsualizarlo -->
+                    <div id="cuadrovideo" class="container" style="display:none">
+                        <div class="row justify-content-center">
+                            <h4 class="text-primary">Puedes verificar el video antes de enviarlo</h4>
+                        </div>
+                        <div class="row">
+                                <video id="videoGuardado" class="w-100" controls></video> 
                             </div>
                         </div>
-
-
-                <!-- Boton para abrir modal de video -->
-                <div id="btn-iniciarcamara" class="container text-center mt-4">
-                    <button class="btn btn-primary w-50" id="btnIniciarCamara" data-toggle="modal" data-target="#modalCamara">Iniciar Cámara</button>
-                </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="modalCamara" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-xl" style="">
-                        <div class="modal-content border-0" style="border-radius:25px;">
-                            <div class="modal-header text-center bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
-                                <h2 class="modal-title text-white" style="margin-left:27.5rem;" id="exampleModalLabel">VIDEO INICIADO</h2>
-                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
+                        
+                        <!-- Botones para cancelar y enviar video -->
+                            <div id="btn-enviar" class="container text-center mt-4" style="display:none">
+                                <input type="file" id="fileInput" hidden name="video">
                                 <div class="row">
                                     <div class="col">
-                                        <!-- Indicador visual de grabación -->
-                                        <div id="indicadorGrabacion" class="rounded text-center text-white" style="background-color: red; font-weight:bold;">Grabación Desactivada</div>
-                                        <video id="videoElement" autoplay playsinline class="w-100"></video>
+                                        <button class="btn btn-danger w-100" onclick="recargarPagina()">Borrar Grabación</button>
                                     </div>
                                     <div class="col">
-                                        <div class="pregresp">
-                                            <label class="text-primary" style="font-size:1.1rem;"><b>Temas a abordar:</b></label><br>
-                                            <label style='margin-left:2rem;'>
-                                                <b>- Habla sobre tu experiencia laboral.</b><br>
-                                                    <label style='margin-left:2rem;'>
-                                                        <b>-</b> Puedes hablar sobre el puesto en el que te encontrabas, la empresa y el periodo.
-                                                    </label>
-                                                <b>- Habla sobre tu formación academica.</b><br>
-                                                    <label style='margin-left:2rem;'>
-                                                        <b>-</b> Puedes hablar sobre la institución educativa que cursaste o estás cursando, su ubicación y el periodo.
-                                                    </label>
-                                                <b>- Habla sobre tu aficiones.</b><br>
-                                                    <label style='margin-left:2rem;'>
-                                                        <b>-</b> Puedes describir todas las aficiones que tengas para conocerte mejor.
-                                                    </label>
-                                                <b>- Habla sobre tu intereses.</b><br>
-                                                    <label style='margin-left:2rem;'>
-                                                        <b>-</b> Puedes describir todas los intereses que tengas para conocerte mejor.
-                                                    </label>
-                                            </label><br>
-                                        </div>
+                                        <button class="btn btn-primary w-100" onclick="guardarVideo()" >Enviar Video</button>
                                     </div>
                                 </div>
-                                <div class="row mt-4">
-                                    <div class="col">
-                                        <button type="button" class="btn btn-info w-100" id="btnIniciarGrabacion">Iniciar Grabación</button>
+                            </div>
+    
+    
+                    <!-- Boton para abrir modal de video -->
+                    <div id="btn-iniciarcamara" class="container text-center mt-4">
+                        <button class="btn btn-primary w-50" id="btnIniciarCamara" data-toggle="modal" data-target="#modalCamara">Iniciar Cámara</button>
+                    </div>
+    
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalCamara" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content border-0" style="border-radius:25px;">
+                                <div class="modal-header text-center bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
+                                    <h2 class="modal-title text-white" id="exampleModalLabel">VIDEO INICIADO</h2>
+                                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <video id="videoElement" autoplay playsinline class="w-100"></video>
+                                            <!-- Indicador visual de grabación -->
+                                            <div id="indicadorGrabacion" class="rounded text-center text-white" style="background-color: red; font-weight:bold;">Grabación Desactivada</div>
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <button type="button" class="btn btn-danger w-100" id="btnCancelarGrabacion" disabled>Cancelar Grabación</button>
+                                    <div class="row mt-4">
+                                        <div class="col">
+                                            <div class="pregresp">
+                                                <label class="text-primary" style="font-size:1.1rem;"><b>Temas a abordar:</b></label><br>
+                                                <label style='margin-left:2rem;'>
+                                                    <b>- Habla sobre tu experiencia laboral.</b><br>
+                                                        <label style='margin-left:2rem;'>
+                                                            <b>-</b> Puedes hablar sobre el puesto en el que te encontrabas, la empresa y el periodo.
+                                                        </label><br>
+                                                    <b>- Habla sobre tu formación academica.</b><br>
+                                                        <label style='margin-left:2rem;'>
+                                                            <b>-</b> Puedes hablar sobre la institución educativa que cursaste o estás cursando, su ubicación y el periodo.
+                                                        </label><br>
+                                                    <b>- Habla sobre tu aficiones.</b><br>
+                                                        <label style='margin-left:2rem;'>
+                                                            <b>-</b> Puedes describir todas las aficiones que tengas para conocerte mejor.
+                                                        </label><br>
+                                                    <b>- Habla sobre tu intereses.</b><br>
+                                                        <label style='margin-left:2rem;'>
+                                                            <b>-</b> Puedes describir todas los intereses que tengas para conocerte mejor.
+                                                        </label>
+                                                </label><br>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <button type="button" class="btn btn-primary w-100" id="btnGuardarCurriculum" data-dismiss="modal" disabled>Guardar Curriculum</button>
+                                    <div class="row mt-4">
+                                        <div class="col">
+                                            <button type="button" class="btn btn-info w-100 h-auto" id="btnIniciarGrabacion">Iniciar Grabación</button>
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-danger w-100 h-auto" id="btnCancelarGrabacion" disabled>Cancelar Grabación</button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col">
+                                            <button type="button" class="btn btn-primary w-100 h-auto text-white" id="btnGuardarCurriculum" data-dismiss="modal" disabled>Guardar Curriculum</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -174,11 +180,11 @@
         // Variables para almacenar el objeto de grabación de video y audio
         var mediaRecorderVideo;
         var mediaRecorderAudio;
-
+        var blobVideo;
         // Variables para almacenar los fragmentos de video y audio grabados
         var recordedChunksVideo = [];
         var recordedChunksAudio = [];
-        
+
         function recargarPagina() {
             // Recargar la página
             location.reload();
@@ -271,7 +277,7 @@
                 document.getElementById('cuadrovideo').style.display = "block"
                 document.getElementById('btn-enviar').style.display = "block"
                 document.getElementById('btnGuardarCurriculum').click();
-            }, 300);
+            }, 200);
             grabacionActiva = false;
             // Detener la grabación de video
             if (mediaRecorderVideo && mediaRecorderVideo.state !== 'inactive') {
@@ -281,8 +287,9 @@
             if (mediaRecorderAudio && mediaRecorderAudio.state !== 'inactive') {
                 mediaRecorderAudio.stop();
             }
+            
             // Crear un objeto de URL para el video grabado
-            var blobVideo = new Blob(recordedChunksVideo, { type: 'video/mp4' });
+            blobVideo = new Blob(recordedChunksVideo, { type: 'video/mp4' });
             var videoUrl = URL.createObjectURL(blobVideo);
 
             // Crear un objeto de URL para el audio grabado
@@ -296,6 +303,7 @@
             // Mostrar el audio en la modal de visualización
             var audioVisualizar = document.getElementById('audioGuardado');
             audioVisualizar.src = audioUrl;
+
 
         });
         // Detener la cámara cuando se muestra la modal de visualizar video

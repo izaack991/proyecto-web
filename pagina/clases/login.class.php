@@ -46,6 +46,7 @@
                      $fila  = $query->fetch();
                      $_SESSION['iusuario'] = $fila['id_usuario'];
                      $_SESSION['nomusuario'] = $fila['nombre'];
+                     $_SESSION['razonsocial'] = $fila['razon_social'];
                      $_SESSION['irol']= $fila['rol'];                                      
                      return TRUE;
                 }

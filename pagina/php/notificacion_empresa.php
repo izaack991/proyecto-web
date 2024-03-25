@@ -4,7 +4,7 @@ include('../clases/function.class.php');
 
 $nuevoSingleton = Functions::singleton_functions();
 $iusuario = $_SESSION['iusuario'];
-$nombreUsuario = $_SESSION['nomusuario'];
+$nombreUsuario = $_SESSION['razonsocial'];
 $notificacionpostulaciones = $nuevoSingleton->notificacionpostulaciones($iusuario);
 
 if($notificacionpostulaciones>=1)

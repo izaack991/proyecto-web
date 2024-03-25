@@ -10,7 +10,7 @@
     <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <body style="background-color: #F8F6F3;">
 
     <!-- {*Barra de navegacion para Usuarios*} -->
@@ -98,9 +98,6 @@
 
 
     <!-- Conexion de librerias de JavaScript y bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>

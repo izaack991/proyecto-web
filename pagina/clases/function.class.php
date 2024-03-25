@@ -172,6 +172,34 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+            public function consecutivo_vid_curriculum()
+            {        
+                try {
+                    
+                    $sql="SELECT IFNULL(MAX(id_vid_curriculum),0)+1 as consecutivo from tbl_vid_curriculum";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    if ($query->rowcount()==1)
+                    {
+                        $fila = $query -> fetch();
+                        $id_vid_curriculum = $fila['consecutivo'];
+                        return $id_vid_curriculum;
+                        
+
+                    }
+                    $this->dbh = null;
+                        
+                   
+                }
+                catch(PDOException $e)
+                {
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
 
             function consec_pasatiempo()
             {
@@ -361,7 +389,8 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                    $sql = "SELECT tbl_postulacion.*, CONCAT(tbl_usuario.nombre,' ',tbl_usuario.apellido) AS nombreUsuario, tbl_usuario.correo, tbl_vacantes.puesto FROM tbl_postulacion INNER JOIN tbl_usuario ON tbl_postulacion.id_usuario = tbl_usuario.id_usuario INNER JOIN tbl_vacantes ON tbl_postulacion.id_vacante = tbl_vacantes.id_vacante WHERE tbl_vacantes.id_empresa=$_idusuario AND  tbl_postulacion.status=1;";
+                    $sql = "SELECT COALESCE(tbl_vid_curriculum.id_vid_curriculum, '0') AS vid_status, tbl_postulacion.*, CONCAT(tbl_usuario.nombre,' ',tbl_usuario.apellido) AS nombreUsuario, tbl_usuario.correo, tbl_vacantes.puesto FROM tbl_postulacion INNER JOIN tbl_usuario ON tbl_postulacion.id_usuario = tbl_usuario.id_usuario INNER JOIN tbl_vacantes ON tbl_postulacion.id_vacante = tbl_vacantes.id_vacante LEFT JOIN tbl_vid_curriculum ON tbl_postulacion.id_usuario = tbl_vid_curriculum.id_usuario WHERE tbl_vacantes.id_empresa = $_idusuario AND tbl_postulacion.status = 1;
+                    ";
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
 
@@ -547,6 +576,26 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
+            public function seleccionar_vid_curriculum($id_usuario)
+            {        
+                try {
+                    
+                    $sql = "SELECT * FROM tbl_vid_curriculum WHERE id_usuario=:id_usuario";
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':id_usuario',$id_usuario);
+                    $query->execute();
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                }
+                return $data;
+            }
 
             public function seleccionar_postulacion($id_postulacion)
             {        
@@ -599,6 +648,31 @@ require_once('conexion.class.php');
                         
                 }  
                 return $data;
+                
+            }
+            function video_registrado($iusuario)
+            {
+                try
+                {
+                    $sql = "SELECT * FROM tbl_vid_curriculum where id_usuario ='$iusuario' ";
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+        
+                    if($query->rowCount() >= 1)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                    
+                catch(PDOException $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                }
+                return TRUE;
                 
             }
 
@@ -697,6 +771,7 @@ require_once('conexion.class.php');
                 return $data;
                 
             }
+            
             
             function notificacionpostulaciones($iusuario)
             {

@@ -39,12 +39,21 @@
         // Reiniciar el temporizador si se detecta actividad
         document.addEventListener("mousemove", reiniciarTemporizador);
         document.addEventListener("keypress", reiniciarTemporizador);
-
-        // Muestra la Modal cuandoc carga la página
-        document.addEventListener("DOMContentLoaded", function () {
-            var modal = document.getElementById('popupNotification');
-            $(modal).modal('show');
-        });
+        
+        // Verificar si el elemento está registrado en la base de datos
+        $.ajax({
+            url: '../php/verificar_video.php',
+            type: 'GET',
+            success: function(response){
+                      // Si el elemento está registrado, lo eliminamos del navbar
+                      if(response === 'no_registrado'){
+                            document.addEventListener("DOMContentLoaded", function () {
+                              var modal = document.getElementById('popupNotification');
+                              $(modal).modal('show');
+                            });
+                      }
+                    }
+                });
     </script>
 </head>
 
@@ -70,15 +79,21 @@
     <div class="modal" id="popupNotification" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">NOVEDAD</h5>
+                <div class="modal-header pb-2 bg-primary">
+                    <h3 class="text-white w-100">NOVEDAD!!!</h3>
+                    <button type="button" id="btnCerrar" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
-                    Nueva función de video currículum
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="btnProbar">Probar</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    <div class="container-fluid">
+                        <div class="row justify-content-center">
+                            Nueva función de video currículum disponible, pruebala ahora.
+                        </div>    
+                        <div class="row mt-3 mx-2">
+                            <button type="button" class="btn btn-primary w-100" id="btnProbar">Probar</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,6 +105,10 @@
         document.getElementById("btnProbar").addEventListener("click", function () {
             // Redirige al usuario a la ventana deseada
             window.location.href = "video_curriculum.php";
+        });
+        document.getElementById("btnCerrar").addEventListener("click", function () {
+            var modal = document.getElementById('popupNotification');
+            $(modal).modal('hide');
         });
     </script>
 
