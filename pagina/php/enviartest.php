@@ -16,13 +16,6 @@ include('../clases/function.class.php');
 include('../templates/enviar_test.php');
 
 $titulo = "Index";
-// $smarty=new smarty;
-
-// Verificar si el usuario está autenticado
-if (isset($_SESSION['iusuario'])) {
-    header("location:index.php");
-    exit; // Detener la ejecución del script después de la redirección
-  }
 
 $nuevasRespuestas = Save::singleton_guardar();
 $nuevoSingleton = Functions::singleton_functions();

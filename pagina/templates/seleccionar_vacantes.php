@@ -59,8 +59,9 @@
   <div style="margin-top:4%" id="vacantesContainer"></div>
 
   <!-- Modal -->
-  <div class="modal" id="postularseModal" tabindex="-1" role="dialog">
-    <form action="../php/guardar_postulacion.php" method="POST">
+  <div class="modal" tabindex="-1" id="postularseModal" role="dialog">
+    <form action="../php/guardar_postulacion.php" id="formPostulacion" method="POST">
+    <!-- <form id="formPostulacion" method="POST"> -->
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -74,12 +75,24 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <input type="submit" value="Aceptar" class="btn btn-primary">
+            <input class="btn btn-primary" type="submit" value="Aceptar">
           </div>
         </div>
       </div>
     </form>
   </div>
+
+  <!-- <script>
+    document.getElementById('guardar').onclick = function() {
+        Swal.fire({
+            title: '¡Listo!',
+            text: 'Elemento Guardado',
+            icon: 'success'
+        }).then(function () {
+            window.location.href = "../templates/seleccionar_vacantes.php";
+        });
+    };
+  </script> -->
 
   <!-- Conexion de librerias de JavaScript y bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
