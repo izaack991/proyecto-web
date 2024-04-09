@@ -41,6 +41,9 @@ if ($_SESSION['irol'] == 1) {
         <li class="nav-item">
           <a class="nav-link active" href="Usuario-test.php">Tests</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="chat.php">Chat</a>
+        </li>
         <li class="nav-item" id="nav_video">
         
         </li>

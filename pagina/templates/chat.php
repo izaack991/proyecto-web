@@ -1,3 +1,10 @@
+<?php 
+  session_start();
+  include_once "../clases/conexion.class.php";
+  // if(!isset($_SESSION['rol'])){
+  //   header("location: login.php");
+  // }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +12,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de vacantes</title>
+  <title>Chat</title>
   <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
@@ -52,27 +59,39 @@
       });
     });
   </script>
-
 </head>
+<body>
+  <div class="wrapper">
+    <section class="chat-area">
+      <header>
+        <?php 
+          $user_id = mysqli_real_escape_string($conn, $_GET['user_id']);
+          $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$user_id}");
+          if(mysqli_num_rows($sql) > 0){
+            $row = mysqli_fetch_assoc($sql);
+          }else{
+            header("location: users.php");
+          }
+        ?>
+        <a href="users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+        <img src="php/images/<?php echo $row['img']; ?>" alt="">
+        <div class="details">
+          <span><?php echo $row['fname']. " " . $row['lname'] ?></span>
+          <p><?php echo $row['status']; ?></p>
+        </div>
+      </header>
+      <div class="chat-box">
 
-<body style="background-color: #F8F6F3;">
-  <!-- Conexion al archivo de JavasScript para la ubicacion y bootstrap
-    <script src="../smarty/js/ubicacion.js"></script> -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"> </script>
-
-  <!-- {*Barra de navegacion para Usuarios*} -->
-  <?php include("navbar_usuario.php") ?>
-
-  <div class="container-fluid">
-    <!-- Buscador de vacantes con ajax  -->
-    <div class="alert alert-dismissible text-center px-0">
-      <input type="text" class="btn btn-light disabled" placeholder="Busque una vacante" style="display: flex; margin: 0 10%; width: 80%;" id="bvac" name="bvac">
-    </div>
+      </div>
+      <form action="#" class="typing-area">
+        <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $user_id; ?>" hidden>
+        <input type="text" name="message" class="input-field" placeholder="Type a message here..." autocomplete="off">
+        <button><i class="fab fa-telegram-plane"></i></button>
+      </form>
+    </section>
   </div>
 
-  <!-- Contenedor de las vacantes -->
-  <div id="vacantesContainer" class="row justify-content-center mx-2"></div>
+  <script src="js/chat.js"></script>
 
 </body>
-
 </html>
