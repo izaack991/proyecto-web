@@ -77,7 +77,7 @@
             <label for="floatingInput">Descripcion de Puesto *</label>
           </div>
           <div class="form-floating mb-3 mt-4">
-            <input class="form-control" onkeypress="return validarLetras(event)" type="text" required id="txtempresa" name="txtempresa" placeholder="Ingresa la empresa" maxlength="50"> <br>
+            <input class="form-control"  type="text" required id="txtempresa" name="txtempresa" placeholder="Ingresa la empresa" maxlength="50"> <br>
             <label for="floatingInput">Nombre de la empresa *</label>
           </div>
           <div class="input-group mb-3">

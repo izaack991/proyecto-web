@@ -139,6 +139,29 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+        public function guardar_vid_curriculum($id_vid_curriculum,$iusuario,$ruta_video)
+            {        
+                try 
+                {
+                    
+                    $sql="INSERT INTO tbl_vid_curriculum(id_vid_curriculum, id_usuario, ruta_video) VALUES(:id_vid_curriculum, :id_usuario, :ruta_video)";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    
+                    $query->bindParam(':id_vid_curriculum',$id_vid_curriculum);
+                    $query->bindParam(':id_usuario',$iusuario);
+                    $query->bindParam(':ruta_video',$ruta_video);
+                    $query->execute();
+                        
+                   
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
 
             public function Guardar_id_pasatiempo($f_id_Pasatiempo,$_idusuario,$_descripcion)
             {        

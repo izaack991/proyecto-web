@@ -4,13 +4,6 @@ include('../smarty/clases/save.class.php');
 include('../smarty/clases/function.class.php');
 include('../../smarty-master/libs/smarty.class.php');
 $titulo = "Test SJT";
-$smarty=new smarty;
-
-// Verificar si el usuario está autenticado
-if (isset($_SESSION['iusuario'])) {
-    header("location:login.php?xd=2");
-    exit; // Detener la ejecución del script después de la redirección
-}
 
 $_finduser = Functions::singleton_functions();
 $_idusuario = $_SESSION['iusuario'];
@@ -20,51 +13,7 @@ $notificacionexperiencia = $_finduser->notificacionexperiencia($iusuario);
 $notificacionformacion = $_finduser->notificacionformacion($iusuario);
 $notificacionaficiones = $_finduser->notificacionaficiones($iusuario);
 $notificacioninteres = $_finduser->notificacioninteres($iusuario);
-if($notificacionexperiencia==0)
-{
-    $COUNTLAB=1;
 
-}
-else 
-{
-    $COUNTLAB=0;
-}
-if($notificacionformacion==0)
-{
-    $COUNFOR=1;
-}
-else 
-{
-    $COUNFOR=0;
-}
-if($notificacionaficiones==0)
-{
-    $COUNTAFI=1;
-}
-else 
-{
-    $COUNTAFI=0;
-}
-if($notificacioninteres==0)
-{
-    $COUNTINT=1;
-}
-else 
-{
-    $COUNTINT=0;
-}
-$COUNT = $COUNTLAB + $COUNFOR + $COUNTAFI + $COUNTINT;
-if($_SESSION['iusuario'] == "")
-{  
-        header("location:login.php?xd=2");
-}
-else
-{
-    if($validacion == TRUE)
-    {
-        header("location:reenvio.php?xd=2");
-    }
-    else{
 $nuevasRespuestas = Save::singleton_guardar();
 
 if (isset($_POST['btnfinalizar']))
@@ -87,12 +36,4 @@ if (isset($_POST['btnfinalizar']))
     header("location:indexPrincipal.php");
 }
 
-$smarty->assign("COUNTLAB",$COUNTLAB);
-$smarty->assign("COUNFOR",$COUNFOR);
-$smarty->assign("COUNTAFI",$COUNTAFI);
-$smarty->assign("COUNTINT",$COUNTINT);
-$smarty->assign("COUNT",$COUNT);
-$smarty->assign("titulo", $titulo);
-$smarty->display("../smarty/templates/test_sjt.tpl");
-}}
 ?>

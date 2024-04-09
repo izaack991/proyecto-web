@@ -41,11 +41,22 @@ if ($_SESSION['irol'] == 1) {
         <li class="nav-item">
           <a class="nav-link active" href="Usuario-test.php">Tests</a>
         </li>
-        <li class="nav-item">
-        <a class="nav-link active" href="video_curriculum.php">Video Curriculum</a>
+        <li class="nav-item" id="nav_video">
+        
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown" >
+        <a class="nav-link active font-weight-bold dropdown-toggle" id="nombreUsuario" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menú de Usuario</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li class="text-center"><a class="nav-link active text-primary font-weight-bold" href="#">Ver Perfil</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li class="text-center">
+              <!-- {*Boton para cerrar la sesion*} -->
+              <a class="nav-link active text-danger" href='#' onclick="openAlert()" style="font-weight:bold;">Cerrar Sesión</a>
+            </li>
+          </ul>
+        </li>
         <li class="nav-item">
           <a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" data-toggle="modal"
             data-target="#exampleModal">
@@ -56,7 +67,7 @@ if ($_SESSION['irol'] == 1) {
             </span>
           </a>
         </li>
-        <li class="nav-link active font-weight-bold" id="nombreUsuario"></li>
+        
 
         <!-- {* Creacion de la modal de notificaciones *} -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -82,14 +93,25 @@ if ($_SESSION['irol'] == 1) {
           </div>
         </div>
 
-        <!-- {*Boton para cerrar la sesion*} -->
-        <a class="nav-link active text-danger" href='#' onclick="openAlert()" style="font-weight:bold;">Cerrar Sesión
-        </a>
+        
 
         <script>
           // function redireccionindex() {
           //   window.location.href='https://www.workele.com';
           //     }
+          $(document).ready(function(){
+              // Verificar si el elemento está registrado en la base de datos
+              $.ajax({
+                  url: '../php/verificar_video.php',
+                  type: 'GET',
+                  success: function(response){
+                      // Si el elemento está registrado, lo eliminamos del navbar
+                      if(response === 'no_registrado'){
+                          $('#nav_video').html('<a class="nav-link active" href="video_curriculum.php">Video Curriculum</a>');
+                      }
+                  }
+              });
+          });
           function openAlert() {
             Swal.fire({
               title: '¿Estás seguro?',

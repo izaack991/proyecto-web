@@ -9,11 +9,6 @@ $_SESSION['tiempo'] = time();
 include('../clases/save.class.php');
 include('../clases/function.class.php');
 
-// Verificar si el usuario está autenticado
-// if (isset($_SESSION['iusuario'])) {
-//     header("location:login.php?xd=2");
-//     exit; // Detener la ejecución del script después de la redirección
-// }
 $nuevoExperiencia = save::singleton_guardar();
 $_findExperiencia = Functions::singleton_functions();
 $nuevoSingleton = Functions::singleton_functions();

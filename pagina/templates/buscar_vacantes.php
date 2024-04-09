@@ -65,13 +65,13 @@
 
   <div class="container-fluid">
     <!-- Buscador de vacantes con ajax  -->
-    <div class="alert alert-dismissible text-center">
+    <div class="alert alert-dismissible text-center px-0">
       <input type="text" class="btn btn-light disabled" placeholder="Busque una vacante" style="display: flex; margin: 0 10%; width: 80%;" id="bvac" name="bvac">
     </div>
-
-    <!-- Contenedor de las vacantes -->
-    <div id="vacantesContainer" class="row"></div>
   </div>
+
+  <!-- Contenedor de las vacantes -->
+  <div id="vacantesContainer" class="row justify-content-center mx-2"></div>
 
 </body>
 

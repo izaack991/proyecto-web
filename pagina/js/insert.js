@@ -188,6 +188,40 @@
     })
 };
 
+// Metodo AJAX para el guardado de Interes
+{
+    $(document).ready(function () {
+        $('#formPostulacion').submit(function (event) {
+            event.preventDefault();
+            var formData = new FormData($('#formPostulacion')[0]);
+            $.ajax({
+                url: '../php/guardar_postulacion.php',
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    // Maneja la respuesta del archivo PHP aquí
+                    // console.log(response);
+                    if (response == "true") {
+                        Swal.fire({
+                            title: '¡Listo!',
+                            text: 'Elemento Guardado',
+                            icon: 'success'
+                        }).then(function () {
+                            window.location.href = "../templates/buscar_vacantes.php";
+                        });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // Maneja cualquier error que ocurra durante la solicitud AJAX
+                    console.error(error);
+                }
+            });
+        })
+    })
+};
+
 // Metodo AJAX para el guardado de Test Cleaver
 // {
 //     $(document).ready(function () {
