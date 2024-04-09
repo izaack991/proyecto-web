@@ -195,7 +195,7 @@ if ($_SESSION['apellido']) {
             <label>Domicilio: *</label><br>
           </div>
           <div class="container text-center mt-4">
-            <input class="btn btn-primary" type="submit" value="Guardar">
+            <input class="btn btn-primary" type="submit" value="Guardar" id="miBoton">
             <button type="button" class="btn btn-secondary" onclick="location.href='login.php?xd=2'">Volver</button>
           </div>
         </div>

@@ -50,7 +50,7 @@ if ($_SESSION['irol'] == 1) {
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown" >
-          <a class="nav-link active font-weight-bold dropdown-toggle" id="nombreUsuario" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+        <a class="nav-link active font-weight-bold dropdown-toggle" id="nombreUsuario" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menú de Usuario</a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li class="text-center"><a class="nav-link active text-primary font-weight-bold" href="#">Ver Perfil</a></li>
             <li><hr class="dropdown-divider"></li>

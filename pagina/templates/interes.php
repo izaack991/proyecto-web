@@ -78,7 +78,7 @@
           <!-- Campos para los datos de interes -->
           <div class="form-floating mb-3 mt-4">
             <textarea name="txtdesc" type="text" style="height: 90px; resize:none;"
-              class="form-control" maxlength="100" cols="1" rows="10" onkeypress="return validarLetras(event)"
+              class="form-control" maxlength="100" cols="1" rows="10"
               required="true" placeholder="Ingrese sus datos de interes"></textarea>
             <label for="floatingInput">Descripcion *</label>
           </div>
