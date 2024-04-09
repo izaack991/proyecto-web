@@ -9,6 +9,7 @@
   <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
 
@@ -63,8 +64,6 @@
 <body style="background-color: #F8F6F3;">
   <!-- Conexion al archivo de JavasScript para la ubicacion y bootstrap
     <script src="../smarty/js/ubicacion.js"></script> -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"> </script>
-
   <!-- {*Barra de navegacion para Usuarios*} -->
   <?php include ("navbar_usuario.php") ?>
 
