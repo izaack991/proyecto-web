@@ -16,6 +16,13 @@
                         // Maneja la respuesta del archivo PHP aquí
                         console.log(response);
                         if (response == "true1") {
+                          $('#miBoton').click(function(){
+                            // Deshabilitar el botón para evitar múltiples envíos
+                            $(this).prop('disabled', true);
+                            // Opcionalmente, puedes cambiar el texto del botón
+                            $(this).val("Enviado");
+                          });
+
                             Swal.fire({
                                 title: 'Listo!',
                                 text: 'Empresa Guardada',
@@ -24,6 +31,13 @@
                                 window.location.href = "../templates/login.php?xd=1";
                             });
                         } else if (response == "true2"){
+                          $('#miBoton').click(function(){
+                            // Deshabilitar el botón para evitar múltiples envíos
+                            $(this).prop('disabled', true);
+                            // Opcionalmente, puedes cambiar el texto del botón
+                            $(this).val("Enviado");
+                          });
+
                             Swal.fire({
                                 title: 'Listo!',
                                 text: 'Usuario Guardado',
@@ -60,7 +74,12 @@
                                 title: 'Error!',
                                 text: 'No se pudo subir la constancia al sevidor.',
                                 icon: 'error'});
-                        } else {
+                        } else if (response == "errorCorreoDuplicado") {
+                          Swal.fire({
+                              title: 'Error!',
+                              text: 'Correo ya registrado. Intenta de nuevo con otro o inicia sesión',
+                              icon: 'error'});
+                      } else {
                             Swal.fire({
                                 title: 'Error!',
                                 text: 'No se guardó el usuario',
