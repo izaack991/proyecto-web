@@ -11,19 +11,21 @@ if ($_SESSION['irol'] == 2) {
   );
 }
 ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #FFFFFF;">
       <div class="container-fluid">
-        <a class="navbar-brand" href="indexEmpresa.php">Inicio</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="indexEmpresa.php" style="color: #54B689;">
+    <img src="../../assets/images/index_usuario/WORKELE.png" alt="Inicio" style="width: 150px; height: 150px;">
+</a>
+        <button class="navbar-toggler" type="button"  data-bs-toggle="collapse" data-bs-target="#navbarColor03"aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarColor03">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="vacante.php">Vacantes</a>
+              <a class="nav-link active" href="vacante.php"  style="color: #54B689;">VACANTES</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="postulacion.php">Postulaciones</a>
+              <a class="nav-link active" href="postulacion.php" style="color: #54B689;">POSTULACIONES</a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
@@ -41,13 +43,15 @@ if ($_SESSION['irol'] == 2) {
             <li class="nav-item">
               <a class="btn demo-btn-on-bg text-white font-weight-bold mt-2 mt-lg-0" data-toggle="modal"data-target="#exampleModal">
                 <span class="fa-layers fa-fw fa-lg">
-                  <i class="fas fa-bell"></i>
+                  <i class="fas fa-bell" style="color: #54B689;"></i>
                   <span id="contador">
                   </span>
                 </span>
               </a>
             </li>
 
+
+            
         <!--Creacion de la modal de notificaciones-->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
           aria-hidden="true">
