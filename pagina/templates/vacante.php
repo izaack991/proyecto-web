@@ -186,5 +186,6 @@
     <script src="../js/insert.js"></script>
 
 </body>
-
+<!-- {*Footer*} -->
+<?php include("footer.php") ?>
 </html>

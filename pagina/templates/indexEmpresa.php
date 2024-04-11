@@ -78,13 +78,21 @@
 </div>
 
 
-<div class="container" style="max-width: 100%; text-align: center; background-color: #B0E0E6;">
+<div style="max-width: 100%; text-align: center; background-color: #4ac0ee;">
+    <img src="../../assets/images/index_usuario/BUSCARVACANTES.gif" alt="GIF animado" style="float: left; margin-right: 20px;">
     <p style="font-size: 2rem; line-height: 1.5; padding-top: 20px; padding-bottom: 20px; max-width: 60%; margin: auto;">
         <strong>Publica tu oferta en Workele,</strong> y recluta con la web de empleo preferida por las empresas y candidatos
     </p>
-    <a href="postulacion.php" style="display: inline-block; background-color: #FF5733; color: #fff; padding: 15px 30px; font-size: 1.25rem; text-decoration: none; border-radius: 5px; margin-bottom: 20px;">Encontrar candidatos</a>
+    <center>
+        <a href="postulacion.php"  style="display: inline-block; background-color: #FF5733; color: #fff; padding: 15px 30px; font-size: 1.25rem; text-decoration: none; border-radius: 5px; margin-bottom: 20px; margin-left: -250px;">Encontrar candidatos</a>
+    </center>
 </div>
-    
+
+
+
+
+<!--<video src="../../assets/images/index_usuario/BUSCAREMPLEADO.mp4" autoplay muted loop controls style="max-width: 100%; height: auto;"></video> -->
+
     <!--Conexion de librerias de JavaScript y bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
