@@ -153,4 +153,41 @@
   .form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
     background-color: #dde0e3;
   }
+<<<<<<< HEAD
   
+=======
+
+  #password_rules ul li {
+    /*font-size: 12px;
+    font-weight: normal;*/
+    color: #000000;
+  }
+
+  #password_rules ul li.complete {
+    color: #5DB406;
+  }
+
+  #password_rules ul li.incomplete {
+    color: red;
+  }
+
+  .password-toggle-icon {
+    position: absolute;
+    top: 60%;
+    right: 20px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  .password-toggle-icon i {
+    font-size: 18px;
+    line-height: 1;
+    color: #333;
+    transition: color 0.3s ease-in-out;
+    margin-bottom: 20px;
+  }
+  
+  .password-toggle-icon i:hover {
+    color: #000;
+  }
+>>>>>>> 16c29e57eba65afb23270f5acd2e93114694a7ca
