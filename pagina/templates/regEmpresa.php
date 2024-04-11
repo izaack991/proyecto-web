@@ -225,3 +225,26 @@ if ($_SESSION['cuenta']) {
 </body>
 
 </html>
+<?php
+// Verificar si se envió el formulario de registro
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Obtener los datos del formulario
+    $razonSocial = $_POST["txt_razon"];
+    // Otros campos del formulario...
+
+    // Generar un token de verificación único
+    $token = uniqid();
+
+    // Enviar el correo electrónico con el token de verificación
+    $para = $_POST["txt_CORREO"];
+    $titulo = 'Token de verificación';
+    $mensaje = 'Tu token de verificación es: ' . $token;
+    $cabeceras = 'From: tu_correo@example.com';
+
+    if (mail($para, $titulo, $mensaje, $cabeceras)) {
+        echo "Se ha enviado un correo electrónico con el token de verificación.";
+    } else {
+        echo "Error al enviar el correo electrónico.";
+    }
+}
+?>
