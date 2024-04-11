@@ -1,144 +1,128 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<link rel="stylesheet" href="../../assets/css/styles_sb.css">
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+<link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
+<script src="../js/notificacion_usuario.js"></script>
+<script src="../js/sesion.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<?php 
+// session_start();
+// if ($_SESSION['irol'] == 1) {
+//   echo (
+//       '<script src="../js/login.js" data-error="5"></script>'
+//   );
+// }
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <title> Drop Down Sidebar Menu | CodingLab </title>
-    <link rel="stylesheet" href="../../assets/css/styles_sb.css">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body>
-    <div class="sidebar locked">
-        <div class="logo-details">
+<div class="sidebar locked">
+    <div class="logo-details">
+        <a href="indexPrincipal.php">
             <i class='bx bxl-c-plus-plus'></i>
-            <span class="logo_name">CodingLab</span>
-        </div>
-
-        <ul class="nav-links">
-            <li>
-                <a href="#">
-                    <i class='bx bx-grid-alt'></i>
-                    <span class="link_name">Dashboard</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Category</a></li>
-                </ul>
-            </li>
-            <li>
-                <div class="iocn-link">
-                    <a href="#">
-                        <i class='bx bx-collection'></i>
-                        <span class="link_name">Category</span>
-                    </a>
-                    <i class='bx bxs-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Category</a></li>
-                    <li><a href="#">HTML & CSS</a></li>
-                    <li><a href="#">JavaScript</a></li>
-                    <li><a href="#">PHP & MySQL</a></li>
-                </ul>
-            </li>
-            <li>
-                <div class="iocn-link">
-                    <a href="#">
-                        <i class='bx bx-book-alt'></i>
-                        <span class="link_name">Posts</span>
-                    </a>
-                    <i class='bx bxs-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Posts</a></li>
-                    <li><a href="#">Web Design</a></li>
-                    <li><a href="#">Login Form</a></li>
-                    <li><a href="#">Card Design</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-pie-chart-alt-2'></i>
-                    <span class="link_name">Analytics</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Analytics</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-line-chart'></i>
-                    <span class="link_name">Chart</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Chart</a></li>
-                </ul>
-            </li>
-            <li>
-                <div class="iocn-link">
-                    <a href="#">
-                        <i class='bx bx-plug'></i>
-                        <span class="link_name">Plugins</span>
-                    </a>
-                    <i class='bx bxs-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Plugins</a></li>
-                    <li><a href="#">UI Face</a></li>
-                    <li><a href="#">Pigments</a></li>
-                    <li><a href="#">Box Icons</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-compass'></i>
-                    <span class="link_name">Explore</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Explore</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-history'></i>
-                    <span class="link_name">History</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">History</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-cog'></i>
-                    <span class="link_name">Setting</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Setting</a></li>
-                </ul>
-            </li>
-            <li>
-                <div class="profile-details">
-                    <div class="profile-content">
-                        <img src="image/profile.jpg" alt="profileImg">
-                    </div>
-                    <div class="name-job">
-                        <div class="profile_name">Prem Shahi</div>
-                        <div class="job">Web Desginer</div>
-                    </div>
-                    <i class='bx bx-log-out'></i>
-                </div>
-            </li>
-        </ul>
+        </a>
+        <span class="logo_name">CodingLab</span>
     </div>
-    <section class="home-section">
-        <div class="home-content">
-            <i class='bx'></i>
-            <span class="text">Drop Down Sidebar</span>
-        </div>
-    </section>
 
-    <script src="../js/script.js"></script>
+    <ul class="nav-links">
+        <li>
+            <a href="experiencia_laboral.php">
+                <i class='bx bx-grid-alt'></i>
+                <span class="link_name">Experiencia Laboral</span>
+            </a>
+        </li>
+        <li>
+            <div class="iocn-link">
+                <a href="formacion_academica.php">
+                    <i class='bx bx-collection'></i>
+                    <span class="link_name">Formacion Academica</span>
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="iocn-link">
+                <a href="Aficiones.php">
+                    <i class='bx bx-book-alt'></i>
+                    <span class="link_name">Aficion</span>
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="iocn-link">
+                <a href="interes.php">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="link_name">Interes</span>
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="iocn-link">
+                <a href="buscar_vacantes.php">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="link_name">Buscar Vacantes</span>
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="iocn-link">
+                <a href="Usuario-test.php">
+                    <i class='bx bx-plug'></i>
+                    <span class="link_name">Tests</span>
+                </a>
+            </div>
+        </li>
+        <li class="nav-item" id="nav_video"></li>
+        <li>
+            <a href="#">
+                <i class='bx bx-history'></i>
+                <span class="link_name">History</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">History</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-cog'></i>
+                <span class="link_name">Setting</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">Setting</a></li>
+            </ul>
+        </li>
+        <li>
+            <div class="profile-details">
+                <div class="profile-content">
+                    <img src="image/profile.jpg" alt="profileImg">
+                </div>
+                <div class="name-job">
+                    <div class="profile_name">Prem Shahi</div>
+                    <div class="job">Web Desginer</div>
+                </div>
+                <i class='bx bx-log-out'></i>
+            </div>
+        </li>
+    </ul>
+</div>
+<section class="home-section">
+    <div class="home-content">
+        <i class='bx'></i>
+        <span class="text">Workele</span>
+    </div>
+</section>
 
-</body>
-
-</html>
+<script src="../js/script.js"></script>
+<script>
+    $(document).ready(function () {
+        // Verificar si el elemento está registrado en la base de datos
+        $.ajax({
+            url: '../php/verificar_video.php',
+            type: 'GET',
+            success: function (response) {
+                // Si el elemento está registrado, lo eliminamos del navbar
+                if (response === 'no_registrado') {
+                    $('#nav_video').html(
+                        '<a class="nav-link active" href="video_curriculum.php">Video Curriculum</a>'
+                        );
+                }
+            }
+        });
+    });
+</script>
