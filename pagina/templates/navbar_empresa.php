@@ -1,5 +1,4 @@
 <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/notificacion_empresa.js"></script>
 <script src="../js/sesion.js"></script>
@@ -30,8 +29,7 @@ if ($_SESSION['irol'] == 2) {
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
           <a class="nav-link active font-weight-bold dropdown-toggle" style="color: #54B689;" href="#"
-            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Usuario
+          id="nombreUsuario" id="navbarDropdown"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li class="text-center"><a class="nav-link active text-primary font-weight-bold" href="#">Ver Perfil</a>

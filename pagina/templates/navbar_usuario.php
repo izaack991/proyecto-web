@@ -1,6 +1,5 @@
 <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
 <link rel="stylesheet" href="../../assets/css/styles.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/notificacion_usuario.js"></script>
 <script src="../js/sesion.js"></script>
@@ -25,40 +24,38 @@ if ($_SESSION['irol'] == 1) {
     <div class="collapse navbar-collapse" id="navbarColor03">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" style="color: #54B689;" role="button" aria-haspopup="true" aria-expanded="false">Registro</a>
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" style="color: #54B689;" role="button" aria-haspopup="true" aria-expanded="false">REGISTRO</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="experiencia_laboral.php" style="color: #54B689;">Experiencia Laboral</a>
-            <a class="dropdown-item" href="formacion_academica.php" style="color: #54B689;">Formacion Academica</a>
-            <a class="dropdown-item" href="Aficiones.php" style="color: #54B689;">Aficiones</a>
-            <a class="dropdown-item" href="interes.php" style="color: #54B689;">Interes</a>
+            <a class="dropdown-item" href="experiencia_laboral.php" style="color: #54B689;">EXPERIENCIA LABORAL</a>
+            <a class="dropdown-item" href="formacion_academica.php" style="color: #54B689;">FORMACION ACADEMICA</a>
+            <a class="dropdown-item" href="Aficiones.php" style="color: #54B689;">AFICIONES</a>
+            <a class="dropdown-item" href="interes.php" style="color: #54B689;">INTERES</a>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="buscar_vacantes.php" style="color: #54B689;">Buscar Vacantes</a>
+          <a class="nav-link active" href="buscar_vacantes.php" style="color: #54B689;">BUSCAR VACANTES</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="Usuario-test.php" style="color: #54B689;">Tests</a>
+          <a class="nav-link active" href="Usuario-test.php" style="color: #54B689;">TESTS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="chat.php" style="color: #54B689;">Chat</a>
+          <a class="nav-link active" href="chat.php" style="color: #54B689;">CHAT</a>
         </li>
         <li class="nav-item" id="nav_video"></li>
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
           <a class="nav-link active font-weight-bold dropdown-toggle" style="color: #54B689;" href="#"
-            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Usuario
+          id="nombreUsuario" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li class="text-center"><a class="nav-link active text-primary font-weight-bold" href="#">Ver Perfil</a>
+            <li class="text-center"><a class="nav-link active text-primary font-weight-bold" href="#">VER PERFIL</a>
             </li>
             <li>
               <hr class="dropdown-divider">
             </li>
             <li class="text-center">
-              <a class="nav-link active text-danger" href='#' onclick="openAlert()" style="font-weight:bold;">Cerrar
-                Sesión</a>
+              <a class="nav-link active text-danger" href='#' onclick="openAlert()" style="font-weight:bold;">CERRAR SESIÓN</a>
             </li>
           </ul>
         </li>
@@ -100,7 +97,7 @@ if ($_SESSION['irol'] == 1) {
                 // Si el elemento está registrado, lo eliminamos del navbar
                 if (response === 'no_registrado') {
                   $('#nav_video').html(
-                    '<a class="nav-link active" href="video_curriculum.php" style="color: #54B689;">Video Curriculum</a>'
+                    '<a class="nav-link active" href="video_curriculum.php" style="color: #54B689;">VIDEO CURRICULUM</a>'
                     );
                 }
               }

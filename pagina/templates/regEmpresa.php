@@ -230,16 +230,17 @@ if ($_SESSION['cuenta']) {
 // Verificar si se envió el formulario de registro
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener los datos del formulario
-    $razonSocial = $_POST["txt_razon"];
+    $correo = $_POST["txt_correo"];
 
     // Generar un token de verificación único
     $token = random(1000,9999);
 
     // Enviar el correo electrónico con el token de verificación
-    $sql = "INSERT INTO tbl_usuario (razon_social, correo, token) VALUES ('$razonSocial', '$correo', '$token')";
+    $sql = "INSERT INTO tbl_usuario (razon_social, correo, token) VALUES ('$correo', '$token')";
     if ($conn->query($sql) === TRUE) {
 
         // Enviar el correo electrónico con el token de verificación
+        $para = $correo;
         $titulo = 'Token de verificación';
         $mensaje = 'Tu token de verificación es: ' . $token;
         $cabeceras = 'From: kevin.vall328@gmail.com';
