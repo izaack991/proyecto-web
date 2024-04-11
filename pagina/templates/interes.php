@@ -73,6 +73,7 @@
           <h4 class="text-white">DATOS DE INTERÉS</h4>
         </div>
         <div class="card-body">
+        <button id="btnAbrirModal" valor="FA4" type="button" class="btn btn-primary btn-sm rounded-circle py-0 px-0 border-green align-center" style="right:0; top: 85px; margin-right:25px; position: absolute;border-width:0.1rem; font-size: 1em; width: 26px; height:26px;" >?</button>
           <label class="text-primary">Los campos marcados con asterisco (*) son obligatorios</label><br>
 
           <!-- Campos para los datos de interes -->
@@ -111,6 +112,7 @@
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
   </script>
   <script src="../js/insert.js"></script>
+  <script src="../js/modalesDinamicos.js"></script>
 
 </body>
 
