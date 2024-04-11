@@ -225,6 +225,7 @@ if ($_SESSION['cuenta']) {
 </body>
 
 </html>
+
 <?php
 // Verificar si se envió el formulario de registro
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -239,7 +240,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $para = $_POST["txt_CORREO"];
     $titulo = 'Token de verificación';
     $mensaje = 'Tu token de verificación es: ' . $token;
-    $cabeceras = 'From: tu_correo@example.com';
+    $cabeceras = 'From: jonathannoriega.urias@gmail.com';
 
     if (mail($para, $titulo, $mensaje, $cabeceras)) {
         echo "Se ha enviado un correo electrónico con el token de verificación.";
