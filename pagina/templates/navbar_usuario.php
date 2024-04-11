@@ -68,21 +68,25 @@ if ($_SESSION['irol'] == 1) {
             </span>
           </button>
         </li>
-        <!-- Creación de la modal de notificaciones -->
+        <!-- {* Creacion de la modal de notificaciones *} -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
           aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header bg-primary">
                 <h5 class="modal-title text-white" id="exampleModalLabel"><i class="fas fa-bell"></i>
-                  <b>Notificaciones</b></h5>
-                <button type="button" class="close text-white" data-bs-dismiss="modal" aria-label="Close">
+                  <b>Notificaciones</b>
+                </h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                <div id="sinnot"></div>
-                <a class="link-primary" id="notpos" href="postulacion.php">No tiene postulaciones pendientes</a>
+                <div id="contador_exp"></div>
+                <div id="contador_for"></div>
+                <div id="contador_afi"></div>
+                <div id="contador_int"></div>
+                <div id="contador_not"></div>
               </div>
             </div>
           </div>
