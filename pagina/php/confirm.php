@@ -19,4 +19,5 @@ if (isset($_GET['token'])) {
 } else {
     echo "Token no recibido.";
 }
+
 ?>
