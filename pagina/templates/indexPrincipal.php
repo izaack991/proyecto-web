@@ -112,74 +112,47 @@
         });
     </script>
 
-    <div class="container-fluid">
-        <div class="row align-items-center py-4">
-            <div class="col-lg-6">
-                <img src="../../assets/images/index_usuario/TRABAJANDO.png" alt="Imagen"
-                    class="img-fluid mx-auto d-block" style="max-width: 90%;">
-            </div>
-            <div class="col-lg-5">
-                <div>
-                    <h2 class="mb-3">Descubre oportunidades profesionales excepcionales al asociarte con algunas de las
-                        empresas más destacadas</h2>
-                    <p class="text-justify">Explora una amplia gama de oportunidades laborales adaptadas a tus
-                        habilidades y preferencias con Workele. Nuestro proceso de búsqueda de trabajo es eficiente y
-                        personalizado, diseñado para maximizar tus posibilidades de éxito. ¡Descubre un mundo de
-                        emocionantes oportunidades laborales con nosotros!</p>
-                </div>
+
+
+
+<div style="max-width: 100%; padding: 5vw; background-size: cover; background-position: center; display: grid; grid-template-columns: auto 1fr; gap: 5vw; color: white; align-items: center;">
+    <!-- Imagen a la izquierda -->
+    <div style="display: flex; flex-direction: column; justify-content: center; background-color: rgba(0, 0, 0, 0.7); padding: 2vw; border-radius: 20px;">
+       <div style="max-width: 40vw;">
+        <img src="../../assets/images/index_usuario/OFICINA.svg" alt="Imagen" width="300" height="230" style="width: 100%; border-radius: 20px;">
+        <h3 style="text-align: center; margin: 0; color: white;">Descubre oportunidades profesionales excepcionales al asociarte con algunas de las empresas más destacadas</h3>
+        <p style="text-align: justify; margin: 2vw 0;">Explora una amplia gama de oportunidades laborales adaptadas a tus habilidades y preferencias con Workele. Nuestro proceso de búsqueda de trabajo es eficiente y personalizado, diseñado para maximizar tus posibilidades de éxito. ¡Descubre un mundo de emocionantes oportunidades laborales con nosotros!</p>
+    </div>
+</div>
+
+<!-- Segunda imagen a la derecha -->
+<div style="display: flex; flex-direction: column; justify-content: center; background-color: rgba(0, 0, 0, 0.7); padding: 2vw; border-radius: 20px;">
+   <div style="max-width: 40vw;">
+    <img src="../../assets/images/index_usuario/OFICINA.svg" alt="Imagen" width="300" height="230" style="width: 100%; border-radius: 20px;">
+    <h3 style="text-align: center; margin: 0; color: white;">Descubre oportunidades profesionales excepcionales al asociarte con algunas de las empresas más destacadas</h3>
+    <p style="text-align: justify; margin: 2vw 0;">Explora una amplia gama de oportunidades laborales adaptadas a tus habilidades y preferencias con Workele. Nuestro proceso de búsqueda de trabajo es eficiente y personalizado, diseñado para maximizar tus posibilidades de éxito. ¡Descubre un mundo de emocionantes oportunidades laborales con nosotros!</p>
+</div>
+</div>
+</div> 
+
+
+
+<div style="max-width: 100%; background-color: red;">
+    <div style="display: flex;">
+        <!-- Imagen a la izquierda -->
+        <div style="flex: 0 0 40%; max-width: 40%;">
+            <img src="../../assets/images/index_usuario/OFICINA.svg" alt="Imagen" width="300" height="230" style="width: 100%; border-radius: 20px;">
+        </div>
+        <!-- Contenido de la tarjeta a la derecha -->
+        <div style="flex: 1;">
+            <div style="padding: 1rem;">
+                <h5 style="margin-top: 0;">Encuentra el empleo o las prácticas adecuadas para ti</h5>
+                <p style="margin-bottom: 0;">Explora una amplia gama de oportunidades laborales adaptadas a tus habilidades y preferencias con Workele. Nuestro proceso de búsqueda de trabajo es eficiente y personalizado, diseñado para maximizar tus posibilidades de éxito. ¡Descubre un mundo de emocionantes oportunidades laborales con nosotros!</p>
             </div>
         </div>
     </div>
+</div>
 
-
-    <br>
-    <!-- <h3 style="text-align: center;">Trabajamos con las empresas más destacadas, ofreciéndote la oportunidad de encontrar las mejores vacantes disponibles</h3> -->
-    <div class="card border-0 rounded-0" style="background-color: #000000;">
-        <div id="carouselExample" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="row">
-                        <div class="col-md-4 text-center">
-                            <img src="../../assets/images/index_usuario/DECORACION-CHIC.jpeg"
-                                class="d-block w-100 mx-auto" alt="Slide 1" style="max-width: 100%;">
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <img src="../../assets/images/index_usuario/ARTICS-SOLUCIONES.jpeg"
-                                class="d-block w-100 mx-auto" alt="Slide 2" style="max-width: 100%;">
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <img src="../../assets/images/index_usuario/ENSIGNA.jpeg" class="d-block w-100 mx-auto"
-                                alt="Slide 3" style="max-width: 100%;">
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-md-4 text-center">
-                            <img src="../../assets/images/index_usuario/SEBASTIAN BENNETT.jpeg"
-                                class="d-block w-100 mx-auto" alt="Slide 4" style="max-width: 100%;">
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <img src="../../assets/images/index_usuario/BRAIS-PERNAS.jpeg" class="d-block w-100 mx-auto"
-                                alt="Slide 5" style="max-width: 100%;">
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <img src="../../assets/images/index_usuario/ARCHIS.jpeg" class="d-block w-100 mx-auto"
-                                alt="Slide 6" style="max-width: 100%;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a> -->
-        </div>
-    </div>
 
 
     <!-- {*Conexion de librerias de JavaScript y bootstrap*}      -->
