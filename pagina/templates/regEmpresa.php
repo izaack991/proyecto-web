@@ -226,12 +226,6 @@ if ($_SESSION['cuenta']) {
 
 </html>
 
-
-// Generar un token de verificación único
-$token = uniqid();
-
-// Insertar el token en la base de datos
-
 <?php
 // Verificar si se envió el formulario de registro
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
