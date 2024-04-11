@@ -104,25 +104,3 @@
 </body>
 
 </html>
-
-<div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: block; padding-right: 14px;" aria-modal="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header bg-primary">
-                <h5 class="modal-title text-white" id="exampleModalLabel"><i class="fas fa-bell"></i>
-                  <b>Notificaciones</b>
-                </h5>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div id="contador_exp"></div>
-                <div id="contador_for"></div>
-                <div id="contador_afi"></div>
-                <div id="contador_int"></div>
-                <div id="contador_not">No tiene notificaciones en este momento</div>
-              </div>
-            </div>
-          </div>
-        </div>

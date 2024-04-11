@@ -1,5 +1,4 @@
 <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/notificacion_empresa.js"></script>
 <script src="../js/sesion.js"></script>
