@@ -172,46 +172,6 @@ if ($_SESSION['cuenta']) {
     </form>
   </div>
 
-  <script>
-    // function enviarFormulario() {
-    //     var formData = new FormData(document.getElementById('formulario'));
-
-    //     $.ajax({
-    //         url: 'ruta_a_tu_script_php.php',
-    //         type: 'POST',
-    //         data: formData,
-    //         dataType: 'json',
-    //         contentType: false,
-    //         processData: false,
-    //         success: function(response) {
-    //             if (response.success) {
-    //                 Swal.fire({
-    //                     title: 'Éxito!',
-    //                     text: response.message,
-    //                     icon: 'success'
-    //                 });
-    //                 window.location.href = "nueva_pagina.php";
-    //             } else {
-    //                 Swal.fire({
-    //                     title: 'Error!',
-    //                     text: response.message,
-    //                     icon: 'error'
-    //                 });
-    //             }
-    //         },
-    //         error: function(xhr, status, error) {
-    //             Swal.fire({
-    //                 title: 'Error!',
-    //                 text: 'Ha ocurrido un error en el servidor. Por favor, inténtelo de nuevo más tarde.',
-    //                 icon: 'error'
-    //             });
-    //         }
-    //     });
-    // }
-    // Funcion para ocultar los campos dependiendo si es usuario o empresa
-    // Obtener el valor de la variable de sesión en JavaScript
-  </script>
-
   <!-- Conexion de librerias de JavaScript y bootstrap -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -227,6 +187,12 @@ if ($_SESSION['cuenta']) {
 </html>
 
 <?php
+
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "db_web";
+
 // Verificar si se envió el formulario de registro
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener los datos del formulario
@@ -236,8 +202,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $token = random(1000,9999);
 
     // Enviar el correo electrónico con el token de verificación
-    $sql = "INSERT INTO tbl_usuario (razon_social, correo, token) VALUES ('$correo', '$token')";
-    if ($conn->query($sql) === TRUE) {
+    $sql = "INSERT INTO tbl_usuario (correo, token) VALUES ('$correo', '$token')";
+    if ($conn->query($sql) == TRUE) {
 
         // Enviar el correo electrónico con el token de verificación
         $para = $correo;

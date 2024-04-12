@@ -49,10 +49,8 @@ if ($_SESSION['irol'] == 1) {
           id="nombreUsuario" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li class="text-center"><a class="nav-link active text-primary font-weight-bold" href="#">VER PERFIL</a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
+            <li class="text-center"><a class="nav-link active text-primary font-weight-bold" href="perfil_usuario.php">VER PERFIL</a></li>
+            <li><hr class="dropdown-divider"></li>
             </li>
             <li class="text-center">
               <a class="nav-link active text-danger" href='#' onclick="openAlert()" style="font-weight:bold;">CERRAR SESIÓN</a>
@@ -77,7 +75,7 @@ if ($_SESSION['irol'] == 1) {
                 <h5 class="modal-title text-white" id="exampleModalLabel"><i class="fas fa-bell"></i>
                   <b>Notificaciones</b>
                 </h5>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                <button type="button" id="btnClose" class="close text-white" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -92,6 +90,10 @@ if ($_SESSION['irol'] == 1) {
           </div>
         </div>
         <script>
+        document.getElementById("btnClose").addEventListener("click", function () {
+            var modal = document.getElementById('exampleModal');
+            $(modal).modal('hide');
+        });
           $(document).ready(function () {
             // Verificar si el elemento está registrado en la base de datos
             $.ajax({

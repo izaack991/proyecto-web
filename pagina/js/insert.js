@@ -202,15 +202,15 @@
                 contentType: false,
                 success: function (response) {
                     // Maneja la respuesta del archivo PHP aquí
-                    // console.log(response);
+                    console.log(response);
                     if (response == "true") {
-                        Swal.fire({
-                            title: '¡Listo!',
-                            text: 'Elemento Guardado',
-                            icon: 'success'
-                        }).then(function () {
-                            window.location.href = "../templates/buscar_vacantes.php";
-                        });
+                    //  Swal.fire({
+                    //          title: '¡Listo!',
+                    //          text: 'Elemento Guardado',
+                    //          icon: 'success'
+                    //      }).then(function () {
+                             window.location.href = "../templates/buscar_vacantes.php";
+                        // });
                     }
                 },
                 error: function (xhr, status, error) {

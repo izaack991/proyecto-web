@@ -243,7 +243,7 @@ require_once('conexion.class.php');
             }
 
             public function guardar_postulacion($id_usuario,$id_vacante,$id_postulacion)
-            {        
+            {       $bguardar = false; 
                     try 
                     {
                         
@@ -256,15 +256,15 @@ require_once('conexion.class.php');
                         $query->bindParam(':id_vacante',$id_vacante);
                         $query->execute();
                         $this->dbh = null;
-                            
+                        $bguardar = true;    
                     
                     }
                     catch(PDOException $e){
                         
                         print "Error!: " . $e->getMessage();
-                        
+                        $bguardar = false;
                     }        
-                    return TRUE;
+                    return $bguardar;
                 }
 
             public function guardar_respuestasMOSS($_idusuario,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12,$preg13,$preg14,$preg15,$preg16,$preg17,$preg18,$preg19,$preg20,$preg21,$preg22,$preg23,$preg24,$preg25,$preg26,$preg27,$preg28,$preg29,$preg30)
@@ -636,6 +636,206 @@ require_once('conexion.class.php');
                 {
                     
                     $sql="UPDATE tbl_postulacion SET status=0 WHERE id_postulacion =$index";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function actualizar_experiencia($idexp,$descripcion,$empresa,$periodo)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_experiencia_laboral SET descripcion_puesto='$descripcion',empresa='$empresa',periodo='$periodo' WHERE id_experiencia=$idexp";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function eliminar_experiencia($idexp)
+            {        
+                try 
+                {
+                    
+                    $sql="DELETE FROM tbl_experiencia_laboral WHERE id_experiencia=$idexp";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function eliminar_formacion($idfor)
+            {        
+                try 
+                {
+                    
+                    $sql="DELETE FROM tbl_formacion_academica WHERE id_formacion=$idfor";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function eliminar_aficion($idafi)
+            {        
+                try 
+                {
+                    
+                    $sql="DELETE FROM tbl_aop WHERE id_aop=$idafi";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function eliminar_interes($idint)
+            {        
+                try 
+                {
+                    
+                    $sql="DELETE FROM tbl_dinteres WHERE id_di=$idint";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function eliminar_postulacion($idpos)
+            {        
+                try 
+                {
+                    
+                    $sql="DELETE FROM tbl_postulacion WHERE id_postulacion=$idpos";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function eliminar_video_curriculum($idvid)
+            {        
+                try 
+                {
+                    
+                    $sql="DELETE FROM tbl_vid_curriculum WHERE id_vid_curriculum=$idvid";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function actualizar_formacion($idfor,$descripcion,$ubicacion,$periodo)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_formacion_academica SET descripcion='$descripcion',ubicacion='$ubicacion',periodo='$periodo' WHERE id_formacion=$idfor";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function actualizar_aficion($idafi,$descripcion)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_aop SET descripcion='$descripcion' WHERE id_aop=$idafi";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function actualizar_interes($idint,$descripcion)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_dinteres SET descripcion='$descripcion' WHERE id_di=$idint";
                     
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
