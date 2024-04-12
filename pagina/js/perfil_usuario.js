@@ -138,6 +138,10 @@ $(document).ready(function() {
         // Redirige a experiencia_laboral.php
         window.location.href = "video_curriculum.php";
     });
+    $(document).on("click", "#btnAgregarpos", function() {
+        // Redirige a experiencia_laboral.php
+        window.location.href = "buscar_vacantes.php.php";
+    });
 
     // Agregar evento click a los botones "Guardar" de experiencia
     $(document).on("click", ".btn-guardar-exp", function() {

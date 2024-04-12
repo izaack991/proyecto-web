@@ -49,16 +49,9 @@ if ($_SESSION['irol'] == 1) {
           id="nombreUsuario" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-<<<<<<< HEAD
-            <li class="text-center"><a class="nav-link active text-primary font-weight-bold" href="perfil_usuario.php">Ver Perfil</a></li>
+            <li class="text-center"><a class="nav-link active text-primary font-weight-bold" href="perfil_usuario.php">VER PERFIL</a></li>
             <li><hr class="dropdown-divider"></li>
-=======
-            <li class="text-center"><a class="nav-link active text-primary font-weight-bold" href="#">VER PERFIL</a>
             </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
->>>>>>> f3019ace4d70a371ce4c29929bec8a84bc0b4648
             <li class="text-center">
               <a class="nav-link active text-danger" href='#' onclick="openAlert()" style="font-weight:bold;">CERRAR SESIÓN</a>
             </li>
