@@ -14,8 +14,8 @@ $_finduser = Functions::singleton_functions();
     $id_postulacion = $_finduser->consec_postulacion();
     $newlogusuario = $nuevoUsuario->guardar_postulacion($id_usuario,$id_vacante,$id_postulacion);
 //}else{echo'no se encontro la vacante';}
-    if($newlogusuario){
-        echo json_encode ("true");
+    if($newlogusuario==true){
+        echo ("true");
     }
     //header("Location: ../templates/buscar_vacantes.php");
     //exit();

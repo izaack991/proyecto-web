@@ -60,7 +60,7 @@
 
   <!-- Modal -->
   <div class="modal" tabindex="-1" id="postularseModal" role="dialog">
-    <form action="../php/guardar_postulacion.php" id="formPostulacion" method="POST">
+    <form id="formPostulacion" method="POST">
     <!-- <form id="formPostulacion" method="POST"> -->
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -75,7 +75,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <input class="btn btn-primary" type="submit" value="Aceptar">
+            <input class="btn btn-primary" type="submit" value="Guardar">
           </div>
         </div>
       </div>

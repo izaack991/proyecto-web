@@ -243,7 +243,7 @@ require_once('conexion.class.php');
             }
 
             public function guardar_postulacion($id_usuario,$id_vacante,$id_postulacion)
-            {        
+            {       $bguardar = false; 
                     try 
                     {
                         
@@ -256,15 +256,15 @@ require_once('conexion.class.php');
                         $query->bindParam(':id_vacante',$id_vacante);
                         $query->execute();
                         $this->dbh = null;
-                            
+                        $bguardar = true;    
                     
                     }
                     catch(PDOException $e){
                         
                         print "Error!: " . $e->getMessage();
-                        
+                        $bguardar = false;
                     }        
-                    return TRUE;
+                    return $bguardar;
                 }
 
             public function guardar_respuestasMOSS($_idusuario,$preg1,$preg2,$preg3,$preg4,$preg5,$preg6,$preg7,$preg8,$preg9,$preg10,$preg11,$preg12,$preg13,$preg14,$preg15,$preg16,$preg17,$preg18,$preg19,$preg20,$preg21,$preg22,$preg23,$preg24,$preg25,$preg26,$preg27,$preg28,$preg29,$preg30)
