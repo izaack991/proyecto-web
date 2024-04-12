@@ -95,20 +95,29 @@ if ($_SESSION['cuenta']) {
             } ?>"><br>
             <label for="floatingInput">Correo Electronico *</label>
           </div>
-          <div class="form-row">
-            <div class="form-group col-md-6 mb-3">
+          <div class="form-row mb-3" id="password_div">
+            <div class="form-group col-md-6">
               <div class="form-floating" style="height: 4rem;">
-                <input oninput="verificarContrasenas()" class="form-control" type="password" name="txt_PASSWORD" class="texto" minlength="8" id="txt_PASSWORD" maxLength="30" placeholder="Escriba la Contraseña" required="true"><br>
-                <label>Contraseña *</label><br>
+                <input oninput="verificarContrasenas()" onfocus="display_passwordrules()" pattern="(?=.*\d)(?=.*[A-Z]).{8,}" class="form-control validate password" type="password" name="txt_PASSWORD" class="texto" minlength="8" id="txt_PASSWORD" maxLength="30" placeholder="Escriba la Contraseña" required="true"><br>
+                <label class="d-inline">Contraseña *</label><br>
               </div>
+              <span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
             </div>
-            <div class="form-group col-md-6 mb-3">
+            <div class="form-group col-md-6">
               <div class="form-floating" style="height: 4rem;">
-                <input oninput="verificarContrasenas()" class="form-control" type="password" name="txt_PASSWORD2" class="texto" minlength="8" id="txt_PASSWORD2" maxLength="30" placeholder="Confirme la Contraseña" required="true"><br>
+                <input oninput="verificarContrasenas()" onfocus="display_passwordrules()" class="form-control" type="password" name="txt_PASSWORD2" class="texto validate passwordConfirm" minlength="8" id="txt_PASSWORD2" maxLength="30" placeholder="Confirme la Contraseña" required="true"><br>
                 <label>Confirme Contraseña *</label><br>
               </div>
-              <p id="passwordMatchMessage"></p>
             </div>
+          </div>
+          <div id="password_rules" style="display: none;">
+            <label>Las contraseñas deben cumplir estos requisitos:</label>
+            <ul>
+              <li class="password_length incomplete">Contener al menos 8 carácteres</li>
+              <li class="password_uppercase incomplete">Al menos 1 letra mayuscula</li>
+              <li class="password_number incomplete">Al menos 1 numero</li>
+              <li class="password_match incomplete">Las contraseñas deben coincidir</li>
+            </ul>
           </div>
           <div class="form-row">
             <div class="form-group col">
@@ -155,7 +164,7 @@ if ($_SESSION['cuenta']) {
             <label>Domicilio *</label><br>
           </div>
           <div class="container text-center mt-4">
-            <input class="btn btn-primary" type="submit" value="Guardar">
+            <input class="btn btn-primary" type="submit" value="Guardar" id="miBoton">
             <button type="button" class="btn btn-secondary" onclick="location.href='login.php?xd=1'">Volver</button>
           </div>
         </div>
@@ -209,9 +218,41 @@ if ($_SESSION['cuenta']) {
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
 
   <script src="../js/password.js"></script>
   <script src="../js/registro.js"></script>
 </body>
 
 </html>
+
+<?php
+// Verificar si se envió el formulario de registro
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Obtener los datos del formulario
+    $correo = $_POST["txt_correo"];
+
+    // Generar un token de verificación único
+    $token = random(1000,9999);
+
+    // Enviar el correo electrónico con el token de verificación
+    $sql = "INSERT INTO tbl_usuario (razon_social, correo, token) VALUES ('$correo', '$token')";
+    if ($conn->query($sql) === TRUE) {
+
+        // Enviar el correo electrónico con el token de verificación
+        $para = $correo;
+        $titulo = 'Token de verificación';
+        $mensaje = 'Tu token de verificación es: ' . $token;
+        $cabeceras = 'From: kevin.vall328@gmail.com';
+    
+        if (mail($para, $titulo, $mensaje, $cabeceras)) {
+            echo "Se ha enviado un correo electrónico con el token de verificación.";
+        } else {
+            echo "Error al enviar el correo electrónico.";
+        }
+    } else {
+        echo "Error al registrar el usuario: " . $conn->error;
+    }
+    
+}
+?>

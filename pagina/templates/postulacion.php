@@ -39,14 +39,6 @@
       document.addEventListener("mousemove", reiniciarTemporizador);
       document.addEventListener("keypress", reiniciarTemporizador);
 
-      // funcion para solo letras mayúsculas, minúsculas y espacios
-      function validarLetras(event) {
-          var charCode = event.charCode;
-          // Permitir letras (mayúsculas y minúsculas) y espacios
-          return (charCode >= 65 && charCode <= 90) || // Letras mayúsculas
-                (charCode >= 97 && charCode <= 122) || // Letras minúsculas
-                charCode === 32; // Espacio
-      }
     </script>
  
   </head>

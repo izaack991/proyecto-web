@@ -9,21 +9,23 @@ $pdf->AddPage();
 session_start();
 include('../clases/save.class.php');
 include('../clases/function.class.php');
-
+//instrucciones el valor que se toma de las funciones es un arreglo ejemplo:
+//$experiencia = $_finduser->seleccionar_experiencia($id_usuario);
+//donde $experiencia es un arreglo que se llena de un select desde la base de datos
 $id_empresa=$_SESSION['iusuario'];
 $_finduser = Functions::singleton_functions();
 $nuevoUsuario = Save::singleton_guardar();
 $id_postulacion = $_GET['vac'];
 $id_usuario = $_GET['ie'];
 $v_experiencia = 7;
-$postulaciones = $_finduser->seleccionar_postulacion($id_postulacion);
-$experiencia = $_finduser->seleccionar_experiencia($id_usuario);
-$formacion = $_finduser->seleccionar_formacion($id_usuario);
-$aficiones = $_finduser->seleccionar_aficiones($id_usuario);
-$interes = $_finduser->seleccionar_interes($id_usuario);
+$postulaciones = $_finduser->seleccionar_postulacion($id_postulacion); //esta funcion solo se usa para obtener el nombre y el puesto de un select
+$experiencia = $_finduser->seleccionar_experiencia($id_usuario); //contiene la experiencia profesional, este arreglo puede se puede llenar 4 veces, el select contiene 3 columnas (descripcion_puesto ,empresa ,periodo)
+$formacion = $_finduser->seleccionar_formacion($id_usuario);//contiene la formacion academica, esta dependera de las universidades en las que se alla recibido, este arreglo se puede llenar 4 veces, el select contiene 3 columnas (descripcion_formacion ,ubicacion ,periodo)
+$aficiones = $_finduser->seleccionar_aficiones($id_usuario);// esta contiene un arreglo solo esta puede llenarse hasta 3 veces, contiene solo una columna (descripcion)
+$interes = $_finduser->seleccionar_interes($id_usuario);// // esta contiene un arreglo solo esta puede llenarse hasta 3 veces, contiene solo una columna (descripcion)
 foreach($postulaciones as $index => $value){
-    $nombre  = $value['nombreUsuario'];
-    $puesto  = $value['puesto'];
+    $nombre  = $value['nombreUsuario'];// es el nombre de la persona a la que pertenece el curriculum
+    $puesto  = $value['puesto'];//
 }
 //$pdf->SetMargins(10, 10, 10, 10);
 $margen_izquierdo = 22;
@@ -47,33 +49,33 @@ $pdf->Ln(10);
 $pdf->SetDrawColor(255, 255, 255);
 $pdf->SetFillColor(84, 182, 137); // Color de fondo de las celdas
 $pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
-$pdf->SetFont('Arial', 'B', 12);
+$pdf->SetFont('Arial', 'B', );
 $pdf->Cell($ancho_celda, 10, 'Nombre', 1, 0, 'C', true); // Celda para el nombre
 $pdf->Cell($ancho_celda, 10, 'Puesto', 1, 1, 'C', true); // Celda para el puesto
 
 // tabla 
-$pdf->SetFont('Arial', '', 12);
+$pdf->SetFont('Arial', '', 8);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->Cell($ancho_celda, 10, utf8_decode($nombre), 1, 0, 'C'); // Contenido del nombre
 $pdf->Cell($ancho_celda, 10, utf8_decode($puesto), 1, 1, 'C'); // Contenido del puesto
-$pdf->Ln(10);
+$pdf->Ln(6);
 
 // Título de experiencia laboral
 $pdf->SetFillColor(47, 47, 47); // Color de fondo del recuadro
 $pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
-$pdf->SetFont('Arial', 'B', 16);
+$pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 10, utf8_decode('EXPERIENCIA LABORAL'), 1, 1, 'C', true); // Recuadro de color con texto blanco
 $pdf->Ln(2);
 // Creación de tabla simulada para experiencia laboral
 $pdf->SetDrawColor(255, 255, 255);
 $pdf->SetFillColor(84, 182, 137); // Color de fondo de las celdas
 $pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
-$pdf->SetFont('Arial', 'B', 12);
+$pdf->SetFont('Arial', 'B', );
 $pdf->Cell($ancho_celda, 10, utf8_decode('Descripcion'), 1, 0, 'C', true); // Celda para la descripción
 $pdf->Cell($ancho_celda, 10, utf8_decode('Empresa'), 1, 0, 'C', true); // Celda para la empresa
 $pdf->Cell($ancho_celda, 10, utf8_decode('Periodo'), 1, 1, 'C', true); // Celda para el periodo
 
-$pdf->SetFont('Arial', '', 12);
+$pdf->SetFont('Arial', '', 8);
 
 // Llenar la tabla con la información de la experiencia laboral
 foreach($experiencia as $index => $value){
@@ -86,12 +88,12 @@ foreach($experiencia as $index => $value){
     $pdf->Cell($ancho_celda, 10, utf8_decode($periodo_exp), 1, 1, 'C'); // Contenido del periodo
 }
 
-$pdf->Ln(10);
+$pdf->Ln(6);
 
 // Título de formación académica
 $pdf->SetFillColor(47, 47, 47); // Color de fondo del recuadro
 $pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
-$pdf->SetFont('Arial', 'B', 16);
+$pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 10, utf8_decode('FORMACIÓN ACADÉMICA'), 1, 1, 'C', true); // Recuadro de color con texto blanco
 $pdf->Ln(2);
 
@@ -101,12 +103,12 @@ $pdf->Ln(2);
 $pdf->SetDrawColor(255, 255, 255);
 $pdf->SetFillColor(84, 182, 137); // Color de fondo de las celdas
 $pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
-$pdf->SetFont('Arial', 'B', 12);
+$pdf->SetFont('Arial', 'B', );
 $pdf->Cell($ancho_celda, 10, utf8_decode('Descripcion'), 1, 0, 'C', true); // Celda para la descripción
 $pdf->Cell($ancho_celda, 10, utf8_decode('Ubicacion'), 1, 0, 'C', true); // Celda para la ubicación
 $pdf->Cell($ancho_celda, 10, utf8_decode('Periodo'), 1, 1, 'C', true); // Celda para el periodo
 
-$pdf->SetFont('Arial', '', 12);
+$pdf->SetFont('Arial', '', 8);
 
 // Llenar la tabla con la información de la formación académica
 foreach($formacion as $index => $value){
@@ -118,21 +120,21 @@ foreach($formacion as $index => $value){
     $pdf->Cell($ancho_celda, 10, utf8_decode($ubicacion), 1, 0, 'C'); // Contenido de la ubicación
     $pdf->Cell($ancho_celda, 10, utf8_decode($periodo_for), 1, 1, 'C'); // Contenido del periodo
 }
-$pdf->Ln(10);
+$pdf->Ln(6);
 // Título de aficiones
 $pdf->SetFillColor(47, 47, 47); // Color de fondo del recuadro
 $pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
-$pdf->SetFont('Arial', 'B', 16);
+$pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 10, utf8_decode('AFICIONES'), 1, 1, 'C', true); // Recuadro de color con texto blanco
 $pdf->Ln(2);
 // Creación de tabla para aficiones
 $pdf->SetDrawColor(255, 255, 255);
 $pdf->SetFillColor(84, 182, 137); // Color de fondo de las celdas
 $pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
-$pdf->SetFont('Arial', 'B', 12);
+$pdf->SetFont('Arial', 'B', );
 $pdf->Cell(0, 10, utf8_decode('Descripcion'), 1, 1, 'C', true); // Celda para la descripción
 
-$pdf->SetFont('Arial', '', 12);
+$pdf->SetFont('Arial', '', 8);
 
 // Llenar la tabla con la información de las aficiones
 foreach($aficiones as $index => $value){
@@ -140,21 +142,21 @@ foreach($aficiones as $index => $value){
 	$pdf->SetTextColor(0, 0, 0);
     $pdf->Cell(0, 10, utf8_decode($descripcion_aficion), 1, 1, 'C'); // Contenido de la descripción
 }
-$pdf->Ln(10);
+$pdf->Ln(6);
 // Título de intereses
 $pdf->SetFillColor(47, 47, 47); // Color de fondo del recuadro
 $pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
-$pdf->SetFont('Arial', 'B', 16);
+$pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 10, utf8_decode('INTERESES'), 1, 1, 'C', true); // Recuadro de color con texto blanco
 $pdf->Ln(2);
 // Creación de tabla para intereses
 $pdf->SetDrawColor(255, 255, 255);
 $pdf->SetFillColor(84, 182, 137); // Color de fondo de las celdas
 $pdf->SetTextColor(255, 255, 255); // Color del texto (blanco)
-$pdf->SetFont('Arial', 'B', 12);
+$pdf->SetFont('Arial', 'B', );
 $pdf->Cell(0, 10, utf8_decode('Descripcion'), 1, 1, 'C', true); // Celda para la descripción
 
-$pdf->SetFont('Arial', '', 12);
+$pdf->SetFont('Arial', '', 8);
 
 // Llenar la tabla con la información de los intereses
 foreach($interes as $index => $value){

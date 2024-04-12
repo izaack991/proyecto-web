@@ -1241,4 +1241,29 @@ require_once('conexion.class.php');
             
         }
 
+        public function buscar_correo($_correo)
+        {
+            try
+            {
+                $sql = "SELECT correo FROM tbl_usuario where correo ='$_correo'";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+
+                if($query->rowCount() >= 1)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch(PDOException $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
+        }
+
 }

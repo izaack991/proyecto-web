@@ -103,7 +103,6 @@
     <script>
         // Función para redirigir al usuario cuando haga clic en el botón "Probar"
         document.getElementById("btnProbar").addEventListener("click", function () {
-            // Redirige al usuario a la ventana deseada
             window.location.href = "video_curriculum.php";
         });
         document.getElementById("btnCerrar").addEventListener("click", function () {
@@ -112,75 +111,80 @@
         });
     </script>
 
-    <div class="container-fluid">
-        <div class="row align-items-center py-4">
-            <div class="col-lg-6">
-                <img src="../../assets/images/index_usuario/TRABAJANDO.png" alt="Imagen"
-                    class="img-fluid mx-auto d-block" style="max-width: 90%;">
-            </div>
-            <div class="col-lg-5">
-                <div>
-                    <h2 class="mb-3">Descubre oportunidades profesionales excepcionales al asociarte con algunas de las
-                        empresas más destacadas</h2>
-                    <p class="text-justify">Explora una amplia gama de oportunidades laborales adaptadas a tus
-                        habilidades y preferencias con Workele. Nuestro proceso de búsqueda de trabajo es eficiente y
-                        personalizado, diseñado para maximizar tus posibilidades de éxito. ¡Descubre un mundo de
-                        emocionantes oportunidades laborales con nosotros!</p>
-                </div>
-            </div>
+<div style="max-width: 100%; padding: 5vw; background-image: url('../../assets/images/index_usuario/VIDEO.gif'); background-size: cover; background-position: center; display: flex; justify-content: center; align-items: center;">
+    <div style="display: flex; flex-direction: column; justify-content: center; background-color: rgba(0, 0, 0, 0.7); padding: 2vw; border-radius: 10px; text-align: center;">
+        <h2 style="margin: 0; color: white;">Descubre oportunidades profesionales excepcionales al asociarte con algunas de las empresas más destacadas</h2>
+        <p style="margin: 2vw 0; color: white;">Explora una amplia gama de oportunidades laborales adaptadas a tus habilidades y preferencias con Workele. Nuestro proceso de búsqueda de trabajo es eficiente y personalizado, diseñado para maximizar tus posibilidades de éxito. ¡Descubre un mundo de emocionantes oportunidades laborales con nosotros!</p>
+        <div style="display: flex; justify-content: center;">
+            <a href="buscar_vacantes.php" style="width: 140px; height: 50px; display: inline-block; background-color: #FF5733; color: #fff; padding: 12px 20px; font-size: 1rem; text-decoration: none; border-radius: 5px; margin-bottom: 20px;">Ver vacantes</a>
         </div>
     </div>
+</div>
 
+
+    <div style="background-color: #F0E68C; padding: 20px; text-align: center;">
+        <h3 style=" margin: 0; color: #333;">Empresas contratando</h3>
+        <p style="font-size: 18px; margin: 10px 0; color: #666;">Con las mejores vacantes esperándote</p>
+    </div>
+<br>
+    <div style="display: flex; flex-wrap: wrap; gap: 50px; justify-content: center;">
+    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+        <img src="../../assets/images/index_usuario/DIAMOND.svg" alt="Logo Empresa 1" style="max-width: 100%; max-height: 100%;">
+    </div>
+    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+        <img src="../../assets/images/index_usuario/LION.svg" alt="Logo Empresa 2" style="max-width: 100%; max-height: 100%;">
+    </div>
+    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+        <img src="../../assets/images/index_usuario/MANGO.svg" alt="Logo Empresa 3" style="max-width: 100%; max-height: 100%;">
+    </div>
+    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+        <img src="../../assets/images/index_usuario/SAMIRA.svg" alt="Logo Empresa 4" style="max-width: 100%; max-height: 100%;">
+    </div>
+    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+        <img src="../../assets/images/index_usuario/SALFORD.svg" alt="Logo Empresa 5" style="max-width: 100%; max-height: 100%;">
+    </div>
+    </div>
 
     <br>
-    <!-- <h3 style="text-align: center;">Trabajamos con las empresas más destacadas, ofreciéndote la oportunidad de encontrar las mejores vacantes disponibles</h3> -->
-    <div class="card border-0 rounded-0" style="background-color: #000000;">
-        <div id="carouselExample" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="row">
-                        <div class="col-md-4 text-center">
-                            <img src="../../assets/images/index_usuario/DECORACION-CHIC.jpeg"
-                                class="d-block w-100 mx-auto" alt="Slide 1" style="max-width: 100%;">
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <img src="../../assets/images/index_usuario/ARTICS-SOLUCIONES.jpeg"
-                                class="d-block w-100 mx-auto" alt="Slide 2" style="max-width: 100%;">
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <img src="../../assets/images/index_usuario/ENSIGNA.jpeg" class="d-block w-100 mx-auto"
-                                alt="Slide 3" style="max-width: 100%;">
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-md-4 text-center">
-                            <img src="../../assets/images/index_usuario/SEBASTIAN BENNETT.jpeg"
-                                class="d-block w-100 mx-auto" alt="Slide 4" style="max-width: 100%;">
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <img src="../../assets/images/index_usuario/BRAIS-PERNAS.jpeg" class="d-block w-100 mx-auto"
-                                alt="Slide 5" style="max-width: 100%;">
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <img src="../../assets/images/index_usuario/ARCHIS.jpeg" class="d-block w-100 mx-auto"
-                                alt="Slide 6" style="max-width: 100%;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a> -->
-        </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 50px; justify-content: center;">
+    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+        <img src="../../assets/images/index_usuario/COLOR.svg" alt="Logo Empresa 6" style="max-width: 100%; max-height: 100%;">
+    </div>
+    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+        <img src="../../assets/images/index_usuario/BORCELLE.svg" alt="Logo Empresa 7" style="max-width: 100%; max-height: 100%;">
+    </div>
+    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+        <img src="../../assets/images/index_usuario/PHANTOM.svg" alt="Logo Empresa 8" style="max-width: 100%; max-height: 100%;">
+    </div>
+    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+        <img src="../../assets/images/index_usuario/WIND.svg" alt="Logo Empresa 9" style="max-width: 100%; max-height: 100%;">
+    </div>
+    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+        <img src="../../assets/images/index_usuario/FAUGET.svg" alt="Logo Empresa 10" style="max-width: 100%; max-height: 100%;">
+    </div>
     </div>
 
+<br>
+
+<div class="box b_radius_none posRel" style="background-color: #B0E0E6; padding: 30px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="fs-4">Si buscas trabajo ¡Workele es tu mejor aliado!</h3>
+               
+                <div class="mt-5">
+                     <p class="fs-5 mt-3">Miles de ofertas de empleo están esperándote</p>
+                    <p class="fs-5">Te ayudamos a encontrar un empleo mejor</p>
+                    <p class="fs-6 mb-5">Haz que tu currículum sea visible para miles de empresas en nuestra bolsa de trabajo</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="../../assets/images/index_usuario/OFICINAS.svg" alt="Encontrar empleo" class="img-fluid" style="max-width: 100%; height: auto;">
+            </div>
+        </div>
+    </div>
+</div>
 
     <!-- {*Conexion de librerias de JavaScript y bootstrap*}      -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"

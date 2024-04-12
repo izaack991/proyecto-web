@@ -5,6 +5,7 @@ include('../clases/save.class.php');
 include('../clases/function.class.php');
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
+$_compCorreo = Functions::singleton_functions();
 $irol=$_SESSION['rol'];
 //print_r($_SESSION);
 
@@ -30,7 +31,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 			echo "errorConstancia";
       return;
 		} else {
-			$f_id_usuario = $_findUser -> consec_usuario();
+      $f_id_usuario = $_findUser -> consec_usuario();
 			$_nombre = $_POST['txt_NOMBRE'];
 			$_apellido = $_POST['txt_APELLIDOS'];
 			$_correo = $_POST['txt_CORREO'];
@@ -51,7 +52,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 			$imgName = 'pfp_'.$f_id_usuario.'.'.$imgExt;
 			$tamano = $_FILES['txtruta']['size'];
 			$temp = $_FILES['txtruta']['tmp_name'];
-
+      
 			//Obtenemos algunos datos necesarios sobre el archivo de la constancia
 			$conTipo = $_FILES['txtcons']['type'];
 			$arrayConExt = explode('/', $conTipo);
@@ -59,81 +60,90 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 			$conName = 'csf_'.$f_id_usuario.'.'.$conExt;
 			$tamanoCons = $_FILES['txtcons']['size'];
 			$tempCons = $_FILES['txtcons']['tmp_name'];
+      
+      $comp_correo = $_compCorreo -> buscar_correo($_correo);
 
-			if($_ruta == "")
-			{
-				//Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
-				if (!((strpos($imgTipo, "gif") || strpos($imgTipo, "jpeg") || strpos($imgTipo, "jpg") || strpos($imgTipo, "png")) && ($tamano < 2000000))) {
-					
-					$alerta = "<script> Swal.fire({
-						title: 'Error!',
-						text: 'La extensión o el tamaño de los archivos no es correcta. Solo se permite: .gif, .jpg, .png. y de 200 kb como máximo.',
-						icon: 'error');</script>";
-					echo "errorImagen";
-          return;
-				}
-				else {
-					//Si la imagen es correcta en tamaño y tipo
-					//Se intenta subir al servidor
-					if (move_uploaded_file($temp, '../userfiles/img/'.$imgName)) {
-						//Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
-						chmod('../userfiles/img/'.$imgName, 0777);
-						//Mostramos el mensaje de que se ha subido con éxito
-						//echo '<div><b>Se ha subido correctamente la imagen.</b></div>';
-						//Mostramos la imagen subida
-						//echo '<p><img src="assets/images/'.$archivo.'"></p>';
-						}
-						else {
-						//Si no se ha podido subir la imagen, mostramos un mensaje de error
-						$alerta = "<script> Swal.fire({
-							title: 'Error!',
-							text: 'No se pudo subir la imagen al sevidor.',
-							icon: 'error');</script>";
-						echo "errorImagenServer";
-            return;
-						}
-					}
-				}
+      if ($comp_correo == 0) {
 
-				if($_cons != null && $irol == 1)
-				{
-					//Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
-					if (!((strpos($conTipo, "jpeg") || strpos($conTipo, "jpg") || strpos($conTipo, "png") || strpos($conTipo, "pdf")) && ($tamanoCons < 20000000))) {
-						
-						$alerta = "<script> Swal.fire({
-							title: 'Error!',
-							text: 'La extensión o el tamaño de los archivos no es correcta. Solo se permite: .jpg, .png. y de 200 kb como máximo.',
-							icon: 'error');</script>";
-						echo "errorConstanciaTipoTamaño";
+        if($_ruta == "")
+        {
+          //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
+          if (!((strpos($imgTipo, "gif") || strpos($imgTipo, "jpeg") || strpos($imgTipo, "jpg") || strpos($imgTipo, "png")) && ($tamano < 2000000))) {
+            
+            $alerta = "<script> Swal.fire({
+              title: 'Error!',
+              text: 'La extensión o el tamaño de los archivos no es correcta. Solo se permite: .gif, .jpg, .png. y de 200 kb como máximo.',
+              icon: 'error');</script>";
+            echo "errorImagen";
             return;
-					}
-					else {
-						//Si la imagen es correcta en tamaño y tipo
-						//Se intenta subir al servidor
-						if (move_uploaded_file($tempCons, '../userfiles/pdf/'.$conName)) {
-							//Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
-							chmod('../userfiles/pdf/'.$conName, 0777);
-							//Mostramos el mensaje de que se ha subido con éxito
-							//echo '<div><b>Se ha subido correctamente la imagen.</b></div>';
-							//Mostramos la imagen subida
-							//echo '<p><img src="assets/images/'.$archivo.'"></p>';
-							}
-							else {
-							//Si no se ha podido subir la imagen, mostramos un mensaje de error
-							$alerta = "<script> Swal.fire({
-								title: 'Error!',
-								text: 'No se pudo subir la imagen al sevidor.',
-								icon: 'error');</script>";
-							echo "errorConsServer";
+          }
+          else {
+            //Si la imagen es correcta en tamaño y tipo
+            //Se intenta subir al servidor
+            if (move_uploaded_file($temp, '../userfiles/img/'.$imgName)) {
+              //Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
+              chmod('../userfiles/img/'.$imgName, 0777);
+              //Mostramos el mensaje de que se ha subido con éxito
+              //echo '<div><b>Se ha subido correctamente la imagen.</b></div>';
+              //Mostramos la imagen subida
+              //echo '<p><img src="assets/images/'.$archivo.'"></p>';
+              }
+              else {
+              //Si no se ha podido subir la imagen, mostramos un mensaje de error
+              $alerta = "<script> Swal.fire({
+                title: 'Error!',
+                text: 'No se pudo subir la imagen al sevidor.',
+                icon: 'error');</script>";
+              echo "errorImagenServer";
               return;
-							}
-						}
-					}
-				
-				//$f_id_usuario = $_findUser -> consec_usuario();
-				$newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol, $_status, $_ruta, $_cons, $_razon);
-				
-			}
+              }
+            }
+          }
+  
+          if($_cons != null && $irol == 1)
+          {
+            //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
+            if (!((strpos($conTipo, "jpeg") || strpos($conTipo, "jpg") || strpos($conTipo, "png") || strpos($conTipo, "pdf")) && ($tamanoCons < 20000000))) {
+              
+              $alerta = "<script> Swal.fire({
+                title: 'Error!',
+                text: 'La extensión o el tamaño de los archivos no es correcta. Solo se permite: .jpg, .png. y de 200 kb como máximo.',
+                icon: 'error');</script>";
+              echo "errorConstanciaTipoTamaño";
+              return;
+            }
+            else {
+              //Si la imagen es correcta en tamaño y tipo
+              //Se intenta subir al servidor
+              if (move_uploaded_file($tempCons, '../userfiles/pdf/'.$conName)) {
+                //Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
+                chmod('../userfiles/pdf/'.$conName, 0777);
+                //Mostramos el mensaje de que se ha subido con éxito
+                //echo '<div><b>Se ha subido correctamente la imagen.</b></div>';
+                //Mostramos la imagen subida
+                //echo '<p><img src="assets/images/'.$archivo.'"></p>';
+                }
+                else {
+                //Si no se ha podido subir la imagen, mostramos un mensaje de error
+                $alerta = "<script> Swal.fire({
+                  title: 'Error!',
+                  text: 'No se pudo subir la imagen al sevidor.',
+                  icon: 'error');</script>";
+                echo "errorConsServer";
+                return;
+                }
+              }
+            }
+          
+          //$f_id_usuario = $_findUser -> consec_usuario();
+          $newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol, $_status, $_ruta, $_cons, $_razon);
+          
+        } else {
+          echo "errorCorreoDuplicado";
+        }
+
+      }
+
 			if ($newuser == true) {
 				if($irol == 1) {
 					echo "true1";

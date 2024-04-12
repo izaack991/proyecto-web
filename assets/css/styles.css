@@ -99,6 +99,18 @@
     transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
   }
 
+  .nav-item {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transform: translate(0, .5em);
+}
+
+
   .form-control::file-selector-button {
     padding: 0.375rem 0.75rem;
     margin: -0.375rem -0.75rem;
@@ -142,17 +154,16 @@
     -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
-  
   @media (prefers-reduced-motion: reduce) {
     .form-control::-webkit-file-upload-button {
       -webkit-transition: none;
       transition: none;
     }
   }
-  
   .form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
     background-color: #dde0e3;
   }
+<<<<<<< HEAD
 
   .accordion-button {
   position: relative;
@@ -286,3 +297,38 @@
   .accordion-flush .accordion-item .accordion-button {
     border-radius: 0;
   }
+=======
+  #password_rules ul li {
+    /*font-size: 12px;
+    font-weight: normal;*/
+    color: #000000;
+  }
+
+  #password_rules ul li.complete {
+    color: #5DB406;
+  }
+
+  #password_rules ul li.incomplete {
+    color: red;
+  }
+
+  .password-toggle-icon {
+    position: absolute;
+    top: 60%;
+    right: 20px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  .password-toggle-icon i {
+    font-size: 18px;
+    line-height: 1;
+    color: #333;
+    transition: color 0.3s ease-in-out;
+    margin-bottom: 20px;
+  }
+  
+  .password-toggle-icon i:hover {
+    color: #000;
+  }
+>>>>>>> f3019ace4d70a371ce4c29929bec8a84bc0b4648

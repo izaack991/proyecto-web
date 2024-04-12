@@ -125,20 +125,29 @@ if ($_SESSION['apellido']) {
               </div>
             </div>
           </div>
-          <div class="form-row">
-            <div class="form-group col-md-6 mb-3">
+          <div class="form-row mb-3" id="password_div">
+            <div class="form-group col-md-6">
               <div class="form-floating" style="height: 4rem;">
-                <input oninput="verificarContrasenas()" class="form-control" type="password" name="txt_PASSWORD" class="texto" minlength="8" id="txt_PASSWORD" maxLength="30" placeholder="Escriba la Contraseña" required="true"><br>
+                <input oninput="verificarContrasenas()" onfocus="display_passwordrules()" pattern="(?=.*\d)(?=.*[A-Z]).{8,}" class="form-control" type="password" name="txt_PASSWORD" class="texto" minlength="8" id="txt_PASSWORD" maxLength="30" placeholder="Escriba la Contraseña" required="true"><br>
                 <label>Contraseña: *</label><br>
               </div>
+              <span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
             </div>
-            <div class="form-group col-md-6 mb-3">
+            <div class="form-group col-md-6">
               <div class="form-floating" style="height: 4rem;">
-                <input oninput="verificarContrasenas()" class="form-control" type="password" name="txt_PASSWORD2" class="texto" minlength="8" id="txt_PASSWORD2" maxLength="30" placeholder="Confirme la Contraseña" required="true"><br>
+                <input oninput="verificarContrasenas()" onfocus="display_passwordrules()" class="form-control" type="password" name="txt_PASSWORD2" class="texto" minlength="8" id="txt_PASSWORD2" maxLength="30" placeholder="Confirme la Contraseña" required="true"><br>
                 <label>Confirme Contraseña: *</label><br>
               </div>
-              <p id="passwordMatchMessage2"></p>
             </div>
+          </div>
+          <div id="password_rules" style="display: none;">
+            <label>Las contraseñas deben cumplir estos requisitos:</label>
+            <ul>
+              <li class="password_length incomplete">Contener al menos 8 carácteres</li>
+              <li class="password_uppercase incomplete">Al menos 1 letra mayuscula</li>
+              <li class="password_number incomplete">Al menos 1 numero</li>
+              <li class="password_match incomplete">Las contraseñas deben coincidir</li>
+            </ul>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6 mb-3">
@@ -195,7 +204,7 @@ if ($_SESSION['apellido']) {
             <label>Domicilio: *</label><br>
           </div>
           <div class="container text-center mt-4">
-            <input class="btn btn-primary" type="submit" value="Guardar">
+            <input class="btn btn-primary" type="submit" value="Guardar" id="miBoton">
             <button type="button" class="btn btn-secondary" onclick="location.href='login.php?xd=2'">Volver</button>
           </div>
         </div>
