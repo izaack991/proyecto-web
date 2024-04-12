@@ -49,7 +49,7 @@ if ($_SESSION['irol'] == 1) {
         <li class="nav-item dropdown" >
           <a class="nav-link active font-weight-bold dropdown-toggle" id="nombreUsuario" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li class="text-center"><a class="nav-link active text-primary font-weight-bold" href="#">Ver Perfil</a></li>
+            <li class="text-center"><a class="nav-link active text-primary font-weight-bold" href="perfil_usuario.php">Ver Perfil</a></li>
             <li><hr class="dropdown-divider"></li>
             <li class="text-center">
               <!-- {*Boton para cerrar la sesion*} -->

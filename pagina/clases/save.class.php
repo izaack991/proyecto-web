@@ -650,6 +650,206 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+            public function actualizar_experiencia($idexp,$descripcion,$empresa,$periodo)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_experiencia_laboral SET descripcion_puesto='$descripcion',empresa='$empresa',periodo='$periodo' WHERE id_experiencia=$idexp";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function eliminar_experiencia($idexp)
+            {        
+                try 
+                {
+                    
+                    $sql="DELETE FROM tbl_experiencia_laboral WHERE id_experiencia=$idexp";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function eliminar_formacion($idfor)
+            {        
+                try 
+                {
+                    
+                    $sql="DELETE FROM tbl_formacion_academica WHERE id_formacion=$idfor";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function eliminar_aficion($idafi)
+            {        
+                try 
+                {
+                    
+                    $sql="DELETE FROM tbl_aop WHERE id_aop=$idafi";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function eliminar_interes($idint)
+            {        
+                try 
+                {
+                    
+                    $sql="DELETE FROM tbl_dinteres WHERE id_di=$idint";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function eliminar_postulacion($idpos)
+            {        
+                try 
+                {
+                    
+                    $sql="DELETE FROM tbl_postulacion WHERE id_postulacion=$idpos";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function eliminar_video_curriculum($idvid)
+            {        
+                try 
+                {
+                    
+                    $sql="DELETE FROM tbl_vid_curriculum WHERE id_vid_curriculum=$idvid";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function actualizar_formacion($idfor,$descripcion,$ubicacion,$periodo)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_formacion_academica SET descripcion='$descripcion',ubicacion='$ubicacion',periodo='$periodo' WHERE id_formacion=$idfor";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function actualizar_aficion($idafi,$descripcion)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_aop SET descripcion='$descripcion' WHERE id_aop=$idafi";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function actualizar_interes($idint,$descripcion)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_dinteres SET descripcion='$descripcion' WHERE id_di=$idint";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
             public function actualizar_status_empresa($index)
             {        
                 try 

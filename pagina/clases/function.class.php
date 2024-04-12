@@ -389,8 +389,27 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                    $sql = "SELECT COALESCE(tbl_vid_curriculum.id_vid_curriculum, '0') AS vid_status, tbl_postulacion.*, CONCAT(tbl_usuario.nombre,' ',tbl_usuario.apellido) AS nombreUsuario, tbl_usuario.correo, tbl_vacantes.puesto FROM tbl_postulacion INNER JOIN tbl_usuario ON tbl_postulacion.id_usuario = tbl_usuario.id_usuario INNER JOIN tbl_vacantes ON tbl_postulacion.id_vacante = tbl_vacantes.id_vacante LEFT JOIN tbl_vid_curriculum ON tbl_postulacion.id_usuario = tbl_vid_curriculum.id_usuario WHERE tbl_vacantes.id_empresa = $_idusuario AND tbl_postulacion.status = 1;
-                    ";
+                    $sql = "SELECT COALESCE(tbl_vid_curriculum.id_vid_curriculum, '0') AS vid_status, tbl_postulacion.*, CONCAT(tbl_usuario.nombre,' ',tbl_usuario.apellido) AS nombreUsuario, tbl_usuario.correo, tbl_vacantes.puesto FROM tbl_postulacion INNER JOIN tbl_usuario ON tbl_postulacion.id_usuario = tbl_usuario.id_usuario INNER JOIN tbl_vacantes ON tbl_postulacion.id_vacante = tbl_vacantes.id_vacante LEFT JOIN tbl_vid_curriculum ON tbl_postulacion.id_usuario = tbl_vid_curriculum.id_usuario WHERE tbl_vacantes.id_empresa = $_idusuario AND tbl_postulacion.status = 1;";
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;    
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error: !" . $e->getMessage();
+                }
+                return $data;
+            }
+            function buscarPostulacion2($iusuario)
+            {
+                try
+                {
+                    $sql = "SELECT tbl_postulacion.*, tbl_vacantes.* FROM tbl_postulacion INNER JOIN tbl_usuario ON tbl_postulacion.id_usuario = tbl_usuario.id_usuario INNER JOIN tbl_vacantes ON tbl_postulacion.id_vacante = tbl_vacantes.id_vacante WHERE  tbl_postulacion.id_usuario = $iusuario AND tbl_postulacion.status = 1;";
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
 
@@ -497,7 +516,7 @@ require_once('conexion.class.php');
             {        
                 try {
                     
-                    $sql = "SELECT * FROM tbl_experiencia_laboral WHERE id_usuario=:id_usuario LIMIT 5";
+                    $sql = "SELECT * FROM tbl_experiencia_laboral WHERE id_usuario=:id_usuario";
                     $query = $this->dbh->prepare($sql);
                     $query->bindParam(':id_usuario',$id_usuario);
                     $query->execute();
