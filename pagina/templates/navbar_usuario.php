@@ -77,7 +77,7 @@ if ($_SESSION['irol'] == 1) {
                 <h5 class="modal-title text-white" id="exampleModalLabel"><i class="fas fa-bell"></i>
                   <b>Notificaciones</b>
                 </h5>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                <button type="button" id="btnClose" class="close text-white" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -92,6 +92,10 @@ if ($_SESSION['irol'] == 1) {
           </div>
         </div>
         <script>
+        document.getElementById("btnClose").addEventListener("click", function () {
+            var modal = document.getElementById('exampleModal');
+            $(modal).modal('hide');
+        });
           $(document).ready(function () {
             // Verificar si el elemento está registrado en la base de datos
             $.ajax({

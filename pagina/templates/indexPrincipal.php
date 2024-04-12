@@ -103,7 +103,6 @@
     <script>
         // Función para redirigir al usuario cuando haga clic en el botón "Probar"
         document.getElementById("btnProbar").addEventListener("click", function () {
-            // Redirige al usuario a la ventana deseada
             window.location.href = "video_curriculum.php";
         });
         document.getElementById("btnCerrar").addEventListener("click", function () {
