@@ -61,41 +61,46 @@
 
   <!-- {*Barra de navegacion para Usuarios*} -->
   <?php include("navbar_usuario.php") ?>
+  <form id="formInteres" method="POST">
 
   <div class="container-fluid">
-    <!-- Formulario de interes -->
-    <form id="formInteres" method="POST">
-
-      <!-- Card de interes -->
-      <div class="card shadow mb-3" style="max-width: 30rem; margin:auto; margin-top:30px;border-radius:25px;">
-        <div class="card-header text-center bg-primary"
-          style="border-top-left-radius:25px;border-top-right-radius:25px;">
-          <h4 class="text-white">DATOS DE INTERÉS</h4>
+    <div class="row">
+		
+	<div class="col">
+    <div class="card shadow mb-3" style="margin:auto; margin-top:30px;border-radius:25px;">
+        <div class="card-header text-center bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
+            <div style="display: flex; align-items: center;">
+                <img src="ruta_de_la_imagen" class="rounded-circle img-thumbnail mx-auto d-block" alt="Imagen de perfil" style="width: 50px; height: 50px;">
+                <label for="" style="margin-left: 10px;">Miau</label>
+            </div>
         </div>
         <div class="card-body">
-        <button id="btnAbrirModal" valor="FA4" type="button" class="btn btn-primary btn-sm rounded-circle py-0 px-0 border-green align-center" style="right:0; top: 85px; margin-right:25px; position: absolute;border-width:0.1rem; font-size: 1em; width: 26px; height:26px;" >?</button>
-          <label class="text-primary">Los campos marcados con asterisco (*) son obligatorios</label><br>
-
-          <!-- Campos para los datos de interes -->
-          <div class="form-floating mb-3 mt-4">
-            <textarea name="txtdesc" type="text" style="height: 90px; resize:none;"
-              class="form-control" maxlength="100" cols="1" rows="10"
-              required="true" placeholder="Ingrese sus datos de interes"></textarea>
-            <label for="floatingInput">Descripcion *</label>
-          </div>
-
-          <!-- Campos internos para la ubicacion -->
-          <input name="txtlatitud" id="latitud" type="hidden">
-          <input name="txtlongitud" id="longitud" type="hidden">
-
-          <!-- Boton para guardar interes -->
-          <div class="container text-center mt-4">
-            <input class="btn btn-primary w-50" type="submit" value="Guardar">
-          </div>
+            <div class="form-floating mb-3 mt-4">
+                <input name="txtdesc" type="text" class="form-control" placeholder="Ingrese sus datos de interés"></input>
+            </div>
         </div>
-      </div>
-    </form>
-  </div>
+    </div>
+</div>
+
+        <!-- Segunda tarjeta -->
+        <div class="col">
+            <div class="card shadow mb-3" style="margin:auto; margin-top:30px;border-radius:25px;">
+                <div class="card-header text-center bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
+				<img src="ruta_de_la_imagen" class="rounded-circle img-thumbnail mx-auto d-block" alt="Imagen de perfil" style="width: 50px; height: 50px;">
+                </div>
+                <div class="card-body">
+                    <div class="form-floating mb-3 mt-4">
+                        <input name="txtdesc" type="text" style="width: 800px, heigth: 800px" class="form-control"  placeholder="Ingrese sus datos de interes"></input>
+                        <label for="floatingInput">Descripcion *</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input name="txtlatitud" id="latitud" type="hidden">
+<input name="txtlongitud" id="longitud" type="hidden">
+</form>
 
   <!-- Conexion de librerias de JavaScript y bootstrap -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
