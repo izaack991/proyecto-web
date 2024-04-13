@@ -78,6 +78,7 @@
 
           <!-- {*Campos internos para la ubicacion*} -->
           <input name="txtlatitud" id="latitud" type="hidden">
+          <input name="txtlongitud" id="longitud" type="hidden">
           <!-- {*Boton para guardar la formacion academica*} -->
           <div class="container text-center mt-4">
             <input class="btn btn-primary w-50" type="submit" value="Guardar">

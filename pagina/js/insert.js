@@ -108,6 +108,12 @@
                         }).then(function () {
                             window.location.href = "../templates/aficiones.php";
                         });
+                    } else if (response == "errorDuplicado") {
+                      Swal.fire({
+                        title: 'Error!',
+                        text: 'La afición ya está registrada',
+                        icon: 'warning'
+                    });
                     }
                 },
                 error: function (xhr, status, error) {
@@ -204,13 +210,13 @@
                     // Maneja la respuesta del archivo PHP aquí
                     console.log(response);
                     if (response == "true") {
-                    //  Swal.fire({
-                    //          title: '¡Listo!',
-                    //          text: 'Elemento Guardado',
-                    //          icon: 'success'
-                    //      }).then(function () {
+                     Swal.fire({
+                             title: '¡Listo!',
+                             text: 'Elemento Guardado',
+                             icon: 'success'
+                         }).then(function () {
                              window.location.href = "../templates/buscar_vacantes.php";
-                        // });
+                        });
                     }
                 },
                 error: function (xhr, status, error) {
