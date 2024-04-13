@@ -318,12 +318,16 @@ require_once('conexion.class.php');
             }
 
 
-            function buscarVacante()
+            function buscarVacante($_idusuario)
             {
                 try
                 {
 
-                $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar = tbl_paises.id_paises WHERE DATEDIFF(datefin, dateInicio) >= 3 AND status = 1 
+                $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais 
+                FROM tbl_vacantes 
+                INNER JOIN tbl_paises ON tbl_vacantes.lugar = tbl_paises.id_paises
+                INNER JOIN tbl_postulacion on tbl_vacantes.id_vacante = tbl_postulacion.id_vacante
+                WHERE DATEDIFF(datefin, dateInicio) >= 1 AND status = 1 AND tbl_postulacion.id_usuario != $_idusuario
                 GROUP BY id_vacante";
                 $query = $this->dbh->prepare($sql);
                     $query->execute();

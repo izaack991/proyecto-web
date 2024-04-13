@@ -5,7 +5,7 @@
 <?php 
 session_start();
 if ($_SESSION['irol'] == 2) {
-    echo '<script src="../js/login.js"></script>';
+    echo '<script src="../js/login.js" data-error="4"></script>';
 }
 ?>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFFFFF;">
