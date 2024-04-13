@@ -69,7 +69,7 @@
 	<div class="col">
     <div class="card shadow mb-3" style="margin:auto; margin-top:30px;border-radius:25px;">
         <div class="card-header text-center bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
-            <div style="display: flex; align-items: center;">
+            <div style="display: flex; align-items: left;">
                 <img src="ruta_de_la_imagen" class="rounded-circle img-thumbnail mx-auto d-block" alt="Imagen de perfil" style="width: 50px; height: 50px;">
                 <label for="" style="margin-left: 10px;">Miau</label>
             </div>
@@ -90,7 +90,7 @@
                 </div>
                 <div class="card-body">
                     <div class="form-floating mb-3 mt-4">
-                        <input name="txtdesc" type="text" style="width: 800px, heigth: 800px" class="form-control"  placeholder="Ingrese sus datos de interes"></input>
+                        <input name="txtdesc" type="text" style="width: 1000px, heigth: 800px" class="form-control"  placeholder="Ingrese sus datos de interes"></input>
                         <label for="floatingInput">Descripcion *</label>
                     </div>
                 </div>
