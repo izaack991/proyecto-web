@@ -38,6 +38,8 @@ if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlon
         if($newuser==true) {
             echo "true";
         }
+    } else {
+      echo "errorDuplicado";
     }
 }
 else {
