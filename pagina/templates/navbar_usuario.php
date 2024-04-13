@@ -35,12 +35,6 @@ if ($_SESSION['irol'] == 1) {
         <li class="nav-item">
           <a class="nav-link active" href="buscar_vacantes.php" style="color: #54B689;">BUSCAR VACANTES</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="Usuario-test.php" style="color: #54B689;">TESTS</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="chat.php" style="color: #54B689;">CHAT</a>
-        </li>
         <li class="nav-item" id="nav_video"></li>
       </ul>
       <ul class="navbar-nav ml-auto">
