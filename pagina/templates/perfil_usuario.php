@@ -49,7 +49,6 @@
                 charCode === 32; // Espacio
       }
     </script>
- 
   </head>
   
   <body>
@@ -60,94 +59,188 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-auto mx-auto">
-                <div class="card border-light shadow-lg bg-body mt-4" style="max-width:35rem;border-radius:0.6rem;">
+                <div class="card border-light shadow-lg bg-body mt-4 mb-4" style="width:35rem;max-width:35rem;border-radius:0.6rem;">
                   <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
                     <h2 class="card-title text-white mb-0">MI PERFIL</h2>
                   </div>
                   <div class="card-body">
-                      <div class="row mb-2 justify-content-center">
-                          <div class="container">
-                              <label>Ten en cuenta que puedes editar tu información si así lo requieres en cualquier momento.</label>
-                          </div>
-                      </div>
-                      <ul class="list-group list-group-flush">
-                          <li class="list-group-item d-flex justify-content-between align-items-center">
-                              <div>
-                                  <i class="fas fa-briefcase text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
-                              </div>
-                              <div class="mx-3">
-                                  <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Experiencia Laboral</label>
-                              </div>
-                              <div class="ml-auto">
-                                  <button id="btncardexp" class="border-0 bg-white"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
-                              </div>
-                          </li>
-                      </ul>
-                      <ul class="list-group list-group-flush">
-                          <li class="list-group-item d-flex justify-content-between align-items-center">
-                              <div>
-                                  <i class="fas fa-book text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
-                              </div>
-                              <div class="mx-3">
-                                  <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Formación Académica</label>
-                              </div>
-                              <div class="ml-auto">
-                                  <button id="btncardfor" class="border-0 bg-white"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
-                              </div>
-                          </li>
-                      </ul>
-                      <ul class="list-group list-group-flush">
-                          <li class="list-group-item d-flex justify-content-between align-items-center">
-                              <div>
-                                  <i class="fas fa-running text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
-                              </div>
-                              <div class="mx-3">
-                                  <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Aficiones</label>
-                              </div>
-                              <div class="ml-auto">
-                                  <button id="btncardafi" class="border-0 bg-white"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
-                              </div>
-                          </li>
-                      </ul>
-                      <ul class="list-group list-group-flush">
-                          <li class="list-group-item d-flex justify-content-between align-items-center">
-                              <div>
-                                  <i class="fas fa-clipboard text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
-                              </div>
-                              <div class="mx-3">
-                                  <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Intereses</label>
-                              </div>
-                              <div class="ml-auto">
-                                  <button id="btncardint" class="border-0 bg-white"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
-                              </div>
-                          </li>
-                      </ul>
-                      <ul class="list-group list-group-flush">
-                          <li class="list-group-item d-flex justify-content-between align-items-center">
-                              <div>
-                                  <i class="fas fa-film text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
-                              </div>
-                              <div class="mx-3">
-                                  <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Video Curriculum</label>
-                              </div>
-                              <div class="ml-auto">
-                                  <button id="btncardvid" class="border-0 bg-white"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
-                              </div>
-                          </li>
-                      </ul>
-                      <ul class="list-group list-group-flush">
-                          <li class="list-group-item d-flex justify-content-between align-items-center">
-                              <div>
-                                  <i class="fas fa-address-card text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
-                              </div>
-                              <div class="mx-3">
-                                  <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Postulaciones</label>
-                              </div>
-                              <div class="ml-auto">
-                                  <button id="btncardpos" class="border-0 bg-white"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
-                              </div>
-                          </li>
-                      </ul>
+                    <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="usuario-tab" data-bs-toggle="tab" data-bs-target="#usuario" type="button" role="tab" aria-controls="home" aria-selected="true">Usuario</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="competencias-tab" data-bs-toggle="tab" data-bs-target="#competencias" type="button" role="tab" aria-controls="profile" aria-selected="false">Competencias</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="usuario" role="tabpanel" >
+                        <div class="row">
+                                <div class="col">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="text-center">
+                                            <img src="../userfiles/img/pfp_142.jpeg" class="rounded-circle w-50 " alt="">
+                                            
+                                        </div>
+                                        <div class="ml-auto">
+                                            <button  class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                        </div>
+                                        
+                                    </li>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <label class="my-auto text-primary font-weight-bold">Nombre</label><br>
+                                            <label class="form-label">Juan Luis Pinto Velarde</label>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <button  class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                        </div>
+                                    </li>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <label class="my-auto text-primary font-weight-bold">Correo</label><br>
+                                            <label class="form-label">juanluis@gmail.com</label>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <button  class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                        </div>
+                                    </li>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <label class="my-auto text-primary font-weight-bold">Contraseña</label><br>
+                                            <label class="form-label">********</label>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <button  class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                        </div>
+                                    </li>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <label class="my-auto text-primary font-weight-bold">Región</label><br>
+                                            <label class="form-label">México</label>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <button  class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                        </div>
+                                    </li>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <label class="my-auto text-primary font-weight-bold">Domicilio</label><br>
+                                            <label class="form-label">Mi casa #133</label>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <button  class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                        </div>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="competencias" role="tabpanel" aria-labelledby="competencias-tab">
+                        <div class="row mb-2 justify-content-center">
+                                <div class="container">
+                                    <label>Ten en cuenta que puedes editar tu información si así lo requieres en cualquier momento.</label>
+                                </div>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="fas fa-briefcase text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
+                                    </div>
+                                    <div class="mx-3">
+                                        <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Experiencia Laboral</label>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <button id="btncardexp" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="fas fa-book text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
+                                    </div>
+                                    <div class="mx-3">
+                                        <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Formación Académica</label>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <button id="btncardfor" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="fas fa-running text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
+                                    </div>
+                                    <div class="mx-3">
+                                        <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Aficiones</label>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <button id="btncardafi" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="fas fa-clipboard text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
+                                    </div>
+                                    <div class="mx-3">
+                                        <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Intereses</label>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <button id="btncardint" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="fas fa-film text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
+                                    </div>
+                                    <div class="mx-3">
+                                        <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Video Curriculum</label>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <button id="btncardvid" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="fas fa-address-card text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
+                                    </div>
+                                    <div class="mx-3">
+                                        <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Postulaciones</label>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <button id="btncardpos" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                      
                   </div>
                 </div>
             </div>

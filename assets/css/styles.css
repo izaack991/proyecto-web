@@ -163,7 +163,6 @@
   .form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
     background-color: #dde0e3;
   }
-<<<<<<< HEAD
 
   .accordion-button {
   position: relative;
@@ -297,7 +296,6 @@
   .accordion-flush .accordion-item .accordion-button {
     border-radius: 0;
   }
-=======
   #password_rules ul li {
     /*font-size: 12px;
     font-weight: normal;*/
@@ -331,4 +329,4 @@
   .password-toggle-icon i:hover {
     color: #000;
   }
->>>>>>> f3019ace4d70a371ce4c29929bec8a84bc0b4648
+  
