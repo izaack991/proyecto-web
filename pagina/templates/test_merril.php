@@ -8,6 +8,7 @@
     <title>Test de merril</title>
     <link id="theme-style" rel="stylesheet" href="../assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../assets/css/theme-1.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> *}
 
     {*Codigo de CSS para el diseño personalizado del test*}

@@ -147,7 +147,7 @@
             <br>
             <div class="form-group col-md-6">
               <div class="form-floating">
-                <input class="form-control" type="date" id="dateFin" required name="dateFin" value="2025-01-01">
+                <input class="form-control" type="date" id="dateFin" required name="dateFin" value="2024-01-02">
                 <label for="dateFin">Seleccione Fecha de Vencimiento *</label><br>
               </div>
             </div>

@@ -10,6 +10,7 @@
     <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <body style="background-color: #F8F6F3;">
 
