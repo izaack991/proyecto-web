@@ -23,7 +23,10 @@ if (isset($_POST['usuario'], $_POST['password'])) {
         } elseif ($rol == 3) {
             header("Location: ../templates/indexAdmin.php");
             exit();
-        } elseif ($rol == 1 && $status) {
+        }elseif ($rol == 4) {
+            header("Location: ../templates/indexEstudiante.php");
+            exit();
+        }elseif ($rol == 1 && $status) {
                 header("Location: ../templates/indexEmpresa.php");
                 exit();
         } else {
@@ -54,7 +57,7 @@ if (isset($_POST['usuario'], $_POST['password'])) {
             <?php
             }
     } else {
-        $redirect_xd = ($rol == 3) ? 3 : (($rol == 2) ? 2 : 1);
+        $redirect_xd = ($rol == 3) ? 3 : (($rol == 2) ? 2 : (($rol == 1) ? 1 : 4));
         unset($_SESSION['rol']);
         ?>
         <!DOCTYPE html>
@@ -70,7 +73,7 @@ if (isset($_POST['usuario'], $_POST['password'])) {
             <script>
 
                 // Variable que determina el valor de xd
-                var xd_value = <?php echo ($rol == 3) ? 3 : (($rol == 2) ? 2 : 1); ?>;
+                var xd_value = <?php echo ($rol == 3) ? 3 : (($rol == 2) ? 2 : (($rol == 1) ? 1 : 4)); ?>;
 
                 // Mostrar SweetAlert cuando el usuario no esté verificado
                 Swal.fire({

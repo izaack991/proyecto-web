@@ -22,7 +22,6 @@
                             // Opcionalmente, puedes cambiar el texto del botón
                             $(this).val("Enviado");
                           });
-
                             Swal.fire({
                                 title: 'Listo!',
                                 text: 'Empresa Guardada',
@@ -37,7 +36,6 @@
                             // Opcionalmente, puedes cambiar el texto del botón
                             $(this).val("Enviado");
                           });
-
                             Swal.fire({
                                 title: 'Listo!',
                                 text: 'Usuario Guardado',
@@ -45,7 +43,22 @@
                             }).then(function() {
                                 window.location.href = "../templates/login.php?xd=2";
                             });
-                        } else if (response == "errorPassword") {
+                        } else if (response == "true4"){
+                          $('#miBoton').click(function(){
+                            // Deshabilitar el botón para evitar múltiples envíos
+                            $(this).prop('disabled', true);
+                            // Opcionalmente, puedes cambiar el texto del botón
+                            $(this).val("Enviado");
+                          });
+                            Swal.fire({
+                                title: 'Listo!',
+                                text: 'Estudiante Guardado',
+                                icon: 'success'
+                            }).then(function() {
+                                window.location.href = "../templates/login.php?xd=4";
+                            });
+                        }
+                         else if (response == "errorPassword") {
                             Swal.fire('¡Las Contraseñas NO coinciden!');
                         } else if (response == "errorImagenEmpresa") {
                             Swal.fire('¡No subió la Imagen de la Empresa!');
