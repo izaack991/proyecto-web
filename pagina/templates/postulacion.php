@@ -43,7 +43,7 @@
  
   </head>
   
-  <body>
+  <body style="background-color: #F8F6F3;">
     <!--Barra de navegacion para Empresa-->
     <?php include("navbar_empresa.php") ?>
 

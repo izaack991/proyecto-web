@@ -67,7 +67,7 @@ switch ($_GET['xd']) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body>
+<body style="background-color: #F8F6F3;">
 
 <?php
     if ($_GET['xd'] == false) {

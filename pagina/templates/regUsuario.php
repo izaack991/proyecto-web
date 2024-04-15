@@ -61,7 +61,7 @@ if ($_SESSION['apellido']) {
   </script>
 </head>
 
-<body>
+<body style="background-color: #F8F6F3;">
   <p>
     <?php $_SESSION['rol'] ?>
   </p>
