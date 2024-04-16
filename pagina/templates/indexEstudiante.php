@@ -11,7 +11,7 @@
     <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../js/notificacion_usuario.js"></script>
+    <script src="../js/notificacion_estudiante.js"></script>
 
     <script>
         // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
@@ -60,7 +60,7 @@
 <body style="background-color: #F8F6F3;">
 
     <!-- {*Barra de navegacion para Usuarios*} -->
-    <?php include("navbar_usuario.php") ?>
+    <?php include("navbar_estudiante.php") ?>
 
     <!-- Modal -->
     <div class="modal" id="popupNotification" tabindex="-1" role="dialog">
@@ -103,7 +103,7 @@
         <h2 style="margin: 0; color: white;">Descubre oportunidades profesionales excepcionales al asociarte con algunas de las empresas más destacadas</h2>
         <p style="margin: 2vw 0; color: white;">Explora una amplia gama de oportunidades laborales adaptadas a tus habilidades y preferencias con Workele. Nuestro proceso de búsqueda de trabajo es eficiente y personalizado, diseñado para maximizar tus posibilidades de éxito. ¡Descubre un mundo de emocionantes oportunidades laborales con nosotros!</p>
         <div style="display: flex; justify-content: center;">
-            <a href="buscar_vacantes.php" style="width: 140px; height: 50px; display: inline-block; background-color: #FF5733; color: #fff; padding: 12px 20px; font-size: 1rem; text-decoration: none; border-radius: 5px; margin-bottom: 20px;">Ver vacantes</a>
+            <a href="#" style="width: 140px; height: 50px; display: inline-block; background-color: #FF5733; color: #fff; padding: 12px 20px; font-size: 1rem; text-decoration: none; border-radius: 5px; margin-bottom: 20px;">PRUEBA</a>
         </div>
     </div>
 </div>
