@@ -4,7 +4,7 @@
 <script src="../js/sesion.js"></script>
 <?php 
 session_start();
-if ($_SESSION['irol'] == 2) {
+if ($_SESSION['irol'] == 2 || $_SESSION['irol'] == 4) {
     echo '<script src="../js/login.js" data-error="4"></script>';
 }
 ?>

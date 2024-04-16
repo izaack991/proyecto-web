@@ -66,7 +66,7 @@
           <!-- {*Campos para los datos de aficiones*} -->
 
           <div class="form-floating mb-3 mt-4">
-            <input class="form-control" id="txtdescripcion" type="text" name="txtdescripcion" placeholder="Descripcion de Puesto" maxLength="100" required="true" pattern="[A-Z a-z]+" title="Favor de ingresar solamente palabras al momento de describir su puesto de trabajo, NO se aceptan numeros ni caracteres especiales.">
+            <input class="form-control" id="txtdescripcion" type="text" name="txtdescripcion" placeholder="Descripcion de Puesto" maxLength="100" required="true" title="Favor de ingresar solamente palabras al momento de describir su puesto de trabajo, NO se aceptan numeros ni caracteres especiales.">
             <label for="floatingInput">Descripcion de Puesto *</label>
           </div>
           <div class="form-floating mb-3 mt-4">

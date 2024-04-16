@@ -1,11 +1,11 @@
 <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="../js/notificacion_usuario.js"></script>
+<script src="../js/notificacion_estudiante.js"></script>
 <script src="../js/sesion.js"></script>
 <?php 
 session_start();
-if ($_SESSION['irol'] == 1 || $_SESSION['irol'] == 4) {
+if ($_SESSION['irol'] == 1 || $_SESSION['irol'] == 2) {
   echo (
       '<script src="../js/login.js" data-error="5"></script>'
   );
@@ -23,7 +23,7 @@ if ($_SESSION['irol'] == 1 || $_SESSION['irol'] == 4) {
     <!-- CONTENIDO DEL NAVBAR -->
     <div class="collapse navbar-collapse" id="navbarColor03">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" style="color: #54B689;" role="button" aria-haspopup="true" aria-expanded="false">REGISTRO</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="experiencia_laboral.php" style="color: #54B689;">EXPERIENCIA LABORAL</a>
@@ -31,11 +31,11 @@ if ($_SESSION['irol'] == 1 || $_SESSION['irol'] == 4) {
             <a class="dropdown-item" href="Aficiones.php" style="color: #54B689;">AFICIONES</a>
             <a class="dropdown-item" href="interes.php" style="color: #54B689;">INTERES</a>
           </div>
-        </li>
+        </li> -->
         <li class="nav-item">
-          <a class="nav-link active" href="buscar_vacantes.php" style="color: #54B689;">BUSCAR VACANTES</a>
+          <a class="nav-link active" href="#" style="color: #54B689;">EJEMPLO</a>
         </li>
-        <li class="nav-item" id="nav_video"></li>
+        <!-- <li class="nav-item" id="nav_video"></li> -->
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">

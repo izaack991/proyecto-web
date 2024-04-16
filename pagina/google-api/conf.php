@@ -24,6 +24,9 @@ if ($_GET['xd'] == 1) {
 if ($_GET['xd'] == 2) {
     $redirectUri = 'http://workele.com/site/pagina/templates/regUsuario.php?xd=2';
 }
+if ($_GET['xd'] == 4) {
+    $redirectUri = 'http://workele.com/site/pagina/templates/regEstudiante.php?xd=4';
+}
 
 // creacion de la solicitud Client para acceder a Google API 
 $client = new Google_Client();

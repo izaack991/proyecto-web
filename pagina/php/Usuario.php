@@ -151,6 +151,9 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 				} else if ($irol == 2) {
 					echo "true2";
           return;
+				}else if ($irol == 4) {
+					echo "true4";
+          return;
 				}
 			}
 		}

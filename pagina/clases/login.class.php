@@ -33,7 +33,7 @@
             
             try {
                 
-                $sql = "SELECT * from tbl_usuario WHERE correo = :us_mail AND password = :us_pass AND rol = :us_tipo";
+                $sql = "SELECT `id_usuario`, `rol`, `apellido`, case when rol = 2 then `nombre` else `razon_social` end as nombre_completo, `correo`, `fecha_nac`, `no_identificacion`, `password`, `sexo`, `region`, `telefono`, `domicilio`, `status`, `ruta_imagen`, `ruta_constancia` from tbl_usuario WHERE correo = :us_mail AND password = :us_pass AND rol = :us_tipo";
                 $query = $this->dbh->prepare($sql);
                 $query->bindParam(":us_mail",$_correo);
                 $query->bindParam(":us_pass",$_password);
@@ -45,8 +45,7 @@
                 {
                      $fila  = $query->fetch();
                      $_SESSION['iusuario'] = $fila['id_usuario'];
-                     $_SESSION['nomusuario'] = $fila['nombre'];
-                     $_SESSION['razonsocial'] = $fila['razon_social'];
+                     $_SESSION['nomusuario'] = $fila['nombre_completo'];    
                      $_SESSION['irol']= $fila['rol'];                                      
                      return TRUE;
                 }
@@ -64,7 +63,7 @@
             
             try {
                 
-                $sql = "SELECT * from tbl_usuario WHERE correo = :us_mail AND password = :us_pass AND rol = :us_tipo AND status=1";
+                $sql = "SELECT `id_usuario`, `rol`, `apellido`, case when rol = 2 then `nombre` else `razon_social` end as nombre_completo, `correo`, `fecha_nac`, `no_identificacion`, `password`, `sexo`, `region`, `telefono`, `domicilio`, `status`, `ruta_imagen`, `ruta_constancia` from tbl_usuario WHERE correo = :us_mail AND password = :us_pass AND rol = :us_tipo AND status=1";
                 $query = $this->dbh->prepare($sql);
                 $query->bindParam(":us_mail",$_correo);
                 $query->bindParam(":us_pass",$_password);
@@ -77,7 +76,7 @@
                 {
                      $fila  = $query->fetch();
                      $_SESSION['iusuario'] = $fila['id_usuario'];
-                     $_SESSION['nomusuario'] = $fila['nombre'];
+                     $_SESSION['nomusuario'] = $fila['nombre_completo'];
                      $_SESSION['irol']= $fila['rol'];                                      
                      return TRUE;
                 }
