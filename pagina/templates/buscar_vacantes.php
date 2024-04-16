@@ -17,46 +17,6 @@
 
   <!-- <script src="../php/Buscar_vacantes.php'"></script> -->
   <script src="../js/Buscar_vacantes.js"></script>
-  <script>
-    // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
-    var tiempoInactividad = 5 * 60 * 1000;
-
-    // Página a la que se redireccionará después de la inactividad
-    var paginaRedireccion = "https://www.workele.com";
-
-    var tiempoInactivo;
-
-    // Función para redireccionar
-    function redireccionar() {
-      window.location.href = paginaRedireccion;
-    }
-
-    // Reiniciar el temporizador de inactividad
-    function reiniciarTemporizador() {
-      clearTimeout(tiempoInactivo);
-      tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
-    }
-
-    // Cuando se cargue la página, iniciar el temporizador
-    reiniciarTemporizador();
-
-    // Reiniciar el temporizador si se detecta actividad
-    document.addEventListener("mousemove", reiniciarTemporizador);
-    document.addEventListener("keypress", reiniciarTemporizador);
-
-    // Codigo JavaScript para el buscador con ajax
-    $(document).ready(function () {
-      $("#bvac").keyup(function () {
-        var query = $(this).val().toLowerCase();
-        $("#vacantesContainer").children().each(function () {
-          if ($(this).text().toLowerCase().indexOf(query) === -1)
-            $(this).hide();
-          else
-            $(this).show();
-        });
-      });
-    });
-  </script>
 
 </head>
 
