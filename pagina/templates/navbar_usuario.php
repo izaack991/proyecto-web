@@ -3,6 +3,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/notificacion_usuario.js"></script>
 <script src="../js/sesion.js"></script>
+<script src="../js/modalesDinamicos.js"></script>
+<script src="../js/inactividad.js"></script>
 <?php 
 session_start();
 if ($_SESSION['irol'] == 1) {
