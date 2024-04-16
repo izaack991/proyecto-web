@@ -850,6 +850,26 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+            public function actualizar_nombreUsuario($usuarioID,$nombre,$apellido)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_usuario SET nombre='$nombre', apellido='$apellido' WHERE id_usuario=$usuarioID";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
             public function actualizar_status_empresa($index)
             {        
                 try 

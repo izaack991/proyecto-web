@@ -15,42 +15,6 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../js/notificacion_empresa.js"></script>
 
-  <script>
-    // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
-    var tiempoInactividad = 5 * 60 * 1000;
-
-    // Página a la que se redireccionará después de la inactividad
-    var paginaRedireccion = "https://www.workele.com";
-
-    var tiempoInactivo;
-
-    // Función para redireccionar
-    function redireccionar() {
-      window.location.href = paginaRedireccion;
-    }
-
-    // Reiniciar el temporizador de inactividad
-    function reiniciarTemporizador() {
-      clearTimeout(tiempoInactivo);
-      tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
-    }
-
-    // Cuando se cargue la página, iniciar el temporizador
-    reiniciarTemporizador();
-
-    // Reiniciar el temporizador si se detecta actividad
-    document.addEventListener("mousemove", reiniciarTemporizador);
-    document.addEventListener("keypress", reiniciarTemporizador);
-
-    // funcion para solo letras mayúsculas, minúsculas y espacios
-    function validarLetras(event) {
-      var charCode = event.charCode;
-      // Permitir letras (mayúsculas y minúsculas) y espacios
-      return (charCode >= 65 && charCode <= 90) || // Letras mayúsculas
-        (charCode >= 97 && charCode <= 122) || // Letras minúsculas
-        charCode === 32; // Espacio
-    }
-  </script>
 </head>
 
 <body style="background-color: #F8F6F3;">

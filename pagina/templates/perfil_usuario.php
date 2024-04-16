@@ -13,42 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/perfil_usuario.js"></script>
-    <script>
-      // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
-      var tiempoInactividad = 5 * 60 * 1000; 
-
-      // Página a la que se redireccionará después de la inactividad
-      var paginaRedireccion = "https://www.workele.com";
-
-      var tiempoInactivo;
-
-      // Función para redireccionar
-      function redireccionar() {
-        window.location.href = paginaRedireccion;
-      }
-
-      // Reiniciar el temporizador de inactividad
-      function reiniciarTemporizador() {
-        clearTimeout(tiempoInactivo);
-        tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
-      }
-
-      // Cuando se cargue la página, iniciar el temporizador
-      reiniciarTemporizador();
-
-      // Reiniciar el temporizador si se detecta actividad
-      document.addEventListener("mousemove", reiniciarTemporizador);
-      document.addEventListener("keypress", reiniciarTemporizador);
-
-      // funcion para solo letras mayúsculas, minúsculas y espacios
-      function validarLetras(event) {
-          var charCode = event.charCode;
-          // Permitir letras (mayúsculas y minúsculas) y espacios
-          return (charCode >= 65 && charCode <= 90) || // Letras mayúsculas
-                (charCode >= 97 && charCode <= 122) || // Letras minúsculas
-                charCode === 32; // Espacio
-      }
-    </script>
+    
   </head>
   
   <body>
@@ -93,10 +58,10 @@
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <div>
                                             <label class="my-auto text-primary font-weight-bold">Nombre</label><br>
-                                            <label class="form-label">Juan Luis Pinto Velarde</label>
+                                            <label id="nomUsuario" class="form-label"></label>
                                         </div>
                                         <div class="ml-auto">
-                                            <button  class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                            <button id="btncardnombre" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                         </div>
                                     </li>
                                 </div>
@@ -328,12 +293,32 @@
                     </div>
                 </div>
             </div>
+            <!-- Card de Nombre -->
+            <div class="col-auto mr-auto mt-4" id="cardNombre" style="display:none;">
+                <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
+                    <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
+                        <h4 class="card-title text-white d-inline mb-0">EDITAR NOMBRE</h4>
+                        <button type="button d-inline" id="btncancelarNombre" class="close text-white" >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="contenedorNombre"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
 <!-- Script para mostrar/ocultar el formulario -->
 <script>
   $(document).ready(function(){
+    // CODIGO JAVASCRIPT PARA LAS VENTANAS DE USUARIO
+    $("#btncardnombre").click(function(){
+        $("#cardNombre").slideDown();
+    });
+
+    // CODIGO JAVASCRIPT PARA LAS VENTANAS DE COMPETENCIAS
     $("#btncardexp").click(function(){
         $("#cardFormacion").hide();
         $("#cardAficion").hide();
@@ -382,7 +367,14 @@
         $("#cardVideoCurriculum").hide();
         $("#cardPostulacion").slideDown();
     });
-
+    $("#usuario-tab").click(function(){
+        $("#cardExperiencia").hide();
+        $("#cardFormacion").hide();
+        $("#cardAficion").hide();
+        $("#cardInteres").hide();
+        $("#cardVideoCurriculum").hide();
+        $("#cardPostulacion").hide();
+    });
     $("#btncancelarEXP").click(function(){
         $("#cardExperiencia").slideUp();
     });
@@ -400,6 +392,9 @@
     });
     $("#btncancelarPOS").click(function(){
         $("#cardPostulacion").slideUp();
+    });
+    $("#btncancelarNombre").click(function(){
+        $("#cardNombre").slideUp();
     });
     
   });

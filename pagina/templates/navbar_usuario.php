@@ -3,9 +3,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/notificacion_usuario.js"></script>
 <script src="../js/sesion.js"></script>
+<script src="../js/modalesDinamicos.js"></script>
+<script src="../js/inactividad.js"></script>
 <?php 
 session_start();
-if ($_SESSION['irol'] == 1) {
+if ($_SESSION['irol'] == 1 || $_SESSION['irol'] == 4) {
   echo (
       '<script src="../js/login.js" data-error="5"></script>'
   );

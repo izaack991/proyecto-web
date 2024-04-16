@@ -593,6 +593,26 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
+            public function seleccionar_usuario($id_usuario)
+            {        
+                try {
+                    
+                    $sql = "SELECT * FROM tbl_usuario WHERE id_usuario=:id_usuario";
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':id_usuario',$id_usuario);
+                    $query->execute();
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                }
+                return $data;
+            }
             public function seleccionar_vid_curriculum($id_usuario)
             {        
                 try {

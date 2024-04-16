@@ -70,6 +70,28 @@ $(document).ready(function() {
                                 <div class="row"><div class="col text-center"><button type="button" id="btnAgregarint" class="btn btn-primary w-100">Agregar</button></div></div>`;
                 }
                 $("#contenedorInteres").html(input_int);
+                
+                nom_usuario = ""
+                input_nombre = ""
+                
+                if (data.usuario && data.usuario.length > 0) {
+                    $.each(data.usuario, function (index, usuario) {
+                        nom_usuario += usuario.nombre+` `+usuario.apellido;
+
+                        input_nombre += `<h3 class='text-dark mb-3'>`+usuario.nombre+` `+usuario.apellido+`</h3><div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Nombre</span>
+                                      <input id="nombreNom`+usuario.id_usuario+`" type="text" class="form-control" value="`+usuario.nombre+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br>`
+                        
+                        input_nombre += `<div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Apellidos</span>
+                                      <input id="apellidoNom`+usuario.id_usuario+`" type="text" class="form-control" value="`+usuario.apellido+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br>`
+
+                        input_nombre += `<div class="row"><div class="col text-center"><button type="button" class="btn btn-info mb-3 w-100 btn-guardar-nombre" data-usuario="`+usuario.id_usuario+`" style="font-size:1.2rem;">Guardar</button></div></div>`
+                    }); 
+                } else {
+                    input_nombre = `<div class="row"><div class="col text-center"><p>Todavia no ha registrado ningun interés.</p></div></div>
+                                <div class="row"><div class="col text-center"><button type="button" id="btnAgregarint" class="btn btn-primary w-100">Agregar</button></div></div>`;
+                }
+                $("#nomUsuario").html(nom_usuario);
+                $("#contenedorNombre").html(input_nombre);
 
                     card_video = ""
                 if (data.video_curriculum && data.video_curriculum.length > 0) {
@@ -531,7 +553,7 @@ $(document).ready(function() {
             }
         });
     });
-    // Agregar evento click a los botones "Eliminar" de intereses
+    // Agregar evento click a los botones "Eliminar" de videos
     $(document).on("click", ".btn-eliminar-vid", function() {
         var videoID = $(this).data("video");
         var tipo = 'vid';
@@ -576,7 +598,7 @@ $(document).ready(function() {
             }
         });
     });
-    // Agregar evento click a los botones "Eliminar" de intereses
+    // Agregar evento click a los botones "Eliminar" de postulaciones
     $(document).on("click", ".btn-eliminar-pos", function() {
         var postulacionID = $(this).data("postulacion");
         var tipo = 'pos';
@@ -622,5 +644,54 @@ $(document).ready(function() {
         });
     });
 
+    // Agregar evento click a los botones "Guardar" de nombre de usuario
+    $(document).on("click", ".btn-guardar-nombre", function() {
+        var usuarioID = $(this).data("usuario");
+        var nombre = $("#nombreNom" + usuarioID).val();
+        var apellido = $("#apellidoNom" + usuarioID).val();
+        var tipo = 'nom';
+        
+        // Mostrar SweetAlert de confirmación
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¿Quieres guardar los siguientes datos?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Sí, guardar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Enviar datos al servidor utilizando AJAX
+                $.ajax({
+                    url: '../php/actualizar_perfil.php', 
+                    type: 'POST',
+                    data: {
+                        usuarioID: usuarioID,
+                        nombre: nombre,
+                        apellido: apellido,
+                        tipo: tipo
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        mostrarExperiencia();
+                        // Mostrar SweetAlert de éxito
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Éxito',
+                            text: 'La información se actualizó correctamente.',
+                            timer: 2000, // Duración en milisegundos (en este caso, 2 segundos)
+                            timerProgressBar: true,
+                            showConfirmButton: false
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+    });
     
 });

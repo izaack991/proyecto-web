@@ -20,6 +20,8 @@ if (error === '1') {
     empresaPermitionError2();
 } else if (error === '7') {
     userPermitionError2();
+}else if (error === '8') {
+    isLogged4();
 }
 
 function noRol() {

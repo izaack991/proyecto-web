@@ -2,13 +2,18 @@
 error_reporting(0);
 session_start();
 include '../google-api/redirect.php';
-$_SESSION['rol'] = 1;
+$_SESSION['rol'] = 4;
 
+if ($_SESSION['nombre']) {
+  $nombre = $_SESSION['nombre'];
+}
 if ($_SESSION['cuenta']) {
   $correo = $_SESSION['cuenta'];
 }
+if ($_SESSION['apellido']) {
+  $apellido = $_SESSION['apellido'];
+}
 
-//print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +35,7 @@ if ($_SESSION['cuenta']) {
   
 </head>
 
-<body style="background-color: #F8F6F3;">
+<body>
   <p>
     <?php $_SESSION['rol'] ?>
   </p>
@@ -43,45 +48,69 @@ if ($_SESSION['cuenta']) {
       <!-- Card del registro de usuarios -->
       <div class="card shadow mb-3" style="max-width: 50rem; margin:auto; margin-top:30px; border-radius:25px;">
         <div class="card-header text-center bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
-          <!-- Header para empresa -->
-          <h4 class="text-white">REGISTRO DE NUEVA EMPRESA</h4>
+          <!-- Header para usuario -->
+          <h4 class="text-white">REGISTRO DE NUEVO ESTUDIANTE</h4>
         </div>
         <div class="card-body">
+          <h4 class="card-title"></h4>
           <label class="text-primary">Los campos marcados con asterisco (*) son obligatorios</label><br>
 
-          <!-- Campos para empresa -->
-          <div class="form-floating mb-3 mt-4">
-            <input class="form-control" type="text" name="txt_razon" class="texto" id="razon" placeholder="Ingresa el Nombre de la Empresa" pattern="[A-Z a-z]+" required="true">
-            <label for="floatingInput">Razón Social *</label>
+          <!-- Campos para usuario -->
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <div class="form-floating" style="height: 4rem;">
+                <input class="form-control" type="text" name="txt_NOMBRE" class="texto" id="nombre" placeholder="Escriba el Nombre" pattern="[A-Z a-z]+" required="true" value="<?php if ($nombre != "") {
+                  echo $nombre;
+                } ?>">
+                <label>Nombre: *</label><br>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <div class="form-floating">
+                <input class="form-control" type="text" name="txt_APELLIDOS" class="texto" id="apellido" placeholder="Escriba sus Apellidos" pattern="[A-Z a-z]+" required="true" value="<?php if ($apellido == true) {
+                  echo $apellido;
+                } ?>">
+                <label>Apellidos: *</label><br>
+              </div>
+            </div>
           </div>
-          <div class="mb-3 mt-4">
-            <label for="formFile" class="text-primary">Seleccionar Imagen de Perfil *</label><br>
-            <label for="formFile" class="text-primary" style="font-size: small;">GIF, JPG, JPEG y PNG</label>
-            <input class="form-control" type="file" name="txtruta" id="txtruta">
+          <div class="mb-3">
+            <label for="formFile" class="text-primary">Seleccionar Imagen de Perfil: </label>
+            <input class="form-control" type="file" name="txtruta" id="txtruta"><br>
           </div>
-          <div class="mb-3 mt-4">
-            <label for="formFile" class="text-primary">Seleccionar archivo de constancia de situacion fiscal *</label><br>
-            <label for="formFile" class="text-primary" style="font-size: small;">JPG, JPEG, PNG y PDF</label>
-            <input class="form-control" type="file" name="txtcons" id="txtcons"><br>
-          </div>
-          <div class="form-floating mb-3">
+          <div class="form-floating">
             <input class="form-control" type="email" name="txt_CORREO" class="texto" id="correo" placeholder="Ejemplo@dominio.com" pattern=".+.com" required value="<?php if ($correo != "") {
               echo $correo;
             } ?>"><br>
-            <label for="floatingInput">Correo Electronico *</label>
+            <label class="text-primary">Correo Electronico: *</label><br>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6 mb-3">
+              <div class="form-floating">
+                <input class="form-control" type="date" id="dateFECHA" name="dateFECHA" value="2022-01-01">
+                <label for="dateFECHA">Seleccione su Fecha de Nacimineto: *</label><br>
+              </div>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+              <div class="form-floating">
+                <input class="form-control" type="text" id="curp" onkeyup="mayus(this);" name="txt_CURP" oninput="validarInput(this)" maxLength="18" minLength="18" pattern="[A-Z0-9]+" style="width:100%;" placeholder="Ingrese su CURP">
+                <label>CURP *</label><br>
+                <pre id="resultado"></pre>
+              </div>
+            </div>
           </div>
           <div class="form-row mb-3" id="password_div">
             <div class="form-group col-md-6">
               <div class="form-floating" style="height: 4rem;">
-                <input oninput="verificarContrasenas()" onfocus="display_passwordrules()" pattern="(?=.*\d)(?=.*[A-Z]).{8,}" class="form-control validate password" type="password" name="txt_PASSWORD" class="texto" minlength="8" id="txt_PASSWORD" maxLength="30" placeholder="Escriba la Contraseña" required="true"><br>
-                <label class="d-inline">Contraseña *</label><br>
+                <input oninput="verificarContrasenas()" onfocus="display_passwordrules()" pattern="(?=.*\d)(?=.*[A-Z]).{8,}" class="form-control" type="password" name="txt_PASSWORD" class="texto" minlength="8" id="txt_PASSWORD" maxLength="30" placeholder="Escriba la Contraseña" required="true"><br>
+                <label>Contraseña: *</label><br>
               </div>
               <span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
             </div>
             <div class="form-group col-md-6">
               <div class="form-floating" style="height: 4rem;">
-                <input oninput="verificarContrasenas()" onfocus="display_passwordrules()" class="form-control" type="password" name="txt_PASSWORD2" class="texto validate passwordConfirm" minlength="8" id="txt_PASSWORD2" maxLength="30" placeholder="Confirme la Contraseña" required="true"><br>
-                <label>Confirme Contraseña *</label><br>
+                <input oninput="verificarContrasenas()" onfocus="display_passwordrules()" class="form-control" type="password" name="txt_PASSWORD2" class="texto" minlength="8" id="txt_PASSWORD2" maxLength="30" placeholder="Confirme la Contraseña" required="true"><br>
+                <label>Confirme Contraseña: *</label><br>
               </div>
             </div>
           </div>
@@ -95,7 +124,17 @@ if ($_SESSION['cuenta']) {
             </ul>
           </div>
           <div class="form-row">
-            <div class="form-group col">
+            <div class="form-group col-md-6 mb-3">
+              <div class="form-floating" style="height: 4rem;">
+                <select class="form-select" name="cmb_SEXO" id="sexo" style="width: 100%;">
+                  <option value="1">Masculino</option>
+                  <option value="2">Femenino</option>
+                  <option value="3">Otro</option>
+                </select>
+                <label class="form_label">Genero *</label>
+              </div>
+            </div>
+            <div class="form-group col-md-6 mb-3">
               <div class="form-floating" style="height: 4rem;">
                 <select class="form-select" name="cmb_REGION" id="region" style="width: 100%;">
                   <option value="52">México</option>
@@ -127,25 +166,31 @@ if ($_SESSION['cuenta']) {
                 <label class="form_label">Region *</label>
               </div>
             </div>
-            <div class="form-group col">
-              <div class="form-floating" style="height: 4rem;">
+            <div class="col-md-6 mb-3">
+              <div class="form-floating">
                 <input class="form-control" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="txt_TELEFONO" class="texto" id="telefono" minlength="10" maxLength="10" placeholder="Escriba su Número" required="true"><br>
-                <label>Telefono *</label><br>
+                <label>Telefono: *</label><br>
               </div>
             </div>
           </div>
-          <div class="form-floating mb-3 mt-4">
+          <div class="form-floating">
             <input class="form-control" type="text" name="txt_DOMICILIO" class="texto" id="domicilio" placeholder="Escriba su Domicilio" required="true"><br>
-            <label>Domicilio *</label><br>
+            <label>Domicilio: *</label><br>
           </div>
           <div class="container text-center mt-4">
             <input class="btn btn-primary" type="submit" value="Guardar" id="miBoton">
-            <button type="button" class="btn btn-secondary" onclick="location.href='login.php?xd=1'">Volver</button>
+            <button type="button" class="btn btn-secondary" onclick="location.href='login.php?xd=4'">Volver</button>
           </div>
         </div>
       </div>
     </form>
   </div>
+
+  <script>
+    function mayus(e) {
+        e.value = e.value.toUpperCase();
+    }
+  </script>
 
   <!-- Conexion de librerias de JavaScript y bootstrap -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -153,47 +198,9 @@ if ($_SESSION['cuenta']) {
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
 
   <script src="../js/password.js"></script>
   <script src="../js/registro.js"></script>
 </body>
 
 </html>
-
-<?php
-
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "db_web";
-
-// Verificar si se envió el formulario de registro
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtener los datos del formulario
-    $correo = $_POST["txt_correo"];
-
-    // Generar un token de verificación único
-    $token = random(1000,9999);
-
-    // Enviar el correo electrónico con el token de verificación
-    $sql = "INSERT INTO tbl_usuario (correo, token) VALUES ('$correo', '$token')";
-    if ($conn->query($sql) == TRUE) {
-
-        // Enviar el correo electrónico con el token de verificación
-        $para = $correo;
-        $titulo = 'Token de verificación';
-        $mensaje = 'Tu token de verificación es: ' . $token;
-        $cabeceras = 'From: kevin.vall328@gmail.com';
-    
-        if (mail($para, $titulo, $mensaje, $cabeceras)) {
-            echo "Se ha enviado un correo electrónico con el token de verificación.";
-        } else {
-            echo "Error al enviar el correo electrónico.";
-        }
-    } else {
-        echo "Error al registrar el usuario: " . $conn->error;
-    }
-    
-}
-?>
