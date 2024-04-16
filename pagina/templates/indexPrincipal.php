@@ -13,12 +13,29 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../js/notificacion_usuario.js"></script>
 
+  <script>
+    // Verificar si el elemento está registrado en la base de datos
+    $.ajax({
+      url: '../php/verificar_video.php',
+      type: 'GET',
+      success: function (response) {
+        // Si el elemento está registrado, lo eliminamos del navbar
+        if (response === 'no_registrado') {
+          document.addEventListener("DOMContentLoaded", function () {
+            var modal = document.getElementById('popupNotification');
+            $(modal).modal('show');
+          });
+        }
+      }
+    });
+  </script>
+
 </head>
 
 <body style="background-color: #F8F6F3;">
 
   <!-- {*Barra de navegacion para Usuarios*} -->
-  <?php include("navbar_usuario.php") ?>
+  <?php include ("navbar_usuario.php") ?>
 
   <!-- Modal -->
   <div class="modal" id="popupNotification" tabindex="-1" role="dialog">

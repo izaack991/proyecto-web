@@ -18,6 +18,21 @@
   <!-- <script src="../php/Buscar_vacantes.php'"></script> -->
   <script src="../js/Buscar_vacantes.js"></script>
 
+  <script>
+    // Codigo JavaScript para el buscador con ajax
+    $(document).ready(function () {
+      $("#bvac").keyup(function () {
+        var query = $(this).val().toLowerCase();
+        $("#vacantesContainer").children().each(function () {
+          if ($(this).text().toLowerCase().indexOf(query) === -1)
+            $(this).hide();
+          else
+            $(this).show();
+        });
+      });
+    });
+  </script>
+
 </head>
 
 <body style="background-color: #F8F6F3;">
@@ -25,7 +40,7 @@
     <script src="../smarty/js/ubicacion.js"></script> -->
   <!-- {*Barra de navegacion para Usuarios*} -->
   <?php include ("navbar_usuario.php") ?>
-<br>
+  <br>
   <div class="container-fluid">
     <!-- Buscador de vacantes con ajax  -->
     <div class="alert alert-dismissible text-center px-0">

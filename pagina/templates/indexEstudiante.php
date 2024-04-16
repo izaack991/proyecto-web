@@ -13,6 +13,23 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../js/notificacion_estudiante.js"></script>
 
+  <script>
+    // Verificar si el elemento está registrado en la base de datos
+    $.ajax({
+      url: '../php/verificar_video.php',
+      type: 'GET',
+      success: function(response) {
+        // Si el elemento está registrado, lo eliminamos del navbar
+        if (response === 'no_registrado') {
+          document.addEventListener("DOMContentLoaded", function() {
+            var modal = document.getElementById('popupNotification');
+            $(modal).modal('show');
+          });
+        }
+      }
+    });
+  </script>
+
 </head>
 
 <body style="background-color: #F8F6F3;">
@@ -47,10 +64,10 @@
   <!-- NO FUNCIONA SI SE COLOCA ARRIBA JUNTO A LOS DEMÁS SCRIPTS -->
   <script>
     // Función para redirigir al usuario cuando haga clic en el botón "Probar"
-    document.getElementById("btnProbar").addEventListener("click", function () {
+    document.getElementById("btnProbar").addEventListener("click", function() {
       window.location.href = "video_curriculum.php";
     });
-    document.getElementById("btnCerrar").addEventListener("click", function () {
+    document.getElementById("btnCerrar").addEventListener("click", function() {
       var modal = document.getElementById('popupNotification');
       $(modal).modal('hide');
     });
@@ -132,16 +149,13 @@
   </div>
 
   <!-- {*Conexion de librerias de JavaScript y bootstrap*}      -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
 </body>
 
 <!-- {*Footer*} -->
-<?php include ("footer.php") ?>
+<?php include("footer.php") ?>
 
 </html>

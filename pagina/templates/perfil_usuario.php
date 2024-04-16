@@ -13,6 +13,17 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/perfil_usuario.js"></script>
+
+    <script>
+      // funcion para solo letras mayúsculas, minúsculas y espacios
+      function validarLetras(event) {
+          var charCode = event.charCode;
+          // Permitir letras (mayúsculas y minúsculas) y espacios
+          return (charCode >= 65 && charCode <= 90) || // Letras mayúsculas
+                (charCode >= 97 && charCode <= 122) || // Letras minúsculas
+                charCode === 32; // Espacio
+      }
+    </script>
     
   </head>
   

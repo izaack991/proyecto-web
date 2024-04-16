@@ -15,6 +15,16 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../js/notificacion_usuario.js"></script>
 
+  <script>
+    function validarLetras(event) {
+      var charCode = event.charCode;
+      // Permitir letras (mayúsculas y minúsculas) y espacios
+      return (charCode >= 65 && charCode <= 90) || // Letras mayúsculas
+        (charCode >= 97 && charCode <= 122) || // Letras minúsculas
+        charCode === 32; // Espacio
+    }
+  </script>
+
 </head>
 
 <body style="background-color: #F8F6F3;">
