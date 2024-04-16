@@ -47,8 +47,12 @@
             <label for="floatingInput">Empresa *</label>
           </div>
           <div class="form-floating mb-3 mt-4">
-            <input class="form-control" type="text" name="txtperiodo" placeholder="Periodo" maxLength="20" required="true">
-            <label for="floatingInput">Periodo *</label>
+                <input class="form-control" type="date" id="fechaInicio" name="fechaInicio" value="2022-01-01">
+                <label for="fechaInicio">Seleccione su Fecha de inicio: *</label><br>
+          </div>
+          <div class="form-floating mb-3 mt-4">
+                <input class="form-control" type="date" id="fechaFin" name="fechaFin" value="2022-01-01">
+                <label for="fechaFin">Seleccione su Fecha fin: *</label><br>
           </div>
 
           <!-- {*Campos internos para la ubicacion*} -->

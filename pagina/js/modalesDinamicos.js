@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", function() {
+
 //dependiendo del valor del botton se muestra los mensajes 
 ayuda = document.getElementById("btnAbrirModal");
 var valor = ayuda.getAttribute('valor');
@@ -10,10 +12,10 @@ window.onload = function mostrarMensaje(event) {
 
     // Mensajes personalizados para cada valor
     var mensajes = {
-        'FA1': 'Descripcion del puesto: Cargo ocupado en dicha empresa. Ejemplo: Programador.\] Nombre de la dicha Empresa.\] Periodo: Fecha salida de dicha empresa. Ejemplo (02/06/2001).',
-        'FA2': 'Ubicacion: direccion de dicha Institucion. Ejemplo: Pais, Estado, Municipio, ciudad, entre calle y calle.\] Periodo: Fecha salida de dicha institucion. Ejemplo (02/06/2001).',
-        'FA3': 'Ingrese actividades relacionadas con su profesion en las que tengan mas afinidad. Por ejemplo: Programacion en C#, Modelacion en 3D, etc. Esto nos ayudará a las Empresas a conocerte mejor.',
-        'FA4': 'Ingrese datos que puedes resaltar, aspectos de tu personalidad, habilidades o intereses que no están directamente relacionados con tu experiencia laboral o educación, pero que podrían ser relevantes para el puesto al que estás aplicando. Ejemplos: \] Habilidades Personales: Excelente trabajo en equipo. \] Logros Relevantes: Ganador del torneo de Matematicas a nivel Estatal.'
+        'FA1': 'Para mantener el sistema ágil y eficiente, te recomendamos llenar solo tres registros. \] Descripcion del puesto: Cargo ocupado en dicha empresa. Ejemplo: Programador.\] Nombre de la dicha Empresa.\] Periodo: Fechas de entrada y salida de dicha empresa. Ejemplo (13/12/2001) (16/08/2005).',
+        'FA2': 'Para mantener el sistema ágil y eficiente, te recomendamos llenar solo tres registros. \] Ubicacion: direccion de dicha Institucion. Ejemplo: Pais, Estado, Municipio, ciudad, entre calle y calle.\] Periodo: Fechas de entrada y salida de dicha institucion. Ejemplo (13/12/2001) (16/08/2005).',
+        'FA3': 'Para mantener el sistema ágil y eficiente, te recomendamos llenar solo tres registros. \] Ingrese actividades relacionadas con su profesion en las que tengan mas afinidad. Por ejemplo: Programacion en C#, Modelacion en 3D, etc. Esto nos ayudará a las Empresas a conocerte mejor.',
+        'FA4': 'Para mantener el sistema ágil y eficiente, te recomendamos llenar solo tres registros. \] Ingrese datos que puedes resaltar, aspectos de tu personalidad, habilidades o intereses que no están directamente relacionados con tu experiencia laboral o educación, pero que podrían ser relevantes para el puesto al que estás aplicando. Ejemplos: \] Habilidades Personales: Excelente trabajo en equipo. \] Logros Relevantes: Ganador del torneo de Matematicas a nivel Estatal.'
     };
     var parrafos = mensajes[valor].split('\] ');
 
@@ -100,3 +102,4 @@ $('#btnAbrirModal').click(function(){
 });
 });
 }
+});

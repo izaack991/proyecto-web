@@ -30,12 +30,11 @@ require_once('conexion.class.php');
             trigger_error('La clonación de este objeto no está permitida', E_USER_ERROR);
         }
 
-        public function guardar_experiencia_laboral($f_idexperiencia,$_idusuario,$_descripcion,$_empresa,$_periodo)
+        public function guardar_experiencia_laboral($f_idexperiencia,$_idusuario,$_descripcion,$_empresa,$_fechaInicio,$_fechaFin)
         {        
             try {
                 
-                $sql="insert into tbl_experiencia_laboral(id_experiencia,id_usuario,descripcion_puesto,empresa,periodo)
-                                    values(:id_experiencia,:id_usuario,:descripcion_puesto,:empresa,:periodo)";
+                $sql="insert into tbl_experiencia_laboral values(:id_experiencia,:id_usuario,:descripcion_puesto,:empresa,:fechaInicio,:fechaFin)";
                 
                 $query = $this->dbh->prepare($sql);
                 
@@ -43,7 +42,8 @@ require_once('conexion.class.php');
                 $query->bindParam(':id_usuario',$_idusuario);
                 $query->bindParam(':descripcion_puesto',$_descripcion);
                 $query->bindParam(':empresa',$_empresa);
-                $query->bindParam(':periodo',$_periodo);
+                $query->bindParam(':fechaInicio',$_fechaInicio);
+                $query->bindParam(':fechaFin',$_fechaFin);
                 $query->execute();
                 //$this->dbh = null;
                     
@@ -93,19 +93,20 @@ require_once('conexion.class.php');
             return TRUE;
         } 
 
-        public function guardar_formacion($_idusuario,$id_formacion,$descripcion,$ubicacion,$periodo)
+        public function guardar_formacion($_idusuario,$id_formacion,$descripcion,$ubicacion,$_fechaInicio,$_fechaFin)
         {        
             try {
                 
-                $sql="INSERT into tbl_formacion_academica(id_formacion,id_usuario,descripcion,ubicacion,periodo)
-                                    values(:id_formacion,:id_usuario,:descripcion,:ubicacion,:periodo)";
+                $sql="INSERT into tbl_formacion_academica(id_formacion,id_usuario,descripcion,ubicacion,fechaInicio,fechaFin)
+                                    values(:id_formacion,:id_usuario,:descripcion,:ubicacion,:fechaInicio,:fechaFin)";
                 
                 $query = $this->dbh->prepare($sql);
                 $query->bindParam(':id_formacion',$id_formacion);
                 $query->bindParam(':id_usuario',$_idusuario,);
                 $query->bindParam(':descripcion',$descripcion,);
                 $query->bindParam(':ubicacion',$ubicacion);
-                $query->bindParam(':periodo',$periodo);
+                $query->bindParam(':fechaInicio',$_fechaInicio);
+                $query->bindParam(':fechaFin',$_fechaFin);
                 $query->execute();
             }
             catch(PDOException $e){

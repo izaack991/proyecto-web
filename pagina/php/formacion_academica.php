@@ -16,14 +16,15 @@ $_findUser = Functions::singleton_functions();
 $nuevoSingleton = Functions::singleton_functions();
 $iusuario = $_SESSION['iusuario'];
 
-if(isset($_POST['descripcion'])&& isset($_POST['ubicacion'])&&isset($_POST['periodo'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud']))
+if(isset($_POST['descripcion'])&& isset($_POST['ubicacion'])&&isset($_POST['fechaInicio'])&&isset($_POST['fechaFin'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud']))
 {
     $_idusuario = $_SESSION['iusuario'];
     $id_formacion = $_findUser->consec_formacion();
 	$descripcion = $_POST['descripcion'];
 	$ubicacion = $_POST['ubicacion'];
-    $periodo = $_POST['periodo'];
-	$newuser = $nuevoUsuario->guardar_formacion($_idusuario,$id_formacion,$descripcion,$ubicacion,$periodo);
+    $_fechaInicio = $_POST['fechaInicio'];
+    $_fechaFin = $_POST['fechaFin'];
+	$newuser = $nuevoUsuario->guardar_formacion($_idusuario,$id_formacion,$descripcion,$ubicacion,$_fechaInicio,$_fechaFin);
     
     date_default_timezone_set('America/Mexico_City');
     $_movimiento = 'Formación Academica(Guardar)';
