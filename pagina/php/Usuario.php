@@ -44,6 +44,15 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 			$_domicilio = $_POST['txt_DOMICILIO'];
 			$_razon = $_POST['txt_razon'];
 			$_status = 0;
+      $_token = rand(1000,9999);
+
+       // Enviar el correo electrónico con el token de verificación
+      $para = $_correo;
+      $titulo = 'Token de verificación';
+      $mensaje = 'Tu token de verificación es: ' . $_token;
+      $cabeceras = 'From: kevin.vall328@gmail.com';             
+
+
 			
 			//Obtenemos algunos datos necesarios sobre el archivo de la imagen
 			$imgTipo = $_FILES['txtruta']['type'];
@@ -136,8 +145,8 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
             }
           
           //$f_id_usuario = $_findUser -> consec_usuario();
-          $newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol, $_status, $_ruta, $_cons, $_razon);
-          
+          $newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol, $_status, $_ruta, $_cons, $_razon, $_token);
+
         } else {
           echo "errorCorreoDuplicado";
         }

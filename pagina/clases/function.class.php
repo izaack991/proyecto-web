@@ -1283,5 +1283,25 @@ require_once('conexion.class.php');
             return TRUE;
             
         }
+        public function eliminar_vacantes_antiguas($fecha_limite)
+        {        
+            try 
+            {
+                
+                $sql="DELETE FROM tbl_vacantes WHERE dateInicio < '$fecha_limite'";
+                
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+                $this->dbh = null;
+                    
+            
+            }
+            catch(PDOException $e){
+                
+                print "Error!: " . $e->getMessage();
+
+            }        
+            return TRUE;
+        }
 
 }
