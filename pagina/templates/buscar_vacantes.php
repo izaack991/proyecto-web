@@ -65,7 +65,7 @@
     <script src="../smarty/js/ubicacion.js"></script> -->
   <!-- {*Barra de navegacion para Usuarios*} -->
   <?php include ("navbar_usuario.php") ?>
-
+<br>
   <div class="container-fluid">
     <!-- Buscador de vacantes con ajax  -->
     <div class="alert alert-dismissible text-center px-0">

@@ -16,8 +16,13 @@ switch ($_GET['xd']) {
         $sesionLabel = "USUARIO";
         break;
     case '3':
-        $sesionLabel = "ADMINISTRADOR";
         $_SESSION['rol'] = 3;
+        $sesionLabel = "ADMINISTRADOR";
+        break;
+    case '4':
+        $regRol = 'regEstudiante.php';
+        $_SESSION['rol'] = 4;
+        $sesionLabel = "ESTUDIANTE";
         break;
     default:
         // Este bloque se ejecuta si $_GET['xd'] no es 1, 2, o 3, o si $_GET['xd'] es false
@@ -25,32 +30,7 @@ switch ($_GET['xd']) {
         $sesionLabel = "NADIE";
         break;
     }
-// if ($_GET['xd'] == 1) {
-//     $regRol='regEmpresa.php';
-// }
-// if ($_GET['xd'] == 2) {
-//     $regRol='regUsuario.php';
-// }
-// if ($_GET['xd'] == false) {
-//     echo (
-//         '<script src="../js/login.js"></script>'
-//     );
-// }
-// if ($_GET['xd'] == 1) {
-//     $_SESSION['rol'] = 1;
-// }
-// if ($_GET['xd'] == 2) {
-//     $_SESSION['rol'] = 2;
-// }
-// if ($_GET['xd'] == 1) {
-//     $sesionLabel = "EMPRESA";
-// } elseif ($_GET['xd'] == 2) {
-//     $sesionLabel = "USUARIO";
-// } elseif ($_GET['xd'] == 3) {
-//     $sesionLabel = "ADMINISTRADOR";
-// } else {
-//     $sesionLabel = "NADIE";
-// }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +47,7 @@ switch ($_GET['xd']) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body>
+<body style="background-color: #F8F6F3;">
 
 <?php
     if ($_GET['xd'] == false) {
@@ -107,8 +87,7 @@ switch ($_GET['xd']) {
                             <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa tu contraseña">
                             <label for="floatingInput">Ingresa tu contraseña</label>
                         </div>
-                        
-                        <?php if ($_GET['xd'] == 1 || $_GET['xd'] == 2) : ?>
+                        <?php if ($_GET['xd'] == 1 || $_GET['xd'] == 2 || $_GET['xd'] == 4) : ?>
                         <div class="row text-center mt-5">
                             <div class="col">
                                 <a href="<?php echo $regRol ?>" class="btn btn-info w-100" type="submit">Registrarse</a>

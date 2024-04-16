@@ -19,6 +19,7 @@ $bAficion = $buscarDatos->seleccionar_aficiones($iusuario);
 $bInteres = $buscarDatos->seleccionar_interes($iusuario);
 $vid_curriculum = $buscarDatos->seleccionar_vid_curriculum($iusuario);
 $b_postulacion = $buscarDatos->buscarPostulacion2($iusuario);
+$busuario = $buscarDatos->seleccionar_usuario($iusuario);
 
 $datos_totales = array(
     'experiencia' => $bExperiencia,
@@ -27,6 +28,7 @@ $datos_totales = array(
     'interes' => $bInteres,
     'video_curriculum' => $vid_curriculum,
     'postulacion' => $b_postulacion,
+    'usuario' => $busuario,
 );
 
 echo json_encode($datos_totales);

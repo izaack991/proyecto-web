@@ -322,13 +322,7 @@ require_once('conexion.class.php');
             {
                 try
                 {
-
-                $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais 
-                FROM tbl_vacantes 
-                INNER JOIN tbl_paises ON tbl_vacantes.lugar = tbl_paises.id_paises
-                INNER JOIN tbl_postulacion on tbl_vacantes.id_vacante = tbl_postulacion.id_vacante
-                WHERE DATEDIFF(datefin, dateInicio) >= 1 AND status = 1 AND tbl_postulacion.id_usuario != $_idusuario
-                GROUP BY id_vacante";
+                $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar = tbl_paises.region WHERE DATEDIFF( DATE(NOW()),dateInicio) <= 3 AND status = 1 GROUP BY id_vacante;";
                 $query = $this->dbh->prepare($sql);
                     $query->execute();
 
@@ -499,7 +493,7 @@ require_once('conexion.class.php');
             {        
                 try {
                     
-                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.id_paises WHERE id_vacante = :id_vacante";
+                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.region WHERE id_vacante = :id_vacante";
                     $query = $this->dbh->prepare($sql);
                     $query->bindParam(':id_vacante',$id_vacante);
                     $query->execute();
@@ -584,6 +578,26 @@ require_once('conexion.class.php');
                 try {
                     
                     $sql = "SELECT * FROM tbl_dinteres WHERE id_usuario=:id_usuario";
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':id_usuario',$id_usuario);
+                    $query->execute();
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                }
+                return $data;
+            }
+            public function seleccionar_usuario($id_usuario)
+            {        
+                try {
+                    
+                    $sql = "SELECT * FROM tbl_usuario WHERE id_usuario=:id_usuario";
                     $query = $this->dbh->prepare($sql);
                     $query->bindParam(':id_usuario',$id_usuario);
                     $query->execute();

@@ -13,6 +13,7 @@ $bAficion = $buscarDatos->seleccionar_aficiones($iusuario);
 $bInteres = $buscarDatos->seleccionar_interes($iusuario);
 $vid_curriculum = $buscarDatos->seleccionar_vid_curriculum($iusuario);
 $b_postulacion = $buscarDatos->buscarPostulacion2($iusuario);
+$busuario = $buscarDatos->seleccionar_usuario($iusuario);
 
 $tipo = $_POST['tipo'];
 if ($tipo='exp'){
@@ -95,6 +96,17 @@ if ($tipo='int'){
         $bInteres = $buscarDatos->seleccionar_interes($iusuario);
     }
 }
+if ($tipo='nom'){
+    // Verificar si se han recibido todos los datos necesarios
+    if (isset($_POST['usuarioID'],$_POST['nombre'],$_POST['apellido'])) {
+        // Obtener los datos enviados por AJAX
+        $usuarioID = $_POST['usuarioID'];
+        $nombre = $_POST['nombre'];
+        $apellido = $_POST['apellido'];
+        $UCerrar=$NuevoC->actualizar_nombreUsuario($usuarioID,$nombre,$apellido);
+        $busuario = $buscarDatos->seleccionar_usuario($iusuario);
+    }
+}
 if ($tipo='pos'){
     // Verificar si se han recibido todos los datos necesarios
     if (isset($_POST['idpos'])) {
@@ -135,6 +147,7 @@ $datos_totales = array(
     'interes' => $bInteres,
     'video_curriculum' => $vid_curriculum,
     'postulacion' => $b_postulacion,
+    'usuario' => $busuario,
 );
 
 echo json_encode($datos_totales);

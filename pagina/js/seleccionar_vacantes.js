@@ -11,11 +11,13 @@ $(document).ready(function() {
                 $.each(data, function(index, vacante){
                     if (vacante.id_vacante == id_vacante) {
                         var card = '<div class="col">';
-                        card += '<div class="card border-primary shadow p-3 mb-5 bg-body rounded" style="width: 25rem; margin:auto;">';
+                        card += '<div class="card shadow p-3 mb-5 bg-body rounded" style="width: 70rem; margin:auto;">';
                         card += '<div class="card-body">';
                         card += '<h4 class="card-title, text-danger" style="display:inline;">' + vacante.puesto + '</h4><br><br>';
                         card += '<h4 class="card-title" style="display:inline;">' + vacante.empresa + '</h4><br><br>';
-                        card += '<p align="justify" class="card-text">' + vacante.datos_adicionales + '</p>';
+                        card += '<h6 class="card-title">' + vacante.ciudad + ' ' + vacante.region + '</h6>';                 
+                        card += '<h6 class="card-title" style="color: #54B689;">$' + vacante.sueldo + '</h6>';
+                        card += '<pre align="justify" class="card-text" style="font-family: Arial;">' + vacante.datos_adicionales + '</pre>';
                         card += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#postularseModal">Postularse</button>';
                         card += '</div></div></div>';
                         $('#vacantesContainer').append(card);

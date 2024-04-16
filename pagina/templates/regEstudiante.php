@@ -2,7 +2,7 @@
 error_reporting(0);
 session_start();
 include '../google-api/redirect.php';
-$_SESSION['rol'] = 2;
+$_SESSION['rol'] = 4;
 
 if ($_SESSION['nombre']) {
   $nombre = $_SESSION['nombre'];
@@ -14,7 +14,6 @@ if ($_SESSION['apellido']) {
   $apellido = $_SESSION['apellido'];
 }
 
-//print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +60,7 @@ if ($_SESSION['apellido']) {
   </script>
 </head>
 
-<body style="background-color: #F8F6F3;">
+<body>
   <p>
     <?php $_SESSION['rol'] ?>
   </p>
@@ -75,7 +74,7 @@ if ($_SESSION['apellido']) {
       <div class="card shadow mb-3" style="max-width: 50rem; margin:auto; margin-top:30px; border-radius:25px;">
         <div class="card-header text-center bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
           <!-- Header para usuario -->
-          <h4 class="text-white">REGISTRO DE NUEVO USUARIO</h4>
+          <h4 class="text-white">REGISTRO DE NUEVO ESTUDIANTE</h4>
         </div>
         <div class="card-body">
           <h4 class="card-title"></h4>
@@ -205,7 +204,7 @@ if ($_SESSION['apellido']) {
           </div>
           <div class="container text-center mt-4">
             <input class="btn btn-primary" type="submit" value="Guardar" id="miBoton">
-            <button type="button" class="btn btn-secondary" onclick="location.href='login.php?xd=2'">Volver</button>
+            <button type="button" class="btn btn-secondary" onclick="location.href='login.php?xd=4'">Volver</button>
           </div>
         </div>
       </div>
@@ -213,48 +212,9 @@ if ($_SESSION['apellido']) {
   </div>
 
   <script>
-
     function mayus(e) {
         e.value = e.value.toUpperCase();
     }
-
-    // function enviarFormulario() {
-    //     var formData = new FormData(document.getElementById('formulario'));
-
-    //     $.ajax({
-    //         url: 'ruta_a_tu_script_php.php',
-    //         type: 'POST',
-    //         data: formData,
-    //         dataType: 'json',
-    //         contentType: false,
-    //         processData: false,
-    //         success: function(response) {
-    //             if (response.success) {
-    //                 Swal.fire({
-    //                     title: 'Éxito!',
-    //                     text: response.message,
-    //                     icon: 'success'
-    //                 });
-    //                 window.location.href = "nueva_pagina.php";
-    //             } else {
-    //                 Swal.fire({
-    //                     title: 'Error!',
-    //                     text: response.message,
-    //                     icon: 'error'
-    //                 });
-    //             }
-    //         },
-    //         error: function(xhr, status, error) {
-    //             Swal.fire({
-    //                 title: 'Error!',
-    //                 text: 'Ha ocurrido un error en el servidor. Por favor, inténtelo de nuevo más tarde.',
-    //                 icon: 'error'
-    //             });
-    //         }
-    //     });
-    // }
-    // Funcion para ocultar los campos dependiendo si es usuario o empresa
-    // Obtener el valor de la variable de sesión en JavaScript
   </script>
 
   <!-- Conexion de librerias de JavaScript y bootstrap -->

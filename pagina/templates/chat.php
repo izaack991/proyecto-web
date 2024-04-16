@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Interés </title>
+  <title> Chat </title>
   <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
@@ -63,41 +63,90 @@
   <?php include("navbar_usuario.php") ?>
   <form id="formInteres" method="POST">
 
-  <div class="container-fluid">
+    <!-- Chats al lado izuqierdo -->
     <div class="row">
 		
-	<div class="col">
-    <div class="card shadow mb-3" style="margin:auto; margin-top:30px;border-radius:25px;">
-        <div class="card-header text-center bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
-            <div style="display: flex; align-items: center;">
-                <img src="ruta_de_la_imagen" class="rounded-circle img-thumbnail mx-auto d-block" alt="Imagen de perfil" style="width: 50px; height: 50px;">
-                <label for="" style="margin-left: 10px;">Miau</label>
+    <div class="col">
+    <div class="card shadow mb-3" style="margin-left: 25px; margin-top: 5px; border-radius: 25px; height: 70vh; width: 350px;">
+        <div class="card-header bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
+            <div style="display: flex; align-items: center; justify-content: flex-start;">
+                <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail d-block" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
+                <strong>Carlos Daniel</strong>
             </div>
         </div>
-        <div class="card-body">
-            <div class="form-floating mb-3 mt-4">
-                <input name="txtdesc" type="text" class="form-control" placeholder="Ingrese sus datos de interés"></input>
-            </div>
-        </div>
-    </div>
-</div>
-
-        <!-- Segunda tarjeta -->
-        <div class="col">
-            <div class="card shadow mb-3" style="margin:auto; margin-top:30px;border-radius:25px;">
-                <div class="card-header text-center bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
-				<img src="ruta_de_la_imagen" class="rounded-circle img-thumbnail mx-auto d-block" alt="Imagen de perfil" style="width: 50px; height: 50px;">
-                </div>
-                <div class="card-body">
-                    <div class="form-floating mb-3 mt-4">
-                        <input name="txtdesc" type="text" style="width: 800px, heigth: 800px" class="form-control"  placeholder="Ingrese sus datos de interes"></input>
-                        <label for="floatingInput">Descripcion *</label>
+        <div class="card-body" style="overflow-y: auto;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex align-items-center">
+                    <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
+                    <div>
+                        <strong>Carlos Daniel</strong>
+                        <br>
+                        <small>Si es que el otro día estaba...</small>
                     </div>
-                </div>
+                </li>
+                <li class="list-group-item d-flex align-items-center">
+                    <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
+                    <div>
+                        <strong>Carlos Daniel</strong>
+                        <br>
+                        <small>Si es que el otro día estaba...</small>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex align-items-center">
+                    <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
+                    <div>
+                        <strong>Carlos Daniel</strong>
+                        <br>
+                        <small>Si es que el otro día estaba...</small>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex align-items-center">
+                    <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
+                    <div>
+                        <strong>Carlos Daniel</strong>
+                        <br>
+                        <small>Si es que el otro día estaba...</small>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex align-items-center">
+                    <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
+                    <div>
+                        <strong>Carlos Daniel</strong>
+                        <br>
+                        <small>Si es que el otro día estaba...</small>
+                    </div>
+                </li>
+                <!-- Aquí van los demás elementos de la lista -->
+              </ul> 
             </div>
+          </div>
+          
         </div>
+        
+        <!-- Segunda tarjeta -->
+    <div class="row">
+		
+    <div class="col">
+      <div class="card shadow mb-3" style="margin-right: 25px; margin-top: 5px; border-radius: 25px; height: 70vh; width: 135vh;">
+          <div class="card-header bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
+              <div style="display: flex; align-items: center; justify-content: flex-start;">
+                  <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail d-block" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
+                  <strong>Carlos Daniel</strong>
+              </div>
+          </div>
+          <div class="card-body" style="overflow-y: auto;">
+            <div>  
+              <input class="form-control" id="txtpuesto" type="text" name="txtpuesto" placeholder="Escribe un mensaje" maxLength="100" required="true" pattern="[A-Z a-z]+" title="Favor de ingresar solamente palabras al momento de describir el puesto de trabajo, NO se aceptan numeros ni caracteres especiales.">
+            </div>
+          </div>
+      </div>
     </div>
-</div>
+     
+
+
+
+
+
 <input name="txtlatitud" id="latitud" type="hidden">
 <input name="txtlongitud" id="longitud" type="hidden">
 </form>
