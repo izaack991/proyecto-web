@@ -51,10 +51,10 @@
             <input class="form-control" id="txtpuesto" type="text" name="txtpuesto" placeholder="Descripcion de Puesto" maxLength="100" required="true">
             <label for="floatingInput">Descripcion de Puesto *</label>
           </div>
-          <div class="form-floating mb-3 mt-4">
-            <input class="form-control" type="text" required id="txtempresa" name="txtempresa" placeholder="Ingresa la empresa" maxlength="50"> <br>
+          <!--<div class="form-floating mb-3 mt-4">
+            <input class="form-control"  type="text" required id="txtempresa" name="txtempresa" placeholder="Ingresa la empresa" maxlength="50"> <br>
             <label for="floatingInput">Nombre de la empresa *</label>
-          </div>
+          </div>-->
           <div class="input-group mb-3">
             <label class="input-group-text" style="height: 3.625rem;">$</label>
             <div class="form-floating form-floating-group flex-grow-1">
