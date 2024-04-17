@@ -13,8 +13,8 @@ $(document).ready(function(){
                     card += '<div class="card-body">';
                     card += '<h4 class="card-title text-danger">' + vacante.puesto + '</h4>';
                     card += '<h5 class="card-title">' + vacante.empresa + '</h5>';
-                    card += '<h6 class="card-title">' + vacante.ciudad + ' ' + vacante.region + '</h6>';
-                    card += '<p class="card-text" style="text-align: justify;">' + datosAdicionales + '</p>'; // Usar el texto limitado
+                    card += '<h6 class="card-title">' + vacante.ciudad + ', ' + vacante.region + '</h6>';
+                    card += '<p class="card-text" style="text-align: justify;">' + datosAdicionales + '...</p>'; // Usar el texto limitado
                     card += '<form action="seleccionar_vacantes.php" method="POST">';
                     card += '<input type="text" value="'+vacante.id_vacante+'" name="id_vacante" id="id_vacante" hidden>';
                     card += '<input type="submit" value="Leer más" class="btn btn-primary">';
