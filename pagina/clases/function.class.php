@@ -1308,5 +1308,39 @@ require_once('conexion.class.php');
             }        
             return TRUE;
         }
+        // public function enviar_correo($_correo, $_token)
+        // {        
+        //     $todogood = false;
+        //     try 
+        //     {
+                
+        //         // Configuración SMTP
+        //         $transport = (new Swift_SmtpTransport('svgt333.serverneubox.com.mx', 465, 'ssl'))
+        //         ->setUsername('no-reply@workele.com')
+        //         ->setPassword('i7OTm-M6usi]');
+
+        //         // Crea el objeto Mailer usando tu configuración de transporte
+        //         $mailer = new Swift_Mailer($transport);
+
+        //         // Crea un mensaje
+        //         $message = (new Swift_Message('Ejemplo de correo'))
+        //         ->setFrom(['no-reply@workele.com' => 'Example'])
+        //         ->setTo([$_correo => 'Usuario'])
+        //         ->setBody('Confirmacion: ' . $_token);
+
+        //         // Enviar el mensaje
+        //         $result = $mailer->send($message);
+
+        //         $todogood = true;
+        //     }
+        //     catch(PDOException $e){
+                
+        //         print "Error!: " . $e->getMessage();
+        //         $todogood = false;
+
+        //     }
+
+        //     return $result;
+        // }
 
 }

@@ -41,12 +41,10 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
       $_token = rand(1000, 9999);
 
       // Enviar el correo electrónico con el token de verificación
-      $para = $_correo;
-      $titulo = 'Token de verificación';
-      $mensaje = 'Tu token de verificación es: ' . $_token;
-      $cabeceras = 'From: kevin.vall328@gmail.com';
-
-
+      // $para = $_correo;
+      // $titulo = 'Token de verificación';
+      // $mensaje = 'Tu token de verificación es: ' . $_token;
+      // $cabeceras = 'From: kevin.vall328@gmail.com';
 
       //Obtenemos algunos datos necesarios sobre el archivo de la imagen
       $imgTipo = $_FILES['txtruta']['type'];
@@ -132,6 +130,10 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
               return;
             }
           }
+        }
+
+        if($irol != 1) {
+          $_status = 1;
         }
 
         //$f_id_usuario = $_findUser -> consec_usuario();
