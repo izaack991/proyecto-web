@@ -324,7 +324,7 @@ require_once('conexion.class.php');
                 {
                 $sql = "SELECT v.*, c.nombre as nombrePais 
                 FROM tbl_vacantes v
-                INNER JOIN tbl_paises c ON v.lugar = c.id_paises
+                INNER JOIN tbl_paises c ON v.lugar = c.region
                 LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = $_idusuario
                 WHERE DATEDIFF(datefin, dateInicio) >= 1 AND v.status = 1 AND p.id_vacante IS NULL OR p.id_usuario <> $_idusuario
                 GROUP BY id_vacante;";
