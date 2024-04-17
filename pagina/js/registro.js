@@ -64,12 +64,12 @@
                             Swal.fire('¡No subió la Imagen de la Empresa!');
                         } else if (response == "errorImagen") {
                             Swal.fire({
-                                title: 'Error!',
+                                title: 'Error en la imagen de perfil!',
                                 text: 'La extensión o el tamaño de los archivos no es correcta. Solo se permite: .gif, .jpg, .png. y de 200 kb como máximo.',
                                 icon: 'error'});
                         } else if (response == "errorImagenServer") {
                             Swal.fire({
-                                title: 'Error!',
+                                title: 'Error en la imagen de perfil!',
                                 text: 'No se pudo subir la imagen al sevidor.',
                                 icon: 'error'});
                         } else if (response == "errorConstancia") {

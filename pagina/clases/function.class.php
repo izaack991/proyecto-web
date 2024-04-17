@@ -322,7 +322,12 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar = tbl_paises.region WHERE DATEDIFF( DATE(NOW()),dateInicio) <= 3 AND status = 1 GROUP BY id_vacante;";
+                $sql = "SELECT v.*, c.nombre as nombrePais 
+                FROM tbl_vacantes v
+                INNER JOIN tbl_paises c ON v.lugar = c.id_paises
+                LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = $_idusuario
+                WHERE DATEDIFF(datefin, dateInicio) >= 1 AND v.status = 1 AND p.id_vacante IS NULL OR p.id_usuario <> $_idusuario
+                GROUP BY id_vacante;";
                 $query = $this->dbh->prepare($sql);
                     $query->execute();
 
