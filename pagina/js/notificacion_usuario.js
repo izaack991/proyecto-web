@@ -28,6 +28,7 @@ $(document).ready(function(){
                     $('#contador_int').html('<a class="link-primary" href="interes.php">Aun no ha registrado sus datos de Interes, click aqui para ir al registro</a>');
                 }
                 $('#nombreUsuario').text(data.nombreUsuario);
+                $('#nombreUsuario2').text(data.nombreUsuario);
             }
         });
     }
