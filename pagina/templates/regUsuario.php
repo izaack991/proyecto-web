@@ -60,7 +60,7 @@ if ($_SESSION['apellido']) {
           <div class="form-row">
             <div class="form-group col-md-6">
               <div class="form-floating" style="height: 4rem;">
-                <input class="form-control" type="text" name="txt_NOMBRE" class="texto" id="nombre" placeholder="Escriba el Nombre" pattern="[A-Z a-z]+" required="true" value="<?php if ($nombre != "") {
+                <input class="form-control" type="text" name="txt_NOMBRE" class="texto" id="nombre" placeholder="Escriba el Nombre" required="true" value="<?php if ($nombre != "") {
                   echo $nombre;
                 } ?>">
                 <label>Nombre: *</label><br>
@@ -68,7 +68,7 @@ if ($_SESSION['apellido']) {
             </div>
             <div class="form-group col-md-6">
               <div class="form-floating">
-                <input class="form-control" type="text" name="txt_APELLIDOS" class="texto" id="apellido" placeholder="Escriba sus Apellidos" pattern="[A-Z a-z]+" required="true" value="<?php if ($apellido == true) {
+                <input class="form-control" type="text" name="txt_APELLIDOS" class="texto" id="apellido" placeholder="Escriba sus Apellidos" required="true" value="<?php if ($apellido == true) {
                   echo $apellido;
                 } ?>">
                 <label>Apellidos: *</label><br>

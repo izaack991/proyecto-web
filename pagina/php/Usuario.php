@@ -57,7 +57,10 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
       $_telefono = $_POST['txt_TELEFONO'];
       $_domicilio = $_POST['txt_DOMICILIO'];
       $_razon = $_POST['txt_razon'];
-
+      $_universidad = $_POST['txt_UNIVERSIDAD'];
+      $_carrera = $_POST['txt_CARRERA'];
+      $_ingreso = $_POST['txt_INGRESO'];
+      
       //Asignamos el estatus default
       $_status = 0;
 
@@ -225,7 +228,7 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
           // Verificar si el usuario tiene 18 años o más
           if ($edad->y < 18) {
 
-            //Alerta si el Usuari/Estudiante NO es mayor de edad
+            //Alerta si el Usuario/Estudiante NO es mayor de edad
             echo "errorEdad";
             return;
 
@@ -235,7 +238,7 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
         //$f_id_usuario = $_findUser -> consec_usuario();
         
         //Guardamos a los usuarios Nuevos
-        $newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol, $_status, $_ruta, $_cons, $_razon, $_token);
+        $newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol, $_status, $_ruta, $_cons, $_razon, $_token, $_universidad, $_carrera, $_ingreso);
 
       } else {
 

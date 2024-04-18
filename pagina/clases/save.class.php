@@ -57,12 +57,12 @@ require_once('conexion.class.php');
             return TRUE;
         }
 
-        public function guardar_usuario($_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $_irol, $_status, $_ruta, $_cons, $_razon, $_token)
+        public function guardar_usuario($_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $_irol, $_status, $_ruta, $_cons, $_razon, $_token, $_universidad, $_carrera, $_ingreso)
         {        
             try {
                
-                $sql="insert into tbl_usuario(id_usuario, rol, status, nombre, apellido, correo, fecha_nac, no_identificacion, password, sexo, region, telefono, domicilio, ruta_imagen, ruta_constancia, razon_social, token)
-                                    values(:id_usuario, :rol, :status, :nombre, :apellido, :correo, :fecha_nac, :no_identificacion, :password, :sexo, :region, :telefono, :domicilio, :ruta_imagen, :ruta_constancia, :razon_social, :token)";
+                $sql="insert into tbl_usuario(id_usuario, rol, status, nombre, apellido, correo, fecha_nac, no_identificacion, password, sexo, region, telefono, domicilio, ruta_imagen, ruta_constancia, razon_social, token, universidad, carrera, ingreso)
+                                    values(:id_usuario, :rol, :status, :nombre, :apellido, :correo, :fecha_nac, :no_identificacion, :password, :sexo, :region, :telefono, :domicilio, :ruta_imagen, :ruta_constancia, :razon_social, :token, :universidad, :carrera, :ingreso)";
                     
                 $query = $this->dbh->prepare($sql);
                     
@@ -83,6 +83,9 @@ require_once('conexion.class.php');
                 $query->bindParam(':ruta_constancia',$_cons);
                 $query->bindParam(':razon_social',$_razon);
                 $query->bindParam(':token',$_token);
+                $query->bindParam(':universidad',$_universidad);
+                $query->bindParam(':carrera',$_carrera);
+                $query->bindParam(':ingreso',$_ingreso);
                 $query->execute();
                 $this->dbh = null;
             }

@@ -51,7 +51,7 @@ if ($_SESSION['cuenta']) {
 
           <!-- Campos para empresa -->
           <div class="form-floating mb-3 mt-4">
-            <input class="form-control" type="text" name="txt_razon" class="texto" id="razon" placeholder="Ingresa el Nombre de la Empresa" pattern="[A-Z a-z]+" required="true">
+            <input class="form-control" type="text" name="txt_razon" class="texto" id="razon" placeholder="Ingresa el Nombre de la Empresa" required="true">
             <label for="floatingInput">Razón Social *</label>
           </div>
           <div class="mb-3 mt-4">

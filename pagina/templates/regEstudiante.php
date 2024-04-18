@@ -59,7 +59,7 @@ if ($_SESSION['apellido']) {
           <div class="form-row">
             <div class="form-group col-md-6">
               <div class="form-floating" style="height: 4rem;">
-                <input class="form-control" type="text" name="txt_NOMBRE" class="texto" id="nombre" placeholder="Escriba el Nombre" pattern="[A-Z a-z]+" required="true" value="<?php if ($nombre != "") {
+                <input class="form-control" type="text" name="txt_NOMBRE" class="texto" id="nombre" placeholder="Escriba el Nombre" required="true" value="<?php if ($nombre != "") {
                   echo $nombre;
                 } ?>">
                 <label>Nombre: *</label><br>
@@ -67,7 +67,7 @@ if ($_SESSION['apellido']) {
             </div>
             <div class="form-group col-md-6">
               <div class="form-floating">
-                <input class="form-control" type="text" name="txt_APELLIDOS" class="texto" id="apellido" placeholder="Escriba sus Apellidos" pattern="[A-Z a-z]+" required="true" value="<?php if ($apellido == true) {
+                <input class="form-control" type="text" name="txt_APELLIDOS" class="texto" id="apellido" placeholder="Escriba sus Apellidos" required="true" value="<?php if ($apellido == true) {
                   echo $apellido;
                 } ?>">
                 <label>Apellidos: *</label><br>
@@ -170,17 +170,13 @@ if ($_SESSION['apellido']) {
           <div class="form-row">
             <div class="form-group col-md-6">
               <div class="form-floating" style="height: 4rem;">
-                <input class="form-control" type="text" name="txt_UNIVERSIDAD" class="texto" id="universidad" placeholder="Escriba la Universidad" pattern="[A-Z a-z]+" required="true" value="<?php if ($universidad != "") {
-                  echo $universidad;
-                } ?>">
+                <input class="form-control" type="text" name="txt_UNIVERSIDAD" class="texto" id="universidad" placeholder="Escriba la Universidad" required="true">
                 <label>Universidad: *</label><br>
               </div>
             </div>
             <div class="form-group col-md-6">
               <div class="form-floating">
-                <input class="form-control" type="text" name="txt_CARRERA" class="texto" id="carrera" placeholder="Escriba la Carrera" pattern="[A-Z a-z]+" required="true" value="<?php if ($carrera == true) {
-                  echo $carrera;
-                } ?>">
+                <input class="form-control" type="text" name="txt_CARRERA" class="texto" id="carrera" placeholder="Escriba la Carrera" required="true">
                 <label>Carrera: *</label><br>
               </div>
             </div>
@@ -194,7 +190,7 @@ if ($_SESSION['apellido']) {
             </div>
             <div class="col-md-6 mb-3">
               <div class="form-floating">
-                <input class="form-control" type="number" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="txt_INGRESO" id="ingreso" minlength="4" maxLength="4" min="1900" max="2099" value="2000" required="true"><br>
+                <input class="form-control" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="txt_INGRESO" class="texto" id="ingreso" minlength="4" maxLength="4" placeholder="Escriba su A" min="1900" max="2099" required="true"><br>
                 <label>Año de Ingreso: *</label><br>
               </div>
             </div>
