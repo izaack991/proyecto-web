@@ -1,3 +1,7 @@
+<?php 
+
+session_start();
+print_r($_SESSION);?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -187,7 +191,7 @@
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
   </script>
   <script src="../js/insert.js"></script>
-  <script src="../js/modalesDinamicos.js"></script>
+  <script src="../js/conversaciones.js"></script>
 
 </body>
 

@@ -306,7 +306,7 @@ public function buscarMensaje($id_usuario1, $id_usuario2)
 public function buscarConversacion($id_usuario)
 {
     try {
-        $sql = "SELECT m.mensaje, u1.nombre AS usuario1, u2.nombre AS usuario2
+        $sql = "SELECT MAX(c.id_conversacion) as max, m.mensaje, u1.nombre AS usuario1, u2.nombre AS usuario2
         FROM tbl_mensajes AS m 
         INNER JOIN tbl_conversaciones AS c ON m.id_conversacion = c.id_conversacion 
         JOIN tbl_usuario AS u1 ON c.id_usuario1 = u1.id_usuario 
