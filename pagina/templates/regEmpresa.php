@@ -65,7 +65,7 @@ if ($_SESSION['cuenta']) {
             <input class="form-control" type="file" name="txtcons" id="txtcons"><br>
           </div>
           <div class="form-floating mb-3">
-            <input class="form-control" type="email" name="txt_CORREO" class="texto" id="correo" placeholder="Ejemplo@dominio.com" pattern=".+.com" required value="<?php if ($correo != "") {
+            <input class="form-control" type="email" name="txt_CORREO" class="texto" id="correo" placeholder="Ejemplo@dominio.com" pattern=".+.com" maxlength="100" required value="<?php if ($correo != "") {
               echo $correo;
             } ?>"><br>
             <label for="floatingInput">Correo Electronico *</label>

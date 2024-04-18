@@ -80,7 +80,7 @@ if ($_SESSION['apellido']) {
             <input class="form-control" type="file" name="txtruta" id="txtruta"><br>
           </div>
           <div class="form-floating">
-            <input class="form-control" type="email" name="txt_CORREO" class="texto" id="correo" placeholder="Ejemplo@dominio.com" pattern=".+.com" required value="<?php if ($correo != "") {
+            <input class="form-control" type="email" name="txt_CORREO" class="texto" id="correo" placeholder="Ejemplo@dominio.com" pattern=".+.com" maxlength="100" required value="<?php if ($correo != "") {
               echo $correo;
             } ?>"><br>
             <label class="text-primary">Correo Electronico: *</label><br>
@@ -88,7 +88,7 @@ if ($_SESSION['apellido']) {
           <div class="form-row">
             <div class="form-group col-md-6 mb-3">
               <div class="form-floating">
-                <input class="form-control" type="date" id="dateFECHA" name="dateFECHA" value="2022-01-01">
+                <input class="form-control" type="date" id="dateFECHA" name="dateFECHA" value="2000-01-01">
                 <label for="dateFECHA">Seleccione su Fecha de Nacimineto: *</label><br>
               </div>
             </div>

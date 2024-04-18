@@ -28,7 +28,7 @@ if (isset($_POST['dateFin'])) {
     try {
         $_idusuario = $_SESSION['iusuario'];
         $_puesto = $_POST['txtpuesto'];
-        $_empresa = $_POST['txtempresa'];
+        $_empresa = $_SESSION['nomusuario'];
         $_sueldo = $_POST['txtsueldo'];
         $_lugar = $_POST['cmbpais'];
         $_datos = $_POST['txtdatos'];

@@ -322,7 +322,12 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar = tbl_paises.region WHERE DATEDIFF( DATE(NOW()),dateInicio) <= 3 AND status = 1 GROUP BY id_vacante;";
+                $sql = "SELECT v.*, c.nombre as nombrePais 
+                FROM tbl_vacantes v
+                INNER JOIN tbl_paises c ON v.lugar = c.region
+                LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = $_idusuario
+                WHERE DATEDIFF(datefin, dateInicio) >= 1 AND v.status = 1 AND p.id_vacante IS NULL OR p.id_usuario <> $_idusuario
+                GROUP BY id_vacante;";
                 $query = $this->dbh->prepare($sql);
                     $query->execute();
 
@@ -1303,5 +1308,39 @@ require_once('conexion.class.php');
             }        
             return TRUE;
         }
+        // public function enviar_correo($_correo, $_token)
+        // {        
+        //     $todogood = false;
+        //     try 
+        //     {
+                
+        //         // Configuración SMTP
+        //         $transport = (new Swift_SmtpTransport('svgt333.serverneubox.com.mx', 465, 'ssl'))
+        //         ->setUsername('no-reply@workele.com')
+        //         ->setPassword('i7OTm-M6usi]');
+
+        //         // Crea el objeto Mailer usando tu configuración de transporte
+        //         $mailer = new Swift_Mailer($transport);
+
+        //         // Crea un mensaje
+        //         $message = (new Swift_Message('Ejemplo de correo'))
+        //         ->setFrom(['no-reply@workele.com' => 'Example'])
+        //         ->setTo([$_correo => 'Usuario'])
+        //         ->setBody('Confirmacion: ' . $_token);
+
+        //         // Enviar el mensaje
+        //         $result = $mailer->send($message);
+
+        //         $todogood = true;
+        //     }
+        //     catch(PDOException $e){
+                
+        //         print "Error!: " . $e->getMessage();
+        //         $todogood = false;
+
+        //     }
+
+        //     return $result;
+        // }
 
 }

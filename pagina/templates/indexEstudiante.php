@@ -38,7 +38,7 @@
   <?php include("navbar_estudiante.php") ?>
 
   <!-- Modal -->
-  <div class="modal" id="popupNotification" tabindex="-1" role="dialog">
+  <!-- <div class="modal" id="popupNotification" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header pb-2 bg-primary">
@@ -59,7 +59,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- NO FUNCIONA SI SE COLOCA ARRIBA JUNTO A LOS DEMÁS SCRIPTS -->
   <script>

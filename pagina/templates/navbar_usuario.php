@@ -42,8 +42,8 @@ if ($_SESSION['irol'] == 1 || $_SESSION['irol'] == 4) {
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
         <a class="nav-link active font-weight-bold dropdown-toggle" style="color: #54B689; text-transform: uppercase;" href="#"
-   id="nombreUsuario" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-</a>
+          id="nombreUsuario" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li class="text-center"><a class="nav-link active text-primary font-weight-bold" href="perfil_usuario.php">VER PERFIL</a></li>
             <li><hr class="dropdown-divider"></li>
