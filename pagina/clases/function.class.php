@@ -274,6 +274,62 @@ require_once('conexion.class.php');
             
 
 // Funcion para busquedas de campos
+public function buscarMensaje($id_usuario1, $id_usuario2)
+{
+    try {
+        $sql = "SELECT m.id_mensaje as id , m.mensaje ,m.fecha
+                FROM tbl_mensajes AS m 
+                INNER JOIN tbl_conversaciones AS c ON m.id_conversacion = c.id_conversacion 
+                JOIN tbl_usuario AS u ON c.id_usuario1 = u.id_usuario 
+                JOIN tbl_usuario AS u2 ON c.id_usuario2 = u2.id_usuario 
+                WHERE c.id_conversacion IN (
+                    SELECT id_conversacion 
+                    FROM tbl_conversaciones 
+                    WHERE (id_usuario1 = 2 AND id_usuario2 = 123)) order by id desc ";
+        
+        $query = $this->dbh->prepare($sql);
+        $query->bindParam(':id_usuario1', $id_usuario1);
+        $query->bindParam(':id_usuario2', $id_usuario2);
+        $query->execute();
+        $data = array();
+        while ($row = $query->fetch(PDO::FETCH_ASSOC))
+        {
+            $data[] = $row;
+        }
+    }
+    catch(PDOException $e)
+    {
+        print "Error!: " . $e->getMessage();
+    }
+    return $data;
+}
+public function buscarConversacion($id_usuario)
+{
+    try {
+        $sql = "SELECT m.mensaje, u1.nombre AS usuario1, u2.nombre AS usuario2
+        FROM tbl_mensajes AS m 
+        INNER JOIN tbl_conversaciones AS c ON m.id_conversacion = c.id_conversacion 
+        JOIN tbl_usuario AS u1 ON c.id_usuario1 = u1.id_usuario 
+        JOIN tbl_usuario AS u2 ON c.id_usuario2 = u2.id_usuario
+        WHERE c.id_usuario1 = :id_usuario OR c.id_usuario2 = :id_usuario";
+        
+        $query = $this->dbh->prepare($sql);
+        $query->bindParam(':id_usuario', $id_usuario);
+
+        $query->execute();
+        $data = array();
+        while ($row = $query->fetch(PDO::FETCH_ASSOC))
+        {
+            $data[] = $row;
+        }
+    }
+    catch(PDOException $e)
+    {
+        print "Error!: " . $e->getMessage();
+    }
+    return $data;
+}
+
             function buscaPaises()
             {
                 try
