@@ -1288,26 +1288,62 @@ require_once('conexion.class.php');
             return TRUE;
             
         }
-        public function eliminar_vacantes_antiguas($fecha_limite)
+        public function eliminar_vacantes()
         {        
             try 
             {
+                // Obtener la fecha actual
+                $fecha_actual = date('Y-m-d');
                 
-                $sql="DELETE FROM tbl_vacantes WHERE dateInicio < '$fecha_limite'";
+                // Calcular la fecha un día antes
+                $fecha_un_dia_antes = date('Y-m-d', strtotime('-1 day', strtotime($fecha_actual)));
                 
+                // Construir la consulta SQL para eliminar las vacantes con fecha de inicio un día antes de la fecha actual
+                $sql = "DELETE FROM tbl_vacantes WHERE dateInicio = :fecha_un_dia_antes";
+                
+                // Preparar la consulta
                 $query = $this->dbh->prepare($sql);
+                
+                // Asignar valor al parámetro
+                $query->bindParam(':fecha_un_dia_antes', $fecha_un_dia_antes);
+                
+                // Ejecutar la consulta
                 $query->execute();
+                
+                // Cerrar la conexión
                 $this->dbh = null;
                     
-            
             }
             catch(PDOException $e){
-                
+                // Manejar cualquier error de PDO
                 print "Error!: " . $e->getMessage();
-
+                return FALSE;
             }        
+
             return TRUE;
         }
+
+
+        // public function eliminar_vacantes()
+        // {        
+        //     try 
+        //     {
+                
+        //         $sql="DELETE FROM tbl_vacantes WHERE dateInicio";
+                
+        //         $query = $this->dbh->prepare($sql);
+        //         $query->execute();
+        //         $this->dbh = null;
+                    
+            
+        //     }
+        //     catch(PDOException $e){
+                
+        //         print "Error!: " . $e->getMessage();
+
+        //     }        
+        //     return TRUE;
+        // }
         // public function enviar_correo($_correo, $_token)
         // {        
         //     $todogood = false;

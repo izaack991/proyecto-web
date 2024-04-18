@@ -3,6 +3,11 @@ error_reporting(0);
 session_start();
 include ('../clases/save.class.php');
 include ('../clases/function.class.php');
+
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\Exception;
+//require '..\google-api\vendor\autoload.php';
+
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
 $_compCorreo = Functions::singleton_functions();
@@ -59,11 +64,75 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
       //Generamos el Token para la verificación
       $_token = rand(1000, 9999);
 
-      // Enviar el correo electrónico con el token de verificación
-      // $para = $_correo;
-      // $titulo = 'Token de verificación';
-      // $mensaje = 'Tu token de verificación es: ' . $_token;
-      // $cabeceras = 'From: kevin.vall328@gmail.com';
+       //$verificationLink = "https://workele.com/verificar.php?token=$_token";
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //CONFIGURACION 1 DE SERVIDOR PARA PHPMAILER
+
+        // $mail = new PHPMailer();
+        // $mail->IsSMTP();  
+        // $mail->Host     = "smtp.serverneubox.com.mx";  
+        // $mail->From     = "no-reply@workele.com";
+        // $mail->SMTPAuth = true; 
+        // $mail->Username ="no-reply@workele.com"; 
+        // $mail->Password="i7OTm-M6usi]"; 
+        // //$mail->FromName = $header;
+        // $mail->AddAddress("jonathan16noriega@gmail.com");
+        // $mail->AddBCC('no-reply@workele.com', 'workele');
+        // $mail->Subject = 'Token de verificación';
+        // $mail->Body    = 'Gracias por registrarte en nuestro sitio. Por favor, haz clic en el siguiente enlace para verificar tu cuenta: <a href="'.$verificationLink.'">Verificar cuenta</a>';
+        // if(!$mail->Send()) {  
+        //    echo 'Message was not sent.';  
+        //    echo 'Mailer error: ' . $mail->ErrorInfo;  
+        // }
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+      // Enviar correo de verificación metodo mail() php
+      // $to = 'jonathan16noriega@gmail.com'; 
+      // $subject = 'Verifica tu cuenta';
+      // $message = 'Haz clic en el siguiente enlace para verificar tu cuenta: https://workele.com/verificar.php?token=' . $_token;
+      // $headers = 'From: no-reply@workele.com' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+
+      // if(mail($to, $subject, $message, $headers)){
+      //   echo 'correo enviado';
+      // }else{
+      //   echo 'no se envio';
+      // }
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      
+      //CONFIGURACION 2 DE SERVIODR PARA PHPMAILER
+
+      //$mail = new PHPMailer (true);
+      
+      // try {
+
+      //   //Configuracion de servidor SMTP
+      //   $mail->isSMTP();
+      //   //$mail->Host = 'svgt333.serverneubox.com.mx'; 
+      //   $mail->Host = 'localhost'; 
+      //   $mail->SMTPAuth = true;
+      //   $mail->Username = 'no-reply@workele.com';
+      //   $mail->Password = 'i7OTm-M6usi]';
+      //   $mail->SMTPSecure = 'tls';
+      //   $mail->Port = 587;
+
+      //   // Configuracion de correo electrónico
+      //   $mail->setFrom('no-reply@workele.com', 'Workele');
+      //   $mail->addAddress('jonathan16noriega@gmail.com'); 
+      //   $mail->isHTML(true);
+      //   $mail->Subject = 'Token de verificación';
+      //   $mail->Body    = 'Gracias por registrarte en nuestro sitio. Por favor, haz clic en el siguiente enlace para verificar tu cuenta: <a href="'.$verificationLink.'">Verificar cuenta</a>';
+        
+      //   // Envío del correo
+      //   if($mail->send()){          
+      //     echo 'El correo de verificación ha sido enviado correctamente.';}
+
+      //   } catch (Exception $e) {
+      //     echo 'Error al enviar el correo: ' . $mail->ErrorInfo;
+      //   }
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
       //Obtenemos algunos datos necesarios sobre el archivo de la imagen
       $imgTipo = $_FILES['txtruta']['type'];

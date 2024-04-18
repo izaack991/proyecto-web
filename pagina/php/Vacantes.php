@@ -36,10 +36,24 @@ if (isset($_POST['dateFin'])) {
         $_fechafin = $_POST['dateFin'];
         $_region = $_POST['txtregion'];
         $_ciudad = $_POST['txtciudad'];
+        $fecha_actual = strtotime(date('Y-m-d'));
 
         // Guardar datos de la vacante
         $f_id_vacantes = $_findUser->consec_vacantes();
         $newVacante = $nuevoUsuario->Guardar_id_vacantes($f_id_vacantes, $_idusuario, $_puesto, $_empresa, $_sueldo, $_lugar, $_datos, $_fechainicio, $_fechafin,$_region,$_ciudad);
+
+        $fecha_inicio = strtotime($_POST['dateInicio']);
+
+        // Calcular la diferencia en segundos entre las fechas
+        $diferencia = $fecha_actual - $fecha_inicio;
+
+        // Convertir la diferencia a días
+        $dias_transcurridos = $diferencia / (60 * 60 * 24);
+
+        // Si la diferencia es de 1 día, llamar a la función eliminar_vacantes()
+        if ($dias_transcurridos == 1) {
+            eliminar_vacantes();
+        }
 
         // Guardar log de usuario
         date_default_timezone_set('America/Mexico_City');
@@ -57,13 +71,12 @@ if (isset($_POST['dateFin'])) {
             return "1";
         }
 
-        // Eliminar vacantes de más de 2 minutos después de la fecha de inicio
-        $fecha_limite = date('Y-m-d H:i:s', strtotime('+2 minutes', strtotime($_fechainicio)));
-        $vacantes_eliminadas = $nuevoUsuario->eliminar_vacantes_antiguas($fecha_limite);
+
     } catch (Exception $e) {
         // Manejar la excepción si ocurre algún error
         echo 'Error al procesar la solicitud: ' . $e->getMessage();
     }
+    
 }
 
 
