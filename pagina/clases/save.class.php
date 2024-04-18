@@ -892,5 +892,37 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+            
+            public function insertar_conversacion($id_usuario1, $id_usuario2)
+            {
+                try {
+                    $sql = "INSERT INTO tbl_conversaciones (id_usuario1, id_usuario2) VALUES (:id_usuario1, :id_usuario2)";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':id_usuario1', $id_usuario1);
+                    $query->bindParam(':id_usuario2', $id_usuario2);
+                    $query->execute();
+                } catch(PDOException $e) {
+                    print "Error!: " . $e->getMessage();
+                    return FALSE; // Retorna FALSE si ocurre un error
+                }        
+                return TRUE; // Retorna TRUE si la inserción es exitosa
+            }
+
+            public function insertar_mensaje($mensaje, $id_usuario)
+            {
+                try {
+                    $sql = "INSERT INTO tbl_mensajes (, mensaje, id_usuario) VALUES (:mensaje, :id_usuario)";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':mensaje', $mensaje);
+                    $query->bindParam(':id_usuario', $id_usuario);
+                    $query->execute();
+                } catch(PDOException $e) {
+                    print "Error!: " . $e->getMessage();
+                    return FALSE; // Retorna FALSE si ocurre un error
+                }        
+                return TRUE; // Retorna TRUE si la inserción es exitosa
+            }
     }
 ?>
