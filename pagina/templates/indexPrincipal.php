@@ -30,6 +30,49 @@
     });
   </script>
 
+<script type="text/javascript">
+    function buscar_ahora(buscar) {
+        if (buscar.trim() === '') {
+            document.getElementById("resultados").style.display = "none";
+            return;
+        }
+
+        var parametros = {"buscar":buscar};
+        $.ajax({
+            data: parametros,
+            type: 'POST',
+            url: 'buscador.php',
+            success: function(data) {
+                document.getElementById("resultados").style.display = "block";
+                
+                var listaResultados = document.getElementById("lista-resultados");
+                listaResultados.innerHTML = data;
+
+                var resultadosItems = listaResultados.getElementsByClassName('resultado');
+                for (var i = 0; i < resultadosItems.length; i++) {
+                    // Agregar evento clic
+                    resultadosItems[i].addEventListener('click', function() {
+                        var puesto = this.getAttribute('data-puesto');
+                        window.location.href = 'buscar_vacantes.php?puesto=' + encodeURIComponent(puesto);
+                    });
+
+                    // Agregar evento mouseenter
+                    resultadosItems[i].addEventListener('mouseenter', function() {
+                        this.style.backgroundColor = '#f0f0f0'; // Cambiar el color de fondo al sombrear
+                    });
+
+                    // Agregar evento mouseleave
+                    resultadosItems[i].addEventListener('mouseleave', function() {
+                        this.style.backgroundColor = ''; // Restablecer el color de fondo al salir del sombreado
+                    });
+                }
+            }
+        });
+    }
+</script>
+
+
+
 </head>
 
 <body style="background-color: #F8F6F3;">
@@ -73,13 +116,28 @@
     });
   </script>
 
-  <div style="max-width: 100%; padding: 5vw; background-image: url('../../assets/images/index_usuario/VIDEO.gif'); background-size: cover; background-position: center; display: flex; justify-content: center; align-items: center;">
-    <div style="display: flex; flex-direction: column; justify-content: center; background-color: rgba(0, 0, 0, 0.7); padding: 2vw; border-radius: 10px; text-align: center;">
-      <h2 style="margin: 0; color: white;">Descubre oportunidades profesionales excepcionales al asociarte con algunas de las empresas más destacadas</h2>
-      <p style="margin: 2vw 0; color: white;">Explora una amplia gama de oportunidades laborales adaptadas a tus habilidades y preferencias con Workele. Nuestro proceso de búsqueda de trabajo es eficiente y personalizado, diseñado para maximizar tus posibilidades de éxito. ¡Descubre un mundo de emocionantes oportunidades laborales con nosotros!</p>
-      <div style="display: flex; justify-content: center;">
-        <a href="buscar_vacantes.php" style="width: 140px; height: 50px; display: inline-block; background-color: #FF5733; color: #fff; padding: 12px 20px; font-size: 1rem; text-decoration: none; border-radius: 5px; margin-bottom: 20px;">Ver vacantes</a>
+
+<div style="max-width: 100%; padding: 5vw; background-image: url('../../assets/images/index_usuario/VIDEO.gif'); background-size: cover; background-position: center; display: flex; justify-content: center; align-items: center;">
+    <div style="display: flex; flex-direction: column; justify-content: center; background-color: rgba(0, 0, 0, 0.7); padding: 2vw; border-radius: 10px;">
+      <h2 style="margin: 0; color: white; text-align: center;">Descubre oportunidades profesionales excepcionales al asociarte con algunas de las empresas más destacadas</h2>
+
+<!-- Buscador de Vacantes en indexusuario-->
+<div class="container mt-4">
+  <div class="col-12">
+    <div class="mb-2">
+      <h4 class="form-label"></h4>
+      <input onkeyup="buscar_ahora(this.value);" type="text" class="form-control" placeholder="Busque una vacante" style="text-align: center;" name="buscar_1" id="buscar_1">
+    </div>
+    
+    <!-- Ventana de resultados -->
+    <div id="resultados" class="card col-12 mt-2" style="display: none;">
+      <div class="card-body">
+        <ul id="lista-resultados" class="list-group"></ul>
       </div>
+    </div>
+  </div>
+</div>
+
     </div>
   </div>
 
@@ -147,6 +205,8 @@
       </div>
     </div>
   </div>
+
+
 
   <!-- {*Conexion de librerias de JavaScript y bootstrap*}      -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
