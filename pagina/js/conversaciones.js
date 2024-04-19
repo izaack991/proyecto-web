@@ -28,7 +28,7 @@ $(document).ready(function() {
                 <li class="list-group-item d-flex align-items-center">
                     <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
                     <div>
-                        <strong>${conversacion.usuario1}</strong>
+                        <strong>${conversacion.nombre}</strong>
                         <br>
                         <small>${conversacion.mensaje}</small>
                     </div>
@@ -38,3 +38,4 @@ $(document).ready(function() {
         });
     }
 });
+

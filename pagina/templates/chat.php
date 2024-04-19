@@ -148,7 +148,7 @@ print_r($_SESSION);?>
             <strong>Carlos Daniel</strong>
           </div>
         </div>
-        <div class="card-body" style="overflow-y: auto;">
+        <div class="card-body" id="chat" style="overflow-y: auto;">
           <div class="message-container-sent">
             <!-- Mensajes enviados -->
             <div class="sent-message">
@@ -192,6 +192,7 @@ print_r($_SESSION);?>
   </script>
   <script src="../js/insert.js"></script>
   <script src="../js/conversaciones.js"></script>
+  <script src="../js/mensajes.js"></script>
 
 </body>
 

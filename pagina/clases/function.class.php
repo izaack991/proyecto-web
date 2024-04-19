@@ -277,15 +277,22 @@ require_once('conexion.class.php');
 public function buscarMensaje($id_usuario1, $id_usuario2)
 {
     try {
-        $sql = "SELECT m.id_mensaje as id , m.mensaje ,m.fecha
+        $sql = "SELECT m.id_mensaje as id, m.mensaje, m.fecha, m.id_usuario,
+                CASE
+                    WHEN m.id_usuario = :id_usuario1 THEN 'mensaje1'
+                    ELSE 'mensaje2'
+                END AS tipo_mensaje,
+                CASE
+                    WHEN m.id_usuario = :id_usuario1 THEN 'fecha1'
+                    ELSE 'fecha2'
+                END AS tipo_fecha
                 FROM tbl_mensajes AS m 
                 INNER JOIN tbl_conversaciones AS c ON m.id_conversacion = c.id_conversacion 
-                JOIN tbl_usuario AS u ON c.id_usuario1 = u.id_usuario 
-                JOIN tbl_usuario AS u2 ON c.id_usuario2 = u2.id_usuario 
                 WHERE c.id_conversacion IN (
                     SELECT id_conversacion 
                     FROM tbl_conversaciones 
-                    WHERE (id_usuario1 = 2 AND id_usuario2 = 123)) order by id desc ";
+                    WHERE (id_usuario1 = :id_usuario1 AND id_usuario2 = :id_usuario2)) 
+                ORDER BY id DESC";
         
         $query = $this->dbh->prepare($sql);
         $query->bindParam(':id_usuario1', $id_usuario1);
@@ -294,24 +301,57 @@ public function buscarMensaje($id_usuario1, $id_usuario2)
         $data = array();
         while ($row = $query->fetch(PDO::FETCH_ASSOC))
         {
-            $data[] = $row;
+            // Agregar el mensaje y fecha al objeto según el tipo de mensaje y fecha
+            $tipo_mensaje = $row['tipo_mensaje'];
+            $tipo_fecha = $row['tipo_fecha'];
+            $mensaje = $row['mensaje'];
+            $fecha = $row['fecha'];
+            
+            if (!isset($data[$tipo_mensaje])) {
+                $data[$tipo_mensaje] = array();
+            }
+            if (!isset($data[$tipo_fecha])) {
+                $data[$tipo_fecha] = array();
+            }
+            
+            $data[$tipo_mensaje][] = $mensaje;
+            $data[$tipo_fecha][] = $fecha;
         }
     }
     catch(PDOException $e)
     {
-        print "Error!: " . $e->getMessage();
+        throw new Exception("Error al buscar mensajes: " . $e->getMessage());
     }
     return $data;
 }
+
 public function buscarConversacion($id_usuario)
 {
     try {
-        $sql = "SELECT MAX(c.id_conversacion) as max, m.mensaje, u1.nombre AS usuario1, u2.nombre AS usuario2
-        FROM tbl_mensajes AS m 
-        INNER JOIN tbl_conversaciones AS c ON m.id_conversacion = c.id_conversacion 
+        $sql = "SELECT rol FROM tbl_usuario where id_usuario = :id_usuario";
+         // Preparar la consulta
+         $query = $this->dbh->prepare($sql);
+
+         // Vincular el parámetro :id_usuario
+         $query->bindParam(':id_usuario', $id_usuario);
+ 
+         // Ejecutar la consulta
+         $query->execute();
+ 
+         // Obtener el resultado
+         $resultado = $query->fetch(PDO::FETCH_ASSOC);
+ 
+         // Devolver el resultado (en este caso, solo el rol)
+        $resultado['rol'];
+
+        $sql = "SELECT c.id_conversacion,u1.razon_social as razon, u1.nombre AS nombre1, u2.nombre AS nombre2, u1.rol AS rol1, u2.rol AS rol2
+        FROM tbl_conversaciones AS c
         JOIN tbl_usuario AS u1 ON c.id_usuario1 = u1.id_usuario 
         JOIN tbl_usuario AS u2 ON c.id_usuario2 = u2.id_usuario
-        WHERE c.id_usuario1 = :id_usuario OR c.id_usuario2 = :id_usuario";
+        LEFT JOIN tbl_mensajes AS m ON c.id_conversacion = m.id_conversacion
+        WHERE c.id_usuario1 = :id_usuario OR c.id_usuario2 = :id_usuario
+        GROUP BY c.id_conversacion, u1.nombre, u2.nombre, u1.rol, u2.rol
+        ORDER BY MAX(m.fecha) DESC";
         
         $query = $this->dbh->prepare($sql);
         $query->bindParam(':id_usuario', $id_usuario);
@@ -320,6 +360,11 @@ public function buscarConversacion($id_usuario)
         $data = array();
         while ($row = $query->fetch(PDO::FETCH_ASSOC))
         {
+            if ($resultado['rol'] == 2) {
+                $row['nombre'] = $row['razon']; // Si el rol es 1, toma el nombre del usuario 1
+            } else {
+                $row['nombre'] = $row['nombre2']; // Si el rol no es 1, toma el nombre del usuario 2
+            }
             $data[] = $row;
         }
     }
@@ -329,6 +374,7 @@ public function buscarConversacion($id_usuario)
     }
     return $data;
 }
+
 
             function buscaPaises()
             {
