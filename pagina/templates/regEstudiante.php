@@ -23,7 +23,7 @@ if ($_SESSION['apellido']) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro Usuario</title>
+  <title>Registro Estudiante</title>
   <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
@@ -31,33 +31,8 @@ if ($_SESSION['apellido']) {
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
-    var tiempoInactividad = 5 * 60 * 1000;
-
-    // Página a la que se redireccionará después de la inactividad
-    var paginaRedireccion = "index.php";
-
-    var tiempoInactivo;
-
-    // Función para redireccionar
-    function redireccionar() {
-      window.location.href = paginaRedireccion;
-    }
-
-    // Reiniciar el temporizador de inactividad
-    function reiniciarTemporizador() {
-      clearTimeout(tiempoInactivo);
-      tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
-    }
-
-    // Cuando se cargue la página, iniciar el temporizador
-    reiniciarTemporizador();
-
-    // Reiniciar el temporizador si se detecta actividad
-    document.addEventListener("mousemove", reiniciarTemporizador);
-    document.addEventListener("keypress", reiniciarTemporizador);
-  </script>
+  <script src="../js/inactividad.js"></script>
+  
 </head>
 
 <body>
@@ -68,23 +43,23 @@ if ($_SESSION['apellido']) {
   <script src="../js/curp.js"></script>
 
   <div class="container-fluid">
-    <!-- Form para el registrod de usuarios -->
+    <!-- Form para el registrod de Estudiante -->
     <form method="POST" id="miFormulario">
-      <!-- Card del registro de usuarios -->
+      <!-- Card del registro de Estudiante -->
       <div class="card shadow mb-3" style="max-width: 50rem; margin:auto; margin-top:30px; border-radius:25px;">
         <div class="card-header text-center bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
-          <!-- Header para usuario -->
+          <!-- Header para Estudiante -->
           <h4 class="text-white">REGISTRO DE NUEVO ESTUDIANTE</h4>
         </div>
         <div class="card-body">
           <h4 class="card-title"></h4>
           <label class="text-primary">Los campos marcados con asterisco (*) son obligatorios</label><br>
 
-          <!-- Campos para usuario -->
+          <!-- Campos para Estudiante -->
           <div class="form-row">
             <div class="form-group col-md-6">
               <div class="form-floating" style="height: 4rem;">
-                <input class="form-control" type="text" name="txt_NOMBRE" class="texto" id="nombre" placeholder="Escriba el Nombre" pattern="[A-Z a-z]+" required="true" value="<?php if ($nombre != "") {
+                <input class="form-control" type="text" name="txt_NOMBRE" class="texto" id="nombre" placeholder="Escriba el Nombre" required="true" value="<?php if ($nombre != "") {
                   echo $nombre;
                 } ?>">
                 <label>Nombre: *</label><br>
@@ -92,7 +67,7 @@ if ($_SESSION['apellido']) {
             </div>
             <div class="form-group col-md-6">
               <div class="form-floating">
-                <input class="form-control" type="text" name="txt_APELLIDOS" class="texto" id="apellido" placeholder="Escriba sus Apellidos" pattern="[A-Z a-z]+" required="true" value="<?php if ($apellido == true) {
+                <input class="form-control" type="text" name="txt_APELLIDOS" class="texto" id="apellido" placeholder="Escriba sus Apellidos" required="true" value="<?php if ($apellido == true) {
                   echo $apellido;
                 } ?>">
                 <label>Apellidos: *</label><br>
@@ -104,7 +79,7 @@ if ($_SESSION['apellido']) {
             <input class="form-control" type="file" name="txtruta" id="txtruta"><br>
           </div>
           <div class="form-floating">
-            <input class="form-control" type="email" name="txt_CORREO" class="texto" id="correo" placeholder="Ejemplo@dominio.com" pattern=".+.com" required value="<?php if ($correo != "") {
+            <input class="form-control" type="email" name="txt_CORREO" class="texto" id="correo" placeholder="Ejemplo@dominio.com" pattern=".+.com" maxlength="100" required value="<?php if ($correo != "") {
               echo $correo;
             } ?>"><br>
             <label class="text-primary">Correo Electronico: *</label><br>
@@ -112,7 +87,7 @@ if ($_SESSION['apellido']) {
           <div class="form-row">
             <div class="form-group col-md-6 mb-3">
               <div class="form-floating">
-                <input class="form-control" type="date" id="dateFECHA" name="dateFECHA" value="2022-01-01">
+                <input class="form-control" type="date" id="dateFECHA" name="dateFECHA" value="2000-01-01">
                 <label for="dateFECHA">Seleccione su Fecha de Nacimineto: *</label><br>
               </div>
             </div>
@@ -191,10 +166,32 @@ if ($_SESSION['apellido']) {
                 <label class="form_label">Region *</label>
               </div>
             </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <div class="form-floating" style="height: 4rem;">
+                <input class="form-control" type="text" name="txt_UNIVERSIDAD" class="texto" id="universidad" placeholder="Escriba la Universidad" required="true">
+                <label>Universidad: *</label><br>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <div class="form-floating">
+                <input class="form-control" type="text" name="txt_CARRERA" class="texto" id="carrera" placeholder="Escriba la Carrera" required="true">
+                <label>Carrera: *</label><br>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
             <div class="col-md-6 mb-3">
               <div class="form-floating">
                 <input class="form-control" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="txt_TELEFONO" class="texto" id="telefono" minlength="10" maxLength="10" placeholder="Escriba su Número" required="true"><br>
                 <label>Telefono: *</label><br>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="form-floating">
+                <input class="form-control" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="txt_INGRESO" class="texto" id="ingreso" minlength="4" maxLength="4" placeholder="Escriba su A" min="1900" max="2099" required="true"><br>
+                <label>Año de Ingreso: *</label><br>
               </div>
             </div>
           </div>

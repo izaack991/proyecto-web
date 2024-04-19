@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/notificacion_estudiante.js"></script>
+<script src="../js/inactividad.js"></script>
 <script src="../js/sesion.js"></script>
 <?php 
 session_start();
@@ -13,7 +14,7 @@ if ($_SESSION['irol'] == 1 || $_SESSION['irol'] == 2) {
 ?>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFFFFF;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="indexPrincipal.php">
+    <a class="navbar-brand" href="indexEstudiante.php">
       <img src="../../assets/images/index_usuario/WORKELE.png" alt="Inicio" style="width: 150px; height: 150px;">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
@@ -39,7 +40,7 @@ if ($_SESSION['irol'] == 1 || $_SESSION['irol'] == 2) {
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
-          <a class="nav-link active font-weight-bold dropdown-toggle" style="color: #54B689;" href="#"
+          <a class="nav-link active font-weight-bold dropdown-toggle" style="color: #54B689; text-transform: uppercase;" href="#"
           id="nombreUsuario" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

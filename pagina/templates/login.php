@@ -71,7 +71,9 @@ switch ($_GET['xd']) {
         <div class="col-md-6 col-lg-4">
             <div class="row justify-content-center mt-4">
                 <div class="col-md-8 text-center"> 
-                    <img src="../../assets/images/WorkeleWB.png" class="img-fluid" alt="Placeholder: Image cap">
+                    <a href="index.php">
+                        <img src="../../assets/images/WorkeleWB.png" class="img-fluid" alt="Placeholder: Image cap">
+                    </a>
                 </div>
             </div>
             <div class="card border-gray shadow mb-3" style="border-radius:15px;">

@@ -14,14 +14,15 @@ $_findExperiencia = Functions::singleton_functions();
 $nuevoSingleton = Functions::singleton_functions();
 $iusuario = $_SESSION['iusuario'];
 
-if(isset($_POST['txtdescripcion']) && isset($_POST['txtempresa']) && isset($_POST['txtperiodo'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud']))
+if(isset($_POST['txtdescripcion']) && isset($_POST['txtempresa']) &&isset($_POST['fechaInicio'])&&isset($_POST['fechaFin'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlongitud']))
 {
     $_idusuario = $_SESSION['iusuario'];
     $_descripcion = $_POST['txtdescripcion'];
     $_empresa = $_POST['txtempresa'];
-    $_periodo = $_POST['txtperiodo'];
+    $_fechaInicio = $_POST['fechaInicio'];
+    $_fechaFin = $_POST['fechaFin'];
     $f_idexperiencia = $_findExperiencia->consec_experiencia();
-    $newExperiencia = $nuevoExperiencia->guardar_experiencia_laboral($f_idexperiencia,$_idusuario,$_descripcion,$_empresa,$_periodo);
+    $newExperiencia = $nuevoExperiencia->guardar_experiencia_laboral($f_idexperiencia,$_idusuario,$_descripcion,$_empresa,$_fechaInicio,$_fechaFin);
 
     date_default_timezone_set('America/Mexico_City');
     $_movimiento = 'Experiencia Laboral(Guardar)';

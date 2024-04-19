@@ -2,6 +2,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/notificacion_empresa.js"></script>
 <script src="../js/sesion.js"></script>
+<script src="../js/inactividad.js"></script>
 <?php 
 session_start();
 if ($_SESSION['irol'] == 2 || $_SESSION['irol'] == 4) {
@@ -28,7 +29,7 @@ if ($_SESSION['irol'] == 2 || $_SESSION['irol'] == 4) {
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
-          <a class="nav-link active font-weight-bold dropdown-toggle" style="color: #54B689;" href="#"
+          <a class="nav-link active font-weight-bold dropdown-toggle" style="color: #54B689; text-transform: uppercase;" href="#"
           id="nombreUsuario" id="navbarDropdown"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

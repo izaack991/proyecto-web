@@ -274,6 +274,62 @@ require_once('conexion.class.php');
             
 
 // Funcion para busquedas de campos
+public function buscarMensaje($id_usuario1, $id_usuario2)
+{
+    try {
+        $sql = "SELECT m.id_mensaje as id , m.mensaje ,m.fecha
+                FROM tbl_mensajes AS m 
+                INNER JOIN tbl_conversaciones AS c ON m.id_conversacion = c.id_conversacion 
+                JOIN tbl_usuario AS u ON c.id_usuario1 = u.id_usuario 
+                JOIN tbl_usuario AS u2 ON c.id_usuario2 = u2.id_usuario 
+                WHERE c.id_conversacion IN (
+                    SELECT id_conversacion 
+                    FROM tbl_conversaciones 
+                    WHERE (id_usuario1 = 2 AND id_usuario2 = 123)) order by id desc ";
+        
+        $query = $this->dbh->prepare($sql);
+        $query->bindParam(':id_usuario1', $id_usuario1);
+        $query->bindParam(':id_usuario2', $id_usuario2);
+        $query->execute();
+        $data = array();
+        while ($row = $query->fetch(PDO::FETCH_ASSOC))
+        {
+            $data[] = $row;
+        }
+    }
+    catch(PDOException $e)
+    {
+        print "Error!: " . $e->getMessage();
+    }
+    return $data;
+}
+public function buscarConversacion($id_usuario)
+{
+    try {
+        $sql = "SELECT MAX(c.id_conversacion) as max, m.mensaje, u1.nombre AS usuario1, u2.nombre AS usuario2
+        FROM tbl_mensajes AS m 
+        INNER JOIN tbl_conversaciones AS c ON m.id_conversacion = c.id_conversacion 
+        JOIN tbl_usuario AS u1 ON c.id_usuario1 = u1.id_usuario 
+        JOIN tbl_usuario AS u2 ON c.id_usuario2 = u2.id_usuario
+        WHERE c.id_usuario1 = :id_usuario OR c.id_usuario2 = :id_usuario";
+        
+        $query = $this->dbh->prepare($sql);
+        $query->bindParam(':id_usuario', $id_usuario);
+
+        $query->execute();
+        $data = array();
+        while ($row = $query->fetch(PDO::FETCH_ASSOC))
+        {
+            $data[] = $row;
+        }
+    }
+    catch(PDOException $e)
+    {
+        print "Error!: " . $e->getMessage();
+    }
+    return $data;
+}
+
             function buscaPaises()
             {
                 try
@@ -322,7 +378,12 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar = tbl_paises.region WHERE DATEDIFF( DATE(NOW()),dateInicio) <= 3 AND status = 1 GROUP BY id_vacante;";
+                $sql = "SELECT v.*, c.nombre as nombrePais 
+                FROM tbl_vacantes v
+                INNER JOIN tbl_paises c ON v.lugar = c.region
+                LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = $_idusuario
+                WHERE DATEDIFF(datefin, dateInicio) >= 1 AND v.status = 1 AND p.id_vacante IS NULL OR p.id_usuario <> $_idusuario
+                GROUP BY id_vacante;";
                 $query = $this->dbh->prepare($sql);
                     $query->execute();
 
@@ -1283,5 +1344,95 @@ require_once('conexion.class.php');
             return TRUE;
             
         }
+        public function eliminar_vacantes()
+        {        
+            try 
+            {
+                // Obtener la fecha actual
+                $fecha_actual = date('Y-m-d');
+                
+                // Calcular la fecha un día antes
+                $fecha_un_dia_antes = date('Y-m-d', strtotime('-1 day', strtotime($fecha_actual)));
+                
+                // Construir la consulta SQL para eliminar las vacantes con fecha de inicio un día antes de la fecha actual
+                $sql = "DELETE FROM tbl_vacantes WHERE dateInicio = :fecha_un_dia_antes";
+                
+                // Preparar la consulta
+                $query = $this->dbh->prepare($sql);
+                
+                // Asignar valor al parámetro
+                $query->bindParam(':fecha_un_dia_antes', $fecha_un_dia_antes);
+                
+                // Ejecutar la consulta
+                $query->execute();
+                
+                // Cerrar la conexión
+                $this->dbh = null;
+                    
+            }
+            catch(PDOException $e){
+                // Manejar cualquier error de PDO
+                print "Error!: " . $e->getMessage();
+                return FALSE;
+            }        
+
+            return TRUE;
+        }
+
+
+        // public function eliminar_vacantes()
+        // {        
+        //     try 
+        //     {
+                
+        //         $sql="DELETE FROM tbl_vacantes WHERE dateInicio";
+                
+        //         $query = $this->dbh->prepare($sql);
+        //         $query->execute();
+        //         $this->dbh = null;
+                    
+            
+        //     }
+        //     catch(PDOException $e){
+                
+        //         print "Error!: " . $e->getMessage();
+
+        //     }        
+        //     return TRUE;
+        // }
+        // public function enviar_correo($_correo, $_token)
+        // {        
+        //     $todogood = false;
+        //     try 
+        //     {
+                
+        //         // Configuración SMTP
+        //         $transport = (new Swift_SmtpTransport('svgt333.serverneubox.com.mx', 465, 'ssl'))
+        //         ->setUsername('no-reply@workele.com')
+        //         ->setPassword('i7OTm-M6usi]');
+
+        //         // Crea el objeto Mailer usando tu configuración de transporte
+        //         $mailer = new Swift_Mailer($transport);
+
+        //         // Crea un mensaje
+        //         $message = (new Swift_Message('Ejemplo de correo'))
+        //         ->setFrom(['no-reply@workele.com' => 'Example'])
+        //         ->setTo([$_correo => 'Usuario'])
+        //         ->setBody('Confirmacion: ' . $_token);
+
+        //         // Enviar el mensaje
+        //         $result = $mailer->send($message);
+
+        //         $todogood = true;
+        //     }
+        //     catch(PDOException $e){
+                
+        //         print "Error!: " . $e->getMessage();
+        //         $todogood = false;
+
+        //     }
+
+        //     return $result;
+        // }
 
 }

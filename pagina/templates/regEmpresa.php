@@ -26,33 +26,8 @@ if ($_SESSION['cuenta']) {
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
-    var tiempoInactividad = 5 * 60 * 1000;
-
-    // Página a la que se redireccionará después de la inactividad
-    var paginaRedireccion = "index.php";
-
-    var tiempoInactivo;
-
-    // Función para redireccionar
-    function redireccionar() {
-      window.location.href = paginaRedireccion;
-    }
-
-    // Reiniciar el temporizador de inactividad
-    function reiniciarTemporizador() {
-      clearTimeout(tiempoInactivo);
-      tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
-    }
-
-    // Cuando se cargue la página, iniciar el temporizador
-    reiniciarTemporizador();
-
-    // Reiniciar el temporizador si se detecta actividad
-    document.addEventListener("mousemove", reiniciarTemporizador);
-    document.addEventListener("keypress", reiniciarTemporizador);
-  </script>
+  <script src="../js/inactividad.js"></script>
+  
 </head>
 
 <body style="background-color: #F8F6F3;">
@@ -76,7 +51,7 @@ if ($_SESSION['cuenta']) {
 
           <!-- Campos para empresa -->
           <div class="form-floating mb-3 mt-4">
-            <input class="form-control" type="text" name="txt_razon" class="texto" id="razon" placeholder="Ingresa el Nombre de la Empresa" pattern="[A-Z a-z]+" required="true">
+            <input class="form-control" type="text" name="txt_razon" class="texto" id="razon" placeholder="Ingresa el Nombre de la Empresa" required="true">
             <label for="floatingInput">Razón Social *</label>
           </div>
           <div class="mb-3 mt-4">
@@ -90,7 +65,7 @@ if ($_SESSION['cuenta']) {
             <input class="form-control" type="file" name="txtcons" id="txtcons"><br>
           </div>
           <div class="form-floating mb-3">
-            <input class="form-control" type="email" name="txt_CORREO" class="texto" id="correo" placeholder="Ejemplo@dominio.com" pattern=".+.com" required value="<?php if ($correo != "") {
+            <input class="form-control" type="email" name="txt_CORREO" class="texto" id="correo" placeholder="Ejemplo@dominio.com" pattern=".+.com" maxlength="100" required value="<?php if ($correo != "") {
               echo $correo;
             } ?>"><br>
             <label for="floatingInput">Correo Electronico *</label>

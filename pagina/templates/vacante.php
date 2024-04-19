@@ -16,32 +16,6 @@
   <script src="../js/notificacion_empresa.js"></script>
 
   <script>
-    // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
-    var tiempoInactividad = 5 * 60 * 1000;
-
-    // Página a la que se redireccionará después de la inactividad
-    var paginaRedireccion = "https://www.workele.com";
-
-    var tiempoInactivo;
-
-    // Función para redireccionar
-    function redireccionar() {
-      window.location.href = paginaRedireccion;
-    }
-
-    // Reiniciar el temporizador de inactividad
-    function reiniciarTemporizador() {
-      clearTimeout(tiempoInactivo);
-      tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
-    }
-
-    // Cuando se cargue la página, iniciar el temporizador
-    reiniciarTemporizador();
-
-    // Reiniciar el temporizador si se detecta actividad
-    document.addEventListener("mousemove", reiniciarTemporizador);
-    document.addEventListener("keypress", reiniciarTemporizador);
-
     // funcion para solo letras mayúsculas, minúsculas y espacios
     function validarLetras(event) {
       var charCode = event.charCode;
@@ -51,6 +25,7 @@
         charCode === 32; // Espacio
     }
   </script>
+
 </head>
 
 <body style="background-color: #F8F6F3;">
@@ -73,13 +48,13 @@
           <label class="text-primary">Los campos marcados con asterisco (*) son obligatorios</label><br>
           <!-- {*Campos para los datos*} -->
           <div class="form-floating mb-3 mt-4">
-            <input class="form-control" id="txtpuesto" type="text" name="txtpuesto" placeholder="Descripcion de Puesto" maxLength="100" required="true" pattern="[A-Z a-z]+" title="Favor de ingresar solamente palabras al momento de describir el puesto de trabajo, NO se aceptan numeros ni caracteres especiales.">
+            <input class="form-control" id="txtpuesto" type="text" name="txtpuesto" placeholder="Descripcion de Puesto" maxLength="100" required="true">
             <label for="floatingInput">Descripcion de Puesto *</label>
           </div>
-          <div class="form-floating mb-3 mt-4">
+          <!--<div class="form-floating mb-3 mt-4">
             <input class="form-control"  type="text" required id="txtempresa" name="txtempresa" placeholder="Ingresa la empresa" maxlength="50"> <br>
             <label for="floatingInput">Nombre de la empresa *</label>
-          </div>
+          </div>-->
           <div class="input-group mb-3">
             <label class="input-group-text" style="height: 3.625rem;">$</label>
             <div class="form-floating form-floating-group flex-grow-1">
@@ -133,9 +108,9 @@
               </div>
             </div>
           </div>
-          <div class="form-floating">
-            <textarea name="txtdatos" id="txtdatos" style="resize:none; height: 150px;" type="text" class="form-control" cols="1" rows="10" placeholder="Ingresa los Datos"></textarea><br>
-            <label for="txtdatos" class="form_label"> Datos Adicionales </label> <br>
+          <div>
+            <label for="txtdatos" class="text-primary"> Datos Adicionales </label> <br>
+            <textarea name="txtdatos" id="txtdatos" style="resize:none; height: 300px;" type="text" class="form-control" cols="1" rows="10" placeholder="Ingresa los Datos"></textarea><br>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
@@ -152,6 +127,36 @@
               </div>
             </div>
             <br>
+
+            <!-- <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+
+            <script>
+              ClassicEditor
+                .create(document.querySelector('#txtdatos'), {
+                  minHeight: '300px',
+                  toolbar: ['undo', 'redo', '|', 'bold', 'italic', 'blockQuote', 'bulletedList', 'numberedList', '|', 'outdent', 'indent']
+                })
+                .then(editor => {
+                  window.editor = editor;
+                })
+                .catch(error => {
+                  console.error('Hubo un problema al instanciar el editor:', error);
+                });
+            </script> -->
+
+            <script src="https://cdn.tiny.cloud/1/opxm67vw96dfzavzjry6r53rgqrio3a3nzg3o57ii9livoei/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+            <script>
+              tinymce.init({
+                menubar: false,
+                language: 'es',
+                selector: 'textarea',
+                plugins: 'autolink lists link image charmap print preview anchor',
+                toolbar: 'undo redo | formatselect | ' +
+                  'bold italic backcolor | alignleft aligncenter ' +
+                  'alignright alignjustify | bullist numlist outdent indent | ' +
+                  'removeformat | help'
+              });
+            </script>
 
             <!-- {*Campos internos para la ubicacion*} -->
             <input name="txtlatitud" id="latitud" type="hidden">
@@ -187,5 +192,6 @@
 
 </body>
 <!-- {*Footer*} -->
-<?php include("footer.php") ?>
+<?php include ("footer.php") ?>
+
 </html>

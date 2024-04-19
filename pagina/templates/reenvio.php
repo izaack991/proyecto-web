@@ -7,35 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inicio Usuario</title>
   <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
-    <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
-    <script src="../php/reenvio.php"></script>
-    <script>
-      // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
-      var tiempoInactividad = 5 * 60 * 1000; 
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
+  <script src="../php/reenvio.php"></script>
+  <script src="../js/inactividad.js"></script>
 
-      // Página a la que se redireccionará después de la inactividad
-      var paginaRedireccion = "https://www.workele.com";
-
-      var tiempoInactivo;
-
-      // Función para redireccionar
-      function redireccionar() {
-        window.location.href = paginaRedireccion;
-      }
-
-      // Reiniciar el temporizador de inactividad
-      function reiniciarTemporizador() {
-        clearTimeout(tiempoInactivo);
-        tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
-      }
-
-      // Cuando se cargue la página, iniciar el temporizador
-      reiniciarTemporizador();
-
-      // Reiniciar el temporizador si se detecta actividad
-      document.addEventListener("mousemove", reiniciarTemporizador);
-      document.addEventListener("keypress", reiniciarTemporizador);
-
+  <script>
       // funcion para solo letras mayúsculas, minúsculas y espacios
       function validarLetras(event) {
           var charCode = event.charCode;
@@ -44,8 +20,8 @@
                 (charCode >= 97 && charCode <= 122) || // Letras minúsculas
                 charCode === 32; // Espacio
       }
-    </script>
- 
+  </script>
+
 </head>
 
 <body>
@@ -80,7 +56,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-          <!-- {if $COUNT >= 1}
+            <!-- {if $COUNT >= 1}
             <a class="btn demo-btn-on-bg text-white font-weight-bold ml-2 mt-2 mt-lg-0" data-toggle="modal" data-target="#exampleModal">
               <span class="fa-layers fa-fw mr-2 fa-lg">
                 <i class="fas fa-bell"></i>
@@ -90,18 +66,18 @@
           {else}
             <li class="nav-link active">{$smarty.session.nomusuario}</li>
           {/if} -->
-          {* Creacion de la modal de notificaciones *}
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-bell"></i> Notificaciones</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <!-- {if $COUNTLAB >= 1}
+            {* Creacion de la modal de notificaciones *}
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-bell"></i> Notificaciones</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- {if $COUNTLAB >= 1}
                   <a class="nav-link" href="experiencia_laboral.php" style="color: blue;">Aun no ha registrado sus datos de Experiencia Laboral, click aqui para ir al registro</a>
                   {/if}
                   {if $COUNFOR >= 1}
@@ -113,15 +89,15 @@
                   {if $COUNTINT >= 1}
                   <a class="nav-link" href="interes.php" style="color: blue;">Aun no ha registrado sus datos de Interes, click aqui para ir al registro</a>
                   {/if} -->
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          {*Boton para cerrar la sesion*}
-          <a class="nav-link active text-danger" href="https://www.workele.com" style="font-weight:bold;">Cerrar Sesión</a>
+            {*Boton para cerrar la sesion*}
+            <a class="nav-link active text-danger" href="https://www.workele.com" style="font-weight:bold;">Cerrar Sesión</a>
         </ul>
       </div>
     </div>
@@ -145,18 +121,14 @@
     </div>
   </form>
 
-  {*Conexion de librerias de JavaScript y bootstrap*}                
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  {*Conexion de librerias de JavaScript y bootstrap*}
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.5/push.js"
-  integrity="sha512-dzuBh7UxT5g4MmnbR3ybHMK2g2zxGXILXHuLsUwo8XJmoW2JTTqcg4bFFu0RnBO+kPTvKafgVYh8hnCN/l8ijQ=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.5/push.min.js"
-  integrity="sha512-1zotA6QprPWXVvgx8KFnvanxTZhm7P/uadmELhEUs3fHYvGDqkYa0ZUc3Q0m+3w7AUcgG5k4rUiFDdSkRJhqaA=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.5/push.js" integrity="sha512-dzuBh7UxT5g4MmnbR3ybHMK2g2zxGXILXHuLsUwo8XJmoW2JTTqcg4bFFu0RnBO+kPTvKafgVYh8hnCN/l8ijQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.5/push.min.js" integrity="sha512-1zotA6QprPWXVvgx8KFnvanxTZhm7P/uadmELhEUs3fHYvGDqkYa0ZUc3Q0m+3w7AUcgG5k4rUiFDdSkRJhqaA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 
 </html>

@@ -1,3 +1,7 @@
+<?php 
+
+session_start();
+print_r($_SESSION);?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,35 +18,47 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../js/notificacion_usuario.js"></script>
+  
+
+  <style>
+    /* Estilos personalizados */
+    .message-container-sent {
+      max-width: 80%;
+      margin-left: auto;
+      text-align: right;
+    }
+    .message-container-recive {
+      max-width: 80%;
+      margin-right: auto;
+      text-align: left;
+    }
+    .sent-message {
+      background-color: #007bff;
+      color: white;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: inline-block;
+      text-align: left;
+    }
+    .sent-message small{
+      display: block;
+    }
+    .received-message {
+      background-color: #f8f9fa;
+      border: 1px solid #ced4da;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: inline-block;
+      text-align: left;
+    }
+    .recived-message small{
+      display: block;
+    }
+  </style>
 
   <script>
-    // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
-    var tiempoInactividad = 5 * 60 * 1000;
-
-    // Página a la que se redireccionará después de la inactividad
-    var paginaRedireccion = "https://www.workele.com";
-
-    var tiempoInactivo;
-
-    // Función para redireccionar
-    function redireccionar() {
-      window.location.href = paginaRedireccion;
-    }
-
-    // Reiniciar el temporizador de inactividad
-    function reiniciarTemporizador() {
-      clearTimeout(tiempoInactivo);
-      tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
-    }
-
-    // Cuando se cargue la página, iniciar el temporizador
-    reiniciarTemporizador();
-
-    // Reiniciar el temporizador si se detecta actividad
-    document.addEventListener("mousemove", reiniciarTemporizador);
-    document.addEventListener("keypress", reiniciarTemporizador);
-
-    // funcion para solo letras mayúsculas, minúsculas y espacios
     function validarLetras(event) {
       var charCode = event.charCode;
       // Permitir letras (mayúsculas y minúsculas) y espacios
@@ -65,13 +81,12 @@
 
     <!-- Chats al lado izuqierdo -->
     <div class="row">
-		
     <div class="col">
-    <div class="card shadow mb-3" style="margin-left: 25px; margin-top: 5px; border-radius: 25px; height: 70vh; width: 350px;">
+    <div class="card shadow mb-3" style="margin-left: 25px; margin-top: 5px; border-radius: 25px; height: 70vh; width: 50vh;">
         <div class="card-header bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
             <div style="display: flex; align-items: center; justify-content: flex-start;">
                 <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail d-block" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
-                <strong>Carlos Daniel</strong>
+                <strong id="nombreUsuario2"></strong>
             </div>
         </div>
         <div class="card-body" style="overflow-y: auto;">
@@ -116,39 +131,49 @@
                         <small>Si es que el otro día estaba...</small>
                     </div>
                 </li>
-                <!-- Aquí van los demás elementos de la lista -->
               </ul> 
             </div>
           </div>
           
         </div>
         
-        <!-- Segunda tarjeta -->
+        <!-- Mensajes -->
     <div class="row">
 		
     <div class="col">
       <div class="card shadow mb-3" style="margin-right: 25px; margin-top: 5px; border-radius: 25px; height: 70vh; width: 135vh;">
-          <div class="card-header bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
-              <div style="display: flex; align-items: center; justify-content: flex-start;">
-                  <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail d-block" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
-                  <strong>Carlos Daniel</strong>
+        <div class="card-header bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
+          <div style="display: flex; align-items: center; justify-content: flex-start;">
+            <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail d-block" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
+            <strong>Carlos Daniel</strong>
+          </div>
+        </div>
+        <div class="card-body" style="overflow-y: auto;">
+          <div class="message-container-sent">
+            <!-- Mensajes enviados -->
+            <div class="sent-message">
+              <p>Vimos tu curriculum y eres bien pendejo, asi que no te vamos a contratara skibidi toilet ponmi lorem ipsum</p>
+              <small>10:30 AM</small>
               </div>
           </div>
-          <div class="card-body" style="overflow-y: auto;">
-            <div>  
-              <input class="form-control" id="txtpuesto" type="text" name="txtpuesto" placeholder="Escribe un mensaje" maxLength="100" required="true" pattern="[A-Z a-z]+" title="Favor de ingresar solamente palabras al momento de describir el puesto de trabajo, NO se aceptan numeros ni caracteres especiales.">
+          <div class="message-container-recive">
+          <!-- Mensajes recibidos -->
+            <div class="received-message">
+              <p>chale, ni queria su pinchi Puesto rascuacho metaselo por el culo. ANTES QUE NADA BUENAS TARDE.</p>
+              <small style="text-align: right;">10:32 AM</small>
             </div>
           </div>
+        </div>                
+        <div class="card-footer d-flex justify-content-between">  
+          <input class="form-control" style="height: 44px;" id="txtpuesto" type="text" name="txtmsj" placeholder="Escribe un mensaje" required="true">
+          <button class="btn btn-outline-secondary" type="button">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
       </div>
     </div>
-     
-
-
-
-
-
-<input name="txtlatitud" id="latitud" type="hidden">
-<input name="txtlongitud" id="longitud" type="hidden">
+    <input name="txtlatitud" id="latitud" type="hidden">
+    <input name="txtlongitud" id="longitud" type="hidden">
 </form>
 
   <!-- Conexion de librerias de JavaScript y bootstrap -->
@@ -166,7 +191,7 @@
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
   </script>
   <script src="../js/insert.js"></script>
-  <script src="../js/modalesDinamicos.js"></script>
+  <script src="../js/conversaciones.js"></script>
 
 </body>
 

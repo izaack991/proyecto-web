@@ -30,12 +30,11 @@ require_once('conexion.class.php');
             trigger_error('La clonación de este objeto no está permitida', E_USER_ERROR);
         }
 
-        public function guardar_experiencia_laboral($f_idexperiencia,$_idusuario,$_descripcion,$_empresa,$_periodo)
+        public function guardar_experiencia_laboral($f_idexperiencia,$_idusuario,$_descripcion,$_empresa,$_fechaInicio,$_fechaFin)
         {        
             try {
                 
-                $sql="insert into tbl_experiencia_laboral(id_experiencia,id_usuario,descripcion_puesto,empresa,periodo)
-                                    values(:id_experiencia,:id_usuario,:descripcion_puesto,:empresa,:periodo)";
+                $sql="insert into tbl_experiencia_laboral values(:id_experiencia,:id_usuario,:descripcion_puesto,:empresa,:fechaInicio,:fechaFin)";
                 
                 $query = $this->dbh->prepare($sql);
                 
@@ -43,7 +42,8 @@ require_once('conexion.class.php');
                 $query->bindParam(':id_usuario',$_idusuario);
                 $query->bindParam(':descripcion_puesto',$_descripcion);
                 $query->bindParam(':empresa',$_empresa);
-                $query->bindParam(':periodo',$_periodo);
+                $query->bindParam(':fechaInicio',$_fechaInicio);
+                $query->bindParam(':fechaFin',$_fechaFin);
                 $query->execute();
                 //$this->dbh = null;
                     
@@ -57,12 +57,16 @@ require_once('conexion.class.php');
             return TRUE;
         }
 
+<<<<<<< HEAD
         public function guardar_usuario($_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $_irol, $_status, $ruta_img, $_cons, $_razon)
+=======
+        public function guardar_usuario($_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $_irol, $_status, $_ruta, $_cons, $_razon, $_token, $_universidad, $_carrera, $_ingreso)
+>>>>>>> d9cd4125faf7011cb36d75da226e737a70a2acad
         {        
             try {
                
-                $sql="insert into tbl_usuario(id_usuario, rol, status, nombre, apellido, correo, fecha_nac, no_identificacion, password, sexo, region, telefono, domicilio, ruta_imagen, ruta_constancia, razon_social)
-                                    values(:id_usuario, :rol, :status, :nombre, :apellido, :correo, :fecha_nac, :no_identificacion, :password, :sexo, :region, :telefono, :domicilio, :ruta_imagen, :ruta_constancia, :razon_social)";
+                $sql="insert into tbl_usuario(id_usuario, rol, status, nombre, apellido, correo, fecha_nac, no_identificacion, password, sexo, region, telefono, domicilio, ruta_imagen, ruta_constancia, razon_social, token, universidad, carrera, ingreso)
+                                    values(:id_usuario, :rol, :status, :nombre, :apellido, :correo, :fecha_nac, :no_identificacion, :password, :sexo, :region, :telefono, :domicilio, :ruta_imagen, :ruta_constancia, :razon_social, :token, :universidad, :carrera, :ingreso)";
                     
                 $query = $this->dbh->prepare($sql);
                     
@@ -82,6 +86,10 @@ require_once('conexion.class.php');
                 $query->bindParam(':ruta_imagen',$ruta_img);
                 $query->bindParam(':ruta_constancia',$_cons);
                 $query->bindParam(':razon_social',$_razon);
+                $query->bindParam(':token',$_token);
+                $query->bindParam(':universidad',$_universidad);
+                $query->bindParam(':carrera',$_carrera);
+                $query->bindParam(':ingreso',$_ingreso);
                 $query->execute();
                 $this->dbh = null;
             }
@@ -92,19 +100,20 @@ require_once('conexion.class.php');
             return TRUE;
         } 
 
-        public function guardar_formacion($_idusuario,$id_formacion,$descripcion,$ubicacion,$periodo)
+        public function guardar_formacion($_idusuario,$id_formacion,$descripcion,$ubicacion,$_fechaInicio,$_fechaFin)
         {        
             try {
                 
-                $sql="INSERT into tbl_formacion_academica(id_formacion,id_usuario,descripcion,ubicacion,periodo)
-                                    values(:id_formacion,:id_usuario,:descripcion,:ubicacion,:periodo)";
+                $sql="INSERT into tbl_formacion_academica(id_formacion,id_usuario,descripcion,ubicacion,fechaInicio,fechaFin)
+                                    values(:id_formacion,:id_usuario,:descripcion,:ubicacion,:fechaInicio,:fechaFin)";
                 
                 $query = $this->dbh->prepare($sql);
                 $query->bindParam(':id_formacion',$id_formacion);
                 $query->bindParam(':id_usuario',$_idusuario,);
                 $query->bindParam(':descripcion',$descripcion,);
                 $query->bindParam(':ubicacion',$ubicacion);
-                $query->bindParam(':periodo',$periodo);
+                $query->bindParam(':fechaInicio',$_fechaInicio);
+                $query->bindParam(':fechaFin',$_fechaFin);
                 $query->execute();
             }
             catch(PDOException $e){
@@ -989,6 +998,38 @@ require_once('conexion.class.php');
                     
                 }        
                 return TRUE;
+            }
+            
+            public function insertar_conversacion($id_usuario1, $id_usuario2)
+            {
+                try {
+                    $sql = "INSERT INTO tbl_conversaciones (id_usuario1, id_usuario2) VALUES (:id_usuario1, :id_usuario2)";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':id_usuario1', $id_usuario1);
+                    $query->bindParam(':id_usuario2', $id_usuario2);
+                    $query->execute();
+                } catch(PDOException $e) {
+                    print "Error!: " . $e->getMessage();
+                    return FALSE; // Retorna FALSE si ocurre un error
+                }        
+                return TRUE; // Retorna TRUE si la inserción es exitosa
+            }
+
+            public function insertar_mensaje($mensaje, $id_usuario)
+            {
+                try {
+                    $sql = "INSERT INTO tbl_mensajes (, mensaje, id_usuario) VALUES (:mensaje, :id_usuario)";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':mensaje', $mensaje);
+                    $query->bindParam(':id_usuario', $id_usuario);
+                    $query->execute();
+                } catch(PDOException $e) {
+                    print "Error!: " . $e->getMessage();
+                    return FALSE; // Retorna FALSE si ocurre un error
+                }        
+                return TRUE; // Retorna TRUE si la inserción es exitosa
             }
     }
 ?>

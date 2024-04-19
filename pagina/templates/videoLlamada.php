@@ -13,33 +13,6 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../js/notificacion_usuario.js"></script>
   <script src="https://meet.jit.si/external_api.js"></script>
-  <script>
-    // Tiempo de inactividad en milisegundos (por ejemplo, 5 minutos)
-    var tiempoInactividad = 5 * 60 * 1000;
-
-    // Página a la que se redireccionará después de la inactividad
-    var paginaRedireccion = "https://www.workele.com";
-
-    var tiempoInactivo;
-
-    // Función para redireccionar
-    function redireccionar() {
-      window.location.href = paginaRedireccion;
-    }
-
-    // Reiniciar el temporizador de inactividad
-    function reiniciarTemporizador() {
-      clearTimeout(tiempoInactivo);
-      tiempoInactivo = setTimeout(redireccionar, tiempoInactividad);
-    }
-
-    // Cuando se cargue la página, iniciar el temporizador
-    reiniciarTemporizador();
-
-    // Reiniciar el temporizador si se detecta actividad
-    document.addEventListener("mousemove", reiniciarTemporizador);
-    document.addEventListener("keypress", reiniciarTemporizador);
-  </script>
 
 </head>
 
@@ -52,7 +25,7 @@
   <div class="container">
     <!-- Utiliza las clases de Bootstrap para hacer el div responsivo -->
     <div id="meet" class="embed-responsive embed-responsive-16by9"></div>
-</div>
+  </div>
 
   <!-- {*Conexion de librerias de JavaScript y bootstrap*} -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -62,12 +35,13 @@
   <script>
     const domain = 'meet.jit.si';
     const options = {
-        roomName: 'artics123',
-        width: 800,
-        height: 600,
-        parentNode: document.querySelector('#meet'),
+      roomName: 'artics123',
+      width: 800,
+      height: 600,
+      parentNode: document.querySelector('#meet'),
     };
     const api = new JitsiMeetExternalAPI(domain, options);
-</script>
+  </script>
 </body>
+
 </html>
