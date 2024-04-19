@@ -129,12 +129,12 @@
       <input onkeyup="buscar_ahora(this.value);" type="text" class="form-control" placeholder="Busque una vacante" style="text-align: center;" name="buscar_1" id="buscar_1">
     </div>
     
-    <!-- Ventana de resultados -->
-    <div id="resultados" class="card col-12 mt-2" style="display: none;">
-      <div class="card-body">
+    <div id="resultados" class="card col-12 mt-2" style="display: none; max-height: 200px; overflow-y: auto;">
+    <div class="card-body">
         <ul id="lista-resultados" class="list-group"></ul>
-      </div>
     </div>
+</div>
+
   </div>
 </div>
 
