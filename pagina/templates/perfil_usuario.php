@@ -77,12 +77,10 @@
                         <div class="row">
                                 <div class="col">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <div class="text-center">
-                                            <img src="../userfiles/img/pfp_142.jpeg" class="rounded-circle w-50 " alt="">
-                                            
+                                        <div id="imagenPerfil" class=" w-100">
                                         </div>
                                         <div class="ml-auto">
-                                            <button  class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                            <button id="btncardimagenPerfil" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                         </div>
                                         
                                     </li>
@@ -106,10 +104,10 @@
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <div>
                                             <label class="my-auto text-primary font-weight-bold">Correo</label><br>
-                                            <label class="form-label">juanluis@gmail.com</label>
+                                            <label id="correoUsuario" class="form-label"></label>
                                         </div>
                                         <div class="ml-auto">
-                                            <button  class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                            <button id="btncardcorreo"  class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                         </div>
                                     </li>
                                 </div>
@@ -118,11 +116,11 @@
                                 <div class="col">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <div>
-                                            <label class="my-auto text-primary font-weight-bold">Contraseña</label><br>
-                                            <label class="form-label">********</label>
+                                            <label class="my-auto text-primary font-weight-bold">Teléfono</label><br>
+                                            <label id="telefonoUsuario" class="form-label"></label>
                                         </div>
                                         <div class="ml-auto">
-                                            <button  class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                            <button id="btncardtelefono" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                         </div>
                                     </li>
                                 </div>
@@ -132,10 +130,10 @@
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <div>
                                             <label class="my-auto text-primary font-weight-bold">Región</label><br>
-                                            <label class="form-label">México</label>
+                                            <label id="regionUsuario" class="form-label"></label>
                                         </div>
                                         <div class="ml-auto">
-                                            <button  class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                            <button id="btncardregion" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                         </div>
                                     </li>
                                 </div>
@@ -145,10 +143,10 @@
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <div>
                                             <label class="my-auto text-primary font-weight-bold">Domicilio</label><br>
-                                            <label class="form-label">Mi casa #133</label>
+                                            <label id="domicilioUsuario" class="form-label"></label>
                                         </div>
                                         <div class="ml-auto">
-                                            <button  class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                            <button id="btncarddomicilio" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                         </div>
                                     </li>
                                 </div>
@@ -157,7 +155,7 @@
                         <div class="tab-pane fade" id="competencias" role="tabpanel" aria-labelledby="competencias-tab">
                         <div class="row mb-2 justify-content-center">
                                 <div class="container">
-                                    <label>Ten en cuenta que puedes editar tu información si así lo requieres en cualquier momento.</label>
+                                    <label class="mx-3">Ten en cuenta que puedes editar tu información si así lo requieres en cualquier momento.</label>
                                 </div>
                             </div>
                             <ul class="list-group list-group-flush">
@@ -328,6 +326,20 @@
                     </div>
                 </div>
             </div>
+            <!-- Card de Imagen de Perfil -->
+            <div class="col-auto mr-auto mt-4" id="cardImagenPerfil" style="display:none;">
+                <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
+                    <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
+                        <h4 class="card-title text-white d-inline mb-0">EDITAR IMAGEN DE PERFIL</h4>
+                        <button type="button d-inline" id="btncancelarImagenPerfil" class="close text-white" >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="contenedorImagenP"></div>
+                    </div>
+                </div>
+            </div>
             <!-- Card de Nombre -->
             <div class="col-auto mr-auto mt-4" id="cardNombre" style="display:none;">
                 <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
@@ -342,6 +354,62 @@
                     </div>
                 </div>
             </div>
+            <!-- Card de Correo -->
+            <div class="col-auto mr-auto mt-4" id="cardCorreo" style="display:none;">
+                <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
+                    <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
+                        <h4 class="card-title text-white d-inline mb-0">EDITAR CORREO</h4>
+                        <button type="button d-inline" id="btncancelarCorreo" class="close text-white" >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="contenedorCorreo"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card de Telefono -->
+            <div class="col-auto mr-auto mt-4" id="cardTelefono" style="display:none;">
+                <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
+                    <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
+                        <h4 class="card-title text-white d-inline mb-0">EDITAR TELEFONO</h4>
+                        <button type="button d-inline" id="btncancelarTelefono" class="close text-white" >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="contenedorTelefono"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card de Region -->
+            <div class="col-auto mr-auto mt-4" id="cardRegion" style="display:none;">
+                <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
+                    <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
+                        <h4 class="card-title text-white d-inline mb-0">EDITAR REGIÓN</h4>
+                        <button type="button d-inline" id="btncancelarRegion" class="close text-white" >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="contenedorRegion"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card de Domicilio -->
+            <div class="col-auto mr-auto mt-4" id="cardDomicilio" style="display:none;">
+                <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
+                    <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
+                        <h4 class="card-title text-white d-inline mb-0">EDITAR DOMICILIO</h4>
+                        <button type="button d-inline" id="btncancelarDomicilio" class="close text-white" >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="contenedorDomicilio"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -349,8 +417,53 @@
 <script>
   $(document).ready(function(){
     // CODIGO JAVASCRIPT PARA LAS VENTANAS DE USUARIO
+    $("#btncardimagenPerfil").click(function(){
+        $("#cardCorreo").hide();
+        $("#cardRegion").hide();
+        $("#cardDomicilio").hide();
+        $("#cardTelefono").hide();
+        $("#cardNombre").hide();
+        $("#cardImagenPerfil").slideDown();
+    });
+
     $("#btncardnombre").click(function(){
+        $("#cardCorreo").hide();
+        $("#cardRegion").hide();
+        $("#cardDomicilio").hide();
+        $("#cardTelefono").hide();
         $("#cardNombre").slideDown();
+    });
+
+    $("#btncardcorreo").click(function(){
+        $("#cardNombre").hide();
+        $("#cardRegion").hide();
+        $("#cardDomicilio").hide();
+        $("#cardTelefono").hide();
+        $("#cardCorreo").slideDown();
+    });
+
+    $("#btncardregion").click(function(){
+        $("#cardNombre").hide();
+        $("#cardCorreo").hide();
+        $("#cardDomicilio").hide();
+        $("#cardTelefono").hide();
+        $("#cardRegion").slideDown();
+    });
+
+    $("#btncarddomicilio").click(function(){
+        $("#cardNombre").hide();
+        $("#cardCorreo").hide();
+        $("#cardRegion").hide();
+        $("#cardTelefono").hide();
+        $("#cardDomicilio").slideDown();
+    });
+
+    $("#btncardtelefono").click(function(){
+        $("#cardNombre").hide();
+        $("#cardCorreo").hide();
+        $("#cardRegion").hide();
+        $("#cardDomicilio").hide();
+        $("#cardTelefono").slideDown();
     });
 
     // CODIGO JAVASCRIPT PARA LAS VENTANAS DE COMPETENCIAS
@@ -410,6 +523,13 @@
         $("#cardVideoCurriculum").hide();
         $("#cardPostulacion").hide();
     });
+    $("#competencias-tab").click(function(){
+        $("#cardNombre").hide();
+        $("#cardCorreo").hide();
+        $("#cardRegion").hide();
+        $("#cardDomicilio").hide();
+        $("#cardTelefono").hide();
+    });
     $("#btncancelarEXP").click(function(){
         $("#cardExperiencia").slideUp();
     });
@@ -430,6 +550,21 @@
     });
     $("#btncancelarNombre").click(function(){
         $("#cardNombre").slideUp();
+    });
+    $("#btncancelarCorreo").click(function(){
+        $("#cardCorreo").slideUp();
+    });
+    $("#btncancelarTelefono").click(function(){
+        $("#cardTelefono").slideUp();
+    });
+    $("#btncancelarRegion").click(function(){
+        $("#cardRegion").slideUp();
+    });
+    $("#btncancelarDomicilio").click(function(){
+        $("#cardDomicilio").slideUp();
+    });
+    $("#btncancelarImagenPerfil").click(function(){
+        $("#cardImagenPerfil").slideUp();
     });
     
   });

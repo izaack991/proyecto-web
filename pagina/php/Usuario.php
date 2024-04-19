@@ -52,6 +52,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 			$imgName = 'pfp_'.$f_id_usuario.'.'.$imgExt;
 			$tamano = $_FILES['txtruta']['size'];
 			$temp = $_FILES['txtruta']['tmp_name'];
+      $ruta_img = '../userfiles/img/'.$imgName;
       
 			//Obtenemos algunos datos necesarios sobre el archivo de la constancia
 			$conTipo = $_FILES['txtcons']['type'];
@@ -65,7 +66,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
 
       if ($comp_correo == 0) {
 
-        if($_ruta == "")
+        if(!$_ruta == "")
         {
           //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
           if (!((strpos($imgTipo, "gif") || strpos($imgTipo, "jpeg") || strpos($imgTipo, "jpg") || strpos($imgTipo, "png")) && ($tamano < 2000000))) {
@@ -136,7 +137,7 @@ if(isset($_POST['txt_PASSWORD'])&&(isset($_POST['txt_PASSWORD2'])))
             }
           
           //$f_id_usuario = $_findUser -> consec_usuario();
-          $newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol, $_status, $_ruta, $_cons, $_razon);
+          $newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol, $_status, $ruta_img, $_cons, $_razon);
           
         } else {
           echo "errorCorreoDuplicado";

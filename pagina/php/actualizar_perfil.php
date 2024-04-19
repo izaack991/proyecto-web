@@ -18,13 +18,14 @@ $busuario = $buscarDatos->seleccionar_usuario($iusuario);
 $tipo = $_POST['tipo'];
 if ($tipo='exp'){
     // Verificar si se han recibido todos los datos necesarios
-    if (isset($_POST['id'], $_POST['descripcion'], $_POST['empresa'], $_POST['periodo'])) {
+    if (isset($_POST['id'], $_POST['descripcion'], $_POST['empresa'], $_POST['fechaInicio'], $_POST['fechafin'])) {
         // Obtener los datos enviados por AJAX
         $idexp = $_POST['id'];
         $descripcion = $_POST['descripcion'];
         $empresa = $_POST['empresa'];
-        $periodo = $_POST['periodo'];
-        $UCerrar=$NuevoC->actualizar_experiencia($idexp,$descripcion,$empresa,$periodo);
+        $fechaInicio = $_POST['fechaInicio'];
+        $fechafin = $_POST['fechafin'];
+        $UCerrar=$NuevoC->actualizar_experiencia($idexp,$descripcion,$empresa,$fechaInicio,$fechafin);
         $bExperiencia = $buscarDatos->seleccionar_experiencia($iusuario);
     }
 }
@@ -39,13 +40,14 @@ if ($tipo='exp'){
 }
 if ($tipo='for'){
     // Verificar si se han recibido todos los datos necesarios
-    if (isset($_POST['id'], $_POST['descripcion'], $_POST['ubicacion'], $_POST['periodo'])) {
+    if (isset($_POST['id'], $_POST['descripcion'], $_POST['ubicacion'], $_POST['fechaInicio2'], $_POST['fechafin2'])) {
         // Obtener los datos enviados por AJAX
         $idfor = $_POST['id'];
         $descripcion = $_POST['descripcion'];
         $ubicacion = $_POST['ubicacion'];
-        $periodo = $_POST['periodo'];
-        $UCerrar=$NuevoC->actualizar_formacion($idfor,$descripcion,$ubicacion,$periodo);
+        $fechaInicio = $_POST['fechaInicio2'];
+        $fechafin = $_POST['fechafin2'];
+        $UCerrar=$NuevoC->actualizar_formacion($idfor,$descripcion,$ubicacion,$fechaInicio,$fechafin);
         $bFormacion = $buscarDatos->seleccionar_formacion($iusuario);
     }
 }
@@ -106,6 +108,76 @@ if ($tipo='nom'){
         $UCerrar=$NuevoC->actualizar_nombreUsuario($usuarioID,$nombre,$apellido);
         $busuario = $buscarDatos->seleccionar_usuario($iusuario);
     }
+}
+if ($tipo='cor'){
+    // Verificar si se han recibido todos los datos necesarios
+    if (isset($_POST['usuarioID2'],$_POST['correo'])) {
+        // Obtener los datos enviados por AJAX
+        $usuarioID = $_POST['usuarioID2'];
+        $correo = $_POST['correo'];
+        $UCerrar=$NuevoC->actualizar_correoUsuario($usuarioID,$correo);
+        $busuario = $buscarDatos->seleccionar_usuario($iusuario);
+    }
+}
+if ($tipo='tel'){
+    // Verificar si se han recibido todos los datos necesarios
+    if (isset($_POST['usuarioID3'],$_POST['telefono'])) {
+        // Obtener los datos enviados por AJAX
+        $usuarioID = $_POST['usuarioID3'];
+        $telefono = $_POST['telefono'];
+        $UCerrar=$NuevoC->actualizar_telefonoUsuario($usuarioID,$telefono);
+        $busuario = $buscarDatos->seleccionar_usuario($iusuario);
+    }
+}
+if ($tipo='reg'){
+    // Verificar si se han recibido todos los datos necesarios
+    if (isset($_POST['usuarioID4'],$_POST['region'])) {
+        // Obtener los datos enviados por AJAX
+        $usuarioID = $_POST['usuarioID4'];
+        $region = $_POST['region'];
+        $UCerrar=$NuevoC->actualizar_regionUsuario($usuarioID,$region);
+        $busuario = $buscarDatos->seleccionar_usuario($iusuario);
+    }
+}
+if ($tipo='dom'){
+    // Verificar si se han recibido todos los datos necesarios
+    if (isset($_POST['usuarioID5'],$_POST['domicilio'])) {
+        // Obtener los datos enviados por AJAX
+        $usuarioID = $_POST['usuarioID5'];
+        $domicilio = $_POST['domicilio'];
+        $UCerrar=$NuevoC->actualizar_domicilioUsuario($usuarioID,$domicilio);
+        $busuario = $buscarDatos->seleccionar_usuario($iusuario);
+    }
+}
+if ($tipo='img'){
+        // Directorio donde se guardarán las imágenes
+        $directorio = '../userfiles/img/';
+        if (!file_exists($directorio)) {
+            mkdir($directorio, 0777, true);
+        }
+        if ($_FILES['imagen']) {
+            $usuarioID = $_POST['usuarioID6'];
+            $nombreImagen = $_FILES['imagen']['name'];
+            $archivo = $directorio . basename($nombreImagen);
+
+            // Eliminar todas las imágenes con el mismo nombre sin importar la extensión
+            $archivosSimilares = glob($directorio . pathinfo($nombreImagen, PATHINFO_FILENAME) . ".*");
+            foreach ($archivosSimilares as $archivoSimilar) {
+                unlink($archivoSimilar);
+            }
+
+            if (move_uploaded_file($_FILES['imagen']['tmp_name'], $archivo)) {
+                // Guardar la ruta de la imagen en la base de datos
+                $ruta_imagen = $archivo;
+                $UCerrar=$NuevoC->actualizar_ruta_imagenUsuario($usuarioID,$ruta_imagen);
+                $busuario = $buscarDatos->seleccionar_usuario($iusuario);
+            } else {
+                echo "Hubo un error al subir la imagen.";
+            }
+        } else {
+            echo "No se recibió ninguna imagen.";
+        }
+        
 }
 if ($tipo='pos'){
     // Verificar si se han recibido todos los datos necesarios

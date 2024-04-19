@@ -330,3 +330,17 @@
     color: #000;
   }
   
+  .image-container {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%; /* Hace que el borde sea redondeado para formar un círculo */
+    overflow: hidden; /* Hace que la imagen se recorte para ajustarse al círculo */
+    display: flex; /* Permite centrar verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+.image-container img {
+    width: 100%; /* Hace que la imagen llene completamente el contenedor */
+    height: 100%; /* Hace que la imagen llene completamente el contenedor */
+}

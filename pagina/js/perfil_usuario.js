@@ -8,15 +8,19 @@ $(document).ready(function() {
             type: 'GET',
             dataType: 'json',
             success: function(data) {
+
+                // Ciclo each para mostrar la experiencia laboral
                 input_exp = ""
                 if (data.experiencia && data.experiencia.length > 0) {
                     $.each(data.experiencia, function (index, experiencia) {
                         input_exp += `<h3 class='text-dark'>`+experiencia.empresa+`</h3><div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Descripción de Puesto</span>
-                                      <input id="descripcionexp`+experiencia.id_experiencia+`" type="text" class="form-control" value="`+experiencia.descripcion_puesto+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br>`
+                                      <input required id="descripcionexp`+experiencia.id_experiencia+`" type="text" class="form-control" value="`+experiencia.descripcion_puesto+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br>`
                         input_exp += `<div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Empresa</span>
                                       <input id="empresaexp`+experiencia.id_experiencia+`" type="text" class="form-control" value="`+experiencia.empresa+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br>`
-                        input_exp += `<div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Periodo</span>
-                                      <input id="periodoexp`+experiencia.id_experiencia+`" type="text" class="form-control" value="`+experiencia.periodo+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br>`
+                        input_exp += `<div class="row"><div class="col"><div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Fecha Inicio</span>
+                                      <input id="fechainicioexp`+experiencia.id_experiencia+`" type="date" class="form-control" value="`+experiencia.fechaInicio+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br></div>`
+                        input_exp += `<div class="col"><div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Fecha Final</span>
+                                      <input id="fechafinexp`+experiencia.id_experiencia+`" type="date" class="form-control" value="`+experiencia.fechaFin+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br></div></div>`
                         input_exp += `<div class="row"><div class="col text-center"><button type="button" class="btn btn-danger mb-3 w-100 btn-eliminar-exp" data-experiencia="`+experiencia.id_experiencia+`" style="font-size:1.2rem;">Eliminar</button></div><div class="col text-center"><button type="button" class="btn btn-info mb-3 w-100 btn-guardar-exp" data-experiencia="`+experiencia.id_experiencia+`" style="font-size:1.2rem;">Guardar</button></div></div>`
                     }); 
                 } else {
@@ -25,6 +29,7 @@ $(document).ready(function() {
                 }
                 $("#contenedorExperiencia").html(input_exp);
                 
+                // Ciclo each para mostrar la formacion academica
                 input_for = ""
                 
                 if (data.formacion && data.formacion.length > 0) {
@@ -33,8 +38,10 @@ $(document).ready(function() {
                                       <input id="descripcionfor`+formacion.id_formacion+`" type="text" class="form-control" value="`+formacion.descripcion+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br>`
                         input_for += `<div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Ubicación</span>
                                       <input id="ubicacionfor`+formacion.id_formacion+`" type="text" class="form-control" value="`+formacion.ubicacion+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br>`
-                        input_for += `<div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Periodo</span>
-                                      <input id="periodofor`+formacion.id_formacion+`" type="text" class="form-control" value="`+formacion.periodo+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br>`
+                        input_for += `<div class="row"><div class="col"><div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Fecha Inicio</span>
+                                      <input id="fechainiciofor`+formacion.id_formacion+`" type="date" class="form-control" value="`+formacion.fechaInicio+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br></div>`
+                        input_for += `<div class="col"><div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Fecha Final</span>
+                                      <input id="fechafinfor`+formacion.id_formacion+`" type="date" class="form-control" value="`+formacion.fechaFin+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br></div></div>`
                         input_for += `<div class="row"><div class="col text-center"><button type="button" class="btn btn-danger mb-3 w-100 btn-eliminar-for" data-formacion="`+formacion.id_formacion+`" style="font-size:1.2rem;">Eliminar</button></div><div class="col text-center"><button type="button" class="btn btn-info mb-3 w-100 btn-guardar-for" data-formacion="`+formacion.id_formacion+`" style="font-size:1.2rem;">Guardar</button></div></div>`
                     }); 
                 } else {
@@ -43,6 +50,7 @@ $(document).ready(function() {
                 }
                 $("#contenedorFormacion").html(input_for);
 
+                // Ciclo each para mostrar la aficion
                 input_afi = ""
                 
                 if (data.aficion && data.aficion.length > 0) {
@@ -57,6 +65,7 @@ $(document).ready(function() {
                 }
                 $("#contenedorAficion").html(input_afi);
 
+                // Ciclo each para mostrar el interes
                 input_int = ""
                 
                 if (data.interes && data.interes.length > 0) {
@@ -71,12 +80,31 @@ $(document).ready(function() {
                 }
                 $("#contenedorInteres").html(input_int);
                 
+                // Ciclo each para mostrar los datos del usuario
                 nom_usuario = ""
+                correo_usuario = ""
+                region_usuario = ""
+                domicilio_usuario = ""
+                telefono_usuario = ""
+                imagen_usuario = ""
+                input_correo = ""
+                input_region = ""
                 input_nombre = ""
-                
-                if (data.usuario && data.usuario.length > 0) {
+                input_domicilio = ""
+                input_telefono = ""
+                input_imagen = ""
+
                     $.each(data.usuario, function (index, usuario) {
+                        imagen_usuario += `<div class="image-container mx-auto"><img src="`+usuario.ruta_imagen+`"></div>`;
                         nom_usuario += usuario.nombre+` `+usuario.apellido;
+                        correo_usuario += usuario.correo;
+                        region_usuario += usuario.region;
+                        telefono_usuario += usuario.telefono;
+                        domicilio_usuario += usuario.domicilio;
+                        
+                        input_imagen += `<label for="formFile" class="form-label text-primary font-weight-bold">Seleccionar Imagen de Perfil</label><input id="imagenInput" accept="image/png, image/jpeg, image/jpg" class="form-control" type="file"><br>`
+
+                        input_imagen += `<div class="row"><div class="col text-center"><button type="submit" class="btn btn-info mb-3 w-100 btn-guardar-imagen" data-usuario="`+usuario.id_usuario+`" style="font-size:1.2rem;">Guardar</button></div></div>`
 
                         input_nombre += `<h3 class='text-dark mb-3'>`+usuario.nombre+` `+usuario.apellido+`</h3><div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Nombre</span>
                                       <input id="nombreNom`+usuario.id_usuario+`" type="text" class="form-control" value="`+usuario.nombre+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br>`
@@ -85,14 +113,44 @@ $(document).ready(function() {
                                       <input id="apellidoNom`+usuario.id_usuario+`" type="text" class="form-control" value="`+usuario.apellido+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br>`
 
                         input_nombre += `<div class="row"><div class="col text-center"><button type="button" class="btn btn-info mb-3 w-100 btn-guardar-nombre" data-usuario="`+usuario.id_usuario+`" style="font-size:1.2rem;">Guardar</button></div></div>`
-                    }); 
-                } else {
-                    input_nombre = `<div class="row"><div class="col text-center"><p>Todavia no ha registrado ningun interés.</p></div></div>
-                                <div class="row"><div class="col text-center"><button type="button" id="btnAgregarint" class="btn btn-primary w-100">Agregar</button></div></div>`;
-                }
-                $("#nomUsuario").html(nom_usuario);
-                $("#contenedorNombre").html(input_nombre);
 
+                        input_correo += `<h3 class='text-dark mb-3'>`+usuario.correo+`</h3><div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Correo</span>
+                                      <input id="correoNom`+usuario.id_usuario+`" type="text" class="form-control" value="`+usuario.correo+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br>`
+
+                        input_correo += `<div class="row"><div class="col text-center"><button type="button" class="btn btn-info mb-3 w-100 btn-guardar-correo" data-usuario="`+usuario.id_usuario+`" style="font-size:1.2rem;">Guardar</button></div></div>`
+
+                        input_telefono += `<h3 class='text-dark mb-3'>`+usuario.telefono+`</h3><div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Teléfono</span>
+                                      <input id="telefonoNom`+usuario.id_usuario+`" type="text" class="form-control" value="`+usuario.telefono+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br>`
+
+                        input_telefono += `<div class="row"><div class="col text-center"><button type="button" class="btn btn-info mb-3 w-100 btn-guardar-telefono" data-usuario="`+usuario.id_usuario+`" style="font-size:1.2rem;">Guardar</button></div></div>`
+
+                        input_region += `<h3 class='text-dark mb-3'>`+usuario.region+`</h3><div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Región</span>
+                                      <input id="regionNom`+usuario.id_usuario+`" type="text" class="form-control" value="`+usuario.region+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br>`
+
+                        input_region += `<div class="row"><div class="col text-center"><button type="button" class="btn btn-info mb-3 w-100 btn-guardar-region" data-usuario="`+usuario.id_usuario+`" style="font-size:1.2rem;">Guardar</button></div></div>`
+
+                        input_domicilio += `<h3 class='text-dark mb-3'>`+usuario.domicilio+`</h3><div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Domicilio</span>
+                                      <input id="domicilioNom`+usuario.id_usuario+`" type="text" class="form-control" value="`+usuario.domicilio+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br>`
+
+                        input_domicilio += `<div class="row"><div class="col text-center"><button type="button" class="btn btn-info mb-3 w-100 btn-guardar-domicilio" data-usuario="`+usuario.id_usuario+`" style="font-size:1.2rem;">Guardar</button></div></div>`
+                    });
+
+                $("#imagenPerfil").html(imagen_usuario);
+                $("#nomUsuario").html(nom_usuario);
+                $("#correoUsuario").html(correo_usuario);
+                $("#regionUsuario").html(region_usuario);
+                $("#domicilioUsuario").html(domicilio_usuario);
+                $("#telefonoUsuario").html(telefono_usuario);
+                $("#contenedorImagenP").html(input_imagen);
+                $("#contenedorNombre").html(input_nombre);
+                $("#contenedorCorreo").html(input_correo);
+                $("#contenedorTelefono").html(input_telefono);
+                $("#contenedorRegion").html(input_region);
+                $("#contenedorDomicilio").html(input_domicilio);
+
+
+
+                // Ciclo each para mostrar el video curriculum
                     card_video = ""
                 if (data.video_curriculum && data.video_curriculum.length > 0) {
                     card_video += "<video class='w-100' controls>"
@@ -110,6 +168,7 @@ $(document).ready(function() {
                 }
                 $("#contenedorVideoCurriculum").html(card_video);
                 
+                // Ciclo each para mostrar la postulacion
                 input_pos = ""
                 
                 if (data.postulacion && data.postulacion.length > 0) {
@@ -170,8 +229,21 @@ $(document).ready(function() {
         var experienciaID = $(this).data("experiencia");
         var descripcion = $("#descripcionexp" + experienciaID).val();
         var empresa = $("#empresaexp" + experienciaID).val();
-        var periodo = $("#periodoexp" + experienciaID).val();
+        var fechaInicio = $("#fechainicioexp" + experienciaID).val();
+        var fechafin = $("#fechafinexp" + experienciaID).val();
         var tipo = 'exp';
+
+        // Verificar si la descripción está vacía
+        if (descripcion.trim() === '' || empresa.trim() === '' || fechaInicio.trim() === '' || fechafin.trim() === '') {
+            // Mostrar SweetAlert de advertencia
+            Swal.fire({
+                icon: 'warning',
+                title: 'Campo Vacío',
+                text: 'No puedes dejar los campos vacíos.',
+                confirmButtonText: 'Entendido'
+            });
+            return; // Detener la ejecución
+        }
         
         // Mostrar SweetAlert de confirmación
         Swal.fire({
@@ -193,7 +265,8 @@ $(document).ready(function() {
                         id: experienciaID,
                         descripcion: descripcion,
                         empresa: empresa,   
-                        periodo: periodo,
+                        fechaInicio: fechaInicio,
+                        fechafin: fechafin,
                         tipo: tipo
                     },
                     success: function(response) {
@@ -269,8 +342,21 @@ $(document).ready(function() {
         var formacionID = $(this).data("formacion");
         var descripcion = $("#descripcionfor" + formacionID).val();
         var ubicacion = $("#ubicacionfor" + formacionID).val();
-        var periodo = $("#periodofor" + formacionID).val();
+        var fechaInicio = $("#fechainiciofor" + formacionID).val();
+        var fechafin = $("#fechafinfor" + formacionID).val();
         var tipo = 'for';
+
+        // Verificar si la descripción está vacía
+        if (descripcion.trim() === '' || ubicacion.trim() === '' || fechaInicio.trim() === '' || fechafin.trim() === '') {
+            // Mostrar SweetAlert de advertencia
+            Swal.fire({
+                icon: 'warning',
+                title: 'Campo Vacío',
+                text: 'No puedes dejar los campos vacíos.',
+                confirmButtonText: 'Entendido'
+            });
+            return; // Detener la ejecución
+        }
         
         // Mostrar SweetAlert de confirmación
         Swal.fire({
@@ -292,7 +378,8 @@ $(document).ready(function() {
                         id: formacionID,
                         descripcion: descripcion,
                         ubicacion: ubicacion,
-                        periodo: periodo,
+                        fechaInicio2: fechaInicio,
+                        fechafin2: fechafin,
                         tipo: tipo
                     },
                     success: function(response) {
@@ -368,6 +455,18 @@ $(document).ready(function() {
         var descripcion = $("#descripcionafi" + aficionID).val();
         var tipo = 'afi';
         
+        // Verificar si la descripción está vacía
+        if (descripcion.trim() === '') {
+            // Mostrar SweetAlert de advertencia
+            Swal.fire({
+                icon: 'warning',
+                title: 'Campo Vacío',
+                text: 'No puedes dejar los campos vacíos.',
+                confirmButtonText: 'Entendido'
+            });
+            return; // Detener la ejecución
+        }
+
         // Mostrar SweetAlert de confirmación
         Swal.fire({
             title: '¿Estás seguro?',
@@ -465,6 +564,18 @@ $(document).ready(function() {
         var interesID = $(this).data("interes");
         var descripcion = $("#descripcionint" + interesID).val();
         var tipo = 'int';
+
+        // Verificar si la descripción está vacía
+        if (descripcion.trim() === '') {
+            // Mostrar SweetAlert de advertencia
+            Swal.fire({
+                icon: 'warning',
+                title: 'Campo Vacío',
+                text: 'No puedes dejar los campos vacíos.',
+                confirmButtonText: 'Entendido'
+            });
+            return; // Detener la ejecución
+        }
         
         // Mostrar SweetAlert de confirmación
         Swal.fire({
@@ -650,6 +761,18 @@ $(document).ready(function() {
         var nombre = $("#nombreNom" + usuarioID).val();
         var apellido = $("#apellidoNom" + usuarioID).val();
         var tipo = 'nom';
+
+        // Verificar si la descripción está vacía
+        if (nombre.trim() === '' || apellido.trim() === '') {
+            // Mostrar SweetAlert de advertencia
+            Swal.fire({
+                icon: 'warning',
+                title: 'Campo Vacío',
+                text: 'No puedes dejar los campos vacíos.',
+                confirmButtonText: 'Entendido'
+            });
+            return; // Detener la ejecución
+        }
         
         // Mostrar SweetAlert de confirmación
         Swal.fire({
@@ -673,6 +796,315 @@ $(document).ready(function() {
                         apellido: apellido,
                         tipo: tipo
                     },
+                    success: function(response) {
+                        console.log(response);
+                        mostrarExperiencia();
+                        // Mostrar SweetAlert de éxito
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Éxito',
+                            text: 'La información se actualizó correctamente.',
+                            timer: 2000, // Duración en milisegundos (en este caso, 2 segundos)
+                            timerProgressBar: true,
+                            showConfirmButton: false
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+    });
+
+    // Agregar evento click a los botones "Guardar" de correo de usuario
+    $(document).on("click", ".btn-guardar-correo", function() {
+        var usuarioID = $(this).data("usuario");
+        var correo = $("#correoNom" + usuarioID).val();
+        var tipo = 'cor';
+
+        // Verificar si la descripción está vacía
+        if (correo.trim() === '') {
+            // Mostrar SweetAlert de advertencia
+            Swal.fire({
+                icon: 'warning',
+                title: 'Campo Vacío',
+                text: 'No puedes dejar los campos vacíos.',
+                confirmButtonText: 'Entendido'
+            });
+            return; // Detener la ejecución
+        }
+        
+        // Mostrar SweetAlert de confirmación
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¿Quieres guardar los siguientes datos?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Sí, guardar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Enviar datos al servidor utilizando AJAX
+                $.ajax({
+                    url: '../php/actualizar_perfil.php', 
+                    type: 'POST',
+                    data: {
+                        usuarioID2: usuarioID,
+                        correo: correo,
+                        tipo: tipo
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        mostrarExperiencia();
+                        // Mostrar SweetAlert de éxito
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Éxito',
+                            text: 'La información se actualizó correctamente.',
+                            timer: 2000, // Duración en milisegundos (en este caso, 2 segundos)
+                            timerProgressBar: true,
+                            showConfirmButton: false
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+    });
+
+    // Agregar evento click a los botones "Guardar" de telefono
+    $(document).on("click", ".btn-guardar-telefono", function() {
+        var usuarioID = $(this).data("usuario");
+        var telefono = $("#telefonoNom" + usuarioID).val();
+        var tipo = 'tel';
+
+        // Verificar si la descripción está vacía
+        if (telefono.trim() === '') {
+            // Mostrar SweetAlert de advertencia
+            Swal.fire({
+                icon: 'warning',
+                title: 'Campo Vacío',
+                text: 'No puedes dejar los campos vacíos.',
+                confirmButtonText: 'Entendido'
+            });
+            return; // Detener la ejecución
+        }
+        
+        // Mostrar SweetAlert de confirmación
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¿Quieres guardar los siguientes datos?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Sí, guardar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Enviar datos al servidor utilizando AJAX
+                $.ajax({
+                    url: '../php/actualizar_perfil.php', 
+                    type: 'POST',
+                    data: {
+                        usuarioID3: usuarioID,
+                        telefono: telefono,
+                        tipo: tipo
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        mostrarExperiencia();
+                        // Mostrar SweetAlert de éxito
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Éxito',
+                            text: 'La información se actualizó correctamente.',
+                            timer: 2000, // Duración en milisegundos (en este caso, 2 segundos)
+                            timerProgressBar: true,
+                            showConfirmButton: false
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+    });
+
+    // Agregar evento click a los botones "Guardar" de region
+    $(document).on("click", ".btn-guardar-region", function() {
+        var usuarioID = $(this).data("usuario");
+        var region = $("#regionNom" + usuarioID).val();
+        var tipo = 'reg';
+
+        // Verificar si la descripción está vacía
+        if (region.trim() === '') {
+            // Mostrar SweetAlert de advertencia
+            Swal.fire({
+                icon: 'warning',
+                title: 'Campo Vacío',
+                text: 'No puedes dejar los campos vacíos.',
+                confirmButtonText: 'Entendido'
+            });
+            return; // Detener la ejecución
+        }
+        
+        // Mostrar SweetAlert de confirmación
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¿Quieres guardar los siguientes datos?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Sí, guardar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Enviar datos al servidor utilizando AJAX
+                $.ajax({
+                    url: '../php/actualizar_perfil.php', 
+                    type: 'POST',
+                    data: {
+                        usuarioID4: usuarioID,
+                        region: region,
+                        tipo: tipo
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        mostrarExperiencia();
+                        // Mostrar SweetAlert de éxito
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Éxito',
+                            text: 'La información se actualizó correctamente.',
+                            timer: 2000, // Duración en milisegundos (en este caso, 2 segundos)
+                            timerProgressBar: true,
+                            showConfirmButton: false
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+    });
+
+    // Agregar evento click a los botones "Guardar" de domicilio
+    $(document).on("click", ".btn-guardar-domicilio", function() {
+        var usuarioID = $(this).data("usuario");
+        var domicilio = $("#domicilioNom" + usuarioID).val();
+        var tipo = 'dom';
+
+        // Verificar si la descripción está vacía
+        if (domicilio.trim() === '') {
+            // Mostrar SweetAlert de advertencia
+            Swal.fire({
+                icon: 'warning',
+                title: 'Campo Vacío',
+                text: 'No puedes dejar los campos vacíos.',
+                confirmButtonText: 'Entendido'
+            });
+            return; // Detener la ejecución
+        }
+        
+        // Mostrar SweetAlert de confirmación
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¿Quieres guardar los siguientes datos?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Sí, guardar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Enviar datos al servidor utilizando AJAX
+                $.ajax({
+                    url: '../php/actualizar_perfil.php', 
+                    type: 'POST',
+                    data: {
+                        usuarioID5: usuarioID,
+                        domicilio: domicilio,
+                        tipo: tipo
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        mostrarExperiencia();
+                        // Mostrar SweetAlert de éxito
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Éxito',
+                            text: 'La información se actualizó correctamente.',
+                            timer: 2000, // Duración en milisegundos (en este caso, 2 segundos)
+                            timerProgressBar: true,
+                            showConfirmButton: false
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+    });
+
+    // Agregar evento click a los botones "Guardar" de imagen de perfil
+    $(document).on("click", ".btn-guardar-imagen", function() {
+        var usuarioID = $(this).data("usuario");
+        var tipo = 'img';
+        var formData = new FormData();
+        var fileInput = $('#imagenInput')[0].files[0]
+
+        // Verificar si la descripción está vacía
+        if (!fileInput) {
+            // Mostrar SweetAlert de advertencia
+            Swal.fire({
+                icon: 'warning',
+                title: 'Campo Vacío',
+                text: 'No puedes dejar los campos vacíos.',
+                confirmButtonText: 'Entendido'
+            });
+            return; // Detener la ejecución
+        }
+        
+        // Obtener la extensión del archivo
+        var extension = fileInput.name.split('.').pop();
+
+        // Construir el nuevo nombre de archivo con la extensión original
+        var nuevoNombre = 'pfp_' + usuarioID + '.' + extension;
+
+        formData.append('imagen', fileInput, nuevoNombre);
+        formData.append('usuarioID6', usuarioID);
+        formData.append('tipo', tipo);
+
+        // Mostrar SweetAlert de confirmación
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¿Quieres guardar los siguientes datos?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Sí, guardar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Enviar datos al servidor utilizando AJAX
+                $.ajax({
+                    url: '../php/actualizar_perfil.php', 
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
                     success: function(response) {
                         console.log(response);
                         mostrarExperiencia();

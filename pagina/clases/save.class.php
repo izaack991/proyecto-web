@@ -57,7 +57,7 @@ require_once('conexion.class.php');
             return TRUE;
         }
 
-        public function guardar_usuario($_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $_irol, $_status, $_ruta, $_cons, $_razon)
+        public function guardar_usuario($_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $_irol, $_status, $ruta_img, $_cons, $_razon)
         {        
             try {
                
@@ -79,7 +79,7 @@ require_once('conexion.class.php');
                 $query->bindParam(':domicilio',$_domicilio);
                 $query->bindParam(':rol',$_irol);
                 $query->bindParam(':status',$_status);
-                $query->bindParam(':ruta_imagen',$_ruta);
+                $query->bindParam(':ruta_imagen',$ruta_img);
                 $query->bindParam(':ruta_constancia',$_cons);
                 $query->bindParam(':razon_social',$_razon);
                 $query->execute();
@@ -650,12 +650,12 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
-            public function actualizar_experiencia($idexp,$descripcion,$empresa,$periodo)
+            public function actualizar_experiencia($idexp,$descripcion,$empresa,$fechaInicio,$fechafin)
             {        
                 try 
                 {
                     
-                    $sql="UPDATE tbl_experiencia_laboral SET descripcion_puesto='$descripcion',empresa='$empresa',periodo='$periodo' WHERE id_experiencia=$idexp";
+                    $sql="UPDATE tbl_experiencia_laboral SET descripcion_puesto='$descripcion',empresa='$empresa',fechaInicio='$fechaInicio', fechaFin='$fechafin' WHERE id_experiencia=$idexp";
                     
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
@@ -790,12 +790,12 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
-            public function actualizar_formacion($idfor,$descripcion,$ubicacion,$periodo)
+            public function actualizar_formacion($idfor,$descripcion,$ubicacion,$fechaInicio,$fechafin)
             {        
                 try 
                 {
                     
-                    $sql="UPDATE tbl_formacion_academica SET descripcion='$descripcion',ubicacion='$ubicacion',periodo='$periodo' WHERE id_formacion=$idfor";
+                    $sql="UPDATE tbl_formacion_academica SET descripcion='$descripcion',ubicacion='$ubicacion',fechaInicio='$fechaInicio',fechafin='$fechafin' WHERE id_formacion=$idfor";
                     
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
@@ -856,6 +856,106 @@ require_once('conexion.class.php');
                 {
                     
                     $sql="UPDATE tbl_usuario SET nombre='$nombre', apellido='$apellido' WHERE id_usuario=$usuarioID";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function actualizar_correoUsuario($usuarioID,$correo)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_usuario SET correo='$correo' WHERE id_usuario=$usuarioID";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function actualizar_telefonoUsuario($usuarioID,$telefono)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_usuario SET telefono='$telefono' WHERE id_usuario=$usuarioID";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function actualizar_regionUsuario($usuarioID,$region)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_usuario SET region='$region' WHERE id_usuario=$usuarioID";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function actualizar_domicilioUsuario($usuarioID,$domicilio)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_usuario SET domicilio='$domicilio' WHERE id_usuario=$usuarioID";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function actualizar_ruta_imagenUsuario($usuarioID,$ruta_imagen)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_usuario SET ruta_imagen='$ruta_imagen' WHERE id_usuario=$usuarioID";
                     
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
