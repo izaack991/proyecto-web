@@ -274,16 +274,16 @@ require_once('conexion.class.php');
             
 
 // Funcion para busquedas de campos
-public function buscarMensaje($id_usuario1, $id_usuario2)
+public function buscarMensaje($id_empresa, $id_usuario)
 {
     try {
         $sql = "SELECT m.id_mensaje as id, m.mensaje, m.fecha, m.id_usuario,
                 CASE
-                    WHEN m.id_usuario = :id_usuario1 THEN 'mensaje1'
+                    WHEN m.id_usuario = :id_empresa THEN 'mensaje1'
                     ELSE 'mensaje2'
                 END AS tipo_mensaje,
                 CASE
-                    WHEN m.id_usuario = :id_usuario1 THEN 'fecha1'
+                    WHEN m.id_usuario = :id_empresa THEN 'fecha1'
                     ELSE 'fecha2'
                 END AS tipo_fecha
                 FROM tbl_mensajes AS m 
@@ -291,12 +291,12 @@ public function buscarMensaje($id_usuario1, $id_usuario2)
                 WHERE c.id_conversacion IN (
                     SELECT id_conversacion 
                     FROM tbl_conversaciones 
-                    WHERE (id_usuario1 = :id_usuario1 AND id_usuario2 = :id_usuario2)) 
+                    WHERE (id_empresa = :id_empresa AND id_usuario = :id_usuario)) 
                 ORDER BY id DESC";
         
         $query = $this->dbh->prepare($sql);
-        $query->bindParam(':id_usuario1', $id_usuario1);
-        $query->bindParam(':id_usuario2', $id_usuario2);
+        $query->bindParam(':id_empresa', $id_empresa);
+        $query->bindParam(':id_usuario', $id_usuario);
         $query->execute();
         $data = array();
         while ($row = $query->fetch(PDO::FETCH_ASSOC))
@@ -346,10 +346,10 @@ public function buscarConversacion($id_usuario)
 
         $sql = "SELECT c.id_conversacion,u1.razon_social as razon, u1.nombre AS nombre1, u2.nombre AS nombre2, u1.rol AS rol1, u2.rol AS rol2
         FROM tbl_conversaciones AS c
-        JOIN tbl_usuario AS u1 ON c.id_usuario1 = u1.id_usuario 
-        JOIN tbl_usuario AS u2 ON c.id_usuario2 = u2.id_usuario
+        JOIN tbl_usuario AS u1 ON c.id_empresa = u1.id_usuario 
+        JOIN tbl_usuario AS u2 ON c.id_usuario = u2.id_usuario
         LEFT JOIN tbl_mensajes AS m ON c.id_conversacion = m.id_conversacion
-        WHERE c.id_usuario1 = :id_usuario OR c.id_usuario2 = :id_usuario
+        WHERE c.id_empresa = :id_usuario OR c.id_usuario = :id_usuario
         GROUP BY c.id_conversacion, u1.nombre, u2.nombre, u1.rol, u2.rol
         ORDER BY MAX(m.fecha) DESC";
         

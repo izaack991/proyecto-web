@@ -1,13 +1,14 @@
 $(document).ready(function() {
+    // Cargar mensajes al cargar la página
     cargarMensajes();
 
+    // Función para cargar mensajes
     function cargarMensajes() {
         $.ajax({
             url: '../php/mensajes.php',
             type: 'POST',
             dataType: 'json',
             success: function(response) {
-
                 // Limpiar el contenedor de mensajes antes de agregar nuevos mensajes
                 $('#chat').empty();
 
@@ -16,22 +17,55 @@ $(document).ready(function() {
                     // Agregar mensaje enviado si existe
                     if (response.mensaje1[i]) {
                         $('#chat').append(
-                            '<div class="message-container-sent"><div class="sent-message">' +
+                            '<div class="sent-message">' +
                             '<p>' + response.mensaje1[i] + '</p>' +
                             '<small>' + response.fecha1[i] + '</small>' +
-                            '</div></div>'
+                            '</div>'
                         );
                     }
                     // Agregar mensaje recibido si existe
                     if (response.mensaje2[i]) {
                         $('#chat').append(
-                            '<div class="message-container-received"><div class="received-message">' +
+                            '<div class="received-message">' +
                             '<p>' + response.mensaje2[i] + '</p>' +
                             '<small style="text-align: right;">' + response.fecha2[i] + '</small>' +
-                            '</div></div>'
+                            '</div>'
                         );
                     }
                 }
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
+    // Evento al presionar Enter en el input
+    $('#txtmsj').keypress(function(event) {
+        if (event.which === 13) { // 13 es el código de la tecla Enter
+            enviarMensaje();
+        }
+    });
+
+    // Evento al hacer clic en el botón de enviar
+    $('#enviarMensajeBtn').click(function() {
+        enviarMensaje();
+    });
+
+    // Función para enviar el mensaje mediante AJAX
+    function enviarMensaje() {
+        var mensaje = $('#txtmsj').val(); // Obtener el mensaje del input
+
+        // Realizar la petición AJAX para enviar el mensaje
+        $.ajax({
+            url: '../php/mensajes.php',
+            type: 'POST',
+            data: { mensaje: mensaje }, // Enviar el mensaje al archivo PHP
+            success: function(response) {
+                // Recargar los mensajes después de enviar el mensaje
+                cargarMensajes();
+                // Limpiar el input después de enviar el mensaje
+                $('#txtmsj').val('');
             },
             error: function(xhr, status, error) {
                 console.error(error);

@@ -1,3 +1,21 @@
+function SeleccionarChat() {
+    // Obtener el elemento <li> que se hizo clic
+    var listItem = event.target.closest("li");
+
+    // Deseleccionar todos los elementos <li> que estén seleccionados actualmente
+    var selectedItems = document.querySelectorAll(".list-group-item.selected-item");
+    selectedItems.forEach(function(item) {
+        item.classList.remove("selected-item");
+    });
+
+    // Seleccionar el elemento <li> que se hizo clic
+    listItem.classList.add("selected-item");
+
+    // Llamar a la función cargarMensajes
+    cargarMensajes();
+
+}
+  
 $(document).ready(function() {
     // Hacer la solicitud AJAX al cargar la página
     obtenerConversaciones();
@@ -17,7 +35,7 @@ $(document).ready(function() {
             }
         });
     }
-
+    
     function mostrarConversaciones(conversaciones) {
         // Limpiar la lista de conversaciones
         $('.list-group').empty();
@@ -25,7 +43,7 @@ $(document).ready(function() {
         // Iterar sobre las conversaciones recibidas y agregarlas a la lista
         conversaciones.forEach(function(conversacion) {
             var listItem = `
-                <li class="list-group-item d-flex align-items-center">
+                <li class="list-group-item d-flex align-items-center" onclick="SeleccionarChat(event)">
                     <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
                     <div>
                         <strong>${conversacion.nombre}</strong>
@@ -38,4 +56,5 @@ $(document).ready(function() {
         });
     }
 });
+
 
