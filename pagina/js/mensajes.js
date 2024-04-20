@@ -1,14 +1,14 @@
 $(document).ready(function() {
-    // Cargar mensajes al cargar la página
     cargarMensajes();
 
-    // Función para cargar mensajes
     function cargarMensajes() {
         $.ajax({
-            url: '../php/mensajes.php',
+            url: '../php/conversaciones.php',
             type: 'POST',
+            data:{valor:2},
             dataType: 'json',
             success: function(response) {
+
                 // Limpiar el contenedor de mensajes antes de agregar nuevos mensajes
                 $('#chat').empty();
 
@@ -17,19 +17,19 @@ $(document).ready(function() {
                     // Agregar mensaje enviado si existe
                     if (response.mensaje1[i]) {
                         $('#chat').append(
-                            '<div class="sent-message">' +
+                            '<div class="message-container-sent"><div class="sent-message">' +
                             '<p>' + response.mensaje1[i] + '</p>' +
                             '<small>' + response.fecha1[i] + '</small>' +
-                            '</div>'
+                            '</div></div>'
                         );
                     }
                     // Agregar mensaje recibido si existe
                     if (response.mensaje2[i]) {
                         $('#chat').append(
-                            '<div class="received-message">' +
+                            '<div class="message-container-received"><div class="received-message">' +
                             '<p>' + response.mensaje2[i] + '</p>' +
                             '<small style="text-align: right;">' + response.fecha2[i] + '</small>' +
-                            '</div>'
+                            '</div></div>'
                         );
                     }
                 }
@@ -39,6 +39,7 @@ $(document).ready(function() {
             }
         });
     }
+});
 
     // Evento al presionar Enter en el input
     $('#txtmsj').keypress(function(event) {
@@ -72,4 +73,3 @@ $(document).ready(function() {
             }
         });
     }
-});
