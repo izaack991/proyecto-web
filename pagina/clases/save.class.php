@@ -996,14 +996,14 @@ require_once('conexion.class.php');
                 return TRUE;
             }
             
-            public function insertar_conversacion($id_usuario1, $id_usuario2)
+            public function insertar_conversacion($id_empresa, $id_usuario)
             {
                 try {
-                    $sql = "INSERT INTO tbl_conversaciones (id_usuario1, id_usuario2) VALUES (:id_usuario1, :id_usuario2)";
+                    $sql = "INSERT INTO tbl_conversaciones (id_empresa, id_usuario) VALUES (:id_empresa, :id_usuario)";
                     
                     $query = $this->dbh->prepare($sql);
-                    $query->bindParam(':id_usuario1', $id_usuario1);
-                    $query->bindParam(':id_usuario2', $id_usuario2);
+                    $query->bindParam(':id_empresa', $id_empresa);
+                    $query->bindParam(':id_usuario', $id_usuario);
                     $query->execute();
                 } catch(PDOException $e) {
                     print "Error!: " . $e->getMessage();
@@ -1012,14 +1012,15 @@ require_once('conexion.class.php');
                 return TRUE; // Retorna TRUE si la inserción es exitosa
             }
 
-            public function insertar_mensaje($mensaje, $id_usuario)
+            public function insertar_mensaje($id_conversacion ,$mensaje, $id_usuario)
             {
                 try {
-                    $sql = "INSERT INTO tbl_mensajes (, mensaje, id_usuario) VALUES (:mensaje, :id_usuario)";
+                    $sql = "INSERT INTO tbl_mensajes (id_conversacion, mensaje, id_usuario) VALUES (:id_conversacion, :mensaje, :id_usuario)";
                     
                     $query = $this->dbh->prepare($sql);
                     $query->bindParam(':mensaje', $mensaje);
                     $query->bindParam(':id_usuario', $id_usuario);
+                    $query->bindParam(':id_conversacion', $id_conversacion);
                     $query->execute();
                 } catch(PDOException $e) {
                     print "Error!: " . $e->getMessage();
