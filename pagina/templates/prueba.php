@@ -9,16 +9,3 @@ $buscardor->execute(["%".$_POST["buscar"]."%", "%".$_POST["buscar"]."%", "%".$_P
 $resultados = $buscardor->fetchAll();
 
 ?>
-
-<h6 class="card-title">Resultados encontrados:</h6>
-
-<div id="datos_buscador">
-    <?php foreach($resultados as $resultado): ?>
-        <p class="card-text resultado" data-puesto="<?php echo $resultado['puesto']; ?>">
-            <?php echo $resultado["puesto"]; ?> - <?php echo $resultado["ciudad"] ?>, <?php echo $resultado["region"] ?>
-        </p>
-    <?php endforeach; ?>
-</div>
-
-
-
