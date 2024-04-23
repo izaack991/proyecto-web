@@ -24,7 +24,7 @@
       <h2 style="margin: 0; color: white;">Únete a nuestra comunidad y obtén 3 meses de prueba para publicar tus ofertas laborales</h2>
       <p style="margin: 2vw 0; color: white;">Permítenos optimizar tus procesos de reclutamiento y descubrir el talento que necesitas. Explora nuestros planes diseñados para adaptarse a tus necesidades específicas</p>
       <div style="display: flex; justify-content: center;">
-        <a href="postulacion.php" style="width: 120px; height: 60px; display: inline-block; background-color: #FF5733; color: #fff; padding: 15px 20px; font-size: 1rem; text-decoration: none; border-radius: 5px; margin-bottom: 20px;">Ver planes</a>
+        <!-- <a href="postulacion.php" style="width: 120px; height: 60px; display: inline-block; background-color: #FF5733; color: #fff; padding: 15px 20px; font-size: 1rem; text-decoration: none; border-radius: 5px; margin-bottom: 20px;">Ver planes</a> -->
       </div>
     </div>
   </div>
