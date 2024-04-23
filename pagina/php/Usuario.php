@@ -3,16 +3,50 @@ error_reporting(0);
 session_start();
 include ('../clases/save.class.php');
 include ('../clases/function.class.php');
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 // use PHPMailer\PHPMailer\PHPMailer;
 // use PHPMailer\PHPMailer\Exception;
 //require '..\google-api\vendor\autoload.php';
+require '../google-api/vendor/autoload.php';
 
+require '../PHPMailer/src/Exception.php';
+require '../PHPMailer/src/PHPMailer.php';
+require '../PHPMailer/src/SMTP.php';
 $nuevoUsuario = Save::singleton_guardar();
 $_findUser = Functions::singleton_functions();
 $_compCorreo = Functions::singleton_functions();
 $irol = $_SESSION['rol'];
 //print_r($_SESSION);
+function enviarCorreo($destinatario, $asunto, $mensaje) {
+  $mail = new PHPMailer(true); // Inicializar PHPMailer con excepciones activadas
+
+  try {
+      // Configurar el servidor SMTP y las credenciales
+      $mail->isSMTP();
+      $mail->Host = 'mail.workele.com';
+      $mail->SMTPAuth = true;
+      $mail->Username = 'no-reply@workele.com';
+      $mail->Password = 'i7OTm-M6usi]';
+      $mail->SMTPSecure = 'ssl'; // O 'ssl' si es necesario
+      $mail->Port = 465; // Puerto SMTP
+
+      // Configurar remitente y destinatario
+      $mail->setFrom('no-reply@workele.com', 'Tu Nombre');
+      $mail->addAddress($destinatario);
+
+      // Configurar el contenido del correo
+      $mail->isHTML(true); // Habilitar el formato HTML
+      $mail->Subject = $asunto;
+      $mail->Body = $mensaje;
+
+      // Enviar el correo
+      $mail->send();
+      //echo "El correo se ha enviado correctamente.";
+  } catch (Exception $e) {
+    //  echo "Hubo un error al enviar el correo: {$mail->ErrorInfo}";
+  }
+}
 
 // Comprobación de que los campos de contraseña NO estén vacíos
 if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
@@ -66,74 +100,32 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
 
       //Generamos el Token para la verificación
       $_token = rand(1000, 9999);
+      $nombreUsuario = $_razon;
+      $correoUsuario = $_correo;
 
-       //$verificationLink = "https://workele.com/verificar.php?token=$_token";
+      // Guardar el usuario en la base de datos (simulado)
+      // ...
 
-//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        //CONFIGURACION 1 DE SERVIDOR PARA PHPMAILER
+      // Llamar a la función enviarCorreo después de guardar al usuario
+      $verificationLink = "https://workele.com/verificar.php?token=$_token";
 
-        // $mail = new PHPMailer();
-        // $mail->IsSMTP();  
-        // $mail->Host     = "smtp.serverneubox.com.mx";  
-        // $mail->From     = "no-reply@workele.com";
-        // $mail->SMTPAuth = true; 
-        // $mail->Username ="no-reply@workele.com"; 
-        // $mail->Password="i7OTm-M6usi]"; 
-        // //$mail->FromName = $header;
-        // $mail->AddAddress("jonathan16noriega@gmail.com");
-        // $mail->AddBCC('no-reply@workele.com', 'workele');
-        // $mail->Subject = 'Token de verificación';
-        // $mail->Body    = 'Gracias por registrarte en nuestro sitio. Por favor, haz clic en el siguiente enlace para verificar tu cuenta: <a href="'.$verificationLink.'">Verificar cuenta</a>';
-        // if(!$mail->Send()) {  
-        //    echo 'Message was not sent.';  
-        //    echo 'Mailer error: ' . $mail->ErrorInfo;  
-        // }
-//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-      // Enviar correo de verificación metodo mail() php
-      // $to = 'jonathan16noriega@gmail.com'; 
-      // $subject = 'Verifica tu cuenta';
-      // $message = 'Haz clic en el siguiente enlace para verificar tu cuenta: https://workele.com/verificar.php?token=' . $_token;
-      // $headers = 'From: no-reply@workele.com' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
-
-      // if(mail($to, $subject, $message, $headers)){
-      //   echo 'correo enviado';
-      // }else{
-      //   echo 'no se envio';
-      // }
-//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-      
-      //CONFIGURACION 2 DE SERVIODR PARA PHPMAILER
-
-      //$mail = new PHPMailer (true);
-      
-      // try {
-
-      //   //Configuracion de servidor SMTP
-      //   $mail->isSMTP();
-      //   //$mail->Host = 'svgt333.serverneubox.com.mx'; 
-      //   $mail->Host = 'localhost'; 
-      //   $mail->SMTPAuth = true;
-      //   $mail->Username = 'no-reply@workele.com';
-      //   $mail->Password = 'i7OTm-M6usi]';
-      //   $mail->SMTPSecure = 'tls';
-      //   $mail->Port = 587;
-
-      //   // Configuracion de correo electrónico
-      //   $mail->setFrom('no-reply@workele.com', 'Workele');
-      //   $mail->addAddress('jonathan16noriega@gmail.com'); 
-      //   $mail->isHTML(true);
-      //   $mail->Subject = 'Token de verificación';
-      //   $mail->Body    = 'Gracias por registrarte en nuestro sitio. Por favor, haz clic en el siguiente enlace para verificar tu cuenta: <a href="'.$verificationLink.'">Verificar cuenta</a>';
-        
-      //   // Envío del correo
-      //   if($mail->send()){          
-      //     echo 'El correo de verificación ha sido enviado correctamente.';}
-
-      //   } catch (Exception $e) {
-      //     echo 'Error al enviar el correo: ' . $mail->ErrorInfo;
-      //   }
-//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      $asuntoCorreo = "Bienvenido a nuestra plataforma";
+      $mensajeCorreo = '
+      <!DOCTYPE html>
+      <html lang="es">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Correo de ejemplo</title>
+      </head>
+      <body>
+      <h1>Hola, ' . $_razon . '!</h1>
+          <p>Este es un correo de verificacion</p>
+          <p>para verificar el registro de tu empresa da click en el enlace que esta en el presente correo</p>
+          <p>enlace de verificacion, ' . $verificationLink . '!</p>
+      </body>
+      </html>
+      ';
 
 
 
@@ -240,7 +232,11 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
         
         //Guardamos a los usuarios Nuevos
         $newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol, $_status, $ruta_img, $_cons, $_razon, $_token, $_universidad, $_carrera, $_ingreso);
-
+        if($newuser==true){
+          if($irol==1){
+            enviarCorreo($correoUsuario, $asuntoCorreo, $mensajeCorreo);
+          }
+        }
       } else {
 
         //Alerta si el Correo está registrado en la base de datos

@@ -1424,8 +1424,6 @@ public function buscarConversacion($id_usuario)
 
             return TRUE;
         }
-
-
         // public function eliminar_vacantes()
         // {        
         //     try 
