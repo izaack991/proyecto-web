@@ -344,7 +344,7 @@ public function buscarConversacion($id_usuario)
          // Devolver el resultado (en este caso, solo el rol)
         $resultado['rol'];
 
-        $sql = "SELECT c.id_conversacion,u1.razon_social as razon, u1.nombre AS nombre1, u2.nombre AS nombre2, u1.rol AS rol1, u2.rol AS rol2
+        $sql = "SELECT c.id_conversacion as idc,u1.id_usuario as id1, u2.id_usuario as id2, u1.razon_social as razon, u1.nombre AS nombre1, u2.nombre AS nombre2, u1.rol AS rol1, u2.rol AS rol2
         FROM tbl_conversaciones AS c
         JOIN tbl_usuario AS u1 ON c.id_empresa = u1.id_usuario 
         JOIN tbl_usuario AS u2 ON c.id_usuario = u2.id_usuario
@@ -361,9 +361,11 @@ public function buscarConversacion($id_usuario)
         while ($row = $query->fetch(PDO::FETCH_ASSOC))
         {
             if ($resultado['rol'] == 2) {
-                $row['nombre'] = $row['razon']; // Si el rol es 1, toma el nombre del usuario 1
+                $row['nombre'] = $row['razon'];
+                $row['id'] = $row['id1']; // Si el rol es 1, toma el nombre del usuario 1
             } else {
-                $row['nombre'] = $row['nombre2']; // Si el rol no es 1, toma el nombre del usuario 2
+                $row['nombre'] = $row['nombre2'];
+                $row['id'] = $row['id2']; // Si el rol no es 1, toma el nombre del usuario 2
             }
             $data[] = $row;
         }
@@ -374,8 +376,6 @@ public function buscarConversacion($id_usuario)
     }
     return $data;
 }
-
-
             function buscaPaises()
             {
                 try

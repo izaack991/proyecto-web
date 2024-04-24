@@ -1,34 +1,23 @@
 <?php
-include('conexion.class.php');
+// Verificar si se ha enviado un token por POST
+if (isset($_POST['token'])) {
+    // Obtener el token enviado por POST
+    $tokenIngresado = $_POST['token'];
 
-// Verificar si se recibió un token en la URL
-if(isset($_GET['token'])) {
-    $token = $_GET['token'];
+    // Token almacenado previamente (simulado, debes reemplazar con tu lógica real)
+    $tokenAlmacenado = "token_generado"; // Reemplaza "token_generado" con el token real almacenado en tu sistema
 
-    // Consultar la base de datos para verificar si el token es válido
-    $query = "SELECT * FROM usuarios WHERE token = '$_token'";
-    $result = mysqli_query($conexion, $query);
-
-    if(mysqli_num_rows($result) > 0) {
-        // El token es válido, marcar la cuenta como verificada
-        $row = mysqli_fetch_assoc($result);
-        $id_usuario = $row['id_usuario']; // Suponiendo que el id del usuario está en una columna llamada 'id_usuario'
-        
-        // Actualizar el estado de verificación del usuario en la base de datos
-        $update_query = "UPDATE usuarios SET verificado = 1 WHERE id_usuario = $id_usuario";
-        mysqli_query($conexion, $update_query);
-
-        // Mostrar mensaje de verificación exitosa
-        echo "¡Tu cuenta ha sido verificada correctamente!";
+    // Comparar el token ingresado con el token almacenado
+    if ($tokenIngresado === $tokenAlmacenado) {
+        // El token es válido, mostrar mensaje de éxito
+        echo '<div class="alert alert-success" role="alert">¡La cuenta ha sido verificada exitosamente!</div>';
     } else {
-        // El token no es válido
-        echo "El token de verificación es inválido.";
+        // El token es incorrecto, mostrar mensaje de error
+        echo '<div class="alert alert-danger" role="alert">El token ingresado es incorrecto. Por favor, inténtalo de nuevo.</div>';
     }
 } else {
-    // No se recibió ningún token en la URL
-    echo "No se proporcionó ningún token de verificación.";
+    // Si no se ha enviado un token por POST, redirigir al formulario de verificación
+    header("Location: verificacion.html");
+    exit();
 }
-
-// Cerrar la conexión a la base de datos
-mysqli_close($conexion);
 ?>

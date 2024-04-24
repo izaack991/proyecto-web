@@ -32,7 +32,7 @@ function enviarCorreo($destinatario, $asunto, $mensaje) {
       $mail->Port = 465; // Puerto SMTP
 
       // Configurar remitente y destinatario
-      $mail->setFrom('no-reply@workele.com', 'Tu Nombre');
+      $mail->setFrom('no-reply@workele.com', 'Equipo workele');
       $mail->addAddress($destinatario);
 
       // Configurar el contenido del correo
@@ -107,7 +107,7 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
       // ...
 
       // Llamar a la función enviarCorreo después de guardar al usuario
-      $verificationLink = "https://workele.com/verificar.php?token=$_token";
+      $verificationLink = "http://localhost:8080/proyecto-web/pagina/templates/verificacion.php";
 
       $asuntoCorreo = "Bienvenido a nuestra plataforma";
       $mensajeCorreo = '
@@ -119,10 +119,13 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
           <title>Correo de ejemplo</title>
       </head>
       <body>
+      <img src="https://workele.com/site/assets/images/index_usuario/WORKELE.png" alt="" style="width: 150px; height: 150px;">
       <h1>Hola, ' . $_razon . '!</h1>
           <p>Este es un correo de verificacion</p>
           <p>para verificar el registro de tu empresa da click en el enlace que esta en el presente correo</p>
           <p>enlace de verificacion, ' . $verificationLink . '!</p>
+          <h2>ingrese el siguiente codigo de verificacion donde lo indica la pagina: ' . $_token . '</h2>
+          <p>favor de no contestar este correo, fue enviado automaticamente</p>
       </body>
       </html>
       ';
