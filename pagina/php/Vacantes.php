@@ -42,19 +42,6 @@ if (isset($_POST['dateFin'])) {
         $f_id_vacantes = $_findUser->consec_vacantes();
         $newVacante = $nuevoUsuario->Guardar_id_vacantes($f_id_vacantes, $_idusuario, $_puesto, $_empresa, $_sueldo, $_lugar, $_datos, $_fechainicio, $_fechafin,$_region,$_ciudad);
 
-        $fecha_inicio = strtotime($_POST['dateInicio']);
-
-        // Calcular la diferencia en segundos entre las fechas
-        $diferencia = $fecha_actual - $fecha_inicio;
-
-        // Convertir la diferencia a días
-        $dias_transcurridos = $diferencia / (60 * 60 * 24);
-
-        // Si la diferencia es de 1 día, llamar a la función eliminar_vacantes()
-        if ($dias_transcurridos == 1) {
-            eliminar_vacantes();
-        }
-
         // Guardar log de usuario
         date_default_timezone_set('America/Mexico_City');
         $_movimiento = 'Vacantes(Guardar)';
