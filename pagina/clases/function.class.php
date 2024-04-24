@@ -704,7 +704,7 @@ public function buscarConversacion($id_usuario)
             {        
                 try {
                     
-                    $sql = "SELECT * FROM tbl_usuario WHERE id_usuario=:id_usuario";
+                    $sql = "SELECT a.*, b.nombre AS pais FROM tbl_usuario AS a INNER JOIN tbl_paises AS b ON b.region=a.region WHERE id_usuario=:id_usuario";
                     $query = $this->dbh->prepare($sql);
                     $query->bindParam(':id_usuario',$id_usuario);
                     $query->execute();
@@ -1424,8 +1424,6 @@ public function buscarConversacion($id_usuario)
 
             return TRUE;
         }
-
-
         // public function eliminar_vacantes()
         // {        
         //     try 

@@ -57,7 +57,7 @@ require_once('conexion.class.php');
             return TRUE;
         }
 
-        public function guardar_usuario($_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $_irol, $_status, $_ruta, $_cons, $_razon, $_token, $_universidad, $_carrera, $_ingreso)
+        public function guardar_usuario($_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $_irol, $_status, $ruta_img, $_cons, $_razon, $_token, $_universidad, $_carrera, $_ingreso)
         {        
             try {
                

@@ -98,7 +98,7 @@ $(document).ready(function() {
                         imagen_usuario += `<div class="image-container mx-auto"><img src="`+usuario.ruta_imagen+`"></div>`;
                         nom_usuario += usuario.nombre+` `+usuario.apellido;
                         correo_usuario += usuario.correo;
-                        region_usuario += usuario.region;
+                        region_usuario += usuario.pais;
                         telefono_usuario += usuario.telefono;
                         domicilio_usuario += usuario.domicilio;
                         
@@ -124,8 +124,34 @@ $(document).ready(function() {
 
                         input_telefono += `<div class="row"><div class="col text-center"><button type="button" class="btn btn-info mb-3 w-100 btn-guardar-telefono" data-usuario="`+usuario.id_usuario+`" style="font-size:1.2rem;">Guardar</button></div></div>`
 
-                        input_region += `<h3 class='text-dark mb-3'>`+usuario.region+`</h3><div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Región</span>
-                                      <input id="regionNom`+usuario.id_usuario+`" type="text" class="form-control" value="`+usuario.region+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br>`
+                        input_region += `<h3 class='text-dark mb-3'>`+usuario.pais+`</h3><div class="input-group"><span class="input-group-text rounded-0 text-white bg-primary font-weight-bold border-0" id="inputGroup-sizing-default">Región</span>
+                                      <select class="form-select w-auto" id="regionNom`+usuario.id_usuario+`">
+                                        <option value="52">México</option>
+                                        <option value="54">Argentina</option>
+                                        <option value="591">Bolivia</option>
+                                        <option value="55">Brasil</option>
+                                        <option value="56">Chile</option>
+                                        <option value="57">Colombia</option>
+                                        <option value="506">Costa Rica</option>
+                                        <option value="53">Cuba</option>
+                                        <option value="593">Ecuador</option>
+                                        <option value="503">El Salvador</option>
+                                        <option value="1473">Granada</option>
+                                        <option value="502">Guatemala</option>
+                                        <option value="592">Guayana</option>
+                                        <option value="509">Haití</option>
+                                        <option value="504">Honduras</option>
+                                        <option value="1876">Jamaica</option>
+                                        <option value="505">Nicaragua</option>
+                                        <option value="507">Panamá</option>
+                                        <option value="595">Paraguay</option>
+                                        <option value="51">Perú</option>
+                                        <option value="1">Puerto Rico</option>
+                                        <option value="1809">República Dominicana</option>
+                                        <option value="597">Surinam</option>
+                                        <option value="598">Uruguay</option>
+                                        <option value="58">Venezuela</option>
+                                      </select></div><br>`
 
                         input_region += `<div class="row"><div class="col text-center"><button type="button" class="btn btn-info mb-3 w-100 btn-guardar-region" data-usuario="`+usuario.id_usuario+`" style="font-size:1.2rem;">Guardar</button></div></div>`
 
