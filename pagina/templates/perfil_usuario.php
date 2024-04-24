@@ -407,6 +407,7 @@
         $("#cardRegion").hide();
         $("#cardDomicilio").hide();
         $("#cardTelefono").hide();
+        $("#cardImagenPerfil").hide();
         $("#cardNombre").slideDown();
     });
 
@@ -415,6 +416,7 @@
         $("#cardRegion").hide();
         $("#cardDomicilio").hide();
         $("#cardTelefono").hide();
+        $("#cardImagenPerfil").hide();
         $("#cardCorreo").slideDown();
     });
 
@@ -423,6 +425,7 @@
         $("#cardCorreo").hide();
         $("#cardDomicilio").hide();
         $("#cardTelefono").hide();
+        $("#cardImagenPerfil").hide();
         $("#cardRegion").slideDown();
     });
 
@@ -431,6 +434,7 @@
         $("#cardCorreo").hide();
         $("#cardRegion").hide();
         $("#cardTelefono").hide();
+        $("#cardImagenPerfil").hide();
         $("#cardDomicilio").slideDown();
     });
 
@@ -439,6 +443,7 @@
         $("#cardCorreo").hide();
         $("#cardRegion").hide();
         $("#cardDomicilio").hide();
+        $("#cardImagenPerfil").hide();
         $("#cardTelefono").slideDown();
     });
 
@@ -505,6 +510,7 @@
         $("#cardRegion").hide();
         $("#cardDomicilio").hide();
         $("#cardTelefono").hide();
+        $("#cardImagenPerfil").hide();
     });
     $("#btncancelarEXP").click(function(){
         $("#cardExperiencia").slideUp();

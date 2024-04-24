@@ -230,24 +230,24 @@ $(document).ready(function() {
         window.location.href = "experiencia_laboral.php";
     });
     $(document).on("click", "#btnAgregarfor", function() {
-        // Redirige a experiencia_laboral.php
+        // Redirige a formacion_academica.php
         window.location.href = "formacion_academica.php";
     });
     $(document).on("click", "#btnAgregarafi", function() {
-        // Redirige a experiencia_laboral.php
+        // Redirige a aficiones.php
         window.location.href = "aficiones.php";
     });
     $(document).on("click", "#btnAgregarint", function() {
-        // Redirige a experiencia_laboral.php
+        // Redirige a interes.php
         window.location.href = "interes.php";
     });
     $(document).on("click", "#btnAgregarvid", function() {
-        // Redirige a experiencia_laboral.php
+        // Redirige a video_curriculum.php
         window.location.href = "video_curriculum.php";
     });
     $(document).on("click", "#btnAgregarpos", function() {
-        // Redirige a experiencia_laboral.php
-        window.location.href = "buscar_vacantes.php.php";
+        // Redirige a buscar_vacantes.php
+        window.location.href = "buscar_vacantes.php";
     });
 
     // Agregar evento click a los botones "Guardar" de experiencia
