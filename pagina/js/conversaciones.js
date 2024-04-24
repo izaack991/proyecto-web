@@ -1,21 +1,4 @@
-// function SeleccionarChat() {
-//     // Obtener el elemento <li> que se hizo clic
-//     var listItem = event.target.closest("li");
 
-//     // Deseleccionar todos los elementos <li> que estén seleccionados actualmente
-//     var selectedItems = document.querySelectorAll(".list-group-item.selected-item");
-//     selectedItems.forEach(function(item) {
-//         item.classList.remove("selected-item");
-//     });
-
-//     // Seleccionar el elemento <li> que se hizo clic
-//     listItem.classList.add("selected-item");
-
-//     // Llamar a la función cargarMensajes
-//     cargarMensajes();
-
-// }
-  
 $(document).ready(function() {
     // Hacer la solicitud AJAX al cargar la página
     obtenerConversaciones();
