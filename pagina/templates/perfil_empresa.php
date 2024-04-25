@@ -12,7 +12,7 @@
     <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../js/perfil_usuario.js"></script>
+    <script src="../js/perfil_empresa.js"></script>
 
     <script>
       // funcion para solo letras mayúsculas, minúsculas y espacios
@@ -29,7 +29,7 @@
   
   <body>
     <!--Barra de navegacion para Empresa-->
-    <?php include("navbar_usuario.php") ?>
+    <?php include("navbar_empresa.php") ?>
 
     <!-- Card de potulaciones -->
     <div class="container-fluid">
@@ -42,15 +42,15 @@
                   <div class="card-body">
                     <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="usuario-tab" data-bs-toggle="tab" data-bs-target="#usuario" type="button" role="tab" aria-controls="home" aria-selected="true">Usuario</button>
+                            <button class="nav-link active" id="usuario-tab" data-bs-toggle="tab" data-bs-target="#usuario" type="button" role="tab" aria-controls="home" aria-selected="true">Empresa</button>
                         </li>
-                        <li class="nav-item" role="presentation">
+                        <!-- <li class="nav-item" role="presentation">
                             <button class="nav-link" id="competencias-tab" data-bs-toggle="tab" data-bs-target="#competencias" type="button" role="tab" aria-controls="profile" aria-selected="false">Competencias</button>
-                        </li>
+                        </li> -->
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="usuario" role="tabpanel" >
-                        <div class="row">
+                            <div class="row">
                                 <div class="col">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <div id="imagenPerfil" class=" w-100">
@@ -66,7 +66,20 @@
                                 <div class="col">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <div>
-                                            <label class="my-auto text-primary font-weight-bold">Nombre</label><br>
+                                            <label class="my-auto text-primary font-weight-bold">Constancia de Situación Fiscal</label><br>
+                                            <label id="constanciaEmpresa" class="form-label"></label>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <button id="btncardconstancia" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                        </div>
+                                    </li>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <label class="my-auto text-primary font-weight-bold">Razón Social</label><br>
                                             <label id="nomUsuario" class="form-label"></label>
                                         </div>
                                         <div class="ml-auto">
@@ -101,34 +114,8 @@
                                     </li>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <label class="my-auto text-primary font-weight-bold">Región</label><br>
-                                            <label id="regionUsuario" class="form-label"></label>
-                                        </div>
-                                        <div class="ml-auto">
-                                            <button id="btncardregion" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
-                                        </div>
-                                    </li>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <label class="my-auto text-primary font-weight-bold">Domicilio</label><br>
-                                            <label id="domicilioUsuario" class="form-label"></label>
-                                        </div>
-                                        <div class="ml-auto">
-                                            <button id="btncarddomicilio" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
-                                        </div>
-                                    </li>
-                                </div>
-                            </div>
                         </div>
-                        <div class="tab-pane fade" id="competencias" role="tabpanel" aria-labelledby="competencias-tab">
+                        <!-- <div class="tab-pane fade" id="competencias" role="tabpanel" aria-labelledby="competencias-tab">
                         <div class="row mb-2 justify-content-center">
                                 <div class="container">
                                     <label class="mx-3">Ten en cuenta que puedes editar tu información si así lo requieres en cualquier momento.</label>
@@ -212,94 +199,10 @@
                                     </div>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                       
                   </div>
-                </div>
-            </div>
-            <!-- Card de Experiencia Laboral -->
-            <div class="col-auto mr-auto mt-4" id="cardExperiencia" style="display:none;">
-                <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
-                    <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
-                        <h4 class="card-title text-white mb-0 d-inline">EDITAR EXPERIENCIA LABORAL</h4>
-                        <button type="button d-inline" id="btncancelarEXP" class="close text-white" >
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <div id="contenedorExperiencia"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Card de Formación Académica -->
-            <div class="col-auto mr-auto mt-4" id="cardFormacion" style="display:none;">
-                <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
-                    <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
-                        <h4 class="card-title text-white d-inline mb-0">EDITAR FORMACIÓN ACADÉMICA</h4>
-                        <button type="button d-inline" id="btncancelarFOR" class="close text-white" >
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <div id="contenedorFormacion"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Card de Aficiones -->
-            <div class="col-auto mr-auto mt-4" id="cardAficion" style="display:none;">
-                <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
-                    <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
-                        <h4 class="card-title text-white d-inline mb-0">EDITAR AFICIONES</h4>
-                        <button type="button d-inline" id="btncancelarAFI" class="close text-white" >
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <div id="contenedorAficion"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Card de Intereses -->
-            <div class="col-auto mr-auto mt-4" id="cardInteres" style="display:none;">
-                <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
-                    <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
-                        <h4 class="card-title text-white d-inline mb-0">EDITAR INTERESES</h4>
-                        <button type="button d-inline" id="btncancelarINT" class="close text-white" >
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <div id="contenedorInteres"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Card de Video  Curriculum -->
-            <div class="col-auto mr-auto mt-4" id="cardVideoCurriculum" style="display:none;">
-                <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
-                    <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
-                        <h4 class="card-title text-white d-inline mb-0">EDITAR VIDEO CURRICULUM</h4>
-                        <button type="button d-inline" id="btncancelarVID" class="close text-white" >
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <div id="contenedorVideoCurriculum"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Card de Postulacion -->
-            <div class="col-auto mr-auto mt-4" id="cardPostulacion" style="display:none;">
-                <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
-                    <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
-                        <h4 class="card-title text-white d-inline mb-0">EDITAR POSTULACIONES</h4>
-                        <button type="button d-inline" id="btncancelarPOS" class="close text-white" >
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <div id="contenedorPostulacion"></div>
-                    </div>
                 </div>
             </div>
             <!-- Card de Imagen de Perfil -->
@@ -313,6 +216,20 @@
                     </div>
                     <div class="card-body">
                         <div id="contenedorImagenP"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card de Imagen de Perfil -->
+            <div class="col-auto mr-auto mt-4" id="cardConstancia" style="display:none;">
+                <div class="card border-light shadow-lg bg-body" style="width:36rem;border-radius:0.6rem;">
+                    <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
+                        <h4 class="card-title text-white d-inline mb-0">EDITAR CONSTANCIA DE SITUACIÓN FISCAL</h4>
+                        <button type="button d-inline" id="btncancelarConstancia" class="close text-white" >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="contenedorConstancia"></div>
                     </div>
                 </div>
             </div>
@@ -358,34 +275,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Card de Region -->
-            <div class="col-auto mr-auto mt-4" id="cardRegion" style="display:none;">
-                <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
-                    <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
-                        <h4 class="card-title text-white d-inline mb-0">EDITAR REGIÓN</h4>
-                        <button type="button d-inline" id="btncancelarRegion" class="close text-white" >
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <div id="contenedorRegion"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Card de Domicilio -->
-            <div class="col-auto mr-auto mt-4" id="cardDomicilio" style="display:none;">
-                <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
-                    <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
-                        <h4 class="card-title text-white d-inline mb-0">EDITAR DOMICILIO</h4>
-                        <button type="button d-inline" id="btncancelarDomicilio" class="close text-white" >
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <div id="contenedorDomicilio"></div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -399,7 +288,17 @@
         $("#cardDomicilio").hide();
         $("#cardTelefono").hide();
         $("#cardNombre").hide();
+        $("#cardConstancia").hide();
         $("#cardImagenPerfil").slideDown();
+    });
+    $("#btncardconstancia").click(function(){
+        $("#cardCorreo").hide();
+        $("#cardRegion").hide();
+        $("#cardDomicilio").hide();
+        $("#cardTelefono").hide();
+        $("#cardNombre").hide();
+        $("#cardImagenPerfil").hide();
+        $("#cardConstancia").slideDown();
     });
 
     $("#btncardnombre").click(function(){
@@ -408,6 +307,7 @@
         $("#cardDomicilio").hide();
         $("#cardTelefono").hide();
         $("#cardImagenPerfil").hide();
+        $("#cardConstancia").hide();
         $("#cardNombre").slideDown();
     });
 
@@ -417,25 +317,8 @@
         $("#cardDomicilio").hide();
         $("#cardTelefono").hide();
         $("#cardImagenPerfil").hide();
+        $("#cardConstancia").hide();
         $("#cardCorreo").slideDown();
-    });
-
-    $("#btncardregion").click(function(){
-        $("#cardNombre").hide();
-        $("#cardCorreo").hide();
-        $("#cardDomicilio").hide();
-        $("#cardTelefono").hide();
-        $("#cardImagenPerfil").hide();
-        $("#cardRegion").slideDown();
-    });
-
-    $("#btncarddomicilio").click(function(){
-        $("#cardNombre").hide();
-        $("#cardCorreo").hide();
-        $("#cardRegion").hide();
-        $("#cardTelefono").hide();
-        $("#cardImagenPerfil").hide();
-        $("#cardDomicilio").slideDown();
     });
 
     $("#btncardtelefono").click(function(){
@@ -444,91 +327,16 @@
         $("#cardRegion").hide();
         $("#cardDomicilio").hide();
         $("#cardImagenPerfil").hide();
+        $("#cardConstancia").hide();
         $("#cardTelefono").slideDown();
     });
 
-    // CODIGO JAVASCRIPT PARA LAS VENTANAS DE COMPETENCIAS
-    $("#btncardexp").click(function(){
-        $("#cardFormacion").hide();
-        $("#cardAficion").hide();
-        $("#cardInteres").hide();
-        $("#cardVideoCurriculum").hide();
-        $("#cardPostulacion").hide();
-        $("#cardExperiencia").slideDown();
+    // CODIGO JAVASCRIPT PARA CERRAR LAS VENTANAS DE EDICION
+    $("#btncancelarImagenPerfil").click(function(){
+        $("#cardImagenPerfil").slideUp();
     });
-    $("#btncardfor").click(function(){
-        $("#cardExperiencia").hide();
-        $("#cardAficion").hide();
-        $("#cardInteres").hide();
-        $("#cardVideoCurriculum").hide();
-        $("#cardPostulacion").hide();
-        $("#cardFormacion").slideDown();
-    });
-    $("#btncardafi").click(function(){
-        $("#cardExperiencia").hide();
-        $("#cardFormacion").hide();
-        $("#cardInteres").hide();
-        $("#cardVideoCurriculum").hide();
-        $("#cardPostulacion").hide();
-        $("#cardAficion").slideDown();
-    });
-    $("#btncardint").click(function(){
-        $("#cardExperiencia").hide();
-        $("#cardFormacion").hide();
-        $("#cardAficion").hide();
-        $("#cardVideoCurriculum").hide();
-        $("#cardPostulacion").hide();
-        $("#cardInteres").slideDown();
-    });
-    $("#btncardvid").click(function(){
-        $("#cardExperiencia").hide();
-        $("#cardFormacion").hide();
-        $("#cardAficion").hide();
-        $("#cardInteres").hide();
-        $("#cardPostulacion").hide();
-        $("#cardVideoCurriculum").slideDown();
-    });
-    $("#btncardpos").click(function(){
-        $("#cardExperiencia").hide();
-        $("#cardFormacion").hide();
-        $("#cardAficion").hide();
-        $("#cardInteres").hide();
-        $("#cardVideoCurriculum").hide();
-        $("#cardPostulacion").slideDown();
-    });
-    $("#usuario-tab").click(function(){
-        $("#cardExperiencia").hide();
-        $("#cardFormacion").hide();
-        $("#cardAficion").hide();
-        $("#cardInteres").hide();
-        $("#cardVideoCurriculum").hide();
-        $("#cardPostulacion").hide();
-    });
-    $("#competencias-tab").click(function(){
-        $("#cardNombre").hide();
-        $("#cardCorreo").hide();
-        $("#cardRegion").hide();
-        $("#cardDomicilio").hide();
-        $("#cardTelefono").hide();
-        $("#cardImagenPerfil").hide();
-    });
-    $("#btncancelarEXP").click(function(){
-        $("#cardExperiencia").slideUp();
-    });
-    $("#btncancelarFOR").click(function(){
-        $("#cardFormacion").slideUp();
-    });
-    $("#btncancelarAFI").click(function(){
-        $("#cardAficion").slideUp();
-    });
-    $("#btncancelarINT").click(function(){
-        $("#cardInteres").slideUp();
-    });
-    $("#btncancelarVID").click(function(){
-        $("#cardVideoCurriculum").slideUp();
-    });
-    $("#btncancelarPOS").click(function(){
-        $("#cardPostulacion").slideUp();
+    $("#btncancelarConstancia").click(function(){
+        $("#cardConstancia").slideUp();
     });
     $("#btncancelarNombre").click(function(){
         $("#cardNombre").slideUp();
@@ -538,15 +346,6 @@
     });
     $("#btncancelarTelefono").click(function(){
         $("#cardTelefono").slideUp();
-    });
-    $("#btncancelarRegion").click(function(){
-        $("#cardRegion").slideUp();
-    });
-    $("#btncancelarDomicilio").click(function(){
-        $("#cardDomicilio").slideUp();
-    });
-    $("#btncancelarImagenPerfil").click(function(){
-        $("#cardImagenPerfil").slideUp();
     });
     
   });

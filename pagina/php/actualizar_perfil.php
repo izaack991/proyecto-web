@@ -109,6 +109,16 @@ if ($tipo='nom'){
         $busuario = $buscarDatos->seleccionar_usuario($iusuario);
     }
 }
+if ($tipo='raz'){
+    // Verificar si se han recibido todos los datos necesarios
+    if (isset($_POST['usuarioID7'],$_POST['razon_social'])) {
+        // Obtener los datos enviados por AJAX
+        $usuarioID = $_POST['usuarioID7'];
+        $razon_social = $_POST['razon_social'];
+        $UCerrar=$NuevoC->actualizar_razon_social($usuarioID,$razon_social);
+        $busuario = $buscarDatos->seleccionar_usuario($iusuario);
+    }
+}
 if ($tipo='cor'){
     // Verificar si se han recibido todos los datos necesarios
     if (isset($_POST['usuarioID2'],$_POST['correo'])) {
@@ -148,6 +158,36 @@ if ($tipo='dom'){
         $UCerrar=$NuevoC->actualizar_domicilioUsuario($usuarioID,$domicilio);
         $busuario = $buscarDatos->seleccionar_usuario($iusuario);
     }
+}
+if ($tipo='pdf'){
+        // Directorio donde se guardarán las imágenes
+        $directorio = '../userfiles/pdf/';
+        if (!file_exists($directorio)) {
+            mkdir($directorio, 0777, true);
+        }
+        if ($_FILES['constancia']) {
+            $usuarioID = $_POST['usuarioID8'];
+            $nombreImagen = $_FILES['constancia']['name'];
+            $archivo = $directorio . basename($nombreImagen);
+
+            // Eliminar todas las imágenes con el mismo nombre sin importar la extensión
+            $archivosSimilares = glob($directorio . pathinfo($nombreImagen, PATHINFO_FILENAME) . ".*");
+            foreach ($archivosSimilares as $archivoSimilar) {
+                unlink($archivoSimilar);
+            }
+
+            if (move_uploaded_file($_FILES['constancia']['tmp_name'], $archivo)) {
+                // Guardar la ruta de la imagen en la base de datos
+                $ruta_constancia = $archivo;
+                $UCerrar=$NuevoC->actualizar_ruta_constanciaEmpresa($usuarioID,$ruta_constancia);
+                $busuario = $buscarDatos->seleccionar_usuario($iusuario);
+            } else {
+                echo "Hubo un error al subir la imagen.";
+            }
+        } else {
+            echo "No se recibió ninguna imagen.";
+        }
+        
 }
 if ($tipo='img'){
         // Directorio donde se guardarán las imágenes

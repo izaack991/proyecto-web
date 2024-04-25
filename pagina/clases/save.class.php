@@ -875,6 +875,26 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+            public function actualizar_razon_social($usuarioID,$razon_social)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_usuario SET razon_social='$razon_social' WHERE id_usuario=$usuarioID";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
             public function actualizar_correoUsuario($usuarioID,$correo)
             {        
                 try 
@@ -961,6 +981,26 @@ require_once('conexion.class.php');
                 {
                     
                     $sql="UPDATE tbl_usuario SET ruta_imagen='$ruta_imagen' WHERE id_usuario=$usuarioID";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function actualizar_ruta_constanciaEmpresa($usuarioID,$ruta_constancia)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_usuario SET ruta_constancia='$ruta_constancia' WHERE id_usuario=$usuarioID";
                     
                     $query = $this->dbh->prepare($sql);
                     $query->execute();

@@ -148,6 +148,7 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
       $conName = 'csf_' . $f_id_usuario . '.' . $conExt;
       $tamanoCons = $_FILES['txtcons']['size'];
       $tempCons = $_FILES['txtcons']['tmp_name'];
+      $ruta_pdf = '../userfiles/pdf/' . $conName;
 
       //Llamamos la función para confirmar que el correo NO esté registrado
       $comp_correo = $_compCorreo->buscar_correo($_correo);
@@ -234,7 +235,7 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
         //$f_id_usuario = $_findUser -> consec_usuario();
         
         //Guardamos a los usuarios Nuevos
-        $newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol, $_status, $ruta_img, $_cons, $_razon, $_token, $_universidad, $_carrera, $_ingreso);
+        $newuser = $nuevoUsuario->guardar_usuario($f_id_usuario, $_nombre, $_apellido, $_correo, $_fecha_nac, $_no_identificacion, $_password, $_sexo, $_region, $_telefono, $_domicilio, $irol, $_status, $ruta_img, $ruta_pdf, $_razon, $_token, $_universidad, $_carrera, $_ingreso);
         if($newuser==true){
           if($irol==1){
             enviarCorreo($correoUsuario, $asuntoCorreo, $mensajeCorreo);
