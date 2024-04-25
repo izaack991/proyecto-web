@@ -515,7 +515,27 @@ public function buscarMensaje($id_empresa, $id_usuario)
     return $data;
 }
 
-
+public function actualizarMensaje($id_empresa, $id_usuario,$id_u)
+{
+    try {
+        $sql = "SELECT m.id_mensaje FROM tbl_mensajes AS m INNER JOIN tbl_conversaciones AS c ON m.id_conversacion = c.id_conversacion WHERE c.id_empresa = :id_empresa AND c.id_usuario = :id_usuario AND m.id_mensaje > :id_m ORDER BY m.id_mensaje ASC";  
+        $query = $this->dbh->prepare($sql);
+        $query->bindParam(':id_empresa', $id_empresa);
+        $query->bindParam(':id_usuario', $id_usuario);
+        $query->bindParam(':id_m', $id_m);
+        $query->execute();
+        $data = array();
+        while ($row = $query->fetch(PDO::FETCH_ASSOC))
+        {
+            $data[] = $row;    
+        }
+    }
+    catch(PDOException $e)
+    {
+        print "Error: !" . $e->getMessage();
+    }
+    return $data;
+}
 public function buscarConversacion($id_usuario,$rol)
 {
     try {

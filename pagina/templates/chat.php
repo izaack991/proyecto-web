@@ -168,7 +168,7 @@ integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ
     // Función para enviar el mensaje mediante AJAX
     function enviarMensaje() {
         var mensaje = $('#txtmsj').val();
-        alert (mensaje); // Obtener el mensaje del input
+        //alert (mensaje); // Obtener el mensaje del input
 
         // Realizar la petición AJAX para enviar el mensaje
         $.ajax({
