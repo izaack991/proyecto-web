@@ -26,30 +26,41 @@ $(document).ready(function(){
 
 // Función para cerrar
 function cerrar(index) {
-    $.ajax({
-        url: "../php/postulacion.php",
-        type: "POST",
-        data: { index: index },
-        success: function(response) {
-            // Manejar la respuesta si es necesario
-            Swal.fire({
-                title: 'Éxito!',
-                text: 'La postulación se cerró correctamente.',
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 3000, // Tiempo en milisegundos (3 segundos)
-                timerProgressBar: true,
-                onClose: () => {
-                    clearInterval(timerInterval);
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: '¿Quieres cerrar esta postulación? No podras recuperarla una vez se elimine',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, cerrar postulación',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "../php/postulacion.php",
+                type: "POST",
+                data: { index: index },
+                success: function (response) {
+                    // Manejar la respuesta si es necesario
+                    Swal.fire({
+                        title: 'Éxito!',
+                        text: 'La postulación se cerró correctamente.',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 3000, // Tiempo en milisegundos (3 segundos)
+                        timerProgressBar: true,
+                        onClose: () => {
+                            clearInterval(timerInterval);
+                        }
+                    });
+                    // Volver a cargar los datos para reflejar los cambios
+                    mostrarDatos();
+                },
+                error: function (xhr, status, error) {
+                    // Manejar errores si es necesario
+                    alert("Error al cerrar el registro.");
+                    console.error(xhr, status, error);
                 }
             });
-            // Volver a cargar los datos para reflejar los cambios
-            mostrarDatos();
-        },
-        error: function(xhr, status, error) {
-            // Manejar errores si es necesario
-            alert("Error al cerrar el registro.");
-            console.error(xhr, status, error);
         }
     });
 }

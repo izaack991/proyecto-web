@@ -27,7 +27,7 @@ $(document).ready(function() {
         conversaciones.forEach(function(conversacion) {
             var listItem = `
                 <li class="list-group-item d-flex align-items-center" 
-                    data-conversacion-id="${conversacion.id}" 
+                    id="${conversacion.id}" 
                     onclick="SeleccionarChat(event)">
                     <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
                     <div>

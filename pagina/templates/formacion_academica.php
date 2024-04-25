@@ -44,12 +44,12 @@
             <label for="floatingInput">Ubicación *</label>
           </div>
           <div class="form-floating mb-3 mt-4">
-                <input class="form-control" type="date" id="fechaInicio" name="fechaInicio" value="2022-01-01">
-                <label for="fechaInicio">Seleccione su Fecha de inicio: *</label><br>
+            <input class="form-control"type="date" id="fechaInicio" name="fechaInicio" value="2022-01-01">
+            <label for="floatingInput">Seleccione su Fecha de inicio: *</label>
           </div>
           <div class="form-floating mb-3 mt-4">
-                <input class="form-control" type="date" id="fechaFin" name="fechaFin" value="2022-01-01">
-                <label for="fechaFin">Seleccione su Fecha fin: *</label><br>
+            <input class="form-control" type="date" id="fechaFin" name="fechaFin" value="2022-01-01">
+            <label for="floatingInput">Seleccione su Fecha fin:  *</label>
           </div>
 
           <!-- {*Campos internos para la ubicacion*} -->
@@ -58,7 +58,6 @@
           <!-- {*Boton para guardar la formacion academica*} -->
           <div class="container text-center mt-4">
             <input class="btn btn-primary w-50" type="submit" value="Guardar">
-
           </div>
         </div>
       </div>
