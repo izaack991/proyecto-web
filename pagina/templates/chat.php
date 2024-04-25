@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+print_r($_SESSION); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,11 +14,8 @@
   <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css"> 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../js/notificacion_usuario.js"></script>
-  
-
   <style>
     /* Estilos personalizados */
     .message-container-sent {
@@ -78,7 +77,7 @@
   <script src="../js/ubicacion.js"></script>
 
   <!-- {*Barra de navegacion para Usuarios*} -->
-  <?php include("navbar_usuario.php") ?>
+
   <form id="formInteres" method="POST">
     
     <!-- Chats al lado izuqierdo -->
@@ -152,7 +151,40 @@ integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ
   <script src="../js/conversaciones.js"></script>
   <script src="../js/chat.js"></script>
   <script src="../js/mensajes.js"></script>
+  
+  <script>
+    // Evento al presionar Enter en el input
+    $('#txtmsj').keypress(function(event) {
+        if (event.which === 13) { // 13 es el código de la tecla Enter
+            enviarMensaje();
+        }
+    });
 
+    // Evento al hacer clic en el botón de enviar
+    $('#enviarMensajeBtn').click(function() {
+        enviarMensaje();
+    });
+
+    // Función para enviar el mensaje mediante AJAX
+    function enviarMensaje() {
+        var mensaje = $('#txtmsj').val();
+        alert (mensaje); // Obtener el mensaje del input
+
+        // Realizar la petición AJAX para enviar el mensaje
+        $.ajax({
+            url: '../php/mensajes.php',
+            type: 'POST',
+            data: { mensaje: mensaje }, // Enviar el mensaje al archivo PHP
+            success: function(response) {
+                // Recargar los mensajes después de enviar el mensaje
+                $('#txtmsj').val('');
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+</script>
 </body>
 
 </html>

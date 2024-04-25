@@ -1,41 +1,34 @@
 <?php 
 session_start();
+$rol = $_SESSION['rol'];
 include("../clases/function.class.php");
 $buscar = Functions::singleton_functions();
-
-$valor = $_POST['valor'] ?? null;
-
-if ($valor === null) {
-    echo json_encode(['error' => 'No se proporcionó ningún valor']);
-    exit;
-}
-
-switch ($valor) {
-    case 1:
+if (isset($_POST['valor'])) {
+    $valor = $_POST['valor'];
+    if ($valor == 1) {
         $id_usuario = $_SESSION['iusuario'];
-        $conversacion = $buscar->buscarConversacion($id_usuario);
+        $conversacion = $buscar->buscarConversacion($id_usuario,$rol);
         echo json_encode($conversacion);
-        break;
-
-    case 2:
+    } 
+    elseif ($valor == 2) {
+    if ($rol == 1 )
+    {
+        $id_usuario = $_POST['id'];
         $id_empresa = $_SESSION['iusuario'];
-        $id_usuario = $_POST['id'] ?? null;
+        $mensaje = $buscar->buscarMensaje($id_empresa, $id_usuario,$rol);
 
-        if ($id_usuario === null) {
-            echo json_encode(['error' => 'No se proporcionó ID de usuario']);
-            exit;
-        }
-
-        if ($_SESSION['rol'] == 1) {
-            $mensaje = $buscar->buscarMensaje($id_empresa, $id_usuario);
-        } else {
-            $mensaje = $buscar->buscarMensaje($id_usuario, $id_empresa);
-        }
-
+    }
+    else
+    {
+        $id_usuario = $_SESSION['iusuario'];
+        $id_empresa = $_POST['id'];
+        $mensaje = $buscar->buscarMensaje($id_empresa, $id_usuario,$rol);
+    }
         echo json_encode($mensaje);
-        break;
-
-    default:
-        echo json_encode(['error' => 'El valor proporcionado no es válido']);
+    } else {
+        echo json_encode(array('error' => 'El valor proporcionado no es válido'));
+    }
+} else {
+    echo json_encode(array('error' => 'No se proporcionó ningún valor'));
 }
 ?>

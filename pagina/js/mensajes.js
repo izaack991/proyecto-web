@@ -7,74 +7,75 @@ function SeleccionarChat(event) {
 $(document).ready(function() {
     cargarMensajes();
 });
-function cargarMensajes(id) {
-    $.ajax({
-        url: '../php/conversaciones.php',
-        type: 'POST',
-        data:{valor:2,id:id},
-        dataType: 'json',
-        success: function(response) {
 
-            // Limpiar el contenedor de mensajes antes de agregar nuevos mensajes
+$(document).ready(function(){
+    function actualizarMensaje() {
+        $.ajax({
+            url: '../php/notificacion_usuario.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                 {
+            }}
+        });
+    }
+
+    // Llamamos a la función para actualizar la variable cada 1 segundo
+    setInterval(actualizarMensaje, 1000);
+});
+
+var id_empresa = 2; // El ID de la empresa
+var id_usuario = 123; // El ID del usuario
+
+// Función para cargar mensajes
+function cargarMensajes(id) {
+    var id_u = 0; // Inicializar la variable para almacenar el último ID de mensaje
+
+    $.ajax({
+        url: '../php/conversaciones.php', // El archivo PHP que contiene la función buscarMensaje
+        type: 'POST', // Método de solicitud (puede ser GET o POST según tu lógica)
+        data: {
+
+            valor: 2, id:id
+        },
+        dataType: 'json', // Esperamos una respuesta en formato JSON
+        success: function(respuesta) {
+            // Limpiar el área del chat
             $('#chat').empty();
 
-            // Iterar sobre los mensajes recibidos y enviados
-            for (var i = 0; i < Math.max(response.mensaje1.length, response.mensaje2.length); i++) {
-                // Agregar mensaje enviado si existe
-                if (response.mensaje1[i]) {
+            // Iterar sobre los datos y construir el HTML para cada mensaje
+            respuesta.forEach(function(mensaje) {
+                if (mensaje.id_usuario == id_usuario) {
+                    // Mensaje enviado por el usuario (derecha)
                     $('#chat').append(
                         '<div class="message-container-sent"><div class="sent-message">' +
-                        '<p>' + response.mensaje1[i] + '</p>' +
-                        '<small>' + response.fecha1[i] + '</small>' +
+                        '<p>' + mensaje.mensaje + '</p>' +
+                        '<small>' + mensaje.fecha + '</small>' +
                         '</div></div>'
                     );
-                }
-                // Agregar mensaje recibido si existe
-                if (response.mensaje2[i]) {
+                } else {
+                    // Mensaje recibido (izquierda)
                     $('#chat').append(
                         '<div class="message-container-received"><div class="received-message">' +
-                        '<p>' + response.mensaje2[i] + '</p>' +
-                        '<small style="text-align: right;">' + response.fecha2[i] + '</small>' +
+                        '<p>' + mensaje.mensaje + '</p>' +
+                        '<small>' + mensaje.fecha + '</small>' +
                         '</div></div>'
                     );
                 }
-            }
+                // Actualizar el último ID de mensaje
+                if (mensaje.id_mensaje > id_u) {
+                    id_u = mensaje.id_mensaje; // Guardar el ID más alto
+                }
+                else    {
+                    alert(id_u);
+                }
+            });
+
+            console.log('Último ID de mensaje:', id_u);
         },
-        error: function(xhr, status, error) {
-            console.error(error);
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error('Error al cargar mensajes: ', textStatus, errorThrown);
         }
     });
 }
 
-    // Evento al presionar Enter en el input
-    $('#txtmsj').keypress(function(event) {
-        if (event.which === 13) { // 13 es el código de la tecla Enter
-            enviarMensaje();
-        }
-    });
-
-    // Evento al hacer clic en el botón de enviar
-    $('#enviarMensajeBtn').click(function() {
-        enviarMensaje();
-    });
-
-    // Función para enviar el mensaje mediante AJAX
-    function enviarMensaje() {
-        var mensaje = $('#txtmsj').val(); // Obtener el mensaje del input
-
-        // Realizar la petición AJAX para enviar el mensaje
-        $.ajax({
-            url: '../php/mensajes.php',
-            type: 'POST',
-            data: { mensaje: mensaje }, // Enviar el mensaje al archivo PHP
-            success: function(response) {
-                // Recargar los mensajes después de enviar el mensaje
-                cargarMensajes();
-                // Limpiar el input después de enviar el mensaje
-                $('#txtmsj').val('');
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
-            }
-        });
-    }
