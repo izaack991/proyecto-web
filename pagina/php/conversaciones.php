@@ -27,7 +27,6 @@ if (isset($_POST['valor'])) {
         if($valor == 2) {
             $mensaje = $buscar->buscarMensaje($id_empresa, $id_usuario,$rol);
             //$mensaje = array_merge($mensaje, ['id_us' => $id_us]); // Usando array_merge para concatenar
-            
            // print_r($mensaje); // Verifica visualmente
             echo json_encode($mensaje);
         } else if ($valor == 3){
