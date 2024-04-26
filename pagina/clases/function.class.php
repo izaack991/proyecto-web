@@ -278,7 +278,7 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                    $sql = "Select id_paises, nombre from tbl_paises";
+                    $sql = "SELECT region, nombre FROM tbl_paises";
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
 
@@ -292,6 +292,7 @@ require_once('conexion.class.php');
                 {
                     print "Error!: " . $e->getMessage();
                 }
+
                 return $data;
             }
 

@@ -14,6 +14,8 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../js/notificacion_empresa.js"></script>
+  <script src="../js/buscar_pais.js"></script>
+
 
   <script>
     // funcion para solo letras mayúsculas, minúsculas y espacios
@@ -65,32 +67,8 @@
           <div class="form row mt-4">
             <div class="form-group col-md-6">
               <div class="form-floating">
-                <select id="cmbpais" class="form-select" name="cmbpais" style="width: 100%;">
-                  <option value="52">México</option>
-                  <option value="591">Bolivia</option>
-                  <option value="54">Argentina</option>
-                  <option value="55">Brasil</option>
-                  <option value="56">Chile</option>
-                  <option value="57">Colombia</option>
-                  <option value="506">Costa Rica</option>
-                  <option value="53">Cuba</option>
-                  <option value="593">Ecuador</option>
-                  <option value="503">El Salvador</option>
-                  <option value="1473">Granada</option>
-                  <option value="502">Guatemala</option>
-                  <option value="592">Guayana</option>
-                  <option value="509">Haití</option>
-                  <option value="504">Honduras</option>
-                  <option value="1876">Jamaica</option>
-                  <option value="505">Nicaragua</option>
-                  <option value="507">Panamá</option>
-                  <option value="595">Paraguay</option>
-                  <option value="51">Perú</option>
-                  <option value="1">Puerto Rico</option>
-                  <option value="1809">República Dominicana</option>
-                  <option value="597">Surinam</option>
-                  <option value="598">Uruguay</option>
-                  <option value="58">Venezuela</option>
+                <select id="region" class="form-select" name="cmbpais" style="width: 100%;">
+                
                 </select>
                 <label for="cmbpais" class="form_label">Pais *</label>
               </div>
