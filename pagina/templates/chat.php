@@ -56,19 +56,6 @@ print_r($_SESSION); ?>
     background-color: #f0f0f0;
 }
   </style>
-
-  <script>
-    function validarLetras(event) {
-      var charCode = event.charCode;
-      // Permitir letras (mayúsculas y minúsculas) y espacios
-      return (charCode >= 65 && charCode <= 90) || // Letras mayúsculas
-        (charCode >= 97 && charCode <= 122) || // Letras minúsculas
-        charCode === 32; // Espacio
-    }
-
-  // Función que se ejecutará cuando se haga clic en el botón
-
-  </script>
 </head>
 
 <body style="background-color: #F8F6F3;">
@@ -149,7 +136,6 @@ integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ
   </script>
   <script src="../js/insert.js"></script>
   <script src="../js/conversaciones.js"></script>
-  <script src="../js/chat.js"></script>
   <script src="../js/mensajes.js"></script>
   
   <script>
