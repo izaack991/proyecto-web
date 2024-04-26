@@ -27,7 +27,8 @@ if ($_SESSION['cuenta']) {
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../js/inactividad.js"></script>
-  
+  <script src="../js/buscar_pais.js"></script>
+
 </head>
 
 <body style="background-color: #F8F6F3;">
@@ -98,8 +99,9 @@ if ($_SESSION['cuenta']) {
             <div class="form-group col">
               <div class="form-floating" style="height: 4rem;">
                 <select class="form-select" name="cmb_REGION" id="region" style="width: 100%;">
-                  <option value="52">México</option>
-                  <option value="54">Argentina</option>
+               
+                  <!--<option>seleccione un pais</option>
+                   <option value="54">Argentina</option>
                   <option value="591">Bolivia</option>
                   <option value="55">Brasil</option>
                   <option value="56">Chile</option>
@@ -122,11 +124,37 @@ if ($_SESSION['cuenta']) {
                   <option value="1809">República Dominicana</option>
                   <option value="597">Surinam</option>
                   <option value="598">Uruguay</option>
-                  <option value="58">Venezuela</option>
+                  <option value="58">Venezuela</option> -->
                 </select>
                 <label class="form_label">Region *</label>
               </div>
             </div>
+
+<!-------------------------------------------------------------------------------------------------->            
+            <!-- <script>
+            $(document).ready(function(){
+                  $.ajax({
+                      url: '../clases/function.class.php',
+                      type: 'GET',
+                      data: { action: 'buscaPaises' },
+                      dataType: 'json',
+                      success: function(data) {
+                        var select = $('#region');
+                          $.each(data, function(index, country) {
+                              select.append($('<option>', {
+                                  value: country.id_paises,
+                                  text: country.nombre
+                              }));
+                          });
+                      },
+                      error: function(xhr, status, error) {
+                          console.error('Error al obtener los países:', error);
+                      }
+                  });
+              });
+          </script> -->
+
+
             <div class="form-group col">
               <div class="form-floating" style="height: 4rem;">
                 <input class="form-control" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="txt_TELEFONO" class="texto" id="telefono" minlength="10" maxLength="10" placeholder="Escriba su Número" required="true"><br>
