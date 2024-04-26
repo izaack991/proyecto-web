@@ -99,61 +99,11 @@ if ($_SESSION['cuenta']) {
             <div class="form-group col">
               <div class="form-floating" style="height: 4rem;">
                 <select class="form-select" name="cmb_REGION" id="region" style="width: 100%;">
-               
-                  <!--<option>seleccione un pais</option>
-                   <option value="54">Argentina</option>
-                  <option value="591">Bolivia</option>
-                  <option value="55">Brasil</option>
-                  <option value="56">Chile</option>
-                  <option value="57">Colombia</option>
-                  <option value="506">Costa Rica</option>
-                  <option value="53">Cuba</option>
-                  <option value="593">Ecuador</option>
-                  <option value="503">El Salvador</option>
-                  <option value="1473">Granada</option>
-                  <option value="502">Guatemala</option>
-                  <option value="592">Guayana</option>
-                  <option value="509">Haití</option>
-                  <option value="504">Honduras</option>
-                  <option value="1876">Jamaica</option>
-                  <option value="505">Nicaragua</option>
-                  <option value="507">Panamá</option>
-                  <option value="595">Paraguay</option>
-                  <option value="51">Perú</option>
-                  <option value="1">Puerto Rico</option>
-                  <option value="1809">República Dominicana</option>
-                  <option value="597">Surinam</option>
-                  <option value="598">Uruguay</option>
-                  <option value="58">Venezuela</option> -->
+
                 </select>
                 <label class="form_label">Region *</label>
               </div>
             </div>
-
-<!-------------------------------------------------------------------------------------------------->            
-            <!-- <script>
-            $(document).ready(function(){
-                  $.ajax({
-                      url: '../clases/function.class.php',
-                      type: 'GET',
-                      data: { action: 'buscaPaises' },
-                      dataType: 'json',
-                      success: function(data) {
-                        var select = $('#region');
-                          $.each(data, function(index, country) {
-                              select.append($('<option>', {
-                                  value: country.id_paises,
-                                  text: country.nombre
-                              }));
-                          });
-                      },
-                      error: function(xhr, status, error) {
-                          console.error('Error al obtener los países:', error);
-                      }
-                  });
-              });
-          </script> -->
-
 
             <div class="form-group col">
               <div class="form-floating" style="height: 4rem;">

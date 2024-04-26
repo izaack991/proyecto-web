@@ -9,7 +9,7 @@ $(document).ready(function(){
                 console.error('Error al buscar países:', data.error);
             } else {
                 $.each(data, function(index, pais) {
-                    $('#region').append('<option value="' + pais.id_paises + '">' + pais.nombre + '</option>');
+                    $('#region').append('<option value="' + pais.region + '">' + pais.nombre + '</option>');
                 });
             }
         },

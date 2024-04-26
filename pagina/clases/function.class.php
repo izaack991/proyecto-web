@@ -278,7 +278,7 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                    $sql = "SELECT id_paises, nombre FROM tbl_paises";
+                    $sql = "SELECT region, nombre FROM tbl_paises";
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
 
