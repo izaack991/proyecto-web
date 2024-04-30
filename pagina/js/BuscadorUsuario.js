@@ -8,7 +8,7 @@
         $.ajax({
             data: parametros,
             type: 'POST',
-            url: 'buscador.php',
+            url: '../php/buscador.php',
             success: function(data) {
                 document.getElementById("resultados").style.display = "block";
                 
@@ -20,7 +20,7 @@
                     // Agregar evento clic
                     resultadosItems[i].addEventListener('click', function() {
                         var puesto = this.getAttribute('data-puesto');
-                        window.location.href = 'Buscador1.php?puesto=' + encodeURIComponent(puesto);
+                        window.location.href = 'Buscador.php?puesto=' + encodeURIComponent(puesto);
                     });
 
                     // Agregar evento mouseenter

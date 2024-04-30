@@ -13,6 +13,8 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../js/notificacion_usuario.js"></script>
   <script src="../js/BuscadorUsuario.js"></script>
+ 
+
 
   <script>
     // Verificar si el elemento está registrado en la base de datos
