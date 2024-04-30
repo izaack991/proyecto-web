@@ -1,5 +1,5 @@
 <?php
-require_once('prueba.php');
+require_once('busqueda.php');
 
 // Función para obtener todas las vacantes con el mismo puesto
 function obtenerVacantesMismoPuesto($pdo, $puesto) {
