@@ -1,7 +1,39 @@
 $(document).ready(function(){
+    $.ajax({
+        url: '../php/notificacion_usuario.phpaction=funcion2',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            if (data.contador >=1) {
+                $('#contador').html('<span class="fa-layers-counter" id="notifi" style="background:Tomato;border-radius:0.3rem;padding-left:0.2rem;padding-right:0.2rem">'+data.contador+'</span>');
+            }else {
+                $('#contador').empty();
+                $('#contador_exp').empty();
+                $('#contador_for').empty();
+                $('#contador_afi').empty();
+                $('#contador_int').empty();
+                $('#contador_not').html('No tiene notificaciones en este momento');
+            }
+            if (data.contador_exp >= 1) {
+                $('#contador_exp').html('<a class="link-primary btn btn-outline-primary mb-2" style="height: 10%;" href="experiencia_laboral.php">Aun no ha registrado sus datos de Experiencia Laboral, click aqui para ir al registro</a><br>');
+            }
+            if (data.contador_for >= 1) {
+                $('#contador_for').html('<a class="link-primary btn btn-outline-primary mb-2" style="height: 10%;" href="formacion_academica.php">Aun no ha registrado sus datos de Formación Academica, click aqui para ir al registro</a>');
+            }
+            if (data.contador_afi >= 1) {
+                $('#contador_afi').html('<a class="link-primary btn btn-outline-primary mb-2" style="height: 10%;" href="aficiones.php">Aun no ha registrado sus datos de Aficiones, click aqui para ir al registro</a>');
+            }
+            if (data.contador_int >= 1) {
+                $('#contador_int').html('<a class="link-primary btn btn-outline-primary" style="height: 10%;" href="interes.php">Aun no ha registrado sus datos de Interes, click aqui para ir al registro</a>');
+            }
+            $('#nombreUsuario').text(data.nombreUsuario);
+            $('#nombreUsuario2').text(data.nombreUsuario);
+        }
+    });
+
     function actualizarVariable() {
         $.ajax({
-            url: '../php/notificacion_usuario.php',
+            url: '../php/notificacion_usuario.php?action=funcion1',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
@@ -16,16 +48,24 @@ $(document).ready(function(){
                     $('#contador_not').html('No tiene notificaciones en este momento');
                 }
                 if (data.contador_exp >= 1) {
-                    $('#contador_exp').html('<a class="link-primary" href="experiencia_laboral.php">Aun no ha registrado sus datos de Experiencia Laboral, click aqui para ir al registro</a>');
+                    $('#contador_exp').html('<a class="link-primary btn btn-outline-primary mb-2" style="height: 10%;" href="experiencia_laboral.php">Aun no ha registrado sus datos de Experiencia Laboral, click aqui para ir al registro</a><br>');
+                } else {
+                    $('#contador_exp').empty();
                 }
                 if (data.contador_for >= 1) {
-                    $('#contador_for').html('<a class="link-primary" href="formacion_academica.php">Aun no ha registrado sus datos de Formación Academica, click aqui para ir al registro</a>');
+                    $('#contador_for').html('<a class="link-primary btn btn-outline-primary mb-2" style="height: 10%;" href="formacion_academica.php">Aun no ha registrado sus datos de Formación Academica, click aqui para ir al registro</a>');
+                } else {
+                    $('#contador_for').empty();
                 }
                 if (data.contador_afi >= 1) {
-                    $('#contador_afi').html('<a class="link-primary" href="aficiones.php">Aun no ha registrado sus datos de Aficiones, click aqui para ir al registro</a>');
+                    $('#contador_afi').html('<a class="link-primary btn btn-outline-primary mb-2" style="height: 10%;" href="aficiones.php">Aun no ha registrado sus datos de Aficiones, click aqui para ir al registro</a>');
+                } else {
+                    $('#contador_afi').empty();
                 }
                 if (data.contador_int >= 1) {
-                    $('#contador_int').html('<a class="link-primary" href="interes.php">Aun no ha registrado sus datos de Interes, click aqui para ir al registro</a>');
+                    $('#contador_int').html('<a class="link-primary btn btn-outline-primary" style="height: 10%;" href="interes.php">Aun no ha registrado sus datos de Interes, click aqui para ir al registro</a>');
+                } else {
+                    $('#contador_int').empty();
                 }
                 $('#nombreUsuario').text(data.nombreUsuario);
                 $('#nombreUsuario2').text(data.nombreUsuario);
