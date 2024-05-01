@@ -367,6 +367,34 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
+            
+            //  Funcion para buscar las vacantes del perfil de empresa (NO TOCAR)
+            function buscarVacantes($_idusuario)
+            {
+                try
+                {
+                    $sql = "SELECT v.*, c.nombre as nombrePais 
+                            FROM tbl_vacantes v
+                            INNER JOIN tbl_paises c ON v.lugar = c.region
+                            LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = $_idusuario 
+                            WHERE (DATEDIFF(datefin, dateInicio) >= 1 AND v.status = 1 AND (p.id_vacante IS NULL OR p.id_usuario <> $_idusuario))
+                            GROUP BY v.id_vacante DESC";
+
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;    
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error: !" . $e->getMessage();
+                }
+                return $data;
+            }
 
 
             // function buscarVacante($_idusuario)

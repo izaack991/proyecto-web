@@ -14,7 +14,7 @@ $bInteres = $buscarDatos->seleccionar_interes($iusuario);
 $vid_curriculum = $buscarDatos->seleccionar_vid_curriculum($iusuario);
 $b_postulacion = $buscarDatos->buscarPostulacion2($iusuario);
 $busuario = $buscarDatos->seleccionar_usuario($iusuario);
-$bvacante = $buscarDatos->buscarVacante($iusuario);
+$bvacante = $buscarDatos->buscarVacantes($iusuario);
 
 $tipo = $_POST['tipo'];
 if ($tipo='exp'){
@@ -172,7 +172,7 @@ if ($tipo='vac'){
         $fechainicio = $_POST['fechainicio'];
         $fechafin = $_POST['fechafin'];
         $UCerrar=$NuevoC->actualizar_vacante($vacanteID,$puesto,$sueldo,$lugar,$region,$ciudad,$datos,$fechainicio,$fechafin);
-        $bvacante = $buscarDatos->buscarVacante($iusuario);
+        $bvacante = $buscarDatos->buscarVacantes($iusuario);
     }
 }
 
