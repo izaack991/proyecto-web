@@ -31,26 +31,31 @@
         });
       });
     });
+
   </script>
 
 </head>
 
 <body style="background-color: #F8F6F3;">
-  <!-- Conexion al archivo de JavasScript para la ubicacion y bootstrap
-    <script src="../smarty/js/ubicacion.js"></script> -->
   <!-- {*Barra de navegacion para Usuarios*} -->
   <?php include ("navbar_usuario.php") ?>
   <br>
   <div class="container-fluid">
+
+  <form action="buscar_vacante.php" method="GET">
+    
     <!-- Buscador de vacantes con ajax  -->
     <div class="alert alert-dismissible text-center px-0">
-      <input type="text" class="btn btn-light disabled" placeholder="Busque una vacante" style="display: flex; margin: 0 10%; width: 80%;" id="bvac" name="bvac">
+      <input type="text" class="btn btn-light disabled" placeholder="Busque una vacante" style="display: flex; margin: 0 10%; width: 80%;" id="bvac">
     </div>
-  </div>
 
-  <!-- Contenedor de las vacantes -->
-  <div id="vacantesContainer" class="row justify-content-center mx-2"></div>
+    <!-- <input type="hidden" name="pagina" id="inputPagina" value="2">
+    <input type="submit" value="Siguiente" class="btn btn-primary" id="siguienteBtn"> -->
 
+    <!-- Contenedor de las vacantes -->
+    <div id="vacantesContainer" class="row justify-content-center mx-2"></div>
+
+  </form>
 
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
