@@ -33,14 +33,13 @@ if ($_SESSION['irol'] == 2 || $_SESSION['irol'] == 4) {
           id="nombreUsuario" id="navbarDropdown"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li class="text-center"><a class="nav-link active text-primary font-weight-bold" href="perfil_empresa.php">Ver Perfil</a>
+            <li class="text-center"><a class="nav-link active text-primary font-weight-bold" href="perfil_empresa.php">VER PERFIL</a>
             </li>
             <li>
               <hr class="dropdown-divider">
             </li>
             <li class="text-center">
-              <a class="nav-link active text-danger" href='#' onclick="openAlert()" style="font-weight:bold;">Cerrar
-                Sesión</a>
+              <a class="nav-link active text-danger" href='#' onclick="openAlert()" style="font-weight:bold;">CERRAR SESIÓN</a>
             </li>
           </ul>
         </li>

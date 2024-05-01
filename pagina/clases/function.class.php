@@ -278,6 +278,27 @@ require_once('conexion.class.php');
             {
                 try
                 {
+                    $sql = "SELECT region, nombre FROM tbl_paises ORDER BY (region = '52') DESC";
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                }
+
+                return $data;
+            }
+            function buscarPais()
+            {
+                try
+                {
                     $sql = "SELECT region, nombre FROM tbl_paises";
                     $query = $this->dbh->prepare($sql);
                     $query->execute();

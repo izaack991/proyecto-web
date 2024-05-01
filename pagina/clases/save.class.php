@@ -675,6 +675,26 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+            public function actualizar_vacante($vacanteID,$puesto,$sueldo,$lugar,$region,$ciudad,$datos,$fechainicio,$fechafin)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_vacantes SET puesto='$puesto',sueldo='$sueldo',lugar='$lugar',region='$region',ciudad='$ciudad',datos_adicionales='$datos',dateInicio='$fechainicio',dateFin='$fechafin' WHERE id_vacante=$vacanteID";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
             public function eliminar_experiencia($idexp)
             {        
                 try 

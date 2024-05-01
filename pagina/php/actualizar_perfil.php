@@ -14,6 +14,7 @@ $bInteres = $buscarDatos->seleccionar_interes($iusuario);
 $vid_curriculum = $buscarDatos->seleccionar_vid_curriculum($iusuario);
 $b_postulacion = $buscarDatos->buscarPostulacion2($iusuario);
 $busuario = $buscarDatos->seleccionar_usuario($iusuario);
+$bvacante = $buscarDatos->buscarVacante($iusuario);
 
 $tipo = $_POST['tipo'];
 if ($tipo='exp'){
@@ -159,6 +160,22 @@ if ($tipo='dom'){
         $busuario = $buscarDatos->seleccionar_usuario($iusuario);
     }
 }
+if ($tipo='vac'){
+    if (isset($_POST['vacanteID'],$_POST['puesto'],$_POST['sueldo'],$_POST['lugar'],$_POST['region'],$_POST['ciudad'],$_POST['datos'],$_POST['fechainicio'],$_POST['fechafin'],)) {
+        $vacanteID = $_POST['vacanteID'];
+        $puesto = $_POST['puesto'];
+        $sueldo = $_POST['sueldo'];
+        $lugar = $_POST['lugar'];
+        $region = $_POST['region'];
+        $ciudad = $_POST['ciudad'];
+        $datos = $_POST['datos'];
+        $fechainicio = $_POST['fechainicio'];
+        $fechafin = $_POST['fechafin'];
+        $UCerrar=$NuevoC->actualizar_vacante($vacanteID,$puesto,$sueldo,$lugar,$region,$ciudad,$datos,$fechainicio,$fechafin);
+        $bvacante = $buscarDatos->buscarVacante($iusuario);
+    }
+}
+
 if ($tipo='pdf'){
         // Directorio donde se guardarán las imágenes
         $directorio = '../userfiles/pdf/';
@@ -260,6 +277,7 @@ $datos_totales = array(
     'video_curriculum' => $vid_curriculum,
     'postulacion' => $b_postulacion,
     'usuario' => $busuario,
+    'vacante' => $bvacante,
 );
 
 echo json_encode($datos_totales);
