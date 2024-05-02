@@ -12,11 +12,11 @@ $(document).ready(function() {
                     if (vacante.id_vacante == id_vacante) {
                         var card = '<div class="col">';
                         card += '<div class="card shadow p-3 mb-5 bg-body rounded" style="width: 70rem; margin:auto;">';
+                        card += '<div class="card-header" style="display:flex; justify-content: space-between; align-items: center;">';
+                        card += '<h5 class="card-title text-danger text-center mb-1 ">' + vacante.puesto + '</h5>';
+                        card += '<h5 class="card-title text-center mb-1" style="display:inline; margin-left: 1rem;">' + vacante.empresa + '</h5>';
+                        card += '</div>';
                         card += '<div class="card-body">';
-                        card += '<div style="display:flex; justify-content: space-between; align-items: center;">'; // Contenedor para el título y la empresa
-                        card += '<h4 class="card-title text-danger" style="display:inline;">' + vacante.puesto + '</h4>';
-                        card += '<h4 class="card-title" style="display:inline; margin-left: 1rem;">' + vacante.empresa + '</h4>';
-                        card += '</div>'; // Cierre del contenedor
                         card += '<h6 class="card-title">' + vacante.ciudad + ', ' + vacante.region + '</h6>';
                         card += '<h6 class="card-title" style="color: #54B689;">$' + vacante.sueldo + '</h6>';
                         card += '<pre align="justify" class="card-text" style="font-family: Arial;">' + vacante.datos_adicionales + '</pre>';
