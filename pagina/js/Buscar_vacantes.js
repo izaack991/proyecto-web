@@ -39,6 +39,7 @@
 //         }
 //     });
 // });
+
 $(document).ready(function(){
     var offset = 0; // Variable para llevar el seguimiento del offset de las vacantes cargadas
 
