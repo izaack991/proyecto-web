@@ -46,7 +46,7 @@
     
     <!-- Buscador de vacantes con ajax  -->
     <div class="alert alert-dismissible text-center px-0">
-      <input type="text" class="btn btn-light disabled" placeholder="Busque una vacante" style="display: flex; margin: 0 10%; width: 80%;" id="bvac">
+      <input type="text" class="form-control" placeholder="Busque una vacante" style="display: flex; margin: 0 10%; width: 80%; text-align: center;" id="bvac">
     </div>
 
     <!-- <input type="hidden" name="pagina" id="inputPagina" value="2">
