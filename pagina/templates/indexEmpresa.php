@@ -76,6 +76,6 @@
 
 </body>
 <!-- {*Footer*} -->
-<?php include ("footer.php") ?>
+<?php include ("footerEmpresa.php") ?>
 
 </html>
