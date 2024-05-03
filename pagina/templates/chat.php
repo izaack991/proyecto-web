@@ -91,8 +91,6 @@
           </div>
         </div>
         <div class="card-body" id="chat" style="overflow-y: auto;">
-          <div class="message-container-sent">
-          </div>
         </div>                
         <div class="card-footer d-flex justify-content-between">  
           <input class="form-control" style="height: 44px;" type="text" id="txtmsj" placeholder="Escribe un mensaje">

@@ -105,7 +105,7 @@ class Mensaje {
     //console.log("id_cuonversacion_usuario", this.id_usuario);
     //console.log("id_usuario", this.id_us);
 
-        if (this.id_usuario == this.id_us) {
+        if (this.id_usuario == this.id_us) {            
             // Mensaje enviado por el usuario (derecha)
             return `
                 <div class="message-container-sent">
@@ -114,7 +114,8 @@ class Mensaje {
                         <small>${this.fecha}</small>
                     </div>
                 </div>`;
-        } else {
+        } else {            
+
             // Mensaje recibido (izquierda)
             return `
                 <div class="message-container-received">
@@ -124,6 +125,7 @@ class Mensaje {
                     </div>
                 </div>`;
         }
+        
     }
 }
 
@@ -137,7 +139,7 @@ function mostrarMensajes(respuesta, id_us) {
     respuesta.forEach(function (mensaje) {
         const msg = new Mensaje(mensaje, id_us);
         $('#chat').append(msg.construirHTML());
-
+        scrollToBottom();
         if (msg.id_mensaje > id_m) {
             id_m = msg.id_mensaje;
             localStorage.setItem("id_m", id_m);
@@ -182,10 +184,10 @@ function SeleccionarChat(event) {
     const idc = elemento.attr('idc');
     const scr = elemento.attr('scri');
     const nombrei= elemento.attr('nombrei'); // Obtiene el ID de la conversación
-    console.log("ID_cu de la conversación seleccionada:", id_cu);
-    console.log("ID_cu de la conversación seleccionada:", idc);
-    console.log("ID_cu de la conversación seleccionada:", scr);
-    console.log("ID_cu de la conversación seleccionada:", nombrei);
+    //console.log("ID_cu de la conversación seleccionada:", id_cu);
+    //console.log("ID_cu de la conversación seleccionada:", idc);
+    //console.log("ID_cu de la conversación seleccionada:", scr);
+    //console.log("ID_cu de la conversación seleccionada:", nombrei);
 
 
     localStorage.setItem("id_cu", id_cu);
@@ -219,3 +221,10 @@ function actualizarMensaje() {
 
 // Configura el intervalo para actualizar mensajes
 setInterval(actualizarMensaje, 1000);
+
+const cardBody = document.getElementById('chat');
+
+// Función para desplazar al final del card-body
+function scrollToBottom() {
+    cardBody.scrollTop = cardBody.scrollHeight;
+}
