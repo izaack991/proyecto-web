@@ -7,8 +7,8 @@ $(document).ready(function() {
         dataType: 'json',
         data: { id_vacante: id_vacante },
         success: function(data) {
-            if (Array.isArray(data) && data.length > 0) {
-                $.each(data, function(index, vacante){
+            if (data.vacante && data.vacante.length > 0) {
+                $.each(data.vacante, function(index, vacante){
                     if (vacante.id_vacante == id_vacante) {
                         var card = '<div class="col">';
                         card += '<div class="card shadow p-3 mb-5 bg-body rounded" style="width: 70rem; margin:auto;">';
@@ -20,7 +20,11 @@ $(document).ready(function() {
                         card += '<h6 class="card-title">' + vacante.ciudad + ', ' + vacante.region + '</h6>';
                         card += '<h6 class="card-title" style="color: #54B689;">$' + vacante.sueldo + '</h6>';
                         card += '<pre align="justify" class="card-text" style="font-family: Arial;">' + vacante.datos_adicionales + '</pre>';
-                        card += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#postularseModal">Postularse</button>';
+                        if(data.compVacante == 0) {
+                            card += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#postularseModal">Postularse</button>';
+                        } else if (data.compVacante == 1) {
+                            card += '<button disabled type="button" class="btn btn-secondary" data-toggle="modal" data-target="#postularseModal">Ya te has postulado a esta vacante</button>';
+                        }
                         card += '</div></div></div>';                        
                         $('#vacantesContainer').append(card);
                     }

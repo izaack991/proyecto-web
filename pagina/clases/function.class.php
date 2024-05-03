@@ -595,6 +595,36 @@ public function buscarConversacion($id_usuario,$rol)
                 return $data;
             }
 
+            public function comprobar_postulacion($_idusuario,$id_vacante)
+            {        
+                try {
+                    $sql = "SELECT v.* FROM tbl_vacantes v
+                    LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = :id_usuario
+                    WHERE p.id_vacante = :id_vacante AND v.status = 1 AND p.id_usuario = :id_usuario 
+                    GROUP BY v.id_vacante;";
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':id_usuario',$_idusuario);
+                    $query->bindParam(':id_vacante',$id_vacante);
+                    $query->execute();
+                    $numeroDeFilas = $query->rowCount();
+                    //si existe el usuario
+                    $data = array();;
+                    if($numeroDeFilas >= 1)
+                    {
+                        $data = 1;
+                    }
+                    else {
+                        $data = 0;
+                    } 
+                }
+                catch(PDOException $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                }
+                return $data;
+            }
+
+
             public function seleccionar_experiencia($id_usuario)
             {        
                 try {
