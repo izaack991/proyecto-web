@@ -58,9 +58,9 @@ if (isset($_POST['confirmMail'])) {
         $_razon = $value['razon_social'];
         $_id_usuario = $value['id_usuario'];
     }
-    if($_razon=="")
+    if(empty($_razon))
     {
-        $nombre_completo = $nombre;
+        $nombre_completo = $_nombre;
     }else{
         $nombre_completo = $_razon;
     }    
