@@ -316,6 +316,7 @@ require_once('conexion.class.php');
 
                 return $data;
             }
+            
             function buscarPais()
             {
                 try
@@ -1538,6 +1539,27 @@ public function buscarConversacion($id_usuario,$rol)
             }        
 
             return TRUE;
+        }
+        public function buscar_correo_usuario($_correo)
+        {
+            try {
+                    
+                $sql = "SELECT * FROM tbl_usuario WHERE correo=:correo";
+                $query = $this->dbh->prepare($sql);
+                $query->bindParam(':correo',$_correo);
+                $query->execute();
+                $data = array();
+                while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                {
+                    $data[] = $row;
+                }
+            }
+            catch(PDOException $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return $data;
+            
         }
         // public function eliminar_vacantes()
         // {        

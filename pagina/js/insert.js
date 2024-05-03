@@ -259,6 +259,39 @@
         })
     })
 };
+// metodo para confirmar el correo
+{
+    $(document).ready(function () {
+        $('#formConfirmaCorreo').submit(function (event) {
+            event.preventDefault();
+            var formData = new FormData($('#formConfirmaCorreo')[0]);
+            $.ajax({
+                url: '../php/confirmacorreo.php',
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    // Maneja la respuesta del archivo PHP aquí
+                    console.log(response);
+                    if (response == "true") {
+                     Swal.fire({
+                             title: '¡Listo!',
+                             text: 'Se ha enviado un correo de verificacion, revise su bandeja de entrada de no encontrarlo revise su spam y siga las instrucciones',
+                             icon: 'success'
+                         }).then(function () {
+                             window.location.href = "https://www.workele.com";
+                        });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // Maneja cualquier error que ocurra durante la solicitud AJAX
+                    console.error(error);
+                }
+            });
+        })
+    })
+};
 
 // Metodo AJAX para el guardado de Test Cleaver
 // {
