@@ -66,7 +66,7 @@ if ($_SESSION['irol'] == 2 || $_SESSION['irol'] == 4) {
               </div>
               <div class="modal-body">
                 <div id="sinnot"></div>
-                <a class="link-primary" id="notpos" href="postulacion.php">No tiene postulaciones pendientes</a>
+                <a class="btn btn-outline-primary mb-2" style="height: 10%; width:100%;" id="notpos" href="postulacion.php">No tiene postulaciones pendientes</a>
               </div>
             </div>
           </div>
