@@ -1,3 +1,15 @@
+$(document).ready(function () {
+    $("#buscarC").keyup(function () {
+      var query = $(this).val().toLowerCase();
+      $("#contenedorC").children().each(function () {
+        if ($(this).text().toLowerCase().indexOf(query) === -1)
+          $(this).hide();
+        else
+          $(this).show();
+      });
+    });
+  });
+
 
 $(document).ready(function() {
     // Hacer la solicitud AJAX al cargar la página
@@ -21,7 +33,7 @@ $(document).ready(function() {
     
     function mostrarConversaciones(conversaciones) {
         // Limpiar la lista de conversaciones
-        $('.list-group').empty();
+        //$('.list-group').empty();
 
         // Iterar sobre las conversaciones recibidas y agregarlas a la lista
         conversaciones.forEach(function(conversacion) {
