@@ -617,10 +617,10 @@ public function buscarMensaje($id_empresa, $id_usuario)
     return $data;
 }
 
-public function actualizarMensaje($id_empresa, $id_usuario,$id_u)
+public function actualizarMensaje($id_empresa, $id_usuario,$id_m)
 {
     try {
-        $sql = "SELECT m.id_usuario , m.mensaje , m.fecha ,m.id_mensaje FROM tbl_mensajes AS m INNER JOIN tbl_conversaciones AS c ON m.id_conversacion = c.id_conversacion WHERE c.id_empresa = :id_empresa AND c.id_usuario = :id_usuario AND m.id_mensaje > :id_m ORDER BY m.id_mensaje ASC";  
+        $sql = "SELECT m.id_usuario , m.mensaje , m.fecha ,m.id_mensaje as id_mensaje FROM tbl_mensajes AS m INNER JOIN tbl_conversaciones AS c ON m.id_conversacion = c.id_conversacion WHERE c.id_empresa = :id_empresa AND c.id_usuario = :id_usuario AND m.id_mensaje > :id_m ORDER BY m.id_mensaje ASC";  
         $query = $this->dbh->prepare($sql);
         $query->bindParam(':id_empresa', $id_empresa);
         $query->bindParam(':id_usuario', $id_usuario);
@@ -643,7 +643,7 @@ public function buscarConversacion($id_usuario,$rol)
     try {
 
 
-        $sql = "SELECT c.id_conversacion as idc,u1.id_usuario as id1, u2.id_usuario as id2, u1.razon_social as razon, u1.nombre AS nombre1, u2.nombre AS nombre2, u1.rol AS rol1, u2.rol AS rol2
+        $sql = "SELECT MAX(m.fecha) as fecha, c.id_conversacion as idc,u1.id_usuario as id1, u2.id_usuario as id2, u1.razon_social as razon, u1.nombre AS nombre1, u2.nombre AS nombre2, u1.rol AS rol1, u2.rol AS rol2,u1.ruta_imagen as ruta1, u2.ruta_imagen as ruta2 
         FROM tbl_conversaciones AS c
         JOIN tbl_usuario AS u1 ON c.id_empresa = u1.id_usuario 
         JOIN tbl_usuario AS u2 ON c.id_usuario = u2.id_usuario
@@ -660,11 +660,17 @@ public function buscarConversacion($id_usuario,$rol)
         while ($row = $query->fetch(PDO::FETCH_ASSOC))
         {
             if ($rol == 2) {
+                $row['idc'] = $row['idc'];
+                $row['ruta'] = $row['ruta1'];
                 $row['nombre'] = $row['razon'];
-                $row['id'] = $row['id1']; // Si el rol es 1, toma el nombre del usuario 1
+                $row['id'] = $row['id1'];
+                $row['fecha'] = $row['fecha']; // Si el rol es 1, toma el nombre del usuario 1
             } else {
+                $row['idc'] = $row['idc'];
+                $row['ruta'] = $row['ruta2'];
                 $row['nombre'] = $row['nombre2'];
-                $row['id'] = $row['id2']; // Si el rol no es 1, toma el nombre del usuario 2
+                $row['id'] = $row['id2'];
+                $row['fecha'] = $row['fecha']; // Si el rol no es 1, toma el nombre del usuario 2
             }
             $data[] = $row;
         }

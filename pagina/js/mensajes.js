@@ -1,3 +1,82 @@
+
+$(document).ready(function() {
+    // Hacer la solicitud AJAX al cargar la página
+    obtenerConversaciones();
+
+    function obtenerConversaciones() {
+        $.ajax({
+            url: '../php/conversaciones.php', // Ruta al script PHP que obtiene las conversaciones
+            type: 'POST',
+            data: { valor: 1 }, // Datos que se enviarán al servidor
+            dataType: 'json', // Esperamos recibir datos en formato JSON
+            success: function(response) {
+                // Manejar la respuesta del servidor
+                mostrarConversaciones(response);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error al obtener conversaciones:', error);
+            }
+        });
+    }
+    
+    function mostrarConversaciones(conversaciones) {
+        // Limpiar la lista de conversaciones
+        $('.list-group').empty();
+
+        // Iterar sobre las conversaciones recibidas y agregarlas a la lista
+        conversaciones.forEach(function(conversacion) {
+            
+            var listItem = `
+                <li class="list-group-item d-flex align-items-center" 
+                    id="${conversacion.id}" 
+                    idc="${conversacion.idc}"
+                    scri="${conversacion.ruta}"
+                    nombrei="${conversacion.nombre}"  
+                    onclick="SeleccionarChat(event)">
+                    <img src="${conversacion.ruta}" class="rounded-circle img-thumbnail" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
+                    <div>
+                        <strong>${conversacion.nombre}</strong>
+                        <br>
+                        <small>${conversacion.fecha}</small>
+                    </div>
+                </li>
+            `;
+            $('.list-group').append(listItem);
+        });
+    }
+});
+
+
+$('#txtmsj').keypress(function(event) {
+    if (event.which === 13) { // 13 es el código de la tecla Enter
+        enviarMensaje();
+    }
+});
+
+// Evento al hacer clic en el botón de enviar
+$('#enviarMensajeBtn').click(function() {
+    enviarMensaje();
+});
+
+// Función para enviar el mensaje mediante AJAX
+function enviarMensaje() {
+    idc = localStorage.getItem("idc");
+    var mensaje = $('#txtmsj').val();
+    // Realizar la petición AJAX para enviar el mensaje
+    $.ajax({
+        url: '../php/mensajes.php',
+        type: 'POST',
+        data: { mensaje: mensaje,idc:idc }, // Enviar el mensaje al archivo PHP
+        success: function(response) {
+            // Recargar los mensajes después de enviar el mensaje
+            $('#txtmsj').val('');
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+            $('#txtmsj').val('');
+        }
+    });
+}
 // Objeto para representar un mensaje
 var id_m;
 class Mensaje {
@@ -11,8 +90,8 @@ class Mensaje {
 
     // Método para construir el HTML del mensaje
     construirHTML() {
-        console.log("id_conversacion_usuario", this.id_usuario);
-    console.log("id_usuario", this.id_us);
+    //console.log("id_cuonversacion_usuario", this.id_usuario);
+    //console.log("id_usuario", this.id_us);
 
         if (this.id_usuario == this.id_us) {
             // Mensaje enviado por el usuario (derecha)
@@ -69,7 +148,7 @@ function realizarSolicitudAjax(data, successCallback) {
 // Acción inicial al cargar el documento
 $(document).ready(function () {
     // Limpiar elementos en localStorage
-    ["id_u", "id_c", "id_us", "id_m"].forEach(item => localStorage.removeItem(item));
+    ["id_u", "id_cu", "id_us", "id_m"].forEach(item => localStorage.removeItem(item));
 
     // Obtener el valor de `id_us`
     realizarSolicitudAjax({ valor: 4 }, function (response) {
@@ -77,7 +156,7 @@ $(document).ready(function () {
             id_us = JSON.parse(response);
            // id_us = datos.id_us; // Acceder a 'id_us'
             localStorage.setItem("id_us", id_us);
-            console.log("Error al convertir a JSON:", id_us);
+            //console.log("Error al convertir a JSON:", id_us);
         } catch (e) {
             console.error("Error al convertir a JSON:", e.message);
         }
@@ -87,18 +166,29 @@ $(document).ready(function () {
 // Selección de chat
 function SeleccionarChat(event) {
     const elemento = $(event.currentTarget);
-    const id_c = elemento.attr('id'); // Obtiene el ID de la conversación
-    console.log("ID_c de la conversación seleccionada:", id_c);
-    localStorage.setItem("id_c", id_c);
+    const id_cu = elemento.attr('id');
+    const idc = elemento.attr('idc');
+    const scr = elemento.attr('scri');
+    const nombrei= elemento.attr('nombrei'); // Obtiene el ID de la conversación
+    console.log("ID_cu de la conversación seleccionada:", id_cu);
+    console.log("ID_cu de la conversación seleccionada:", idc);
+    console.log("ID_cu de la conversación seleccionada:", scr);
+    console.log("ID_cu de la conversación seleccionada:", nombrei);
 
-    cargarMensajes(id_c);
+
+    localStorage.setItem("id_cu", id_cu);
+    localStorage.setItem("idc", idc);
+    document.getElementById("imagen").src = scr;
+    document.getElementById("nombrei").innerHTML = nombrei;
+
+    cargarMensajes(id_cu);
 }
 
 // Carga mensajes según el ID de conversación
-function cargarMensajes(id_c) {
+function cargarMensajes(id_cu) {
      id_us = localStorage.getItem("id_us");
 
-    realizarSolicitudAjax({ valor: 2, id: id_c }, function (respuesta) {
+    realizarSolicitudAjax({ valor: 2, id: id_cu }, function (respuesta) {
         $('#chat').empty(); // Limpiar el área del chat
         mostrarMensajes(respuesta, id_us); // Mostrar los mensajes
     });
@@ -107,10 +197,10 @@ function cargarMensajes(id_c) {
 // Actualiza mensajes periódicamente
 function actualizarMensaje() {
      id_m = localStorage.getItem("id_m") || 0;
-     id_c = localStorage.getItem("id_c");
+     id_cu = localStorage.getItem("id_cu");
     const id_us = localStorage.getItem("id_us");
     console.log('utlimo_mensaje',id_m);
-    realizarSolicitudAjax({ valor: 3, id: id_c, id_m: id_m }, function (respuesta) {
+    realizarSolicitudAjax({ valor: 3, id: id_cu, id_m: id_m }, function (respuesta) {
         mostrarMensajes(respuesta, id_us); // Mostrar los mensajes
     });
 }
