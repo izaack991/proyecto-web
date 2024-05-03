@@ -295,6 +295,27 @@ require_once('conexion.class.php');
 
                 return $data;
             }
+            function buscaToken($token)
+            {
+                try
+                {
+                    $sql = "SELECT token FROM tbl_usuario where token=$token";
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data = $row['token'];
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                }
+
+                return $data;
+            }
             function buscarPais()
             {
                 try

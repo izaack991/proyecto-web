@@ -193,7 +193,39 @@
         })
     })
 };
-
+// Metodo AJAX para el guardado de activacion de empresa
+{
+    $(document).ready(function () {
+        $('#formVerificacion').submit(function (event) {
+            event.preventDefault();
+            var formData = new FormData($('#formVerificacion')[0]);
+            $.ajax({
+                url: '../php/verifica.php',
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    // Maneja la respuesta del archivo PHP aquí
+                    console.log(response);
+                    if (response == "true") {
+                        Swal.fire({
+                            title: '¡Listo!',
+                            text: 'Su usuario fue verificado puede ingresar a la plataforma',
+                            icon: 'success'
+                        }).then(function () {
+                            window.location.href = "https://www.workele.com";
+                        });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // Maneja cualquier error que ocurra durante la solicitud AJAX
+                    console.error(error);
+                }
+            });
+        })
+    })
+};
 // Metodo AJAX para el guardado de Interes
 {
     $(document).ready(function () {
