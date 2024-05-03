@@ -106,7 +106,7 @@
             </div>
             <br>
 
-            <!-- <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+            <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
 
             <script>
               ClassicEditor
@@ -120,20 +120,20 @@
                 .catch(error => {
                   console.error('Hubo un problema al instanciar el editor:', error);
                 });
-            </script> -->
+            </script> 
 
-            <script src="https://cdn.tiny.cloud/1/opxm67vw96dfzavzjry6r53rgqrio3a3nzg3o57ii9livoei/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+            <!-- <script src="https://cdn.tiny.cloud/1/opxm67vw96dfzavzjry6r53rgqrio3a3nzg3o57ii9livoei/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script> -->
             <script>
-              tinymce.init({
-                menubar: false,
-                language: 'es',
-                selector: 'textarea',
-                plugins: 'autolink lists link image charmap print preview anchor',
-                toolbar: 'undo redo | formatselect | ' +
-                  'bold italic backcolor | alignleft aligncenter ' +
-                  'alignright alignjustify | bullist numlist outdent indent | ' +
-                  'removeformat | help'
-              });
+            // tinymce.init({
+            //   menubar: false,
+            //   language: 'es',
+            //   selector: 'textarea',
+            //   plugins: 'autolink lists link image charmap print preview anchor',
+            //   toolbar: 'undo redo | formatselect | ' +
+            //   'bold italic backcolor | alignleft aligncenter ' +
+            //   'alignright alignjustify | bullist numlist outdent indent | ' +
+            //   'removeformat | help'
+            // });
              
             // Obtener la fecha actual
             var today = new Date();
