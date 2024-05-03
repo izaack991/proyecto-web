@@ -93,14 +93,14 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <div class="form-floating">
-                <input class="form-control" type="date" id="dateInicio" required name="dateInicio" value="2024-01-01">
+                <input class="form-control" type="date" id="dateInicio" required name="dateInicio">
                 <label for="dateInicio">Seleccione Fecha de Inicio: *</label><br>
               </div>
             </div>
             <br>
             <div class="form-group col-md-6">
               <div class="form-floating">
-                <input class="form-control" type="date" id="dateFin" required name="dateFin" value="2024-01-02">
+                <input class="form-control" type="date" id="dateFin" required name="dateFin">
                 <label for="dateFin">Seleccione Fecha de Vencimiento *</label><br>
               </div>
             </div>
@@ -134,6 +134,20 @@
                   'alignright alignjustify | bullist numlist outdent indent | ' +
                   'removeformat | help'
               });
+             
+            // Obtener la fecha actual
+            var today = new Date();
+
+            // Establecer fecha de inicio y fecha fin, donde fecha inicio es la fecha actual y fecha fin es 3 dias despues de la fecha actual
+            var startDate = new Date(today);
+            var endDate = new Date(today);
+            endDate.setDate(endDate.getDate() + 3);
+
+            var formattedStartDate = startDate.getFullYear() + '-' + ('0' + (startDate.getMonth() + 1)).slice(-2) + '-' + ('0' + startDate.getDate()).slice(-2);
+            var formattedEndDate = endDate.getFullYear() + '-' + ('0' + (endDate.getMonth() + 1)).slice(-2) + '-' + ('0' + endDate.getDate()).slice(-2);
+
+            document.getElementById('dateInicio').value = formattedStartDate;
+            document.getElementById('dateFin').value = formattedEndDate;
             </script>
 
             <!-- {*Campos internos para la ubicacion*} -->
