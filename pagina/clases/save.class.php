@@ -655,6 +655,27 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+            public function activar_empresa($token)
+            {        
+                $bguardar = false;
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_usuario SET status=1 WHERE token =$token";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                    $bguardar = true;    
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    $bguardarq = false;
+                }        
+                return $bguardar;
+            }
             public function actualizar_experiencia($idexp,$descripcion,$empresa,$fechaInicio,$fechafin)
             {        
                 try 

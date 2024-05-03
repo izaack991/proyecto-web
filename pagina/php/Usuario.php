@@ -119,7 +119,7 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
           <title>Correo de ejemplo</title>
       </head>
       <body>
-      <img src="https://workele.com/site/assets/images/index_usuario/WORKELE.png" alt="" style="width: 150px; height: 150px;">
+      <img src="../../assets/images/Workele.png" alt="" style="width: 150px; height: 150px;">
       <h1>Hola, ' . $_razon . '!</h1>
           <p>Este es un correo de verificacion</p>
           <p>para verificar el registro de tu empresa da click en el enlace que esta en el presente correo</p>

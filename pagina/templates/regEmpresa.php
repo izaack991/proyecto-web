@@ -145,39 +145,3 @@ if ($_SESSION['cuenta']) {
 
 </html>
 
-<?php
-
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "db_web";
-
-// Verificar si se envió el formulario de registro
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtener los datos del formulario
-    $correo = $_POST["txt_correo"];
-
-    // Generar un token de verificación único
-    $token = random(1000,9999);
-
-    // Enviar el correo electrónico con el token de verificación
-    $sql = "INSERT INTO tbl_usuario (correo, token) VALUES ('$correo', '$token')";
-    if ($conn->query($sql) == TRUE) {
-
-        // Enviar el correo electrónico con el token de verificación
-        $para = $correo;
-        $titulo = 'Token de verificación';
-        $mensaje = 'Tu token de verificación es: ' . $token;
-        $cabeceras = 'From: kevin.vall328@gmail.com';
-    
-        if (mail($para, $titulo, $mensaje, $cabeceras)) {
-            echo "Se ha enviado un correo electrónico con el token de verificación.";
-        } else {
-            echo "Error al enviar el correo electrónico.";
-        }
-    } else {
-        echo "Error al registrar el usuario: " . $conn->error;
-    }
-    
-}
-?>
