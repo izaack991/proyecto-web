@@ -115,6 +115,12 @@ if ($_SESSION['cuenta']) {
           <div class="form-floating mb-3 mt-4">
             <input class="form-control" type="text" name="txt_DOMICILIO" class="texto" id="domicilio" placeholder="Escriba su Domicilio" required="true"><br>
             <label>Domicilio *</label><br>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" required="true" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                He leido y acepto el <a href="AvisoPrivacidad.php" target="_blank" class="form-floating  mb-3 mt-4" >Aviso de privacidad</a>
+              </label>
+            </div>
           </div>
           <div class="container text-center mt-4">
             <input class="btn btn-primary" type="submit" value="Guardar" id="miBoton">
