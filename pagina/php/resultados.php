@@ -15,11 +15,13 @@ if(isset($_GET['puesto'])) {
     foreach($vacantesMismoPuesto as $vacante) {
         echo '<div class="col-lg-4 col-md-6 col-sm-12" >';
         echo '<div class="card shadow p-3 mb-5 bg-body rounded">';
+        echo '<div class="card-header">';
+        echo '<h4 class="card-title text-danger text-center mb-1 ">' . $vacante['puesto'] . '</h4>';
+        echo '</div>';
         echo '<div class="card-body">';
-        echo '<h4 class="card-title text-danger">' . $vacante['puesto'] . '</h4>';
         echo '<h5 class="card-title">' . $vacante['empresa'] . '</h5>';
         echo '<h6 class="card-title">' . $vacante['ciudad'] . ', ' . $vacante['region'] . '</h6>';
-        echo '<h6 class="card-title"  style="text-align: justify; font-weight: normal;">' . substr($vacante['datos_adicionales'], 0, 200) . '</h6>';
+        echo '<h6 class="card-title"  style="text-align: justify; font-weight: normal;">' . substr($vacante['datos_adicionales'], 0, 200) . '...</h6>';
         echo '<form action="seleccionar_vacantes.php" method="POST">';
         echo '<input type="text" value="' . $vacante['id_vacante'] . '" name="id_vacante" id="id_vacante" hidden>';
         echo '<input type="submit" value="Leer más" class="btn btn-primary">';

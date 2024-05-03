@@ -1,6 +1,3 @@
-<?php
-session_start();
-print_r($_SESSION); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -100,8 +97,8 @@ print_r($_SESSION); ?>
       <div class="card shadow mb-3" style="margin-right: 25px; margin-top: 5px; border-radius: 25px; height: 70vh; width: 135vh;">
         <div class="card-header bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
           <div style="display: flex; align-items: center; justify-content: flex-start;">
-            <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail d-block" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
-            <strong id="nombreEmpresa"></strong>
+            <img id="imagen"src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail d-block" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
+            <strong id="nombrei"></strong>
           </div>
         </div>
         <div class="card-body" id="chat" style="overflow-y: auto;">
@@ -135,41 +132,11 @@ integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
   </script>
   <script src="../js/insert.js"></script>
-  <script src="../js/conversaciones.js"></script>
   <script src="../js/mensajes.js"></script>
   
   <script>
     // Evento al presionar Enter en el input
-    $('#txtmsj').keypress(function(event) {
-        if (event.which === 13) { // 13 es el código de la tecla Enter
-            enviarMensaje();
-        }
-    });
 
-    // Evento al hacer clic en el botón de enviar
-    $('#enviarMensajeBtn').click(function() {
-        enviarMensaje();
-    });
-
-    // Función para enviar el mensaje mediante AJAX
-    function enviarMensaje() {
-        var mensaje = $('#txtmsj').val();
-        //alert (mensaje); // Obtener el mensaje del input
-
-        // Realizar la petición AJAX para enviar el mensaje
-        $.ajax({
-            url: '../php/mensajes.php',
-            type: 'POST',
-            data: { mensaje: mensaje }, // Enviar el mensaje al archivo PHP
-            success: function(response) {
-                // Recargar los mensajes después de enviar el mensaje
-                $('#txtmsj').val('');
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
-            }
-        });
-    }
 </script>
 </body>
 

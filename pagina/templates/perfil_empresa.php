@@ -13,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/perfil_empresa.js"></script>
+    <script src="https://cdn.tiny.cloud/1/opxm67vw96dfzavzjry6r53rgqrio3a3nzg3o57ii9livoei/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script>
       // funcion para solo letras mayúsculas, minúsculas y espacios
@@ -42,11 +43,11 @@
                   <div class="card-body">
                     <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="usuario-tab" data-bs-toggle="tab" data-bs-target="#usuario" type="button" role="tab" aria-controls="home" aria-selected="true">Empresa</button>
+                            <button class="nav-link active" id="usuario-tab" data-bs-toggle="tab" data-bs-target="#usuario" type="button" role="tab"  aria-selected="true">Empresa</button>
                         </li>
-                        <!-- <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="competencias-tab" data-bs-toggle="tab" data-bs-target="#competencias" type="button" role="tab" aria-controls="profile" aria-selected="false">Competencias</button>
-                        </li> -->
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="vacantes-tab" data-bs-toggle="tab" data-bs-target="#vacantes" type="button" role="tab" aria-selected="false">Vacantes</button>
+                        </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="usuario" role="tabpanel" >
@@ -115,96 +116,20 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="tab-pane fade" id="competencias" role="tabpanel" aria-labelledby="competencias-tab">
-                        <div class="row mb-2 justify-content-center">
-                                <div class="container">
-                                    <label class="mx-3">Ten en cuenta que puedes editar tu información si así lo requieres en cualquier momento.</label>
-                                </div>
+                        <div class="tab-pane fade" id="vacantes" role="tabpanel" aria-labelledby="competencias-tab">
+                            <div id="containerVacantes">
                             </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fas fa-briefcase text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
-                                    </div>
-                                    <div class="mx-3">
-                                        <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Experiencia Laboral</label>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <button id="btncardexp" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fas fa-book text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
-                                    </div>
-                                    <div class="mx-3">
-                                        <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Formación Académica</label>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <button id="btncardfor" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fas fa-running text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
-                                    </div>
-                                    <div class="mx-3">
-                                        <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Aficiones</label>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <button id="btncardafi" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fas fa-clipboard text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
-                                    </div>
-                                    <div class="mx-3">
-                                        <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Intereses</label>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <button id="btncardint" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fas fa-film text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
-                                    </div>
-                                    <div class="mx-3">
-                                        <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Video Curriculum</label>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <button id="btncardvid" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fas fa-address-card text-center align-middle" style="font-size:1.3rem;color:#54b689;width:21px;"></i>
-                                    </div>
-                                    <div class="mx-3">
-                                        <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Postulaciones</label>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <button id="btncardpos" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div> -->
+                            <div id="log"></div>
+                        </div>
                     </div>
                       
                   </div>
                 </div>
             </div>
+
+            <!-- Contenedor donde iran almacenadas las modales -->
+            <div id="containerModales"></div>
+
             <!-- Card de Imagen de Perfil -->
             <div class="col-auto mr-auto mt-4" id="cardImagenPerfil" style="display:none;">
                 <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
@@ -277,8 +202,7 @@
             </div>
         </div>
     </div>
-
-<!-- Script para mostrar/ocultar el formulario -->
+    
 <script>
   $(document).ready(function(){
     // CODIGO JAVASCRIPT PARA LAS VENTANAS DE USUARIO
@@ -331,6 +255,16 @@
         $("#cardTelefono").slideDown();
     });
 
+    $("#vacantes-tab").click(function(){
+        $("#cardNombre").hide();
+        $("#cardCorreo").hide();
+        $("#cardRegion").hide();
+        $("#cardDomicilio").hide();
+        $("#cardImagenPerfil").hide();
+        $("#cardConstancia").hide();
+        $("#cardTelefono").hide();
+    });
+
     // CODIGO JAVASCRIPT PARA CERRAR LAS VENTANAS DE EDICION
     $("#btncancelarImagenPerfil").click(function(){
         $("#cardImagenPerfil").slideUp();
@@ -349,12 +283,12 @@
     });
     
   });
-</script>
 
+</script>
+    
     <!-- Conexion de librerias de JavaScript y bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-
   </body>
 </html>

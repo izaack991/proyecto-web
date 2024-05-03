@@ -25,19 +25,18 @@ if (isset($_POST['valor'])) {
         }
 
         if($valor == 2) {
-            $mensaje = $buscar->buscarMensaje($id_empresa, $id_usuario,$rol);
+            $mensaje = $buscar->buscarMensaje($id_empresa, $id_usuario);
             //$mensaje = array_merge($mensaje, ['id_us' => $id_us]); // Usando array_merge para concatenar
            // print_r($mensaje); // Verifica visualmente
             echo json_encode($mensaje);
         } else if ($valor == 3){
             $id_m = $_POST['id_m'];
-            $Amensaje = $buscar->actualizarMensaje($id_empresa, $id_usuario,$rol,$id_m);
+            $Amensaje = $buscar->actualizarMensaje($id_empresa, $id_usuario,$id_m);
+            //print_r($Amensaje);
             echo json_encode($Amensaje);
         } else if($valor == 4) {
             $id_us = $_SESSION['iusuario'];
-            $data = array(
-                'id_us' => $id_us
-            );
+            $data =$id_us;
             echo json_encode($data); // Respuesta cuando el parámetro 'respuesta' está presente
         } else {
             // Respuesta cuando el parámetro 'respuesta' no está presente

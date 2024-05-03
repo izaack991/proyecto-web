@@ -655,12 +655,53 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+            public function activar_empresa($token)
+            {        
+                $bguardar = false;
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_usuario SET status=1 WHERE token =$token";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                    $bguardar = true;    
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    $bguardarq = false;
+                }        
+                return $bguardar;
+            }
             public function actualizar_experiencia($idexp,$descripcion,$empresa,$fechaInicio,$fechafin)
             {        
                 try 
                 {
                     
                     $sql="UPDATE tbl_experiencia_laboral SET descripcion_puesto='$descripcion',empresa='$empresa',fechaInicio='$fechaInicio', fechaFin='$fechafin' WHERE id_experiencia=$idexp";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function actualizar_vacante($vacanteID,$puesto,$sueldo,$lugar,$region,$ciudad,$datos,$fechainicio,$fechafin)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_vacantes SET puesto='$puesto',sueldo='$sueldo',lugar='$lugar',region='$region',ciudad='$ciudad',datos_adicionales='$datos',dateInicio='$fechainicio',dateFin='$fechafin' WHERE id_vacante=$vacanteID";
                     
                     $query = $this->dbh->prepare($sql);
                     $query->execute();

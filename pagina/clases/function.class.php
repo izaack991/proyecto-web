@@ -278,6 +278,48 @@ require_once('conexion.class.php');
             {
                 try
                 {
+                    $sql = "SELECT region, nombre FROM tbl_paises ORDER BY (region = '52') DESC";
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                }
+
+                return $data;
+            }
+            function buscaToken($token)
+            {
+                try
+                {
+                    $sql = "SELECT token FROM tbl_usuario where token=$token";
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data = $row['token'];
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                }
+
+                return $data;
+            }
+            function buscarPais()
+            {
+                try
+                {
                     $sql = "SELECT region, nombre FROM tbl_paises";
                     $query = $this->dbh->prepare($sql);
                     $query->execute();
@@ -319,17 +361,19 @@ require_once('conexion.class.php');
             }
 
 
-            function buscarVacante($_idusuario)
+            function buscarVacante($_idusuario, $offset)
             {
                 try
                 {
-                $sql = "SELECT v.*, c.nombre as nombrePais 
-                FROM tbl_vacantes v
-                INNER JOIN tbl_paises c ON v.lugar = c.region
-                LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = $_idusuario
-                WHERE DATEDIFF(datefin, dateInicio) >= 1 AND v.status = 1 AND p.id_vacante IS NULL OR p.id_usuario <> $_idusuario
-                GROUP BY id_vacante;";
-                $query = $this->dbh->prepare($sql);
+                    $sql = "SELECT v.*, c.nombre as nombrePais 
+                            FROM tbl_vacantes v
+                            INNER JOIN tbl_paises c ON v.lugar = c.region
+                            LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = $_idusuario 
+                            WHERE (DATEDIFF(datefin, dateInicio) >= 1 AND v.status = 1 AND (p.id_vacante IS NULL OR p.id_usuario <> $_idusuario))
+                            GROUP BY v.id_vacante DESC
+                            LIMIT $offset, 9;"; // Utilizar el offset en la consulta
+
+                    $query = $this->dbh->prepare($sql);
                     $query->execute();
 
                     $data = array();
@@ -344,6 +388,63 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
+            
+            //  Funcion para buscar las vacantes del perfil de empresa (NO TOCAR)
+            function buscarVacantes($_idusuario)
+            {
+                try
+                {
+                    $sql = "SELECT v.*, c.nombre as nombrePais 
+                            FROM tbl_vacantes v
+                            INNER JOIN tbl_paises c ON v.lugar = c.region
+                            LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = $_idusuario 
+                            WHERE (DATEDIFF(datefin, dateInicio) >= 1 AND v.status = 1 AND (p.id_vacante IS NULL OR p.id_usuario <> $_idusuario))
+                            GROUP BY v.id_vacante DESC";
+
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;    
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error: !" . $e->getMessage();
+                }
+                return $data;
+            }
+
+
+            // function buscarVacante($_idusuario)
+            // {
+            //     try
+            //     {
+            //     $sql = "SELECT v.*, c.nombre as nombrePais 
+            //     FROM tbl_vacantes v
+            //     INNER JOIN tbl_paises c ON v.lugar = c.region
+            //     LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = $_idusuario 
+            //     WHERE (DATEDIFF(datefin, dateInicio) >= 1 AND v.status = 1 AND (p.id_vacante IS NULL OR p.id_usuario <> $_idusuario))
+            //     GROUP BY v.id_vacante DESC
+            //     LIMIT 9;";
+
+            //     $query = $this->dbh->prepare($sql);
+            //         $query->execute();
+
+            //         $data = array();
+            //         while ($row = $query->fetch(PDO::FETCH_ASSOC))
+            //         {
+            //             $data[] = $row;    
+            //         }
+            //     }
+            //     catch(PDOException $e)
+            //     {
+            //         print "Error: !" . $e->getMessage();
+            //     }
+            //     return $data;
+            // }
 
           /* function buscarVacante2()
             {
@@ -516,10 +617,10 @@ public function buscarMensaje($id_empresa, $id_usuario)
     return $data;
 }
 
-public function actualizarMensaje($id_empresa, $id_usuario,$id_u)
+public function actualizarMensaje($id_empresa, $id_usuario,$id_m)
 {
     try {
-        $sql = "SELECT m.id_mensaje FROM tbl_mensajes AS m INNER JOIN tbl_conversaciones AS c ON m.id_conversacion = c.id_conversacion WHERE c.id_empresa = :id_empresa AND c.id_usuario = :id_usuario AND m.id_mensaje > :id_m ORDER BY m.id_mensaje ASC";  
+        $sql = "SELECT m.id_usuario , m.mensaje , m.fecha ,m.id_mensaje as id_mensaje FROM tbl_mensajes AS m INNER JOIN tbl_conversaciones AS c ON m.id_conversacion = c.id_conversacion WHERE c.id_empresa = :id_empresa AND c.id_usuario = :id_usuario AND m.id_mensaje > :id_m ORDER BY m.id_mensaje ASC";  
         $query = $this->dbh->prepare($sql);
         $query->bindParam(':id_empresa', $id_empresa);
         $query->bindParam(':id_usuario', $id_usuario);
@@ -542,7 +643,7 @@ public function buscarConversacion($id_usuario,$rol)
     try {
 
 
-        $sql = "SELECT c.id_conversacion as idc,u1.id_usuario as id1, u2.id_usuario as id2, u1.razon_social as razon, u1.nombre AS nombre1, u2.nombre AS nombre2, u1.rol AS rol1, u2.rol AS rol2
+        $sql = "SELECT MAX(m.fecha) as fecha, c.id_conversacion as idc,u1.id_usuario as id1, u2.id_usuario as id2, u1.razon_social as razon, u1.nombre AS nombre1, u2.nombre AS nombre2, u1.rol AS rol1, u2.rol AS rol2,u1.ruta_imagen as ruta1, u2.ruta_imagen as ruta2 
         FROM tbl_conversaciones AS c
         JOIN tbl_usuario AS u1 ON c.id_empresa = u1.id_usuario 
         JOIN tbl_usuario AS u2 ON c.id_usuario = u2.id_usuario
@@ -559,11 +660,17 @@ public function buscarConversacion($id_usuario,$rol)
         while ($row = $query->fetch(PDO::FETCH_ASSOC))
         {
             if ($rol == 2) {
+                $row['idc'] = $row['idc'];
+                $row['ruta'] = $row['ruta1'];
                 $row['nombre'] = $row['razon'];
-                $row['id'] = $row['id1']; // Si el rol es 1, toma el nombre del usuario 1
+                $row['id'] = $row['id1'];
+                $row['fecha'] = $row['fecha']; // Si el rol es 1, toma el nombre del usuario 1
             } else {
+                $row['idc'] = $row['idc'];
+                $row['ruta'] = $row['ruta2'];
                 $row['nombre'] = $row['nombre2'];
-                $row['id'] = $row['id2']; // Si el rol no es 1, toma el nombre del usuario 2
+                $row['id'] = $row['id2'];
+                $row['fecha'] = $row['fecha']; // Si el rol no es 1, toma el nombre del usuario 2
             }
             $data[] = $row;
         }
