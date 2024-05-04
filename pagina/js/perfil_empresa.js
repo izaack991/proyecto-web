@@ -73,7 +73,7 @@ $(document).ready(function() {
                         input_vacante += `<div class="row"><div class="col"><li class="list-group-item d-flex justify-content-between align-items-center"><div>`
                         input_vacante += `<h5 class='text-primary'>`+vacante.puesto+`</h5>`
                         input_vacante += `<p class='text-dark'>`+vacante.datos_adicionales.substring(0, 200)+`...</h5>`
-                        input_vacante += `</div><div class="ml-auto"><button data-bs-toggle="modal" data-bs-target="#modalVac`+vacante.id_vacante+`" class="border-0 bg-white text-secondary pl-2"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button></div></li></div></div>`
+                        input_vacante += `</div><div class="ml-auto"><button data-bs-toggle="modal" data-bs-target="#modalVac`+vacante.id_vacante+`" class="border-0 bg-white text-secondary pl-2" style="outline:none;"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button></div></li></div></div>`
                     });
 
 
@@ -92,7 +92,7 @@ $(document).ready(function() {
                                             <div class="modal-content" style="border-radius:18px;">
                                                 <div class="modal-header bg-primary" style="border-top-left-radius:18px;border-top-right-radius:18px;">
                                                     <h4 class="modal-title text-white"><b>EDITAR VACANTE</b></h4>
-                                                    <button type="button" id="btncerrarmodal" class="close text-white" data-bs-dismiss="modal" aria-label="Close">
+                                                    <button type="button" id="btncerrarmodal" class="close text-white" data-bs-dismiss="modal" aria-label="Close" style="outline:none;">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
@@ -175,23 +175,23 @@ $(document).ready(function() {
                                                     </div>
 
                                                     <script>
-                                                        tinymce.init({
-                                                            menubar: false,
-                                                            language: 'es',
-                                                            selector: '#txtdatos`+vacante.id_vacante+`',
-                                                            plugins: 'autolink lists link image charmap print preview anchor',
-                                                            toolbar: 'undo redo | formatselect | ' +
-                                                            'bold italic backcolor | alignleft aligncenter ' +
-                                                            'alignright alignjustify | bullist numlist outdent indent | ' +
-                                                            'removeformat | help',
-                                                            setup: function (editor) {
-                                                                editor.on('change', function () {
-                                                                    editor.save();
-                                                                    var content = editor.getContent();
-                                                                    $('#txtdatos`+vacante.id_vacante+`').val(content);
+                                                        ClassicEditor
+                                                            .create(document.querySelector('#txtdatos`+vacante.id_vacante+`'), {
+                                                                minHeight: '300px',
+                                                                toolbar: ['undo', 'redo', '|', 'bold', 'italic', 'blockQuote', 'bulletedList', 'numberedList', '|', 'outdent', 'indent']
+                                                            })
+                                                            .then(editor => {
+                                                                window.editor = editor;
+                                                                // Escuchar el evento change del editor
+                                                                editor.model.document.on('change:data', () => {
+                                                                    // Obtener el texto del editor y establecerlo en el textarea original
+                                                                    const editorData = editor.getData();
+                                                                    document.querySelector('#txtdatos`+vacante.id_vacante+`').value = editorData;
                                                                 });
-                                                            }
-                                                        });
+                                                            })
+                                                            .catch(error => {
+                                                                console.error('Hubo un problema al instanciar el editor:', error);
+                                                            });
                                                     </script>
                                                 </div>
                                             </div>

@@ -755,6 +755,46 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+            public function quitarFavoritos($iusuario,$vacanteID)
+            {        
+                try 
+                {
+                    
+                    $sql="DELETE FROM tbl_favoritos WHERE id_usuario=$iusuario AND id_vacante = $vacanteID";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
+            public function agregarFavoritos($id_favoritos,$iusuario,$vacanteID)
+            {        
+                try 
+                {
+                    
+                    $sql="INSERT INTO tbl_favoritos VALUES('$id_favoritos','$iusuario','$vacanteID')";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
             public function eliminar_interes($idint)
             {        
                 try 

@@ -30,22 +30,25 @@
   <body>
     <!--Barra de navegacion para Empresa-->
     <?php include("navbar_usuario.php") ?>
-
+    <div id="notification-container" class="fixed-top mt-3" style="z-index: 1000;"></div>
     <!-- Card de potulaciones -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-auto mx-auto">
                 <div class="card border-light shadow-lg bg-body mt-4 mb-4" style="width:35rem;max-width:35rem;border-radius:0.6rem;">
-                  <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
+                  <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">    
                     <h2 class="card-title text-white mb-0">MI PERFIL</h2>
                   </div>
                   <div class="card-body">
                     <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="usuario-tab" data-bs-toggle="tab" data-bs-target="#usuario" type="button" role="tab" aria-controls="home" aria-selected="true">Usuario</button>
+                            <button class="nav-link active" id="usuario-tab" data-bs-toggle="tab" data-bs-target="#usuario" type="button" role="tab" aria-controls="home" aria-selected="true" style="outline: none;">Usuario</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="competencias-tab" data-bs-toggle="tab" data-bs-target="#competencias" type="button" role="tab" aria-controls="profile" aria-selected="false">Competencias</button>
+                            <button class="nav-link" id="competencias-tab" data-bs-toggle="tab" data-bs-target="#competencias" type="button" role="tab" aria-controls="profile" aria-selected="false" style="outline: none;">Competencias</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="favoritos-tab" data-bs-toggle="tab" data-bs-target="#favoritos" type="button" role="tab" aria-controls="profile" aria-selected="false" style="outline: none;">Favoritos</button>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
@@ -56,7 +59,7 @@
                                         <div id="imagenPerfil" class=" w-100">
                                         </div>
                                         <div class="ml-auto">
-                                            <button id="btncardimagenPerfil" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                            <button id="btncardimagenPerfil" class="border-0 bg-white text-secondary" style="outline: none;"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                         </div>
                                         
                                     </li>
@@ -70,7 +73,7 @@
                                             <label id="nomUsuario" class="form-label"></label>
                                         </div>
                                         <div class="ml-auto">
-                                            <button id="btncardnombre" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                            <button id="btncardnombre" class="border-0 bg-white text-secondary" style="outline: none;"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                         </div>
                                     </li>
                                 </div>
@@ -83,7 +86,7 @@
                                             <label id="correoUsuario" class="form-label"></label>
                                         </div>
                                         <div class="ml-auto">
-                                            <button id="btncardcorreo"  class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                            <button id="btncardcorreo"  class="border-0 bg-white text-secondary" style="outline: none;"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                         </div>
                                     </li>
                                 </div>
@@ -96,7 +99,7 @@
                                             <label id="telefonoUsuario" class="form-label"></label>
                                         </div>
                                         <div class="ml-auto">
-                                            <button id="btncardtelefono" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                            <button id="btncardtelefono" class="border-0 bg-white text-secondary" style="outline: none;"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                         </div>
                                     </li>
                                 </div>
@@ -109,7 +112,7 @@
                                             <label id="regionUsuario" class="form-label"></label>
                                         </div>
                                         <div class="ml-auto">
-                                            <button id="btncardregion" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                            <button id="btncardregion" class="border-0 bg-white text-secondary" style="outline: none;"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                         </div>
                                     </li>
                                 </div>
@@ -122,7 +125,7 @@
                                             <label id="domicilioUsuario" class="form-label"></label>
                                         </div>
                                         <div class="ml-auto">
-                                            <button id="btncarddomicilio" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                            <button id="btncarddomicilio" class="border-0 bg-white text-secondary" style="outline: none;"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                         </div>
                                     </li>
                                 </div>
@@ -143,7 +146,7 @@
                                         <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Experiencia Laboral</label>
                                     </div>
                                     <div class="ml-auto">
-                                        <button id="btncardexp" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                        <button id="btncardexp" class="border-0 bg-white text-secondary" style="outline: none;"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                     </div>
                                 </li>
                             </ul>
@@ -156,7 +159,7 @@
                                         <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Formación Académica</label>
                                     </div>
                                     <div class="ml-auto">
-                                        <button id="btncardfor" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                        <button id="btncardfor" class="border-0 bg-white text-secondary" style="outline: none;"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                     </div>
                                 </li>
                             </ul>
@@ -169,7 +172,7 @@
                                         <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Aficiones</label>
                                     </div>
                                     <div class="ml-auto">
-                                        <button id="btncardafi" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                        <button id="btncardafi" class="border-0 bg-white text-secondary" style="outline: none;"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                     </div>
                                 </li>
                             </ul>
@@ -182,7 +185,7 @@
                                         <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Intereses</label>
                                     </div>
                                     <div class="ml-auto">
-                                        <button id="btncardint" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                        <button id="btncardint" class="border-0 bg-white text-secondary" style="outline: none;"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                     </div>
                                 </li>
                             </ul>
@@ -195,7 +198,7 @@
                                         <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Video Curriculum</label>
                                     </div>
                                     <div class="ml-auto">
-                                        <button id="btncardvid" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                        <button id="btncardvid" class="border-0 bg-white text-secondary" style="outline: none;"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                     </div>
                                 </li>
                             </ul>
@@ -208,10 +211,13 @@
                                         <label class="my-auto" style="font-size:1.1rem; font-weight:bold;">Postulaciones</label>
                                     </div>
                                     <div class="ml-auto">
-                                        <button id="btncardpos" class="border-0 bg-white text-secondary"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                        <button id="btncardpos" class="border-0 bg-white text-secondary" style="outline: none;"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
                                     </div>
                                 </li>
                             </ul>
+                        </div>
+                        <div class="tab-pane fade" id="favoritos" role="tabpanel" aria-labelledby="favoritos-tab">
+                            <div id="containerVacantes"></div>
                         </div>
                     </div>
                       
@@ -223,7 +229,7 @@
                 <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
                     <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
                         <h4 class="card-title text-white mb-0 d-inline">EDITAR EXPERIENCIA LABORAL</h4>
-                        <button type="button d-inline" id="btncancelarEXP" class="close text-white" >
+                        <button type="button d-inline" id="btncancelarEXP" class="close text-white" style="outline: none;" >
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -237,7 +243,7 @@
                 <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
                     <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
                         <h4 class="card-title text-white d-inline mb-0">EDITAR FORMACIÓN ACADÉMICA</h4>
-                        <button type="button d-inline" id="btncancelarFOR" class="close text-white" >
+                        <button type="button d-inline" id="btncancelarFOR" class="close text-white" style="outline: none;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -251,7 +257,7 @@
                 <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
                     <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
                         <h4 class="card-title text-white d-inline mb-0">EDITAR AFICIONES</h4>
-                        <button type="button d-inline" id="btncancelarAFI" class="close text-white" >
+                        <button type="button d-inline" id="btncancelarAFI" class="close text-white" style="outline: none;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -265,7 +271,7 @@
                 <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
                     <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
                         <h4 class="card-title text-white d-inline mb-0">EDITAR INTERESES</h4>
-                        <button type="button d-inline" id="btncancelarINT" class="close text-white" >
+                        <button type="button d-inline" id="btncancelarINT" class="close text-white" style="outline: none;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -279,7 +285,7 @@
                 <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
                     <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
                         <h4 class="card-title text-white d-inline mb-0">EDITAR VIDEO CURRICULUM</h4>
-                        <button type="button d-inline" id="btncancelarVID" class="close text-white" >
+                        <button type="button d-inline" id="btncancelarVID" class="close text-white" style="outline: none;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -293,7 +299,7 @@
                 <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
                     <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
                         <h4 class="card-title text-white d-inline mb-0">EDITAR POSTULACIONES</h4>
-                        <button type="button d-inline" id="btncancelarPOS" class="close text-white" >
+                        <button type="button d-inline" id="btncancelarPOS" class="close text-white" style="outline: none;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -307,7 +313,7 @@
                 <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
                     <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
                         <h4 class="card-title text-white d-inline mb-0">EDITAR IMAGEN DE PERFIL</h4>
-                        <button type="button d-inline" id="btncancelarImagenPerfil" class="close text-white" >
+                        <button type="button d-inline" id="btncancelarImagenPerfil" class="close text-white" style="outline: none;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -321,7 +327,7 @@
                 <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
                     <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
                         <h4 class="card-title text-white d-inline mb-0">EDITAR NOMBRE</h4>
-                        <button type="button d-inline" id="btncancelarNombre" class="close text-white" >
+                        <button type="button d-inline" id="btncancelarNombre" class="close text-white" style="outline: none;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -335,7 +341,7 @@
                 <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
                     <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
                         <h4 class="card-title text-white d-inline mb-0">EDITAR CORREO</h4>
-                        <button type="button d-inline" id="btncancelarCorreo" class="close text-white" >
+                        <button type="button d-inline" id="btncancelarCorreo" class="close text-white" style="outline: none;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -349,7 +355,7 @@
                 <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
                     <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
                         <h4 class="card-title text-white d-inline mb-0">EDITAR TELEFONO</h4>
-                        <button type="button d-inline" id="btncancelarTelefono" class="close text-white" >
+                        <button type="button d-inline" id="btncancelarTelefono" class="close text-white" style="outline: none;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -363,7 +369,7 @@
                 <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
                     <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
                         <h4 class="card-title text-white d-inline mb-0">EDITAR REGIÓN</h4>
-                        <button type="button d-inline" id="btncancelarRegion" class="close text-white" >
+                        <button type="button d-inline" id="btncancelarRegion" class="close text-white" style="outline: none;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -377,7 +383,7 @@
                 <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
                     <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
                         <h4 class="card-title text-white d-inline mb-0">EDITAR DOMICILIO</h4>
-                        <button type="button d-inline" id="btncancelarDomicilio" class="close text-white" >
+                        <button type="button d-inline" id="btncancelarDomicilio" class="close text-white" style="outline: none;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>

@@ -21,6 +21,7 @@ $vid_curriculum = $buscarDatos->seleccionar_vid_curriculum($iusuario);
 $b_postulacion = $buscarDatos->buscarPostulacion2($iusuario);
 $busuario = $buscarDatos->seleccionar_usuario($iusuario);
 $bvacante = $buscarDatos->buscarVacantes($iusuario);
+$bvacanteFAV = $buscarDatos->buscarVacantesFAV($iusuario);
 $bpais = $buscarDatos->buscarPais();
 
 $datos_totales = array(
@@ -32,6 +33,7 @@ $datos_totales = array(
     'postulacion' => $b_postulacion,
     'usuario' => $busuario,
     'vacante' => $bvacante,
+    'vacanteFAV' => $bvacanteFAV,
     'pais' => $bpais,
 );
 

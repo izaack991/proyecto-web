@@ -202,6 +202,37 @@ $(document).ready(function() {
                                 <div class="row"><div class="col text-center"><button type="button" id="btnAgregarpos" class="btn btn-primary w-100">Agregar</button></div></div>`;
                 }
                 $("#contenedorPostulacion").html(input_pos);
+
+                // Ciclo each para mostrar las vacantes
+                input_vacante = ""
+                
+                if (data.vacanteFAV && data.vacanteFAV.length > 0) {
+                    
+                    $.each(data.vacanteFAV, function (index, vacanteFAV) {
+                        input_vacante += `<div class="row"><div class="col"><li class="list-group-item d-flex justify-content-between align-items-center"><div>`
+                        input_vacante += `<h4 class='text-danger'>`+vacanteFAV.puesto+`</h4>`
+                        input_vacante += `<h5 class='text-primary'>`+vacanteFAV.empresa+`</h5>`
+                        input_vacante += `<p class='text-dark'>`+vacanteFAV.datos_adicionales.substring(0, 200)+`...</h5></div>`
+                        input_vacante += `<form action="seleccionar_vacantes.php" method="POST">`;
+                        input_vacante += `<input type="text" value="`+vacanteFAV.id_vacante+`" name="id_vacante" id="id_vacante" hidden>`;
+                        input_vacante += `<div class="ml-auto text-center">`
+
+                        if (vacanteFAV.verificacionFav == null){
+                            input_vacante += `<button type="button" id="btnfavoritos" class="border-0 bg-white text-secondary p-0 mb-3" data-vacante="`+vacanteFAV.id_vacante+`" style="outline: none;"><i id="campana`+vacanteFAV.id_vacante+`" class="far fa-bookmark text-primary" style="font-size:1.8rem;transition: transform 0.1s ease;background-color:#f7f7f7;"></i></button>`;
+                        }else {
+                            input_vacante += `<button type="button" id="btnfavoritos" class="border-0 bg-white text-secondary p-0 mb-3" data-vacante="`+vacanteFAV.id_vacante+`" style="outline: none;"><i id="campana`+vacanteFAV.id_vacante+`" class="fas fa-bookmark text-primary" style="font-size:1.8rem;transition: transform 0.1s ease;background-color:#f7f7f7;"></i></button>`;
+                        }
+                        input_vacante += `<hr class="dropdown-divider">`
+                        input_vacante +=`<button type="submit" class="border-0 bg-white text-secondary pl-2 mt-3" style="outline: none;"><i class="fas fa-eye" style="font-size:1.3rem;"></i></button></div></li></div></div>`
+                        input_vacante += '</form>';
+                    });
+
+
+                } else {
+                    input_vacante += `<div class="row"><div class="col text-center"><p>Todavia no ha guardado ninguna vacante.</p></div></div>
+                                <div class="row"><div class="col text-center"><button type="button" id="btnAgregarFav" class="btn btn-primary w-100">Agregar</button></div></div>`;
+                }
+                $("#containerVacantes").html(input_vacante);
             },
             error: function(xhr, status, error) {
                 console.error(xhr.responseText);
@@ -213,6 +244,10 @@ $(document).ready(function() {
     $(document).on("click", "#btnAgregarexp", function() {
         // Redirige a experiencia_laboral.php
         window.location.href = "experiencia_laboral.php";
+    });
+    $(document).on("click", "#btnAgregarFav", function() {
+        // Redirige a experiencia_laboral.php
+        window.location.href = "buscar_vacantes.php";
     });
     $(document).on("click", "#btnAgregarfor", function() {
         // Redirige a formacion_academica.php
@@ -233,6 +268,62 @@ $(document).ready(function() {
     $(document).on("click", "#btnAgregarpos", function() {
         // Redirige a buscar_vacantes.php
         window.location.href = "buscar_vacantes.php";
+    });
+
+    $(document).on("click", "#btnfavoritos", function(event) {
+        event.preventDefault();
+        var vacanteID = $(this).data("vacante");
+         // Evita que la página se recargue
+        var bell = document.getElementById('campana' + vacanteID);
+        bell.style.transform = 'rotate(15deg)'; // Rotate bell to the right
+        setTimeout(function() {
+            bell.style.transform = 'rotate(-15deg)'; // Rotate bell to the left
+        }, 100);
+        setTimeout(function() {
+            bell.style.transform = 'rotate(10deg)'; // Rotate bell to the right again
+        }, 200);
+        setTimeout(function() {
+            bell.style.transform = 'rotate(-10deg)'; // Rotate bell to the left again
+        }, 300);
+        setTimeout(function() {
+            bell.style.transform = 'rotate(5deg)'; // Rotate bell to the right again
+        }, 400);
+        setTimeout(function() {
+            bell.style.transform = 'rotate(0deg)'; // Rotate bell back to its original position
+        }, 500);
+        var icono = this.querySelector('i');
+        if (icono.classList.contains('far')) {
+          icono.classList.remove('far');
+          icono.classList.add('fas');
+        } else {
+          icono.classList.remove('fas');
+          icono.classList.add('far');
+        }
+
+        $.ajax({
+            url: '../php/actualizar_favoritos.php', 
+            type: 'POST',
+            data: {
+                vacanteID: vacanteID,
+            },
+            success: function(response) {
+                // Crear la alerta de Bootstrap de éxito
+                var alertHtml = '<div class="alert alert-success fade show w-25 text-center mx-auto" role="alert">';
+                alertHtml += response;
+                alertHtml += '</div>';
+
+                // Agregar la alerta al contenedor
+                $('#notification-container').html(alertHtml);
+
+                // Desvanecer la alerta después de un segundo
+                setTimeout(function() {
+                    $('.alert-success').fadeOut();
+                }, 1000);
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
     });
 
     // Agregar evento click a los botones "Guardar" de experiencia
