@@ -1561,6 +1561,27 @@ public function buscarConversacion($id_usuario,$rol)
             return $data;
             
         }
+        public function buscar_usuario($_idusuario)
+        {
+            try {
+                    
+                $sql = "SELECT * FROM tbl_usuario WHERE id_usuario=:id_usuario";
+                $query = $this->dbh->prepare($sql);
+                $query->bindParam(':id_usuario',$_idusuario);
+                $query->execute();
+                $data = array();
+                while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                {
+                    $data[] = $row;
+                }
+            }
+            catch(PDOException $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return $data;
+            
+        }
         // public function eliminar_vacantes()
         // {        
         //     try 

@@ -292,7 +292,39 @@
         })
     })
 };
-
+// metodo para actulizar la contraseña
+{
+    $(document).ready(function () {
+        $('#frmRenovarpassword').submit(function (event) {
+            event.preventDefault();
+            var formData = new FormData($('#frmRenovarpassword')[0]);
+            $.ajax({
+                url: '../php/renovarPassword.php',
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    // Maneja la respuesta del archivo PHP aquí
+                    console.log(response);
+                    if (response == "true") {
+                     Swal.fire({
+                             title: '¡Listo!',
+                             text: 'Se ha actualizado la contraseña',
+                             icon: 'success'
+                         }).then(function () {
+                             window.location.href = "https://www.workele.com";
+                        });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // Maneja cualquier error que ocurra durante la solicitud AJAX
+                    console.error(error);
+                }
+            });
+        })
+    })
+};
 // Metodo AJAX para el guardado de Test Cleaver
 // {
 //     $(document).ready(function () {

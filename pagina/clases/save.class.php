@@ -672,7 +672,34 @@ require_once('conexion.class.php');
                 catch(PDOException $e){
                     
                     print "Error!: " . $e->getMessage();
-                    $bguardarq = false;
+                    $bguardar = false;
+                }        
+                return $bguardar;
+            }
+            public function actualizar_password($_id_usuario,$_password)
+            {        
+                $bguardar = false;
+                try 
+                {
+                    
+                                    
+                    $sql = "UPDATE tbl_usuario SET password = :password WHERE id_usuario = :id_usuario";
+                    $query = $this->dbh->prepare($sql);
+                
+                    // Vincular los valores de los marcadores de posición
+                    $query->bindParam(':password', $_password);
+                    $query->bindParam(':id_usuario', $_id_usuario);
+                
+                    // Ejecutar la consulta
+                    $query->execute();
+                   // $this->dbh = null;
+                    $bguardar = true;    
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    $bguardar = false;
                 }        
                 return $bguardar;
             }
