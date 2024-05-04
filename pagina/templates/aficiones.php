@@ -24,7 +24,7 @@
   <!-- {*Barra de navegacion para Usuarios*} -->
   <?php include ("navbar_usuario.php") ?>
 
-  <div class="container-fluid">
+  <div class="container-fluid" style="margin-bottom: 10%;">
     <!-- Formulario de aficiones -->
     <form id="formAficiones" method="POST">
       <!-- Card de aficiones -->
@@ -66,4 +66,5 @@
 
 </body>
 
+<?php include ("footer.php") ?>
 </html>
