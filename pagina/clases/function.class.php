@@ -72,6 +72,29 @@ require_once('conexion.class.php');
             return TRUE;
             
         }
+        public function consec_favoritos()
+        {
+            try
+            {
+                $sql = "SELECT IFNULL(MAX(id_favoritos),0) + 1 AS CONSECUTIVO FROM tbl_favoritos";
+                $query = $this->dbh->prepare($sql);
+                $query->execute();
+    
+                if($query->rowCount() == 1)
+                {
+                    $fila = $query->fetch();
+                    $f_idfavoritos = $fila['CONSECUTIVO'];
+                    return $f_idfavoritos;
+                }
+            }
+                
+            catch(PDOException $e)
+            {
+                print "Error!: " . $e->getMessage();
+            }
+            return TRUE;
+            
+        }
 
         function consec_usuario()
             {
@@ -366,9 +389,10 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                    $sql = "SELECT v.*, c.nombre as nombrePais 
+                    $sql = "SELECT v.*, c.nombre as nombrePais, f.id_vacante AS verificacionFav
                             FROM tbl_vacantes v
                             INNER JOIN tbl_paises c ON v.lugar = c.region
+                            LEFT JOIN tbl_favoritos f ON v.id_vacante = f.id_vacante 
                             LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = $_idusuario 
                             WHERE (DATEDIFF(datefin, dateInicio) >= 1 AND v.status = 1 AND (p.id_vacante IS NULL OR p.id_usuario <> $_idusuario))
                             GROUP BY v.id_vacante DESC
@@ -400,6 +424,33 @@ require_once('conexion.class.php');
                             INNER JOIN tbl_paises c ON v.lugar = c.region
                             LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = $_idusuario 
                             WHERE (DATEDIFF(datefin, dateInicio) >= 1 AND v.status = 1 AND (p.id_vacante IS NULL OR p.id_usuario <> $_idusuario))
+                            GROUP BY v.id_vacante DESC";
+
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;    
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error: !" . $e->getMessage();
+                }
+                return $data;
+            }
+            function buscarVacantesFAV($_idusuario)
+            {
+                try
+                {
+                    $sql = "SELECT v.*, c.nombre as nombrePais, f.id_vacante AS verificacionFav 
+                            FROM tbl_vacantes v
+                            INNER JOIN tbl_paises c ON v.lugar = c.region
+                            LEFT JOIN tbl_favoritos f ON v.id_vacante = f.id_vacante
+                            LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = $_idusuario 
+                            WHERE (DATEDIFF(datefin, dateInicio) >= 1 AND v.status = 1 AND v.id_vacante=f.id_vacante AND (p.id_vacante IS NULL OR p.id_usuario <> $_idusuario))
                             GROUP BY v.id_vacante DESC";
 
                     $query = $this->dbh->prepare($sql);
@@ -686,7 +737,7 @@ public function buscarConversacion($id_usuario,$rol)
             {        
                 try {
                     
-                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.region WHERE id_vacante = :id_vacante";
+                    $sql = "SELECT tbl_vacantes.*, tbl_paises.nombre as nombrePais, tbl_favoritos.id_vacante AS verificacionFav  FROM tbl_vacantes INNER JOIN tbl_paises ON tbl_vacantes.lugar=tbl_paises.region LEFT JOIN tbl_favoritos ON tbl_vacantes.id_vacante = tbl_favoritos.id_vacante  WHERE tbl_vacantes.id_vacante = :id_vacante";
                     $query = $this->dbh->prepare($sql);
                     $query->bindParam(':id_vacante',$id_vacante);
                     $query->execute();
@@ -919,6 +970,32 @@ public function buscarConversacion($id_usuario,$rol)
                     $query->execute();
         
                     if($query->rowCount() >= 1)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                    
+                catch(PDOException $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                }
+                return TRUE;
+                
+            }
+
+            function verificar_favoritos($iusuario,$vacanteID)
+            {
+                try
+                {
+                    $sql = "SELECT * FROM tbl_favoritos WHERE id_vacante =$vacanteID AND id_usuario = $iusuario ";
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+        
+                    if($query->rowCount() > 0)
                     {
                         return true;
                     }
