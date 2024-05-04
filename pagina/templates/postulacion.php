@@ -20,7 +20,7 @@
     <?php include("navbar_empresa.php") ?>
 
     <!-- Card de potulaciones -->
-    <div class="container-fluid">
+    <div class="container-fluid" style="min-height: 65vh;">
       <div class="card border-light shadow-lg bg-body rounded mt-4">
         <div class="card-header text-center bg-primary">
           <h2 class="card-title text-white mb-0">POSTULACIONES</h2>
@@ -39,4 +39,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
   </body>
+
+<?php include ("footerEmpresa.php") ?>
 </html>

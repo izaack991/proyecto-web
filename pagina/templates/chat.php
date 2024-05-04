@@ -1,6 +1,3 @@
-<?php
-session_start();
-print_r($_SESSION); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,40 +70,27 @@ print_r($_SESSION); ?>
         <div class="card shadow mb-3" style="margin-left: 25px; margin-top: 5px; border-radius: 25px; height: 70vh; width: 50vh;">
           <div class="card-header bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
             <div style="display: flex; align-items: center; justify-content: flex-start;">
-              <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail d-block" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
-              <strong id="nombreUsuario2"></strong>
+             <!-- <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail d-block" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
+                --><input id="buscarC" name="buscarC" type="text" class="form-control" placeholder="Buscar" style="display: flex; width: 100%; text-align: center;" >
             </div>
           </div>
-          <div class="card-body" style="overflow-y: auto;">
+          <div id="contenedorC" name="contenedorC"class="card-body" style="overflow-y: auto;">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item d-flex align-items-center" onclick="Miau()">
-                    <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
-                    <div>
-                        <strong>Carlos Daniel</strong>
-                        <br>
-                        <small>Si es que el otro día estaba...</small>
-                      </div>
-                </li>
-              </ul> 
+            </ul> 
             </div>
-          </div>
-          
-        </div>
-        
-        <!-- Mensajes -->
-        <div class="row">
-		
+          </div>         </div>
+     
+        <!-- Mensajes -->        <div class="row">
+
           <div class="col">
       <div class="card shadow mb-3" style="margin-right: 25px; margin-top: 5px; border-radius: 25px; height: 70vh; width: 135vh;">
         <div class="card-header bg-primary" style="border-top-left-radius:25px;border-top-right-radius:25px;">
           <div style="display: flex; align-items: center; justify-content: flex-start;">
-            <img src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail d-block" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
-            <strong id="nombreEmpresa"></strong>
+            <img id="imagen"src="../../assets/images/usernoprofile.png" class="rounded-circle img-thumbnail d-block" alt="Imagen de perfil" style="width: 50px; height: 50px; margin-right: 10px;">
+            <strong id="nombrei"></strong>
           </div>
         </div>
         <div class="card-body" id="chat" style="overflow-y: auto;">
-          <div class="message-container-sent">
-          </div>
         </div>                
         <div class="card-footer d-flex justify-content-between">  
           <input class="form-control" style="height: 44px;" type="text" id="txtmsj" placeholder="Escribe un mensaje">
@@ -121,56 +105,18 @@ print_r($_SESSION); ?>
 </form>
 
 <!-- Conexion de librerias de JavaScript y bootstrap -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
   integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
   </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
   integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
   </script>
   <script src="../js/insert.js"></script>
-  <script src="../js/conversaciones.js"></script>
   <script src="../js/mensajes.js"></script>
-  
-  <script>
-    // Evento al presionar Enter en el input
-    $('#txtmsj').keypress(function(event) {
-        if (event.which === 13) { // 13 es el código de la tecla Enter
-            enviarMensaje();
-        }
-    });
 
-    // Evento al hacer clic en el botón de enviar
-    $('#enviarMensajeBtn').click(function() {
-        enviarMensaje();
-    });
-
-    // Función para enviar el mensaje mediante AJAX
-    function enviarMensaje() {
-        var mensaje = $('#txtmsj').val();
-        //alert (mensaje); // Obtener el mensaje del input
-
-        // Realizar la petición AJAX para enviar el mensaje
-        $.ajax({
-            url: '../php/mensajes.php',
-            type: 'POST',
-            data: { mensaje: mensaje }, // Enviar el mensaje al archivo PHP
-            success: function(response) {
-                // Recargar los mensajes después de enviar el mensaje
-                $('#txtmsj').val('');
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
-            }
-        });
-    }
-</script>
 </body>
 
 </html>

@@ -93,20 +93,20 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <div class="form-floating">
-                <input class="form-control" type="date" id="dateInicio" required name="dateInicio" value="2024-01-01">
+                <input class="form-control" type="date" id="dateInicio" required name="dateInicio">
                 <label for="dateInicio">Seleccione Fecha de Inicio: *</label><br>
               </div>
             </div>
             <br>
             <div class="form-group col-md-6">
               <div class="form-floating">
-                <input class="form-control" type="date" id="dateFin" required name="dateFin" value="2024-01-02">
+                <input class="form-control" type="date" id="dateFin" required name="dateFin">
                 <label for="dateFin">Seleccione Fecha de Vencimiento *</label><br>
               </div>
             </div>
             <br>
 
-            <!-- <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+            <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
 
             <script>
               ClassicEditor
@@ -120,20 +120,34 @@
                 .catch(error => {
                   console.error('Hubo un problema al instanciar el editor:', error);
                 });
-            </script> -->
+            </script> 
 
-            <script src="https://cdn.tiny.cloud/1/opxm67vw96dfzavzjry6r53rgqrio3a3nzg3o57ii9livoei/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+            <!-- <script src="https://cdn.tiny.cloud/1/opxm67vw96dfzavzjry6r53rgqrio3a3nzg3o57ii9livoei/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script> -->
             <script>
-              tinymce.init({
-                menubar: false,
-                language: 'es',
-                selector: 'textarea',
-                plugins: 'autolink lists link image charmap print preview anchor',
-                toolbar: 'undo redo | formatselect | ' +
-                  'bold italic backcolor | alignleft aligncenter ' +
-                  'alignright alignjustify | bullist numlist outdent indent | ' +
-                  'removeformat | help'
-              });
+            // tinymce.init({
+            //   menubar: false,
+            //   language: 'es',
+            //   selector: 'textarea',
+            //   plugins: 'autolink lists link image charmap print preview anchor',
+            //   toolbar: 'undo redo | formatselect | ' +
+            //   'bold italic backcolor | alignleft aligncenter ' +
+            //   'alignright alignjustify | bullist numlist outdent indent | ' +
+            //   'removeformat | help'
+            // });
+             
+            // Obtener la fecha actual
+            var today = new Date();
+
+            // Establecer fecha de inicio y fecha fin, donde fecha inicio es la fecha actual y fecha fin es 3 dias despues de la fecha actual
+            var startDate = new Date(today);
+            var endDate = new Date(today);
+            endDate.setDate(endDate.getDate() + 3);
+
+            var formattedStartDate = startDate.getFullYear() + '-' + ('0' + (startDate.getMonth() + 1)).slice(-2) + '-' + ('0' + startDate.getDate()).slice(-2);
+            var formattedEndDate = endDate.getFullYear() + '-' + ('0' + (endDate.getMonth() + 1)).slice(-2) + '-' + ('0' + endDate.getDate()).slice(-2);
+
+            document.getElementById('dateInicio').value = formattedStartDate;
+            document.getElementById('dateFin').value = formattedEndDate;
             </script>
 
             <!-- {*Campos internos para la ubicacion*} -->
@@ -157,7 +171,9 @@
           </script> -->
           </div>
         </div>
+      </div>
     </form>
+  </div>
 
     <!-- {*Conexion de librerias de JavaScript y bootstrap*} -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -170,6 +186,6 @@
 
 </body>
 <!-- {*Footer*} -->
-<?php include ("footer.php") ?>
+<?php include ("footerEmpresa.php") ?>
 
 </html>

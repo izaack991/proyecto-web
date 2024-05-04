@@ -88,6 +88,11 @@ switch ($_GET['xd']) {
                         <div class="form-floating mb-3 mt-4">
                             <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa tu contraseña">
                             <label for="floatingInput">Ingresa tu contraseña</label>
+                            <div class="text-right mt-2">
+                            <label for="forgotPassword">
+                                <a href="confirmarcorreo.php">¿Olvidaste tu contraseña?</a>
+                            </label>
+                            </div>
                         </div>
                         <?php if ($_GET['xd'] == 1 || $_GET['xd'] == 2 || $_GET['xd'] == 4) : ?>
                         <div class="row text-center mt-5">

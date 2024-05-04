@@ -76,10 +76,14 @@ if ($_SESSION['irol'] == 1 || $_SESSION['irol'] == 4) {
                 </button>
               </div>
               <div class="modal-body">
-                <div id="contador_exp"></div>
+                <a class="link-primary btn btn-outline-primary mb-2" id="contador_exp" style="height: 10%; display:none;" href="experiencia_laboral.php">Aun no ha registrado sus datos de Experiencia Laboral, click aqui para ir al registro</a><br>
+                <a class="link-primary btn btn-outline-primary mb-2" id="contador_for" style="height: 10%; display:none;" href="formacion_academica.php">Aun no ha registrado sus datos de Formación Academica, click aqui para ir al registro</a>
+                <a class="link-primary btn btn-outline-primary mb-2" id="contador_afi" style="height: 10%; display:none;" href="aficiones.php">Aun no ha registrado sus datos de Aficiones, click aqui para ir al registro</a>
+                <a class="link-primary btn btn-outline-primary" id="contador_int" style="height: 10%; display:none;" href="interes.php">Aun no ha registrado sus datos de Interes, click aqui para ir al registro</a>
+                <!-- <div id="contador_exp"></div>
                 <div id="contador_for"></div>
                 <div id="contador_afi"></div>
-                <div id="contador_int"></div>
+                <div id="contador_int"></div> -->
                 <div id="contador_not"></div>
               </div>
             </div>

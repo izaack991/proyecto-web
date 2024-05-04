@@ -25,7 +25,7 @@
   <!-- {*Barra de navegacion para Usuarios*} -->
   <?php include ("navbar_usuario.php") ?>
 
-  <div class="container-fluid">
+  <div class="container-fluid page-container">
     <!-- {*Formulario de experiencia laboral*} -->
     <form id="formExperienciaLaboral" method="POST">
       <!-- {*Card de experiencia laboral*} -->
@@ -78,4 +78,5 @@
   <script src="../js/insert.js"></script>
 </body>
 
+<?php include ("footer.php") ?>
 </html>

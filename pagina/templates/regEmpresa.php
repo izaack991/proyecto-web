@@ -115,6 +115,12 @@ if ($_SESSION['cuenta']) {
           <div class="form-floating mb-3 mt-4">
             <input class="form-control" type="text" name="txt_DOMICILIO" class="texto" id="domicilio" placeholder="Escriba su Domicilio" required="true"><br>
             <label>Domicilio *</label><br>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" required="true" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                He leido y acepto el <a href="AvisoPrivacidad.php" target="_blank" class="form-floating  mb-3 mt-4" >Aviso de privacidad</a>
+              </label>
+            </div>
           </div>
           <div class="container text-center mt-4">
             <input class="btn btn-primary" type="submit" value="Guardar" id="miBoton">
@@ -139,39 +145,3 @@ if ($_SESSION['cuenta']) {
 
 </html>
 
-<?php
-
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "db_web";
-
-// Verificar si se envió el formulario de registro
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtener los datos del formulario
-    $correo = $_POST["txt_correo"];
-
-    // Generar un token de verificación único
-    $token = random(1000,9999);
-
-    // Enviar el correo electrónico con el token de verificación
-    $sql = "INSERT INTO tbl_usuario (correo, token) VALUES ('$correo', '$token')";
-    if ($conn->query($sql) == TRUE) {
-
-        // Enviar el correo electrónico con el token de verificación
-        $para = $correo;
-        $titulo = 'Token de verificación';
-        $mensaje = 'Tu token de verificación es: ' . $token;
-        $cabeceras = 'From: kevin.vall328@gmail.com';
-    
-        if (mail($para, $titulo, $mensaje, $cabeceras)) {
-            echo "Se ha enviado un correo electrónico con el token de verificación.";
-        } else {
-            echo "Error al enviar el correo electrónico.";
-        }
-    } else {
-        echo "Error al registrar el usuario: " . $conn->error;
-    }
-    
-}
-?>

@@ -73,4 +73,5 @@
   <script src="../js/insert.js"></script>
 </body>
 
+<?php include ("footer.php") ?>
 </html>

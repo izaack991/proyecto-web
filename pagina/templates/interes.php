@@ -36,7 +36,7 @@
   <!-- {*Barra de navegacion para Usuarios*} -->
   <?php include ("navbar_usuario.php") ?>
 
-  <div class="container-fluid">
+  <div class="container-fluid" style="margin-bottom: 10%;">
     <!-- Formulario de interes -->
     <form id="formInteres" method="POST">
 
@@ -77,4 +77,5 @@
   <script src="../js/insert.js"></script>
 </body>
 
+<?php include ("footer.php") ?>
 </html>
