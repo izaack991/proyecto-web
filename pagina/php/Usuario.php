@@ -51,7 +51,9 @@ function enviarCorreo($destinatario, $asunto, $mensaje) {
 // Comprobación de que los campos de contraseña NO estén vacíos
 if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
 
-  $_ruta = $_FILES['txtruta'];
+  if (isset($_POST['txtruta'])) {
+    $_ruta = $_FILES['txtruta'];
+  }
   $_cons = $_FILES['txtcons'];
 
   // Comprobación de que las contraseñas NO sean distintas
