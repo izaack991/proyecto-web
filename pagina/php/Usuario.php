@@ -5,6 +5,9 @@ include ('../clases/save.class.php');
 include ('../clases/function.class.php');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
+use function PHPSTORM_META\type;
+
 // use PHPMailer\PHPMailer\PHPMailer;
 // use PHPMailer\PHPMailer\Exception;
 //require '..\google-api\vendor\autoload.php';
@@ -51,7 +54,7 @@ function enviarCorreo($destinatario, $asunto, $mensaje) {
 // Comprobación de que los campos de contraseña NO estén vacíos
 if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
 
-  if (isset($_POST['txtruta'])) {
+  if (isset($_FILES['txtruta']['type'])) {
     $_ruta = $_FILES['txtruta'];
   }
   $_cons = $_FILES['txtcons'];
@@ -66,13 +69,13 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
   } else {
     
     // Comprobación de que la Empresa no llegue con la imagen vacía
-    if ($irol == 1 && $_ruta == null) {
+    if ($irol == 1 && $_ruta['type'] == null) {
       
       // Alerta cuando la imagen llega vacía con el rol Empresa
       echo "errorImagenEmpresa";
       return;
 
-    } else if ($irol == 1 && $_cons == null) {
+    } else if ($irol == 1 && $_ruta['type'] == null) {
 
       // Alerta cuando la constancia llega vacía
       echo "errorConstancia";
@@ -157,7 +160,7 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
 
       if ($comp_correo == 0) {
 
-        if ($_ruta != null) {
+        if ($_ruta['type'] != null) {
 
           //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
           if (!((strpos($imgTipo, "gif") || strpos($imgTipo, "jpeg") || strpos($imgTipo, "jpg") || strpos($imgTipo, "png") || strpos($imgTipo, "bmp") || strpos($imgTipo, "tiff") || strpos($imgTipo, "webp") || strpos($imgTipo, "svg") || strpos($imgTipo, "raw") || strpos($imgTipo, "psd") || strpos($imgTipo, "ai") || strpos($imgTipo, "eps") || strpos($imgTipo, "pdf") || strpos($imgTipo, "ico") || strpos($imgTipo, "tga") || strpos($imgTipo, "pict") || strpos($imgTipo, "exif") || strpos($imgTipo, "heif") || strpos($imgTipo, "heic") || strpos($imgTipo, "avif") || strpos($imgTipo, "pbm") || strpos($imgTipo, "pgm") || strpos($imgTipo, "ppm") || strpos($imgTipo, "xcf") || strpos($imgTipo, "arw") || strpos($imgTipo, "cr2") || strpos($imgTipo, "nef") || strpos($imgTipo, "orf") || strpos($imgTipo, "rw2") || strpos($imgTipo, "dng") || strpos($imgTipo, "crw") || strpos($imgTipo, "srw") || strpos($imgTipo, "raf") || strpos($imgTipo, "mrw") || strpos($imgTipo, "erf") || strpos($imgTipo, "kdc") || strpos($imgTipo, "mos") || strpos($imgTipo, "nrw") || strpos($imgTipo, "obm") || strpos($imgTipo, "pef") || strpos($imgTipo, "x3f") || strpos($imgTipo, "rawzor") || strpos($imgTipo, "pxr") || strpos($imgTipo, "srf") || strpos($imgTipo, "3fr") || strpos($imgTipo, "qtk") || strpos($imgTipo, "rwz") || strpos($imgTipo, "xbm") || strpos($imgTipo, "wdp") || strpos($imgTipo, "hdp") || strpos($imgTipo, "ktx") || strpos($imgTipo, "kro") || strpos($imgTipo, "hdr") || strpos($imgTipo, "jxr") || strpos($imgTipo, "apng") || strpos($imgTipo, "jp2") || strpos($imgTipo, "jls") || strpos($imgTipo, "jpf") || strpos($imgTipo, "jpm") || strpos($imgTipo, "jpx") || strpos($imgTipo, "bpg") || strpos($imgTipo, "flif")) && ($tamano < 2000000))) {
@@ -185,7 +188,7 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
           }
         }
 
-        if ($_cons != null && $irol == 1) {
+        if ($_cons['type'] != null && $irol == 1) {
           //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
           if (!((strpos($conTipo, "jpeg") || strpos($conTipo, "jpg") || strpos($conTipo, "png") || strpos($conTipo, "pdf")) && ($tamanoCons < 20000000))) {
 
