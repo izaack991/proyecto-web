@@ -86,7 +86,15 @@
               </div>
             </div>
           </div>
-          <div>
+          <div class="urg">
+              <div class="urg-1" style="display: inline-block; vertical-align: middle;">
+                <h4 class="text-primary" style = "display: inline-block; margin: 0;">Es Urgente</h4>
+              </div>
+              <div class="urg-1" style="display: inline-block; vertical-align: middle;">
+                <input class="iurgente" name="chkurgente" type="checkbox" style = "margin-left: 10px; width:20px; height: 20px;">
+              </div>
+            </div>
+          <div style = "margin-top:15px;">
             <label for="txtdatos" class="text-primary"> Datos Adicionales </label> <br>
             <textarea name="txtdatos" id="txtdatos" style="resize:none; height: 300px;" type="text" class="form-control" cols="1" rows="10" placeholder="Ingresa los Datos"></textarea><br>
           </div>
@@ -105,6 +113,7 @@
               </div>
             </div>
             <br>
+            
 
             <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
 
