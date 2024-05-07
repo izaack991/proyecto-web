@@ -86,12 +86,14 @@
               </div>
             </div>
           </div>
-          <div class="urg">
-              <div class="urg-1" style="display: inline-block; vertical-align: middle;">
-                <h4 class="text-primary" style = "display: inline-block; margin: 0;">Es Urgente</h4>
+          <div>
+              <div style="display: inline-block; ">
+                <input name="chkurgente" type="checkbox" style="margin-right: 5px;">
               </div>
-              <div class="urg-1" style="display: inline-block; vertical-align: middle;">
-                <input class="iurgente" name="chkurgente" type="checkbox" style = "margin-left: 10px; width:20px; height: 20px;">
+              <div style="display: inline-block; vertical-align: middle; font-size:1.1em;">
+                <label class="text-primary">
+                  ¿Es Urgente?
+                </label>
               </div>
             </div>
           <div style = "margin-top:15px;">
