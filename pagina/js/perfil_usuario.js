@@ -203,7 +203,7 @@ $(document).ready(function() {
                 }
                 $("#contenedorPostulacion").html(input_pos);
 
-                // Ciclo each para mostrar las vacantes
+                // Ciclo each para mostrar las vacantes agregadas a favoritos
                 input_vacante = ""
                 
                 if (data.vacanteFAV && data.vacanteFAV.length > 0) {
@@ -307,8 +307,13 @@ $(document).ready(function() {
                 vacanteID: vacanteID,
             },
             success: function(response) {
-                // Crear la alerta de Bootstrap de éxito
-                var alertHtml = '<div class="alert alert-success fade show w-25 text-center mx-auto" role="alert">';
+                mostrarExperiencia();
+
+                // Determinar el tipo de alerta
+                var alertType = response === "Se agregó a favoritos" ? "success" : "danger";
+
+                // Crear la alerta de Bootstrap
+                var alertHtml = '<div class="alert alert-' + alertType + ' fade show position-absolute text-center" style="right: 15px; bottom: 15px; left: auto;" role="alert">';
                 alertHtml += response;
                 alertHtml += '</div>';
 
@@ -317,7 +322,7 @@ $(document).ready(function() {
 
                 // Desvanecer la alerta después de un segundo
                 setTimeout(function() {
-                    $('.alert-success').fadeOut();
+                    $('.alert').fadeOut();
                 }, 1000);
             },
             error: function(xhr, status, error) {

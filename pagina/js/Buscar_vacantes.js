@@ -56,7 +56,7 @@ $(document).ready(function(){
                         var datosAdicionales = vacante.datos_adicionales.substring(0, 200); // Limitar texto en la card
                         var card = '<div class="col-lg-4 col-md-6 col-sm-12">';
                         card += '<div class="card shadow p-3 mb-5 bg-body rounded">';
-                        card += '<div id="notification-container" class="fixed-top mt-3" style="z-index: 1000;"></div>';
+                        card += '<div id="notification-container" class="fixed-bottom mb-3" style="z-index: 1000; right: 0;"></div>';
                         card += '<div class="card-header">';
                         card += '<div class="d-flex justify-content-between align-items-center"><h4 class="card-title text-danger mb-0">' + vacante.puesto + '</h4>';
                         
@@ -140,8 +140,11 @@ $(document).ready(function(){
                 vacanteID: vacanteID,
             },
             success: function(response) {
-                // Crear la alerta de Bootstrap de éxito
-                var alertHtml = '<div class="alert alert-success fade show w-25 text-center mx-auto" role="alert">';
+                // Determinar el tipo de alerta
+                var alertType = response === "Se agregó a favoritos" ? "success" : "danger";
+
+                // Crear la alerta de Bootstrap
+                var alertHtml = '<div class="alert alert-' + alertType + ' fade show position-absolute text-center" style="right: 15px; bottom: 15px; left: auto;" role="alert">';
                 alertHtml += response;
                 alertHtml += '</div>';
 
@@ -150,7 +153,7 @@ $(document).ready(function(){
 
                 // Desvanecer la alerta después de un segundo
                 setTimeout(function() {
-                    $('.alert-success').fadeOut();
+                    $('.alert').fadeOut();
                 }, 1000);
             },
             error: function(xhr, status, error) {

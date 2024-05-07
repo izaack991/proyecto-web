@@ -30,7 +30,7 @@
   <body>
     <!--Barra de navegacion para Empresa-->
     <?php include("navbar_usuario.php") ?>
-    <div id="notification-container" class="fixed-top mt-3" style="z-index: 1000;"></div>
+    <div id="notification-container" class="fixed-bottom mb-3" style="z-index: 1000; right: 0;"></div>
     <!-- Card de potulaciones -->
     <div class="container-fluid">
         <div class="row">
@@ -517,6 +517,20 @@
         $("#cardDomicilio").hide();
         $("#cardTelefono").hide();
         $("#cardImagenPerfil").hide();
+    });
+    $("#favoritos-tab").click(function(){
+        $("#cardNombre").hide();
+        $("#cardCorreo").hide();
+        $("#cardRegion").hide();
+        $("#cardDomicilio").hide();
+        $("#cardTelefono").hide();
+        $("#cardImagenPerfil").hide();
+        $("#cardExperiencia").hide();
+        $("#cardFormacion").hide();
+        $("#cardAficion").hide();
+        $("#cardInteres").hide();
+        $("#cardVideoCurriculum").hide();
+        $("#cardPostulacion").hide();
     });
     $("#btncancelarEXP").click(function(){
         $("#cardExperiencia").slideUp();
