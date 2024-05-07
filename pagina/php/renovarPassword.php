@@ -38,7 +38,7 @@ function enviarCorreo($destinatario, $asunto, $mensaje) {
         $mail->isHTML(true); // Habilitar el formato HTML
         $mail->Subject = $asunto;
         $mail->Body = $mensaje;
-  
+        $mail->addEmbeddedImage('../../assets/images/Workele.png', 'image_workele');
         // Enviar el correo
         $mail->send();
         //echo "El correo se ha enviado correctamente.";
@@ -81,16 +81,22 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Correo de ejemplo</title>
+                <title>Correo renovar contraseña</title>
+                <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
+                <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
+                <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
+                <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
             </head>
             <body>
-            <img src="../../assets/images/Workele.png" alt="" style="width: 150px; height: 150px;">
+            <div class="mx-auto" style="width: 200px;">
+                <img src="cid:image_workele" alt="" style="width: 300px; height: 180;">
+            </div>
             <h1>Hola, ' . $nombre_completo . '!</h1>
                 <p>Este es un correo de verificacion</p>
                 <p>Hemos detectado que se cambio la contraseña si no reconoce la actividad de su cuenta favor de levantar un reporte</p>
                 <p>al correo:contacto@workele.com agregando en el correo una identificacion oficial para verificar su identidade caso de</p>
                 <p>en caso de ser empresa agregue por favor su constancia de situacion fiscal<p>
-                <p>enlace de verificacion, ' . $verificationLink . '!</p>
+                <p>se ha renovado su contraseña puede ingresar a la plataforma en el siguiente enlace: ' . $verificationLink . '!</p>
                 <p>favor de no contestar este correo, fue enviado automaticamente</p>
             </body>
             </html>

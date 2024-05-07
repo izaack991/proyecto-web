@@ -42,7 +42,7 @@ function enviarCorreo($destinatario, $asunto, $mensaje) {
       $mail->isHTML(true); // Habilitar el formato HTML
       $mail->Subject = $asunto;
       $mail->Body = $mensaje;
-
+      $mail->addEmbeddedImage('../../assets/images/Workele.png', 'image_workele');
       // Enviar el correo
       $mail->send();
       //echo "El correo se ha enviado correctamente.";
@@ -124,7 +124,9 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
           <title>Correo de ejemplo</title>
       </head>
       <body>
-      <img src="../../assets/images/Workele.png" alt="" style="width: 150px; height: 150px;">
+      <div class="mx-auto" style="width: 200px;">
+        <img src="cid:image_workele" alt="" style="width: 300px; height: 180;">
+      </div>
       <h1>Hola, ' . $_razon . '!</h1>
           <p>Este es un correo de verificacion</p>
           <p>para verificar el registro de tu empresa da click en el enlace que esta en el presente correo</p>

@@ -37,6 +37,7 @@ function enviarCorreo($destinatario, $asunto, $mensaje) {
         $mail->isHTML(true); // Habilitar el formato HTML
         $mail->Subject = $asunto;
         $mail->Body = $mensaje;
+        $mail->addEmbeddedImage('../../assets/images/Workele.png', 'image_workele');
   
         // Enviar el correo
         $mail->send();
@@ -79,7 +80,9 @@ if (isset($_POST['confirmMail'])) {
                 <title>Correo de ejemplo</title>
             </head>
             <body>
-            <img src="../../assets/images/Workele.png" alt="" style="width: 150px; height: 150px;">
+            <div class="mx-auto" style="width: 200px;">
+                <img src="cid:image_workele" alt="" style="width: 300px; height: 180;">
+            </div>
             <h1>Hola, ' . $nombre_completo . '!</h1>
                 <p>Este es un correo de verificacion</p>
                 <p>Hemos detectado que solicito cambio de contraseña de acceso si usted realizo esta peticion, ingrese al enlace en la parte posterior</p>
