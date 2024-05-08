@@ -50,7 +50,7 @@ if (isset($_POST['dateFin'])) {
         $_hora = $vida_session;
         $_latitud = $_POST['txtlatitud'];
         $_longitud = $_POST['txtlongitud'];
-        $_ubicacion = 'Latitud: ' . $_latitud . ' Longitud: ' . $_longitud;
+        $_ubicacion = $_latitud.', '.$_longitud;
         $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario, $_ubicacion, $_movimiento, $_fecha, $_hora);
 
         // Envío de la alerta de guardado

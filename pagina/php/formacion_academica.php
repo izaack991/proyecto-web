@@ -32,7 +32,7 @@ if(isset($_POST['descripcion'])&& isset($_POST['ubicacion'])&&isset($_POST['fech
     $_hora = $vida_session;
     $_latitud = $_POST['txtlatitud']; 
     $_longitud = $_POST['txtlongitud']; 
-    $_ubicacion = $_latitud.' ,: '.$_longitud;
+    $_ubicacion = $_latitud.', '.$_longitud;
     $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
      
     // Envio de la alerta de guardado
