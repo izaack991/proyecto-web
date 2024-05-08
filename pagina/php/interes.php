@@ -33,7 +33,7 @@ if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlon
     $_hora = $vida_session;
 	$_latitud = $_POST['txtlatitud']; 
     $_longitud = $_POST['txtlongitud']; 
-    $_ubicacion = 'Latitud: '.$_latitud.' Longitud: '.$_longitud;
+    $_ubicacion = $_latitud.' ,: '.$_longitud;
     $newlogusuario = $nuevoInteres->guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora);
 	
     if($newInteres) {
