@@ -153,7 +153,8 @@ $(document).ready(function(){
 
                 // Desvanecer la alerta después de un segundo
                 setTimeout(function() {
-                    $('.alert').fadeOut();
+                    $('.alert-success').fadeOut();
+                    $('.alert-danger').fadeOut();
                 }, 1000);
             },
             error: function(xhr, status, error) {
