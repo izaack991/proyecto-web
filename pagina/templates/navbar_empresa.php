@@ -1,4 +1,5 @@
 <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
+<link rel="icon" href="../../assets/images/WorkeleWB.ico" type="image/x-icon">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/notificacion_empresa.js"></script>
 <script src="../js/sesion.js"></script>
