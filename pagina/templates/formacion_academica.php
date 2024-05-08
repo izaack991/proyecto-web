@@ -49,7 +49,7 @@
           </div>
           <div class="form-floating mb-3 mt-4">
             <input class="form-control" type="date" id="fechaFin" name="fechaFin" value="2022-01-01">
-            <label for="floatingInput">Seleccione su Fecha fin:  *</label>
+            <label for="floatingInput">Seleccione su Fecha de culminación: *</label>
           </div>
 
           <!-- {*Campos internos para la ubicacion*} -->
