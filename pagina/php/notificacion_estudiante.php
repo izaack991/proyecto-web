@@ -1,15 +1,15 @@
 <?php
-session_start();
+// session_start();
 
-include('../clases/function.class.php');
+// include('../clases/function.class.php');
 
-$nuevoSingleton = Functions::singleton_functions();
-$iusuario = $_SESSION['iusuario'];
-$nombreUsuario = $_SESSION['nomusuario'];
-$notificacionexperiencia = $nuevoSingleton->notificacionexperiencia($iusuario);
-$notificacionformacion = $nuevoSingleton->notificacionformacion($iusuario);
-$notificacionaficiones = $nuevoSingleton->notificacionaficiones($iusuario);
-$notificacioninteres = $nuevoSingleton->notificacioninteres($iusuario);
+// $nuevoSingleton = Functions::singleton_functions();
+// $iusuario = $_SESSION['iusuario'];
+// $nombreUsuario = $_SESSION['nomusuario'];
+// $notificacionexperiencia = $nuevoSingleton->notificacionexperiencia($iusuario);
+// $notificacionformacion = $nuevoSingleton->notificacionformacion($iusuario);
+// $notificacionaficiones = $nuevoSingleton->notificacionaficiones($iusuario);
+// $notificacioninteres = $nuevoSingleton->notificacioninteres($iusuario);
 
 // if(isset($_GET['vacante']))
 // {
@@ -58,12 +58,12 @@ $notificacioninteres = $nuevoSingleton->notificacioninteres($iusuario);
 // $contador_afi = $COUNTAFI;
 // $contador_int = $COUNTINT;
 
-echo json_encode(array(
+// echo json_encode(array(
     // 'contador' => $contador,
     // 'contador_exp' => $contador_exp,
     // 'contador_for' => $contador_for,
     // 'contador_afi' => $contador_afi,
     // 'contador_int' => $contador_int,
-    'nombreUsuario' => $nombreUsuario
-));
+//     'nombreUsuario' => $nombreUsuario
+// ));
 ?>

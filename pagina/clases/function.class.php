@@ -30,7 +30,7 @@ require_once('conexion.class.php');
             trigger_error('La clonación de este objeto no está permitida', E_USER_ERROR);
         }
 
- // Funcion para el login de usuario
+        // Funcion para el login de usuario
         public function login($usuario, $password)
         {        
             try {
@@ -48,7 +48,7 @@ require_once('conexion.class.php');
             return $data;
         }
 
-// Funciones para los consecutivos
+        // Funciones para los consecutivos
         public function consec_experiencia()
         {
             try
@@ -296,7 +296,7 @@ require_once('conexion.class.php');
             
             
 
-// Funcion para busquedas de campos
+        // Funcion para busquedas de campos
             function buscaPaises()
             {
                 try
@@ -383,36 +383,82 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
-
-
-            function buscarVacante($_idusuario, $offset)
-            {
-                try
-                {
+            
+            // Consulta para cargar las vacantes iniciales
+            public function cargarVacantesIniciales($_idusuario, $limit) {
+                return $this->buscarVacante($_idusuario, 0, $limit);
+            }
+            
+            // Consulta para cargar las vacantes siguientes sin repetir
+            public function cargarSiguienteVacantes($_idusuario, $currentPage, $limit) {
+                $offset = $currentPage * $limit;
+                return $this->buscarVacante($_idusuario, $offset, $limit);
+            }
+            
+            // Consulta para regresar a las vacantes anteriormente cargadas
+            public function cargarVacantesAnteriores($_idusuario, $currentPage, $limit) {
+                $offset = max(0, ($currentPage - 2) * $limit); // Restamos 2 para retroceder dos páginas
+                return $this->buscarVacante($_idusuario, $offset, $limit);
+            }
+        
+            // Función para buscar las vacantes del perfil de USUARIO
+            private function buscarVacante($_idusuario, $offset, $limit) {
+                try {
                     $sql = "SELECT v.*, c.nombre as nombrePais, f.id_vacante AS verificacionFav
                             FROM tbl_vacantes v
                             INNER JOIN tbl_paises c ON v.lugar = c.region
                             LEFT JOIN tbl_favoritos f ON v.id_vacante = f.id_vacante 
                             LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = $_idusuario 
                             WHERE (DATEDIFF(datefin, dateInicio) >= 1 AND v.status = 1 AND (p.id_vacante IS NULL OR p.id_usuario <> $_idusuario))
-                            GROUP BY v.id_vacante DESC
-                            LIMIT $offset, 9;"; // Utilizar el offset en la consulta
-
+                            ORDER BY v.id_vacante DESC
+                            LIMIT :limit OFFSET :offset;";
+                
                     $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':limit', $limit, PDO::PARAM_INT);
+                    $query->bindParam(':offset', $offset, PDO::PARAM_INT);
                     $query->execute();
-
+            
                     $data = array();
-                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
-                    {
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
                         $data[] = $row;    
                     }
                 }
-                catch(PDOException $e)
-                {
+                catch(PDOException $e) {
                     print "Error: !" . $e->getMessage();
+                    return null; // Devolvemos null en caso de error
                 }
                 return $data;
             }
+
+
+            // function buscarVacante($_idusuario, $offset)
+            // {
+            //     try
+            //     {
+            //         $sql = "SELECT v.*, c.nombre as nombrePais, f.id_vacante AS verificacionFav
+            //                 FROM tbl_vacantes v
+            //                 INNER JOIN tbl_paises c ON v.lugar = c.region
+            //                 LEFT JOIN tbl_favoritos f ON v.id_vacante = f.id_vacante 
+            //                 LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = $_idusuario 
+            //                 WHERE (DATEDIFF(datefin, dateInicio) >= 1 AND v.status = 1 AND (p.id_vacante IS NULL OR p.id_usuario <> $_idusuario))
+            //                 GROUP BY v.id_vacante DESC
+            //                 LIMIT $offset, 9;";
+
+            //         $query = $this->dbh->prepare($sql);
+            //         $query->execute();
+
+            //         $data = array();
+            //         while ($row = $query->fetch(PDO::FETCH_ASSOC))
+            //         {
+            //             $data[] = $row;    
+            //         }
+            //     }
+            //     catch(PDOException $e)
+            //     {
+            //         print "Error: !" . $e->getMessage();
+            //     }
+            //     return $data;
+            // }
             
             //  Funcion para buscar las vacantes del perfil de empresa (NO TOCAR)
             function buscarVacantes($_idusuario)
@@ -624,7 +670,7 @@ require_once('conexion.class.php');
                 return $data;
             }
 
-//Ajax
+        //Ajax
             function ajax_vacante()
             {
                 try
@@ -647,92 +693,92 @@ require_once('conexion.class.php');
                 return $data;
             }
 
-//Funciones que sirve para seleccion de campos
-public function buscarMensaje($id_empresa, $id_usuario)
-{
-    try {
-        $sql = "SELECT  m.id_usuario , m.mensaje , m.fecha ,m.id_mensaje from tbl_mensajes as m INNER JOIN tbl_conversaciones as c on m.id_conversacion = c.id_conversacion where c.id_empresa = :id_empresa and c.id_usuario = :id_usuario order by m.id_mensaje ASC";  
-        $query = $this->dbh->prepare($sql);
-        $query->bindParam(':id_empresa', $id_empresa);
-        $query->bindParam(':id_usuario', $id_usuario);
-        $query->execute();
-        $data = array();
-        while ($row = $query->fetch(PDO::FETCH_ASSOC))
-        {
-            $data[] = $row;    
-        }
-    }
-    catch(PDOException $e)
-    {
-        print "Error: !" . $e->getMessage();
-    }
-    return $data;
-}
-
-public function actualizarMensaje($id_empresa, $id_usuario,$id_m)
-{
-    try {
-        $sql = "SELECT m.id_usuario , m.mensaje , m.fecha ,m.id_mensaje as id_mensaje FROM tbl_mensajes AS m INNER JOIN tbl_conversaciones AS c ON m.id_conversacion = c.id_conversacion WHERE c.id_empresa = :id_empresa AND c.id_usuario = :id_usuario AND m.id_mensaje > :id_m ORDER BY m.id_mensaje ASC";  
-        $query = $this->dbh->prepare($sql);
-        $query->bindParam(':id_empresa', $id_empresa);
-        $query->bindParam(':id_usuario', $id_usuario);
-        $query->bindParam(':id_m', $id_m);
-        $query->execute();
-        $data = array();
-        while ($row = $query->fetch(PDO::FETCH_ASSOC))
-        {
-            $data[] = $row;    
-        }
-    }
-    catch(PDOException $e)
-    {
-        print "Error: !" . $e->getMessage();
-    }
-    return $data;
-}
-public function buscarConversacion($id_usuario,$rol)
-{
-    try {
-
-
-        $sql = "SELECT MAX(m.fecha) as fecha, c.id_conversacion as idc,u1.id_usuario as id1, u2.id_usuario as id2, u1.razon_social as razon, u1.nombre AS nombre1, u2.nombre AS nombre2, u1.rol AS rol1, u2.rol AS rol2,u1.ruta_imagen as ruta1, u2.ruta_imagen as ruta2 
-        FROM tbl_conversaciones AS c
-        JOIN tbl_usuario AS u1 ON c.id_empresa = u1.id_usuario 
-        JOIN tbl_usuario AS u2 ON c.id_usuario = u2.id_usuario
-        LEFT JOIN tbl_mensajes AS m ON c.id_conversacion = m.id_conversacion
-        WHERE c.id_empresa = :id_usuario OR c.id_usuario = :id_usuario
-        GROUP BY c.id_conversacion, u1.nombre, u2.nombre, u1.rol, u2.rol
-        ORDER BY MAX(m.fecha) DESC";
-        
-        $query = $this->dbh->prepare($sql);
-        $query->bindParam(':id_usuario', $id_usuario);
-
-        $query->execute();
-        $data = array();
-        while ($row = $query->fetch(PDO::FETCH_ASSOC))
-        {
-            if ($rol == 2) {
-                $row['idc'] = $row['idc'];
-                $row['ruta'] = $row['ruta1'];
-                $row['nombre'] = $row['razon'];
-                $row['id'] = $row['id1'];
-                $row['fecha'] = $row['fecha']; // Si el rol es 1, toma el nombre del usuario 1
-            } else {
-                $row['idc'] = $row['idc'];
-                $row['ruta'] = $row['ruta2'];
-                $row['nombre'] = $row['nombre2'];
-                $row['id'] = $row['id2'];
-                $row['fecha'] = $row['fecha']; // Si el rol no es 1, toma el nombre del usuario 2
+            //Funciones que sirve para seleccion de campos
+            public function buscarMensaje($id_empresa, $id_usuario)
+            {
+                try {
+                    $sql = "SELECT  m.id_usuario , m.mensaje , m.fecha ,m.id_mensaje from tbl_mensajes as m INNER JOIN tbl_conversaciones as c on m.id_conversacion = c.id_conversacion where c.id_empresa = :id_empresa and c.id_usuario = :id_usuario order by m.id_mensaje ASC";  
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':id_empresa', $id_empresa);
+                    $query->bindParam(':id_usuario', $id_usuario);
+                    $query->execute();
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;    
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error: !" . $e->getMessage();
+                }
+                return $data;
             }
-            $data[] = $row;
-        }
-    }
-    catch(PDOException $e)
-    {
-        print "Error!: " . $e->getMessage();
-    }
-    return $data;
-}
+
+            public function actualizarMensaje($id_empresa, $id_usuario,$id_m)
+            {
+                try {
+                    $sql = "SELECT m.id_usuario , m.mensaje , m.fecha ,m.id_mensaje as id_mensaje FROM tbl_mensajes AS m INNER JOIN tbl_conversaciones AS c ON m.id_conversacion = c.id_conversacion WHERE c.id_empresa = :id_empresa AND c.id_usuario = :id_usuario AND m.id_mensaje > :id_m ORDER BY m.id_mensaje ASC";  
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':id_empresa', $id_empresa);
+                    $query->bindParam(':id_usuario', $id_usuario);
+                    $query->bindParam(':id_m', $id_m);
+                    $query->execute();
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;    
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error: !" . $e->getMessage();
+                }
+                return $data;
+            }
+            public function buscarConversacion($id_usuario,$rol)
+            {
+                try {
+
+
+                    $sql = "SELECT MAX(m.fecha) as fecha, c.id_conversacion as idc,u1.id_usuario as id1, u2.id_usuario as id2, u1.razon_social as razon, u1.nombre AS nombre1, u2.nombre AS nombre2, u1.rol AS rol1, u2.rol AS rol2,u1.ruta_imagen as ruta1, u2.ruta_imagen as ruta2 
+                    FROM tbl_conversaciones AS c
+                    JOIN tbl_usuario AS u1 ON c.id_empresa = u1.id_usuario 
+                    JOIN tbl_usuario AS u2 ON c.id_usuario = u2.id_usuario
+                    LEFT JOIN tbl_mensajes AS m ON c.id_conversacion = m.id_conversacion
+                    WHERE c.id_empresa = :id_usuario OR c.id_usuario = :id_usuario
+                    GROUP BY c.id_conversacion, u1.nombre, u2.nombre, u1.rol, u2.rol
+                    ORDER BY MAX(m.fecha) DESC";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':id_usuario', $id_usuario);
+
+                    $query->execute();
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        if ($rol == 2) {
+                            $row['idc'] = $row['idc'];
+                            $row['ruta'] = $row['ruta1'];
+                            $row['nombre'] = $row['razon'];
+                            $row['id'] = $row['id1'];
+                            $row['fecha'] = $row['fecha']; // Si el rol es 1, toma el nombre del usuario 1
+                        } else {
+                            $row['idc'] = $row['idc'];
+                            $row['ruta'] = $row['ruta2'];
+                            $row['nombre'] = $row['nombre2'];
+                            $row['id'] = $row['id2'];
+                            $row['fecha'] = $row['fecha']; // Si el rol no es 1, toma el nombre del usuario 2
+                        }
+                        $data[] = $row;
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                }
+                return $data;
+            }
             public function seleccionar_vacantes($id_vacante)
             {        
                 try {
@@ -929,7 +975,7 @@ public function buscarConversacion($id_usuario,$rol)
                 return $data;
             }
 
-//Notificaciones
+        //Notificaciones
             function notificacionexperiencia($iusuario)
             {
                 try
@@ -1252,7 +1298,7 @@ public function buscarConversacion($id_usuario,$rol)
                 
             // }
 
-// verificaciones
+        // verificaciones
         public function verif_aficion($_idusuario,$_descripcion)
         {        
             try 
@@ -1276,7 +1322,7 @@ public function buscarConversacion($id_usuario,$rol)
             
         }
 
-//Validaciones de los test
+        //Validaciones de los test
         public function val_merril($_idusuario)
         {
             try
@@ -1407,7 +1453,7 @@ public function buscarConversacion($id_usuario,$rol)
             
         }
 
-//Envio del test
+        //Envio del test
         public function envio_test()
         {
             try
@@ -1433,7 +1479,7 @@ public function buscarConversacion($id_usuario,$rol)
             return TRUE;   
         }
         
-// Comprobar tests
+        // Comprobar tests
         public function comprobarRaven($_idusuario)
         {
             try
