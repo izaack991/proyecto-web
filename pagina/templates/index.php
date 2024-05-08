@@ -8,10 +8,10 @@
   <title>Pagina Principal</title>
   <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
+  <link rel="icon" href="../../assets/images/WorkeleWB.ico" type="image/x-icon">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
   <script src="../js/noticias.js"></script>
 </head>
-
 <body>
 
   <!-- Barra de navegacion del index principal -->

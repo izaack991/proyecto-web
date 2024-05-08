@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inicio Usuario</title>
   <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
+  <link rel="icon" href="../../assets/images/WorkeleWB.ico" type="image/x-icon">
   <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
   <script src="../php/reenvio.php"></script>
   <script src="../js/inactividad.js"></script>
