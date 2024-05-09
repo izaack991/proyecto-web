@@ -18,22 +18,58 @@
 
   <!-- <script src="../php/Buscar_vacantes.php'"></script> -->
   <script src="../js/Buscar_vacantes.js"></script>
-
   <script>
-    // Codigo JavaScript para el buscador con ajax
-    $(document).ready(function () {
-      $("#bvac").keyup(function () {
-        var query = $(this).val().toLowerCase();
-        $("#vacantesContainer").children().each(function () {
-          if ($(this).text().toLowerCase().indexOf(query) === -1)
-            $(this).hide();
-          else
-            $(this).show();
-        });
-      });
+  // Codigo JavaScript para el buscador con ajax
+  $(document).ready(function() {
+    $("#bvac").keyup(function() {
+      var query = $(this).val().toLowerCase();
+      filterVacancies(query);
     });
 
-  </script>
+    // Escuchar el evento de clic del checkbox "Se Precisa Urgente"
+    $("#urgentCheckbox").click(function() {
+      filterVacancies($("#bvac").val().toLowerCase());
+    });
+
+    // Escuchar el evento de clic del checkbox "Prácticas"
+    $("#practicesCheckbox").click(function() {
+      filterVacancies($("#bvac").val().toLowerCase());
+    });
+
+    // Función para filtrar las vacantes
+    function filterVacancies(query) {
+      var showUrgent = $("#urgentCheckbox").is(":checked");
+      var showPractices = $("#practicesCheckbox").is(":checked");
+
+      $("#vacantesContainer").children().each(function() {
+        var text = $(this).text().toLowerCase();
+        var showVacancy = true;
+
+        if (query !== "" && text.indexOf(query) === -1) {
+          showVacancy = false;
+        }
+
+        if (showUrgent && !text.includes("se precisa urgente")) {
+          showVacancy = false;
+        }
+
+        if (showPractices && !text.includes("practicas")) {
+          showVacancy = false;
+        }
+
+        if (showUrgent && showPractices && !text.includes("se precisa urgente") && !text.includes("prácticas")) {
+          showVacancy = false;
+        }
+
+        if (showVacancy) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+    }
+  });
+</script>
 
 </head>
 
@@ -45,10 +81,19 @@
 
   <form action="buscar_vacante.php" method="GET">
     
-    <!-- Buscador de vacantes con ajax  -->
-    <div class="alert alert-dismissible text-center px-0">
-      <input type="text" class="form-control" placeholder="Busque una vacante" style="display: flex; margin: 0 10%; width: 80%; text-align: center;" id="bvac">
-    </div>
+  <div class="alert alert-dismissible text-center px-0">
+  <input type="text" class="form-control" placeholder="Busque una vacante" style="display: flex; margin: 0 10%; width: 80%; text-align: center;" id="bvac" onkeydown="return event.key != 'Enter';">
+
+  <div style="display: inline-block; margin-right: 10px;">
+    <input type="checkbox" id="urgentCheckbox">
+    <label for="urgentCheckbox"><strong>Se Precisa Urgente</strong></label>
+  </div>
+  
+  <div style="display: inline-block;">
+    <input type="checkbox" id="practicesCheckbox">
+    <label for="practicesCheckbox"><strong>Prácticas</strong></label>
+  </div>
+</div>
 
     <!-- <input type="hidden" name="pagina" id="inputPagina" value="2">
     <input type="submit" value="Siguiente" class="btn btn-primary" id="siguienteBtn"> -->
