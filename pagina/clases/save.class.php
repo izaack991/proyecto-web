@@ -220,13 +220,13 @@ require_once('conexion.class.php');
                 return TRUE;
             }
 
-        public function guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora)
+        public function guardar_log_usuario($_idusuario,$_ubicacion,$_movimiento,$_fecha,$_hora,$_tipo)
             {        
                 try 
                 {
                     
-                    $sql="INSERT INTO tbl_log_usuario(id_usuario,ubicacion,movimiento,fecha_mou,tiempo_sesion)
-                                        VALUES(:id_usuario,:ubicacion,:movimiento,:fecha_mou,:tiempo_sesion)";
+                    $sql="INSERT INTO tbl_log_usuario(id_usuario,ubicacion,movimiento,fecha_mou,tiempo_sesion,tipo)
+                                        VALUES(:id_usuario,:ubicacion,:movimiento,:fecha_mou,:tiempo_sesion,:tipo)";
                     
                     $query = $this->dbh->prepare($sql);
                     
@@ -235,6 +235,7 @@ require_once('conexion.class.php');
                     $query->bindParam(':movimiento',$_movimiento);
                     $query->bindParam(':fecha_mou',$_fecha);
                     $query->bindParam(':tiempo_sesion',$_hora);
+                    $query->bindParam(':tipo',$_tipo);
                     $query->execute();
                     $this->dbh = null;
                         
@@ -724,14 +725,15 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
-            public function actualizar_vacante($vacanteID,$puesto,$sueldo,$lugar,$region,$ciudad,$datos,$fechainicio,$fechafin)
+            public function actualizar_vacante($vacanteID,$puesto,$sueldo,$lugar,$region,$ciudad,$urgente,$datos,$fechainicio,$fechafin)
             {        
                 try 
                 {
                     
-                    $sql="UPDATE tbl_vacantes SET puesto='$puesto',sueldo='$sueldo',lugar='$lugar',region='$region',ciudad='$ciudad',datos_adicionales='$datos',dateInicio='$fechainicio',dateFin='$fechafin' WHERE id_vacante=$vacanteID";
+                    $sql="UPDATE tbl_vacantes SET puesto='$puesto',sueldo='$sueldo',lugar='$lugar',region='$region',ciudad='$ciudad',urgente=:urgente,datos_adicionales='$datos',dateInicio='$fechainicio',dateFin='$fechafin' WHERE id_vacante=$vacanteID";
                     
                     $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':urgente',$urgente);
                     $query->execute();
                     $this->dbh = null;
                         

@@ -150,6 +150,23 @@ $(document).ready(function() {
                                                         </div>
                                                     </div>
 
+                                                    <div class="row">
+                                                        <div class="col text-center">
+                                                            <div class="form-check">`
+                                                            if (vacante.urgente == 0){
+                                                                input_modal+= `<input class="form-check-input" type="checkbox" checked value="0" name="chkurgente" id="chkurgente`+vacante.id_vacante+`">`
+                                                            } else {
+                                                                input_modal+= `<input class="form-check-input" type="checkbox" uncheked value="null" name="chkurgente" id="chkurgente`+vacante.id_vacante+`">`
+                                                            }
+                                                            input_modal+=`
+                                                                
+                                                                <label class="form-check-label text-primary" for="flexCheckDefault">
+                                                                    ¿Es urgente?
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                     <label for="txtdatos" class="text-primary"> Datos Adicionales </label> <br>
                                                     <textarea name="txtdatos" id="txtdatos`+vacante.id_vacante+`"  style="resize:none; height: 300px;" type="text" class="form-control" cols="1" rows="10" placeholder="Ingresa los Datos">`+vacante.datos_adicionales+`</textarea><br>
                                                             
@@ -537,11 +554,17 @@ $(document).ready(function() {
         var lugar = $("#region" + vacanteID).val();
         var region = $("#txtregion" + vacanteID).val();
         var ciudad = $("#txtciudad" + vacanteID).val();
+        var chkurgente = document.getElementById("chkurgente" + vacanteID);
+        if (chkurgente.checked) {
+            var valor = "0"; // Si está seleccionado, asigna "0"
+        } else {
+            var valor = '1'; // Si no está seleccionado, asigna "NULL"
+        }
         var datos = $("#txtdatos" + vacanteID).val();
         var fechainicio = $("#dateInicio" + vacanteID).val();
         var fechafin = $("#dateFin" + vacanteID).val();
         var tipo = 'vac';
-
+        
         // Crear objeto FormData
         var formData = new FormData();
 
@@ -552,6 +575,7 @@ $(document).ready(function() {
         formData.append('lugar', lugar);
         formData.append('region', region);
         formData.append('ciudad', ciudad);
+        formData.append('chkurgente', valor);
         formData.append('datos', datos);
         formData.append('fechainicio', fechainicio);
         formData.append('fechafin', fechafin);
@@ -610,6 +634,37 @@ $(document).ready(function() {
                 });
             }
         });
+    });
+    $(document).on("mouseover", ".fa-edit", function(event) {
+        // Obtener la posición y dimensiones del botón
+        var boton = $(this);
+        var posicion = boton.offset();
+        var anchoBoton = boton.outerWidth();
+        var altoBoton = boton.outerHeight();
+        
+        // Crear un elemento span para mostrar el mensaje
+        var mensaje = $('<span class="mensaje-favoritos font-weight-bold shadow px-2">Editar</span>');
+    
+        // Estilo del mensaje emergente
+        mensaje.css({
+            backgroundColor: '#fff',
+            color: '#54b689',
+            padding: '5px',
+            borderRadius: '5px',
+            border:'1px solid #dfdfdf',
+            position: 'absolute',
+            top: (posicion.top - altoBoton - 20) + 'px', // Posición arriba del botón con 5px de espacio
+            left: (posicion.left + (anchoBoton / 2) - (mensaje.outerWidth() / 2)) + 'px',
+            transform: 'translateX(-50%)'
+        });
+    
+        // Agregar el mensaje al botón
+        $("body").append(mensaje);
+    });
+    
+    $(document).on("mouseout", ".fa-edit", function(event) {
+        // Eliminar el mensaje
+        $("span.mensaje-favoritos").remove();
     });
     
 });

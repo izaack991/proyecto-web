@@ -77,7 +77,7 @@ $(document).ready(function(){
                         card += '<p class="card-text" style="text-align: justify;">' + datosAdicionales + '...</p>'; // Usar el texto limitado
                         card += '<form action="seleccionar_vacantes.php" method="POST">';
                         card += '<input type="text" value="'+vacante.id_vacante+'" name="id_vacante" id="id_vacante" hidden>';
-                        card += '<input type="submit" value="Leer más" class="btn btn-primary">';
+                        card += '<input type="submit" value="Leer más" class="btn btn-primary btn-vacante" data-vacante2="'+vacante.id_vacante+'">';
                         card += '</form></div></div></div>';
                         $('#vacantesContainer').append(card);
 
@@ -102,6 +102,63 @@ $(document).ready(function(){
             }
         });
     }
+
+    // Agregar evento click a los botones "Guardar" de experiencia
+    $(document).on("click", ".btn-vacante", function() {
+        var id_vacante = $(this).data("vacante2");
+        var latitud = $("#latitud").val();
+        var longitud = $("#longitud").val();
+
+        // Enviar datos al servidor utilizando AJAX
+            $.ajax({
+                url: '../php/guardar_logusuario.php',
+                type: 'POST',
+                data: {
+                    id_vacante: id_vacante,
+                    latitud: latitud,
+                    longitud: longitud,
+                },
+                success: function(response) {
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    // Manejar errores aquí
+                }
+            });
+        });
+    
+
+        $(document).on("mouseover", "#btnfavoritos", function(event) {
+            // Obtener la posición y dimensiones del botón
+            var boton = $(this);
+            var posicion = boton.offset();
+            var anchoBoton = boton.outerWidth();
+            var altoBoton = boton.outerHeight();
+            
+            // Crear un elemento span para mostrar el mensaje
+            var mensaje = $('<span class="mensaje-favoritos font-weight-bold shadow px-2">Agregar a Favoritos</span>');
+        
+            // Estilo del mensaje emergente
+            mensaje.css({
+                backgroundColor: '#fff',
+                color: '#54b689',
+                padding: '5px',
+                borderRadius: '5px',
+                border:'1px solid #dfdfdf',
+                position: 'absolute',
+                top: (posicion.top - altoBoton - 12) + 'px', // Posición arriba del botón con 5px de espacio
+                left: (posicion.left + (anchoBoton / 2) - (mensaje.outerWidth() / 2)) + 'px',
+                transform: 'translateX(-50%)'
+            });
+        
+            // Agregar el mensaje al botón
+            $("body").append(mensaje);
+        });
+        
+        $(document).on("mouseout", "#btnfavoritos", function(event) {
+            // Eliminar el mensaje
+            $("span.mensaje-favoritos").remove();
+        });
 
     $(document).on("click", "#btnfavoritos", function(event) {
         event.preventDefault();

@@ -223,7 +223,7 @@ $(document).ready(function() {
                             input_vacante += `<button type="button" id="btnfavoritos" class="border-0 bg-white text-secondary p-0 mb-3" data-vacante="`+vacanteFAV.id_vacante+`" style="outline: none;"><i id="campana`+vacanteFAV.id_vacante+`" class="fas fa-bookmark text-primary" style="font-size:1.8rem;transition: transform 0.1s ease;background-color:#f7f7f7;"></i></button>`;
                         }
                         input_vacante += `<hr class="dropdown-divider">`
-                        input_vacante +=`<button type="submit" class="border-0 bg-white text-secondary pl-2 mt-3" style="outline: none;"><i class="fas fa-eye" style="font-size:1.3rem;"></i></button></div></li></div></div>`
+                        input_vacante +=`<button type="submit" id="btnleermas" class="border-0 bg-white text-secondary pl-2 mt-3" style="outline: none;"><i class="fas fa-eye" style="font-size:1.3rem;"></i></button></div></li></div></div>`
                         input_vacante += '</form>';
                     });
 
@@ -1233,4 +1233,66 @@ $(document).ready(function() {
         });
     });
     
+    $(document).on("mouseover", "#btnfavoritos", function(event) {
+        // Obtener la posición y dimensiones del botón
+        var boton = $(this);
+        var posicion = boton.offset();
+        var anchoBoton = boton.outerWidth();
+        var altoBoton = boton.outerHeight();
+        
+        // Crear un elemento span para mostrar el mensaje
+        var mensaje = $('<span class="mensaje-favoritos font-weight-bold shadow px-2">Agregar a Favoritos</span>');
+    
+        // Estilo del mensaje emergente
+        mensaje.css({
+            backgroundColor: '#fff',
+            color: '#54b689',
+            padding: '5px',
+            borderRadius: '5px',
+            border:'1px solid #dfdfdf',
+            position: 'absolute',
+            top: (posicion.top - altoBoton - 12) + 'px', // Posición arriba del botón con 5px de espacio
+            left: (posicion.left + (anchoBoton / 2) - (mensaje.outerWidth() / 2)) + 'px',
+            transform: 'translateX(-50%)'
+        });
+    
+        // Agregar el mensaje al botón
+        $("body").append(mensaje);
+    });
+    
+    $(document).on("mouseout", "#btnfavoritos", function(event) {
+        // Eliminar el mensaje
+        $("span.mensaje-favoritos").remove();
+    });
+    $(document).on("mouseover", "#btnleermas", function(event) {
+        // Obtener la posición y dimensiones del botón
+        var boton = $(this);
+        var posicion = boton.offset();
+        var anchoBoton = boton.outerWidth();
+        var altoBoton = boton.outerHeight();
+        
+        // Crear un elemento span para mostrar el mensaje
+        var mensaje = $('<span class="mensaje-favoritos font-weight-bold shadow px-2">Leer Más</span>');
+    
+        // Estilo del mensaje emergente
+        mensaje.css({
+            backgroundColor: '#fff',
+            color: '#54b689',
+            padding: '5px',
+            borderRadius: '5px',
+            border:'1px solid #dfdfdf',
+            position: 'absolute',
+            top: (posicion.top - altoBoton - 12) + 'px', // Posición arriba del botón con 5px de espacio
+            left: (posicion.left + (anchoBoton / 2) - (mensaje.outerWidth() / 2)) + 'px',
+            transform: 'translateX(-50%)'
+        });
+    
+        // Agregar el mensaje al botón
+        $("body").append(mensaje);
+    });
+    
+    $(document).on("mouseout", "#btnleermas", function(event) {
+        // Eliminar el mensaje
+        $("span.mensaje-favoritos").remove();
+    });
 });

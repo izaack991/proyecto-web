@@ -51,7 +51,8 @@ if (isset($_POST['dateFin'])) {
         $_latitud = $_POST['txtlatitud'];
         $_longitud = $_POST['txtlongitud'];
         $_ubicacion = $_latitud.', '.$_longitud;
-        $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario, $_ubicacion, $_movimiento, $_fecha, $_hora);
+        $tipo=NULL;
+        $newlogusuario = $nuevoUsuario->guardar_log_usuario($_idusuario, $_ubicacion, $_movimiento, $_fecha, $_hora,$tipo);
 
         // Envío de la alerta de guardado
         if ($newVacante == true) {

@@ -33,7 +33,8 @@ if(isset($_POST['txtdesc'])&& isset($_POST['txtlatitud'])&& isset($_POST['txtlon
         $_latitud=$_POST['txtlatitud'];
         $_longitud=$_POST['txtlongitud'];
         $_ubicacion = $_latitud.', '.$_longitud;
-        $newlogusuario=$nuevoUsuario->guardar_log_usuario($_idusuario, $_ubicacion, $_movimiento, $_fecha, $_hora);
+        $tipo=NULL;
+        $newlogusuario=$nuevoUsuario->guardar_log_usuario($_idusuario, $_ubicacion, $_movimiento, $_fecha, $_hora,$tipo);
 
         if($newuser==true) {
             echo "true";
