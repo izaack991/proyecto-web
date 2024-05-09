@@ -20,12 +20,6 @@
     <!--Barra de navegacion para Empresa-->
     <?php include("navbar_empresa.php") ?>
 
-</head>
-
-<body style="background-color: #F8F6F3;">
-  <!--Barra de navegacion para Empresa-->
-  <?php include("navbar_empresa.php") ?>
-
   <!-- Card de potulaciones -->
   <div class="container-fluid" style="min-height: 65vh;">
     <div class="card border-light shadow-lg bg-body rounded mt-4">
