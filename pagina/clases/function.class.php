@@ -754,6 +754,30 @@ public function buscarConversacion($id_usuario,$rol)
                 return $data;
             }
 
+            public function buscarVacantePostulada($id_postulacion)
+            {
+                try {
+                    
+                    $sql = "SELECT v.puesto, v.empresa, v.ciudad, v.region, v.sueldo, v.datos_adicionales
+                    FROM tbl_vacantes v
+                    INNER JOIN tbl_postulacion o on o.id_vacante = v.id_vacante
+                    WHERE o.id_postulacion = :id_postulacion;";
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':id_postulacion',$id_postulacion);
+                    $query->execute();
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                }
+                return $data;
+            }
+
             public function comprobar_postulacion($_idusuario,$id_vacante)
             {        
                 try {
