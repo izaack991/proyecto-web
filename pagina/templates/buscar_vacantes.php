@@ -9,7 +9,7 @@
   <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
-  <link rel="icon" href="../../assets/images/WorkeleWB.ico" type="image/x-icon">
+  <link rel="icon" href="../assets/images/WorkeleWB.ico" type="image">
   <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -31,6 +31,7 @@
       filterVacancies($("#bvac").val().toLowerCase());
     });
 
+<<<<<<< HEAD
     // Escuchar el evento de clic del checkbox "Prácticas"
     $("#practicesCheckbox").click(function() {
       filterVacancies($("#bvac").val().toLowerCase());
@@ -70,6 +71,58 @@
     }
   });
 </script>
+=======
+    $(document).ready(function () {
+        var currentPage = 0;
+        var isFirstLoad = true;
+  
+        // Función para cargar vacantes
+        function loadVacantes(page) {
+          $.ajax({
+            url: "../php/Buscar_vacantes.php",
+            type: "POST",
+            data: {
+              page: page
+            },
+            dataType: "json",
+            success: function (data) {
+              if (!isFirstLoad) {
+                $('#vacantesContainer').empty(); // Limpiar contenedor si no es la primera carga
+              }
+              if (data.length > 0) {
+                $.each(data, function (index, vacante) {
+                  // Construir y agregar vacante al contenedor
+                });
+              } else {
+                $('#vacantesContainer').html('No se encontraron vacantes.');
+              }
+              isFirstLoad = false;
+            },
+            error: function (xhr, status, error) {
+              console.error("Error: " + xhr.responseText);
+              $('#vacantesContainer').html('Error cargando las vacantes.');
+            }
+          });
+        }
+  
+        // Cargar vacantes al iniciar la página
+        loadVacantes(currentPage);
+  
+        // Botón Siguiente
+        $('#btnSiguiente').click(function () {
+          currentPage++;
+          loadVacantes(currentPage);
+        });
+  
+        // Botón Atrás
+        $('#btnAtras').click(function () {
+          currentPage--;
+          loadVacantes(currentPage);
+        });
+      });
+
+  </script>
+>>>>>>> defd60a3beb12154c3b2e79b91b05c32dc94fc1f
 
 </head>
 
@@ -95,8 +148,10 @@
   </div>
 </div>
 
-    <!-- <input type="hidden" name="pagina" id="inputPagina" value="2">
-    <input type="submit" value="Siguiente" class="btn btn-primary" id="siguienteBtn"> -->
+    <!-- <div class="text-center">
+        <input type="button" value="Atrás" class="btn btn-secondary" id="btnAtras">
+        <input type="button" value="Siguiente" class="btn btn-primary" id="btnSiguiente">
+    </div><br> -->
 
     <!-- Contenedor de las vacantes -->
     <div id="vacantesContainer" class="row justify-content-center mx-2"></div>

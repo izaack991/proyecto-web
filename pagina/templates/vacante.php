@@ -27,6 +27,46 @@
         (charCode >= 97 && charCode <= 122) || // Letras minúsculas
         charCode === 32; // Espacio
     }
+
+    $(document).ready(function() {
+    // Verificar si el navegador es compatible con la geolocalización
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        // Obtener las coordenadas de latitud y longitud
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+
+        // Crear una solicitud a la API de Geocodificación de Google Maps
+        var request = new XMLHttpRequest();
+        var url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=TU_API_KEY`;
+        request.open('GET', url, true);
+
+        // Manejar la respuesta de la solicitud
+        request.onload = function () {
+          if (request.status === 200) {
+            // Si la solicitud es exitosa y se encontró una dirección, mostrarla en el input
+            var data = JSON.parse(request.responseText);
+            if (data && data.results && data.results.length > 0) {
+              var address = data.results[0].formatted_address;
+              document.getElementById('txtdireccion').value = address;
+            } else {
+              // Si no se encuentra ninguna dirección, mostrar un mensaje de error
+              console.error('No se encontró ninguna dirección para las coordenadas proporcionadas. Coordenadas: ' + lat + ', ' + lng);
+            }
+          } else {
+            // Si hay un error en la solicitud, mostrar un mensaje de error
+            console.error('Error al obtener la dirección: ', request.statusText);
+          }
+        };
+
+        // Enviar la solicitud
+        request.send();
+      });
+    } else {
+      // Si el navegador no admite la geolocalización, mostrar un mensaje de error
+      console.error('La geolocalización no es compatible con este navegador.');
+    }
+  });
   </script>
 
 </head>
@@ -54,10 +94,6 @@
             <input class="form-control" id="txtpuesto" type="text" name="txtpuesto" placeholder="Descripcion de Puesto" maxLength="100" required="true">
             <label for="floatingInput">Descripcion de Puesto *</label>
           </div>
-          <!--<div class="form-floating mb-3 mt-4">
-            <input class="form-control"  type="text" required id="txtempresa" name="txtempresa" placeholder="Ingresa la empresa" maxlength="50"> <br>
-            <label for="floatingInput">Nombre de la empresa *</label>
-          </div>-->
           <div class="input-group mb-3">
             <label class="input-group-text" style="height: 3.625rem;">$</label>
             <div class="form-floating form-floating-group flex-grow-1">
@@ -86,6 +122,10 @@
                 <label for="txtciudad" class="form__label"> Ciudad/Poblacion *</label><br>
               </div>
             </div>
+          </div>
+          <div class="form-floating">
+                <input class="form-control" type="text" required id="txtdireccion" name="txtdireccion" placeholder="Ingresa tu dirección"> <br>
+                <label for="txtdireccion" class="form__label"> Dirección *</label><br>
           </div>
           <div>
               <div style="display: inline-block; ">
@@ -116,8 +156,6 @@
               </div>
             </div>
             <br>
-            
-
             <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
 
             <script>
@@ -170,17 +208,6 @@
             <div class="container text-center mt-4">
               <input class="btn btn-primary w-50" type="submit" value="Guardar">
             </div>
-            <!-- <script>     
-                        function openAlertGuardar() {
-                          Swal.fire({
-                            title: 'Listo!',
-                            text: 'Elemento Guardado',
-                            icon: 'success'
-                        }).then(function () {
-                            window.location.href = "../templates/vacante.php";
-                        });
-                          }
-          </script> -->
           </div>
         </div>
       </div>

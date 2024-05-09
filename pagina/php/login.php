@@ -17,16 +17,18 @@ if (isset($_POST['usuario'], $_POST['password'])) {
     $status = $nuevoSingleton->login_status($_usuario, $_password, $rol);
     
     if ($usuario) {
-        if ($rol == 2) {
+        if ($rol == 2 || $rol == 4) {
             header("Location: ../templates/indexPrincipal.php");
             exit();
         } elseif ($rol == 3) {
             header("Location: ../templates/indexAdmin.php");
             exit();
-        }elseif ($rol == 4) {
-            header("Location: ../templates/indexEstudiante.php");
-            exit();
-        }elseif ($rol == 1 && $status) {
+        }
+        // elseif ($rol == 4) {
+        //     header("Location: ../templates/indexEstudiante.php");
+        //     exit();
+        // }
+            elseif ($rol == 1 && $status) {
                 header("Location: ../templates/indexEmpresa.php");
                 exit();
         } else {

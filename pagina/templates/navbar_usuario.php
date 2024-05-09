@@ -8,7 +8,7 @@
 <script src="../js/inactividad.js"></script>
 <?php 
 session_start();
-if ($_SESSION['irol'] == 1 || $_SESSION['irol'] == 4) {
+if ($_SESSION['irol'] == 1) {
   echo (
       '<script src="../js/login.js" data-error="5"></script>'
   );
