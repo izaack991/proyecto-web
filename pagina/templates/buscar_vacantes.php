@@ -31,7 +31,6 @@
       filterVacancies($("#bvac").val().toLowerCase());
     });
 
-<<<<<<< HEAD
     // Escuchar el evento de clic del checkbox "Prácticas"
     $("#practicesCheckbox").click(function() {
       filterVacancies($("#bvac").val().toLowerCase());
@@ -71,58 +70,6 @@
     }
   });
 </script>
-=======
-    $(document).ready(function () {
-        var currentPage = 0;
-        var isFirstLoad = true;
-  
-        // Función para cargar vacantes
-        function loadVacantes(page) {
-          $.ajax({
-            url: "../php/Buscar_vacantes.php",
-            type: "POST",
-            data: {
-              page: page
-            },
-            dataType: "json",
-            success: function (data) {
-              if (!isFirstLoad) {
-                $('#vacantesContainer').empty(); // Limpiar contenedor si no es la primera carga
-              }
-              if (data.length > 0) {
-                $.each(data, function (index, vacante) {
-                  // Construir y agregar vacante al contenedor
-                });
-              } else {
-                $('#vacantesContainer').html('No se encontraron vacantes.');
-              }
-              isFirstLoad = false;
-            },
-            error: function (xhr, status, error) {
-              console.error("Error: " + xhr.responseText);
-              $('#vacantesContainer').html('Error cargando las vacantes.');
-            }
-          });
-        }
-  
-        // Cargar vacantes al iniciar la página
-        loadVacantes(currentPage);
-  
-        // Botón Siguiente
-        $('#btnSiguiente').click(function () {
-          currentPage++;
-          loadVacantes(currentPage);
-        });
-  
-        // Botón Atrás
-        $('#btnAtras').click(function () {
-          currentPage--;
-          loadVacantes(currentPage);
-        });
-      });
-
-  </script>
->>>>>>> defd60a3beb12154c3b2e79b91b05c32dc94fc1f
 
 </head>
 
