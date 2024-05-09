@@ -9,6 +9,7 @@
   <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
+  <link rel="icon" href="../../assets/images/WorkeleWB.ico" type="image/x-icon">
   <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../js/notificacion_usuario.js"></script>
@@ -49,7 +50,7 @@
           </div>
           <div class="form-floating mb-3 mt-4">
             <input class="form-control" type="date" id="fechaFin" name="fechaFin" value="2022-01-01">
-            <label for="floatingInput">Seleccione su Fecha fin:  *</label>
+            <label for="floatingInput">Seleccione su Fecha de culminación: *</label>
           </div>
 
           <!-- {*Campos internos para la ubicacion*} -->

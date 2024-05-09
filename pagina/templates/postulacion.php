@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de Postulaciones</title>
-  <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
-  <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
-  <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="../js/postulacion.js"></script>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Postulaciones</title>
+    <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
+    <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
+    <link rel="icon" href="../../assets/images/WorkeleWB.ico" type="image/x-icon">
+    <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/postulacion.js"></script>
+ 
+  </head>
+  
+  <body style="background-color: #F8F6F3;">
+    <!--Barra de navegacion para Empresa-->
+    <?php include("navbar_empresa.php") ?>
 
 </head>
 

@@ -9,6 +9,7 @@
     <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
     <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css" />
+    <link rel="icon" href="../../assets/images/WorkeleWB.ico" type="image/x-icon">
     <script src="../php/enviartest.php"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

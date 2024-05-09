@@ -43,6 +43,7 @@ switch ($_GET['xd']) {
 <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
 <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
 <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
+<link rel="icon" href="../../assets/images/WorkeleWB.ico" type="image/x-icon">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
