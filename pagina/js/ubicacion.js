@@ -1,74 +1,106 @@
-document.addEventListener('DOMContentLoaded', function() {
-    //alert('alerta');
-    if (!("geolocation" in navigator)) {
-        return alert("Tu navegador no soporta el acceso a la ubicación. Intenta con otro");
-    }
+// function setCookie(nombre, valor, dias) {
+// //alert('guardar');
+// const fecha = new Date();
+// fecha.setTime(fecha.getTime() + (dias * 24 * 60 * 60 * 1000));
+// const expira = `expires=${fecha.toUTCString()}`;
+// document.cookie = `${nombre}=${valor};${expira};path=/`;
+// }
 
-    const $latitud = document.getElementById("latitud"),
-        $longitud = document.getElementById("longitud"),
-        $enlace = document.querySelector("#enlace");
+// function getCookie(nombre) {
+// //alert('recuperar');
+// const nombreCookie = `${nombre}=`;
+// const cookies = document.cookie.split(';');
+// for (let i = 0; i < cookies.length; i++) {
+// let cookie = cookies[i].trim();
+// if (cookie.startsWith(nombreCookie)) {
+//   return cookie.substring(nombreCookie.length);
+// }
+// }
+// return "";
+// }
 
-    // Obtener las coordenadas guardadas en las cookies, si existen
-    const latitudGuardada = getCookie("latitud");
-    const longitudGuardada = getCookie("longitud");
-	//alert(longitudGuardada);
-	//alert(latitudGuardada);
-    if (latitudGuardada && longitudGuardada) {
-        // Si las coordenadas están guardadas en las cookies, usarlas
-        $latitud.value = latitudGuardada;
-        $longitud.value = longitudGuardada;
-    } else {
-        // Si no hay coordenadas guardadas en las cookies, solicitar la ubicación al usuario
-        const onUbicacionConcedida = ubicacion => {
-            console.log("Tengo la ubicación: ", ubicacion);
+// // function eliminarCookie(nombre) {
+// //     // Establece la fecha de expiración a una fecha pasada
+// //     const fechaPasada = new Date(0);
+// //     document.cookie = `${nombre}=; expires=${fechaPasada.toUTCString()}; path=/`;
+// // }eliminarCookie("latitud");
+// // eliminarCookie("longitud");
+
+// // eliminarCookie("permiso");
+
+// document.addEventListener('DOMContentLoaded', function() {
+// if (!("geolocation" in navigator)) {
+//     return alert("Tu navegador no soporta el acceso a la ubicación. Intenta con otro.");
+// }
+
+//  $latitud = document.getElementById("latitud");
+//  $longitud = document.getElementById("longitud");
+
+//  latitudGuardada = getCookie("latitud");
+//  longitudGuardada = getCookie("longitud");
+//  permiso = getCookie("permiso");
+// //alert(permiso);
+
+// if (permiso) {
+//     //alert(`Ubicación guardada: Latitud: ${latitudGuardada}, Longitud: ${longitudGuardada}`);
+//     $latitud.value = latitudGuardada;
+//     $longitud.value = longitudGuardada;
+//     console.log("Latitud guardada:", latitudGuardada);
+//     console.log("Longitud guardada:", longitudGuardada);
+// } else {
+//     console.warn("Las cookies de ubicación no están establecidas. Solicitando ubicación...");
+//    // alert(permiso);
+//     obtenerUbicacion();
+//     //alert(`Ubicación guardada: Latitud: ${latitudGuardada}, Longitud: ${longitudGuardada}`);
+
+// }
+// });
+// function obtenerUbicacion() {
+//alert("ubicacion");
+if ("geolocation" in navigator) {
+    // Solicitar la ubicación del usuario
+    navigator.geolocation.getCurrentPosition(
+        (ubicacion) => {
+            // Este bloque se ejecuta si se concede el permiso y se obtiene la ubicación
+            console.log("Ubicación obtenida: ", ubicacion);
             const coordenadas = ubicacion.coords;
-            $latitud.value = coordenadas.latitude;
-            $longitud.value = coordenadas.longitude;
+            document.getElementById("latitud").value = coordenadas.latitude;
+            document.getElementById("longitud").value = coordenadas.longitude;
             // Guardar las coordenadas en cookies
-            setCookie("latitud", coordenadas.latitude, 365);
-            setCookie("longitud", coordenadas.longitude, 365);
-            // Actualizar la cookie para indicar que se ha concedido el permiso
-            setCookie("permisoUbicacion", "si", 365);
+            setCookie("latitud", coordenadas.latitude, 30);
+            setCookie("longitud", coordenadas.longitude, 30);
+            setCookie("permiso", 'si', 30);
+
+        },
+        (error) => {
+            setCookie("permiso", 'si', 30);
+            // Este bloque se ejecuta si el permiso es denegado o hay un error
+            console.error("Error al obtener la ubicación: ", error.message);
+
+            // Dependiendo del tipo de error, puedes mostrar un mensaje apropiado
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    console.error("Permiso de ubicación denegado por el usuario.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    console.error("Ubicación no disponible.");
+                    break;
+                case error.TIMEOUT:
+                    console.error("La solicitud de ubicación expiró.");
+                    break;
+                default:
+                    console.error("Error desconocido.");
+                    break;
+            }
+        },
+        {
+            // Opcionalmente, puedes configurar opciones adicionales
+            timeout: 10000, // Tiempo máximo para obtener la ubicación
+            maximumAge: 60000, // Máximo tiempo de caché para la ubicación
+            enableHighAccuracy: true, // Si se debe usar alta precisión
         }
-
-        const onErrorDeUbicacion = err => {
-            $latitud.value = "Error obteniendo ubicación: " + err.message;
-            $longitud.value = "Error obteniendo ubicación: " + err.message;
-            console.log("Error obteniendo ubicación: ", err);
-        }
-
-        const opcionesDeSolicitud = {
-            enableHighAccuracy: true, // Alta precisión
-            maximumAge: 0, // No queremos caché
-            timeout: 5000 // Esperar solo 5 segundos
-        };
-
-        $latitud.value = "Cargando...";
-        $longitud.value = "Cargando...";
-        navigator.geolocation.getCurrentPosition(onUbicacionConcedida, onErrorDeUbicacion, opcionesDeSolicitud);
-    }
-});
-
-// Función para establecer una cookie
-function setCookie(nombre, valor, dias) {
-    var fecha = new Date();
-    fecha.setTime(fecha.getTime() + (dias * 24 * 60 * 60 * 1000));
-    var expira = "expires=" + fecha.toUTCString();
-    document.cookie = nombre + "=" + valor + ";" + expira + ";path=/";
+    );
+} else {
+    console.error("La API de Geolocalización no está disponible en este navegador.");
 }
-
-// Función para obtener el valor de una cookie
-function getCookie(nombre) {
-    var nombreCookie = nombre + "=";
-    var cookies = document.cookie.split(';');
-    for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i];
-        while (cookie.charAt(0) == ' ') {
-            cookie = cookie.substring(1);
-        }
-        if (cookie.indexOf(nombreCookie) == 0) {
-            return cookie.substring(nombreCookie.length, cookie.length);
-        }
-    }
-    return "";
-}
+//}
