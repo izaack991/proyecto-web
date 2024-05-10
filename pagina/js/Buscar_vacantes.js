@@ -157,10 +157,21 @@ $(document).ready(function(){
                 transform: 'translateX(-50%)'
             });
         
+            // Calcular la posición del mensaje en relación con el ancho total de la ventana del navegador
+            var distanciaHastaBordeDerecho = $(window).width() - (posicion.left + anchoBoton + mensaje.outerWidth());
+            if (distanciaHastaBordeDerecho < $(window).width() * 0.1) {
+                // Si el mensaje está demasiado cerca del borde derecho, ajustar su posición
+                var nuevaPosicionIzquierda = $(window).width() * 0.9 - mensaje.outerWidth();
+                mensaje.css({
+                    left: Math.max(nuevaPosicionIzquierda, 0) + 'px',
+                    transform: 'translateX(0%)'
+                });
+            }
+        
             // Agregar el mensaje al botón
             $("body").append(mensaje);
         });
-        
+
         $(document).on("mouseout", "#btnfavoritos", function(event) {
             // Eliminar el mensaje
             $("span.mensaje-favoritos").remove();
