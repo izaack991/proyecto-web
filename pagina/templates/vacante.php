@@ -11,12 +11,18 @@
   <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
   <link rel="icon" href="../assets/images/WorkeleWB.ico" type="image">
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../js/notificacion_empresa.js"></script>
   <script src="../js/buscar_pais.js"></script>
 
+  <style>
+  .toggle-off {
+    background: lightgray;
+  }
+</style>
 
   <script>
     // funcion para solo letras mayúsculas, minúsculas y espacios
@@ -67,6 +73,8 @@
       console.error('La geolocalización no es compatible con este navegador.');
     }
   });
+
+  
   </script>
 
 </head>
@@ -124,11 +132,15 @@
             </div>
           </div>
           <div class="form-floating">
-                <input class="form-control" type="text" required id="txtdireccion" name="txtdireccion" placeholder="Ingresa tu dirección"> <br>
-                <label for="txtdireccion" class="form__label"> Dirección *</label><br>
+            <input class="form-control" type="text" required id="txtdireccion" name="txtdireccion" placeholder="Ingresa tu dirección"> <br>
+            <label for="txtdireccion" class="form__label"> Dirección *</label><br>
+          </div>
+          <label class="text-primary">Tipo de registro</label>
+          <div class="mb-4">
+            <input type="checkbox" name="tswTipo" id="tswTipo" checked data-toggle="toggle" data-on="Vacante" data-off="Practica">
           </div>
           <div>
-              <div style="display: inline-block; ">
+            <div style="display: inline-block; ">
                 <input name="chkurgente" type="checkbox" style="margin-right: 5px;">
               </div>
               <div style="display: inline-block; vertical-align: middle; font-size:1.1em;">
@@ -206,7 +218,7 @@
 
             <!-- {*Boton de guardar vacante*} -->
             <div class="container text-center mt-4">
-              <input class="btn btn-primary w-50" type="submit" value="Guardar">
+              <input class="btn btn-primary w-50" type="submit" id="btn-guardar" value="Guardar">
             </div>
           </div>
         </div>
@@ -215,6 +227,7 @@
   </div>
 
     <!-- {*Conexion de librerias de JavaScript y bootstrap*} -->
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

@@ -189,12 +189,12 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
-            public function Guardar_id_vacantes($f_id_vacantes,$_idusuario,$_puesto,$_empresa,$_sueldo,$_lugar,$_datos,$_fechainicio,$_fechafin,$_region,$_ciudad,$_urgente)
+            public function Guardar_id_vacantes($f_id_vacantes,$_idusuario,$_puesto,$_empresa,$_sueldo,$_lugar,$_datos,$_fechainicio,$_fechafin,$_region,$_ciudad,$_urgente,$tswTipo)
             {        
                 try {
                     
-                    $sql="INSERT into tbl_vacantes(id_vacante,id_empresa,puesto,empresa,sueldo,lugar,datos_adicionales,dateInicio,dateFin,region,ciudad, urgente)
-                                        values(:id_vacante, :id_empresa, :puesto, :empresa, :sueldo, :lugar, :datos_adicionales, :dateInicio, :dateFin, :region, :ciudad, :urgente)";
+                    $sql="INSERT into tbl_vacantes(id_vacante,id_empresa,puesto,empresa,sueldo,lugar,datos_adicionales,dateInicio,dateFin,region,ciudad, urgente, tipo)
+                                        values(:id_vacante, :id_empresa, :puesto, :empresa, :sueldo, :lugar, :datos_adicionales, :dateInicio, :dateFin, :region, :ciudad, :urgente, :tipo)";
                     
                     $query = $this->dbh->prepare($sql);
                     
@@ -210,6 +210,7 @@ require_once('conexion.class.php');
                     $query->bindParam(':region',$_region);
                     $query->bindParam(':ciudad',$_ciudad);
                     $query->bindParam(':urgente',$_urgente);
+                    $query->bindParam(':tipo',$tswTipo);
                     $query->execute();
                 }
                 catch(PDOException $e){

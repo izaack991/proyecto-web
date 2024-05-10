@@ -126,39 +126,49 @@
 };
 
 // Metodo AJAX para el guardado de Vacantes
-{
-    $(document).ready(function () {
-        $('#formVacante').submit(function (event) {
-            event.preventDefault();
-            var formData = new FormData($('#formVacante')[0]);
-            //var formData = $(this).serialize();
-            $.ajax({
-                url: '../php/Vacantes.php',
-                method: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    // Maneja la respuesta del archivo PHP aquí
-                    console.log(response);
-                    if (response == "true") {
-                        Swal.fire({
-                            title: 'Listo!',
-                            text: 'Elemento Guardado',
-                            icon: 'success'
-                        }).then(function () {
-                            window.location.href = "../templates/vacante.php";
-                        });
-                    }
-                },
-                error: function (xhr, status, error) {
-                    // Maneja cualquier error que ocurra durante la solicitud AJAX
-                    console.error(error);
+$(document).ready(function () {
+    $('#formVacante').submit(function (event) {
+        event.preventDefault();
+
+        var tswTipo = document.getElementById("tswTipo");
+        if (tswTipo.checked) {
+            var valor = "1"; // Si está seleccionado vacante
+        } else {
+            var valor = '2'; // Si está seleccionado practica
+        }
+
+        var formData = new FormData($('#formVacante')[0]);
+        
+        // Agregar una variable adicional al FormData
+        formData.append('tswTipo', valor);
+
+        //var formData = $(this).serialize();
+        $.ajax({
+            url: '../php/Vacantes.php',
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                // Maneja la respuesta del archivo PHP aquí
+                console.log(response);
+                if (response == "true") {
+                    Swal.fire({
+                        title: 'Listo!',
+                        text: 'Elemento Guardado',
+                        icon: 'success'
+                    }).then(function () {
+                        window.location.href = "../templates/vacante.php";
+                    });
                 }
-            });
-        })
+            },
+            error: function (xhr, status, error) {
+                // Maneja cualquier error que ocurra durante la solicitud AJAX
+                console.error(error);
+            }
+        });
     })
-};
+});
 
 // Metodo AJAX para el guardado de Interes
 {
