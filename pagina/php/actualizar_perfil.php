@@ -161,17 +161,23 @@ if ($tipo='dom'){
     }
 }
 if ($tipo='vac'){
-    if (isset($_POST['vacanteID'],$_POST['puesto'],$_POST['sueldo'],$_POST['lugar'],$_POST['region'],$_POST['ciudad'],$_POST['datos'],$_POST['fechainicio'],$_POST['fechafin'],)) {
+    if (isset($_POST['vacanteID'],$_POST['puesto'],$_POST['sueldo'],$_POST['lugar'],$_POST['region'],$_POST['ciudad'],$_POST['chkurgente'],$_POST['datos'],$_POST['fechainicio'],$_POST['fechafin'],)) {
         $vacanteID = $_POST['vacanteID'];
         $puesto = $_POST['puesto'];
         $sueldo = $_POST['sueldo'];
         $lugar = $_POST['lugar'];
         $region = $_POST['region'];
         $ciudad = $_POST['ciudad'];
+        $valor = $_POST['chkurgente'];
+        if($valor == '1'){
+            $urgente = NULL;
+        }else {
+            $urgente = '0';
+        }
         $datos = $_POST['datos'];
         $fechainicio = $_POST['fechainicio'];
         $fechafin = $_POST['fechafin'];
-        $UCerrar=$NuevoC->actualizar_vacante($vacanteID,$puesto,$sueldo,$lugar,$region,$ciudad,$datos,$fechainicio,$fechafin);
+        $UCerrar=$NuevoC->actualizar_vacante($vacanteID,$puesto,$sueldo,$lugar,$region,$ciudad,$urgente,$datos,$fechainicio,$fechafin);
         $bvacante = $buscarDatos->buscarVacantes($iusuario);
     }
 }

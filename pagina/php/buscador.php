@@ -1,6 +1,6 @@
 <?php 
 require_once('../clases/conexion.class.php');
-
+session_start();
 $pdo = Conexion::singleton_conexion();
 
 // Consulta para obtener los resultados de la búsqueda

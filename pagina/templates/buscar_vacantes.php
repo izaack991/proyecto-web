@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +10,7 @@
   <link id="theme-style" rel="stylesheet" href="../../assets/css/devresume.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/css/theme-1.css">
   <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
-  <link rel="icon" href="../assets/images/WorkeleWB.ico" type="image">
+  <link rel="icon" href="../../assets/images/WorkeleWB.ico" type="image/x-icon">
   <link id="theme-style" rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -74,11 +75,14 @@
 </head>
 
 <body style="background-color: #F8F6F3;">
+
+<!-- {*Conexion a librerias de JavasScript para la ubicacion y bootstrap*} -->
+<script src="../js/ubicacion.js"></script>
+
   <!-- {*Barra de navegacion para Usuarios*} -->
   <?php include ("navbar_usuario.php") ?>
   <br>
   <div class="container-fluid" style="min-height: 65vh;">
-
   <form action="buscar_vacante.php" method="GET">
     
   <div class="alert alert-dismissible text-center px-0">
@@ -94,7 +98,9 @@
     <label for="practicesCheckbox"><strong>Prácticas</strong></label>
   </div>
 </div>
-
+<!-- Campos internos para la ubicacion -->
+<input name="txtlatitud" id="latitud" type="hidden">
+          <input name="txtlongitud" id="longitud" type="hidden">
     <!-- <div class="text-center">
         <input type="button" value="Atrás" class="btn btn-secondary" id="btnAtras">
         <input type="button" value="Siguiente" class="btn btn-primary" id="btnSiguiente">
@@ -105,13 +111,11 @@
 
   </form>
   </div>
-
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
-
 <?php include ("footer.php") ?>
 </html>
