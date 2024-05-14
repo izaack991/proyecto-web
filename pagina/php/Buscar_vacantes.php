@@ -7,10 +7,12 @@ $_idusuario = $_SESSION['iusuario'];
 
 // Recuperar el número de página de la solicitud AJAX
 $page = isset($_POST['page']) ? intval($_POST['page']) : 0;
-$limit = 9;
+$limit = 9; // tu límite de vacantes por página
+$num = 27; // tu límite de vacantes por página
 
 $nuevaPostulacion = save::singleton_guardar();
 $_findExperiencia = Functions::singleton_functions();
+$_Totalpaginas = Functions::singleton_functions();
 
 // Lógica para cargar las vacantes según la página solicitada
 if ($page == 0) {
@@ -19,9 +21,20 @@ if ($page == 0) {
 } elseif ($page > 0) {
     // Cargar las siguientes vacantes disponibles sin repetir las anteriores
     $_vacantes1 = $_findExperiencia->cargarSiguienteVacantes($_idusuario, $page, $limit);
-} elseif ($page < 0) {
-    // Retroceder a las vacantes anteriormente cargadas
-    $_vacantes1 = $_findExperiencia->cargarVacantesAnteriores($_idusuario, $page, $limit);
 }
-echo json_encode($_vacantes1);
+
+$totalpaginas = $_Totalpaginas-> TotalVacantes($_idusuario);
+// Calcular el número total de páginas
+$TotalVacantes = ceil($totalpaginas / $limit);
+
+// Crear un array asociativo para enviar en la respuesta JSON
+$response = array(
+    'vacantes' => $_vacantes1,
+    'totalVacantes' => $TotalVacantes
+);
+
+// Enviar la respuesta JSON
+echo json_encode($response);
+
+// echo json_encode($_vacantes1);
 ?>

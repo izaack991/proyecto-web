@@ -395,11 +395,11 @@ require_once('conexion.class.php');
                 return $this->buscarVacante($_idusuario, $offset, $limit);
             }
             
-            // Consulta para regresar a las vacantes anteriormente cargadas
-            public function cargarVacantesAnteriores($_idusuario, $currentPage, $limit) {
-                $offset = max(0, ($currentPage - 2) * $limit); // Restamos 2 para retroceder dos páginas
-                return $this->buscarVacante($_idusuario, $offset, $limit);
-            }
+            // // Consulta para regresar a las vacantes anteriormente cargadas
+            // public function cargarVacantesAnteriores($_idusuario, $currentPage, $limit) {
+            //     $offset = max(0, ($currentPage - 2) * $limit); // Restamos 2 para retroceder dos páginas
+            //     return $this->buscarVacante($_idusuario, $offset, $limit);
+            // }
         
             // Función para buscar las vacantes del perfil de USUARIO
             private function buscarVacante($_idusuario, $offset, $limit) {
@@ -587,6 +587,25 @@ require_once('conexion.class.php');
                 }
             return $data;
             } */
+
+            function TotalVacantes($_idusuario) {
+                try {
+                    $sql = "SELECT COUNT(*) AS totalVacantes 
+                    FROM tbl_vacantes v
+                    LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = $_idusuario
+                    WHERE DATEDIFF(v.datefin, v.dateInicio) >= 1 
+                        AND v.status = 1 
+                        AND (p.id_postulacion IS NULL OR v.id_vacante NOT IN (SELECT id_vacante FROM tbl_postulacion 
+                        WHERE id_usuario = $_idusuario))";
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $resultado = $query->fetch(PDO::FETCH_ASSOC);
+                    return $resultado['totalVacantes'];
+                } catch(PDOException $e) {
+                    print "Error: " . $e->getMessage();
+                    return false;
+                }
+            }
 
             function buscarPostulacion($_idusuario)
             {

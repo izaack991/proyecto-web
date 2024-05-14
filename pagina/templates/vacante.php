@@ -113,7 +113,6 @@
             <div class="form-group col-md-6">
               <div class="form-floating">
                 <select id="region" class="form-select" name="cmbpais" style="width: 100%;">
-                
                 </select>
                 <label for="cmbpais" class="form_label">Pais *</label>
               </div>
@@ -131,10 +130,9 @@
               </div>
             </div>
           </div>
-          <div class="form-floating">
-            <input class="form-control" type="text" required id="txtdireccion" name="txtdireccion" placeholder="Ingresa tu dirección"> <br>
-            <label for="txtdireccion" class="form__label"> Dirección *</label><br>
-          </div>
+          <!-- <div id="txtdireccionDiv" class="form-floating">
+            <input class="form-control" type="hidden" id="txtdireccion" name="txtdireccion"><br>
+          </div> -->
           <label class="text-primary">Tipo de registro</label>
           <div class="mb-4">
             <input type="checkbox" name="tswTipo" id="tswTipo" checked data-toggle="toggle" data-on="Vacante" data-off="Practica">
