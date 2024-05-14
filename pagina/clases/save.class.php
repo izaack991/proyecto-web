@@ -1087,6 +1087,26 @@ require_once('conexion.class.php');
                 }        
                 return TRUE;
             }
+            public function actualizar_estadolaboral($usuarioID,$estadolaboral)
+            {        
+                try 
+                {
+                    
+                    $sql="UPDATE tbl_usuario SET estado_laboral='$estadolaboral' WHERE id_usuario=$usuarioID";
+                    
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+                    $this->dbh = null;
+                        
+                
+                }
+                catch(PDOException $e){
+                    
+                    print "Error!: " . $e->getMessage();
+                    
+                }        
+                return TRUE;
+            }
             public function actualizar_ruta_imagenUsuario($usuarioID,$ruta_imagen)
             {        
                 try 

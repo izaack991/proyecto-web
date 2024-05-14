@@ -85,12 +85,14 @@ $(document).ready(function() {
                 correo_usuario = ""
                 region_usuario = ""
                 domicilio_usuario = ""
+                estadolaboral_usuario = ""
                 telefono_usuario = ""
                 imagen_usuario = ""
                 input_correo = ""
                 input_region = ""
                 input_nombre = ""
                 input_domicilio = ""
+                input_estadolaboral = ""
                 input_telefono = ""
                 input_imagen = ""
 
@@ -101,6 +103,11 @@ $(document).ready(function() {
                         region_usuario += usuario.pais;
                         telefono_usuario += usuario.telefono;
                         domicilio_usuario += usuario.domicilio;
+                        if (usuario.estado_laboral == 1) {
+                            estadolaboral_usuario += `Empleado`;
+                        } else {
+                            estadolaboral_usuario += `Desempleado`;
+                        }
                         
                         input_imagen += `<label for="formFile" class="form-label text-primary font-weight-bold">Seleccionar Imagen de Perfil</label><input id="imagenInput" accept="image/png, image/jpeg, image/jpg" class="form-control" type="file"><br>`
 
@@ -144,6 +151,24 @@ $(document).ready(function() {
                                       <input id="domicilioNom`+usuario.id_usuario+`" type="text" class="form-control" value="`+usuario.domicilio+`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></div><br>`
 
                         input_domicilio += `<div class="row"><div class="col text-center"><button type="button" class="btn btn-info mb-3 w-100 btn-guardar-domicilio" data-usuario="`+usuario.id_usuario+`" style="font-size:1.2rem;">Guardar</button></div></div>`
+                        
+                        if (usuario.estado_laboral == 0) {
+                            input_estadolaboral += `<div class="container text-center">
+                                                        <div class="form-check form-switch">
+                                                            <input class="form-check-input" type="checkbox" role="switch" id="estadolaboral">
+                                                            <label class="form-check-label ml-4" style="font-size:1.3rem;" for="estadolaboral" data-on="Empleado" data-off="Desempleado"></label>
+                                                        </div>
+                                                    </div><br>`
+                        } else {
+                            input_estadolaboral += `<div class="container text-center">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" checked id="estadolaboral">
+                                                        <label class="form-check-label ml-4" style="font-size:1.3rem;" for="estadolaboral" data-on="Empleado" data-off="Desempleado"></label>
+                                                    </div>
+                                                </div><br>`
+                        }
+
+                        input_estadolaboral += `<div class="row"><div class="col text-center"><button type="button" class="btn btn-info mb-3 w-100 btn-guardar-estadolaboral" data-estadolab="`+usuario.id_usuario+`" style="font-size:1.2rem;">Guardar</button></div></div>`
                     });
 
                 $("#imagenPerfil").html(imagen_usuario);
@@ -151,6 +176,7 @@ $(document).ready(function() {
                 $("#correoUsuario").html(correo_usuario);
                 $("#regionUsuario").html(region_usuario);
                 $("#domicilioUsuario").html(domicilio_usuario);
+                $("#estadolaboralUsuario").html(estadolaboral_usuario);
                 $("#telefonoUsuario").html(telefono_usuario);
                 $("#contenedorImagenP").html(input_imagen);
                 $("#contenedorNombre").html(input_nombre);
@@ -158,8 +184,19 @@ $(document).ready(function() {
                 $("#contenedorTelefono").html(input_telefono);
                 $("#contenedorRegion").html(input_region);
                 $("#contenedorDomicilio").html(input_domicilio);
+                $("#contenedorEstadolaboral").html(input_estadolaboral);
 
+                // Después de agregar el switch, asegúrate de ejecutar el código que cambia el texto del switch
+                var switchLabel = document.querySelector('.form-check-label[for="estadolaboral"]');
+                var switchInput = document.getElementById('estadolaboral');
 
+                function toggleSwitchText() {
+                switchLabel.textContent = switchInput.checked ? switchLabel.getAttribute('data-on') : switchLabel.getAttribute('data-off');
+                }
+
+                toggleSwitchText();
+
+                switchInput.addEventListener('change', toggleSwitchText);
 
                 // Ciclo each para mostrar el video curriculum
                     card_video = ""
@@ -240,7 +277,7 @@ $(document).ready(function() {
             }
         });
     }
-
+    
     $(document).on("click", "#btnAgregarexp", function() {
         // Redirige a experiencia_laboral.php
         window.location.href = "experiencia_laboral.php";
@@ -1232,7 +1269,63 @@ $(document).ready(function() {
             }
         });
     });
-    
+
+    // Agregar evento click a los botones "Guardar" del estado laboral de usuario
+    $(document).on("click", ".btn-guardar-estadolaboral", function() {
+        var usuarioID10 = $(this).data("estadolab");
+        var estadolaboral = document.getElementById("estadolaboral");
+        var valor = '';
+        if (estadolaboral.checked) {
+            var valor = '1'; // Si está seleccionado, asigna "0"
+        } else {
+            var valor = '0'; // Si no está seleccionado, asigna "NULL"
+        }
+        var tipo = 'est';
+        
+        // Mostrar SweetAlert de confirmación
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¿Quieres guardar los siguientes datos?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Sí, guardar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Enviar datos al servidor utilizando AJAX
+                $.ajax({
+                    url: '../php/actualizar_perfil.php',
+                    type: 'POST',
+                    data: {
+                        usuarioID10: usuarioID10,
+                        estadolaboral: valor,
+                        tipo: tipo, 
+                    },
+                    success: function(response) {
+                        // Mostrar SweetAlert de éxito
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Éxito',
+                            text: 'La información se actualizó correctamente.',
+                            timer: 1000, // Duración en milisegundos (en este caso, 2 segundos)
+                            timerProgressBar: true,
+                            showConfirmButton: false
+                        }).then((result) => {
+                            // Este código se ejecutará después de que el usuario cierre el SweetAlert
+                            location.reload();
+                            mostrarExperiencia();
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        // Manejar errores aquí
+                    }
+                });
+            }
+        });
+    });
     $(document).on("mouseover", "#btnfavoritos", function(event) {
         // Obtener la posición y dimensiones del botón
         var boton = $(this);
