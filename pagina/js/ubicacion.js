@@ -67,9 +67,9 @@ if ("geolocation" in navigator) {
             document.getElementById("latitud").value = coordenadas.latitude;
             document.getElementById("longitud").value = coordenadas.longitude;
             // Guardar las coordenadas en cookies
-            setCookie("latitud", coordenadas.latitude, 30);
-            setCookie("longitud", coordenadas.longitude, 30);
-            setCookie("permiso", 'si', 30);
+            // setCookie("latitud", coordenadas.latitude, 30);
+            // setCookie("longitud", coordenadas.longitude, 30);
+            // setCookie("permiso", 'si', 30);
 
         },
         (error) => {

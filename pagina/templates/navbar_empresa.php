@@ -100,3 +100,4 @@ if ($_SESSION['irol'] == 2 || $_SESSION['irol'] == 4) {
     </div>
   </div>
 </nav>
+<?php include ("chatc.php") ?>
