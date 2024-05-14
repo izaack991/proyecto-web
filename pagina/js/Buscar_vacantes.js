@@ -258,12 +258,21 @@ $(document).ready(function(){
             card += '</div>';
             card += '<div class="card-body">';
             card += '<h5 class="card-title">' + vacante.empresa + '</h5>';
-            // Convertir el valor de vacante.urgente a "Se Precisa Urgente" si es 0
-            var urgenteTexto = vacante.urgente === 0 ? 'Se Precisa Urgente' : vacante.urgente;
-            // Mostrar el valor de vacante.urgente solo si no es null
-            if (vacante.urgente !== null) {
-                card += '<h6 class="card-title text-warning">' + urgenteTexto + '</h6>';
-            }
+           // Crear una línea combinada para "Prácticas" y "Se Precisa Urgente" si aplican
+           var practicasUrgente = '';
+           if (vacante.tipo === "2") {
+               practicasUrgente += '<span class="text-warning">Prácticas</span>';
+           }
+           if (vacante.urgente !== null) {
+               var urgenteTexto = vacante.urgente === 0 ? 'Se Precisa Urgente' : vacante.urgente;
+               if (practicasUrgente !== '') {
+                   practicasUrgente += ' <span class="text-warning">, </span> '; // Agregar un separador si ya hay texto
+               }
+               practicasUrgente += '<span class="text-warning">' + urgenteTexto + '</span>';
+           }
+           if (practicasUrgente !== '') {
+               card += '<h6 class="card-title">' + practicasUrgente + '</h6>';
+           }
             card += '<h6 class="card-title">' + vacante.ciudad + ', ' + vacante.region + '</h6>';
             card += '<p class="card-text" style="text-align: justify;">' + datosAdicionales + '...</p>'; // Usar el texto limitado
             card += '<form action="seleccionar_vacantes.php" method="POST">';

@@ -19,57 +19,60 @@
   <!-- <script src="../php/Buscar_vacantes.php'"></script> -->
   <script src="../js/Buscar_vacantes.js"></script>
   <script>
-    // Codigo JavaScript para el buscador con ajax
-    $(document).ready(function () {
-      $("#bvac").keyup(function () {
-        var query = $(this).val().toLowerCase();
-        filterVacancies(query);
-      });
+    $(document).ready(function() {
+  $("#bvac").keyup(function() {
+    var query = $(this).val().toLowerCase();
+    filterVacancies(query);
+  });
 
-      // Escuchar el evento de clic del checkbox "Se Precisa Urgente"
-      $("#urgentCheckbox").click(function () {
-        filterVacancies($("#bvac").val().toLowerCase());
-      });
+  // Escuchar el evento de clic del checkbox "Se Precisa Urgente"
+  $("#urgentCheckbox").click(function() {
+    filterVacancies($("#bvac").val().toLowerCase());
+  });
 
-      // Escuchar el evento de clic del checkbox "Prácticas"
-      $("#practicesCheckbox").click(function () {
-        filterVacancies($("#bvac").val().toLowerCase());
-      });
+  // Escuchar el evento de clic del checkbox "Prácticas"
+  $("#practicesCheckbox").click(function() {
+    filterVacancies($("#bvac").val().toLowerCase());
+  });
 
-      // Función para filtrar las vacantes
-      function filterVacancies(query) {
-        var showUrgent = $("#urgentCheckbox").is(":checked");
-        var showPractices = $("#practicesCheckbox").is(":checked");
+  // Función para filtrar las vacantes
+  function filterVacancies(query) {
+    var showUrgent = $("#urgentCheckbox").is(":checked");
+    var showPractices = $("#practicesCheckbox").is(":checked");
 
-        $("#vacantesContainer").children().each(function () {
-          var text = $(this).text().toLowerCase();
-          var showVacancy = true;
+    $("#vacantesContainer").children().each(function() {
+      var text = $(this).text().toLowerCase();
+      var showVacancy = true;
 
-          if (query !== "" && text.indexOf(query) === -1) {
-            showVacancy = false;
-          }
+      // Filtrar por texto de búsqueda
+      if (query !== "" && text.indexOf(query) === -1) {
+        showVacancy = false;
+      }
 
-          if (showUrgent && !text.includes("se precisa urgente")) {
-            showVacancy = false;
-          }
+      // Crear expresiones regulares para los filtros
+      var urgentRegex = new RegExp("se precisa urgente", "i");
+      var practicesRegex = new RegExp("prácticas", "i");
 
-          if (showPractices && !text.includes("practicas")) {
-            showVacancy = false;
-          }
+      // Filtrar por "Se Precisa Urgente"
+      if (showUrgent && !urgentRegex.test($(this).text())) {
+        showVacancy = false;
+      }
 
-          if (showUrgent && showPractices && !text.includes("se precisa urgente") && !text.includes(
-            "prácticas")) {
-            showVacancy = false;
-          }
+      // Filtrar por "Prácticas"
+      if (showPractices && !practicesRegex.test($(this).text())) {
+        showVacancy = false;
+      }
 
-          if (showVacancy) {
-            $(this).show();
-          } else {
-            $(this).hide();
-          }
-        });
+      // Mostrar u ocultar vacante según los filtros
+      if (showVacancy) {
+        $(this).show();
+      } else {
+        $(this).hide();
       }
     });
+  }
+});
+
   </script>
 
 </head>
