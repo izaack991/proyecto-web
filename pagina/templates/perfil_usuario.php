@@ -131,6 +131,19 @@
                                     </li>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <label class="my-auto text-primary font-weight-bold">Estado Laboral</label><br>
+                                            <label id="estadolaboralUsuario" class="form-label"></label>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <button id="btncardestadolaboral" class="border-0 bg-white text-secondary" style="outline: none;"><i class="fas fa-edit" style="font-size:1.3rem;"></i></button>
+                                        </div>
+                                    </li>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="competencias" role="tabpanel" aria-labelledby="competencias-tab">
                         <div class="row mb-2 justify-content-center">
@@ -393,6 +406,21 @@
                     </div>
                 </div>
             </div>
+            <!-- Card de Domicilio -->
+            <div class="col-auto mr-auto mt-4" id="cardEstadolaboral" style="display:none;">
+                <div class="card border-light shadow-lg bg-body" style="width:35rem;border-radius:0.6rem;">
+                    <div class="card-header text-center bg-primary" style="border-radius:0.5rem;">
+                        <h4 class="card-title text-white d-inline mb-0">EDITAR ESTADO LABORAL</h4>
+                        <button type="button d-inline" id="btncancelarEstadolaboral" class="close text-white" style="outline: none;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        
+                        <div id="contenedorEstadolaboral"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -443,6 +471,15 @@
         $("#cardTelefono").hide();
         $("#cardImagenPerfil").hide();
         $("#cardDomicilio").slideDown();
+    });
+    $("#btncardestadolaboral").click(function(){
+        $("#cardNombre").hide();
+        $("#cardCorreo").hide();
+        $("#cardRegion").hide();
+        $("#cardTelefono").hide();
+        $("#cardImagenPerfil").hide();
+        $("#cardDomicilio").hide();
+        $("#cardEstadolaboral").slideDown();
     });
 
     $("#btncardtelefono").click(function(){
@@ -566,6 +603,9 @@
     $("#btncancelarDomicilio").click(function(){
         $("#cardDomicilio").slideUp();
     });
+    $("#btncancelarEstadolaboral").click(function(){
+        $("#cardEstadolaboral").slideUp();
+    });
     $("#btncancelarImagenPerfil").click(function(){
         $("#cardImagenPerfil").slideUp();
     });
@@ -603,7 +643,23 @@
     });
   });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var switchLabel = document.querySelector('.form-check-label[for="flexSwitchCheckDefault"]');
+      var switchInput = document.getElementById('flexSwitchCheckDefault');
 
+      // Función para cambiar el texto del switch
+      function toggleSwitchText() {
+        switchLabel.textContent = switchInput.checked ? switchLabel.getAttribute('data-on') : switchLabel.getAttribute('data-off');
+      }
+
+      // Cambiar el texto del switch al cargar la página
+      toggleSwitchText();
+
+      // Cambiar el texto del switch al cambiar el estado
+      switchInput.addEventListener('change', toggleSwitchText);
+    });
+  </script>
     <!-- Conexion de librerias de JavaScript y bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

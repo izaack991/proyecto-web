@@ -160,6 +160,16 @@ if ($tipo='dom'){
         $busuario = $buscarDatos->seleccionar_usuario($iusuario);
     }
 }
+if ($tipo='est'){
+    // Verificar si se han recibido todos los datos necesarios
+    if (isset($_POST['usuarioID10'],$_POST['estadolaboral'])) {
+        // Obtener los datos enviados por AJAX
+        $usuarioID = $_POST['usuarioID10'];
+        $estadolaboral = $_POST['estadolaboral'];
+        $UCerrar=$NuevoC->actualizar_estadolaboral($usuarioID,$estadolaboral);
+        $busuario = $buscarDatos->seleccionar_usuario($iusuario);
+    }
+}
 if ($tipo='vac'){
     if (isset($_POST['vacanteID'],$_POST['puesto'],$_POST['sueldo'],$_POST['lugar'],$_POST['region'],$_POST['ciudad'],$_POST['chkurgente'],$_POST['datos'],$_POST['fechainicio'],$_POST['fechafin'],)) {
         $vacanteID = $_POST['vacanteID'];
