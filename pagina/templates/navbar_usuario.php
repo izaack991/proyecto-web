@@ -146,4 +146,4 @@ if ($_SESSION['irol'] == 1) {
 </div>
 </div>
 </nav>
-<?php include ("chatc.php") ?>
+<?php include ("chat.php") ?>
