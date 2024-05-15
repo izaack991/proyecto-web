@@ -67,14 +67,15 @@
             </div>
           </div>
           <div class="row align-items-center pregresp shadow mt-3">
-
-            <!-- {*Datos del usuario*} -->
+<!-- {*Datos del usuario*} -->
             
               <div class="col">
                 <h4 class="text-white bg-dark py-2"><b>USUARIO</b></h4>
-                <div id="tabla_usuario">
+                <div id="tabla_usu">
                 </div>
               </div>
+
+              
 
             <!-- {*Datos de la vacante*} -->
               <div class="col">
@@ -83,7 +84,7 @@
                   </div>
               </div>
 
-          </div>
+          </div> 
           
           <!-- {*Datos de los intereses del usuario*} -->
           <div class="pregresp shadow mt-4">
@@ -110,30 +111,56 @@
             $.ajax({
                 url: "../php/videocurriculum.php",
                 type: "GET",
-                data: { id_usuario: id_usuario },
+                data: { id_usuario: id_usuario }, 
                 dataType: "json",
                 success: function(data) {
-                  //Mostrar datos del Usuario y la Vacante
-                  tabla_usuario = "<table class='table table-hover mt-1'><thead class='text-primary'><tr><th class='text-center border-0' style='font-size:1.2rem;'>Nombre</th></thead></tr>"
-                  tabla_vacante = "<table class='table table-hover mt-1'><thead class='text-primary'><tr><th class='text-center border-0' style='font-size:1.2rem;'>Puesto</th></thead></tr>"
+                  // //Mostrar datos del Usuario y la Vacante
+                  // tabla_usuario = "<table class='table table-hover mt-1'><thead class='text-primary'><tr><th class='text-center border-0' style='font-size:1.2rem;'>Nombre</th></thead></tr>"
+                  // tabla_vacante = "<table class='table table-hover mt-1'><thead class='text-primary'><tr><th class='text-center border-0' style='font-size:1.2rem;'>Puesto</th></thead></tr>"
+                  // $.each(data.postulaciones, function(index, postulaciones) {
+                  //   tabla_usuario += `<tbody class='text-center'>
+                  //                       <tr>
+                  //                         <td>` + postulaciones.nombreUsuario + `</td>
+                  //                       </tr>
+                  //                     </tbody>`;
+                  //   tabla_vacante += `<tbody class='text-center'>
+                  //                       <tr>
+                  //                         <td>` + postulaciones.puesto + `</td>
+                  //                       </tr>
+                  //                     </tbody>`;
+                  //   btn_enviartest = `<div class="col"><a href="../php/enviartest.php?vac=`+postulaciones.puesto+`&ie=`+postulaciones.id_usuario+`"><input class="btn btn-info w-75" name="btntest" type="submit" value="Enviar Test" hidden></a></div>`
+                  // });
+                  // tabla_usuario += "</table>"
+                  // tabla_vacante += "</table>"
+                  // $("#tabla_usuario").html(tabla_usuario);
+                  // $("#tabla_vacante").html(tabla_vacante);
+                  // $("#btn_enviartest").html(btn_enviartest);
+
+                  //Mostrar datos de vacantes
+                  tabla_vacante = "<table class='table table-hover mt-1'><thead class='text-primary'><tr><th class='text-center border-0'style='font-size:1.2rem;'>Nombre</th></tr>"
                   $.each(data.postulaciones, function(index, postulaciones) {
-                    tabla_usuario += `<tbody class='text-center'>
-                                        <tr>
-                                          <td>` + postulaciones.nombreUsuario + `</td>
-                                        </tr>
-                                      </tbody>`;
                     tabla_vacante += `<tbody class='text-center'>
-                                        <tr>
-                                          <td>` + postulaciones.puesto + `</td>
-                                        </tr>
-                                      </tbody>`;
-                    btn_enviartest = `<div class="col"><a href="../php/enviartest.php?vac=`+postulaciones.puesto+`&ie=`+postulaciones.id_usuario+`"><input class="btn btn-info w-75" name="btntest" type="submit" value="Enviar Test" hidden></a></div>`
+                                      <tr>
+                                        <td>` + postulaciones.puesto + `</td>
+                                      </tr>
+                                  </tbody>`;
                   });
-                  tabla_usuario += "</table>"
                   tabla_vacante += "</table>"
-                  $("#tabla_usuario").html(tabla_usuario);
                   $("#tabla_vacante").html(tabla_vacante);
-                  $("#btn_enviartest").html(btn_enviartest);
+
+
+
+                   //Mostrar datos de Usuario
+                   tabla_usu = "<table class='table table-hover mt-1'><thead class='text-primary'><tr><th class='text-center border-0'style='font-size:1.2rem;'>Nombre</th></tr>"
+                  $.each(data.usuarios, function(index, usuarios) {
+                    tabla_usu += `<tbody class='text-center'>
+                                      <tr>
+                                        <td>` + usuarios.nombreUsuario + `</td>
+                                      </tr>
+                                  </tbody>`;
+                  });
+                  tabla_usu += "</table>"
+                  $("#tabla_usu").html(tabla_usu);
                   
                   card_video = "<video class='w-100' controls>"
                   $.each(data.video_curriculum, function(index, video_curriculum) {

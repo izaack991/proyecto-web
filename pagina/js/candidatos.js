@@ -9,12 +9,9 @@ $(document).ready(function(){
                 for (var i = 0; i < data.length; i++) {
                     table += "<tbody class='text-center'><tr><td class='align-middle'>" + data[i].nombreUsuario + "</td><td class='align-middle'>" + data[i].correo + "</td><td class='align-middle'><div class='row-sm-4 mb-2'><button type='button' class='btn btn-info w-100 h-auto' onclick='ver("+data[i].id_usuario+")'>Curriculum</button></div>"
                     
-                    if (data[i].vid_status > 0) {
+                    if (data[i].id_usuario) {
                         table += "<div class='row-sm-4 mb-2'><button type='button' class='btn btn-info w-100 h-auto' onclick='ver_video("+data[i].id_usuario+")'>Video Curriculum</button></div>"
-                    }
-
-                    table += "<div class='row-sm-4'><button type='button' class='btn btn-danger w-100 h-auto' onclick='cerrar("+data[i].id_postulacion+")'>Cerrar</button></div>"
-                    
+                    }                    
                     table += "</td></tr></tbody>";
                 }
                 table += "</table>";
@@ -26,46 +23,7 @@ $(document).ready(function(){
     setInterval(mostrarDatos, 1000);
 });
 
-// Función para cerrar
-function cerrar(index) {
-    Swal.fire({
-        title: '¿Estás seguro?',
-        text: '¿Quieres cerrar esta postulación? No podras recuperarla una vez se elimine',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sí, cerrar postulación',
-        cancelButtonText: 'Cancelar'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                url: "../php/postulacion.php",
-                type: "POST",
-                data: { index: index },
-                success: function (response) {
-                    // Manejar la respuesta si es necesario
-                    Swal.fire({
-                        title: 'Éxito!',
-                        text: 'La postulación se cerró correctamente.',
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timer: 3000, // Tiempo en milisegundos (3 segundos)
-                        timerProgressBar: true,
-                        onClose: () => {
-                            clearInterval(timerInterval);
-                        }
-                    });
-                    // Volver a cargar los datos para reflejar los cambios
-                    mostrarDatos();
-                },
-                error: function (xhr, status, error) {
-                    // Manejar errores si es necesario
-                    alert("Error al cerrar el registro.");
-                    console.error(xhr, status, error);
-                }
-            });
-        }
-    });
-}
+
 
 // Función para ver el curriculum
 function ver(id_usuario) {
