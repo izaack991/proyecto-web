@@ -294,7 +294,27 @@ require_once('conexion.class.php');
                 
             }
             
-            
+            function buscarCandidatos($_idusuario)
+            {
+                try
+                {
+                    $sql = "SELECT CONCAT(tbl_usuario.nombre,'',tbl_usuario.apellido) AS nombreUsuario, tbl_usuario.correo, tbl_usuario.id_usuario FROM tbl_usuario WHERE tbl_usuario.estado_laboral = 0 AND rol = 2;";
+                    $query = $this->dbh->prepare($sql);
+                    $query->execute();
+
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                }
+
+                return $data;
+            }
 
         // Funcion para busquedas de campos
             function buscaPaises()
@@ -872,6 +892,50 @@ require_once('conexion.class.php');
                 return $data;
             }
 
+            public function seleccionar_usuarios($id_usuario)
+            {        
+                try {
+                    $sql = "SELECT CONCAT(nombre, ' ', apellido) AS nombreUsuario FROM tbl_usuario WHERE id_usuario=:id_usuario;";
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':id_usuario', $id_usuario);
+                    $query->execute();
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                        $data[] = $row;
+                    }
+                } catch(PDOException $e) {
+                    print "Error!: " . $e->getMessage();
+                }
+                return $data;
+            }
+            
+            public function seleccionar_postulaciones($id_usuario)
+            {        
+                try {
+                    
+                    $sql = "SELECT tbl_postulacion.*, tbl_vacantes.puesto
+                    FROM tbl_postulacion
+                    INNER JOIN tbl_vacantes ON tbl_postulacion.id_vacante = tbl_vacantes.id_vacante
+                    WHERE tbl_postulacion.id_usuario = :id_usuario
+                    LIMIT 1
+                    ";
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':id_usuario',$id_usuario);
+                    $query->execute();
+                    $data = array();
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $data[] = $row;
+                    }
+                }
+                catch(PDOException $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                }
+                return $data;
+            }
+
+            
 
             public function seleccionar_experiencia($id_usuario)
             {        
@@ -996,7 +1060,8 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
-
+           
+            
             public function seleccionar_postulacion($id_postulacion)
             {        
                 try {

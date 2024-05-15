@@ -27,6 +27,9 @@ if ($_SESSION['irol'] == 2 || $_SESSION['irol'] == 4) {
         <li class="nav-item">
           <a class="nav-link active" href="postulacion.php" style="color: #54B689;">POSTULACIONES</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="candidatos.php" style="color: #54B689;">CANDIDATOS</a>
+        </li>
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
