@@ -30,6 +30,8 @@ if ($_SESSION['apellido']) {
   <link rel="icon" href="../../assets/images/WorkeleWB.ico" type="image/x-icon">
   <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../js/inactividad.js"></script>
@@ -185,12 +187,82 @@ if ($_SESSION['apellido']) {
       </div>
     </form>
   </div>
+    <!-- Modal Editar Foto de Prefil-->
+    <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div>
+        <div style="justify-items: center;">
+          <h3>Editar Foto del Perfil</h3>
+        </div>
+      </div>
+      <div>
+        <img id="img-preview" src="#" alt="Vista previa de la imagen">
+      </div>
+      <br>
+        <div style="margin-top: 1em; display:flex;">
+          <button class="btn btn-primary" id="btnGuardar" style="display:flex;margin-left:22em">Guardar</button>
+          <button class="btn btn-secondary" id="btnCancelar" style="display:flex; margin-left:1em">Cancelar</button>
+        </div>
+    </div>
+  </div>
 
   <script>
     function mayus(e) {
         e.value = e.value.toUpperCase();
     }
   </script>
+  <script>
+    var modal = document.getElementById("myModal");
+    var img = document.getElementById("img-preview");
+    var input = document.getElementById("txtruta");
+    var span = document.getElementsByClassName("close")[0];
+    var cropper;
+
+    // Cuando se selecciona un archivo, muestra la modal con la imagen cargada
+    input.addEventListener("change", function() {
+      var file = this.files[0];
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        img.src = e.target.result;
+        modal.style.display = "block";
+
+        // Inicializar Cropper.js
+        cropper = new Cropper(img, {
+          aspectRatio: 1,
+          viewMode: 2,
+          background: false 
+        });
+      };
+
+      reader.readAsDataURL(file);
+    });
+
+    // Cuando se hace clic en la X (cerrar), cierra la modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    };
+
+    // Manejar el clic en el botón Guardar
+    document.getElementById("btnGuardar").onclick = function() {
+      // Obtener la imagen recortada como un archivo
+      cropper.getCroppedCanvas().toBlob(function(blob) {
+        // Crear un objeto de tipo FormData para enviar la imagen al servidor
+        var formData = new FormData();
+        formData.append("avatar", blob, "avatar.jpg");
+
+        // Cerrar la modal
+        modal.style.display = "none";
+      });
+    };
+
+    // Botón Cancelar
+    document.getElementById("btnCancelar").onclick = function() {
+      // Cerrar la modal sin guardar cambios
+      modal.style.display = "none";
+    };
+</script>
 
   <!-- Conexion de librerias de JavaScript y bootstrap -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

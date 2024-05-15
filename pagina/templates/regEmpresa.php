@@ -27,51 +27,9 @@ if ($_SESSION['cuenta']) {
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
-
-
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../js/inactividad.js"></script>
   <script src="../js/buscar_pais.js"></script>
-
-  <style>
-    /* Estilos para la modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgb(0,0,0);
-      background-color: rgba(0,0,0,0.9);
-      margin: 0 auto:
-    }
-    .modal-content {
-      margin: auto;
-      display: block;
-      width: 80%;
-      max-width: 600px;
-      padding: 20px;
-      border: 1px solid #888;
-      background-color: #fff;
-      position: relative;
-    }
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-    }
-  </style>
-
 </head>
 
 <body style="background-color: #F8F6F3;">
@@ -174,7 +132,7 @@ if ($_SESSION['cuenta']) {
     </form>
   </div>
 
-  <!-- Modal -->
+  <!-- Modal Editar Foto de Prefil-->
   <div id="myModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -207,56 +165,59 @@ if ($_SESSION['cuenta']) {
   <script src="../js/registro.js"></script>
 
   <script>
-  var modal = document.getElementById("myModal");
-  var img = document.getElementById("img-preview");
-  var input = document.getElementById("txtruta");
-  var span = document.getElementsByClassName("close")[0];
-  var cropper;
+    var modal = document.getElementById("myModal");
+    var img = document.getElementById("img-preview");
+    var input = document.getElementById("txtruta");
+    var span = document.getElementsByClassName("close")[0];
+    var cropper;
 
-  // Cuando se selecciona un archivo, muestra la modal con la imagen cargada
-  input.addEventListener("change", function() {
-    var file = this.files[0];
-    var reader = new FileReader();
+    // Cuando se selecciona un archivo, muestra la modal con la imagen cargada
+    input.addEventListener("change", function() {
+      var file = this.files[0];
+      var reader = new FileReader();
 
-    reader.onload = function(e) {
-      img.src = e.target.result;
-      modal.style.display = "block";
+      reader.onload = function(e) {
+        img.src = e.target.result;
+        modal.style.display = "block";
 
-      // Inicializar Cropper.js
-      cropper = new Cropper(img, {
-        aspectRatio: 1,
-        viewMode: 2,
-        background: false 
+        // Inicializar Cropper.js
+        cropper = new Cropper(img, {
+          aspectRatio: 1,
+          viewMode: 2,
+          background: false 
+        });
+      };
+
+      reader.readAsDataURL(file);
+    });
+
+    // Cuando se hace clic en la X (cerrar), cierra la modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    };
+
+    // Manejar el clic en el botón Guardar
+    document.getElementById("btnGuardar").onclick = function() {
+      // Obtener la imagen recortada como un archivo
+      cropper.getCroppedCanvas().toBlob(function(blob) {
+        // Crear un objeto de tipo FormData para enviar la imagen al servidor
+        var formData = new FormData();
+        formData.append("avatar", blob, "avatar.jpg");
+
+        // Cerrar la modal
+        modal.style.display = "none";
       });
     };
 
-    reader.readAsDataURL(file);
-  });
-
-  // Cuando se hace clic en la X (cerrar), cierra la modal
-  span.onclick = function() {
-    modal.style.display = "none";
-  };
-
-  // Botón Guardar
-  document.getElementById("btnGuardar").onclick = function() {
-    // Obtener la imagen recortada como un archivo
-    cropper.getCroppedCanvas().toBlob(function(blob) {
-      // Crear un objeto de tipo FormData para enviar la imagen al servidor
-      var formData = new FormData();
-      formData.append("avatar", blob, "avatar.jpg");
-
-      // Cerrar la modal
+    // Botón Cancelar
+    document.getElementById("btnCancelar").onclick = function() {
+      // Cerrar la modal sin guardar cambios
       modal.style.display = "none";
-    });
-  };
-
-  // Botón Cancelar
-  document.getElementById("btnCancelar").onclick = function() {
-    // Cerrar la modal sin guardar cambios
-    modal.style.display = "none";
-  };
+    };
 </script>
+
+
+
 
 </body>
 
