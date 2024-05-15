@@ -17,6 +17,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../js/notificacion_empresa.js"></script>
   <script src="../js/buscar_pais.js"></script>
+  <script src="../js/validarLocation.js"></script>
 
   <style>
   .toggle-off {
@@ -209,6 +210,27 @@
             document.getElementById('dateInicio').value = formattedStartDate;
             document.getElementById('dateFin').value = formattedEndDate;
             </script>
+
+            <!-- Modal para la Solicitud del permiso de Locación -->
+            <div class="modal fade" id="modalPermiso" tabindex="-1" role="dialog" aria-labelledby="modalPermisoLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalPermisoLabel">PERMISO DE UBICACIÓN REQUERIDO</h5>
+                  </div>
+                  <div class="modal-body">
+                    <p>Para continuar, por favor permita el acceso a su ubicación.</p>
+                    <p>Por favor, siga las instrucciones para cambiar la configuración de permisos de su navegador.</p>
+                    <p>Vaya a los permisos del navegador y permita la locación en la página.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <p>Una vez hecho esto recargue la ventana.</p>
+                    <button type="button" id="btnRecargar" class="btn btn-primary" data-dismiss="modal">Recargar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
 
             <!-- {*Campos internos para la ubicacion*} -->
             <input name="txtlatitud" id="latitud" type="hidden">

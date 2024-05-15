@@ -91,7 +91,7 @@
       <div class="alert alert-dismissible text-center px-0">
         <input type="text" class="form-control" placeholder="Busque una vacante"
           style="display: flex; margin: 0 10%; width: 80%; text-align: center;" id="bvac"
-          onkeydown="return event.key != 'Enter';">
+          onkeydown="return event.key != 'Enter';"><br>
 
         <div style="display: inline-block; margin-right: 10px;">
           <input type="checkbox" id="urgentCheckbox">
@@ -104,14 +104,15 @@
         </div>
       </div>
 
+      
+      <!-- Contenedor de las vacantes -->
+      <div id="vacantesContainer" class="row justify-content-center mx-2"></div>
+      
+      <!-- Botones "Atrás" y "Siguiente" -->
       <div class="text-center">
         <input type="button" value="Atrás" class="btn btn-secondary" id="btnAtras">
         <input type="button" value="Siguiente" class="btn btn-primary" id="btnSiguiente">
       </div><br>
-
-      <!-- Contenedor de las vacantes -->
-      <div id="vacantesContainer" class="row justify-content-center mx-2"></div>
-
     </form>
   </div>
 
