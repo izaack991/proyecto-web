@@ -188,9 +188,9 @@ if ($_SESSION['apellido']) {
     </form>
   </div>
     <!-- Modal Editar Foto de Prefil-->
-    <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
+    <div id="modal_editor" class="modal_e">
+    <div class="m-content">
+      <span class="cerrar">&times;</span>
       <div>
         <div style="justify-items: center;">
           <h3>Editar Foto del Perfil</h3>
@@ -213,10 +213,10 @@ if ($_SESSION['apellido']) {
     }
   </script>
   <script>
-    var modal = document.getElementById("myModal");
+    var modal = document.getElementById("modal_editor");
     var img = document.getElementById("img-preview");
     var input = document.getElementById("txtruta");
-    var span = document.getElementsByClassName("close")[0];
+    var span = document.getElementsByClassName("cerrar")[0];
     var cropper;
 
     // Cuando se selecciona un archivo, muestra la modal con la imagen cargada
