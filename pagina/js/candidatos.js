@@ -9,7 +9,7 @@ $(document).ready(function(){
                 for (var i = 0; i < data.length; i++) {
                     table += "<tbody class='text-center'><tr><td class='align-middle'>" + data[i].nombreUsuario + "</td><td class='align-middle'>" + data[i].correo + "</td><td class='align-middle'><div class='row-sm-4 mb-2'><button type='button' class='btn btn-info w-100 h-auto' onclick='ver("+data[i].id_usuario+")'>Curriculum</button></div>"
                     
-                    if (data[i].id_usuario) {
+                    if (data[i].vid_status > 0) {
                         table += "<div class='row-sm-4 mb-2'><button type='button' class='btn btn-info w-100 h-auto' onclick='ver_video("+data[i].id_usuario+")'>Video Curriculum</button></div>"
                     }                    
                     table += "</td></tr></tbody>";

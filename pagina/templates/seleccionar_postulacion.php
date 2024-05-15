@@ -40,7 +40,7 @@
     }
   </style>
 
-  <body>
+  <body style="background-color: #F8F6F3;">
 
     <!-- {*Conexion de librerias de JavaScript y bootstrap*} -->
     
