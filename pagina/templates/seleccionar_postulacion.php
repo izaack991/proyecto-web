@@ -128,11 +128,35 @@
     
   </body>
   <script>
-        $(document).ready(function() {
-            // Extraer los parámetros de la URL
             var urlParams = new URLSearchParams(window.location.search);
             var id_postulacion = urlParams.get('id_postulacion');
             var id_usuario = urlParams.get('id_usuario');
+            function enviarMensaje() {
+            // Obtener el valor del input
+            // Enviar el valor mediante AJAX
+            $.ajax({
+                url: '../php/enviar_mensaje.php',
+                type: 'POST', // Método de la solicitud
+                data: { id_usuario: id_usuario }, // Datos a enviar (nombre de variable y su valor)
+                success: function(response) {
+                  alert(response); // Mostrar el ID del usuario
+
+                    // Manejar la respuesta del servidor
+                    $('#respuesta').html('Respuesta del servidor: ' + response);
+                },
+                error: function(xhr, status, error) {
+                    // Manejar cualquier error
+                    $('#respuesta').html('Error: ' + error);
+                }
+            });
+        }
+
+        // Evento al hacer clic en el botón
+        $('#enviarBtn').click(function() {
+            enviarMensaje();
+        });
+        $(document).ready(function() {
+            // Extraer los parámetros de la URL
 
             $.ajax({
                 url: "../php/seleccionar_postulacion.php",
@@ -154,7 +178,7 @@
                                           <td>` + postulaciones.puesto + `</td>
                                         </tr>
                                       </tbody>`;
-                    btn_enviartest = `<div class="col"><a href="../php/enviartest.php?vac=`+postulaciones.puesto+`&ie=`+postulaciones.id_usuario+`"><input class="btn btn-info w-75" name="btntest" type="submit" value="Enviar Test" hidden></a></div>`
+                    btn_enviartest = `<div class="col"><a><input onclick="enviarMensaje()" class="btn btn-info w-75" id="enviarBtn" type="submit" value="contactar"></a></div>`
                     btn_enviartest += `<div class="col px-0"><a href="../php/pdf.php?vac=`+postulaciones.id_postulacion+`&ie=`+postulaciones.id_usuario+`" target="_blank"><input class="btn btn-success text-white w-75" name="btnpdf" type="submit" value="Imprimir"></a><div>`
                   });
                   tabla_usuario += "</table>"

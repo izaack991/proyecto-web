@@ -761,6 +761,31 @@ require_once('conexion.class.php');
                 }
                 return $data;
             }
+            public function seleccionar_conversacion($id_empresa, $id_usuario)
+            {
+                try
+                {
+                    $sql = "SELECT id_conversacion FROM tbl_conversaciones WHERE id_empresa = :id_empresa AND id_usuario = :id_usuario";
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':id_empresa', $id_empresa, PDO::PARAM_INT);
+                    $query->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+                    $query->execute();
+                    
+                    $row = $query->fetch(PDO::FETCH_ASSOC);
+                    
+                    if ($row) {
+                        return $row['id_conversacion'];
+                    } else {
+                        return null;
+                    }
+                }
+                catch (PDOException $e)
+                {
+                    print "Error!: " . $e->getMessage();
+                    return null;
+                }
+            }
+            
 
             public function actualizarMensaje($id_empresa, $id_usuario,$id_m)
             {
