@@ -1,16 +1,19 @@
-$(document).ready(function(){
+$(document).ready(function() {
     function mostrarDatos() {
         $.ajax({
             url: "../php/candidatos.php",
             type: "GET",
             dataType: "json",
             success: function(data) {
-                var table = "<table class='table table-hover'><thead class='bg-dark text-white'><tr><th class='text-center'>Usuario</th><th class='text-center'>Correo</th><th class='text-center'>Acciones</th></thead></tr>";
+                var table = "<table class='table table-hover'><thead class='bg-dark text-white'><tr><th class='text-center'>Usuario</th><th class='text-center'>Correo</th><th class='text-center'>Experiencia laboral</th><th class='text-center'>Acciones</th></thead></tr>";
                 for (var i = 0; i < data.length; i++) {
-                    table += "<tbody class='text-center'><tr><td class='align-middle'>" + data[i].nombreUsuario + "</td><td class='align-middle'>" + data[i].correo + "</td><td class='align-middle'><div class='row-sm-4 mb-2'><button type='button' class='btn btn-info w-100 h-auto' onclick='ver("+data[i].id_usuario+")'>Curriculum</button></div>"
+                    var descripcionesPuestos = data[i].descripcionesPuestos.split(',').join('<br>'); // Asegúrate de que las descripciones estén separadas por comas en el JSON
+                    var lineasExp = descripcionesPuestos.split('<br>'); // Dividir las líneas de experiencia laboral
+                    var expToShow = lineasExp.slice(0, 3).join('<br>'); // Obtener solo las primeras tres líneas
+                    table += "<tbody class='text-center'><tr><td class='align-middle'>" + data[i].nombreUsuario + "</td><td class='align-middle'>" + data[i].correo + "</td><td class='align-middle'>" + expToShow + "</td><td class='align-middle'><div class='row-sm-4 mb-2'><button type='button' class='btn btn-info w-100 h-auto' onclick='ver("+data[i].id_usuario+")'>Curriculum</button></div>";
                     
                     if (data[i].vid_status > 0) {
-                        table += "<div class='row-sm-4 mb-2'><button type='button' class='btn btn-info w-100 h-auto' onclick='ver_video("+data[i].id_usuario+")'>Video Curriculum</button></div>"
+                        table += "<div class='row-sm-4 mb-2'><button type='button' class='btn btn-info w-100 h-auto' onclick='ver_video("+data[i].id_usuario+")'>Video Curriculum</button></div>";
                     }                    
                     table += "</td></tr></tbody>";
                 }
@@ -20,9 +23,7 @@ $(document).ready(function(){
         });
     }
     mostrarDatos();
-    setInterval(mostrarDatos, 1000);
 });
-
 
 
 // Función para ver el curriculum

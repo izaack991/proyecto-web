@@ -14,6 +14,35 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/candidatos.js"></script>
  
+
+    <script>
+  // Codigo JavaScript para el buscador con ajax
+  $(document).ready(function() {
+    $("#bvac").keyup(function() {
+      var query = $(this).val().toLowerCase();
+      $("#tablaUsuarios tr").each(function () {
+        var rowData = $(this).text().toLowerCase();
+        // Excluimos las columnas de usuario, correo, experiencia laboral y acción
+        var excludeColumns = ["usuario", "correo", "experiencia laboral", "acción"];
+        var shouldHide = true;
+        // Verificamos si alguna de las columnas excluidas contiene el texto de búsqueda
+        excludeColumns.forEach(function(column) {
+          if (rowData.indexOf(column) !== -1) {
+            shouldHide = false;
+          }
+        });
+        // Si alguna de las columnas excluidas contiene el texto de búsqueda, mostramos la fila
+        if (shouldHide && rowData.indexOf(query) === -1)
+          $(this).hide();
+        else
+          $(this).show();
+      });
+    });
+  });
+</script>
+
+
+
   </head>
   
   <body style="background-color: #F8F6F3;">
@@ -26,6 +55,12 @@
       <div class="card-header text-center bg-primary">
         <h2 class="card-title text-white mb-0">CANDIDATOS</h2>
       </div>
+<br>
+<!-- Buscador de vacantes con ajax  -->
+<div class="alert alert-dismissible text-center px-0">
+      <input type="text" class="form-control" placeholder="Busqueda de candidatos" style="display: flex; margin: 0 10%; width: 80%; text-align: center;" id="bvac">
+</div>
+
       <div class="card-body">
         <!-- Tabla de postulaciones -->
         <div id="tablaUsuarios" class="table-responsive"></div>
