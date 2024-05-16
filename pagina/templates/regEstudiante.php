@@ -188,80 +188,83 @@ if ($_SESSION['apellido']) {
     </form>
   </div>
     <!-- Modal Editar Foto de Prefil-->
-    <div id="modal_editor" class="modal_e">
-    <div class="m-content">
-      <span class="cerrar">&times;</span>
-      <div>
+    <div id="modal" class="modal_e">
+      <div class="m-content">
+        <span class="cerrar">&times;</span>
         <div style="justify-items: center;">
           <h3>Editar Foto del Perfil</h3>
         </div>
-      </div>
-      <div>
-        <img id="img-preview" src="#" alt="Vista previa de la imagen">
-      </div>
-      <br>
+        <div class="img-c">
+          <img id="img-preview" src="#" alt="Vista previa de la imagen">
+        </div>
         <div style="margin-top: 1em; display:flex;">
           <button class="btn btn-primary" id="btnGuardar" style="display:flex;margin-left:22em">Guardar</button>
           <button class="btn btn-secondary" id="btnCancelar" style="display:flex; margin-left:1em">Cancelar</button>
         </div>
+      </div>
     </div>
-  </div>
 
   <script>
     function mayus(e) {
         e.value = e.value.toUpperCase();
     }
   </script>
-  <script>
-    var modal = document.getElementById("modal_editor");
-    var img = document.getElementById("img-preview");
-    var input = document.getElementById("txtruta");
-    var span = document.getElementsByClassName("cerrar")[0];
-    var cropper;
+   <script>
+  var modal = document.getElementById("modal");
+  var img = document.getElementById("img-preview");
+  var input = document.getElementById("txtruta");
+  var span = document.getElementsByClassName("cerrar")[0];
+  var cropper;
 
-    // Cuando se selecciona un archivo, muestra la modal con la imagen cargada
-    input.addEventListener("change", function() {
-      var file = this.files[0];
-      var reader = new FileReader();
+  // Cuando se selecciona un archivo, muestra la modal con la imagen cargada
+  input.addEventListener("change", function() {
+    var file = this.files[0];
+    var reader = new FileReader();
 
-      reader.onload = function(e) {
-        img.src = e.target.result;
-        modal.style.display = "block";
+    reader.onload = function(e) {
+      img.src = e.target.result;
+      modal.style.display = "block";
 
-        // Inicializar Cropper.js
-        cropper = new Cropper(img, {
-          aspectRatio: 1,
-          viewMode: 2,
-          background: false 
-        });
-      };
+      // Destruir el cropper existente, si lo hay
+      if (cropper) {
+        cropper.destroy();
+      }
 
-      reader.readAsDataURL(file);
-    });
-
-    // Cuando se hace clic en la X (cerrar), cierra la modal
-    span.onclick = function() {
-      modal.style.display = "none";
-    };
-
-    // Manejar el clic en el botón Guardar
-    document.getElementById("btnGuardar").onclick = function() {
-      // Obtener la imagen recortada como un archivo
-      cropper.getCroppedCanvas().toBlob(function(blob) {
-        // Crear un objeto de tipo FormData para enviar la imagen al servidor
-        var formData = new FormData();
-        formData.append("avatar", blob, "avatar.jpg");
-
-        // Cerrar la modal
-        modal.style.display = "none";
+      // Inicializar Cropper.js
+      cropper = new Cropper(img, {
+        aspectRatio: 1, 
+        viewMode: 2, 
+        background: false, 
+        autoCropArea: 0.9 
       });
     };
 
-    // Botón Cancelar
-    document.getElementById("btnCancelar").onclick = function() {
-      // Cerrar la modal sin guardar cambios
+    reader.readAsDataURL(file);
+  });
+
+  // Cuando se hace clic en la X (cerrar)
+  span.onclick = function() {
+    modal.style.display = "none";
+  };
+
+  // botón Guardar
+  document.getElementById("btnGuardar").onclick = function() {
+    // Obtener la imagen recortada como un archivo
+    cropper.getCroppedCanvas().toBlob(function(blob) {
+      // Crear un objeto de tipo FormData para enviar la imagen al servidor
+      var formData = new FormData();
+      formData.append("avatar", blob, "avatar.jpg");
+
+      // Cerrar la modal
       modal.style.display = "none";
-    };
+    });
+  };
+
+  // botón Cancelar
+  document.getElementById("btnCancelar").onclick = function() {
+    // Cerrar la modal sin guardar cambios
+    modal.style.display = "none";
+  };
 </script>
 
   <!-- Conexion de librerias de JavaScript y bootstrap -->
