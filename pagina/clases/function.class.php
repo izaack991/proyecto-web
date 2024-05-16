@@ -298,14 +298,27 @@ require_once('conexion.class.php');
             {
                 try
                 {
-                    $sql = "SELECT CONCAT(tbl_usuario.nombre, ' ', tbl_usuario.apellido) AS nombreUsuario,
+                    $sql = "SELECT 
+                    CONCAT(tbl_usuario.nombre, ' ', tbl_usuario.apellido) AS nombreUsuario,
                     tbl_usuario.correo,
                     tbl_usuario.id_usuario,
-                    COALESCE(tbl_vid_curriculum.id_vid_curriculum, '0') AS vid_status
-             FROM tbl_usuario
-             LEFT JOIN tbl_vid_curriculum ON tbl_usuario.id_usuario = tbl_vid_curriculum.id_usuario
-             WHERE tbl_usuario.estado_laboral = 0
-             AND tbl_usuario.rol = 2;
+                    COALESCE(tbl_vid_curriculum.id_vid_curriculum, '0') AS vid_status,
+                    GROUP_CONCAT(tbl_experiencia_laboral.descripcion_puesto SEPARATOR ', ') AS descripcionesPuestos
+                FROM 
+                    tbl_usuario
+                LEFT JOIN 
+                    tbl_vid_curriculum ON tbl_usuario.id_usuario = tbl_vid_curriculum.id_usuario
+                INNER JOIN 
+                    tbl_experiencia_laboral ON tbl_usuario.id_usuario = tbl_experiencia_laboral.id_usuario
+                WHERE 
+                    tbl_usuario.estado_laboral = 0
+                    AND tbl_usuario.rol = 2
+                GROUP BY 
+                    tbl_usuario.id_usuario, 
+                    tbl_usuario.nombre, 
+                    tbl_usuario.apellido, 
+                    tbl_usuario.correo, 
+                    tbl_vid_curriculum.id_vid_curriculum;
              ";
                     $query = $this->dbh->prepare($sql);
                     $query->execute();

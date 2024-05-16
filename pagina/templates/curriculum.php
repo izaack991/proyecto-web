@@ -183,7 +183,7 @@
                   $.each(data.postulaciones, function(index, postulaciones) {
                     tabla_vacante += `<tbody class='text-center'>
                                       <tr>
-                                        <td>` + postulaciones.puesto + `</td>
+                                        <td> - - - - - - </td>
                                       </tr>
                                   </tbody>`;
                   });
