@@ -12,8 +12,8 @@ $id_conversacion = $buscar->seleccionar_conversacion($id_empresa,$id_usuario);
 
 if ($id_conversacion == null )
     {
-        $id_conversacion = $buscar->seleccionar_conversacion($id_empresa,$id_usuario);
         $guardar->insertar_conversacion($id_empresa,$id_usuario);
+        $id_conversacion = $buscar->seleccionar_conversacion($id_empresa,$id_usuario);
         $id_usuario = $_SESSION['iusuario'];
         $mensaje = "Hola, estamos interesados en tu Curriculum.";
         $guardar->insertar_mensaje($id_conversacion ,$mensaje, $id_usuario);
