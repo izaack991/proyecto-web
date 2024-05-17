@@ -150,7 +150,7 @@
             function cerrarModal() {        
             $('#modalAlerta').modal('hide');
         }
-            function enviarMensaje() {
+            function generarConversacion() {
             // Obtener el valor del input
             // Enviar el valor mediante AJAX
             $.ajax({
@@ -171,7 +171,7 @@
 
         // Evento al hacer clic en el botón
         $('#enviarBtn').click(function() {
-            enviarMensaje();
+            generarConversacion();
         });
         $(document).ready(function() {
             // Extraer los parámetros de la URL
@@ -196,7 +196,7 @@
                                           <td>` + postulaciones.puesto + `</td>
                                         </tr>
                                       </tbody>`;
-                    btn_enviartest = `<div class="col"><a><input onclick="enviarMensaje()" class="btn btn-info w-75" value="contactar"></a></div>`
+                    btn_enviartest = `<div class="col"><a><input onclick="generarConversacion();abrirChat()" class="btn btn-info w-75 btnChat" id="chat-toggle2" value="contactar"></a></div>`
                     btn_enviartest += `<div class="col px-0"><a href="../php/pdf.php?vac=`+postulaciones.id_postulacion+`&ie=`+postulaciones.id_usuario+`" target="_blank"><input class="btn btn-success text-white w-75" name="btnpdf" type="submit" value="Imprimir"></a><div>`
                   });
                   tabla_usuario += "</table>"

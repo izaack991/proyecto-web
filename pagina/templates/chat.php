@@ -194,8 +194,10 @@ localStorage.removeItem("id_m");
     $('.headerC').hide();
     $('#chatCerrar').hide();
     $('#message-input').hide();
+    $('.chat-toggle').click(function() {abrirChat()});
 
-    $('.chat-toggle').click(function() {
+    function abrirChat() {
+        obtenerConversaciones();
         if ($('#chatCerrar').is(':hidden')) {
             $('#chatAbrir').hide();
             $('#chatCerrar').show();
@@ -221,7 +223,7 @@ localStorage.removeItem("id_m");
         } else {
             chatContainerB.css('right', '0px');
         }
-    });
+    };
 
     $(document).on('click', '.chat-item', function() {
         $('.headerC').show();
