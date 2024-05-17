@@ -1212,6 +1212,44 @@ require_once('conexion.class.php');
                 return TRUE;
                 
             }
+            function verificar_datospersonales($iusuario)
+            {
+                try
+                {
+                    $sql = "SELECT CASE 
+                                    WHEN 
+                                        EXISTS (
+                                            SELECT 1
+                                            FROM tbl_aop AS a
+                                            INNER JOIN tbl_dinteres AS i ON a.id_usuario = i.id_usuario
+                                            INNER JOIN tbl_experiencia_laboral AS e ON a.id_usuario = e.id_usuario
+                                            INNER JOIN tbl_formacion_academica AS f ON a.id_usuario = f.id_usuario
+                                            WHERE a.id_usuario = :iusuario
+                                        )
+                                        OR EXISTS (
+                                            SELECT 1
+                                            FROM tbl_vid_curriculum AS v
+                                            WHERE v.id_usuario = :iusuario
+                                        )
+                                    THEN 1
+                                    ELSE 0
+                                END AS resultado";
+                    $query = $this->dbh->prepare($sql);
+                    $query->bindParam(':iusuario', $iusuario, PDO::PARAM_INT);
+                    $query->execute();
+
+                    $result = $query->fetch(PDO::FETCH_ASSOC);
+                    
+                    return $result['resultado'];
+                }
+                catch (PDOException $e)
+                {
+                    // Manejo de errores
+                    echo "Error: " . $e->getMessage();
+                    return false;
+                }
+            }
+
 
             function notificacionformacion($iusuario)
             {

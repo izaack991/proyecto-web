@@ -37,18 +37,22 @@
     <!-- <form id="formPostulacion" method="POST"> -->
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Confirmación de postulación</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <div class="modal-header bg-primary">
+            <h5 class="modal-title text-white">Confirmación de postulación</h5>
+            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            ¿Estás seguro de que deseas postularte a esta vacante?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <input class="btn btn-primary" type="submit" value="Postularse">
+            <center>¿Estás seguro de que deseas postularte a esta vacante?</center>
+            <div class="row mt-4">
+              <div class="col text-center ">
+                <button type="button" class="btn btn-secondary w-75" data-dismiss="modal">Cancelar</button>
+              </div>
+              <div class="col text-center">
+                <input class="btn btn-primary w-75" type="submit" value="Postularse">
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -251,13 +251,19 @@ $(document).ready(function () {
                 success: function (response) {
                     // Maneja la respuesta del archivo PHP aquí
                     console.log(response);
-                    if (response == "true") {
-                     Swal.fire({
-                             title: '¡Listo!',
-                             text: 'Elemento Guardado',
-                             icon: 'success'
-                         }).then(function () {
-                             window.location.href = "../templates/buscar_vacantes.php";
+                    if (response == "1") {
+                        Swal.fire({
+                            title: '¡Listo!',
+                            text: 'Elemento Guardado',
+                            icon: 'success'
+                        }).then(function () {
+                            window.location.href = "../templates/buscar_vacantes.php";
+                        });
+                    } else if (response == "0") {
+                        Swal.fire({
+                            title: 'Advertencia',
+                            text: 'Por favor, complete el registro de datos personales para su curriculum o en su defecto el Video Curriculum para poder postularse en una vacante',
+                            icon: 'warning'
                         });
                     }
                 },
@@ -266,8 +272,8 @@ $(document).ready(function () {
                     console.error(error);
                 }
             });
-        })
-    })
+        });
+    });    
 };
 // metodo para confirmar el correo
 {
