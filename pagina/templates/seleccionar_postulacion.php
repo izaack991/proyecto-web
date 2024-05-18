@@ -125,13 +125,32 @@
         </div>
       </center>
     </div>
-    
+    <div class="modal fade" id="modalAlerta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title text-white" id="exampleModalLabel"><i class="fas fa-bell"></i> <b>Alerta.</b></h5>
+                    <button type="button" id="btnClose" class="close text-white" data-dismiss="modal" aria-label="Close" onclick="cerrarModal()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <a style="height: 10%;">Ya se ha generado un mensaje con el usuario. Para ver el mensaje por favor abra la caja del chat.</a>
+                </div>
+            </div>
+        </div>
+    </div>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
             var urlParams = new URLSearchParams(window.location.search);
             var id_postulacion = urlParams.get('id_postulacion');
             var id_usuario = urlParams.get('id_usuario');
-            function enviarMensaje() {
+            function cerrarModal() {        
+            $('#modalAlerta').modal('hide');
+        }
+            function generarConversacion() {
             // Obtener el valor del input
             // Enviar el valor mediante AJAX
             $.ajax({
@@ -139,10 +158,9 @@
                 type: 'POST', // Método de la solicitud
                 data: { id_usuario: id_usuario }, // Datos a enviar (nombre de variable y su valor)
                 success: function(response) {
-                  alert(response); // Mostrar el ID del usuario
-
+                  if(response != "logrado"){
                     // Manejar la respuesta del servidor
-                    $('#respuesta').html('Respuesta del servidor: ' + response);
+                    $('#modalAlerta').modal('show');}
                 },
                 error: function(xhr, status, error) {
                     // Manejar cualquier error
@@ -153,7 +171,7 @@
 
         // Evento al hacer clic en el botón
         $('#enviarBtn').click(function() {
-            enviarMensaje();
+            generarConversacion();
         });
         $(document).ready(function() {
             // Extraer los parámetros de la URL
@@ -178,7 +196,7 @@
                                           <td>` + postulaciones.puesto + `</td>
                                         </tr>
                                       </tbody>`;
-                    btn_enviartest = `<div class="col"><a><input onclick="enviarMensaje()" class="btn btn-info w-75" id="enviarBtn" type="submit" value="contactar"></a></div>`
+                    btn_enviartest = `<div class="col"><a><input onclick="generarConversacion();abrirChat()" class="btn btn-info w-75 btnChat" id="chat-toggle2" value="contactar"></a></div>`
                     btn_enviartest += `<div class="col px-0"><a href="../php/pdf.php?vac=`+postulaciones.id_postulacion+`&ie=`+postulaciones.id_usuario+`" target="_blank"><input class="btn btn-success text-white w-75" name="btnpdf" type="submit" value="Imprimir"></a><div>`
                   });
                   tabla_usuario += "</table>"
