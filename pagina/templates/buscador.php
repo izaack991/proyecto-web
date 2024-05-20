@@ -87,7 +87,7 @@
   <input name="txtlongitud" id="longitud" type="hidden">
 
 <br>
-<div class="alert alert-dismissible text-center px-0">
+<div class="text-center px-0">
         <input type="text" class="form-control" placeholder="Busque una vacante"
           style="display: flex; margin: 0 10%; width: 80%; text-align: center;" id="bvac"
           onkeydown="return event.key != 'Enter';"><br>
@@ -237,5 +237,6 @@
   <script src="../js/insert.js"></script>
 
 </body>
+<?php include ("footer.php") ?>
 
 </html>

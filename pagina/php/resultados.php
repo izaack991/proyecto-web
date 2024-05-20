@@ -51,7 +51,7 @@ if (isset($_GET['puesto'])) {
         }
 
         echo '<h6 class="card-title">' . htmlspecialchars($vacante['ciudad']) . ', ' . htmlspecialchars($vacante['region']) . '</h6>';
-        echo '<h6 class="card-title" style="text-align: justify; font-weight: normal;">' . htmlspecialchars(substr($vacante['datos_adicionales'], 0, 200)) . '...</h6>';
+        echo '<h6 class="card-title" style="text-align: justify; font-weight: normal;">' . (substr($vacante['datos_adicionales'], 0, 200)) . '...</h6>';
         echo '<form action="seleccionar_vacantes.php" method="POST">';
         echo '<input type="text" value="' . htmlspecialchars($vacante['id_vacante']) . '" name="id_vacante" id="id_vacante" hidden>';
         echo '<input type="submit" value="Leer más" class="btn btn-primary btn-vacante" data-vacante2="' . htmlspecialchars($vacante['id_vacante']) . '">';

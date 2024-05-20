@@ -88,7 +88,7 @@
   <div class="container-fluid" style="min-height: 65vh;">
     <form action="buscar_vacante.php" method="GET">
 
-      <div class="alert alert-dismissible text-center px-0">
+      <div class="text-center px-0">
         <input type="text" class="form-control" placeholder="Busque una vacante"
           style="display: flex; margin: 0 10%; width: 80%; text-align: center;" id="bvac"
           onkeydown="return event.key != 'Enter';"><br>
