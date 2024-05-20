@@ -448,7 +448,7 @@ require_once('conexion.class.php');
                     $sql = "SELECT v.*, c.nombre as nombrePais, f.id_vacante AS verificacionFav
                             FROM tbl_vacantes v
                             INNER JOIN tbl_paises c ON v.lugar = c.region
-                            LEFT JOIN tbl_favoritos f ON v.id_vacante = f.id_vacante 
+                            LEFT JOIN tbl_favoritos f ON v.id_vacante = f.id_vacante AND f.id_usuario = $_idusuario
                             LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = $_idusuario 
                             WHERE (DATEDIFF(datefin, dateInicio) >= 1 AND v.status = 1 AND (p.id_vacante IS NULL OR p.id_usuario <> $_idusuario))
                             ORDER BY v.id_vacante DESC
@@ -535,7 +535,7 @@ require_once('conexion.class.php');
                     $sql = "SELECT v.*, c.nombre as nombrePais, f.id_vacante AS verificacionFav 
                             FROM tbl_vacantes v
                             INNER JOIN tbl_paises c ON v.lugar = c.region
-                            LEFT JOIN tbl_favoritos f ON v.id_vacante = f.id_vacante
+                            LEFT JOIN tbl_favoritos f ON v.id_vacante = f.id_vacante AND f.id_usuario = $_idusuario
                             LEFT JOIN tbl_postulacion p ON v.id_vacante = p.id_vacante AND p.id_usuario = $_idusuario 
                             WHERE (DATEDIFF(datefin, dateInicio) >= 1 AND v.status = 1 AND v.id_vacante=f.id_vacante AND (p.id_vacante IS NULL OR p.id_usuario <> $_idusuario))
                             GROUP BY v.id_vacante DESC";
