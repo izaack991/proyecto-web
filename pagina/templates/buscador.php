@@ -14,6 +14,63 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../js/notificacion_usuario.js"></script>
+
+  <script>
+    $(document).ready(function() {
+  $("#bvac").keyup(function() {
+    var query = $(this).val().toLowerCase();
+    filterVacancies(query);
+  });
+
+  // Escuchar el evento de clic del checkbox "Se Precisa Urgente"
+  $("#urgentCheckbox").click(function() {
+    filterVacancies($("#bvac").val().toLowerCase());
+  });
+
+  // Escuchar el evento de clic del checkbox "Prácticas"
+  $("#practicesCheckbox").click(function() {
+    filterVacancies($("#bvac").val().toLowerCase());
+  });
+
+  // Función para filtrar las vacantes
+  function filterVacancies(query) {
+    var showUrgent = $("#urgentCheckbox").is(":checked");
+    var showPractices = $("#practicesCheckbox").is(":checked");
+
+    $("#vacantesContainer").children().each(function() {
+      var text = $(this).text().toLowerCase();
+      var showVacancy = true;
+
+      // Filtrar por texto de búsqueda
+      if (query !== "" && text.indexOf(query) === -1) {
+        showVacancy = false;
+      }
+
+      // Crear expresiones regulares para los filtros
+      var urgentRegex = new RegExp("se precisa urgente", "i");
+      var practicesRegex = new RegExp("prácticas", "i");
+
+      // Filtrar por "Se Precisa Urgente"
+      if (showUrgent && !urgentRegex.test($(this).text())) {
+        showVacancy = false;
+      }
+
+      // Filtrar por "Prácticas"
+      if (showPractices && !practicesRegex.test($(this).text())) {
+        showVacancy = false;
+      }
+
+      // Mostrar u ocultar vacante según los filtros
+      if (showVacancy) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+  }
+});
+
+  </script>
   
 </head>
 
@@ -30,8 +87,24 @@
   <input name="txtlongitud" id="longitud" type="hidden">
 
 <br>
+<div class="alert alert-dismissible text-center px-0">
+        <input type="text" class="form-control" placeholder="Busque una vacante"
+          style="display: flex; margin: 0 10%; width: 80%; text-align: center;" id="bvac"
+          onkeydown="return event.key != 'Enter';"><br>
+
+        <div style="display: inline-block; margin-right: 10px;">
+          <input type="checkbox" id="urgentCheckbox">
+          <label for="urgentCheckbox"><strong>Se Precisa Urgente</strong></label>
+        </div>
+
+        <div style="display: inline-block;">
+          <input type="checkbox" id="practicesCheckbox">
+          <label for="practicesCheckbox"><strong>Prácticas</strong></label>
+        </div>
+      </div>
+
     <!-- Contenido de las vacantes -->
-    <div class="row justify-content-center mx-2">
+    <div id="vacantesContainer" class="row justify-content-center mx-2">
   
       <?php include ("../php/busqueda.php"); ?>
       <?php include ("../php/resultados.php"); ?>

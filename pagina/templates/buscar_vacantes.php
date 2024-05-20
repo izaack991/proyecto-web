@@ -18,7 +18,7 @@
 
   <!-- <script src="../php/Buscar_vacantes.php'"></script> -->
   <script src="../js/Buscar_vacantes.js"></script>
-  <script>
+  <script> 
     $(document).ready(function() {
   $("#bvac").keyup(function() {
     var query = $(this).val().toLowerCase();
