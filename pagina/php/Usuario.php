@@ -112,7 +112,7 @@ if (isset($_POST['txt_PASSWORD']) && (isset($_POST['txt_PASSWORD2']))) {
       // ...
 
       // Llamar a la función enviarCorreo después de guardar al usuario
-      $verificationLink = "http://localhost:8080/proyecto-web/pagina/templates/verificacion.php";
+      $verificationLink = "http://workele.com/site/pagina/templates/verifica.php";
 
       $asuntoCorreo = "Bienvenido a nuestra plataforma";
       $mensajeCorreo = '
