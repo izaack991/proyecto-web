@@ -23,7 +23,7 @@
   .toggle-off {
     background: lightgray;
   }
-</style>
+  </style>
 
   <script>
     // funcion para solo letras mayúsculas, minúsculas y espacios

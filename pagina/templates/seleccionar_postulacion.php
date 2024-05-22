@@ -24,125 +24,114 @@
       }
     </script>
 
+    <!-- Codigo de CSS para el diseño personalisado del curriculum -->
+    <style>
+      .pregresp {
+        border: 0.5px solid lightgrey;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 0.4rem;
+      }
+
+      .titulo {
+        color: #20c997;
+      }
+    </style>
+
   </head>
 
-  <!-- {*Codigo de CSS para el diseño personalisado del curriculum*} -->
-  <style>
-    .pregresp {
-      border: 0.5px solid lightgrey;
-      padding: 10px;
-      margin: 10px;
-      border-radius: 0.4rem;
-    }
-
-    .titulo {
-      color: #20c997;
-    }
-  </style>
-
   <body style="background-color: #F8F6F3;">
-
-    <!-- {*Conexion de librerias de JavaScript y bootstrap*} -->
-    
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     <!--Barra de navegacion para Empresa-->
     <?php include("navbar_empresa.php") ?>
     
-    <!-- {*Card del curriculum del usuario*} -->
-    <div class="card border-primary shadow mb-5 rounded" style="max-width: 80%; margin:auto; margin-top:30px;">
-      <div class="card-header text-center bg-primary">
-        <h2 class="card-title titulo text-white">CURRICULUM</h2>
-      </div>
-    
-      <center>
-        <div class="card-body">
-          <div class="row">
-            <div class="col"></div>
-            <div class="col">
-              <!-- {*Boton para enviar tests*} -->
-              <div class="row justify-content-center align-items-center" id="btn_enviartest">
-              </div>
-            </div>
-          </div>
-          <div class="row align-items-center pregresp shadow mt-3">
-
-            <!-- {*Datos del usuario*} -->
-            
+    <div class="container-fluid">
+      <!-- Card del curriculum del usuario -->
+      <div class="card border-primary shadow mb-5 rounded" style="max-width: 80%; margin:auto; margin-top:30px;">
+        <div class="card-header text-center bg-primary">
+          <h2 class="card-title titulo text-white">CURRICULUM</h2>
+        </div>
+      
+        <center>
+          <div class="card-body">
+            <div class="row">
+              <div class="col"></div>
               <div class="col">
-                <h4 class="text-white bg-dark py-2"><b>USUARIO</b></h4>
-                <div id="tabla_usuario">
+                <!-- Boton para enviar tests -->
+                <div class="row justify-content-center align-items-center" id="btn_enviartest">
                 </div>
               </div>
+            </div>
+            <div class="row align-items-center pregresp shadow mt-3">
+              <!-- Datos del usuario -->
+                <div class="col">
+                  <h4 class="text-white bg-dark py-2"><b>USUARIO</b></h4>
+                  <div id="tabla_usuario">
+                  </div>
+                </div>
+              <!-- Datos de la vacante -->
+                <div class="col">
+                    <h4 class="text-white bg-dark py-2"><b>VACANTE</b></h4>
+                    <div id="tabla_vacante">
+                    </div>
+                </div>
+            </div> 
 
-            <!-- {*Datos de la vacante*} -->
-              <div class="col">
-                  <h4 class="text-white bg-dark py-2"><b>VACANTE</b></h4>
-                  <div id="tabla_vacante">
+            <!-- Datos de la experiencia laboral del usuario -->
+            <div class="pregresp shadow mt-4">
+              <h4 class="text-white bg-dark py-2"><b>EXPERIENCIA LABORAL</b></h4>
+              <div id="tabla_exp">
+              </div><br>
+            </div>
+            <div class="pregresp shadow mt-4">
+              <h4 class="text-white bg-dark py-2"><b>FORMACIÓN ACADÉMICA</b></h4>
+              <div id='tabla_formacion'>
+              </div><br>
+            </div>
+            
+            <!-- Datos de las aficiones del usuario -->
+            <div class="pregresp shadow mt-4">
+              <h4 class="text-white bg-dark py-2"><b>AFICIONES</b></h4>
+              <div class="row align-items-center">
+                <div class="col">
+                  <div id="tabla_aficion">
+                  </div>
+                </div>
+              </div><br>
+            </div>
+            
+            <!-- Datos de los intereses del usuario -->
+            <div class="pregresp shadow mt-4">
+              <h4 class="text-white bg-dark py-2"><b>INTERESES</b></h4>
+              <div class="row align-items-center">
+                <div class="col">
+                  <div id="tabla_interes">
+                  </div>
+                </div>
+              </div><br>
+            </div>
+          </div>
+        </center>
+      </div>
+      <div class="modal fade" id="modalAlerta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header bg-primary">
+                      <h5 class="modal-title text-white" id="exampleModalLabel"><i class="fas fa-bell"></i> <b>Alerta.</b></h5>
+                      <button type="button" id="btnClose" class="close text-white" data-dismiss="modal" aria-label="Close" onclick="cerrarModal()">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                      <a style="height: 10%;">Ya se ha generado un mensaje con el usuario. Para ver el mensaje por favor abra la caja del chat.</a>
                   </div>
               </div>
-
-          </div> 
-
-          <!-- {*Datos de la experiencia laboral del usuario*} -->
-          <div class="pregresp shadow mt-4">
-            <h4 class="text-white bg-dark py-2"><b>EXPERIENCIA LABORAL</b></h4>
-            <div id="tabla_exp">
-              
-            </div><br>
           </div>
-          
-          <div class="pregresp shadow mt-4">
-            <h4 class="text-white bg-dark py-2"><b>FORMACIÓN ACADÉMICA</b></h4>
-            <div id='tabla_formacion'>
-              
-            </div><br>
-          </div>
-          
-          <!-- {*Datos de las aficiones del usuario*} -->
-          <div class="pregresp shadow mt-4">
-            <h4 class="text-white bg-dark py-2"><b>AFICIONES</b></h4>
-            <div class="row align-items-center">
-              <div class="col">
-                <div id="tabla_aficion">
-                </div>
-              </div>
-            </div><br>
-          </div>
-          
-          <!-- {*Datos de los intereses del usuario*} -->
-          <div class="pregresp shadow mt-4">
-            <h4 class="text-white bg-dark py-2"><b>INTERESES</b></h4>
-            <div class="row align-items-center">
-              <div class="col">
-                <div id="tabla_interes">
-                </div>
-              </div>
-            </div><br>
-          </div>
-
-        </div>
-      </center>
+      </div>
     </div>
-    <div class="modal fade" id="modalAlerta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-primary">
-                    <h5 class="modal-title text-white" id="exampleModalLabel"><i class="fas fa-bell"></i> <b>Alerta.</b></h5>
-                    <button type="button" id="btnClose" class="close text-white" data-dismiss="modal" aria-label="Close" onclick="cerrarModal()">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <a style="height: 10%;">Ya se ha generado un mensaje con el usuario. Para ver el mensaje por favor abra la caja del chat.</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    
   </body>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
   <script>
             var urlParams = new URLSearchParams(window.location.search);
             var id_postulacion = urlParams.get('id_postulacion');
@@ -196,7 +185,7 @@
                                           <td>` + postulaciones.puesto + `</td>
                                         </tr>
                                       </tbody>`;
-                    btn_enviartest = `<div class="col"><a><input onclick="generarConversacion();abrirChat()" class="btn btn-info w-75 btnChat" id="chat-toggle2" value="contactar"></a></div>`
+                    btn_enviartest = `<div class="col"><a><input onclick="generarConversacion();abrirChat()" class="btn btn-info w-75 btnChat" id="chat-toggle2" value="Contactar"></a></div>`
                     btn_enviartest += `<div class="col px-0"><a href="../php/pdf.php?vac=`+postulaciones.id_postulacion+`&ie=`+postulaciones.id_usuario+`" target="_blank"><input class="btn btn-success text-white w-75" name="btnpdf" type="submit" value="Imprimir"></a><div>`
                   });
                   tabla_usuario += "</table>"
@@ -264,5 +253,13 @@
                 }
             });
         });
-    </script>
+  </script>
+
+    <!-- Conexion de librerias de JavaScript y bootstrap -->
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </html>
