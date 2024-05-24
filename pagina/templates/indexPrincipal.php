@@ -104,51 +104,11 @@
   </div>
 
 
-  <div style="background-color: #F0E68C; padding: 20px; text-align: center;">
+  <div style="background-color: #FFD700; padding: 20px; text-align: center;">
     <h3 style=" margin: 0; color: #333;">Empresas contratando</h3>
-    <p style="font-size: 18px; margin: 10px 0; color: #666;">Con las mejores vacantes esperándote</p>
+    <p style="font-size: 18px; margin: 10px 0; color: #666;">Completa todos los formularios para crear un currículum integral y profesional</p>
   </div>
-  <br>
-  <div style="display: flex; flex-wrap: wrap; gap: 50px; justify-content: center;">
-    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
-      <img src="../../assets/images/index_usuario/DIAMOND.svg" alt="Logo Empresa 1" style="max-width: 100%; max-height: 100%;">
-    </div>
-    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
-      <img src="../../assets/images/index_usuario/LION.svg" alt="Logo Empresa 2" style="max-width: 100%; max-height: 100%;">
-    </div>
-    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
-      <img src="../../assets/images/index_usuario/MANGO.svg" alt="Logo Empresa 3" style="max-width: 100%; max-height: 100%;">
-    </div>
-    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
-      <img src="../../assets/images/index_usuario/SAMIRA.svg" alt="Logo Empresa 4" style="max-width: 100%; max-height: 100%;">
-    </div>
-    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
-      <img src="../../assets/images/index_usuario/SALFORD.svg" alt="Logo Empresa 5" style="max-width: 100%; max-height: 100%;">
-    </div>
-  </div>
-
-  <br>
-
-  <div style="display: flex; flex-wrap: wrap; gap: 50px; justify-content: center;">
-    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
-      <img src="../../assets/images/index_usuario/COLOR.svg" alt="Logo Empresa 6" style="max-width: 100%; max-height: 100%;">
-    </div>
-    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
-      <img src="../../assets/images/index_usuario/BORCELLE.svg" alt="Logo Empresa 7" style="max-width: 100%; max-height: 100%;">
-    </div>
-    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
-      <img src="../../assets/images/index_usuario/PHANTOM.svg" alt="Logo Empresa 8" style="max-width: 100%; max-height: 100%;">
-    </div>
-    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
-      <img src="../../assets/images/index_usuario/WIND.svg" alt="Logo Empresa 9" style="max-width: 100%; max-height: 100%;">
-    </div>
-    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
-      <img src="../../assets/images/index_usuario/FAUGET.svg" alt="Logo Empresa 10" style="max-width: 100%; max-height: 100%;">
-    </div>
-  </div>
-
-  <br>
-
+ 
   <div class="box b_radius_none posRel" style="background-color: #B0E0E6; padding: 30px;">
     <div class="container">
       <div class="row">
