@@ -22,7 +22,7 @@
 
   <div style="max-width: 100%; padding: 5vw; background-image: url('../../assets/images/index_usuario/PERSONAL2.svg'); background-size: cover; background-position: center; display: flex; justify-content: center; align-items: center;">
     <div style="display: flex; flex-direction: column; justify-content: center; background-color: rgba(0, 0, 0, 0.7); padding: 2vw; border-radius: 10px; text-align: center;">
-      <h2 style="margin: 0; color: white;">Únete a nuestra comunidad y obtén 3 meses de prueba para publicar tus ofertas laborales</h2>
+      <h2 style="margin: 0; color: white;">Únete a nuestra comunidad y publica tus ofertas laborales sin ningun costo</h2>
       <p style="margin: 2vw 0; color: white;">Permítenos optimizar tus procesos de reclutamiento y descubrir el talento que necesitas. Explora nuestros planes diseñados para adaptarse a tus necesidades específicas</p>
       <div style="display: flex; justify-content: center;">
         <!-- <a href="postulacion.php" style="width: 120px; height: 60px; display: inline-block; background-color: #FF5733; color: #fff; padding: 15px 20px; font-size: 1rem; text-decoration: none; border-radius: 5px; margin-bottom: 20px;">Ver planes</a> -->
